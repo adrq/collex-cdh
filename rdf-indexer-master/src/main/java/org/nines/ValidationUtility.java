@@ -46,7 +46,7 @@ public class ValidationUtility {
     // List of all valid types
     public static final String[] TYPE_LIST = new String [] {
         "Codex",  "Collection",  "Drawing",  "Illustration", "Interactive Resource",  "Manuscript",  "Map",  "Moving Image",  "Periodical",
-        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript"
+        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript", "Text" /*adrian - added "Text" type*/
     };
 
     // Fields that are required to be present in RDF

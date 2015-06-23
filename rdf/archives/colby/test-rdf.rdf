@@ -9,13 +9,13 @@
    
   <virtualCanonLawLibrary:Liber_extra_Decretalists rdf:about="http://abouturl">
 
-      <collex:federation>MESA</collex:federation>
+      <collex:federation>NINES</collex:federation>
       <collex:archive>colby</collex:archive>
 
       <rdfs:seeAlso rdf:resource="https://colbycanonlaw.wordpress.com/2009/09/24/liber-extra-decretalists/"/>
 
       <dc:title>CLiber extravagantium decretalium</dc:title>
-      <role:AUT></role:AUT>
+      <role:AUT>unknown</role:AUT>
       <dc:date>1234</dc:date>
       <collex:discipline>Law</collex:discipline>
       <dc:type>Text</dc:type>
