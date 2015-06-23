@@ -14,14 +14,14 @@
 
       <rdfs:seeAlso rdf:resource="https://colbycanonlaw.wordpress.com/2009/09/24/liber-extra-decretalists/"/>
 
-      <dc:title>CLiber extravagantium decretalium</dc:title>
+      <dc:title>Liber extravagantium decretalium</dc:title>
       <role:AUT>unknown</role:AUT>
       <dc:date>1234</dc:date>
       <collex:discipline>Law</collex:discipline>
       <dc:type>Text</dc:type>
       <collex:genre>Collection</collex:genre>
 
-      <collex:text rdf:resource="http://www.rossettiarchive.org/docs/1-1835.raw.txt"/>
+      <!--<collex:text rdf:resource="http://www.rossettiarchive.org/docs/1-1835.raw.txt"/>-->
 
   </virtualCanonLawLibrary:Liber_extra_Decretalists>
 
