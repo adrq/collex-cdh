@@ -1,0 +1,38 @@
+<%#
+# ------------------------------------------------------------------------
+#     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+# 
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+# 
+#         http://www.apache.org/licenses/LICENSE-2.0
+# 
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
+# ----------------------------------------------------------------------------
+%>
+<%# exhibit_summary: params: ActiveRecord exhibit, string text (optional), time last_modified, bool show_immediately (optional) %>
+<% show_immediately ||= false -%>
+<% text ||= '' -%>
+<div class="thumbnail_item<%= get_summary_header_class(exhibit) %>">
+<% group = exhibit.group_id ? Group.find(exhibit.group_id) : nil %>
+<%= get_summary_header_div(group, exhibit) %>
+<div class="left_thumbnail"><%= render :partial => '/exhibits/exhibit_thumbnail', :locals => { :exhibit => exhibit, :show_immediately => show_immediately } %></div>
+<div class="right_of_thumbnail exhibit_link"><span class="obj_summary_label">Exhibit: </span><%= get_exhibit_link(exhibit) %>&nbsp;by
+	<%= get_exhibit_user_link(exhibit) %>
+	<% if Exhibit.can_edit(current_user, exhibit.id) -%>
+		| <%= link_to("[Edit this exhibit]", { :controller => 'builder', :action => 'show', :id => exhibit.id }, :class => 'nav_link' ) %>
+	<% end -%>
+	<% if exhibit.group_id -%>
+		<br />in <%= link_to group.name, { :controller => 'groups', :action => 'show', :id => exhibit.group_id }, :class => 'nav_link' %>
+	<% end -%>
+	<br />Last Modified: <%= comment_time_format_relative(last_modified) %>
+	<% if text.length > 0 %>
+		<div class="snippet"><%= text %></div>
+	<% end -%>
+</div>
+</div>

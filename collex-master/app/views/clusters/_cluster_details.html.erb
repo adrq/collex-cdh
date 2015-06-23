@@ -1,0 +1,62 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# cluster_details : parameters: ActiveRecord group, ActiveRecord cluster, int user_id -%>
+<script type="text/javascript">
+	// These have to be global variables to be picked up after an ajax call (this partial is redrawn after every update.)
+	<% membership = group.get_membership_list() -%>
+	gMembership = <%= raw(membership.to_json()) %>;
+	gGroupData = <%= raw(group.to_json().gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;')) %>;
+</script>
+<div class="group_details_left">
+	<%= render :partial => 'common/thumbnail', :locals => { :element_id => "cluster_#{cluster.id}", :url => get_cluster_image_url(group, cluster), :show_immediately => true, :height => 120, :border => true } %>
+	<% if group.group_type != 'classroom' && group.can_edit(user_id) -%>
+		<br /><%= link_to_function("[#{cluster.image == nil ? 'add' : 'edit'} thumbnail]", "new EditGroupThumbnailDlg(#{cluster.id}, '#{group.get_clusters_label()}', 'clusters');", :class => 'nav_link') %>
+		<% if cluster.image != nil -%>
+		<div class="profile_remove_picture"><%= link_to "Remove Thumbnail", { :controller => 'clusters', :action => 'remove_profile_picture', :id => cluster.id }, { :id => 'remove_picture', :method => 'post' } %></div>
+		<script type="text/javascript">
+			var createRemovePictureButton = function() {
+				var onButtonClick = function (e) {
+					postLink($("remove_picture-button").href);
+				};
+
+
+				new YAHOO.widget.Button('remove_picture', { onclick: { fn: onButtonClick } });
+				YAHOO.util.Event.onAvailable('remove_picture-button', function() {
+					$('remove_picture-button').writeAttribute('onclick', 'return false;');	// This keeps the '#' out of the address bar
+				}, this);
+			};
+			document.observe('dom:loaded', function() {
+				createRemovePictureButton();
+			});
+			try {
+				createRemovePictureButton();
+			} catch(e) {};
+		</script>
+		<% end -%>
+	<% end -%>
+</div>
+<div class="cluster_details_center">
+	<h1><%=link_to( group.name, { :controller => 'groups', :action => 'show', :id => group.get_visible_id() }, { :class => 'nav_link' }) %> > <%= cluster.name %><%= link_to_function('[edit title]', "editTitle(#{cluster.id}, '#{cluster.name}', 'cluster');", :class => 'group_edit_title_link nav_link') if group.can_edit(user_id) %></h1>
+	<div class="group_description_label"><span class="group_details_label"><%= group.get_clusters_label() %> Description</span> <%= link_to_function('[edit]', "editDescription(#{cluster.id}, '#{cluster.description.gsub("\n", "").gsub('\'') { |apos| '\\\'' }}', 'cluster', '/forum/get_nines_obj_list', '#{image_path(PROGRESS_SPINNER_PATH)}');", :class => 'nav_link') if group.can_edit(user_id) %></div>
+	<div class="group_description"><%= decode_exhibit_links(cluster.description.gsub("\n", "<br />")) %></div>
+<% if group.can_edit(user_id) -%>
+	<div class="group_editors">URL is <%= cluster.get_visible_url %> <%= link_to_function('[Change URL]', "editURL(#{cluster.id}, '#{cluster.visible_url}', 'cluster', '/groups/#{group.get_visible_id()}/');", :class => 'nav_link') %></div>
+	<div class="group_editors"><%= group.get_clusters_label() %> is visible to <%= cluster.get_friendly_visibility_string() %> <%= link_to_function('[Change Visibility]', "changeClusterVisibility({ method: 'PUT', url: '/clusters/#{cluster.id}'}, '#{cluster.get_visibility()}', #{cluster.get_friendly_visibility_list().to_json()}, 'cluster_details', '#{group.get_clusters_label()}');", :class => 'nav_link') %></div>
+<% end -%>
+	<div class="group_editors"><%= link_to("[delete #{group.get_clusters_label()}]", cluster, :confirm => "Are you sure you wish to permanently delete this #{group.get_clusters_label()}?", :method => :delete, :class => 'nav_link') if group.can_edit(user_id) %></div>
+</div>
+<div class="clear_both"></div>

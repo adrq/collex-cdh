@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class GroupsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/groups_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-accept_as_peer_reviewed">#accept_as_peer_reviewed</a>
+    
+    <li><a href="#method-i-accept_invitation">#accept_invitation</a>
+    
+    <li><a href="#method-i-accept_request">#accept_request</a>
+    
+    <li><a href="#method-i-acknowledge_notification">#acknowledge_notification</a>
+    
+    <li><a href="#method-i-check_url">#check_url</a>
+    
+    <li><a href="#method-i-create">#create</a>
+    
+    <li><a href="#method-i-create_login">#create_login</a>
+    
+    <li><a href="#method-i-create_login_create">#create_login_create</a>
+    
+    <li><a href="#method-i-decline_invitation">#decline_invitation</a>
+    
+    <li><a href="#method-i-decline_request">#decline_request</a>
+    
+    <li><a href="#method-i-destroy">#destroy</a>
+    
+    <li><a href="#method-i-edit_membership">#edit_membership</a>
+    
+    <li><a href="#method-i-edit_thumbnail">#edit_thumbnail</a>
+    
+    <li><a href="#method-i-get_all_groups">#get_all_groups</a>
+    
+    <li><a href="#method-i-group_exhibits_list">#group_exhibits_list</a>
+    
+    <li><a href="#method-i-leave_group">#leave_group</a>
+    
+    <li><a href="#method-i-limit_exhibit">#limit_exhibit</a>
+    
+    <li><a href="#method-i-notifications">#notifications</a>
+    
+    <li><a href="#method-i-pending_requests">#pending_requests</a>
+    
+    <li><a href="#method-i-reject_as_peer_reviewed">#reject_as_peer_reviewed</a>
+    
+    <li><a href="#method-i-remove_profile_picture">#remove_profile_picture</a>
+    
+    <li><a href="#method-i-render_license">#render_license</a>
+    
+    <li><a href="#method-i-request_join">#request_join</a>
+    
+    <li><a href="#method-i-show">#show</a>
+    
+    <li><a href="#method-i-sort_cluster">#sort_cluster</a>
+    
+    <li><a href="#method-i-sort_exhibits">#sort_exhibits</a>
+    
+    <li><a href="#method-i-unlimit_exhibit">#unlimit_exhibit</a>
+    
+    <li><a href="#method-i-unpublish_exhibit">#unpublish_exhibit</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+    <li><a href="#method-i-verify_group_title">#verify_group_title</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class GroupsController</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2009 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-accept_as_peer_reviewed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">accept_as_peer_reviewed</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="accept_as_peer_reviewed-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 253</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">accept_as_peer_reviewed</span>
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit</span>][<span class="ruby-value">:cluster_id</span>] = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit</span>][<span class="ruby-value">:cluster_id</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'0'</span>
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit</span>])
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">adjust_indexing</span>(<span class="ruby-value">:publishing</span>, <span class="ruby-keyword">true</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment">#cluster = exhibit.cluster_id == nil ? nil : Cluster.find(exhibit.cluster_id)</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:cluster</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- accept_as_peer_reviewed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- accept_as_peer_reviewed-method -->
+
+    
+      <div id="method-i-accept_invitation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">accept_invitation</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="accept_invitation-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">accept_invitation</span>
+        <span class="ruby-identifier">from_web</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_method</span> <span class="ruby-operator">==</span> <span class="ruby-string">'POST'</span>
+        <span class="ruby-identifier">from_web</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:from_create</span>]      <span class="ruby-comment"># we can also be redirected here from the create user id page.</span>
+
+        <span class="ruby-keyword">begin</span>
+                <span class="ruby-identifier">has_login</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">has_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-keyword">rescue</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'stale_request'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">has_login</span>
+                        <span class="ruby-identifier">success</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">join_group</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+                        <span class="ruby-identifier">group_id</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">get_group_from_obfuscated_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+                        <span class="ruby-identifier">user_id</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">find</span>(<span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])).<span class="ruby-identifier">user_id</span>)
+                        <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">user_id</span>)
+                        <span class="ruby-identifier">set_current_user</span>({ <span class="ruby-value">:email</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-value">:fullname</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-value">:username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">username</span>, <span class="ruby-value">:role_names</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">role_names</span> })
+                        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+                        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;membership&quot;</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-node">&quot;New member, #{user.fullname}, in #{group.name}&quot;</span>, <span class="ruby-node">&quot;#{user.fullname} has joined the group #{group.name}. Visit the group at #{ActionMailer::Base.default_url_options[:host]}/groups/#{group.get_visible_id()}&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">from_web</span>
+                                <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'acknowledge_notification'</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'join_group'</span>, <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">success</span>, <span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_id</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'create_login'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]), <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">''</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- accept_invitation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- accept_invitation-method -->
+
+    
+      <div id="method-i-accept_request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">accept_request</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The following 4 calls can come from either the web or the email link. We
+have to go to different pages in the two cases. The way to tell is the
+email link is GET and the web is POST.</p>
+          
+
+          
+          <div class="method-source-code" id="accept_request-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">accept_request</span>
+        <span class="ruby-identifier">from_web</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_method</span> <span class="ruby-operator">==</span> <span class="ruby-value">:'POST'</span>
+
+        <span class="ruby-identifier">success</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">accept_request</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">success</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'stale_request'</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">group_id</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">get_group_from_obfuscated_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+                <span class="ruby-identifier">user_id</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">get_user_from_obfuscated_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+                <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;membership&quot;</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-node">&quot;Member joined #{Group.find(group_id).name}&quot;</span>, <span class="ruby-node">&quot;The user #{User.find(user_id).fullname} was accepted.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">from_web</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'acknowledge_notification'</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'accept_request'</span>, <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">success</span>, <span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_id</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- accept_request-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- accept_request-method -->
+
+    
+      <div id="method-i-acknowledge_notification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">acknowledge_notification</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="acknowledge_notification-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">acknowledge_notification</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_id</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">render_422</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- acknowledge_notification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- acknowledge_notification-method -->
+
+    
+      <div id="method-i-check_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_url</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_url-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_url</span>
+        <span class="ruby-identifier">url</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-string">'visible_url'</span>]
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;No URL given. Please enter one.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">url_int</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">url_int</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Numbers are not allowed as URLs.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">index</span>(<span class="ruby-regexp">/\W/</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Only letters, numbers, and underscores are allowed as URLs.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_visible_url</span>(<span class="ruby-identifier">url</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'The URL matches another group. Choose a different one.'</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'The URL is accepted. Please wait.'</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- check_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- check_url-method -->
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>POST /groups POST /groups.xml</p>
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 544</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>]
+      <span class="ruby-identifier">err_msg</span> = <span class="ruby-identifier">validate_email_list</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>])
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">err_msg</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopNewGroupUpload&quot;</span>, <span class="ruby-identifier">err_msg</span>)  <span class="ruby-comment"># This is loaded in the iframe and tells the dialog that the upload is complete.</span>
+        <span class="ruby-keyword">return</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'Yes'</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'No'</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:exhibit_visibility</span>] = <span class="ruby-string">'www'</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:forum_permissions</span>] = <span class="ruby-string">'full'</span>
+    <span class="ruby-identifier">send_email</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:group_type</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+      <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:group_type</span>] = <span class="ruby-string">'community'</span>
+      <span class="ruby-identifier">send_email</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>])
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">header_font_name</span> = <span class="ruby-string">'Arial'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">header_font_size</span> = <span class="ruby-string">'24'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">text_font_name</span> = <span class="ruby-string">'Times New Roman'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">text_font_size</span> = <span class="ruby-string">'18'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">illustration_font_name</span> = <span class="ruby-string">'Trebuchet MS'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">illustration_font_size</span> = <span class="ruby-string">'14'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">caption1_font_name</span> = <span class="ruby-string">'Trebuchet MS'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">caption1_font_size</span> = <span class="ruby-string">'14'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">caption2_font_name</span> = <span class="ruby-string">'Trebuchet MS'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">caption2_font_size</span> = <span class="ruby-string">'14'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">endnotes_font_name</span> = <span class="ruby-string">'Times New Roman'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">endnotes_font_size</span> = <span class="ruby-string">'16'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">footnote_font_name</span> = <span class="ruby-string">'Times New Roman'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">footnote_font_size</span> = <span class="ruby-string">'16'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">use_styles</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">image_id</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">exhibits_label</span> = <span class="ruby-string">&quot;Exhibit&quot;</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">clusters_label</span> = <span class="ruby-string">&quot;Cluster&quot;</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">show_admins</span> = <span class="ruby-string">'all'</span>
+    <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-string">&quot;exhibit;membership&quot;</span>
+    <span class="ruby-identifier">err</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">image</span>.<span class="ruby-identifier">save!</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">image</span>
+      <span class="ruby-keyword">rescue</span>
+        <span class="ruby-identifier">err</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">delete</span>
+        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;ERROR: The image you have uploaded is too large or of the wrong type.&lt;br /&gt;The file name must end in .jpg, .png or .gif, and cannot exceed 1MB in size.&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-identifier">flash</span> = <span class="ruby-node">&quot;OK:#{@group.id}&quot;</span>
+        <span class="ruby-identifier">invitor</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-identifier">url_accept</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'groups'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'accept_invitation'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">url_decline</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'groups'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'decline_invitation'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">url_home</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">invite_members</span>(<span class="ruby-identifier">invitor</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">invitor</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:usernames</span>], <span class="ruby-identifier">url_accept</span>, <span class="ruby-identifier">url_decline</span>, <span class="ruby-identifier">url_home</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;Error creating group&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">msg</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;**** ERROR: Can't create group: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">message</span>)
+    <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;Server error when creating group.&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">send_email</span>
+    <span class="ruby-identifier">peer_review_request</span>()
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopNewGroupUpload&quot;</span>, <span class="ruby-identifier">flash</span>)  <span class="ruby-comment"># This is loaded in the iframe and tells the dialog that the upload is complete.</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create-method -->
+
+    
+      <div id="method-i-create_login" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_login</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_login-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 194</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_login</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">render_422</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_login-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_login-method -->
+
+    
+      <div id="method-i-create_login_create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_login_create</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_login_create-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_login_create</span>
+        <span class="ruby-identifier">gu_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">user_name</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_name</span>]
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_name</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># this call was made without parameters. That is an error, probably made by a bot.</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'create_login'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Illegal call.'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">gu</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">gu_id</span>)
+        <span class="ruby-identifier">email</span> = <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">email</span>
+        <span class="ruby-identifier">password</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:password</span>]
+        <span class="ruby-identifier">password2</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:password2</span>]
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_name</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'create_login'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Please enter a user name.'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">user_name</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># there is a user with that name</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'create_login'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'There is already a user with that name. Please try another.'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">password</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'create_login'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Please enter a password.'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">password2</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'create_login'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Your passwords didn\t match. Please try again.'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">set_current_user</span>(<span class="ruby-constant">User</span>.<span class="ruby-identifier">create_user</span>(<span class="ruby-identifier">user_name</span>, <span class="ruby-identifier">password</span>.<span class="ruby-identifier">strip</span>, <span class="ruby-identifier">email</span>))
+        <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>] = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_obfuscator</span>(<span class="ruby-identifier">gu_id</span>)
+        <span class="ruby-identifier">params</span>[<span class="ruby-value">:from_create</span>] = <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">accept_invitation</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_login_create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_login_create-method -->
+
+    
+      <div id="method-i-decline_invitation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decline_invitation</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="decline_invitation-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 170</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">decline_invitation</span>
+        <span class="ruby-identifier">from_web</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_method</span> <span class="ruby-operator">==</span> <span class="ruby-string">'POST'</span>
+
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">get_group_from_obfuscated_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-keyword">begin</span>
+                <span class="ruby-identifier">success</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">decline_group</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-keyword">rescue</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'stale_request'</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;membership&quot;</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-node">&quot;#{user.fullname} declined membership to #{Group.find(group_id).name}&quot;</span>, <span class="ruby-node">&quot;The user, #{user.fullname}, declined to join.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">from_web</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'acknowledge_notification'</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'decline_group'</span>, <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">success</span>, <span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_id</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- decline_invitation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- decline_invitation-method -->
+
+    
+      <div id="method-i-decline_request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decline_request</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="decline_request-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">decline_request</span>
+        <span class="ruby-identifier">from_web</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_method</span> <span class="ruby-operator">==</span> <span class="ruby-string">'POST'</span>
+
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">get_group_from_obfuscated_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">get_user_from_obfuscated_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-identifier">success</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">decline_request</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">success</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'stale_request'</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;membership&quot;</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-node">&quot;Member #{User.find(user_id).fullname} rejected from joining #{Group.find(group_id).name}&quot;</span>, <span class="ruby-node">&quot;The member #{User.find(user_id).fullname} was not allowed to join.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">from_web</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'acknowledge_notification'</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'decline_request'</span>, <span class="ruby-value">:success</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">success</span>, <span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_id</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- decline_request-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- decline_request-method -->
+
+    
+      <div id="method-i-destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>DELETE /groups/1 DELETE /groups/1.xml</p>
+          
+
+          
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 695</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+              <span class="ruby-ivar">@group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+              <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;group&quot;</span>, <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;Group deleted: #{@group.name}&quot;</span>, <span class="ruby-string">&quot;The group was deleted.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+              <span class="ruby-identifier">typ</span> = <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">group_type</span>
+              <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">destroy</span>
+
+              <span class="ruby-comment"># Also remove the exhibits and discussions from being in the group.</span>
+              <span class="ruby-identifier">exhibits</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">group_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]})
+              <span class="ruby-identifier">exhibits</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">exhibit</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">adjust_indexing</span>(<span class="ruby-value">:leave_group</span>, <span class="ruby-keyword">true</span>)
+                      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span> = <span class="ruby-keyword">nil</span>
+                      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save!</span>
+              }
+              <span class="ruby-identifier">threads</span> = <span class="ruby-constant">DiscussionThread</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">group_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]})
+              <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">thread</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">group_id</span> = <span class="ruby-keyword">nil</span>
+                      <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">save!</span>
+              }
+              <span class="ruby-identifier">groupsusers</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">group_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]})
+              <span class="ruby-identifier">groupsusers</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">gu</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">destroy</span>
+              }
+              <span class="ruby-identifier">clusters</span> = <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">group_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]})
+              <span class="ruby-identifier">clusters</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">cluster</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">destroy</span>
+              }
+              <span class="ruby-identifier">redirect_to</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">make_group_home_link</span>(<span class="ruby-identifier">typ</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroy-method -->
+
+    
+      <div id="method-i-edit_membership" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_membership</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_membership-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 343</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_membership</span>
+        <span class="ruby-identifier">show_membership</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:show_membership</span>]
+        <span class="ruby-identifier">change_owner</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:change_owner</span>]
+        <span class="ruby-identifier">member_list</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>]
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">member_list</span>
+                <span class="ruby-identifier">member_list</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">gu</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-string">'delete'</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span>
+                                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">destroy</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">role</span> = <span class="ruby-identifier">value</span>[<span class="ruby-string">'editor'</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span> <span class="ruby-operator">?</span> <span class="ruby-string">'editor'</span> <span class="ruby-operator">:</span> <span class="ruby-string">'member'</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">role</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">role</span>
+                                        <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">role</span> = <span class="ruby-identifier">role</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">role</span> <span class="ruby-operator">==</span> <span class="ruby-string">'editor'</span>
+                                                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-string">&quot;editor;membership&quot;</span>
+                                        <span class="ruby-keyword">else</span>
+                                                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-string">&quot;&quot;</span>
+                                        <span class="ruby-keyword">end</span>
+                                        <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save!</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                }
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">show_membership</span> = <span class="ruby-identifier">show_membership</span> <span class="ruby-operator">==</span> <span class="ruby-string">'Yes'</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">change_owner</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">change_owner</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'0'</span>
+                <span class="ruby-identifier">gu</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">find_by_group_id_and_user_id</span>(<span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">change_owner</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span>
+                        <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span>
+                        <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">email</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span>).<span class="ruby-identifier">email</span>
+
+                        <span class="ruby-identifier">notifications</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span>
+                        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span>
+                        <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-identifier">notifications</span>
+                        <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save</span>
+
+                        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span> = <span class="ruby-identifier">change_owner</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">save!</span>
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;membership&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;The membership in #{group.name} has changed&quot;</span>, <span class="ruby-node">&quot;The membership in #{group.name} has changed.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_membership-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_membership-method -->
+
+    
+      <div id="method-i-edit_thumbnail" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_thumbnail</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_thumbnail-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 403</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_thumbnail</span>
+                <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+                <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+                <span class="ruby-identifier">err</span> = <span class="ruby-constant">Image</span>.<span class="ruby-identifier">save_image</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">'image'</span>], <span class="ruby-identifier">group</span>)
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">err</span>[<span class="ruby-value">:status</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:error</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-identifier">err</span>[<span class="ruby-value">:user_error</span>]
+                        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-identifier">err</span>[<span class="ruby-value">:log_error</span>])
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:saved</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;OK:Thumbnail updated&quot;</span>
+                        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;group&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;Group updated: #{group.name}&quot;</span>, <span class="ruby-string">&quot;The group was updated.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:no_image</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;ERROR: No image specified&quot;</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-comment">#               image = params['image']</span>
+<span class="ruby-comment">#               if image &amp;&amp; image</span>
+<span class="ruby-comment">#                       image = Image.new({ :uploaded_data =&gt; image })</span>
+<span class="ruby-comment">#               end</span>
+<span class="ruby-comment">#               begin</span>
+<span class="ruby-comment">#                       group.image = image</span>
+<span class="ruby-comment">#                       if group.save</span>
+<span class="ruby-comment">#                               group.image.save! if group.image</span>
+<span class="ruby-comment">#                               GroupsUser.email_hook(&quot;group&quot;, group.id, &quot;Group updated: #{group.name}&quot;, &quot;The group was updated.&quot;, url_for(:controller =&gt; 'home', :action =&gt; 'index', :only_path =&gt; false))</span>
+<span class="ruby-comment">#                               flash = &quot;OK:Thumbnail updated&quot;</span>
+<span class="ruby-comment">#                       else</span>
+<span class="ruby-comment">#                               flash = &quot;Error updating thumbnail&quot;</span>
+<span class="ruby-comment">#                       end</span>
+<span class="ruby-comment">#               rescue</span>
+<span class="ruby-comment">#                       flash = &quot;ERROR: The image you have uploaded is too large or of the wrong type.&lt;br /&gt;The file name must end in .jpg, .png or .gif, and cannot exceed 1MB in size.&quot;</span>
+<span class="ruby-comment">#               end</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopEditGroupThumbnailUpload&quot;</span>, <span class="ruby-identifier">flash</span>) <span class="ruby-comment"># This is loaded in the iframe and tells the dialog that the upload is complete.</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_thumbnail-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_thumbnail-method -->
+
+    
+      <div id="method-i-get_all_groups" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_groups</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_groups-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 27</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_all_groups</span>
+            <span class="ruby-identifier">groups</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">all</span>()
+<span class="ruby-identifier">ret</span> = []
+            <span class="ruby-identifier">groups</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span>
+                    <span class="ruby-identifier">obj</span> = {}
+                    <span class="ruby-identifier">obj</span>[<span class="ruby-value">:id</span>] = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">get_visible_id</span>()
+                    <span class="ruby-identifier">obj</span>[<span class="ruby-value">:img</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">get_group_image_url</span>(<span class="ruby-identifier">group</span>)
+                    <span class="ruby-identifier">obj</span>[<span class="ruby-value">:title</span>] = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>
+                    <span class="ruby-identifier">obj</span>[<span class="ruby-value">:strFirstLine</span>] = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">name</span>
+                    <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">show_admins</span> <span class="ruby-operator">==</span> <span class="ruby-string">'all'</span>
+                            <span class="ruby-identifier">editors</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">get_all_editors</span>()
+                            <span class="ruby-identifier">editor_label</span> = <span class="ruby-node">&quot;Administrator#{'s' if editors.length &gt; 1}: &quot;</span>
+                            <span class="ruby-keyword">for</span> <span class="ruby-identifier">editor</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">editors</span>
+                                    <span class="ruby-identifier">editor_label</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">editor</span>).<span class="ruby-identifier">fullname</span> <span class="ruby-operator">+</span> <span class="ruby-string">' '</span>
+                            <span class="ruby-keyword">end</span>
+                            <span class="ruby-identifier">editor_label</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;br /&gt;&quot;</span>
+                    <span class="ruby-keyword">else</span>
+                            <span class="ruby-identifier">editor_label</span> = <span class="ruby-string">&quot;&quot;</span>
+                    <span class="ruby-keyword">end</span>
+
+                    <span class="ruby-identifier">obj</span>[<span class="ruby-value">:strSecondLine</span>] = <span class="ruby-node">&quot;#{editor_label}Established: #{group.created_at.strftime(&quot;%b %d, %Y&quot;)}&lt;br/&gt;#{Group.type_to_friendly(group.group_type)} -- #{self.class.helpers.pluralize(group.get_number_of_members(), 'member')}&quot;</span>
+                    <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">obj</span>)
+            }
+    <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">a</span>[<span class="ruby-value">:strFirstLine</span>].<span class="ruby-identifier">downcase</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">:strFirstLine</span>].<span class="ruby-identifier">downcase</span>
+    }
+<span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">to_json</span>()
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- get_all_groups-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_all_groups-method -->
+
+    
+      <div id="method-i-group_exhibits_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">group_exhibits_list</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO-PER: I think this is not called.</p>
+
+<pre class="ruby">   <span class="ruby-keyword">def</span> <span class="ruby-identifier">create_cluster</span>
+           <span class="ruby-keyword">begin</span>
+                   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'image'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'image'</span>].<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                           <span class="ruby-identifier">image</span> = <span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>({ :<span class="ruby-identifier">uploaded_data</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'image'</span>] })
+                   <span class="ruby-keyword">end</span>
+                   <span class="ruby-identifier">cluster</span> = <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">cluster</span>])
+                   <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">image</span> = <span class="ruby-identifier">image</span>
+                   <span class="ruby-identifier">err</span> = <span class="ruby-keyword">false</span>
+                   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">save</span>
+                           <span class="ruby-keyword">begin</span>
+                                   <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">image</span>.<span class="ruby-identifier">save!</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">image</span>
+                           <span class="ruby-keyword">rescue</span>
+                                   <span class="ruby-identifier">err</span> = <span class="ruby-keyword">true</span>
+                                   <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">delete</span>
+                                   <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;ERROR: The image you have uploaded is too large or of the wrong type.&lt;br /&gt;The file name must end in .jpg, .png or .gif, and cannot exceed 1MB in size.&quot;</span>
+                           <span class="ruby-keyword">end</span>
+                           <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+                                   <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;group&quot;</span>, <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;Group updated: #{Group.find(cluster.group_id).name}&quot;</span>, <span class="ruby-string">&quot;The group was updated.&quot;</span>, <span class="ruby-identifier">url_for</span>(:<span class="ruby-identifier">controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, :<span class="ruby-identifier">action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, :<span class="ruby-identifier">only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+                                   <span class="ruby-identifier">flash</span> = <span class="ruby-node">&quot;OK:#{cluster.group_id}&quot;</span>
+                           <span class="ruby-keyword">end</span>
+                   <span class="ruby-keyword">else</span>
+                           <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;Error creating cluster&quot;</span>
+                   <span class="ruby-keyword">end</span>
+           <span class="ruby-keyword">rescue</span>
+                   <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;Server error when creating cluster.&quot;</span>
+           <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">render</span> :<span class="ruby-identifier">text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;&lt;script type='text/javascript'&gt;window.top.window.stopNewClusterUpload('#{flash}');&lt;/script&gt;&quot;</span>  <span class="ruby-comment"># This is loaded in the iframe and tells the dialog that the upload is complete.</span>
+   <span class="ruby-keyword">end</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="group_exhibits_list-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 533</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">group_exhibits_list</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:cluster_id</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:cluster_id</span>].<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">cluster</span> = <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:cluster_id</span>])
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/groups/group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:cluster</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cluster</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/groups/group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- group_exhibits_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- group_exhibits_list-method -->
+
+    
+      <div id="method-i-leave_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">leave_group</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="leave_group-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">leave_group</span>
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_id</span>]
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">leave_group</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+       <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;membership&quot;</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-node">&quot;#{User.find(user_id).fullname} left #{Group.find(group_id).name}&quot;</span>, <span class="ruby-node">&quot;The member #{User.find(user_id).fullname} left the group.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- leave_group-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- leave_group-method -->
+
+    
+      <div id="method-i-limit_exhibit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">limit_exhibit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="limit_exhibit-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 285</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">limit_exhibit</span>
+         <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+         <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">adjust_indexing</span>(<span class="ruby-value">:limit_to_group</span>, <span class="ruby-keyword">true</span>)
+         <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">editor_limit_visibility</span> = <span class="ruby-string">'group'</span>
+         <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save!</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;exhibit&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;#{group.get_exhibits_label()} visibility limited in #{group.name}&quot;</span>, <span class="ruby-node">&quot;#{get_curr_user_name} limited the exhibit #{exhibit.title} to group visibility.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+         <span class="ruby-identifier">cluster</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span>)
+         <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:cluster</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cluster</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- limit_exhibit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- limit_exhibit-method -->
+
+    
+      <div id="method-i-notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">notifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="notifications-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 331</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notifications</span>
+        <span class="ruby-identifier">levels</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:notifications</span>]
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_id</span>]
+        <span class="ruby-identifier">notes</span> = []
+        <span class="ruby-identifier">levels</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">key</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;true&quot;</span>
+        }
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">get_curr_user_id</span>()
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">set_notifications</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">notes</span>)
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user_id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- notifications-method -->
+
+    
+      <div id="method-i-pending_requests" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pending_requests</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pending_requests-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pending_requests</span>
+        <span class="ruby-identifier">items</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>]
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">'accept'</span>
+                        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">accept_request</span>(<span class="ruby-identifier">key</span>)
+                <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">'deny'</span>
+                        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">decline_request</span>(<span class="ruby-identifier">key</span>)
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- pending_requests-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- pending_requests-method -->
+
+    
+      <div id="method-i-reject_as_peer_reviewed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reject_as_peer_reviewed</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reject_as_peer_reviewed-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 309</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reject_as_peer_reviewed</span>
+        <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:comment</span>]
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> = <span class="ruby-value">4</span>
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save!</span>
+       <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+       <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;exhibit&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;#{group.get_exhibits_label()} \&quot;#{exhibit.title}\&quot; in \&quot;#{group.name}\&quot; needs revision.&quot;</span>,
+               <span class="ruby-node">&quot;#{get_curr_user_name} returned the #{group.get_exhibits_label()} \&quot;#{exhibit.title}\&quot; for further revisions before being accepted as peer-reviewed.\n\nThe Editors included this message in their review:\n\n#{comment}&quot;</span>,
+               <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">get_apparent_author</span>()
+        <span class="ruby-identifier">editor</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-constant">GenericMailer</span>.<span class="ruby-identifier">generic</span>(<span class="ruby-identifier">editor</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">editor</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-node">&quot;Revisions Needed to #{group.get_exhibits_label()} \&quot;#{exhibit.title}\&quot;&quot;</span>,
+                <span class="ruby-node">&quot;The editors of #{group.name} have returned your #{group.get_exhibits_label()} with suggested revisions, listed below. Please log into your account and review them at your earliest convenience.\n\n#{comment}&quot;</span>,
+                <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>), <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">deliver</span>
+
+        <span class="ruby-identifier">cluster</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span>)
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>, <span class="ruby-value">:cluster</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cluster</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reject_as_peer_reviewed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reject_as_peer_reviewed-method -->
+
+    
+      <div id="method-i-remove_profile_picture" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_profile_picture</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_profile_picture-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 394</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_profile_picture</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">image</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;group&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;Thumbnail removed from #{group.name}&quot;</span>, <span class="ruby-node">&quot;#{get_curr_user_name} has removed the thumbnail image from #{group.name}.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_profile_picture-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_profile_picture-method -->
+
+    
+      <div id="method-i-render_license" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">render_license</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="render_license-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 389</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render_license</span>
+        <span class="ruby-ivar">@group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_license'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@group</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- render_license-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- render_license-method -->
+
+    
+      <div id="method-i-request_join" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">request_join</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="request_join-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">request_join</span>
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_id</span>]
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
+        <span class="ruby-identifier">url_accept</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'groups'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'accept_request'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">url_decline</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'groups'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'decline_request'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">url_home</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">request_join</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">url_accept</span>, <span class="ruby-identifier">url_decline</span>, <span class="ruby-identifier">url_home</span>)
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user_id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- request_join-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- request_join-method -->
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /groups/1 GET /groups/1.xml</p>
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 464</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+              <span class="ruby-ivar">@group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_visible_url</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+              <span class="ruby-keyword">if</span> <span class="ruby-ivar">@group</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                      <span class="ruby-ivar">@group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-ivar">@group</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                      <span class="ruby-comment">#redirect_to &quot;/404.html&quot;</span>
+                      <span class="ruby-identifier">render_404</span>
+                      <span class="ruby-keyword">return</span>
+              <span class="ruby-keyword">end</span>
+
+              <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
+                      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@group</span> }
+              <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span></pre>
+          </div><!-- show-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- show-method -->
+
+    
+      <div id="method-i-sort_cluster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sort_cluster</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sort_cluster-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_cluster</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:sort_cluster</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:sort</span>]
+        <span class="ruby-identifier">group_exhibits_list</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sort_cluster-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sort_cluster-method -->
+
+    
+      <div id="method-i-sort_exhibits" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sort_exhibits</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sort_exhibits-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_exhibits</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:sort_exhibit</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:sort</span>]
+        <span class="ruby-identifier">group_exhibits_list</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sort_exhibits-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sort_exhibits-method -->
+
+    
+      <div id="method-i-unlimit_exhibit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unlimit_exhibit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="unlimit_exhibit-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 297</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unlimit_exhibit</span>
+         <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+         <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">adjust_indexing</span>(<span class="ruby-value">:limit_to_everyone</span>, <span class="ruby-keyword">true</span>)
+         <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">editor_limit_visibility</span> = <span class="ruby-string">'www'</span>
+         <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save!</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;exhibit&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;#{group.get_exhibits_label()} visibility not limited in #{group.name}&quot;</span>, <span class="ruby-node">&quot;#{get_curr_user_name} removed the visibility limitation on the #{group.get_exhibits_label()} #{exhibit.title}.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+         <span class="ruby-identifier">cluster</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span>)
+         <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>), <span class="ruby-value">:cluster</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cluster</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- unlimit_exhibit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- unlimit_exhibit-method -->
+
+    
+      <div id="method-i-unpublish_exhibit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unpublish_exhibit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="unpublish_exhibit-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 265</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unpublish_exhibit</span>
+        <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:comment</span>]
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">adjust_indexing</span>(<span class="ruby-value">:unpublishing</span>, <span class="ruby-keyword">true</span>)
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save!</span>
+
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">get_apparent_author</span>()
+        <span class="ruby-identifier">editor</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-constant">GenericMailer</span>.<span class="ruby-identifier">generic</span>(<span class="ruby-identifier">editor</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">editor</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-node">&quot;#{group.get_exhibits_label()} \&quot;#{exhibit.title}\&quot; Unpublished&quot;</span>,
+                <span class="ruby-node">&quot;The editors of #{group.name} have unpublished your #{group.get_exhibits_label()} with suggested revisions, listed below. Please log into your account and review them at your earliest convenience.\n\n#{comment}&quot;</span>,
+                 <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>), <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">deliver</span>
+        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;exhibit&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;#{group.get_exhibits_label()} unpublished in #{group.name}&quot;</span>, <span class="ruby-node">&quot;#{editor.fullname} has unpublished the #{group.get_exhibits_label()} #{exhibit.title}.&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+
+        <span class="ruby-identifier">cluster</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span>)
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_exhibits_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>, <span class="ruby-value">:cluster</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cluster</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span>() }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- unpublish_exhibit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- unpublish_exhibit-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>PUT /groups/1 PUT /groups/1.xml</p>
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 616</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>]
+                      <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'Yes'</span>
+                      <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:show_membership</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'No'</span>
+                      <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:group_type</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+                              <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:group_type</span>] = <span class="ruby-string">'community'</span>
+                              <span class="ruby-identifier">peer_review_request</span>()
+                      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:group_type</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'classroom'</span>
+                              <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">university</span> = <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@group</span>.<span class="ruby-identifier">university</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                              <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">course_name</span> = <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@group</span>.<span class="ruby-identifier">course_name</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                              <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">course_mnemonic</span> = <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@group</span>.<span class="ruby-identifier">course_mnemonic</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>])
+              <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">err_msg</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>] 
+    <span class="ruby-identifier">err_msg</span> = <span class="ruby-identifier">validate_email_list</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">err_msg</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err_msg</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+      <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+              
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:usernames</span>]
+                      <span class="ruby-identifier">invitor</span> = <span class="ruby-identifier">current_user</span>()
+                      <span class="ruby-keyword">if</span> <span class="ruby-identifier">invitor</span>.<span class="ruby-identifier">nil?</span>
+                        <span class="ruby-identifier">err_msg</span> = <span class="ruby-string">&quot;You must be logged in to invite users&quot;</span>
+                      <span class="ruby-keyword">else</span>
+                              <span class="ruby-identifier">url_accept</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'groups'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'accept_invitation'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+                              <span class="ruby-identifier">url_decline</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'groups'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'decline_invitation'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+                              <span class="ruby-identifier">url_home</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+                              <span class="ruby-identifier">err_msg</span> = <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">invite_members</span>(<span class="ruby-identifier">invitor</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">invitor</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:emails</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:usernames</span>], <span class="ruby-identifier">url_accept</span>, <span class="ruby-identifier">url_decline</span>, <span class="ruby-identifier">url_home</span>)
+                      <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>] <span class="ruby-comment"># this may be nil if we are just inviting people.</span>
+              <span class="ruby-identifier">which</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>].<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; and &quot;</span>)
+              <span class="ruby-identifier">values</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">strip_tags</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>].<span class="ruby-identifier">values</span>.<span class="ruby-identifier">to_a</span>().<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n\n&quot;</span>))
+              <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;group&quot;</span>, <span class="ruby-ivar">@group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-node">&quot;Group updated: #{@group.name}&quot;</span>, <span class="ruby-node">&quot;#{get_curr_user_name} has updated the field \&quot;#{which}\&quot; in \&quot;#{@group.name}\&quot;.\n#{values}&quot;</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+        <span class="ruby-keyword">end</span>
+
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">err_msg</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                      <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>][<span class="ruby-value">:forum_permissions</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                              <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_discussions_list'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@group</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span> }
+                      <span class="ruby-keyword">else</span>
+                              <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_details'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@group</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">get_curr_user_id</span> }
+                      <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err_msg</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+              <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+      <div id="method-i-verify_group_title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_group_title</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="verify_group_title-source">
+            <pre><span class="ruby-comment"># File app/controllers/groups_controller.rb, line 436</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">verify_group_title</span>
+<span class="ruby-identifier">creator</span> = <span class="ruby-identifier">current_user</span>
+<span class="ruby-keyword">if</span> <span class="ruby-identifier">creator</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Your session has expired. Please log in and try again.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+<span class="ruby-keyword">else</span>
+  <span class="ruby-identifier">title</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:name</span>]
+  <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">title</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;ok&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;There is already a group with this title.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- verify_group_title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify_group_title-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

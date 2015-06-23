@@ -1,0 +1,126 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# exhibit_page params: ActiveRecord exhibit, int page_num, bool is_edit_mode, int top (nil or the element id that should be scrolled to), badge_pos = none|left|right -%>
+<div id="page<%= page_num %>" class="exhibit_heading">
+<% if Group.is_peer_reviewed_group(exhibit) -%>
+	<center>
+	<p id="overview_title" class="publication_title overview_field"><%= exhibit.title %></p>
+	<p class="publication_author"><%= get_exhibits_username_list(exhibit, is_edit_mode) %><%= ", #{get_exhibits_user_institution(exhibit)}" if get_exhibits_user_institution(exhibit).length > 0 %></p>
+	</center>
+<% else -%>
+	<h2 class="exhibit_title" ><span id="overview_title" class="overview_field"><%= exhibit.title %></span></h2>
+	<h4 class="exhibit_author" ><%= get_exhibits_username_list(exhibit, is_edit_mode) %></h4>
+	<h4 class="exhibit_institution" ><%= get_exhibits_user_institution(exhibit) %></h4>
+<% end -%>
+</div>
+<% num_pages = exhibit.exhibit_pages.length -%>
+<% if num_pages > 0 -%>
+	<% page_controller = is_edit_mode ? 'builder' : 'exhibits' -%>
+	<% page_action = is_edit_mode ? 'change_page' : 'view' -%>
+	<% exhibit_id = is_edit_mode ? exhibit.id : get_exhibit_id(exhibit) -%>
+	<% if is_edit_mode
+			page_url = "/#{page_controller}/#{page_action}?id=#{exhibit.id}&page="
+		else
+			page_url = "/#{page_controller}/#{exhibit_id}?page="
+		end
+	%>
+	<% has_footnotes = Exhibit.has_footnotes(exhibit_id) -%>
+<% if Group.is_peer_reviewed_group(exhibit) -%>
+	<%= render :partial => '/exhibits/publication_pagination', :locals => { :curr_page => page_num, :num_pages => num_pages, :id => exhibit_id, :controller => page_controller, :action => page_action, :has_footnotes => has_footnotes } %>
+<% else -%>
+	<%= render :partial => '/exhibits/pagination', :locals => { :curr_page => page_num, :num_pages => num_pages, :id => exhibit_id, :controller => page_controller, :action => page_action, :has_footnotes => has_footnotes } %>
+<% end -%>
+	<div class="clear_both"></div>
+	<% if page_num == -1 -%>
+		<h1 class="endnotes">Endnotes</h1>
+		<% footnote_count = 1 -%>
+		<% footnotes = exhibit.get_all_footnotes() -%>
+		<% for footnote in footnotes -%>
+			<p><span class='endnote_superscript'><%= footnote_count %></span>&nbsp;<span style="font-family:<%= exhibit.get_font_name('endnotes') %>; font-size:<%= exhibit.get_font_size('endnotes') %>px;"><%= decode_exhibit_links(footnote) %></span></p>
+			<% footnote_count = footnote_count + 1 -%>
+		<% end -%>
+		<%= raw("<p>No footnotes</p>") if footnote_count == 1 %>
+		<h1 class="endnotes">Links</h1>
+		<% pages_links = exhibit.get_all_links() -%>
+		<% page_num = 1 -%>
+		<% at_least_one = false -%>
+		<% for page in pages_links -%>
+			<% if page.length > 0 -%>
+				<h2>Page <%= page_num %> </h2>
+			<% end -%>
+			<% page_num += 1 -%>
+			<% for link in page -%>
+			<% at_least_one = true -%>
+			<p><span style="font-family:<%= exhibit.get_font_name('endnotes') %>; font-size:<%= exhibit.get_font_size('endnotes') %>px;">"<%= remove_footnote_links(strip_tags(link[:text])) %>"&nbsp;<%= link_to link[:url], link[:url], :class => 'nav_link' %><%= "&nbsp;[#{link[:name]}]" if link[:name] %> </span></p>
+			<% end -%>
+		<% end -%>
+		<%= raw("<p>No links</p>") if !at_least_one -%>
+		<div class="exhibit_prevlink">
+			<%= link_to raw("&laquo; prev"), "#{page_url}#{num_pages}", { :class => 'nav_link' } %>
+		</div>
+	<% else # page_num is greater than 0, so this is a regular page -%>
+		<% page = exhibit.exhibit_pages[page_num-1] -%>
+		<div id="current_page" class="hidden"><%= page.id %></div><%# This makes the current page available to ajax calls. %>
+		<% @border_active = false -%>
+		<% element_count = 1 -%>
+		<% elements = page.exhibit_elements -%>
+		<% for element in elements -%>
+			<% ret = create_border_div(element, @border_active, "exhibit_section_with_border") %>
+			<%= ret[:html] %><%#this may create a div that contains the visible border, depending on whether the section starts a border, continues a border, ends a border, or isn't in a border %>
+			<% @border_active = ret[:border_active] -%>
+			<% show_edit_controls = raw("onmouseout=\"return sectionUnhovered(this, 'edit_bar', 'element_block', 'element_block_hover');\" onmouseover=\"return sectionHovered(this, 'edit_bar', 'element_block_hover', 'element_block');\"") -%>
+			<div  id="element_<%= element.id %>" class="clear_both element_block" <%= show_edit_controls if is_edit_mode %>>
+				<%= render :partial => '/exhibits/exhibit_section', :locals => { :element => element, :is_edit_mode => is_edit_mode, :element_count => element_count} %>
+			</div>
+			<% element_count = element_count + 1 -%>
+		<% end # for element in elements -%>
+		<%= raw('</div>') if @border_active %>
+		<br />
+		<% if page_num < num_pages -%>
+			<div class="exhibit_nextlink">
+				<%= link_to raw("next &raquo;"), "#{page_url}#{page_num + 1}", { :class => 'nav_link' } %>
+			</div>
+		<% end -%>
+		<% if page_num == num_pages && has_footnotes -%>
+			<div class="exhibit_nextlink">
+				<%= link_to raw("next &raquo;"), "#{page_url}#{-1}", { :class => 'nav_link' } %>
+			</div>
+		<% end -%>
+		<% if page_num > 1 -%>
+			<div class="exhibit_prevlink">
+				<%= link_to raw("&laquo; prev"), "#{page_url}#{page_num - 1}", { :class => 'nav_link' } %>
+			</div>
+		<% end -%>
+<script type="text/javascript">
+	var pageRenumberFootnotes = function() {
+		renumberFootnotes(<%= exhibit.get_starting_footnote_per_page()[page_num-1] %>);
+	}
+
+	document.observe('dom:loaded', function() {
+		pageRenumberFootnotes();
+	});
+</script>
+	<% end # page_num is a regular page -%>
+<% end #if there are pages defined -%>
+
+<% if top != nil -%>
+<script type="text/javascript">
+	var target_el = "target_" + <%= top %>;
+	var element_el= "element_" + <%= top %>;
+	scroll_to_target(target_el, element_el);
+</script>
+<% end -%>

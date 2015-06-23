@@ -1,0 +1,201 @@
+/* ------------------------------------------------------------------------
+//     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+//
+//     Licensed under the Apache License, Version 2.0 (the "License");
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+//
+//         http://www.apache.org/licenses/LICENSE-2.0
+//
+//     Unless required by applicable law or agreed to in writing, software
+//     distributed under the License is distributed on an "AS IS" BASIS,
+//     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//     See the License for the specific language governing permissions and
+//     limitations under the License.
+// ---------------------------------------------------------------------------- */
+
+body.federation-sro.pg-lvl2 {
+
+  .category-btn {
+    font-weight:bold;
+    cursor: pointer;
+    img {
+      margin-right:16px;
+    }
+  }
+  td.limit_to_lvl3 {
+    padding-left: 50px;
+  }
+
+  #nav_container {
+    top: 125px;
+    right: 30px;
+    .home {
+      border-radius: 12px 0 0 0;
+    }
+  }
+
+  #header_left {
+  	width:960px;
+    height:152px;
+    float:left;
+    background:image-url('sro/header.jpg') top left no-repeat;
+  }
+
+  #header_right {
+    display: none;
+  }
+
+  #header_container {
+  	height: 152px;
+  	border-bottom: 1px solid black;
+  }
+
+  .my_collex_link {
+  	background-color: #f5ad61;
+    border-radius: 0 12px 0 0 ;
+    color:#7d1317;
+    top: 125px;
+    left: 30px;
+    padding: 4px 5px 0 4px;
+    border: 1px solid black;
+    height: 22px;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .my_collex_link_current {
+  	background-color: white;
+    border-radius: 0 12px 0 0 ;
+    color:#7d1317;
+    top: 125px;
+    left: 30px;
+    padding: 4px 5px 0 4px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 23px;
+  }
+
+  .right_column_header {
+    width: auto;
+    padding: 6px;
+  }
+
+  .inner_content_container {
+    padding: 10px 10px;
+  }
+
+  .new_exhibit_link {
+    margin: 0;
+    padding: 6px;
+  }
+
+  .subpage_nav {
+    text-align: center;
+    background-color: #7d1317;
+    padding: 4px;
+    color: white;
+    margin-top: 4px;
+
+    a {
+      color: white;
+    }
+    #discussions {
+      border-right: 0;
+    }
+  }
+
+  .right_column {
+    padding: 0px 0px 0px 0px;
+    border: 1px solid #7d1317;
+  }
+
+  .create-group-links {
+    padding: 6px;
+    border-top: 1px solid #966c54;
+  }
+
+  .right_column_header {
+  	color: white;
+  	font-weight: bold;
+    background: #ab7247;
+    border-bottom: 1px solid #740;
+  }
+
+  .limit_to th {
+  	background: #f5ad61;
+    color: #7d1317;
+    text-align: left;
+  }
+
+  .new_search {
+    color: #7d1317;
+    font-size: 15px;
+    background-color: #f5ad61;
+    border: 2px solid #ab7247;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 5px;
+    &:hover {
+      background-color: #f5cd81;
+    }
+  }
+
+  .result_row_collected {
+  	background:transparent image-url('sro/search_collected_gradient.jpg') repeat-y;
+  	   border-radius: 20px 0 0 20px;
+
+  }
+
+  .FP_attachment_collected {
+    background: rgba(255,255,255,0.5);
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #ab7247;
+  }
+
+  #group_details {
+  }
+
+  .free_culture {
+  	background-image: image-url('sro/free_culture.gif');
+  }
+
+  .full_text {
+  	background-image: image-url('sro/full_text.gif');
+  }
+
+  .has_xml_source {
+  	background-image: image-url('sro/has_xml_source.gif');
+  }
+
+  .free_culture:hover {
+  	background-image: image-url('sro/free_culture_hover.gif');
+  }
+
+  .full_text:hover {
+  	background-image: image-url('sro/full_text_hover.gif');
+  	width:5em;
+  }
+
+  .has_xml_source:hover {
+  	background-image: image-url('sro/has_xml_source.gif');
+  	width:5em;
+  }
+
+  .can_typewright {
+    background-image: image-url('type_wright/collex/typewright_icon.png');
+  }
+
+  .can_typewright:hover {
+    background-image: image-url('type_wright/collex/typewright_icon_hover.png');
+  }
+
+  #group_license {
+  	background: #7d1317;
+  }
+}

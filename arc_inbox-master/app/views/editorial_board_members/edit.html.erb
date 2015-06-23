@@ -1,0 +1,22 @@
+<h1>Editing Editorial Board Member</h1>
+
+<%= errors_for @editorial_board_member %>
+<%= form_for(@editorial_board_member) do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :classification %><br />
+	<%= raw Collection.create_classification_combo_on_form(f, params[:classification]) %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'List All', editorial_board_members_path %>

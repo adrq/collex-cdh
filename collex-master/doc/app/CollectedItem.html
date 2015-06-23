@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class CollectedItem - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/collected_item.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-collect_item">::collect_item</a>
+    
+    <li><a href="#method-c-escape_quote">::escape_quote</a>
+    
+    <li><a href="#method-c-get">::get</a>
+    
+    <li><a href="#method-c-get_all_users_collections">::get_all_users_collections</a>
+    
+    <li><a href="#method-c-get_collected_object_array">::get_collected_object_array</a>
+    
+    <li><a href="#method-c-get_collected_object_ruby_array">::get_collected_object_ruby_array</a>
+    
+    <li><a href="#method-c-get_collected_objects">::get_collected_objects</a>
+    
+    <li><a href="#method-c-get_collected_objects_for_thumbnails">::get_collected_objects_for_thumbnails</a>
+    
+    <li><a href="#method-c-items_in_uri_list">::items_in_uri_list</a>
+    
+    <li><a href="#method-c-remove_collected_item">::remove_collected_item</a>
+    
+    <li><a href="#method-c-set_annotation">::set_annotation</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CollectedItem</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2009 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-collect_item" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">collect_item</span><span
+            class="method-args">(user, uri, hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="collect_item-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 175</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">collect_item</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">hit</span>)
+  <span class="ruby-comment"># This collects an item for a particular user. Different users can collect the same item, but a single</span>
+  <span class="ruby-comment"># user can only collect an item once. If the item was collected successfully, then this returns the</span>
+  <span class="ruby-comment"># item. If there is an error, then it throws an exception.</span>
+
+  <span class="ruby-comment"># Has it been collected before?</span>
+  <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">cached_resource</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-identifier">item</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">find_by_user_id_and_cached_resource_id</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">err_str</span> = <span class="ruby-node">&quot;Can't collect item because it is already collected. User=#{user.username} Item=#{uri}&quot;</span>
+      <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-identifier">err_str</span>)
+      <span class="ruby-keyword">return</span>  <span class="ruby-comment"># Just return with no effect if it is already collected. It doesn't matter.</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Create cached_resource item if it hasn't been created</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">cached_resource</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:uri</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uri</span>)
+                      <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                              <span class="ruby-identifier">hit</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create</span>(<span class="ruby-keyword">false</span>).<span class="ruby-identifier">get_object</span>(<span class="ruby-identifier">uri</span>)
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">set_hit</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Store the item</span>
+  <span class="ruby-identifier">item</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">item</span>.<span class="ruby-identifier">user</span> = <span class="ruby-identifier">user</span>
+  <span class="ruby-identifier">item</span>.<span class="ruby-identifier">cached_resource</span> = <span class="ruby-identifier">cached_resource</span>
+  <span class="ruby-identifier">item</span>.<span class="ruby-identifier">save!</span>
+
+              <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">record_collect</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">item</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- collect_item-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- collect_item-method -->
+
+    
+      <div id="method-c-escape_quote" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">escape_quote</span><span
+            class="method-args">(arr)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="escape_quote-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">escape_quote</span>(<span class="ruby-identifier">arr</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">arr</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">&quot; &quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\r&quot;</span>, <span class="ruby-string">&quot; &quot;</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;'&quot;</span>, <span class="ruby-string">&quot;`&quot;</span>) <span class="ruby-comment">#TODO-PER: get the real syntax for this. We want to replace &quot;single quote&quot; with &quot;backslash single quote&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- escape_quote-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- escape_quote-method -->
+
+    
+      <div id="method-c-get" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get</span><span
+            class="method-args">(user, uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>)
+  <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">cached_resource</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">cached_resource_id</span> = <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">item</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">find_by_user_id_and_cached_resource_id</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">cached_resource_id</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">item</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get-method -->
+
+    
+      <div id="method-c-get_all_users_collections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_users_collections</span><span
+            class="method-args">(user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_users_collections-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_all_users_collections</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_all_users_collections-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_all_users_collections-method -->
+
+    
+      <div id="method-c-get_collected_object_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_collected_object_array</span><span
+            class="method-args">(user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This returns the collected objects as a json string</p>
+          
+
+          
+          <div class="method-source-code" id="get_collected_object_array-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_collected_object_array</span>(<span class="ruby-identifier">user_id</span>)
+  <span class="ruby-identifier">objs</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user_id</span>})
+  <span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">objs</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hit_from_resource_id</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">cached_resource_id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">image</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_thumbnail_from_hit</span>(<span class="ruby-identifier">hit</span>)
+      <span class="ruby-identifier">image</span> = <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">view_context</span>.<span class="ruby-identifier">image_path</span>(<span class="ruby-constant">DEFAULT_THUMBNAIL_IMAGE_PATH</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;,\n&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">str</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;{ uri: '#{hit['uri']}', thumbnail: '#{image}', title: '#{self.escape_quote(hit['title'])}'}&quot;</span>
+    <span class="ruby-keyword">end</span>
+  }
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-string">'['</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">+</span> <span class="ruby-string">']'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_collected_object_array-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_collected_object_array-method -->
+
+    
+      <div id="method-c-get_collected_object_ruby_array" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_collected_object_ruby_array</span><span
+            class="method-args">(user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this returns the collected objects as a ruby array</p>
+          
+
+          
+          <div class="method-source-code" id="get_collected_object_ruby_array-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_collected_object_ruby_array</span>(<span class="ruby-identifier">user_id</span>)
+  <span class="ruby-identifier">objs</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user_id</span>})
+  <span class="ruby-identifier">arr</span> = []
+  <span class="ruby-identifier">objs</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hit_from_resource_id</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">cached_resource_id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">image</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_thumbnail_from_hit</span>(<span class="ruby-identifier">hit</span>)
+      <span class="ruby-identifier">image</span> = <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">view_context</span>.<span class="ruby-identifier">image_path</span>(<span class="ruby-constant">DEFAULT_THUMBNAIL_IMAGE_PATH</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">-1</span>, { <span class="ruby-value">:uri</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>], <span class="ruby-value">:thumbnail</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">image</span>, <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">escape_quote</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>]) })
+    <span class="ruby-keyword">end</span>
+  }
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">arr</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_collected_object_ruby_array-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_collected_object_ruby_array-method -->
+
+    
+      <div id="method-c-get_collected_objects" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_collected_objects</span><span
+            class="method-args">(user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_collected_objects-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 106</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_collected_objects</span>(<span class="ruby-identifier">user_id</span>)
+<span class="ruby-comment">#               sql1 = &quot;select uri,archive,title,author,thumbnail FROM &quot;</span>
+<span class="ruby-comment">#               sql2 = &quot;(select exhibit_objects.id AS exhibit_objects_id,cached_resources.id AS cached_resources_id,cached_resources.uri, &quot;</span>
+<span class="ruby-comment">#               sql3 = &quot;CASE WHEN cp1.name = 'archive' THEN cp1.value END AS archive, &quot;</span>
+<span class="ruby-comment">#               sql4 = &quot;CASE WHEN cp1.name = 'title' THEN cp1.value END AS title, &quot;</span>
+<span class="ruby-comment">#               sql5 = &quot;CASE WHEN cp1.name = 'role_AUT' or cp1.name = 'role_ART' THEN cp1.value END AS author, &quot;</span>
+<span class="ruby-comment">#               sql6 = &quot;CASE WHEN cp1.name = 'thumbnail' THEN cp1.value END AS thumbnail &quot;</span>
+<span class="ruby-comment">#               sql7 = &quot;from collected_items &quot;</span>
+<span class="ruby-comment">#               sql8 = &quot;inner join cached_resources on cached_resources.id = collected_items.cached_resource_id &quot;</span>
+<span class="ruby-comment">#               sql9 = &quot;inner join cached_properties AS cp1 on cp1.cached_resource_id = collected_items.cached_resource_id &quot;</span>
+<span class="ruby-comment">#               sql10 = &quot;left outer join exhibit_objects on exhibit_objects.uri = cached_resources.uri &quot;</span>
+<span class="ruby-comment">#               sql11 = &quot;where collected_items.user_id = #{user_id} and (cp1.name = 'archive' || cp1.name = 'title' || cp1.name = 'role_AUT' || cp1.name = 'role_ART' || cp1.name = 'thumbnail') ) as tbl1&quot;</span>
+<span class="ruby-comment">#               sql = &quot;#{sql1}#{sql2}#{sql3}#{sql4}#{sql5}#{sql6}#{sql7}#{sql8}#{sql9}#{sql10}#{sql11}&quot;</span>
+
+          <span class="ruby-identifier">statement</span> = [ <span class="ruby-string">&quot;select cached_resources.id,cached_resources.uri,cached_properties.name,cached_properties.value from collected_items&quot;</span>,
+                <span class="ruby-string">&quot;inner join cached_resources on cached_resources.id = collected_items.cached_resource_id&quot;</span>,
+                <span class="ruby-string">&quot;inner join cached_properties on cached_properties.cached_resource_id = collected_items.cached_resource_id&quot;</span>,
+<span class="ruby-comment">#TODO-PER: don't know why this was ever here:           &quot;inner join exhibit_objects on exhibit_objects.uri = cached_resources.uri&quot;,</span>
+                <span class="ruby-node">&quot;where collected_items.user_id = #{user_id}&quot;</span>,
+                <span class="ruby-string">&quot;and (cached_properties.name = 'archive' || cached_properties.name = 'title' || cached_properties.name = 'role_AUT' || cached_properties.name = 'role_ART' || cached_properties.name = 'thumbnail' || cached_properties.name = 'archive')&quot;</span>
+                ]
+                <span class="ruby-identifier">sql</span> = <span class="ruby-identifier">statement</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
+
+                <span class="ruby-identifier">recs</span> = {}
+                <span class="ruby-identifier">match</span> = <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>)
+                <span class="ruby-identifier">match</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">rec</span><span class="ruby-operator">|</span>
+<span class="ruby-comment">#                       if recs[rec[0]] == nil</span>
+<span class="ruby-comment">#                               recs[rec[0]] = { 'uri' =&gt; rec[0] }</span>
+<span class="ruby-comment">#                       end</span>
+<span class="ruby-comment">#                       recs[rec[0]]['archive'] = rec[1] if rec[1]</span>
+<span class="ruby-comment">#                       recs[rec[0]]['title'] = rec[2] if rec[2]</span>
+<span class="ruby-comment">#                       recs[rec[0]]['author'] = rec[3] if rec[3]</span>
+<span class="ruby-comment">#                       recs[rec[0]]['thumbnail'] = rec[4] if rec[4]</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]] = { <span class="ruby-string">'uri'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>] }
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]]
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]] <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, #{rec[3]}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">rec</span>[<span class="ruby-value">3</span>])
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]] = <span class="ruby-identifier">rec</span>[<span class="ruby-value">3</span>]
+                        <span class="ruby-keyword">end</span>
+                }
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">recs</span>
+
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- get_collected_objects-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_collected_objects-method -->
+
+    
+      <div id="method-c-get_collected_objects_for_thumbnails" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_collected_objects_for_thumbnails</span><span
+            class="method-args">(user_id, exhibit_id, is_chosen)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_collected_objects_for_thumbnails-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 56</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_collected_objects_for_thumbnails</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">exhibit_id</span>, <span class="ruby-identifier">is_chosen</span>)
+                <span class="ruby-comment"># This was really slow going through ActiveRecord, so here's a quicker query.</span>
+<span class="ruby-comment">#               if is_chosen == 'true'</span>
+<span class="ruby-comment">#                       sql = &quot;select cached_resources.id,cached_resources.uri,cached_properties.name,cached_properties.value from collected_items inner join cached_resources on cached_resources.id = collected_items.cached_resource_id inner join cached_properties on cached_properties.cached_resource_id = collected_items.cached_resource_id inner join exhibit_objects on exhibit_objects.uri = cached_resources.uri where collected_items.user_id = #{user_id} and (cached_properties.name = 'archive' || cached_properties.name = 'title' || cached_properties.name = 'role_AUT' || cached_properties.name = 'role_ART') and exhibit_objects.exhibit_id = #{exhibit_id}&quot;</span>
+<span class="ruby-comment">#               else</span>
+<span class="ruby-comment">#                       sql = &quot;select cached_resources.id,cached_resources.uri,cached_properties.name,cached_properties.value from collected_items inner join cached_resources on cached_resources.id = collected_items.cached_resource_id inner join cached_properties on cached_properties.cached_resource_id = collected_items.cached_resource_id left outer join exhibit_objects on exhibit_objects.uri = cached_resources.uri where collected_items.user_id = #{user_id} and (cached_properties.name = 'archive' || cached_properties.name = 'title' || cached_properties.name = 'role_AUT' || cached_properties.name = 'role_ART') and (exhibit_objects.exhibit_id is null or exhibit_objects.exhibit_id &lt;&gt; #{exhibit_id})&quot;</span>
+<span class="ruby-comment">#               end</span>
+
+                <span class="ruby-comment"># first we have to get the chosen items, then if we want the unchosen ones, we need to get all of the items and remove the chosen ones.</span>
+                <span class="ruby-comment"># That is because an item might be in two exhibits, so would match both sides.</span>
+                <span class="ruby-identifier">sql</span> = <span class="ruby-node">&quot;select cached_resources.id,cached_resources.uri,cached_properties.name,cached_properties.value from collected_items inner join cached_resources on cached_resources.id = collected_items.cached_resource_id inner join cached_properties on cached_properties.cached_resource_id = collected_items.cached_resource_id inner join exhibit_objects on exhibit_objects.uri = cached_resources.uri where collected_items.user_id = #{user_id} and (cached_properties.name = 'archive' || cached_properties.name = 'title' || cached_properties.name = 'role_AUT' || cached_properties.name = 'thumbnail' || cached_properties.name = 'role_ART') and exhibit_objects.exhibit_id = #{exhibit_id}&quot;</span>
+
+                <span class="ruby-identifier">recs</span> = {}
+                <span class="ruby-identifier">match</span> = <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>)
+                <span class="ruby-identifier">match</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">rec</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]] = { <span class="ruby-string">'uri'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>], <span class="ruby-string">'exhibit_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>[<span class="ruby-value">0</span>] }
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]]
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]] <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, #{rec[3]}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">rec</span>[<span class="ruby-value">3</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]] = <span class="ruby-identifier">rec</span>[<span class="ruby-value">3</span>]
+                        <span class="ruby-keyword">end</span>
+                }
+
+                <span class="ruby-comment"># now recs contains all the items that have been chosen</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">recs</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_chosen</span> <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span>
+                <span class="ruby-identifier">chosen</span> = <span class="ruby-identifier">recs</span>
+
+                <span class="ruby-comment">#sql = &quot;select exhibit_objects.exhibit_id,cached_resources.uri,cached_properties.name,cached_properties.value from collected_items inner join cached_resources on cached_resources.id = collected_items.cached_resource_id inner join cached_properties on cached_properties.cached_resource_id = collected_items.cached_resource_id inner join exhibit_objects on exhibit_objects.uri = cached_resources.uri where collected_items.user_id = #{user_id} and (cached_properties.name = 'archive' || cached_properties.name = 'title' || cached_properties.name = 'role_AUT' || cached_properties.name = 'thumbnail' || cached_properties.name = 'role_ART')&quot;</span>
+                <span class="ruby-identifier">sql</span> = <span class="ruby-node">&quot;select cached_resources.id,cached_resources.uri,cached_properties.name,cached_properties.value from collected_items inner join cached_resources on cached_resources.id = collected_items.cached_resource_id inner join cached_properties on cached_properties.cached_resource_id = collected_items.cached_resource_id where collected_items.user_id = #{user_id}&quot;</span>
+                <span class="ruby-identifier">recs</span> = {}
+                <span class="ruby-identifier">match</span> = <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>)
+                <span class="ruby-identifier">match</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">rec</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]] = { <span class="ruby-string">'uri'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>] }
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]]
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]] <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;, #{rec[3]}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">rec</span>[<span class="ruby-value">3</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">recs</span>[<span class="ruby-identifier">rec</span>[<span class="ruby-value">1</span>]][<span class="ruby-identifier">rec</span>[<span class="ruby-value">2</span>]] = <span class="ruby-identifier">rec</span>[<span class="ruby-value">3</span>]
+                        <span class="ruby-keyword">end</span>
+                }
+
+                <span class="ruby-identifier">recs</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">chosen</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+                }
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">recs</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- get_collected_objects_for_thumbnails-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_collected_objects_for_thumbnails-method -->
+
+    
+      <div id="method-c-items_in_uri_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">items_in_uri_list</span><span
+            class="method-args">(user_id, uris)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="items_in_uri_list-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">items_in_uri_list</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">uris</span>)
+        <span class="ruby-identifier">sql_left</span> = <span class="ruby-node">&quot;select uri,updated_at,annotation from collected_items inner join cached_resources on collected_items.`cached_resource_id` = cached_resources.id where user_id = #{user_id} AND cached_resources.uri in (&quot;</span>
+        <span class="ruby-identifier">sql_right</span> = <span class="ruby-string">&quot;);&quot;</span>
+        <span class="ruby-identifier">uris</span> = <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\'&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">apos</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;\\\'&quot;</span> } <span class="ruby-operator">+</span> <span class="ruby-string">&quot;'&quot;</span> }
+        <span class="ruby-identifier">collected_items</span> = <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql_left</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">','</span>)<span class="ruby-operator">+</span><span class="ruby-identifier">sql_right</span>)
+        <span class="ruby-identifier">list</span> = {}
+        <span class="ruby-identifier">collected_items</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]] = { <span class="ruby-identifier">updated_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">item</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">annotation</span><span class="ruby-operator">:</span> <span class="ruby-identifier">item</span>[<span class="ruby-value">2</span>] }
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">list</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- items_in_uri_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- items_in_uri_list-method -->
+
+    
+      <div id="method-c-remove_collected_item" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_collected_item</span><span
+            class="method-args">(user, uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_collected_item-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove_collected_item</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>)
+  <span class="ruby-comment"># Right now we've decided to never remove an item from the cache, even if it is no longer referenced, so we just</span>
+  <span class="ruby-comment"># need to delete the reference. This may change if the cache grows stupendously.</span>
+  <span class="ruby-identifier">item</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Can't remove the item: #{user.username}, #{uri} because it couldn't be found&quot;</span>)
+    <span class="ruby-keyword">return</span>  <span class="ruby-comment"># Just return with no effect if it is already collected. It doesn't matter.</span>
+  <span class="ruby-keyword">end</span>
+   
+  <span class="ruby-identifier">item</span>.<span class="ruby-identifier">destroy</span>()
+              <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">record_uncollect</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_collected_item-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_collected_item-method -->
+
+    
+      <div id="method-c-set_annotation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_annotation</span><span
+            class="method-args">(user, uri, note_str)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_annotation-source">
+            <pre><span class="ruby-comment"># File app/models/collected_item.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_annotation</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">note_str</span>)
+  <span class="ruby-identifier">username</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">username</span>
+  <span class="ruby-identifier">item</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Can't set the annotation because uri #{uri} is not collected by #{username}&quot;</span>)
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">item</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:annotation</span>, <span class="ruby-identifier">note_str</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_annotation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_annotation-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

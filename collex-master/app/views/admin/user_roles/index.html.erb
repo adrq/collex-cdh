@@ -1,0 +1,89 @@
+<%# ------------------------------------------------------------------------
+    Copyright 2007 Applied Research in Patacriticism and the University of Virginia
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+  
+        http://www.apache.org/licenses/LICENSE-2.0
+  
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+---------------------------------------------------------------------------- %>
+<% current_page "admin" -%>
+<% current_sub_page "User Roles" -%>
+
+<div class="inner_content_container">
+	<div class="page_header">Edit User Roles</div>
+
+	<%= link_to('A', "/admin/user_roles?page=A", :class => 'nav_link' ) %>
+	<%= link_to('B', "/admin/user_roles?page=B", :class => 'nav_link' ) %>
+	<%= link_to('C', "/admin/user_roles?page=C", :class => 'nav_link' ) %>
+	<%= link_to('D', "/admin/user_roles?page=D", :class => 'nav_link' ) %>
+	<%= link_to('E', "/admin/user_roles?page=E", :class => 'nav_link' ) %>
+	<%= link_to('F', "/admin/user_roles?page=F", :class => 'nav_link' ) %>
+	<%= link_to('G', "/admin/user_roles?page=G", :class => 'nav_link' ) %>
+	<%= link_to('H', "/admin/user_roles?page=H", :class => 'nav_link' ) %>
+	<%= link_to('I', "/admin/user_roles?page=I", :class => 'nav_link' ) %>
+	<%= link_to('J', "/admin/user_roles?page=J", :class => 'nav_link' ) %>
+	<%= link_to('K', "/admin/user_roles?page=K", :class => 'nav_link' ) %>
+	<%= link_to('L', "/admin/user_roles?page=L", :class => 'nav_link' ) %>
+	<%= link_to('M', "/admin/user_roles?page=M", :class => 'nav_link' ) %>
+	<%= link_to('N', "/admin/user_roles?page=N", :class => 'nav_link' ) %>
+	<%= link_to('0', "/admin/user_roles?page=O", :class => 'nav_link' ) %>
+	<%= link_to('P', "/admin/user_roles?page=P", :class => 'nav_link' ) %>
+	<%= link_to('Q', "/admin/user_roles?page=Q", :class => 'nav_link' ) %>
+	<%= link_to('R', "/admin/user_roles?page=R", :class => 'nav_link' ) %>
+	<%= link_to('S', "/admin/user_roles?page=S", :class => 'nav_link' ) %>
+	<%= link_to('T', "/admin/user_roles?page=T", :class => 'nav_link' ) %>
+	<%= link_to('U', "/admin/user_roles?page=U", :class => 'nav_link' ) %>
+	<%= link_to('V', "/admin/user_roles?page=V", :class => 'nav_link' ) %>
+	<%= link_to('W', "/admin/user_roles?page=W", :class => 'nav_link' ) %>
+	<%= link_to('X', "/admin/user_roles?page=X", :class => 'nav_link' ) %>
+	<%= link_to('Y', "/admin/user_roles?page=Y", :class => 'nav_link' ) %>
+	<%= link_to('Z', "/admin/user_roles?page=Z", :class => 'nav_link' ) %>
+	
+	<table class='user_roles'>
+	  <tr>
+	    <th>Username</th>
+	    <th>Email</th>
+	    <th>Roles</th>
+	  </tr>
+	  
+	<% @users.each do |user| %>
+	  <tr>
+	    <td><%= user.username %></td>
+	     <td><%= user.email %></td>
+	    <td>
+	      <%= user.role_names.join(", ") %>
+	    </td>
+	    
+	    <td><%= link_to 'Edit', { :action => 'edit', :id => user,  :page => params[:page] }, :class => 'nav_link' %></td>
+	  </tr>
+	<% end %>
+	</table>
+	
+	<table class='user_roles'>
+	  <tr>
+	    <th>Administrators</th>
+	    <th>Email</th>
+	    <th>Roles</th>
+	  </tr>
+
+	<% @admins.each do |user| %>
+	  <tr>
+	    <td><%= user.username %></td>
+	     <td><%= user.email %></td>
+	    <td>
+	      <%= user.role_names.join(", ") %>
+	    </td>
+
+	    <td><%= link_to 'Edit', { :action => 'edit', :id => user,  :page => params[:page] }, :class => 'nav_link' %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+</div>

@@ -1,0 +1,64 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+	
+<% current_page Setup.my_collex() -%>
+<% if !user_signed_in? -%>
+	<div class="inner_content_container">
+		<%= render :partial => 'login_instructions' %>
+	</div>
+<% else -%>
+	<div class="subpage_nav">
+		<%= Setup.my_collex() %><%= link_separator() %>&nbsp;<%= link_to "My objects", "/#{MY_COLLEX_URL}/results?view=all_collected", :class => 'nav_link' %>&nbsp;<br />
+	</div>
+		
+	<div class="inner_content_container">
+		<div class="left_column post-style" data-controller="<%= MY_COLLEX_URL %>">
+			<div class="page_header">Profile</div>
+			<div id="profile">
+				<%= render :partial => 'profile', :locals => { :user => current_user, :can_edit => true } %>
+			</div>
+			<div id="recently_collected_items">
+				<%= render :partial => 'recently_collected_items', :locals => { :user_id => get_curr_user_id, :hits => @results, :has_more => @has_more } %>
+			</div>
+		</div>
+		<div class="right_column">
+          <% if COLLEX_PLUGINS['typewright'] %>
+			  <div class="right_column_header">My TypeWright</div>
+          <div id="typewright" class="lazy-load" data-action="/<%= MY_COLLEX_URL %>/get_typewright_documents">
+              <%= image_tag(PROGRESS_SPINNER_PATH, { class: 'image-placeholder' }) %>
+          </div>
+           <% end %>
+			<div id="saved_searches">
+				<%= render :partial => 'search/save_search_list', :locals => { :header_class => 'right_column_header', :max_to_show => 10 } %>
+			</div>
+			<div id="tag_cloud">
+				<%= render :partial => 'tag_cloud_sidebar', :locals => { :cloud_info => @cloud_info } %>
+			</div>
+			<div id="discussions">
+				<%= render :partial => 'my_discussions_list', :locals => { :user_id => get_curr_user_id } %>
+			</div>
+			<div id="my_exhibits">
+				<%= render :partial => 'my_exhibits_list', :locals => { :user_id => get_curr_user_id } %>
+			</div>
+			<div id="groups">
+				<%= render :partial => 'my_groups_list', :locals => { :user_id => get_curr_user_id } %>
+			</div>
+		</div>
+		<div class="clear_both"></div>
+	</div>
+<% end -%>
+

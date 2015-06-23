@@ -1,0 +1,139 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<% current_page "HOME" -%>
+    	<div id="search_container">
+        	<div id="search_box">
+				<form accept-charset="UTF-8" action="/search" id="do-basic-search" method="get">
+			  		<% if SKIN == 'modnets' %>
+				  <input id="search_phrase" name="q" type="text" placeholder="Search <%= Setup.site_name() %>..." /><input value="" id="search_button" type="submit" />
+			<% else %>
+	            	<strong>Search <%= Setup.site_name() %>:</strong><br />
+	                <input id="search_phrase" name="q" type="text" /><input value="Search" id="search_button" type="submit" />
+				  <% end %>
+	                <div id="search_note_container">
+	               	  <div id="search_note">Searching <%= number_with_delimiter(session[:num_docs]) %> peer-reviewed digital objects from <%=number_with_delimiter(session[:num_sites])%> federated sites  </div>
+	                    <div id="advanced_link"><%= link_to("Advanced Search", '/search', { :class => 'nav_link' } ) %></div>
+	                    <div class="clear_both"></div>
+	                </div>
+				</form>
+            </div>
+        </div>
+		<div id="popular_container">
+		  <% if SKIN == 'modnets' %>
+			  <div id="discussions">
+				<% if @featured_news -%>
+					<div class="popular_title">News Flash</div>
+					<%= render :partial => "/home/featured_news" %>
+				<% elsif @feature -%>
+					<div class="popular_title">Featured Object</div>
+					<%= render :partial => "/home/featured_resource", :locals => { :feature => @feature } %>
+				<% else -%>
+					<div class="popular_title">Popular Discussions</div>
+					<%= render :partial => "/home/popular_discussions", :locals => { :discussions => @discussions, :show_more => true } %>
+				<% end -%>
+			  </div>
+			  <div id="tags">
+				<div class="popular_title">Browse Recent Tags</div>
+				<%= render :partial => "/home/popular_tags", :locals => { :tags => @tags } %>
+			  </div>
+			  <div id="news">
+				<div class="popular_title">Recent News</div>
+				<div id="recent_news"></div>
+			  </div>
+		  <% else %>
+			<table>
+            	<tbody><tr><td colspan="5" class="spacer_cell"></td></tr>
+            	<tr>
+                	<td id="discussions" valign="top">
+					<% if @featured_news -%>
+                    <div class="popular_title">News Flash</div>
+					<%= render :partial => "/home/featured_news" %>
+					<% elsif @feature -%>
+					<div class="popular_title">Featured Object</div>
+					<%= render :partial => "/home/featured_resource", :locals => { :feature => @feature } %>
+					<% else -%>
+                    <div class="popular_title">Popular Discussions</div>
+					<%= render :partial => "/home/popular_discussions", :locals => { :discussions => @discussions, :show_more => true } %>
+					<% end -%>
+                    </td>
+                   	<td class="spacer_cell"></td>
+                    <td id="tags" valign="top">
+                    <div class="popular_title">Browse Recent Tags</div>
+					<%= render :partial => "/home/popular_tags", :locals => { :tags => @tags } %>
+					</td>
+					<% if Setup.display_news_tab? %>
+                  <td class="spacer_cell"></td>
+                  <td id="news" valign="top">
+                     <div class="popular_title">Recent News</div>
+   					   <div id="recent_news"></div>
+                  </td>
+              <% end %>
+              </tr>
+            	<tr><td colspan="5" class="spacer_cell"></td></tr>
+            </tbody></table>
+		  <% end %>
+		</div>
+<%# if SKIN == 'nines' -%>
+	<%# = render :partial => 'featured_exhibit' %>
+<%# end -%>
+<div class="carousel_background">
+	<center>
+		<table><tr>
+			<td class="carousel_button_column"><div id="carousel_left"></div></td>
+			<td class="carousel_column"><div id="carousel_container">
+			  <ol id="carousel">
+					<% for item in @carousel -%>
+						<li class="item">
+							<% if item[:url] && item[:url].length > 0 -%>
+								<a href="<%= item[:url] %>"><img class="carousel_image" src="<%= item[:image] %>" alt="<%= item[:title] %>" /></a>
+								<a href="<%= item[:url] %>" class="carousel_item_title nav_link"><%= item[:title] %></a>
+								<%= item[:description] %>&nbsp;<a href="<%= item[:url] %>" class="carousel_item_title nav_link">VISIT SITE</a>
+							<%  else -%>
+								<img class="carousel_image" src="<%= item[:image] %>" alt="<%= item[:title] %>" />
+								<em><%= item[:title] %></em>
+								<%= item[:description] %>
+							<% end -%>
+						</li>
+					<% end -%>
+			  </ol>
+			</div></td>
+			<td class="carousel_button_column"><div id="carousel_right"></div></td>
+		</tr></table>
+	</center>
+	<div class="carousel_title">Federated Websites</div>
+</div>
+
+<script type="text/javascript">
+	document.observe('dom:loaded', function() {
+		// initialize carousel
+		//jQuery('#homepage_carousel').jcarousel({ scroll: 1 });
+
+		// load news items
+		loadLatestNews('recent_news','/news/?feed=rss2',5, true);
+	});
+
+	YAHOO.util.Event.onDOMReady(function (ev) {
+		var carousel = new YAHOO.widget.Carousel(null);
+		carousel.CONFIG.MAX_PAGER_BUTTONS = 20;
+		carousel.init("carousel_container", {
+			animation: { speed: 0.5 },
+			navigation: { prev: 'carousel_left', next: 'carousel_right' }
+		});
+		carousel.render(); // get ready for rendering the widget
+		carousel.show();   // display the widget
+	});
+</script>

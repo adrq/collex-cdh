@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>module SearchHelper - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/search_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-add_non_solr_info_to_results">#add_non_solr_info_to_results</a>
+    
+    <li><a href="#method-i-count_children">#count_children</a>
+    
+    <li><a href="#method-i-create_access_table">#create_access_table</a>
+    
+    <li><a href="#method-i-create_discipline_table">#create_discipline_table</a>
+    
+    <li><a href="#method-i-create_facet_button">#create_facet_button</a>
+    
+    <li><a href="#method-i-create_facet_link">#create_facet_link</a>
+    
+    <li><a href="#method-i-create_facet_tree">#create_facet_tree</a>
+    
+    <li><a href="#method-i-create_format_table">#create_format_table</a>
+    
+    <li><a href="#method-i-create_genre_table">#create_genre_table</a>
+    
+    <li><a href="#method-i-create_saved_search_url">#create_saved_search_url</a>
+    
+    <li><a href="#method-i-draw_ajax_pagination">#draw_ajax_pagination</a>
+    
+    <li><a href="#method-i-draw_pagination">#draw_pagination</a>
+    
+    <li><a href="#method-i-encode_for_uri">#encode_for_uri</a>
+    
+    <li><a href="#method-i-facet_selector">#facet_selector</a>
+    
+    <li><a href="#method-i-facet_tree_node_row">#facet_tree_node_row</a>
+    
+    <li><a href="#method-i-facet_tree_selection_row">#facet_tree_selection_row</a>
+    
+    <li><a href="#method-i-federation_selector">#federation_selector</a>
+    
+    <li><a href="#method-i-format_constraint">#format_constraint</a>
+    
+    <li><a href="#method-i-format_name_facet">#format_name_facet</a>
+    
+    <li><a href="#method-i-format_no_name_message">#format_no_name_message</a>
+    
+    <li><a href="#method-i-format_result_rows">#format_result_rows</a>
+    
+    <li><a href="#method-i-format_tag_for_output">#format_tag_for_output</a>
+    
+    <li><a href="#method-i-forum_result_row_item">#forum_result_row_item</a>
+    
+    <li><a href="#method-i-forum_result_row_item_format">#forum_result_row_item_format</a>
+    
+    <li><a href="#method-i-get_annotation">#get_annotation</a>
+    
+    <li><a href="#method-i-get_saved_searches">#get_saved_searches</a>
+    
+    <li><a href="#method-i-gray_if_zero">#gray_if_zero</a>
+    
+    <li><a href="#method-i-has_annotation">#has_annotation</a>
+    
+    <li><a href="#method-i-result_is_collected">#result_is_collected</a>
+    
+    <li><a href="#method-i-result_row_collected">#result_row_collected</a>
+    
+    <li><a href="#method-i-result_row_exhibits">#result_row_exhibits</a>
+    
+    <li><a href="#method-i-result_row_item">#result_row_item</a>
+    
+    <li><a href="#method-i-result_row_site">#result_row_site</a>
+    
+    <li><a href="#method-i-result_row_tags_links">#result_row_tags_links</a>
+    
+    <li><a href="#method-i-result_row_tags_no_links">#result_row_tags_no_links</a>
+    
+    <li><a href="#method-i-result_row_title">#result_row_title</a>
+    
+    <li><a href="#method-i-should_show_more_link">#should_show_more_link</a>
+    
+    <li><a href="#method-i-site_object_count">#site_object_count</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module SearchHelper</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2007 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add_non_solr_info_to_results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_non_solr_info_to_results</span><span
+            class="method-args">(hits, highlighting)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_non_solr_info_to_results-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 680</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_non_solr_info_to_results</span>(<span class="ruby-identifier">hits</span>, <span class="ruby-identifier">highlighting</span>)
+        <span class="ruby-comment"># process all the returned hits to insert all non-solr info</span>
+        <span class="ruby-identifier">all_uris</span> = []
+        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                <span class="ruby-comment"># make a list of all uris so that we can find the collected ones and any annotations</span>
+                <span class="ruby-identifier">all_uris</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>])
+
+                <span class="ruby-comment"># Add the highlighting to the hit object so that a result is completely contained inside the hit object</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">highlighting</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">highlighting</span>[<span class="ruby-identifier">hit</span>[<span class="ruby-string">&quot;uri&quot;</span>]]
+                        <span class="ruby-identifier">t</span> = <span class="ruby-identifier">highlighting</span>[<span class="ruby-identifier">hit</span>[<span class="ruby-string">&quot;uri&quot;</span>]].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>()
+                        <span class="ruby-comment"># We want to escape everything except the bolding so that random control chars can't mess up the display</span>
+                        <span class="ruby-identifier">t</span> = <span class="ruby-identifier">h</span>(<span class="ruby-identifier">t</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'&amp;'</span>, <span class="ruby-string">'AmPeRsAnD'</span>))
+                        <span class="ruby-identifier">hit</span>[<span class="ruby-string">'text'</span>] = <span class="ruby-identifier">t</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;lt;em&amp;gt;&quot;</span>, <span class="ruby-string">&quot;&lt;em&gt;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;lt;/em&amp;gt;&quot;</span>, <span class="ruby-string">&quot;&lt;/em&gt;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'AmPeRsAnD'</span>, <span class="ruby-string">'&amp;'</span>)
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-comment"># Add any referencing exhibits</span>
+                <span class="ruby-identifier">exhibits</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">get_referencing_exhibits</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">&quot;uri&quot;</span>], <span class="ruby-identifier">current_user</span>)
+                <span class="ruby-identifier">hit</span>[<span class="ruby-string">'exhibits'</span>] = <span class="ruby-identifier">exhibits</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibits</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        }
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">all_uris</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">my_tags</span>, <span class="ruby-identifier">tags</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">items_in_uri_list</span>(<span class="ruby-identifier">all_uris</span>, <span class="ruby-identifier">get_curr_user_id</span>)
+                <span class="ruby-identifier">my_tags</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">hit</span>[<span class="ruby-string">'my_tags'</span>] = <span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">uri</span>
+                        }
+                }
+                <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span>, <span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">hit</span>[<span class="ruby-string">'tags'</span>] = <span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">uri</span>
+                        }
+                }
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">collected</span> = {}
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_signed_in?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">all_uris</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">collected_items</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">items_in_uri_list</span>(<span class="ruby-identifier">get_curr_user_id</span>(), <span class="ruby-identifier">all_uris</span>)
+                <span class="ruby-identifier">collected_items</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span>, <span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">collected</span>[<span class="ruby-identifier">uri</span>] = <span class="ruby-identifier">item</span>[<span class="ruby-value">:updated_at</span>]
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>[<span class="ruby-value">:annotation</span>].<span class="ruby-identifier">present?</span>
+                                <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">uri</span>
+                                                <span class="ruby-identifier">hit</span>[<span class="ruby-string">'annotation'</span>] = <span class="ruby-identifier">decode_exhibit_links</span>(<span class="ruby-identifier">item</span>[<span class="ruby-value">:annotation</span>])
+                                        <span class="ruby-keyword">end</span>
+                                }
+                        <span class="ruby-keyword">end</span>
+                }
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">collected</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_non_solr_info_to_results-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_non_solr_info_to_results-method -->
+
+    
+      <div id="method-i-count_children" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">count_children</span><span
+            class="method-args">(arr)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="count_children-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 612</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">count_children</span>(<span class="ruby-identifier">arr</span>)
+        <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+                <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ch</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">ch</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+                                <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">count_children</span>(<span class="ruby-identifier">ch</span>)
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ch</span>[<span class="ruby-value">:count</span>]
+                        <span class="ruby-keyword">end</span>
+                }
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">total</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-value">:count</span>]
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">total</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- count_children-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- count_children-method -->
+
+    
+      <div id="method-i-create_access_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_access_table</span><span
+            class="method-args">( freeculture_count, fulltext_count, typewright_count )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_access_table-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 532</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_access_table</span>( <span class="ruby-identifier">freeculture_count</span>, <span class="ruby-identifier">fulltext_count</span>, <span class="ruby-identifier">typewright_count</span> )
+  <span class="ruby-identifier">html</span> = <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;table class=&quot;limit_to facet-access&quot;&gt;'</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;tr&gt;&lt;th&gt;#{Setup.display_name_for_facet_access}&lt;/th&gt;&lt;th class=\&quot;num_objects\&quot;&gt;# of Objects&lt;/th&gt;&lt;/tr&gt;&quot;</span>)
+      <span class="ruby-comment"># data = [</span>
+      <span class="ruby-comment">#      { exists: access_is_in_constraints?('FreeCultureConstraint'), label: &quot;Free Culture Only&quot;, value: 'freeculture', count: freeculture_count },</span>
+      <span class="ruby-comment">#      { exists: access_is_in_constraints?('FullTextConstraint'), label: &quot;Full Text Only&quot;, value: 'fulltext', count: fulltext_count }</span>
+      <span class="ruby-comment"># ]</span>
+      <span class="ruby-comment"># # TODO-PER: is there also an &quot;ocr&quot; option?</span>
+      <span class="ruby-comment"># if COLLEX_PLUGINS['typewright']</span>
+   <span class="ruby-comment">#  data.push({ exists: access_is_in_constraints?('TypeWrightConstraint'), label: &quot;TypeWright Enabled Only&quot;, value: 'typewright', count: typewright_count })</span>
+      <span class="ruby-comment"># end</span>
+      <span class="ruby-comment"># for acc in data</span>
+      <span class="ruby-comment">#      html += facet_selector( acc, 'o' )</span>
+      <span class="ruby-comment"># end</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;/table&gt;'</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_access_table-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_access_table-method -->
+
+    
+      <div id="method-i-create_discipline_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_discipline_table</span><span
+            class="method-args">( discipline_data )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_discipline_table-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 561</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_discipline_table</span>( <span class="ruby-identifier">discipline_data</span> )
+  <span class="ruby-identifier">html</span> = <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;table class=&quot;limit_to facet-discipline&quot;&gt;'</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;tr&gt;&lt;th&gt;#{Setup.display_name_for_facet_discipline}&lt;/th&gt;&lt;th class=\&quot;num_objects\&quot;&gt;# of Objects&lt;/th&gt;&lt;/tr&gt;&quot;</span>)
+  <span class="ruby-comment"># for discipline in discipline_data</span>
+  <span class="ruby-comment">#   html += facet_selector( discipline, 'discipline' )</span>
+  <span class="ruby-comment"># end</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;/table&gt;'</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_discipline_table-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_discipline_table-method -->
+
+    
+      <div id="method-i-create_facet_button" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_facet_button</span><span
+            class="method-args">(label, type, value, action)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_facet_button-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 502</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">action</span>)
+        <span class="ruby-identifier">data</span> = { <span class="ruby-identifier">key</span><span class="ruby-operator">:</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>, <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-identifier">action</span> }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:button</span>, <span class="ruby-identifier">label</span>, { <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">'select-facet nav_link'</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> <span class="ruby-identifier">data</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_facet_button-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_facet_button-method -->
+
+    
+      <div id="method-i-create_facet_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_facet_link</span><span
+            class="method-args">(label, link, params)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_facet_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 494</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_facet_link</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">link</span>, <span class="ruby-identifier">params</span>)
+        <span class="ruby-comment"># add the dynamic adding of the search phrase to the params first. We have to thwart the json function because we don't want it quoted.</span>
+        <span class="ruby-identifier">params</span>[<span class="ruby-value">:phrs</span>] = <span class="ruby-string">&quot;$(phrase)&quot;</span>
+        <span class="ruby-identifier">json</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">to_json</span>()
+        <span class="ruby-identifier">json</span> = <span class="ruby-identifier">json</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\&quot;$(phrase)\&quot;&quot;</span>, <span class="ruby-string">&quot;$('search_phrase') ? $('search_phrase').getRealValue() : null&quot;</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">label</span>, <span class="ruby-node">&quot;serverAction({action: { actions: '#{link}', params: #{json}}, progress: { waitMessage: 'Searching...' }, searching: true})&quot;</span>, { <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_facet_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_facet_link-method -->
+
+    
+      <div id="method-i-create_facet_tree" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_facet_tree</span><span
+            class="method-args">(tree, id_base, url_base, update_div)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_facet_tree-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 628</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_facet_tree</span>(<span class="ruby-identifier">tree</span>, <span class="ruby-identifier">id_base</span>, <span class="ruby-identifier">url_base</span>, <span class="ruby-identifier">update_div</span>)
+        <span class="ruby-identifier">html</span> = <span class="ruby-string">''</span>
+        <span class="ruby-identifier">parent_open</span> = {}
+        <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">label</span> = <span class="ruby-identifier">node</span>[<span class="ruby-value">:label</span>]
+                <span class="ruby-identifier">children</span> = <span class="ruby-identifier">node</span>[<span class="ruby-value">:children</span>]
+
+                <span class="ruby-comment"># total up all of the sub nodes so that number can be displayed next to the parent name</span>
+                <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child_label</span>, <span class="ruby-identifier">child_arr</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">count_children</span>(<span class="ruby-identifier">child_arr</span>)
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">start_open</span> = (<span class="ruby-identifier">id_base</span> <span class="ruby-operator">==</span> <span class="ruby-string">'univ'</span>) <span class="ruby-comment"># university is always expanded</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:resource_toggle</span>]
+                   <span class="ruby-comment"># open only of base level is open</span>
+                        <span class="ruby-identifier">start_open</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:resource_toggle</span>][<span class="ruby-node">&quot;#{id_base}-1&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'open'</span>
+                        <span class="ruby-identifier">start_open</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:resource_toggle</span>][<span class="ruby-node">&quot;#{id_base}-1&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'close'</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-comment"># render the base node</span>
+                <span class="ruby-identifier">i</span> = <span class="ruby-value">-1</span>
+                <span class="ruby-identifier">parent_open</span>[<span class="ruby-node">&quot;#{id_base}-1&quot;</span>] = <span class="ruby-identifier">start_open</span>
+                <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">facet_tree_node_row</span>(<span class="ruby-node">&quot;#{id_base}&quot;</span>, <span class="ruby-identifier">i</span>, <span class="ruby-value">0</span>, <span class="ruby-value">1</span>, <span class="ruby-keyword">true</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">total</span>, <span class="ruby-identifier">start_open</span>)
+                <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+
+ <span class="ruby-comment"># now all the children</span>
+                <span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child_label</span>, <span class="ruby-identifier">child_arr</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">child_arr</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+                                <span class="ruby-identifier">start_open</span> = <span class="ruby-keyword">false</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:resource_toggle</span>]
+                                        <span class="ruby-identifier">start_open</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:resource_toggle</span>][<span class="ruby-node">&quot;#{id_base}#{i}&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'open'</span>
+                                        <span class="ruby-identifier">start_open</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:resource_toggle</span>][<span class="ruby-node">&quot;#{id_base}#{i}&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'close'</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-identifier">parent_open</span>[<span class="ruby-node">&quot;#{id_base}#{i}&quot;</span>] = <span class="ruby-identifier">parent_open</span>[<span class="ruby-node">&quot;#{id_base}-1&quot;</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">start_open</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+                                <span class="ruby-identifier">me_open</span> = <span class="ruby-identifier">parent_open</span>[<span class="ruby-node">&quot;#{id_base}-1&quot;</span>]
+                                <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">facet_tree_node_row</span>(<span class="ruby-node">&quot;#{id_base}&quot;</span>,<span class="ruby-identifier">i</span>, <span class="ruby-node">&quot;#{id_base}-1&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">me_open</span>, <span class="ruby-identifier">child_label</span>, <span class="ruby-identifier">count_children</span>(<span class="ruby-identifier">child_arr</span>), <span class="ruby-identifier">start_open</span>)
+                                <span class="ruby-identifier">child_arr</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-comment">#start_shown = start_open # we start shown if the parent starts open</span>
+                                        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">facet_tree_selection_row</span>(<span class="ruby-identifier">id_base</span>, <span class="ruby-identifier">item</span>[<span class="ruby-value">:id</span>], <span class="ruby-node">&quot;#{id_base}#{i}&quot;</span>, <span class="ruby-value">3</span>, <span class="ruby-identifier">parent_open</span>[<span class="ruby-node">&quot;#{id_base}#{i}&quot;</span>], <span class="ruby-identifier">item</span>[<span class="ruby-value">:name</span>], <span class="ruby-identifier">item</span>[<span class="ruby-value">:count</span>], <span class="ruby-node">&quot;#{url_base}#{item[:id]}&quot;</span>, <span class="ruby-identifier">update_div</span>, <span class="ruby-identifier">item</span>[<span class="ruby-value">:selected</span>])
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">else</span>
+                           <span class="ruby-comment"># child node with no children of its own</span>
+                                <span class="ruby-identifier">item</span> = <span class="ruby-identifier">child_arr</span>
+                                <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">facet_tree_selection_row</span>(<span class="ruby-identifier">id_base</span>, <span class="ruby-identifier">item</span>[<span class="ruby-value">:id</span>], <span class="ruby-node">&quot;#{id_base}#{-1}&quot;</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">parent_open</span>[<span class="ruby-node">&quot;#{id_base}-1&quot;</span>], <span class="ruby-identifier">item</span>[<span class="ruby-value">:name</span>], <span class="ruby-identifier">item</span>[<span class="ruby-value">:count</span>], <span class="ruby-node">&quot;#{url_base}#{item[:id]}&quot;</span>, <span class="ruby-identifier">update_div</span>, <span class="ruby-identifier">item</span>[<span class="ruby-value">:selected</span>])
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_facet_tree-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_facet_tree-method -->
+
+    
+      <div id="method-i-create_format_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_format_table</span><span
+            class="method-args">( format_data )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_format_table-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 551</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_format_table</span>( <span class="ruby-identifier">format_data</span> )
+  <span class="ruby-identifier">html</span> = <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;table class=&quot;limit_to facet-format&quot;&gt;'</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;tr&gt;&lt;th&gt;#{Setup.display_name_for_facet_format}&lt;/th&gt;&lt;th class=\&quot;num_objects\&quot;&gt;# of Objects&lt;/th&gt;&lt;/tr&gt;&quot;</span>)
+  <span class="ruby-comment"># for format in format_data</span>
+  <span class="ruby-comment">#   html += facet_selector( format, 'doc_type' )</span>
+  <span class="ruby-comment"># end</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;/table&gt;'</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_format_table-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_format_table-method -->
+
+    
+      <div id="method-i-create_genre_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_genre_table</span><span
+            class="method-args">( genre_data )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_genre_table-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 522</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_genre_table</span>( <span class="ruby-identifier">genre_data</span> )
+  <span class="ruby-identifier">html</span> = <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;table class=&quot;limit_to facet-genre&quot;&gt;'</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;tr&gt;&lt;th&gt;#{Setup.display_name_for_facet_genre}&lt;/th&gt;&lt;th class=\&quot;num_objects\&quot;&gt;# of Objects&lt;/th&gt;&lt;/tr&gt;&quot;</span>)
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">genre</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">genre_data</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">facet_selector</span>( <span class="ruby-identifier">genre</span>, <span class="ruby-string">'g'</span> )
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&lt;/table&gt;'</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_genre_table-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_genre_table-method -->
+
+    
+      <div id="method-i-create_saved_search_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_saved_search_url</span><span
+            class="method-args">(s)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_saved_search_url-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 231</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_saved_search_url</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-node">&quot;http://#{request.host_with_port()}/search?#{s.url}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_saved_search_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_saved_search_url-method -->
+
+    
+      <div id="method-i-draw_ajax_pagination" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">draw_ajax_pagination</span><span
+            class="method-args">(curr_page, num_pages, action, el)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="draw_ajax_pagination-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">draw_ajax_pagination</span>(<span class="ruby-identifier">curr_page</span>, <span class="ruby-identifier">num_pages</span>, <span class="ruby-identifier">action</span>, <span class="ruby-identifier">el</span>)
+  <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+
+  <span class="ruby-comment"># If there's only one page, don't show any pagination</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Show only a maximum of 11 items, with the current item centered if possible.</span>
+  <span class="ruby-comment"># First figure out the start and end points we want to display.</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">11</span>
+    <span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">last</span> = <span class="ruby-identifier">num_pages</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">first</span> = <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">-</span> <span class="ruby-value">5</span>
+    <span class="ruby-identifier">last</span> = <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">+</span> <span class="ruby-value">5</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>
+      <span class="ruby-identifier">last</span> = <span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num_pages</span>
+      <span class="ruby-identifier">last</span> = <span class="ruby-identifier">num_pages</span>
+      <span class="ruby-identifier">first</span> = <span class="ruby-identifier">last</span> <span class="ruby-operator">-</span> <span class="ruby-value">10</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">spacing</span> = <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-string">&quot;first&quot;</span>, <span class="ruby-node">&quot;ajax_pagination('#{action}', '#{el}', 1)&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-string">&quot;&lt;&lt;&quot;</span>, <span class="ruby-node">&quot;ajax_pagination('#{action}', '#{el}', #{ curr_page - 1 })&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">pg</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">first</span><span class="ruby-operator">..</span><span class="ruby-identifier">last</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">pg</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">curr_page</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='current_serp'&gt;#{pg}&lt;/span&gt;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-node">&quot;#{pg}&quot;</span>, <span class="ruby-node">&quot;ajax_pagination('#{action}', '#{el}', #{ pg })&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span> )
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;...&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">spacing</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">12</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">num_pages</span>, <span class="ruby-node">&quot;ajax_pagination('#{action}', '#{el}', #{ num_pages })&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to_function</span>( <span class="ruby-string">&quot;&gt;&gt;&quot;</span>, <span class="ruby-node">&quot;ajax_pagination('#{action}', '#{el}', #{ curr_page + 1 })&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-string">&quot;last&quot;</span>, <span class="ruby-node">&quot;ajax_pagination('#{action}', '#{el}', #{ num_pages })&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- draw_ajax_pagination-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- draw_ajax_pagination-method -->
+
+    
+      <div id="method-i-draw_pagination" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">draw_pagination</span><span
+            class="method-args">(curr_page, num_pages, destination_hash)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="draw_pagination-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">draw_pagination</span>(<span class="ruby-identifier">curr_page</span>, <span class="ruby-identifier">num_pages</span>, <span class="ruby-identifier">destination_hash</span>)
+  <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+
+  <span class="ruby-comment"># If there's only one page, don't show any pagination</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Show only a maximum of 11 items, with the current item centered if possible.</span>
+  <span class="ruby-comment"># First figure out the start and end points we want to display.</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">11</span>
+    <span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">last</span> = <span class="ruby-identifier">num_pages</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">first</span> = <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">-</span> <span class="ruby-value">5</span>
+    <span class="ruby-identifier">last</span> = <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">+</span> <span class="ruby-value">5</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>
+      <span class="ruby-identifier">last</span> = <span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num_pages</span>
+      <span class="ruby-identifier">last</span> = <span class="ruby-identifier">num_pages</span>
+      <span class="ruby-identifier">first</span> = <span class="ruby-identifier">last</span> <span class="ruby-operator">-</span> <span class="ruby-value">10</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-string">'first'</span>, <span class="ruby-string">'page'</span>, <span class="ruby-string">&quot;1&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-string">'&lt;&lt;'</span>, <span class="ruby-string">'page'</span>, <span class="ruby-node">&quot;#{curr_page - 1}&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">pg</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">first</span><span class="ruby-operator">..</span><span class="ruby-identifier">last</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">pg</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">curr_page</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='current_serp'&gt;#{pg}&lt;/span&gt;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-node">&quot;#{pg}&quot;</span>, <span class="ruby-string">'page'</span>, <span class="ruby-node">&quot;#{pg}&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;...&amp;nbsp;&amp;nbsp;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">12</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-node">&quot;#{num_pages}&quot;</span>, <span class="ruby-string">'page'</span>, <span class="ruby-node">&quot;#{num_pages}&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-string">'&gt;&gt;'</span>, <span class="ruby-string">'page'</span>, <span class="ruby-node">&quot;#{curr_page + 1}&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-string">'last'</span>, <span class="ruby-string">'page'</span>, <span class="ruby-node">&quot;#{num_pages}&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- draw_pagination-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- draw_pagination-method -->
+
+    
+      <div id="method-i-encode_for_uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">encode_for_uri</span><span
+            class="method-args">(str)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="encode_for_uri-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">encode_for_uri</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'%'</span>, <span class="ruby-string">'%25'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'#'</span>, <span class="ruby-string">'%23'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'&amp;'</span>, <span class="ruby-string">'%26'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\?/</span>, <span class="ruby-string">'%3f'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'.'</span>, <span class="ruby-string">'%2e'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'&quot;'</span>, <span class="ruby-string">'%22'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;'&quot;</span>, <span class="ruby-string">'%27'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&lt;&quot;</span>, <span class="ruby-string">'%3c'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&gt;&quot;</span>, <span class="ruby-string">'%3e'</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\\&quot;</span>, <span class="ruby-string">'%5c'</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- encode_for_uri-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- encode_for_uri-method -->
+
+    
+      <div id="method-i-facet_selector" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">facet_selector</span><span
+            class="method-args">(facet_data, key, options = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="facet_selector-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 507</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">facet_selector</span>(<span class="ruby-identifier">facet_data</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span> = {})
+        <span class="ruby-identifier">tr_class</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:tr_class</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">?</span> <span class="ruby-string">' '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:tr_class</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">td_class</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:td_class</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:td_class</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;limit_to_lvl1&quot;</span>
+        <span class="ruby-identifier">additive_action</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:action</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:action</span>] <span class="ruby-operator">:</span> <span class="ruby-string">'add'</span>
+        <span class="ruby-identifier">label</span> = <span class="ruby-identifier">facet_data</span>[<span class="ruby-value">:label</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">facet_data</span>[<span class="ruby-value">:label</span>] <span class="ruby-operator">:</span><span class="ruby-identifier">facet_data</span>[<span class="ruby-value">:value</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">facet_data</span>[<span class="ruby-value">:exists</span>]
+    <span class="ruby-identifier">html</span> = <span class="ruby-node">&quot;&lt;tr class='limit_to_selected#{tr_class}'&gt;&lt;td class='#{td_class}'&gt;#{label}&amp;nbsp;&amp;nbsp;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-string">'[X]'</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">facet_data</span>[<span class="ruby-value">:value</span>], <span class="ruby-string">'remove'</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-node">&quot;&lt;tr class='#{tr_class}'&gt;&lt;td class='#{td_class}'&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">facet_data</span>[<span class="ruby-value">:value</span>], <span class="ruby-identifier">additive_action</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;/td&gt;&lt;td class='num_objects'&gt;#{number_with_delimiter(facet_data[:count])}&lt;/td&gt;&lt;/tr&gt;&quot;</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- facet_selector-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- facet_selector-method -->
+
+    
+      <div id="method-i-facet_tree_node_row" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">facet_tree_node_row</span><span
+            class="method-args">(id_base, id, parent_id, indent_level, start_shown, label, num_objects, start_open)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO-PER: These are generic routines for creating facet tree rows. We can
+probably refactor a lot of the stuff above to use them. TODO-PER: The
+biggest difference is that this sends an ajax call, and the search page
+does a POST.</p>
+          
+
+          
+          <div class="method-source-code" id="facet_tree_node_row-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 589</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">facet_tree_node_row</span>(<span class="ruby-identifier">id_base</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">parent_id</span>, <span class="ruby-identifier">indent_level</span>, <span class="ruby-identifier">start_shown</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">num_objects</span>, <span class="ruby-identifier">start_open</span>)
+   <span class="ruby-identifier">state</span> = <span class="ruby-string">&quot;collapsed&quot;</span>
+   <span class="ruby-identifier">state</span> = <span class="ruby-string">&quot;expanded&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">start_shown</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">start_open</span>
+        <span class="ruby-identifier">html</span> = <span class="ruby-node">&quot;&lt;tr data-category='#{id_base}' data-id='#{id}' data-parent-id='#{parent_id}' class='category-btn #{state} #{'hidden' if !start_shown}'&gt;&quot;</span>
+        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;td class='limit_to_lvl#{indent_level}'&gt;&quot;</span>
+        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='exp-arrow #{&quot;hidden&quot; if start_open}'&gt;#{image_tag('arrow.gif')}&lt;/span&gt;&quot;</span>
+        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='col-arrow #{&quot;hidden&quot; if !start_open}'&gt;#{image_tag('arrow_dn.gif')}&lt;/span&gt;&quot;</span>
+        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='nav_link' &gt;#{h(label)}&lt;/span&gt;&lt;/td&gt;&lt;td class='num_objects'&gt;#{num_objects}&lt;/td&gt;&lt;/tr&gt;\n&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- facet_tree_node_row-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- facet_tree_node_row-method -->
+
+    
+      <div id="method-i-facet_tree_selection_row" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">facet_tree_selection_row</span><span
+            class="method-args">(id_base, id, parent_id, indent_level, start_shown, label, num_objects, url, update_div, selected)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="facet_tree_selection_row-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 600</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">facet_tree_selection_row</span>(<span class="ruby-identifier">id_base</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">parent_id</span>, <span class="ruby-identifier">indent_level</span>, <span class="ruby-identifier">start_shown</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">num_objects</span>, <span class="ruby-identifier">url</span>, <span class="ruby-identifier">update_div</span>, <span class="ruby-identifier">selected</span>)
+        <span class="ruby-identifier">html</span> = <span class="ruby-node">&quot;&lt;tr data-id='#{id}' data-parent-id='#{parent_id}' class='#{id_base} #{'hidden' if !start_shown}'&gt;&lt;td class='limit_to_lvl#{indent_level}'&gt;&quot;</span>
+        <span class="ruby-comment"># If you want to post, use postLink(this.href) to POST instead of doing an ajax update.</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">selected</span>
+                <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{h(label)}&amp;nbsp;&lt;a href='#{url}' class='nav_link' onclick=\&quot;serverAction({action: { actions: this.href, els: '#{update_div}'}, progress: { waitMessage: 'Removing Facet...' }}); return false;\&quot;&gt;[X]&lt;/a&gt;&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;a href='#{url}' class='nav_link' onclick=\&quot;serverAction({action: { actions: this.href, els: '#{update_div}'}, progress: { waitMessage: 'Adding Facet...' }}); return false;\&quot;&gt;#{h(label)}&lt;/a&gt;&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;/td&gt;&lt;td class='num_objects'&gt;#{num_objects}&lt;/td&gt;&lt;/tr&gt;\n&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- facet_tree_selection_row-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- facet_tree_selection_row-method -->
+
+    
+      <div id="method-i-federation_selector" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">federation_selector</span><span
+            class="method-args">(federation, num_objects)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Helpers for the facet tree that shows resources These are called either in
+edit mode or normal mode For the administrator page or the search page.</p>
+          
+
+          
+          <div class="method-source-code" id="federation_selector-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 483</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">federation_selector</span>(<span class="ruby-identifier">federation</span>, <span class="ruby-identifier">num_objects</span>)
+              <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:federations</span>].<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:federations</span>][<span class="ruby-identifier">federation</span>].<span class="ruby-identifier">blank?</span>
+
+              <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&lt;tr&gt;&lt;td&gt;&quot;</span>
+              <span class="ruby-identifier">thumb</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:federations</span>][<span class="ruby-identifier">federation</span>][<span class="ruby-string">'thumbnail'</span>]
+              <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;input type='checkbox' name='#{federation}' /&gt;&lt;img src='#{thumb}' alt='#{federation}' /&gt;&quot;</span>
+              <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;/td&gt;&lt;td class='num_objects' data-federation='#{federation}'&gt;#{number_with_delimiter(num_objects)}&lt;/td&gt;&lt;/tr&gt;&quot;</span>
+              <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- federation_selector-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- federation_selector-method -->
+
+    
+      <div id="method-i-format_constraint" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format_constraint</span><span
+            class="method-args">(constraint)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="format_constraint-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 235</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">format_constraint</span>(<span class="ruby-identifier">constraint</span>)
+
+    <span class="ruby-identifier">ret</span> = {}
+    <span class="ruby-identifier">value_display</span> = <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">fieldx</span> <span class="ruby-operator">==</span><span class="ruby-string">&quot;archive&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">site</span>(<span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">value</span>)
+        <span class="ruby-identifier">value_display</span> = <span class="ruby-identifier">site</span>(<span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">value</span>)[<span class="ruby-string">'name'</span>]
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">ret</span>[<span class="ruby-value">:not</span>] = <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">inverted</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FreeCultureConstraint</span>)
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Free Culture&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-string">'Only resources that are freely available in their full form'</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FullTextConstraint</span>)
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Full Text&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-string">'Only resources that contain full text'</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TypeWrightConstraint</span>)
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;TypeWright&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-string">'Only resources that can be edited'</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ExpressionConstraint</span>)
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Search Term&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'genre'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Genre&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'title'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Title&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'year'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Year&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'author'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Author&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'editor'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Editor&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'publisher'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Publisher&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+<span class="ruby-comment">#    elsif constraint.is_a?(FacetConstraint) &amp;&amp; constraint[:fieldx] == 'federation'</span>
+<span class="ruby-comment">#      ret[:title] = &quot;Federation&quot;</span>
+<span class="ruby-comment">#      ret[:value] = value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'language'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] = <span class="ruby-string">&quot;Language&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\|\|/</span>)[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'r_art'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Artist&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'r_own'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Owner&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'fuz_q'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Keyword Fuzziness&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'fuz_t'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Title Fuzziness&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'doc_type'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Format&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'discipline'</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Discipline&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>].<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/role_/</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Search</span>.<span class="ruby-identifier">role_field_names</span>[<span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>]]
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] = <span class="ruby-constant">Search</span>.<span class="ruby-identifier">role_field_names</span>[<span class="ruby-identifier">constraint</span>[<span class="ruby-value">:fieldx</span>]][<span class="ruby-value">:display</span>]
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">FacetConstraint</span>)
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:title</span>] =<span class="ruby-string">&quot;Resource&quot;</span>
+      <span class="ruby-identifier">ret</span>[<span class="ruby-value">:value</span>] = <span class="ruby-identifier">value_display</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">ret</span>
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- format_constraint-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- format_constraint-method -->
+
+    
+      <div id="method-i-format_name_facet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format_name_facet</span><span
+            class="method-args">(name, typ)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="format_name_facet-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 571</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">format_name_facet</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">typ</span>)
+        <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\&quot;&quot;</span>, <span class="ruby-string">&quot;&quot;</span>)
+        <span class="ruby-identifier">sanitized_name</span> = <span class="ruby-identifier">name</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[^0-9a-z' ]/</span>, <span class="ruby-string">' '</span>)
+        <span class="ruby-identifier">sanitized_name</span> = <span class="ruby-identifier">sanitized_name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/</span>, <span class="ruby-string">' '</span>)
+        <span class="ruby-identifier">sanitized_name</span> = <span class="ruby-identifier">sanitized_name</span>.<span class="ruby-identifier">strip</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">create_facet_button</span>(<span class="ruby-node">&quot;#{name[0]} (#{name[1]})&quot;</span>, <span class="ruby-identifier">typ</span>, <span class="ruby-node">&quot;\&quot;#{sanitized_name}\&quot;&quot;</span>, <span class="ruby-string">&quot;replace&quot;</span>)
+        <span class="ruby-comment">#return create_facet_link(&quot;#{name[0]} (#{name[1]})&quot;, '/collex/add_constraint', { :search_type =&gt; typ,  :search_not =&gt; 'AND', :search =&gt; { :phrase =&gt; name[0]}, :from_name_facet =&gt; 'true' })</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- format_name_facet-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- format_name_facet-method -->
+
+    
+      <div id="method-i-format_no_name_message" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format_no_name_message</span><span
+            class="method-args">(index, total)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="format_no_name_message-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 580</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">format_no_name_message</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">total</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">total</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&lt;span class='no_names_msg'&gt;No names were contributed for this category.&lt;/span&gt;&quot;</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- format_no_name_message-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- format_no_name_message-method -->
+
+    
+      <div id="method-i-format_result_rows" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format_result_rows</span><span
+            class="method-args">(rows, hide_some)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="format_result_rows-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 417</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">format_result_rows</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">hide_some</span>)
+        <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">:one_col</span>]
+                        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;tr #{ 'class=&quot;hidden&quot;' if row[:hidden] &amp;&amp; hide_some}&gt;&lt;td valign='top' colspan='2'&gt;#{row[:value]}&lt;/td&gt;&lt;/tr&gt;\n&quot;</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;tr #{ 'class=&quot;hidden&quot;' if row[:hidden] &amp;&amp; hide_some}&gt;&lt;td valign='top' class='search_result_data_label'&gt;#{row[:label]}&lt;/td&gt;&lt;td valign='top' class='search_result_data_value'&gt;#{row[:value]}&lt;/td&gt;&lt;/tr&gt;\n&quot;</span>
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- format_result_rows-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- format_result_rows-method -->
+
+    
+      <div id="method-i-format_tag_for_output" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format_tag_for_output</span><span
+            class="method-args">(tag)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="format_tag_for_output-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">format_tag_for_output</span>(<span class="ruby-identifier">tag</span>)
+        <span class="ruby-comment"># we want this escaped, so the user can't inject anything, and lower case, and we want invisible breaks so that a long tag won't break the spacing</span>
+
+        <span class="ruby-comment"># any dashes and underscores can be split</span>
+        <span class="ruby-identifier">words</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+        <span class="ruby-identifier">arr_outer</span> = []
+        <span class="ruby-identifier">words</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">words2</span> = <span class="ruby-identifier">word</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'-'</span>)
+                <span class="ruby-identifier">arr_inner</span> = []
+                <span class="ruby-identifier">words2</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">word2</span><span class="ruby-operator">|</span>
+                        <span class="ruby-comment"># now we have an expanse that contains neither dashes nor underscores. Split this arbitrarily if it is too long,</span>
+                        <span class="ruby-comment"># then put the entire piece back together, with splits after the dashes and underscores.</span>
+                        <span class="ruby-identifier">len</span> = <span class="ruby-identifier">word2</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">16</span>
+                        <span class="ruby-keyword">while</span> <span class="ruby-identifier">len</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                                <span class="ruby-identifier">word2</span> = <span class="ruby-identifier">word2</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">len</span>, <span class="ruby-string">'&amp;#x200B;'</span>)
+                                <span class="ruby-identifier">len</span> <span class="ruby-operator">-=</span> <span class="ruby-value">16</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">arr_inner</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">word2</span>)
+                }
+                <span class="ruby-identifier">arr_outer</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">arr_inner</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">'-&amp;#x200B;'</span>))
+        }
+        <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">arr_outer</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">'_&amp;#x200B;'</span>)
+        <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">h</span>(<span class="ruby-identifier">tag</span>).<span class="ruby-identifier">downcase</span>()
+        <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-node">&quot;&amp;amp;#x200b;&quot;</span>, <span class="ruby-node">&quot;&amp;#x200b;&quot;</span>)    <span class="ruby-comment"># but don't escape the hidden character we inserted.</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">tag</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- format_tag_for_output-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- format_tag_for_output-method -->
+
+    
+      <div id="method-i-forum_result_row_item" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">forum_result_row_item</span><span
+            class="method-args">(type, hit, key, label)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="forum_result_row_item-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 316</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">forum_result_row_item</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">hit</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">label</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>]
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:separate_lines</span>
+    <span class="ruby-comment"># multiple items on separate lines</span>
+    <span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">str</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">forum_result_row_item_format</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">h</span>(<span class="ruby-identifier">item</span>))
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">str</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:single_item</span>
+    <span class="ruby-comment"># single item</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">forum_result_row_item_format</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">h</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>]))
+
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:multiple_item</span>
+    <span class="ruby-comment"># multiple item, one line</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">forum_result_row_item_format</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">h</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">'; '</span>)))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- forum_result_row_item-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- forum_result_row_item-method -->
+
+    
+      <div id="method-i-forum_result_row_item_format" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">forum_result_row_item_format</span><span
+            class="method-args">(label, item)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="forum_result_row_item_format-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 312</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">forum_result_row_item_format</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">item</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;&lt;p class='FP_attachment_details'&gt;#{label}:&lt;br /&gt;#{item}&lt;/p&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- forum_result_row_item_format-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- forum_result_row_item_format-method -->
+
+    
+      <div id="method-i-get_annotation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_annotation</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_annotation-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 203</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_annotation</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-identifier">item</span> = <span class="ruby-identifier">get_collected_item</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">annotation</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">note</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">annotation</span>
+  <span class="ruby-identifier">note</span> = <span class="ruby-identifier">note</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">&quot;&lt;br /&gt;&quot;</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">note</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_annotation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_annotation-method -->
+
+    
+      <div id="method-i-get_saved_searches" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_saved_searches</span><span
+            class="method-args">(username)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_saved_searches-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_saved_searches</span>(<span class="ruby-identifier">username</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">username</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">searches</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_saved_searches-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_saved_searches-method -->
+
+    
+      <div id="method-i-gray_if_zero" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gray_if_zero</span><span
+            class="method-args">( count )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="gray_if_zero-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">gray_if_zero</span>( <span class="ruby-identifier">count</span> )
+  <span class="ruby-identifier">count</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-string">'class=&quot;grayed-out-resource&quot;'</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- gray_if_zero-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- gray_if_zero-method -->
+
+    
+      <div id="method-i-has_annotation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_annotation</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="has_annotation-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 196</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_annotation</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-identifier">item</span> = <span class="ruby-identifier">get_collected_item</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">return</span>  <span class="ruby-identifier">item</span>.<span class="ruby-identifier">annotation</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">annotation</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_annotation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_annotation-method -->
+
+    
+      <div id="method-i-result_is_collected" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_is_collected</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_is_collected-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_is_collected</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">get_collected_item</span>(<span class="ruby-identifier">hit</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_is_collected-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_is_collected-method -->
+
+    
+      <div id="method-i-result_row_collected" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_collected</span><span
+            class="method-args">(rows, is_collected, item)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_collected-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 339</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_collected</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">is_collected</span>, <span class="ruby-identifier">item</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">is_collected</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Collected&amp;nbsp;on:&quot;</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">updated_at</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%b %d, %Y&quot;</span>)})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_collected-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_collected-method -->
+
+    
+      <div id="method-i-result_row_exhibits" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_exhibits</span><span
+            class="method-args">(rows, hit, curr_user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_exhibits-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 388</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_exhibits</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">hit</span>, <span class="ruby-identifier">curr_user</span>)
+        <span class="ruby-identifier">exhibits</span> = <span class="ruby-constant">ExhibitObject</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">uri</span><span class="ruby-operator">:</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>]})
+        <span class="ruby-identifier">is_first</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">user_name</span> = <span class="ruby-identifier">curr_user</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">curr_user</span>.<span class="ruby-identifier">fullname</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">exhibit</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">exhibits</span>
+                <span class="ruby-comment"># We only want to display the exhibit if it can be viewed, so only if it is owned by the current user, or is public</span>
+                <span class="ruby-comment"># We only want to have the edit link if it is owned by the current user.</span>
+                <span class="ruby-identifier">real_exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">id</span>)
+                <span class="ruby-identifier">owner</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">real_exhibit</span>.<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">username</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">real_exhibit</span>.<span class="ruby-identifier">published?</span>
+                        <span class="ruby-identifier">label</span> = <span class="ruby-identifier">is_first</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;Exhibits:&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>
+                        <span class="ruby-identifier">is_first</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-identifier">value</span> = <span class="ruby-node">&quot;#{real_exhibit.title} &lt;a class='nav_link' href='/exhibits/#{real_exhibit.visible_url != nil &amp;&amp; real_exhibit.visible_url.length &gt; 0 ? real_exhibit.visible_url : real_exhibit.id}' &gt;[view]&lt;/a&gt;&quot;</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">curr_user</span>, <span class="ruby-identifier">real_exhibit</span>.<span class="ruby-identifier">id</span>)
+                                <span class="ruby-identifier">value</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-string">&quot;[edit]&quot;</span>, { <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/builder'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'show'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">real_exhibit</span>.<span class="ruby-identifier">id</span> }, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'nav_link'</span> )
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;in_exhibit_#{exhibit.exhibit.id}_#{hit['uri']}&quot;</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span>})
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span> <span class="ruby-comment"># each exhibit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_exhibits-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_exhibits-method -->
+
+    
+      <div id="method-i-result_row_item" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_item</span><span
+            class="method-args">(rows, type, hit, key, label, is_hidden)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_item-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 442</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_item</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">hit</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">is_hidden</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:separate_lines</span>
+    <span class="ruby-comment"># multiple items on separate lines</span>
+    <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                  <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_hidden</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">label</span><span class="ruby-operator">+</span><span class="ruby-string">':'</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">item</span>)})
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:single_item</span>
+    <span class="ruby-comment"># single item</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_hidden</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span><span class="ruby-operator">+</span><span class="ruby-string">':'</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>])})
+
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:multiple_item</span>
+    <span class="ruby-comment"># multiple item, one line</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_hidden</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span><span class="ruby-operator">+</span><span class="ruby-string">':'</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">'; '</span>))})
+
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:alternative</span>
+                <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">alt</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_hidden</span>, <span class="ruby-value">:one_col</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">alt</span>)})
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:special_part_of_field</span>
+    <span class="ruby-identifier">part_owners</span> = []
+    <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">part_owner_sublist</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">item</span>)
+      <span class="ruby-identifier">part_owner_sublist</span> = [ <span class="ruby-identifier">part_owner_sublist</span> ] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">part_owner_sublist</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+      <span class="ruby-identifier">part_owner_sublist</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">part_owner</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">part_owner_str</span> = <span class="ruby-string">'&lt;a href=&quot;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">part_owner</span>[<span class="ruby-string">'url'</span>] <span class="ruby-operator">+</span> <span class="ruby-string">'&quot; class=&quot;nines_link&quot; target=&quot;_blank&quot;&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">h</span>(<span class="ruby-identifier">part_owner</span>[<span class="ruby-string">'title'</span>]) <span class="ruby-operator">+</span> <span class="ruby-string">'&lt;/a&gt;'</span>
+        <span class="ruby-identifier">part_owners</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">part_owner_str</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_hidden</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span><span class="ruby-operator">+</span><span class="ruby-string">':'</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">part_owners</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">'; '</span>)})
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_item-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_item-method -->
+
+    
+      <div id="method-i-result_row_site" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_site</span><span
+            class="method-args">(rows, label, hit, key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_site-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 376</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_site</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">hit</span>, <span class="ruby-identifier">key</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>]
+        <span class="ruby-identifier">archive</span> = <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>][<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">key</span>]
+        <span class="ruby-identifier">this_site</span> = <span class="ruby-identifier">site</span>(<span class="ruby-identifier">archive</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">this_site</span>
+                <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;&lt;a class='nines_link' target='_blank' href='#{this_site['site_url']}'&gt;#{this_site['name']}&lt;/a&gt;&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">str</span> = <span class="ruby-identifier">archive</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">str</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_site-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_site-method -->
+
+    
+      <div id="method-i-result_row_tags_links" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_tags_links</span><span
+            class="method-args">(rows, index, row_id, hit, label, tags, item, signed_in, is_collected)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_tags_links-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 358</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_tags_links</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">index</span>, <span class="ruby-identifier">row_id</span>, <span class="ruby-identifier">hit</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">tags</span>, <span class="ruby-identifier">item</span>, <span class="ruby-identifier">signed_in</span>, <span class="ruby-identifier">is_collected</span>)
+        <span class="ruby-identifier">tag_str</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">tag_str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; | &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">tags</span>[<span class="ruby-value">0</span>]
+                <span class="ruby-identifier">tag_str</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">format_tag_for_output</span>(<span class="ruby-identifier">tag</span>[<span class="ruby-value">0</span>]), {<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/tag'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'results'</span>, <span class="ruby-value">:tag</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag</span>[<span class="ruby-value">0</span>], <span class="ruby-value">:view</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'tag'</span>}, {<span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'tag_link my_tag'</span>, <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;view all objects tagged \&quot;#{tag[0]}\&quot;&quot;</span>}
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">get_curr_user_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">tag</span>[<span class="ruby-value">1</span>][<span class="ruby-value">:user</span>]
+                        <span class="ruby-identifier">tag_str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-string">&quot;X&quot;</span>, <span class="ruby-node">&quot;doRemoveTag('#{hit['uri']}', '#{row_id}', #{tag[1][:tag]});&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link my_tag remove_tag'</span>, <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;delete tag \&quot;#{tag[0]}\&quot;&quot;</span>)
+                <span class="ruby-keyword">end</span> <span class="ruby-comment">#if this tag was created by the current user</span>
+        } <span class="ruby-comment">#the tag loop</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">signed_in</span>
+                <span class="ruby-identifier">tag_str</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='tags_instructions'&gt;#{&quot; [#{sign_in_link({:class =&gt; 'nav_link'})} to add tags]&quot;}&lt;/span&gt;&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">tag_str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;[add&amp;nbsp;tag]&quot;</span>), <span class="ruby-node">&quot;doAddTag('/tag/tag_name_autocomplete', 'add_tag_#{index}', '#{hit['uri']}', #{index}, '#{row_id}', event);&quot;</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;add_tag_#{index}&quot;</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link'</span>)
+        <span class="ruby-keyword">end</span> <span class="ruby-comment">#if the user is logged in.</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_str</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_tags_links-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_tags_links-method -->
+
+    
+      <div id="method-i-result_row_tags_no_links" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_tags_no_links</span><span
+            class="method-args">(rows, label, tags)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_tags_no_links-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 344</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_tags_no_links</span>(<span class="ruby-identifier">rows</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">tags</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+
+        <span class="ruby-comment"># tags is an array returned by the call Tag.get_tags_for_uri.</span>
+        <span class="ruby-comment"># each item in the array is also and array of size 2.</span>
+        <span class="ruby-comment"># first element sis tag name, second is tag ownership flag</span>
+        <span class="ruby-identifier">tag_names</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">tag</span> <span class="ruby-operator">|</span>
+          <span class="ruby-identifier">tag_names</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;; &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag_names</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">tag_names</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">tag</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:hidden</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_names</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_tags_no_links-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_tags_no_links-method -->
+
+    
+      <div id="method-i-result_row_title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result_row_title</span><span
+            class="method-args">(title, url, index)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result_row_title-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 429</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result_row_title</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">url</span>, <span class="ruby-identifier">index</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">200</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:a</span>, <span class="ruby-identifier">title</span>, { <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">'nines_link'</span>, <span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-string">' '</span>, <span class="ruby-identifier">target</span><span class="ruby-operator">:</span> <span class="ruby-string">'_blank'</span>, <span class="ruby-identifier">href</span><span class="ruby-operator">:</span> <span class="ruby-identifier">url</span> })
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">title1</span> = <span class="ruby-identifier">title</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">199</span>]
+                <span class="ruby-identifier">title2</span> = <span class="ruby-identifier">title</span>[<span class="ruby-value">200</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+                <span class="ruby-identifier">id</span> = <span class="ruby-node">&quot;title_more_#{index}&quot;</span>
+                <span class="ruby-identifier">initial_title</span> = <span class="ruby-identifier">title1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:span</span>, <span class="ruby-identifier">title2</span>, { <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">'hidden'</span> })
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:a</span>, <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">initial_title</span>), { <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">'nines_link'</span>, <span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-string">' '</span>, <span class="ruby-identifier">target</span><span class="ruby-operator">:</span> <span class="ruby-string">'_blank'</span>, <span class="ruby-identifier">href</span><span class="ruby-operator">:</span> <span class="ruby-identifier">url</span> }) <span class="ruby-operator">+</span>
+                        <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:a</span>, <span class="ruby-string">'...[show full title]'</span>, { <span class="ruby-identifier">href</span><span class="ruby-operator">:</span> <span class="ruby-string">'#'</span>, <span class="ruby-identifier">onclick</span><span class="ruby-operator">:</span> <span class="ruby-string">'return false;'</span>, <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">'nav_link more_link'</span>, <span class="ruby-string">'data-div'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>, <span class="ruby-string">'data-less'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'[show less]'</span> })
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result_row_title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result_row_title-method -->
+
+    
+      <div id="method-i-should_show_more_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">should_show_more_link</span><span
+            class="method-args">(no_links, rows)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="should_show_more_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 409</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">should_show_more_link</span>(<span class="ruby-identifier">no_links</span>, <span class="ruby-identifier">rows</span>)
+        <span class="ruby-comment"># show more if we aren't in a special mode and if there are more than 1 hidden items</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">no_links</span>
+        <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">:hidden</span>] }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- should_show_more_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- should_show_more_link-method -->
+
+    
+      <div id="method-i-site_object_count" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">site_object_count</span><span
+            class="method-args">(site_count, code)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="site_object_count-source">
+            <pre><span class="ruby-comment"># File app/helpers/search_helper.rb, line 187</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">site_object_count</span>(<span class="ruby-identifier">site_count</span>, <span class="ruby-identifier">code</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">site_count</span>[<span class="ruby-identifier">code</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">site_count</span>[<span class="ruby-identifier">code</span>].<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- site_object_count-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- site_object_count-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

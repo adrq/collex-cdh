@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  contributor_id: 1
+  last_editor_id: 1
+  latest_file_id: 1
+  current_status: 1
+  notes: MyText
+  created_at: 2008-07-16 16:03:06
+  updated_at: 2008-07-16 16:03:06
+  admin_notes: MyText
+  project_name: one
+  project_url: one.com
+  default_thumbnail: one.jpg
+  classification: 1
+
+two:
+  contributor_id: 1
+  last_editor_id: 1
+  latest_file_id: 1
+  current_status: 1
+  notes: MyText
+  created_at: 2008-07-16 16:03:06
+  updated_at: 2008-07-16 16:03:06
+  project_name: two
+  project_url: two.com
+  default_thumbnail: two.jpg
+  classification: 2

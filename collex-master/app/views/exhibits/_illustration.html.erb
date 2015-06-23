@@ -1,0 +1,181 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# illustration params: bool edit_mode, ActiveRecord illustration, int element_id, bool part_of_row -%>
+
+<%# Set up all variables in advance to make the html code cleaner -%>
+<% exhibit = illustration.exhibit_element.exhibit_page.exhibit -%>
+<% illustration_id = illustration.id -%>
+<% url = illustration.image_url -%>
+<% link = illustration.link -%>
+<% link_style = 'ext_pic_link' -%>
+<% alt = "" -%>
+<% if illustration.illustration_type == ExhibitIllustration.get_illustration_type_nines_obj()
+	if illustration.nines_object_uri.blank?
+		url = get_image_url("")
+		link = ""
+		link_style = 'nines_pic_link'
+		ht = ""
+		alt = "No image"
+	else
+		url = CachedResource.get_image_from_uri(illustration.nines_object_uri)
+		url = get_image_url("") if (url == "" || url == nil)
+		link = CachedResource.get_link_from_uri(illustration.nines_object_uri)
+		link = "" if link == nil
+		link_style = 'nines_pic_link'
+		ht = CachedResource.get_hit_from_uri(illustration.nines_object_uri)
+		alt = ht['title'] if ht
+	end
+end -%>
+<% alt = illustration.alt_text if illustration.alt_text && illustration.alt_text.length > 0 -%>
+<% alt = "Picture" if alt.length == 0 -%>
+<% if illustration.illustration_type == ExhibitIllustration.get_illustration_type_upload() && illustration.upload.present? %>
+<% url = illustration.upload.url(:display) %>
+<% link = "" %>
+<% end %>
+<% url = image_path("clicktoadd.jpg") if url == nil || url == "" -%>
+<% url = get_image_url(url) -%>
+<% width = illustration.image_width -%>
+<% height = illustration.height != nil ? "min-height:#{illustration.height}px;" : "" -%>
+<% illustration_position = illustration.position -%>
+<% illustration_type = illustration.illustration_type -%>
+<% create_resizable = "" %>
+
+<% if edit_mode -%>
+	<% wrapper_type = 'edit' -%>
+	<% ajax_action = "'/builder/edit_row_of_illustrations,/builder/refresh_outline'" -%>
+	<% ajax_div_id = "'element_#{element_id},exhibit_builder_outline_content'" -%>
+	<% ajax_params = "'element_id=#{element_id}&position=#{illustration_position}&verb='" -%>
+	<% onload_text = "onload=\"initializeResizableImageElement('illustration_img_#{illustration_id}');\"" -%>
+	<% if illustration_type == ExhibitIllustration.get_illustration_type_text() -%>
+		<% create_resizable = "<script type='text/javascript'>\n\tinitializeResizableTextualElement('illustration_img_#{illustration_id}');\n</script>\n" -%>
+	<% end -%>
+	<% illustration_text = denature_footnote_links(illustration.illustration_text) -%>
+<% else -%>
+	<% illustration_text = decode_exhibit_links(illustration.illustration_text) -%>
+	<% element_id = -1 -%>
+	<% if link == "" -%>
+		<% wrapper_type = 'none' -%>
+	<% else -%>
+		<% wrapper_type = 'link' -%>
+	<% end -%>
+	<% onload_text = "onload=\"hideSpinner('illustration_img_#{illustration_id}');\"" -%>
+<% end -%>
+
+<div id='illustration_<%= illustration_id %>' class="illustration_block">
+	<center>
+	<div class="exhibit_illustration">
+		<%# The wrapper is either nothing, if this is live and there was no link specified, or the link if specified, or a table if we are in edit mode. -%>
+		<% if wrapper_type == 'link' -%>
+			<a class='<%= link_style %>' target="_blank" href="<%= link %>">
+		<% elsif wrapper_type == 'edit' -%>
+			<%# We are creating a table with one row and 3 cols: the two outer cols are for the move left and move right controls. -%>
+				<table><tr>
+				<% if part_of_row && illustration_position > 1 -%>
+					<td class="edit_illustration_column"><a title="Move Illustration Left" onclick="doAjaxLink(<%= ajax_div_id %>, <%= ajax_action %>, <%= ajax_params %> + 'left'); return false;" href="#"><%= image_tag("#{SKIN}/left-image-arrow.gif") %></a></td>
+				<% end -%>
+				
+				<td class="edit_illustration_column"><div class="illustration_control_border">
+					<% if part_of_row == true -%>
+						<div class="outline_right_controls_no_space">
+							<span class="close_link"><%= link_to_function del_char(), "doAjaxLink(#{ajax_div_id}, #{ajax_action}, #{ajax_params}+'delete');", { :title => 'Remove Illustration', :class => 'modify_link' } %></span>
+						</div>
+					<% end -%>
+		<% end -%>
+		
+		<div id='illustration_inner_<%= illustration_id %>' class="illustration_inner">
+			<%#Put all the data on the page in hidden divs so that the javascript for the dialog can pick it up %>
+			<% if edit_mode -%>
+				<div class="saved_data ill_illustration_type" style="display:none;"><%= illustration.illustration_type %></div>
+				<div class="saved_data ill_image_url" style="display:none;"><%= illustration.image_url %></div>
+				<div class="saved_data ill_link" style="display:none;"><%= illustration.link %></div>
+				<div class="saved_data ill_image_width" style="display:none;"><%= illustration.image_width %></div>
+				<div class="saved_data ill_illustration_text" style="display:none;"><%= illustration.illustration_text %></div>
+				<div class="saved_data ill_illustration_alt_text" style="display:none;"><%= illustration.alt_text %></div>
+				<div class="saved_data ill_illustration_caption1" style="display:none;"><%= illustration.caption1 %></div>
+				<div class="saved_data ill_illustration_caption2" style="display:none;"><%= illustration.caption2 %></div>
+				<div class="saved_data ill_illustration_caption1_footnote" style="display:none;"><%= illustration.caption1_footnote_id ? ExhibitFootnote.find(illustration.caption1_footnote_id).footnote : "" %></div>
+				<div class="saved_data ill_illustration_caption2_footnote" style="display:none;"><%= illustration.caption2_footnote_id ? ExhibitFootnote.find(illustration.caption2_footnote_id).footnote : ""  %></div>
+				<div class="saved_data ill_illustration_caption1_bold" style="display:none;"><%= illustration.caption1_bold %></div>
+				<div class="saved_data ill_illustration_caption1_italic" style="display:none;"><%= illustration.caption1_italic %></div>
+				<div class="saved_data ill_illustration_caption1_underline" style="display:none;"><%= illustration.caption1_underline %></div>
+				<div class="saved_data ill_illustration_caption2_bold" style="display:none;"><%= illustration.caption2_bold %></div>
+				<div class="saved_data ill_illustration_caption2_italic" style="display:none;"><%= illustration.caption2_italic %></div>
+				<div class="saved_data ill_illustration_caption2_underline" style="display:none;"><%= illustration.caption2_underline %></div>
+				<div class="saved_data ill_nines_object_uri" style="display:none;"><%= illustration.nines_object_uri %></div>
+				<div class="saved_data ill_upload_filename" style="display:none;"><%= illustration.upload.url(:thumb) if illustration.upload.present? %></div>
+			<% end -%>
+		
+			<%# Create the actual content -%>	
+			<% if illustration_type == ExhibitIllustration.get_illustration_type_text() -%>
+				<div class="exhibit_illustration_text widenable" id='illustration_img_<%= illustration_id %>' style='font-family:<%= exhibit.get_font_name('illustration') %>; font-size:<%= exhibit.get_font_size('illustration') %>px;width:<%= width %>px;<%= height %>'><%= illustration_text %></div>
+				<%= raw create_resizable -%>
+			<% else # nines object or internet image -%>
+				<img class="exhibit_illustration_img" id='spinner_illustration_img_<%= illustration_id %>' src="<%= image_path(PROGRESS_SPINNER_PATH) %>" alt="<%= alt %>" />
+				<img class="exhibit_illustration_img widenable hidden" id='illustration_img_<%= illustration_id %>' src="<%= url %>" width="<%= width %>px" alt="<%= alt %>" <%= raw(onload_text) %> />
+			<% end -%>
+		</div>
+	
+		<%# Close the wrapper created above -%>
+		<% if wrapper_type == 'link' -%>
+			</a>
+		<% elsif wrapper_type == 'edit' -%>
+			<%# </a>	 The link to the edit dialog -%>
+			</div> <%# The illustration control border -%>
+			</td>	<%# The middle column containing the content and the image control stuff -%>
+			
+			<% if part_of_row && illustration_position < ExhibitElement.find(element_id).exhibit_illustrations.length %>
+				<td class="edit_illustration_column"><a title="Move Illustration Right" onclick="doAjaxLink(<%= ajax_div_id %>, <%= ajax_action %>, <%= ajax_params %> + 'right'); return false;" href="#" ><%= image_tag("#{SKIN}/right-image-arrow.gif") %></a></td>
+			<% end -%>
+			</tr></table>
+		<% end -%>
+	
+		<%# draw the caption(s) -%>
+		<% if illustration != nil -%>
+			<% style2 = '' -%>
+			<% style2 += "#{illustration.caption2_bold}" == '1' ? 'font-weight: bold;' : 'font-weight: normal;' -%>
+			<% style2 += "#{illustration.caption2_italic}" == '1' ? 'font-style: italic;' : 'font-style: normal;'  -%>
+			<% style2 += "#{illustration.caption2_underline}" == '1' ? 'text-decoration: underline;' : 'text-decoration: none;'  -%>
+			<% if illustration.caption1 && illustration.caption1.length > 0 -%>
+				<% style = '' -%>
+				<% style += 'font-weight: bold;' if "#{illustration.caption1_bold}" == '1' -%>
+				<% style += 'font-style: italic;' if "#{illustration.caption1_italic}" == '1' -%>
+				<% style += 'text-decoration: underline;' if "#{illustration.caption1_underline}" == '1' -%>
+				<div class="exhibit_caption1" style="width:<%= illustration.image_width + 10 %>px;font-family:<%= exhibit.get_font_name('caption1') %>; font-size:<%= exhibit.get_font_size('caption1') %>px;<%= style %>"><%= illustration.caption1 %>
+				<%= draw_footnote(illustration.caption1_footnote_id, "caption1_#{illustration.id}", edit_mode) %>
+				<% if illustration.caption2 && illustration.caption2.length > 0 -%>
+					<div class="exhibit_caption2" style="font-family:<%= exhibit.get_font_name('caption2') %>; font-size:<%= exhibit.get_font_name('caption2') %>px;<%= style2 %>"><%= illustration.caption2 %>
+					<%= draw_footnote(illustration.caption2_footnote_id, "caption2_#{illustration.id}", edit_mode) %>
+					</div>
+				<% end -%>
+				</div>
+			<% else -%>
+				<% if illustration.caption2 && illustration.caption2.length > 0 -%>
+					<div class="exhibit_caption2" style="width:<%= illustration.image_width + 10 %>px;font-family:<%= exhibit.get_font_name('caption2') %>; font-size:<%= exhibit.get_font_size('caption2') %>px;<%= style2 %>"><%= illustration.caption2 %>
+						<%= draw_footnote(illustration.caption2_footnote_id, "caption2_#{illustration.id}", edit_mode) %>
+					</div>
+				<% end -%>
+			<% end -%>
+		<% end -%>
+	</div>
+	</center>
+</div>
+<% if edit_mode -%>
+	<script type="text/javascript">
+		if(window.initializeInplaceIllustrationEditor)
+			initializeInplaceIllustrationEditor(<%= raw("'illustration_inner_#{illustration_id},exhibit_builder_outline_content'")%>, "<%= "/builder/edit_illustration,/builder/refresh_outline"%>");
+	</script>
+<% end -%>

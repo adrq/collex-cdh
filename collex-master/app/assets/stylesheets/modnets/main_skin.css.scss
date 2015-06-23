@@ -1,0 +1,365 @@
+/* ------------------------------------------------------------------------
+//     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+//
+//     Licensed under the Apache License, Version 2.0 (the "License");
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+//
+//         http://www.apache.org/licenses/LICENSE-2.0
+//
+//     Unless required by applicable law or agreed to in writing, software
+//     distributed under the License is distributed on an "AS IS" BASIS,
+//     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//     See the License for the specific language governing permissions and
+//     limitations under the License.
+// ---------------------------------------------------------------------------- */
+@import "colors.css.scss";
+
+body.federation-modnets {
+	min-width: 960px;
+	background:$background;
+	color:$regular-text;
+	font-family: Arial, Helvetica, san-serif;
+	font-size: 14px;
+
+//	#header_container {
+//	background-color: #34645C;
+//}
+	ul li,#recent_news li {
+		list-style: square;
+	}
+#main_container {
+	background: #F7F7F6 url(/assets/modnets/bg_middle.gif) 66px 146px no-repeat;
+//	border-left:10px #34645c solid;
+//	border-right:10px #34645c solid;
+//	border-bottom:10px #34645c solid;
+}
+#content_container {
+	padding-top: 58px;
+}
+	#login_container {
+		position: absolute;
+		top: 162px;
+	}
+	.inner_content_container {
+		font-size: inherit;
+	}
+#footer_container {
+	text-align: left;
+	margin: 0px 30px 10px 30px;
+	background:$background;
+	border-top: 4px solid $border;
+}
+
+.exhibit_footer {
+	background-color: #CECCBA;
+}
+
+.tab_link {
+	color:$tab-color;
+	background: $tab-background;
+	top: 96px;
+	font-weight: normal;
+}
+
+.tab_link_current {
+	color:$tab-color;
+	background: $tab-background;
+	font-weight: normal;
+}
+
+.tab_link_long,.tab_link_logo {
+	color:$tab-color;
+	background: $tab-background;
+	top: 96px;
+	font-weight: normal;
+}
+
+.tab_link_long_current,.tab_link_logo_current, .my_collex_link_current {
+	color:$tab-color;
+	background: $tab-background;
+	padding-top: 6px;
+	font-weight: normal;
+}
+
+	.tab_link_long, .tab_link_long_current, .tab_link_current, .tab_link, .tab_link_logo, .my_collex_link, .my_collex_link_current {
+		height: 24px;
+		margin-left: 4px;
+		padding-top: 6px !important;
+		font-weight: normal;
+	}
+	.my_collex_link, .my_collex_link_current {
+		left: 26px;
+		top: 154px;
+		font-weight: normal;
+		width: inherit;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+.tab_link:active, .tab_link_long:active, .tab_link_logo:active, .tab_link:visited, .tab_link_long:visited, .tab_link_logo:visited, .tab_link:hover, .tab_link_long:hover, .tab_link_logo:hover {
+	color:#ffffff;
+	font-weight: normal;
+}
+
+	&.pg-lvl1 #nav_container {
+		top: 155px;
+		right: 30px;
+
+		a:nth-child(1) {
+			background-color: $news-tab;
+		}
+
+		a:nth-child(2) {
+			background-color: $classroom-tab;
+		}
+
+		a:nth-child(3) {
+			background-color: $community-tab;
+		}
+
+		a:nth-child(4) {
+			background-color: $search-tab;
+		}
+	}
+
+	&.pg-lvl1 a.my_collex_link {
+		top: 155px;
+		background-color: $my-tab;
+	}
+
+a.my_collex_link {
+	color:$tab-color;
+	background: $tab-background;
+	top: 89px;
+	padding-top: 4px;
+	width: inherit;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.my_collex_link:active, .my_collex_link:visited, .my_collex_link:hover {
+	color:$tab-color;
+}
+
+.tab_link_logo{
+	color:$tab-color;
+	background: $tab-background;
+}
+
+	#subnav_container {
+		margin-left: 86px;
+		padding-right: 0;
+	}
+	#subnav_links_container {
+		position: absolute;
+		right: 32px;
+		margin-top: 42px;
+	}
+//#footer_container {
+//	color:#ffffff;
+//}
+
+.right_column, .search-result-sub {
+	background:transparent;
+}
+
+	.nav_link, .nav_link:link, .nav_link:visited,.ext_link:link, .ext_link:visited {
+	color:#AC2E20;
+	text-decoration: underline;
+}
+
+.tag_link:link { color: $link-color; }
+.tag_link:visited { color: $link-color; }
+.tag_link:hover { color: #fff; background: $link-hover; }
+
+/* This is used for all links that change, or potentially change, the database */
+.modify_link, .modify_link:link { color: $link-color }
+.modify_link:visited { color: $link-color }
+.modify_link:hover { color: #fff; background: $link-hover }
+
+/* This is used for all links that go to the NINES sites. */
+.nines_link { background: image-url('modnets/collex_link.jpg') center right no-repeat; }
+.nines_link:link { color: $link-color; }
+.nines_link:visited { color: $link-color; }
+.nines_link:hover { color: #fff; background: $link-hover; }
+
+/* This is used for all links that go to external websites */
+&.wordpress #container .ext_link:link { color: $link-color }
+&.wordpress #container .ext_link:visited { color: $link-color }
+&.wordpress #container .ext_link:hover { color: #fff; background: $link-hover }
+
+/* These are used to make non-links look like links for the exhibit builder. */
+.nines_linklike {
+	background: image-url('modnets/collex_link.jpg') center right no-repeat;
+	color: $link-color;
+} /* should match nines_link:link */
+
+.ext_linklike {
+	color: $link-color;
+} /* should match ext_link:link */
+
+.popular_title {
+	color: $header-color;
+	font-style: inherit;
+	font-size: inherit;
+}
+
+//#footer_container a, #footer_container a.link, #footer_container a.visited{
+//	color:#9D1E16;
+//}
+
+.login_div {
+	background-image:image-url('modnets/login_header.jpg');
+	background-repeat:no-repeat;
+	border-left: 8px solid $login-dlg-border;
+	border-right: 8px solid $login-dlg-border;
+	border-bottom: 8px solid $login-dlg-border;
+}
+
+.search_result_buttons a, .search_result_buttons button {
+	background:transparent image-url('modnets/lvl2_result_row_button.jpg') no-repeat scroll left top;
+}
+
+.search_result_buttons a:hover, .search_result_buttons button:hover {
+	background:image-url('modnets/lvl2_result_row_button_rl.jpg') no-repeat scroll left top;
+}
+	::-webkit-input-placeholder {
+		color: #BB1031;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+		color: #BB1031;
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+		color: #BB1031;
+	}
+
+	:-ms-input-placeholder {
+		color: #BB1031;
+	}
+/*********************************/
+/* styles for all javascript-created dialogs */
+/*********************************/
+
+	.licensedisplay {
+		background-color: #413b3d;
+	}
+ .container-close {
+	background:transparent image-url('modnets/popup_box_x.gif') no-repeat scroll 0 0;
+	height: 19px;
+}
+
+ .container-close:hover {
+	background:transparent image-url('modnets/popup_box_x_rl.gif') no-repeat scroll 0 0;
+}
+
+ .yui-panel .hd {
+	background: #413b3d;
+	color: white;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+ .yui-button {
+	background: $button-background;
+	 color: $tab-color;
+	border: 0;
+   position: relative;
+   top: 2px;
+	 & button:hover {
+		 background-color: $button-hover;
+	 }
+	 button {
+		 background-color: $button-background;
+		 color: $tab-color;
+	 }
+}
+
+	.yui-link-button {
+		& a:hover {
+			background-color: $button-hover;
+		}
+		a {
+			background-color: $button-background;
+			color: $tab-color;
+		}
+	}
+
+.yui-button .first-child {
+   border: 0;
+}
+
+div.edit_bar .yui-button.yui-menu-button {
+   background: transparent url('http://yui.yahooapis.com/2.9.0/build/assets/skins/sam/sprite.png') repeat-x scroll 0 0;
+}
+
+ .button_tab_selected.yui-button button {
+	background: $selected-background;
+}
+
+	.dlg_tab_link {
+		background: $tab-background;
+	}
+	.dlg_tab_link_current {
+		background: $tab-color;
+	}
+
+.yui-link-button-hover,  .yui-push-button-hover{
+   color: white;
+   background: $button-hover;
+   border: 0;
+}
+.yui-button-hover a {
+   color: white;
+}
+.yui-push-button-hover button {
+   color: white;
+}
+	// TODO-PER: This is needed to correct for a specificity problem in the above css
+	 .yui-toolbar-container .yui-push-button, .yui-toolbar-container .yui-color-button, .yui-toolbar-container .yui-menu-button{background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/sprite.png) repeat-x 0 0;position:relative;display:block;height:22px;width:30px;_font-size:0;margin:0;border-color:#808080;color:#f2f2f2;border-style:solid;border-width:1px 0;zoom:1;}
+	 .yui-toolbar-container .yui-push-button a, .yui-toolbar-container .yui-color-button a, .yui-toolbar-container .yui-menu-button a{padding-left:35px;height:20px;text-decoration:none;font-size:0;line-height:2;display:block;color:#000;overflow:hidden;white-space:nowrap;}
+	 .yui-toolbar-container .yui-toolbar-spinbutton a, .yui-toolbar-container .yui-toolbar-select a{font-size:12px;}
+	 .yui-toolbar-container .yui-push-button .first-child, .yui-toolbar-container .yui-color-button .first-child, .yui-toolbar-container .yui-menu-button .first-child{border-color:#808080;border-style:solid;border-width:0 1px;margin:0 -1px;display:block;position:relative;}
+	 .yui-toolbar-container .yui-push-button-disabled .first-child, .yui-toolbar-container .yui-color-button-disabled .first-child, .yui-toolbar-container .yui-menu-button-disabled .first-child{border-color:#ccc;}
+	 .yui-toolbar-container .yui-push-button-disabled a, .yui-toolbar-container .yui-color-button-disabled a, .yui-toolbar-container .yui-menu-button-disabled a{color:#A6A6A6;cursor:default;}
+	 .yui-toolbar-container .yui-push-button-disabled, .yui-toolbar-container .yui-color-button-disabled, .yui-toolbar-container .yui-menu-button-disabled{border-color:#ccc;}
+	 .yui-toolbar-container .yui-button .first-child{*left:0;}
+	 .yui-toolbar-container .yui-toolbar-fontname{width:135px;} .yui-toolbar-container .yui-toolbar-heading{width:92px;}
+	 .yui-toolbar-container .yui-button-hover{background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/sprite.png) repeat-x 0 -1300px;border-color:#808080;}
+	 .yui-toolbar-container .yui-button-selected{background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/sprite.png) repeat-x 0 -1700px;border-color:#808080;}
+	 .yui-toolbar-container .yui-toolbar-nogrouplabels h3{display:none;}
+	 .yui-toolbar-container .yui-toolbar-nogrouplabels .yui-toolbar-group{margin-top:.75em;}
+	 .yui-toolbar-container .yui-push-button span.yui-toolbar-icon, .yui-toolbar-container .yui-color-button span.yui-toolbar-icon, .yui-toolbar-container .yui-menu-button span.yui-toolbar-icon{display:block;position:absolute;top:2px;height:18px;width:18px;overflow:hidden;background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/editor-sprite.gif) no-repeat 30px 30px;}
+	 .yui-toolbar-container .yui-button-selected span.yui-toolbar-icon, .yui-toolbar-container .yui-button-hover span.yui-toolbar-icon{background-image:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/editor-sprite-active.gif);}
+	 .yui-toolbar-container .visible .yuimenuitemlabel{cursor:pointer;color:#000;*position:relative;}
+	 .yui-toolbar-container .yui-button-menu{background-color:#fff;}
+	 .yui-toolbar-container .yui-button-menu .yui-menu-body-scrolled{position:relative;}
+	 div.yuimenu li.selected{background-color:#B3D4FF;}
+	 div.yuimenu li.selected a.selected{color:#000;}
+	 .yui-toolbar-container .yui-toolbar-bold span.yui-toolbar-icon{background-position:0 0;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-strikethrough span.yui-toolbar-icon{background-position:0 -108px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-italic span.yui-toolbar-icon{background-position:0 -36px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-undo span.yui-toolbar-icon{background-position:0 -1326px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-redo span.yui-toolbar-icon{background-position:0 -1355px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-underline span.yui-toolbar-icon{background-position:0 -72px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-subscript span.yui-toolbar-icon{background-position:0 -180px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-superscript span.yui-toolbar-icon{background-position:0 -144px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-forecolor span.yui-toolbar-icon{background-position:0 -216px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-backcolor span.yui-toolbar-icon{background-position:0 -288px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifyleft span.yui-toolbar-icon{background-position:0 -324px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifycenter span.yui-toolbar-icon{background-position:0 -360px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifyright span.yui-toolbar-icon{background-position:0 -396px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifyfull span.yui-toolbar-icon{background-position:0 -432px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-indent span.yui-toolbar-icon{background-position:0 -720px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-outdent span.yui-toolbar-icon{background-position:0 -684px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-createlink span.yui-toolbar-icon{background-position:0 -792px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-insertimage span.yui-toolbar-icon{background-position:1px -756px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-left span.yui-toolbar-icon{background-position:0 -972px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-right span.yui-toolbar-icon{background-position:0 -936px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-inline span.yui-toolbar-icon{background-position:0 -900px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-insertunorderedlist span.yui-toolbar-icon {background-position: 0 -468px;left: 5px;}
+	 .yui-toolbar-container .yui-toolbar-insertorderedlist span.yui-toolbar-icon {background-position: 0 -504px;left: 5px;}
+
+}

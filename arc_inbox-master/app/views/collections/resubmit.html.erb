@@ -1,0 +1,37 @@
+<% title "Resubmit" %>
+<% main_header "Resubmit a file." -%>
+<% extra_button "" -%>
+<% instructions "Upload a new file to replace the file that you previously uploaded. This will start the acceptance program over from the beginning." -%>
+
+<%= form_tag( { :action => 'resubmit_submission' }, { :id => "new-form", :multipart => true  } ) %>
+<% collection = Collection.find(:first, :conditions => "id = '#{params[:id]}'") -%>
+<table>
+	<tr>
+		<td class="field-label">Project Name:</td><td class="field-label"><%=h collection.project_name %></td>
+	</tr>
+	<tr>
+		<td class="field-label">Project URL:</td><td><input name="project_url" id="project_url" size="50" value="<%=h collection.project_url %>" /></td>
+	</tr>
+	<tr>
+		<td class="field-label">Default Thumbnail:</td><td><input name="default_thumbnail" id="default_thumbnail" size="50" value="<%=h collection.default_thumbnail %>" /></td>
+	</tr>
+	<tr>
+		<td class="field-label">File Name:</td><td><input type="file" name="file_name" id="file_name" size="50" value="<%=h collection.get_orig_filename %>"/></td>
+	</tr>
+	<tr>
+		<td class="field-label">Notes:</td><td><textarea Name="notes" id="notes" rows="10" cols="43"><%=h collection.notes %></textarea></td>
+	</tr>
+	<tr>
+		<td></td><td><input type="submit" value="submit this file" />
+		<% if flash[:notice] -%> 
+			<div id="notice" style="color:red"><%= flash[:notice] %></div> 
+		<% end -%>
+		</td>
+	</tr>
+</table>
+<input type="hidden" name="id" value="<%= params[:id] %>" />
+</form>
+<br />
+<div class="navigation">
+<%= link_to 'Cancel', contributor_path %>
+</div>

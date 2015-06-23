@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Admin::DefaultController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/admin/default_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="BaseController.html">Admin::BaseController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-add_badge">#add_badge</a>
+    
+    <li><a href="#method-i-add_publication_image">#add_publication_image</a>
+    
+    <li><a href="#method-i-change_group_type">#change_group_type</a>
+    
+    <li><a href="#method-i-delete_comment">#delete_comment</a>
+    
+    <li><a href="#method-i-get_user_list">#get_user_list</a>
+    
+    <li><a href="#method-i-impersonate_user">#impersonate_user</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-refresh_cached_objects">#refresh_cached_objects</a>
+    
+    <li><a href="#method-i-reload_facet_tree">#reload_facet_tree</a>
+    
+    <li><a href="#method-i-remove_abuse_report">#remove_abuse_report</a>
+    
+    <li><a href="#method-i-stats">#stats</a>
+    
+    <li><a href="#method-i-stats_show_all">#stats_show_all</a>
+    
+    <li><a href="#method-i-use_test_index">#use_test_index</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Typewright.html">Typewright</a>
+  
+    <li><a href="../Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="../Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="../Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="../Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="../Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="../Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="../Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="../Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="../Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="../Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="../Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="../Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="../Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="../Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="../Admin.html">Admin</a>
+  
+    <li><a href="../Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="../Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="../Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="../Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="../Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="../Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="../Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="../Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="../Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="../Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="../Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="../Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="../Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="../Catalog.html">Catalog</a>
+  
+    <li><a href="../Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="../GroupsController.html">GroupsController</a>
+  
+    <li><a href="../GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../Branding.html">Branding</a>
+  
+    <li><a href="../BuilderController.html">BuilderController</a>
+  
+    <li><a href="../BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="../CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="../CachedResource.html">CachedResource</a>
+  
+    <li><a href="../CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="../ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="../ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="../Cluster.html">Cluster</a>
+  
+    <li><a href="../ClustersController.html">ClustersController</a>
+  
+    <li><a href="../CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="../CommentReport.html">CommentReport</a>
+  
+    <li><a href="../CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="../CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="../Constraint.html">Constraint</a>
+  
+    <li><a href="../DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="../DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="../DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="../DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="../DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="../DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="../Exhibit.html">Exhibit</a>
+  
+    <li><a href="../ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="../ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="../ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="../ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="../ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="../ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="../ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="../ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="../ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="../ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="../ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="../FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="../FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="../FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="../ForumController.html">ForumController</a>
+  
+    <li><a href="../FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="../FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="../GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="../GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="../Group.html">Group</a>
+  
+    <li><a href="../GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="../GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="../HelpController.html">HelpController</a>
+  
+    <li><a href="../HomeController.html">HomeController</a>
+  
+    <li><a href="../HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="../Image.html">Image</a>
+  
+    <li><a href="../ImageFull.html">ImageFull</a>
+  
+    <li><a href="../IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="../LoginController.html">LoginController</a>
+  
+    <li><a href="../LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="../LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="../MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="../MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="../PeerReview.html">PeerReview</a>
+  
+    <li><a href="../PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="../PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="../PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="../ResultsController.html">ResultsController</a>
+  
+    <li><a href="../Role.html">Role</a>
+  
+    <li><a href="../SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="../Search.html">Search</a>
+  
+    <li><a href="../SearchController.html">SearchController</a>
+  
+    <li><a href="../SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="../SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="../Session.html">Session</a>
+  
+    <li><a href="../Setup.html">Setup</a>
+  
+    <li><a href="../Tag.html">Tag</a>
+  
+    <li><a href="../TagController.html">TagController</a>
+  
+    <li><a href="../TagHelper.html">TagHelper</a>
+  
+    <li><a href="../Tagassign.html">Tagassign</a>
+  
+    <li><a href="../TestJsController.html">TestJsController</a>
+  
+    <li><a href="../TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="../TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="../VicConference.html">VicConference</a>
+  
+    <li><a href="../VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="../WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Admin::DefaultController</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2007 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add_badge" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_badge</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_badge-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 149</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_badge</span>
+                <span class="ruby-identifier">badge</span> = <span class="ruby-constant">PeerReview</span>.<span class="ruby-identifier">create</span>({})
+                <span class="ruby-identifier">err</span> = <span class="ruby-constant">ImageFull</span>.<span class="ruby-identifier">save_image</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">'image'</span>], <span class="ruby-identifier">badge</span>)
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">err</span>[<span class="ruby-value">:status</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:error</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-identifier">err</span>[<span class="ruby-value">:log_error</span>])
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-identifier">err</span>[<span class="ruby-value">:user_error</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:saved</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;OK:Badge updated&quot;</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:no_image</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;No image uploaded&quot;</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-comment">#               image = params['image']</span>
+<span class="ruby-comment">#               if image &amp;&amp; image</span>
+<span class="ruby-comment">#                       image = ImageFull.new({ :uploaded_data =&gt; image })</span>
+<span class="ruby-comment">#               end</span>
+<span class="ruby-comment">#               begin</span>
+<span class="ruby-comment">#                       badge.image_full = image</span>
+<span class="ruby-comment">#                       if badge.save</span>
+<span class="ruby-comment">#                               badge.image_full.save! if badge.image_full</span>
+<span class="ruby-comment">#                               flash = &quot;OK:Badge updated&quot;</span>
+<span class="ruby-comment">#                       else</span>
+<span class="ruby-comment">#                               flash = &quot;Error updating badge&quot;</span>
+<span class="ruby-comment">#                       end</span>
+<span class="ruby-comment">#               rescue</span>
+<span class="ruby-comment">#                       flash = &quot;ERROR: The image you have uploaded is too large or of the wrong type.&lt;br /&gt;The file name must end in .jpg, .png or .gif, and cannot exceed 1MB in size.&quot;</span>
+<span class="ruby-comment">#               end</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopAddBadgeUpload&quot;</span>, <span class="ruby-identifier">flash</span>)  <span class="ruby-comment"># This is loaded in the iframe and tells the dialog that the upload is complete.</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- add_badge-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_badge-method -->
+
+    
+      <div id="method-i-add_publication_image" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_publication_image</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_publication_image-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 179</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_publication_image</span>
+                <span class="ruby-identifier">publication_image</span> = <span class="ruby-constant">PublicationImage</span>.<span class="ruby-identifier">create</span>({})
+                <span class="ruby-identifier">err</span> = <span class="ruby-constant">ImageFull</span>.<span class="ruby-identifier">save_image</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">'image'</span>], <span class="ruby-identifier">publication_image</span>)
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">err</span>[<span class="ruby-value">:status</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:error</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-identifier">err</span>[<span class="ruby-value">:log_error</span>])
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-identifier">err</span>[<span class="ruby-value">:user_error</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:saved</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;OK:Publication image updated&quot;</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:no_image</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">flash</span> = <span class="ruby-string">&quot;No image uploaded&quot;</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-comment">#               image = params['image']</span>
+<span class="ruby-comment">#               if image &amp;&amp; image</span>
+<span class="ruby-comment">#                       image = ImageFull.new({ :uploaded_data =&gt; image })</span>
+<span class="ruby-comment">#               end</span>
+<span class="ruby-comment">#               begin</span>
+<span class="ruby-comment">#                       publication_image.image_full = image</span>
+<span class="ruby-comment">#                       if publication_image.save</span>
+<span class="ruby-comment">#                               publication_image.image_full.save! if publication_image.image_full</span>
+<span class="ruby-comment">#                               flash = &quot;OK:Publication image updated&quot;</span>
+<span class="ruby-comment">#                       else</span>
+<span class="ruby-comment">#                               flash = &quot;Error updating publication image&quot;</span>
+<span class="ruby-comment">#                       end</span>
+<span class="ruby-comment">#               rescue Exception =&gt; msg</span>
+<span class="ruby-comment">#                       flash = &quot;ERROR: The image you have uploaded is too large or of the wrong type.&lt;br /&gt;The file name must end in .jpg, .png or .gif, and cannot exceed 1MB in size.&quot;</span>
+<span class="ruby-comment">#               end</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopAddPublicationImageUpload&quot;</span>, <span class="ruby-identifier">flash</span>)  <span class="ruby-comment"># This is loaded in the iframe and tells the dialog that the upload is complete.</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- add_publication_image-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_publication_image-method -->
+
+    
+      <div id="method-i-change_group_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_group_type</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>def change_category</p>
+
+<pre class="ruby"><span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">exhibit_id</span>]
+<span class="ruby-identifier">category</span> = <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">category_id</span>]
+<span class="ruby-identifier">badge</span> = <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">badge_id</span>]
+<span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+           <span class="ruby-identifier">old_category</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">category</span>
+<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'category'</span>, <span class="ruby-identifier">category</span>)
+<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'badge_id'</span>, <span class="ruby-identifier">badge</span>)
+           <span class="ruby-keyword">if</span> <span class="ruby-identifier">category</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+                   <span class="ruby-identifier">index_exhibit</span>(<span class="ruby-identifier">exhibit_id</span>)
+           <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old_category</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+                   <span class="ruby-identifier">unindex_exhibit</span>(<span class="ruby-identifier">exhibit_id</span>)
+           <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">render</span> :<span class="ruby-identifier">partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_tr'</span>, :<span class="ruby-identifier">locals</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span> }
+</pre>
+
+<p>end</p>
+          
+
+          
+          <div class="method-source-code" id="change_group_type-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_group_type</span>
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_id</span>]
+        <span class="ruby-identifier">group_type</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_type</span>]
+        <span class="ruby-identifier">badge</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:badge_id</span>]
+        <span class="ruby-identifier">header_text_color</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:header_text_color</span>]
+        <span class="ruby-identifier">header_background_color</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:header_background_color</span>]
+        <span class="ruby-identifier">link_color</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:link_color</span>]
+        <span class="ruby-identifier">publication_image</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:publication_image_id</span>]
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-identifier">old_type</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span>
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'group_type'</span>, <span class="ruby-identifier">group_type</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'badge_id'</span>, <span class="ruby-identifier">badge</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'publication_image_id'</span>, <span class="ruby-identifier">publication_image</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'header_color'</span>, <span class="ruby-identifier">header_text_color</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'header_background_color'</span>, <span class="ruby-identifier">header_background_color</span>)
+        <span class="ruby-identifier">group</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-string">'link_color'</span>, <span class="ruby-identifier">link_color</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+                <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">adjust_indexing_all</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-value">:group_becomes_peer_reviewed</span>)
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">old_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+                <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">adjust_indexing_all</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-value">:group_leaves_peer_reviewed</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'group_tr'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_group_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_group_type-method -->
+
+    
+      <div id="method-i-delete_comment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_comment</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Delete a comment that has been flagged as abusive and notify all reporters
+and the original commenter of the action</p>
+          
+
+          
+          <div class="method-source-code" id="delete_comment-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_comment</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:comment</span>]
+        <span class="ruby-identifier">comment</span> = <span class="ruby-constant">DiscussionComment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">commenter</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">user_id</span>)
+        <span class="ruby-identifier">reporters</span> = <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">get_reporters</span>
+        <span class="ruby-constant">DiscussionComment</span>.<span class="ruby-identifier">delete_comment</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">current_user</span>, <span class="ruby-identifier">is_admin?</span>)
+        <span class="ruby-keyword">begin</span>
+                <span class="ruby-identifier">reporters</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">reporter</span> <span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">body</span> = <span class="ruby-node">&quot;Thanks for reporting the comment by #{commenter.fullname}. It has been removed.\n\n&quot;</span>
+                        <span class="ruby-constant">GenericMailer</span>.<span class="ruby-identifier">generic</span>(<span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">return_email</span>(), <span class="ruby-identifier">reporter</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">reporter</span>.<span class="ruby-identifier">email</span>, 
+                          <span class="ruby-string">&quot;Abusive Comment Report Accepted&quot;</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, 
+                          <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>), <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">deliver</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">body</span> = <span class="ruby-node">&quot;Your comment on #{comment.created_at } was considered inappropriate and has been removed by the administrator. The text of your comment was:\n\n&quot;</span>
+                <span class="ruby-identifier">body</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{self.class.helpers.strip_tags(comment.comment)}\n\n&quot;</span>
+                <span class="ruby-constant">GenericMailer</span>.<span class="ruby-identifier">generic</span>(<span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">return_email</span>(), <span class="ruby-identifier">commenter</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">commenter</span>.<span class="ruby-identifier">email</span>, 
+                   <span class="ruby-string">&quot;Abusive Comment Deleted&quot;</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>), <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">deliver</span>
+        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">msg</span>
+                <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;**** ERROR: Can't send email: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">message</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'forum_pending_reports'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_comment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete_comment-method -->
+
+    
+      <div id="method-i-get_user_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_user_list</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_user_list-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_user_list</span>
+        <span class="ruby-identifier">ret</span> = []
+
+        <span class="ruby-identifier">users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>()
+        <span class="ruby-comment"># On IE, there are lots of characters that cause</span>
+        <span class="ruby-comment"># the json to be illegal. We'll just replace most weird characters just in case.</span>
+        <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>({<span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[^-'a-zA-Z0-9_. ]/</span>, <span class="ruby-string">&quot;*&quot;</span>)})
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">to_json</span>()
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_user_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_user_list-method -->
+
+    
+      <div id="method-i-impersonate_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">impersonate_user</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="impersonate_user-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 223</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">impersonate_user</span>
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
+
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;*** ADMIN IS IMPERSONATING: #{user_id}&quot;</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">logged_in_user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">get_user</span>(<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">logged_in_user</span>
+                        <span class="ruby-identifier">set_current_user</span>(<span class="ruby-identifier">logged_in_user</span>)
+                        <span class="ruby-constant">LoginInfo</span>.<span class="ruby-identifier">record_login</span>(<span class="ruby-identifier">logged_in_user</span>)
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-string">&quot;/&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- impersonate_user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- impersonate_user-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>def index_exhibit(exhibit_id)</p>
+
+<pre>exhibit = Exhibit.find(exhibit_id)
+exhibit.index_exhibit(true)</pre>
+
+<p>end</p>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+        <span class="ruby-ivar">@use_test_index</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:use_test_index</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-refresh_cached_objects" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">refresh_cached_objects</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="refresh_cached_objects-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">refresh_cached_objects</span>
+  <span class="ruby-comment"># This reads all the items in the cached_resources table, and recreates the cached_properties table by retrieving the object from solr.</span>
+  <span class="ruby-comment"># TODO: If an object was collected but is no longer available, this will just ignore it. Instead, it should create a list for an administator to straighten out.</span>
+
+  <span class="ruby-comment"># TODO: If a user was deleted, all the user's collected objects and tags will still be in the system. We might want to weed out the cached_resources table</span>
+  <span class="ruby-comment"># based on the collected_items table.</span>
+  <span class="ruby-comment"># TODO: The tagassigns table has collected_item_ids. If we weed out collected_items, then we need to update that table, too.</span>
+  <span class="ruby-comment"># TODO: The cached_properties table may contain properties that are orphaned and don't have a valid cached resource id</span>
+
+  <span class="ruby-identifier">cached_resources</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">all</span>()
+  <span class="ruby-identifier">cached_resources</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cr</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">recache_properties</span>()
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'admin/default'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- refresh_cached_objects-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- refresh_cached_objects-method -->
+
+    
+      <div id="method-i-reload_facet_tree" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reload_facet_tree</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reload_facet_tree-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reload_facet_tree</span>()
+        <span class="ruby-identifier">refill_session_cache</span>()
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reload_facet_tree-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reload_facet_tree-method -->
+
+    
+      <div id="method-i-remove_abuse_report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_abuse_report</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remove a specific abuse report from a comment. Notify reporter that their
+report was canceled</p>
+          
+
+          
+          <div class="method-source-code" id="remove_abuse_report-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_abuse_report</span>
+        <span class="ruby-identifier">comment_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:comment</span>]
+        <span class="ruby-identifier">report_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:report</span>]
+        <span class="ruby-constant">DiscussionComment</span>.<span class="ruby-identifier">remove_abuse_report</span>(<span class="ruby-identifier">comment_id</span>, <span class="ruby-identifier">report_id</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'forum_pending_reports'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_abuse_report-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_abuse_report-method -->
+
+    
+      <div id="method-i-stats" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stats</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="stats-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">stats</span>
+        <span class="ruby-ivar">@show_all</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:show_all_stats</span>]
+        <span class="ruby-ivar">@login_stats</span> = <span class="ruby-constant">LoginInfo</span>.<span class="ruby-identifier">get_stats</span>()
+        <span class="ruby-ivar">@object_stats</span> = <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">get_stats</span>()
+        <span class="ruby-ivar">@archive_stats</span> = <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">get_archive_stats</span>()
+        <span class="ruby-ivar">@objects</span> = <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">all</span>().<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">updated_at</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">updated_at</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- stats-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- stats-method -->
+
+    
+      <div id="method-i-stats_show_all" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stats_show_all</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="stats_show_all-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">stats_show_all</span>
+        <span class="ruby-identifier">session</span>[<span class="ruby-value">:show_all_stats</span>] = <span class="ruby-identifier">session</span>[<span class="ruby-value">:show_all_stats</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span> <span class="ruby-operator">?</span> <span class="ruby-string">'false'</span> <span class="ruby-operator">:</span> <span class="ruby-string">'true'</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'stats'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- stats_show_all-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- stats_show_all-method -->
+
+    
+      <div id="method-i-use_test_index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">use_test_index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="use_test_index-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/default_controller.rb, line 138</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">use_test_index</span>
+            <span class="ruby-identifier">use_test</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:test</span>]
+            <span class="ruby-identifier">session</span>[<span class="ruby-value">:use_test_index</span>] = <span class="ruby-identifier">use_test</span>
+<span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'admin/default'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- use_test_index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- use_test_index-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

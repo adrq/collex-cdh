@@ -1,0 +1,29 @@
+<%# pagination -- params: int doc_id, string doc_uri, int page, int num_pages %>
+<% if show_complete == false %>
+   <div class="tw_edit_page_nav">
+<% else %>
+   <div class="tw_edit_page_nav_button">
+      <% if is_complete %>
+         <span class="tw-complete-msg">This text has been marked complete by a TypeWright user. It is under review by TypeWright administrators.</span>
+      <% else %>
+         <% if page == num_pages %>
+            <span class="tw-complete-msg" style="display: none" >This text has been marked complete by a TypeWright user. It is under review by TypeWright administrators.</span>
+            <input type="button" class="tw-complete-btn" value="Mark Document Complete"/>
+         <% end %>
+      <% end %>
+<% end %>
+
+	<%= link_to raw("Document Home"), "/typewright/documents/0?uri=#{doc_uri}\&src=#{@src}", {:class => "nav_link"} %>
+
+	<%= link_to "first", tw_create_url(doc_id, 1), { :class => 'nav_link tw_button_left tw_first_page' } if page > 1 %>&nbsp;
+	<%= link_to "prev", tw_create_url(doc_id, page-1), { :class => 'nav_link tw_button_left tw_prev_page' } if page > 1 %>&nbsp;&nbsp;&nbsp;
+	Page
+	<select id="tw_page" data-url='<%= tw_create_url(doc_id, nil) %>'>
+		<% num_pages.times { |i| %>
+			<option value="<%= i+1 %>"<%= " selected='selected'" if i+1 == page %>><%= i+1 %></option>
+		<% } %>
+	</select>&nbsp;&nbsp;&nbsp;
+	<%= link_to "next", tw_create_url(doc_id, page+1), { :class => 'nav_link tw_button_right tw_next_page' } if page < num_pages %>&nbsp;
+	<%= link_to "last", tw_create_url(doc_id, num_pages), { :class => 'nav_link tw_button_right tw_last_page' } if page < num_pages %>
+</div>
+<div class="tw_pagination_source"><%=raw tw_source(@src) %></div>

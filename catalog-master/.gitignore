@@ -1,0 +1,21 @@
+/.bundle
+/log/*
+/tmp/*
+/public/system/*
+/coverage/
+/.idea/
+/config/database.yml
+/config/secrets.yml
+
+
+# Ignore files from Ruby environment management applications
+.rvmrc
+.rbenv-version
+.ruby-version
+.ruby-gemset
+
+.project
+.capistrano
+/log/
+/tmp/
+/vendor/bundle/

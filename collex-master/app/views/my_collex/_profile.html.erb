@@ -1,0 +1,70 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# profile: params: ActiveRecord user, bool can_edit -%>
+<div class="profile_image">
+	<%= image_tag(get_user_picture(user.id, :full), :class => 'profile_image') %>
+<% if can_edit && user.image -%>
+	<br /><div class="profile_remove_picture"><%= link_to "Remove Picture", "/my_collex/remove_profile_picture", { :id => 'remove_picture', :method => 'post' } %></div>
+	<script type="text/javascript">
+		var createRemovePictureButton = function() {
+			var onButtonClick = function (e) {
+				postLink($("remove_picture-button").href);
+			};
+
+
+			new YAHOO.widget.Button('remove_picture', { onclick: { fn: onButtonClick } });
+			YAHOO.util.Event.onAvailable('remove_picture-button', function() {
+				$('remove_picture-button').writeAttribute('onclick', 'return false;');	// This keeps the '#' out of the address bar
+			}, this);
+		};
+		document.observe('dom:loaded', function() {
+			createRemovePictureButton();
+		});
+		try {
+			createRemovePictureButton();
+		} catch(e) {};
+	</script>
+<% end -%>
+</div>
+<% if can_edit -%>
+	<div class="profile_edit"><%= link_to_function "Edit Profile", "new EditProfileDialog('profile', '/my_collex/update_profile', #{user.to_json()}, '#{get_user_picture(user.id, :full)}');", :class => 'nav_link' %></div>
+<% end -%>
+<div class="profile_div"><span class="profile_label">Username:</span><span><%= user.username %></span><span>&nbsp;</span></div>
+<div class="profile_div"><span class="profile_label">Full name:</span><span><%= user.fullname %></span><span>&nbsp;</span></div>
+<% if can_edit || user.hide_email != 'true' %>
+<div class="profile_div"><span class="profile_label">Email:</span><span><%= user.email %></span><span>&nbsp;</span></div>
+<% end %>
+<% if can_edit %>
+<div class="profile_div"><span class="profile_label">&nbsp;</span><span><%= user.hide_email == 'true' ? '(Email address is hidden from other users)' : '(Email address is visible)' %></span><span>&nbsp;</span></div>
+<% end %>
+<div class="profile_div"><span class="profile_label">Institution:</span><span><%= user.institution %></span><span>&nbsp;</span></div>
+<div class="profile_div"><span class="profile_label">Link:</span><span><%= user.link != nil && user.link.length > 0 ? make_ext_link(user.link) : "" %></span><span>&nbsp;</span></div>
+<div class="profile_div">
+	<span class="profile_label">About me:</span>
+	
+	<% if !user.about_me.nil? && user.about_me.length > 0 %>
+		<span class="profile_paragraph"><%= user.about_me %></span>
+	<%else%>
+        <%if can_edit %>
+            <span class="profile_hint">You have not entered any information about yourself. Click
+                <%= link_to_function "here", "new EditProfileDialog('profile', '/my_collex/update_profile', #{user.to_json()}, '#{get_user_picture(user.id, :full)}');", :class => 'nav_link' %>
+                 to add a brief description.</span>
+        <%end%>
+	<%end%>
+	
+	<span>&nbsp;</span>
+</div>

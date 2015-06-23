@@ -1,0 +1,296 @@
+/* ------------------------------------------------------------------------
+//     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+//
+//     Licensed under the Apache License, Version 2.0 (the "License");
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+//
+//         http://www.apache.org/licenses/LICENSE-2.0
+//
+//     Unless required by applicable law or agreed to in writing, software
+//     distributed under the License is distributed on an "AS IS" BASIS,
+//     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//     See the License for the specific language governing permissions and
+//     limitations under the License.
+// ---------------------------------------------------------------------------- */
+
+body.federation-gla.pg-lvl2 {
+
+#edit_exhibit_outline {
+   padding: 0;
+
+   .selected_page {
+      background-color: #1A66AB;
+      padding: 1px;
+   }
+
+   .outline_tree_elements {
+      padding: 2px;
+   }
+
+   .outline_element {
+      border: 1px dashed #1A66AB;
+      padding: 4px 0px 4px 1px;
+      border-radius: 4px;
+
+      .count a {
+         background-color: #1A66AB;
+         margin: 2px;
+         border-radius: 10px;
+      }
+   }
+
+   .outline_tree_element_selected {
+      border: 1px dashed #1A66AB;
+      background-color: #C0DAF3;
+   }
+}
+
+.search_help_tooltip {
+   color: #335;
+   border: 1px solid #06224C;
+   border-radius: 5px;
+   background-color: #C0DAF3;
+   box-shadow: 2px 2px 10px #ccc;
+}
+
+.empty_list_text {
+  color: #1a66ab; 
+}
+
+.my_discussions li {
+   border-bottom: 0;  
+}
+
+.breadcrumbs {
+   background-color: #1a66ab;
+   color: white;
+   padding: 4px 0 1px 5px;
+   margin: 10px 00px 10px 00px;
+   a {
+      color: white;
+   }
+}
+
+.search_error_message {
+   width: auto;
+   margin: 0 auto 16px auto;  
+   background-color: cornsilk;
+   color: #b00;
+   border: 1px solid #b00;
+   border-radius: 5px;
+}
+
+#tag_explanation {
+  background-color: #C0DAF3;
+  margin-top: 1em;
+  margin-left: 3em;
+  margin-right: 900px;
+  min-width: 325px;
+  max-width: 500px;
+  font-size: 13px;
+  padding: 5px;
+  border: 1px solid #06224C;
+  border-radius: 5px;
+}
+
+.category-btn {
+  font-weight:bold;
+  cursor: pointer;
+  img {
+    margin-right:16px;
+  }
+}
+
+.search_name_facet {
+   background-color: #eff5ff;
+   border: 1px solid #06224C;
+   border-radius: 5px;
+}
+
+td.limit_to_lvl3 {
+  padding-left: 50px;
+}
+
+a.uri_link {
+   color: #55d;   
+}
+
+#nav_container {
+ top: 113px;
+ right: 35px;
+}
+
+#header_left {
+	width:328px;
+	height:100px;
+	float:left;
+	margin: 5px 0 0 5px;
+	background:image-url('gla/gla_logo_sm.png') top left no-repeat;
+}
+
+#header_right {
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  a {
+   margin-right: 2px;
+   color: white;
+   font-size: 1.0em;
+  }
+}
+
+#header_container {
+   position: relative;
+   width:100%;
+   height:135px;
+   background:image-url('gla/website_banner_bkgrnd.png') top left repeat-x;
+   border-bottom: 1px solid #06224C;
+   background-color: #1A66AB;
+   #menu-bkg {
+      background-color: #06224C;
+      height: 25px;
+      position: relative;
+      top: 110px;
+      opacity: 0.8;
+   }
+}
+
+div.new_exhibit_link {
+   border-bottom: 1px solid #06224C;
+   margin-bottom: 3px;
+}
+div.side_bar_exhibit_spacer {
+  border-bottom: 1px solid #06224C; 
+}
+a.my_collex_link {
+   left: 37px;
+   top: 113px;
+}
+
+table.query {
+  border-top: 1px solid #B0CAE3;
+  border-left: 0; 
+}
+td.query_term, td.query_remove, td.saved_search_link {
+  border-right: 1px solid #B0CAE3;
+  border-bottom: 1px solid #B0CAE3;
+}
+
+.my_collex_link_current {
+	border-radius: 5px 5px 0 0 ;
+	background-color: white;
+   color: #06224C;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   font-size: 0.75em;
+   margin-right: 2px;
+   padding: 4px 5px 2px 5px;
+   border: 1px solid #06224C;
+   border-bottom: 1px solid white;
+   height: 15px;
+   left: 37px;
+   top: 113px;
+}
+
+.right_column {
+    padding: 0px 0px 0px 0px;
+    border: 1px solid #06224C;
+  }
+
+.right_column_header {
+	color:white;
+	background:#06224C;
+}
+
+.limit_to th {
+	background:#1a66ab;
+	color:white;
+	text-align: left;
+}
+
+.new_search {
+   font-size: 0.6em;
+   border-radius: 4px;
+   color: white;
+   background-color: #1a66ab;
+   border: 1px solid #036;
+   cursor: pointer;
+   &:hover {
+      background-color: #49c;
+   }
+}
+
+.result_row_collected {
+	background:transparent image-url('gla/search_collected_gradient.jpg') repeat-y;
+	border-radius: 10px 0 0 10px;
+}
+
+.FP_attachment_collected {
+   border: 1px solid;
+   border-radius: 5px;
+   background: white;
+}
+
+#group_details {
+	background: none;
+}
+
+.free_culture {
+	background-image: image-url('gla/free_culture.gif');
+}
+
+.full_text {
+	background-image: image-url('gla/full_text.gif');
+}
+
+.has_xml_source {
+	background-image: image-url('gla/has_xml_source.gif');
+}
+
+.free_culture:hover {
+	background-image: image-url('gla/free_culture_hover.gif');
+}
+
+.full_text:hover {
+	background-image: image-url('gla/full_text_hover.gif');
+	width:5em;
+}
+
+.has_xml_source:hover {
+	background-image: image-url('gla/has_xml_source.gif');
+	width:5em;
+}
+
+.can_typewright {
+  background-image: image-url('type_wright/collex/typewright_icon.png');
+}
+
+.can_typewright:hover {
+  background-image: image-url('type_wright/collex/typewright_icon_hover.png');
+}
+
+#group_license {
+	background: #371911;
+}
+
+.superscript {
+   color: #06224C;
+}
+
+.exhibit_nextlink a,  .exhibit_prevlink a{
+  background: #1A66AB none repeat scroll 0 0;
+  border: 1px solid #06224C;
+  clear: both;
+  font-size: 1.1em;
+  margin: 1em 0;
+  padding: 3px 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  &:hover {
+      background-color: #49c;
+   }
+}
+
+}

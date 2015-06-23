@@ -1,0 +1,53 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<h1>Editing exhibit_element</h1>
+
+<%= error_messages_for :exhibit_element %>
+
+<%= form_for(@exhibit_element) do |f| %>
+  <p>
+    <b>Exhibit page</b><br />
+    <%= f.text_field :exhibit_page_id %>
+  </p>
+
+  <p>
+    <b>Position</b><br />
+    <%= f.text_field :position %>
+  </p>
+
+  <p>
+    <b>Border type enum</b><br />
+    <%= f.text_field :border_type_enum %>
+  </p>
+
+  <p>
+    <b>Exhibit element layout type</b><br />
+    <%= f.text_field :exhibit_element_layout_type %>
+  </p>
+
+  <p>
+    <b>Element test</b><br />
+    <%= f.text_area :element_text %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @exhibit_element, :class => 'nav_link' %> |
+<%= link_to 'Back', exhibit_elements_path, :class => 'nav_link' %>

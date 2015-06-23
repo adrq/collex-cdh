@@ -1,0 +1,55 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<rss version="0.91">
+<% base_url = 'http://' + request.host_with_port() -%>
+
+	<channel>
+		<title><%= Setup.site_name() %> Tag: <%= escape_for_xml(@tag) %></title>
+		<link><%= base_url %>/tags/results?tag=<%= escape_for_xml(@tag) %>&amp;view=tag</link>
+		<description>nineteenth-century studies online</description>
+		<language>en-us</language>
+
+		<image>
+			<title><%= Setup.site_name() %></title>
+			<url><%= base_url %><%= image_path(DEFAULT_THUMBNAIL_IMAGE_PATH) %></url>
+			<link><%= base_url %></link>
+			<width>83</width>
+			<height>83</height>
+		</image>
+
+<% for hit in @results -%>
+		<item>
+			<title><%= escape_for_xml(hit["title"])%></title>
+			<link><%= base_url %>/tags/object?uri=<%= CGI.escape(escape_for_xml(hit['uri'])) %></link>
+			<description>
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;
+							Resource:
+						&lt;/td&gt;
+						&lt;td&gt;
+							&lt;a href=&quot;<%= escape_for_xml(hit["url"]) %>&quot;&gt;<%= escape_for_xml(hit["url"]) %>&lt;/a&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;
+					<%= escape_for_xml(render(:partial => '/results/hit_body', :locals => { :hit => hit, :row_id => 'row', :index => -1, :no_links => true })) %>
+				&lt;/table&gt;
+			</description>
+		</item>
+<% end -%>
+	</channel>
+ </rss>

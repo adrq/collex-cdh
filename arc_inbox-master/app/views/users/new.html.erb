@@ -1,0 +1,27 @@
+<% title "New User Account" %>
+<% main_header "Create a new user account." -%>
+<% extra_button "" -%>
+<% instructions "Important: be sure to set the correct role for this user. A contributor can create new submissions, delete submissions, and resubmit. An editor can do that, plus see everybody's submissions, can change statuses, and can add user accounts. " -%>
+
+<%= errors_for @user %>
+<%= form_for :user, action: "/signup", method: 'POST' do |f| %>
+<div class="field-label">
+<p><label for="role">Role</label><br/>
+<%= raw User.create_role_combo(f) %>
+<br />
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="real_name">Full Name</label><br/>
+<%= f.text_field :real_name %></p>
+
+<p><label for="institution">Institution</label><br/>
+<%= f.text_field :institution %></p>
+
+<p><%= submit_tag 'Add user' %></p>
+</div>
+<% end -%>
+
+<div class="navigation">
+<%= link_to "Cancel", editor_path %>
+</div>

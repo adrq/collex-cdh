@@ -1,0 +1,97 @@
+<h1>Listing collections</h1>
+
+<table class="collections">
+  <tr class="collections">
+    <th class="collections">Contributor</th>
+    <th class="collections">Last editor</th>
+    <th class="collections">Latest file</th>
+    <th class="collections">Current status</th>
+    <th class="collections">Classification</th>
+    <th class="collections">Notes</th>
+    <th class="collections">Admin Notes</th>
+    <th class="collections">Project Name</th>
+    <th class="collections">Project URL</th>
+    <th class="collections">Default thumbnail</th>
+  </tr>
+
+<% for collection in @collections %>
+  <tr class="collections">
+    <td class="collections"><%=h collection.contributor.real_name unless collection.contributor == nil%></td>
+    <td class="collections"><%=h collection.last_editor.real_name unless collection.last_editor == nil %></td>
+    <td class="collections"><%=h collection.get_orig_filename %></td>
+    <td class="collections"><%=h Collection.to_status_string(collection.current_status) %></td>
+    <td class="collections"><%=h Collection.to_classification_string(collection.classification) %></td>
+    <td class="collections"><%=h collection.notes %></td>
+    <td class="collections"><%=h collection.admin_notes %></td>
+    <td class="collections"><%=h collection.project_name %></td>
+    <td class="collections"><%=h collection.project_url %></td>
+    <td class="collections"><%=h collection.default_thumbnail %></td>
+    <td><%= link_to 'Edit', edit_collection_path(collection) %></td>
+    <td><%= link_to 'Destroy', collection, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h1>Files</h1>
+<table class="collections">
+  <tr class="collections">
+    <th class="collections">Original name</th>
+    <th class="collections">Received name</th>
+  </tr>
+
+<%  @uploaded_files = UploadedFile.find(:all)
+for uploaded_file in @uploaded_files %>
+  <tr class="collections">
+    <td class="collections"><%=h uploaded_file.original_name %></td>
+    <td class="collections"><%=h uploaded_file.received_name %></td>
+    <td class="collections"><%= link_to 'Edit', edit_uploaded_file_path(uploaded_file) %></td>
+    <td class="collections"><%= link_to 'Destroy', uploaded_file, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h1>Users</h1>
+<table class="collections">
+  <tr class="collections">
+    <th class="collections">Role</th>
+    <th class="collections">Full Name</th>
+    <th class="collections">Institution</th>
+    <th class="collections">Email</th>
+    <th class="collections">Disabled?</th>
+  </tr>
+
+<%   @users = User.find(:all)
+for user in @users %>
+  <tr class="collections">
+    <td class="collections"><%=h User.to_role_string(user.role) %></td>
+    <td class="collections"><%=h user.real_name %></td>
+    <td class="collections"><%=h user.institution %></td>
+    <td class="collections"><%=h user.email %></td>
+    <td class="collections"><%=h user.disabled %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h1>Editorial Board</h1>
+<table class="collections">
+  <tr class="collections">
+    <th class="collections">Name</th>
+    <th class="collections">Email</th>
+    <th class="collections">Classification</th>
+  </tr>
+
+<%   @editorial_board_member = EditorialBoardMember.find(:all)
+for editorial_board_member in @editorial_board_member %>
+  <tr class="collections">
+    <td class="collections"><%=h editorial_board_member.name %></td>
+    <td class="collections"><%=h editorial_board_member.email %></td>
+    <td class="collections"><%=h Collection.to_classification_string(editorial_board_member.classification) %></td>
+    <td><%= link_to 'Edit', edit_editorial_board_member_path(editorial_board_member) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

@@ -1,0 +1,35 @@
+<%= render :partial => "/layouts/dependencies" %>
+<script type="text/javascript">
+    /* Remove the unauthenticated login_container and get the authenticated one */
+    get_login_slider = function () {
+        old_login_container = '';
+        if ($('login_container')) {
+            old_login_container = $('login_container').innerHTML;
+        }
+        new Ajax.Request('/login_slider',
+                {
+                    method:'get',
+                    onSuccess: function(transport) {
+                        $('login_container').innerHTML = transport.responseText;
+                        if (!$('login_container').innerHTML.match(/LOG\s*IN/)) {
+                            if ($('header_right')) {
+                                $('header_right').hide();
+                            }
+                        }
+                    },
+                    onFailure: function() {
+                        if ($('header_right')) {
+                            $('header_right').show();
+                        }
+                        if ($('login_container')) {
+                            $('login_container').innerHTML = old_login_container;
+                        }
+                    }
+                });
+    }
+    Event.observe(window, 'load', get_login_slider);
+</script>
+~~~~~~~~~~
+<%= render :partial => "/layouts/header" %>
+~~~~~~~~~~
+<%= render :partial => "/layouts/footer" %>

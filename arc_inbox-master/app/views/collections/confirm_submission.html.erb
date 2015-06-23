@@ -1,0 +1,42 @@
+<% title "Submission Acknowledgement" %>
+<% collection = Collection.find(:first, :conditions => [ "id = ?", params[:id] ] ) -%>
+
+<% main_header "Thank you, #{h collection.contributor.real_name}." -%>
+<% extra_button "" -%>
+<% instructions "Your submission has been entered into the ARC system to be reviewed. You will receive a confirmation email shortly. An editor will look at this submission and inform you of any problems discovered as soon as possible." -%>
+
+<br />
+<br />
+<h2>Your submission:</h2>
+<big><table>
+	<tr>
+		<td width="30" />
+		<td class="field-label">Project Name:</td>
+		<td class="fields"><%=h collection.project_name %></td>
+	</tr>
+	<tr>
+		<td width="30" />
+		<td class="field-label">Project URL:</td>
+		<td class="fields"><%=h collection.project_url %></td>
+	</tr>
+	<tr>
+		<td width="30" />
+		<td class="field-label">Default Thumbnail:</td>
+		<td class="fields"><%=h collection.default_thumbnail %></td>
+	</tr>
+	<tr>
+		<td width="30" />
+		<td class="field-label">Latest file:</td>
+		<td class="fields"><%=h collection.get_orig_filename %></td>
+	</tr>
+	<tr>
+		<td width="30" />
+		<td class="field-label">Notes:</td>
+		<td class="fields"><%=h collection.notes %></td>
+	</tr>
+</table></big>
+<br />
+<br />
+<div class="navigation">
+<%= link_to "Continue", contributor_path %>
+</div>

@@ -1,0 +1,137 @@
+/* ------------------------------------------------------------------------
+//     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+//
+//     Licensed under the Apache License, Version 2.0 (the "License");
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+//
+//         http://www.apache.org/licenses/LICENSE-2.0
+//
+//     Unless required by applicable law or agreed to in writing, software
+//     distributed under the License is distributed on an "AS IS" BASIS,
+//     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//     See the License for the specific language governing permissions and
+//     limitations under the License.
+// ---------------------------------------------------------------------------- */
+
+#nav_container {
+}
+
+.tab_link {
+	height:29px;
+	width:71px;
+	float:right;
+	font-weight:bold;
+	text-decoration:none;
+	padding-top:9px;
+}
+
+.tab_link:hover {
+	text-decoration:underline;
+}
+
+.tab_link_current {
+	height:29px;
+	width:71px;
+	float:right;
+	color:black;
+	font-weight:bold;
+	text-decoration:none;
+	padding-top:9px;
+}
+
+.tab_link_current:active, .tab_link_current:visited, .tab_link_current:hover {
+	color:#55220F;
+}
+
+.tab_link_current:hover {
+	text-decoration:underline;
+}
+
+.tab_link_long {
+	height:29px;
+	width:100px;
+	float:right;
+	font-weight:bold;
+	text-decoration:none;
+	padding-top:9px;
+}
+
+.tab_link_long:hover {
+	text-decoration:underline;
+}
+
+.tab_link_long_current {
+	height:29px;
+	width:100px;
+	float:right;
+	color:black;
+	font-weight:bold;
+	text-decoration:none;
+	padding-top:9px;
+}
+
+.tab_link_long_current:hover {
+	text-decoration:underline;
+}
+
+#subnav_container{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.90em;
+	padding:5px 20px 0px 20px;
+	color:#999999;
+}
+
+.breadcrumbs {
+	margin:10px 20px 10px 20px;
+	background-color: #eeeeee;
+	font-family: sans-serif;
+	font-size: .9em;
+}
+
+#login_container{
+	float:left;
+}
+
+#subnav_links_container {
+	float:right;
+}
+
+.subpage_nav {
+	text-align: center;
+	background-color: #eeeeee;
+}
+
+.bottom_nav {
+	padding-top: 1em;
+}
+
+.search_result_buttons {
+	float: right;
+	width: 82px;
+	margin-left:10px;
+}
+
+.search_result_buttons a, .search_result_buttons button {
+	height: 23px;
+	width:80px;
+	float: right;
+	margin-bottom: 4px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	padding-top: 2px;
+	display: block;
+	text-decoration: none;
+	border: none;
+}
+
+.search_result_buttons a.hidden {
+	display: none;
+}
+
+button.nav_link, button.modify_link {
+	border: none;
+	background: transparent;
+	text-align: left;
+}

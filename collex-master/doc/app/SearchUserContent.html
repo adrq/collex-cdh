@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class SearchUserContent - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/search_user_content.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-index">::index</a>
+    
+    <li><a href="#method-i-commit">#commit</a>
+    
+    <li><a href="#method-i-find_objects">#find_objects</a>
+    
+    <li><a href="#method-i-num_objs">#num_objs</a>
+    
+    <li><a href="#method-i-reindex_all">#reindex_all</a>
+    
+    <li><a href="#method-i-reindex_cluster">#reindex_cluster</a>
+    
+    <li><a href="#method-i-reindex_exhibit">#reindex_exhibit</a>
+    
+    <li><a href="#method-i-reindex_group">#reindex_group</a>
+    
+    <li><a href="#method-i-reindex_thread">#reindex_thread</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class SearchUserContent</h1>
+
+  <div id="description" class="description">
+    <hr style="height: 10px">
+
+<pre>Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+<hr style="height: 10px">
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">(type, id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>the entry points for the delayed tasks. This takes a string with the type
+of object and the id of that object.</p>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">start_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+        <span class="ruby-comment">#Delayed::Worker.logger.warn(&quot;LOG:UserContentIndexing at #{start_time}&quot;)</span>
+        <span class="ruby-identifier">suc</span> = <span class="ruby-constant">SearchUserContent</span>.<span class="ruby-identifier">new</span>
+
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'exhibit'</span>
+                        <span class="ruby-identifier">obj</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+                        <span class="ruby-identifier">title</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">title</span>
+                        <span class="ruby-identifier">suc</span>.<span class="ruby-identifier">reindex_exhibit</span>(<span class="ruby-identifier">obj</span>)
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'group'</span>
+                        <span class="ruby-identifier">obj</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+                        <span class="ruby-identifier">title</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">name</span>
+                        <span class="ruby-identifier">suc</span>.<span class="ruby-identifier">reindex_group</span>(<span class="ruby-identifier">obj</span>)
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'cluster'</span>
+                        <span class="ruby-identifier">obj</span> = <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+                        <span class="ruby-identifier">title</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">name</span>
+                        <span class="ruby-identifier">suc</span>.<span class="ruby-identifier">reindex_cluster</span>(<span class="ruby-identifier">obj</span>)
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'thread'</span>
+                        <span class="ruby-identifier">obj</span> = <span class="ruby-constant">DiscussionThread</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+                        <span class="ruby-identifier">title</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">get_title</span>()
+                        <span class="ruby-identifier">suc</span>.<span class="ruby-identifier">reindex_thread</span>(<span class="ruby-identifier">obj</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">suc</span>.<span class="ruby-identifier">commit</span>()
+
+        <span class="ruby-identifier">num_objs</span> = <span class="ruby-identifier">suc</span>.<span class="ruby-identifier">num_objs</span>()
+        <span class="ruby-identifier">duration</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start_time</span>
+        <span class="ruby-constant">SearchUserContent</span>.<span class="ruby-identifier">create!</span>({<span class="ruby-value">:last_indexed</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>, <span class="ruby-value">:obj_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{type}:#{id} #{title}&quot;</span>, <span class="ruby-value">:seconds_spent_indexing</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">duration</span>, <span class="ruby-value">:objects_indexed</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num_objs</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-commit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">commit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="commit-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">commit</span>()
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">local_commit</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- commit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- commit-method -->
+
+    
+      <div id="method-i-find_objects" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_objects</span><span
+            class="method-args">(options)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>The results depend on what is visible to the user. We want hits where:</pre>
+
+<p>Exhibits/Groups/Clusters are only visible on one of the three page types,
+depending on whether it is peer-reviewed, community, or classroom.</p>
+
+<p>Exhibits:</p>
+<ul><li>
+<p>if it is not in a group, it is visible if it is shared.</p>
+</li><li>
+<p>if it is in a community or classroom group, it is visible if it is shared
+with the web, or the user is a member of the group and it is</p>
+
+<pre>shared to the group, or the user is an admin of the group and it is shared with the admins.</pre>
+</li><li>
+<p>if it is in a peer-reviewed group, it has the same rules as the community
+groups, but it is NOT visible if it is pending peer-review.</p>
+</li></ul>
+
+<p>(Note that if the exhibit is owned by the user, it isn’t automatically
+visible. It still has to meet the criteria above.)</p>
+
+<p>Groups</p>
+<ul><li>
+<p>All Groups are always visible</p>
+</li></ul>
+
+<p>Clusters</p>
+<ul><li>
+<p>visible if cluster is shared to web</p>
+</li><li>
+<p>visible if user is a member and cluster is shared to group</p>
+</li><li>
+<p>visible if user is a group admin and cluster is shared to group admins</p>
+</li></ul>
+
+<p>Note:</p>
+<ul><li>
+<p>groups are explicitly given peer-reviewed/community/classroom type.</p>
+</li><li>
+<p>clusters have the same type as the group they are in.</p>
+</li><li>
+<p>Exhibits that are in groups have the same type as the group they are in.</p>
+</li><li>
+<p>Exhibits that are not in a group are given the Community type unless the
+Collex administrator overrides that.</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="find_objects-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_objects</span>(<span class="ruby-identifier">options</span>)
+        <span class="ruby-comment"># returns: { total_hits =&gt; int, num_pages =&gt; int, hits =&gt; [ ActiveRecord: Exhibit,Cluster,Group ] }</span>
+
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:user_id</span>]   <span class="ruby-comment"># int</span>
+        <span class="ruby-identifier">member</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">get_all_users_groups</span>(<span class="ruby-identifier">user_id</span>)
+        <span class="ruby-identifier">admin</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">get_all_users_admins</span>(<span class="ruby-identifier">member</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-identifier">options</span>[<span class="ruby-value">:member</span>] = <span class="ruby-identifier">member</span>
+        <span class="ruby-identifier">options</span>[<span class="ruby-value">:admin</span>] = <span class="ruby-identifier">admin</span>
+
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">ret</span> = <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">search_user_content</span>(<span class="ruby-identifier">options</span>)
+        <span class="ruby-identifier">hits</span> = []
+        <span class="ruby-comment"># We have to be careful: an object can be deleted and still be in the index until the next reindexing</span>
+        <span class="ruby-identifier">ret</span>[<span class="ruby-value">:hits</span>].<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'object_type'</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'Exhibit'</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">rec</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'object_id'</span>])
+                        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:obj</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>, <span class="ruby-value">:last_modified</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'last_modified'</span>], <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'text'</span>] }) <span class="ruby-keyword">if</span> <span class="ruby-identifier">rec</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'Group'</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">rec</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'object_id'</span>])
+                        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:obj</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>, <span class="ruby-value">:last_modified</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'last_modified'</span>], <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'text'</span>] }) <span class="ruby-keyword">if</span> <span class="ruby-identifier">rec</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'Cluster'</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">rec</span> = <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'object_id'</span>])
+                        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:obj</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>, <span class="ruby-value">:last_modified</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'last_modified'</span>], <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'text'</span>] }) <span class="ruby-keyword">if</span> <span class="ruby-identifier">rec</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">'DiscussionThread'</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">rec</span> = <span class="ruby-constant">DiscussionThread</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'object_id'</span>])
+                        <span class="ruby-identifier">hits</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:obj</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rec</span>, <span class="ruby-value">:last_modified</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'last_modified'</span>], <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'text'</span>] }) <span class="ruby-keyword">if</span> <span class="ruby-identifier">rec</span>
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-identifier">page_size</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:page_size</span>]       <span class="ruby-comment">#int</span>
+
+        <span class="ruby-identifier">total_hits</span> = <span class="ruby-identifier">ret</span>[<span class="ruby-value">:total_hits</span>]
+        <span class="ruby-identifier">num_pages</span> = ((<span class="ruby-value">0.0</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">total_hits</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">page_size</span>).<span class="ruby-identifier">ceil</span>
+
+        <span class="ruby-keyword">return</span> { <span class="ruby-value">:total_hits</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">total_hits</span>, <span class="ruby-value">:total</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ret</span>[<span class="ruby-value">:total</span>], <span class="ruby-value">:num_pages</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num_pages</span>, <span class="ruby-value">:hits</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hits</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find_objects-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find_objects-method -->
+
+    
+      <div id="method-i-num_objs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_objs</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_objs-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_objs</span>()
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">total_user_content</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_objs-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_objs-method -->
+
+    
+      <div id="method-i-reindex_all" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reindex_all</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reindex_all-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 207</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_all</span>()
+        <span class="ruby-identifier">start_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>()
+        <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">start_reindex</span>()
+
+        <span class="ruby-identifier">exhibits</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">all</span>
+        <span class="ruby-identifier">exhibits</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">exhibit</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">reindex_exhibit</span>(<span class="ruby-identifier">exhibit</span>)
+        }
+
+        <span class="ruby-identifier">groups</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">all</span>
+        <span class="ruby-identifier">groups</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">reindex_group</span>(<span class="ruby-identifier">group</span>)
+        }
+
+        <span class="ruby-identifier">clusters</span> = <span class="ruby-constant">Cluster</span>.<span class="ruby-identifier">all</span>
+        <span class="ruby-identifier">clusters</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">cluster</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">reindex_cluster</span>(<span class="ruby-identifier">cluster</span>)
+        }
+
+        <span class="ruby-identifier">threads</span> = <span class="ruby-constant">DiscussionThread</span>.<span class="ruby-identifier">all</span>
+        <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">thread</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">reindex_thread</span>(<span class="ruby-identifier">thread</span>)
+        }
+
+        <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">local_commit</span>()
+        <span class="ruby-identifier">duration</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start_time</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">duration</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reindex_all-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reindex_all-method -->
+
+    
+      <div id="method-i-reindex_cluster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reindex_cluster</span><span
+            class="method-args">(cluster)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reindex_cluster-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_cluster</span>(<span class="ruby-identifier">cluster</span>)
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-identifier">section</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span> <span class="ruby-operator">?</span> <span class="ruby-string">'community'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span>
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">add_local_object</span>(<span class="ruby-string">&quot;Cluster&quot;</span>, <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">id</span>, <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-identifier">section</span>, <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">name</span>, <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">strip_tags</span>(<span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">description</span>), <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">updated_at</span>, <span class="ruby-identifier">cluster</span>.<span class="ruby-identifier">visibility</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reindex_cluster-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reindex_cluster-method -->
+
+    
+      <div id="method-i-reindex_exhibit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reindex_exhibit</span><span
+            class="method-args">(exhibit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reindex_exhibit-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_exhibit</span>(<span class="ruby-identifier">exhibit</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                        <span class="ruby-identifier">section</span> = <span class="ruby-string">'community'</span>
+                        <span class="ruby-identifier">visibility_type</span> = <span class="ruby-string">'everyone'</span>
+                        <span class="ruby-identifier">visibility_id</span> = <span class="ruby-value">0</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+                        <span class="ruby-identifier">section</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span>
+                        <span class="ruby-identifier">section</span> = <span class="ruby-string">'community'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> <span class="ruby-operator">==</span> <span class="ruby-value">5</span>
+                        <span class="ruby-identifier">visibility_type</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">get_exhibit_visibility</span>(<span class="ruby-identifier">exhibit</span>)
+                        <span class="ruby-identifier">visibility_id</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">add_local_object</span>(<span class="ruby-string">&quot;Exhibit&quot;</span>, <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">id</span>, <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-identifier">section</span>, <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">title</span>, <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">get_all_text</span>(), <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">last_change</span>, <span class="ruby-identifier">visibility_type</span>, <span class="ruby-identifier">visibility_id</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">remove_local_object</span>(<span class="ruby-string">&quot;Exhibit&quot;</span>, <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">id</span>, <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>())
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reindex_exhibit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reindex_exhibit-method -->
+
+    
+      <div id="method-i-reindex_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reindex_group</span><span
+            class="method-args">(group)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reindex_group-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_group</span>(<span class="ruby-identifier">group</span>)
+        <span class="ruby-identifier">section</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span> <span class="ruby-operator">?</span> <span class="ruby-string">'community'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span>
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">add_local_object</span>(<span class="ruby-string">&quot;Group&quot;</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>, <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-identifier">section</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">name</span>, <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">strip_tags</span>(<span class="ruby-identifier">group</span>.<span class="ruby-identifier">description</span>), <span class="ruby-identifier">group</span>.<span class="ruby-identifier">updated_at</span>, <span class="ruby-string">'everyone'</span>, <span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reindex_group-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reindex_group-method -->
+
+    
+      <div id="method-i-reindex_thread" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reindex_thread</span><span
+            class="method-args">(thread)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reindex_thread-source">
+            <pre><span class="ruby-comment"># File app/models/search_user_content.rb, line 187</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_thread</span>(<span class="ruby-identifier">thread</span>)
+        <span class="ruby-comment"># TODO-PER: there are different rules for how visibility is done for forums</span>
+        <span class="ruby-identifier">visibility</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">get_discussion_visibility</span>(<span class="ruby-identifier">thread</span>)
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">group_id</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">section</span> = <span class="ruby-string">'community'</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+                <span class="ruby-identifier">section</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">text</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">comments</span> = <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">discussion_comments</span>
+        <span class="ruby-identifier">comments</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">comment</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">text</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">strip_tags</span>(<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">comment</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\n&quot;</span>
+        }
+        <span class="ruby-identifier">section</span> = <span class="ruby-identifier">section</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span> <span class="ruby-operator">?</span> <span class="ruby-string">'community'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">section</span>
+        <span class="ruby-ivar">@solr</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create_user</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@solr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@solr</span>.<span class="ruby-identifier">add_local_object</span>(<span class="ruby-string">&quot;DiscussionThread&quot;</span>, <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">id</span>, <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-identifier">section</span>, <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">title</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">thread</span>.<span class="ruby-identifier">updated_at</span>, <span class="ruby-identifier">visibility</span>, <span class="ruby-identifier">group_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reindex_thread-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reindex_thread-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

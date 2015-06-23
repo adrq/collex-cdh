@@ -1,0 +1,155 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<% current_page "View Exhibit" -%>
+<style type="text/css">
+	.gd_message_box_label {
+		font-family: <%= @exhibit.get_font_name('footnote') %>;
+		font-size: <%= @exhibit.get_font_size('footnote') %>px;
+	}
+</style>
+<% if Group.is_peer_reviewed_group(@exhibit) -%>
+<span class="Z3988"
+title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft_id=<%= request.url %>&amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator&amp;rft.genre=book&amp;rft.btitle=<%= CGI::escape(@exhibit.title.gsub('&quot;', '"').gsub('&amp;', '&')) %>&amp;rft.title=<%= CGI::escape(@exhibit.title.gsub('&quot;', '"').gsub('&amp;', '&')) %>&amp;rft.aulast=<%= CGI::escape(@exhibit.get_apparent_author_name()) %>&amp;rft.aufirst=&amp;rft.au=<%= CGI::escape(@exhibit.get_apparent_author_name()) %>&amp;rft.date=<%= CGI::escape(@exhibit.updated_at.strftime('%Y')) %>">
+&nbsp;
+</span>
+<% group = Group.find(@exhibit.group_id) -%>
+<style type="text/css">
+<% if group.link_color.length > 0 -%>
+	.nav_link, .nav_link:link, .nav_link:visited {
+		color:#<%= group.link_color %>;
+	}
+	.superscript {
+		color:#<%= group.link_color %>;
+	}
+	.nines_link:link {
+		color:#<%= group.link_color %>;
+	}
+	.nines_link:hover {
+		background-color:#<%= group.link_color %>;
+		color: white;
+	}
+	.ext_link:link {
+		color:#<%= group.link_color %>;
+	}
+	.ext_link:hover {
+		background-color:#<%= group.link_color %>;
+		color: white;
+	}
+<% end -%>
+
+<% if group.header_color.length > 0 -%>
+	.publication_header {
+		color: #<%= group.header_color %>;
+	}
+	.publication_header .nav_link:link, .publication_header .nav_link:visited {
+		color: #<%= group.header_color %>;
+	}
+	.exhibit_footer {
+		color: #<%= group.header_color %>;
+	}
+	.exhibit_footer a:link, .exhibit_footer a:visited {
+		color: #<%= group.header_color %>;
+	}
+<% end -%>
+<% if group.header_background_color != nil && group.header_background_color.length > 0 -%>
+	.publication_header {
+		background-color: #<%= group.header_background_color %>;
+	}
+	.exhibit_footer {
+		background-color: #<%= group.header_background_color %>;
+	}
+<% end -%>
+<% if group.exhibit_header_color != nil && group.exhibit_header_color.length == 6 -%>
+	.exhibit_header {
+		color: #<%= group.exhibit_header_color %>;
+	}
+<% end -%>
+<% if group.exhibit_text_color != nil && group.exhibit_text_color.length == 6 -%>
+	.exhibit_text {
+		color: #<%= group.exhibit_text_color %>;
+	}
+<% end -%>
+<% if group.exhibit_caption1_color != nil && group.exhibit_caption1_color.length == 6 -%>
+	.exhibit_caption1 {
+		color: #<%= group.exhibit_caption1_color %>;
+	}
+<% end -%>
+<% if group.exhibit_caption1_background != nil && group.exhibit_caption1_background.length == 6 -%>
+	.exhibit_caption1 {
+		background-color: #<%= group.exhibit_caption1_background %>;
+	}
+<% end -%>
+<% if group.exhibit_caption2_color != nil && group.exhibit_caption2_color.length == 6 -%>
+	.exhibit_caption2 {
+		color: #<%= group.exhibit_caption2_color %>;
+	}
+<% end -%>
+<% if group.exhibit_caption2_background != nil && group.exhibit_caption2_background.length == 6 -%>
+	.exhibit_caption2 {
+		background-color: #<%= group.exhibit_caption2_background %>;
+	}
+<% end -%>
+</style>
+<% end -%>
+
+<div class="inner_content_container">
+<% if Group.is_peer_reviewed_group(@exhibit) -%>
+	<div class="publication_header">
+		<div class="exhibit_sharing_notice">
+			<%= raw(@exhibit.get_sharing_icon_with_link()) %>
+		</div>
+		<div class="exhibit_sharing_text"><div class="exhibit_sharing_text2">
+			<%= group.get_truncated_name() %> content in <%= Setup.site_name() %> is protected by a Creative Commons License.
+		</div></div>
+		<% badge_pos = 'left' -%>
+		<% badge_path = badge_pos != 'none' ? @exhibit.get_badge() : "" -%>
+		<% if badge_path.length > 0 -%>
+		<div class="exhibit_badge">
+			<img src="<%= badge_path %>" height="85" alt="Peer Reviewed" />
+		</div>
+		<% end -%>
+		<center>
+			<div class="publication_header_links">
+				<table><tr>
+						<td class="publication_header_left"><%= link_to(group.get_truncated_name(), group.get_visible_url(), { :class => 'nav_link' }) %></td>
+<% cluster_link = get_cluster_link(@exhibit.cluster_id) -%>
+<% if cluster_link && cluster_link.length > 0 -%>
+						<td class="publication_header_right"><%= get_cluster_link(@exhibit.cluster_id) %></td>
+<% end -%>
+						<td class="publication_header_right"><a href="/print_exhibit/<%=@exhibit.id%>" class="nav_link" >Printer-friendly Page</a></td>
+				</tr></table>
+			</div>
+		</center>
+	</div>
+<% else -%>
+	<div class="exhibit_sharing_notice">
+		<%= raw(@exhibit.get_sharing_icon_with_link()) %>
+	</div>
+	<div class="subpage_nav">
+		<span class="not_peer_reviewed">This exhibit has not been peer reviewed.</span>&nbsp;
+		<%= make_exhibit_home_link(@exhibit) %>&nbsp;
+		<a href="/print_exhibit/<%=@exhibit.id%>" class="nav_link" >[Printer-friendly Page]</a>&nbsp;
+		<%= link_to("[Edit this exhibit]", { :controller => 'builder', :action => 'show', :id => @exhibit.id, :page => @page }, { :class => 'nav_link', :target => '_parent' }) if Exhibit.can_edit(current_user, @exhibit.id)  %>
+	</div>
+<% end -%>
+	<div id="exhibit_page clear_both">
+		<%= render :partial => 'exhibit_page', :locals => { :exhibit => @exhibit, :page_num => @page, :is_edit_mode => false, :top => nil, :badge_pos => 'left' } %>
+	</div>
+</div>
+<div class="exhibit_footer">
+	<%= raw(@exhibit.get_sharing_widget()) %>
+</div>

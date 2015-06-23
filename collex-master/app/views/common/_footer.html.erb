@@ -1,0 +1,31 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<% info = capture do %>
+  <%= number_with_delimiter(session[:num_docs]) %>&nbsp;peer&#8209;reviewed&nbsp;<%= link_to_function("digital objects", "showPartialInLightBox('/help/resources', 'Digital Objects', '#{image_path(PROGRESS_SPINNER_PATH)}');", :class => 'nav_link' ) %>&nbsp;from&nbsp;<%=number_with_delimiter(session[:num_sites])%>&nbsp;federated&nbsp;<%= link_to_function("sites", "showPartialInLightBox('/help/sites', 'Federated Sites', '#{image_path(PROGRESS_SPINNER_PATH)}');", :class => 'nav_link' ) %>.
+<% end %>
+
+<div id="footer_container">
+  <% if Setup.footer_signature_text().length > 0 %>
+  <div class="signature"><%= raw(Setup.footer_signature_text()) %>
+	<br/><span class="sponsor-logo"></span>
+  </div>
+  <% end %>
+     <%= Setup.site_name() %>: aggregating
+     <%= info %>
+	 <br/>Questions? Find a bug? <a class="nav_link nospam" href="<%= Setup.webmaster_email() %>">Contact us</a>.
+	 <br/>(Powered by Collex v<%= Branding.version() %>.)
+</div>

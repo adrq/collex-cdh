@@ -1,0 +1,32 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# exhibit_text params:  ExhibitElement element; enum which { left, right, only, blockquote }, bool is_edit_mode -%>
+<% exhibit = element.exhibit_page.exhibit -%>
+<% size = which != 'blockquote' ? exhibit.get_font_size('text') : (exhibit.get_font_size('text').to_i * 5 / 6).ceil -%>
+<% if is_edit_mode -%>
+	<% div_id = "text_#{element.id}" -%>
+	<% div_id += "_#{which}" if which != "only" && which != 'blockquote' -%>
+	<div id='<%= div_id %>' style="font-family:<%= exhibit.get_font_name('text') %>; font-size:<%= size %>px;" class="exhibit_text<%=" blockquote" if which == 'blockquote' %>">
+		<%= (which == 'right' ? denature_footnote_links(element.element_text2) : denature_footnote_links(element.element_text)) %>
+	</div>
+	<script type="text/javascript">
+		if(window.initializeInplaceRichEditor)
+			initializeInplaceRichEditor('<%= div_id %>,exhibit_builder_outline_content', "<%= "/builder/edit_text,/builder/refresh_outline" %>");
+	</script>
+<% else -%>
+	<div class="exhibit_text<%=" blockquote" if which == 'blockquote' %>" style="font-family:<%= exhibit.get_font_name('text') %>; font-size:<%= size %>px;"><%= decode_exhibit_links(element.element_text) %></div>
+<% end -%>

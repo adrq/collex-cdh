@@ -1,0 +1,17 @@
+<p>
+  <b>Name:</b>
+  <%=h @editorial_board_member.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @editorial_board_member.email %>
+</p>
+
+<p>
+  <b>Classification:</b>
+  <%=h Collection.to_classification_string(@editorial_board_member.classification) %>
+</p>
+
+<%= link_to 'Edit', edit_editorial_board_member_path(@editorial_board_member) %> |
+<%= link_to 'List All', editorial_board_members_path %>

@@ -1,0 +1,115 @@
+The Collex project
+
+-----------------------------------------------------------------------
+** Prerequisite
+
+Most of the pain of getting collex running is in getting Ruby on Rails running on your machine. Before attempting the
+instructions below, be sure that you can create a simple Rails application.
+
+-----------------------------------------------------------------------
+** Steps for creating a collex installation from scratch.
+
+The following steps are explained in detail below:
+
+1) From the Collex repository, download Collex, solr, and (for the development computer only:) rdf-indexer
+2) Install the required gems
+3) create site.yml and database.yml
+4) Start solr
+5) Index some documents
+6) Run: rake RAILS_ENV=production collex:update
+7) Modify About pages
+8) Install Wordpress
+9) Skin it by changing the css files.
+10) add robots file.
+11) Start the daemons.
+
+-----------------------------------------------------------------------
+** Initial username
+
+After doing the initial migration, a single user has been created:
+
+User name: admin
+Password: password
+
+As soon as the site becomes active,
+1) sign on using those credentials,
+2) switch to the "My Collex" tab, [NOTE: This tab can be renamed below]
+3) click "Edit Profile", and change the user name and password to a less obvious one.
+
+You may use the administrator account for your daily use of collex, or you may choose to create a separate
+account for using the site. The difference is that the administrator has the "Admin" link that allows maintenance
+of the site, and the administrator has a few more privileges, like the ability to delete anyone's post in the
+forum and the ability to edit anyone's exhibits.
+
+-----------------------------------------------------------------------
+** Requires Wordpress for the News tab
+
+There are instructions for integrating Wordpress that you can read by navigating to "/news".
+
+-----------------------------------------------------------------------
+** Requires ARC Catalog
+
+A connection to the ARC Catalog is needed. You can create that yourself or connect to a current instance. To use
+a current instance, contact someone to get set up. To create your own version, download and set up the Catalog
+project in Collex.
+
+-----------------------------------------------------------------------
+
+Note that you will need to index your documents first and put those indexes in the above folder. If you are using
+the existing Catalog connection, you will probably submit your RDF to ARC for indexing. If you are setting up your
+own catalog, you will have to index the documents yourself.
+
+That process is explained here:
+
+	http://www.performantsoftware.com/nines_wiki/index.php/Indexing_Tools
+
+There is another relevant project in this repository to help with indexing:
+
+	collex/trunk/rdf-indexer	: This is a java project that builds the utility that is used to read the rdf files into solr. The jar file created
+		here is used by the rdf indexing rake tasks.
+
+There are two indexes used: "resources" and "UserContent"
+In the solr.xml file, you will need the following:
+  <core name="resources" instanceDir="./"/>
+  <core name="UserContent" instanceDir="./" schema="schema_user.xml"/>
+
+Note that the name UserContent comes from the site.yml file. That allows more than one installation on a single computer.
+
+-----------------------------------------------------------------------
+** Site specific info
+
+There are two files missing from this installation that you must supply:
+
+config/database.yml (there is a sample version of this file called config/database.example.yml)
+config/site.yml (there is a sample version of this file called config/site.example.yml)
+
+Add a robots.txt file to the /public folder. This should contain
+
+User-agent: *
+Disallow:
+
+if you want search engines to find it, and
+
+User-agent: *
+Disallow: /
+
+if you don't.
+
+-----------------------------------------------------------------------
+** About files
+
+The "about" files are all created in WordPress and attached using the same method as the News blog.
+
+-----------------------------------------------------------------------
+** Daemons
+
+There are daemons that have to be running in the background all the time. To run them, type:
+	RAILS_ENV=development script/daemons start|stop|restart
+
+The default is production, so you can leave off the RAILS_ENV on your deployed sites.
+
+Also, the daemons are running a different process, and won't see code changes unless they are restarted, so while
+developing them, be aware of when you've changed code that a daemon will execute, and restart the daemons then.
+
+For responsiveness, the daemons wake up every 5 seconds, but then have a second timer that can be set in site.yml,
+so they don't actually do much when they wake up except see if they need to end.

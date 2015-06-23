@@ -1,0 +1,27 @@
+<% title "Update Account" %>
+<% main_header "Updating account settings for #{current_user.real_name}." -%>
+<% extra_button "" -%>
+<% instructions "Make changes to any field below. If you do not want to change your password, leave that field blank and your current password will remain unchanged." -%>
+
+<%= form_tag( { :action => 'edit' }, { :id => "edit-account" } ) %>
+<div class="field-label">
+Name:<br />
+<input name="real_name" id="real_name" value="<%= current_user.real_name %>" size="50"/><br />
+Institution:<br />
+<input name="institution" id="institution" value="<%= current_user.institution %>" size="50"/><br />
+Email:<br />
+<input name="email" id="email" value="<%= current_user.email %>" size="50"/><br />
+Password:<br />
+<input type="password" name="password" id="password" size="50"/></td></tr><br />
+Repeat Password:<br />
+<input type="password" name="password_confirm" id="password_confirm" size="50"/></td></tr><br />
+<input type="submit" value="Update" /><br />
+</div>
+</form>
+<br />
+<% if flash[:notice] -%> 
+<div id="notice"><%= flash[:notice] %></div> 
+<% end -%>
+<div class="navigation">
+<%= link_to "Back", contributor_path %>
+</div>

@@ -1,0 +1,45 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<% current_page "admin" -%>
+<% current_sub_page "Groups" -%>
+<script type="text/javascript">
+var gGroupTypes = <%= raw(Group.types_to_json(true)) %>;
+var badges = <%= raw(PeerReview.get_list().to_json()) %>;
+badges.unshift({value: 0, text: "&lt;none&gt;"});
+var publication_images = <%= raw(PublicationImage.get_list().to_json()) %>;
+publication_images.unshift({value: 0, text: "&lt;none&gt;"});
+</script>
+<div class="inner_content_container">
+	<%= link_to_function("Add Badge", "new AddBadgeDlg('/admin/default/add_badge');", :class => 'nav_link' ) %> | 
+	<%= link_to_function("Add Publication Image", "new AddPublicationImageDlg('/admin/default/add_publication_image');", :class => 'nav_link' ) %>
+	<div class="page_header">Groups Categories</div>
+	<table class="exhibit_category">
+		<tr>
+			<th>Group</th>
+			<th>Owner</th>
+			<th>Type</th>
+			<th>Badge</th>
+			<th>Publication Image</th>
+		</tr>
+		<% groups = Group.all(:order => 'name') -%>
+		<% for group in groups -%>
+			<tr id="<%= "group_#{group.id}" %>">
+<%= render :partial => 'group_tr', :locals => { :group => group } %>
+			</tr>
+		<% end -%>
+	</table>
+</div>

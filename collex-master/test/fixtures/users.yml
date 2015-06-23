@@ -1,0 +1,54 @@
+##########################################################################
+# Copyright 2007 Applied Research in Patacriticism and the University of Virginia
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##########################################################################
+
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+<% require 'digest/sha1' %>
+
+<% ['admin', 'editor', 'basic'].each_with_index do |name, i| %>
+<%= name %>:
+  id: <%= i + 1 %>
+  username: <%= name %>
+  password_hash: <%= Digest::SHA1.hexdigest('password') %>
+  fullname: <%= name.capitalize %> User
+  email: <%= name %>@collex.org
+
+<% end %>
+exhibit_owner:
+  id: 21
+  username: "owner"
+  fullname: "Exhibit Owner"
+  email: owner@exhibit.org
+  password_hash: 
+exhibit_viewer:
+  id: 31
+  username: "viewer"
+  fullname: "Exhibit Viewer"
+  email: viewer@exhibit.org
+  password_hash: 
+dave:
+  id: 99
+  username: dave
+  password_hash: foobar
+  fullname: Dave
+  email: dave@whatever.com
+
+paul:
+    id: 23 
+    username: paul 
+    fullname: Paul 
+    email: paul@example.com
+    password_hash: <%= Digest::SHA1.hexdigest('password') %> 

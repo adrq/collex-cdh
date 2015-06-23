@@ -1,0 +1,49 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%
+	case @group.group_type
+	when 'community' then tab_name = Setup.community_tab()
+	when 'classroom' then tab_name = "Classroom"
+	when 'peer-reviewed' then tab_name = "Publications"
+	end
+	case @group.group_type
+	when 'community' then return_path = "/communities"
+	when 'classroom' then return_path = "/classroom"
+	when 'peer-reviewed' then return_path = "/publications"
+	end
+-%>
+<% current_page tab_name -%>
+<% curr_user_id = user_signed_in? ? get_curr_user_id : nil -%>
+<%= create_breadcrumbs([{ :text => tab_name, :url => return_path }], @group.name) %>
+<div class="inner_content_container">
+	<div id="group_details">
+		<%= render :partial => 'group_details', :locals => { :group => @group, :user_id => curr_user_id } %>
+	</div>
+	<div class="clear_both"></div>
+	<div class="group_header header_right">DISCUSSIONS</div>
+	<div class="group_header">CONTENT</div>
+	<div id="group_discussions">
+		<%= render :partial => 'group_discussions_list', :locals => { :group => @group, :user_id => curr_user_id } %>
+	</div>
+	<div id="group_exhibits">
+		<%= render :partial => 'group_exhibits_list', :locals => { :group => @group, :user_id => curr_user_id } %>
+	</div>
+	<div class="clear_both"></div>
+	<div id="group_license">
+		<%= render :partial => 'group_license', :locals => { :group => @group, :user_id => curr_user_id } %>
+	</div>
+</div>

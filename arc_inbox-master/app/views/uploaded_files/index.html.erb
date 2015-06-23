@@ -1,0 +1,26 @@
+<h1>Listing uploaded_files</h1>
+
+<table>
+  <tr>
+    <th>Original name</th>
+    <th>Received name</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+  </tr>
+
+<% for uploaded_file in @uploaded_files %>
+  <tr>
+    <td><%=h uploaded_file.original_name %></td>
+    <td><%=h uploaded_file.received_name %></td>
+    <td><%=h uploaded_file.created_at %></td>
+    <td><%=h uploaded_file.updated_at %></td>
+    <td><%= link_to 'Show', uploaded_file %></td>
+    <td><%= link_to 'Edit', edit_uploaded_file_path(uploaded_file) %></td>
+    <td><%= link_to 'Destroy', uploaded_file, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New uploaded_file', new_uploaded_file_path %>

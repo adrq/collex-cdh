@@ -1,0 +1,64 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+	
+<% current_page Setup.my_collex() -%>
+<% if !user_signed_in? -%>
+	<div class="inner_content_container">
+		<%= render :partial => 'login_instructions' %>
+	</div>
+<% else -%>
+	<div class="subpage_nav"> 
+		<%= link_to Setup.my_collex(), { :action => 'index' }, :class => 'nav_link' %><%= link_separator() %>&nbsp;My objects&nbsp;<br />
+	</div> 
+	
+	<div class="inner_content_container">
+		<div class="left_column post-style" data-controller="<%= MY_COLLEX_URL %>">
+			<div id="tag_cloud">
+				<%= render :partial => 'tag_cloud_top', :locals => { :cloud_info => @cloud_info, :view => params[:view], :tag => params[:tag] } %>
+			</div>
+			<div id="result_list">
+				<% if @results.length == 0 -%>
+					<div class="page_header">Collected Items</div>
+					<div class="empty_list_text">You have not collected any items (yet)! Collect items directly from your search results to save and tag them.</div>
+				<% else -%>
+					<% total_link = "<a id='top_of_results'>#{create_total(params[:view], @total_hits, params[:tag])}</a>" -%>
+					<% if params[:view] == 'tag' -%>
+						<% edit_tag_link = link_to_function('[Edit Tag]', "editTag('#{create_javascript_friendly_tag_name(params[:tag])}')", { :id => 'edit_tag', :class => 'modify_link' }) -%>
+						<% remove_tag_link = link_to_function('[Remove Tag]', "removeTag('edit_tag', '#{create_javascript_friendly_tag_name(params[:tag])}', '#{image_path(PROGRESS_SPINNER_PATH)}')", { :class => 'modify_link' }) -%>
+						<% extra = "<br /><span class='edit_tag_link'>#{edit_tag_link} #{remove_tag_link}</span>" -%>
+					<% else -%>
+						<% extra = "" -%>
+					<% end -%>
+					<%= render :partial => 'results/results_with_all_functionality', 
+					           :locals => { :title => raw("#{total_link}#{extra}"),
+					                        :mode => :uncollect, 
+					                        :results => @results, 
+					                        :page => @page, 
+					                        :num_pages => @num_pages, 
+					                        :controller => "#{MY_COLLEX_URL}", 
+					                        :action => 'results' 
+					                      } %>
+				<% end -%>
+			</div>
+		</div>
+		<div class="right_column">
+			<div id="exhibited_objects_container">
+			</div>
+		</div>
+		<div class="clear_both"></div>
+	</div>
+<% end # if logged in -%>

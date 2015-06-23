@@ -1,0 +1,59 @@
+<%#
+# ------------------------------------------------------------------------
+#     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+# 
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+# 
+#         http://www.apache.org/licenses/LICENSE-2.0
+# 
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
+# ----------------------------------------------------------------------------
+%>
+<%# search params: hash results -%>
+<% if Rails.env == 'development' && @message != nil -%>
+	<div class="search_error_message"><%= raw(h(@message).gsub("\n", "<br .>")) %></div>
+<% end # if development -%>
+<%= render :partial => '/common/input_and_submit_button', :locals => { :input_id => "search", :input_class => "shared_search_box", :submit_text => "Search Classroom", :submit_id => 'search_exhibits', :submit_url => "/classroom/search", :update_el => 'shared_objects', :wait_msg => 'Searching...' } %>
+or search <%= link_to "federated sites", "/search", { :class => 'nav_link' } %>
+
+<div class="shared_search_results">
+<% if session[:classroom_search_term] && session[:classroom_view_by] == 'All' -%>
+	Found <%= pluralize(results[:total_hits], 'item') %>
+	<% if session[:classroom_group_facet] -%>
+		in group "<%= Group.find(session[:classroom_group_facet]).name %>"
+		<%= link_to_trashcan("Clear Facet", '/classroom/facet_on_group', 'facet_redraw', '{ view: sel }', 'Removing Facet') %>
+	<% end -%>
+	matching "<%= session[:classroom_search_term] %>".
+	<%= link_to_trashcan("Clear Search", '/classroom/search', 'shared_objects', '{ term: '' }', 'Removing Search') %>
+<% elsif session[:classroom_search_term] -%>
+	Found <%= pluralize(results[:total_hits], singularize_and_downcase(session[:classroom_view_by])) %> with <%= results[:total] %>
+	<%= link_to_function("total items",
+		"serverAction({action: { actions: '/classroom/view_by', els: 'shared_objects', params: { view: 'All' }}, progress: { waitMessage: 'Changing view...' }})", { :class => 'nav_link' }) %>
+	<% if session[:classroom_group_facet] -%>
+		in group "<%= Group.find(session[:classroom_group_facet]).name %>"
+			<%= link_to_trashcan("Clear Facet", '/classroom/facet_on_group', 'facet_redraw', '{ view: "All" }', 'Removing Facet') %>
+	<% end -%>
+	matching "<%= session[:classroom_search_term] %>".
+	<%= link_to_trashcan("Clear Search", '/classroom/search', 'shared_objects', '{ view: "All" }', 'Removing Search') %>
+<% elsif session[:classroom_view_by] == 'All' -%>
+	There are <%= pluralize(results[:total_hits], 'total item') %>
+	<% if session[:classroom_group_facet] -%>
+		in group "<%= Group.find(session[:classroom_group_facet]).name %>"
+		<%= link_to_trashcan("Clear Facet", '/classroom/facet_on_group', 'facet_redraw', '{ view: "All" }', 'Removing Facet') %>
+	<% end -%>
+<% else -%>
+	There are <%= pluralize(results[:total_hits], singularize_and_downcase(session[:classroom_view_by])) %> with <%= results[:total] %>
+	<%= link_to_function("total items",
+		"serverAction({action: { actions: '/classroom/view_by', els: 'shared_objects', params: { view: 'All' }}, progress: { waitMessage: 'Changing view...' }})", { :class => 'nav_link' }) %>
+	<% if session[:classroom_group_facet] -%>
+		in group "<%= Group.find(session[:classroom_group_facet]).name %>"
+		<%= link_to_trashcan("Clear Facet", '/classroom/facet_on_group', 'facet_redraw', '{ view: "All" }', 'Removing Facet') %>
+	<% end -%>
+<% end -%>
+</div>

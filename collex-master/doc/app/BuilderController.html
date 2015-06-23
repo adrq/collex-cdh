@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class BuilderController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/builder_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-add_additional_author">#add_additional_author</a>
+    
+    <li><a href="#method-i-change_element_type">#change_element_type</a>
+    
+    <li><a href="#method-i-change_exhibits_cluster">#change_exhibits_cluster</a>
+    
+    <li><a href="#method-i-change_exhibits_group">#change_exhibits_group</a>
+    
+    <li><a href="#method-i-change_illustration_justification">#change_illustration_justification</a>
+    
+    <li><a href="#method-i-change_img_width">#change_img_width</a>
+    
+    <li><a href="#method-i-change_page">#change_page</a>
+    
+    <li><a href="#method-i-change_sharing">#change_sharing</a>
+    
+    <li><a href="#method-i-create">#create</a>
+    
+    <li><a href="#method-i-destroy">#destroy</a>
+    
+    <li><a href="#method-i-edit_element">#edit_element</a>
+    
+    <li><a href="#method-i-edit_exhibit_overview">#edit_exhibit_overview</a>
+    
+    <li><a href="#method-i-edit_header">#edit_header</a>
+    
+    <li><a href="#method-i-edit_illustration">#edit_illustration</a>
+    
+    <li><a href="#method-i-edit_row_of_illustrations">#edit_row_of_illustrations</a>
+    
+    <li><a href="#method-i-edit_text">#edit_text</a>
+    
+    <li><a href="#method-i-find_page_containing_element">#find_page_containing_element</a>
+    
+    <li><a href="#method-i-get_alias_users">#get_alias_users</a>
+    
+    <li><a href="#method-i-get_all_collected_objects">#get_all_collected_objects</a>
+    
+    <li><a href="#method-i-import_exhibit">#import_exhibit</a>
+    
+    <li><a href="#method-i-insert_illustration">#insert_illustration</a>
+    
+    <li><a href="#method-i-modify_border">#modify_border</a>
+    
+    <li><a href="#method-i-modify_outline">#modify_outline</a>
+    
+    <li><a href="#method-i-modify_outline_add_first_element">#modify_outline_add_first_element</a>
+    
+    <li><a href="#method-i-modify_outline_page">#modify_outline_page</a>
+    
+    <li><a href="#method-i-publish_exhibit">#publish_exhibit</a>
+    
+    <li><a href="#method-i-redraw_exhibit_page">#redraw_exhibit_page</a>
+    
+    <li><a href="#method-i-refresh_outline">#refresh_outline</a>
+    
+    <li><a href="#method-i-remove_additional_author">#remove_additional_author</a>
+    
+    <li><a href="#method-i-remove_exhibited_object">#remove_exhibited_object</a>
+    
+    <li><a href="#method-i-reset_exhibit_page_from_outline">#reset_exhibit_page_from_outline</a>
+    
+    <li><a href="#method-i-set_exhibit_author_alias">#set_exhibit_author_alias</a>
+    
+    <li><a href="#method-i-show">#show</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+    <li><a href="#method-i-update_fonts">#update_fonts</a>
+    
+    <li><a href="#method-i-update_objects_in_exhibits">#update_objects_in_exhibits</a>
+    
+    <li><a href="#method-i-update_title">#update_title</a>
+    
+    <li><a href="#method-i-verify_title">#verify_title</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class BuilderController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add_additional_author" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_additional_author</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_additional_author-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 890</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_additional_author</span>
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
+        <span class="ruby-identifier">page_num</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_num</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+                <span class="ruby-identifier">authors</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">additional_authors</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">additional_authors</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+                <span class="ruby-identifier">authors</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">additional_authors</span> = <span class="ruby-identifier">authors</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">','</span>)
+                <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page_num</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_additional_author-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_additional_author-method -->
+
+    
+      <div id="method-i-change_element_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_element_type</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_element_type-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 404</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_element_type</span>
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element_id</span>]
+  <span class="ruby-identifier">type</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>]
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_element_layout_type</span> = <span class="ruby-identifier">type</span>
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-comment"># if we are just creating an element that takes an illustration, then create the illustration, too.</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'pic_text'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'text_pic'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'text_pic_text'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'pic_text_pic'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'pics'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">factory</span>(<span class="ruby-identifier">element_id</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'pic_text_pic'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span>
+      <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">factory</span>(<span class="ruby-identifier">element_id</span>, <span class="ruby-value">2</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>), <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Your session has timed out due to inactivity. Please login again.'</span>
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_element_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_element_type-method -->
+
+    
+      <div id="method-i-change_exhibits_cluster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_exhibits_cluster</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_exhibits_cluster-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 255</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_exhibits_cluster</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">cluster_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cluster</span>]
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span> = <span class="ruby-identifier">cluster_id</span>
+
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+        <span class="ruby-comment">#render :partial =&gt; 'overview_data', :locals =&gt; { :exhibit =&gt; exhibit, :show_immediately =&gt; true }</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_exhibits_cluster-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_exhibits_cluster-method -->
+
+    
+      <div id="method-i-change_exhibits_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_exhibits_group</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_exhibits_group-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 237</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_exhibits_group</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group</span>]
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">group_id</span>
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">cluster_id</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">group_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'peer-reviewed'</span>
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> = <span class="ruby-value">0</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+        <span class="ruby-comment">#render :partial =&gt; 'overview_data', :locals =&gt; { :exhibit =&gt; exhibit, :show_immediately =&gt; true }</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_exhibits_group-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_exhibits_group-method -->
+
+    
+      <div id="method-i-change_illustration_justification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_illustration_justification</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_illustration_justification-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 425</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_illustration_justification</span>
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element_id</span>]
+  <span class="ruby-identifier">justify</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:justify</span>]
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">set_justification</span>(<span class="ruby-identifier">justify</span>)
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_illustration_justification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_illustration_justification-method -->
+
+    
+      <div id="method-i-change_img_width" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_img_width</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_img_width-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 536</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_img_width</span>
+  <span class="ruby-identifier">illustration</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'illustration_id'</span>]
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">illustration_id</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">width</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'width'</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">height</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'height'</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">illustration</span> = <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">illustration_id</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustration</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">exhibit_element_id</span>
+    <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+    <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">image_width</span> = <span class="ruby-identifier">width</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">height</span> = <span class="ruby-identifier">height</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">get_illustration_type_text</span>()
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustration</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_img_width-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_img_width-method -->
+
+    
+      <div id="method-i-change_page" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_page</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_page-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 314</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_page</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'show'</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'id'</span>], <span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'page'</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_page-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_page-method -->
+
+    
+      <div id="method-i-change_sharing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_sharing</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_sharing-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 302</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_sharing</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">sharing_level</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:sharing</span>]
+    <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">set_sharing</span>(<span class="ruby-identifier">sharing_level</span>)
+    <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'overview_data'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:show_immediately</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_sharing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_sharing-method -->
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>POST /builder POST /builder.xml</p>
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 760</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+        <span class="ruby-identifier">exhibit_url</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_url</span>]
+        <span class="ruby-identifier">visible_url</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">transform_url</span>(<span class="ruby-identifier">exhibit_url</span>)
+        <span class="ruby-identifier">exhibit_title</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_title</span>]
+        <span class="ruby-identifier">exhibit_thumbnail</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_thumbnail</span>]
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:group_id</span>]
+        <span class="ruby-identifier">cluster_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cluster_id</span>]
+        <span class="ruby-identifier">objects</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:objects</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\t&quot;</span>)
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Your session has timed out due to inactivity. Please login again to create an exhibit'</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">ex</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_visible_url</span>(<span class="ruby-identifier">visible_url</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">ex</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;There is already an exhibit in #{Setup.site_name()} with the url \&quot;#{exhibit_url}\&quot;. Please choose another.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">factory</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">visible_url</span>, <span class="ruby-identifier">exhibit_title</span>, <span class="ruby-identifier">exhibit_thumbnail</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">cluster_id</span>)
+                        <span class="ruby-constant">ExhibitObject</span>.<span class="ruby-identifier">set_objects</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">objects</span>)
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{exhibit.id}&quot;</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create-method -->
+
+    
+      <div id="method-i-destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>DELETE /builder/1 DELETE /builder/1.xml</p>
+          
+
+          
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 967</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+        <span class="ruby-comment"># for security reasons, make sure that the exhibit belongs to the person who is trying to delete it.</span>
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-comment">#exhibit = Exhibit.find(exhibit_id)</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+                <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">destroy</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'my_collex'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroy-method -->
+
+    
+      <div id="method-i-edit_element" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_element</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_element-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 324</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_element</span>
+  <span class="ruby-identifier">page_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">element_pos</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">verb</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:verb</span>]
+
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">page_id</span>)
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">page</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">verb</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;up&quot;</span>
+      <span class="ruby-identifier">page</span>.<span class="ruby-identifier">move_element_up</span>(<span class="ruby-identifier">element_pos</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;down&quot;</span>
+      <span class="ruby-identifier">page</span>.<span class="ruby-identifier">move_element_down</span>(<span class="ruby-identifier">element_pos</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;insert&quot;</span>
+      <span class="ruby-identifier">page</span>.<span class="ruby-identifier">insert_element</span>(<span class="ruby-identifier">element_pos</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;delete&quot;</span>
+      <span class="ruby-identifier">page</span>.<span class="ruby-identifier">delete_element</span>(<span class="ruby-identifier">element_pos</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;layout&quot;</span>
+      <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_elements</span>[<span class="ruby-identifier">element_pos</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">change_layout</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>])
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># We need to get the records again because the local variables are probably stale.</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">position</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_element-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_element-method -->
+
+    
+      <div id="method-i-edit_exhibit_overview" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_exhibit_overview</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_exhibit_overview-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_exhibit_overview</span>
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+                <span class="ruby-identifier">visible_url</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">transform_url</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:overview_visible_url_dlg</span>])
+                <span class="ruby-identifier">short_name</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overview_resource_name_dlg</span>]
+                <span class="ruby-identifier">ex</span> = <span class="ruby-identifier">visible_url</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_visible_url</span>(<span class="ruby-identifier">visible_url</span>)
+                <span class="ruby-identifier">ex2</span> = <span class="ruby-identifier">short_name</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_resource_name</span>(<span class="ruby-identifier">short_name</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">ex</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">exhibit_id</span>.<span class="ruby-identifier">to_i</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;There is already an exhibit in #{Setup.site_name()} with the url \&quot;#{visible_url}\&quot;. Please choose another.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">ex2</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ex2</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">exhibit_id</span>.<span class="ruby-identifier">to_i</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;There is already an exhibit in #{Setup.site_name()} with the short name \&quot;#{short_name}\&quot;. Please choose another.&quot;</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overview_title_dlg</span>]
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">thumbnail</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overview_thumbnail_dlg</span>]
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">thumbnail</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">thumbnail</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;You have not added a thumbnail to this exhibit.&quot;</span>
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">visible_url</span> = <span class="ruby-identifier">visible_url</span>
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">resource_name</span> = <span class="ruby-identifier">short_name</span>
+                        <span class="ruby-identifier">genres</span> = []
+                        <span class="ruby-identifier">genre_list</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:genre</span>]
+                        <span class="ruby-identifier">genre_list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span>
+                                        <span class="ruby-identifier">genres</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">key</span>)
+                                <span class="ruby-keyword">end</span>
+                        }
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">genres</span> = <span class="ruby-identifier">genres</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+                        <span class="ruby-identifier">disciplines</span> = []
+                        <span class="ruby-identifier">discipline_list</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:discipline</span>]
+                        <span class="ruby-identifier">discipline_list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span>
+                                        <span class="ruby-identifier">disciplines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">key</span>)
+                                <span class="ruby-keyword">end</span>
+                        }
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">disciplines</span> = <span class="ruby-identifier">disciplines</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+            <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'overview_data'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:show_immediately</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span> }
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'overview_data'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:show_immediately</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span> }
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_exhibit_overview-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_exhibit_overview-method -->
+
+    
+      <div id="method-i-edit_header" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_header</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_header-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 515</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_header</span>
+  <span class="ruby-identifier">element</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'element_id'</span>]
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+              <span class="ruby-identifier">footnote</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'footnote'</span>]
+
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'value'</span>]
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">element_text</span> = <span class="ruby-identifier">value</span>
+                      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">set_header_footnote</span>(<span class="ruby-identifier">footnote</span>)
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_header-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_header-method -->
+
+    
+      <div id="method-i-edit_illustration" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_illustration</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_illustration-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 561</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_illustration</span>
+  <span class="ruby-identifier">illustration</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'ill_illustration_id'</span>]
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">illustration_id</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">image_url</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'image_url'</span>]
+  <span class="ruby-identifier">type</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'type'</span>]
+  <span class="ruby-identifier">link</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'link_url'</span>]
+  <span class="ruby-identifier">caption1</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption1'</span>]
+  <span class="ruby-identifier">caption2</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption2'</span>]
+  <span class="ruby-identifier">caption1_footnote</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption1_footnote'</span>]
+  <span class="ruby-identifier">caption2_footnote</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption2_footnote'</span>]
+  <span class="ruby-identifier">caption1_bold</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption1_bold'</span>]
+  <span class="ruby-identifier">caption1_italic</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption1_italic'</span>]
+  <span class="ruby-identifier">caption1_underline</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption1_underline'</span>]
+  <span class="ruby-identifier">caption2_bold</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption2_bold'</span>]
+  <span class="ruby-identifier">caption2_italic</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption2_italic'</span>]
+  <span class="ruby-identifier">caption2_underline</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'caption2_underline'</span>]
+      <span class="ruby-identifier">file</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'uploaded_image'</span>]
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'ill_text'</span>]
+  <span class="ruby-identifier">alt_text</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'alt_text'</span>]
+  <span class="ruby-identifier">nines_object</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'nines_object'</span>]
+      <span class="ruby-identifier">nines_obj_id</span> = <span class="ruby-identifier">nines_object</span>.<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">test_id</span> = <span class="ruby-node">&quot;#{nines_obj_id}&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">test_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">nines_object</span>
+              <span class="ruby-identifier">nines_object</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">nines_obj_id</span>).<span class="ruby-identifier">uri</span>
+      <span class="ruby-keyword">end</span>
+              <span class="ruby-comment">#footnotes = JSON.parse(params['footnotes'])</span>
+
+  <span class="ruby-identifier">illustration</span> = <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">illustration_id</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustration</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">exhibit_element_id</span>
+    <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+    <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_type</span> = <span class="ruby-identifier">type</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">image_url</span> = <span class="ruby-identifier">image_url</span>
+                              <span class="ruby-identifier">text</span> = <span class="ruby-identifier">clean_up_links</span>(<span class="ruby-identifier">text</span>)
+                              <span class="ruby-identifier">text</span> = <span class="ruby-identifier">remove_empty_spans</span>(<span class="ruby-identifier">text</span>)
+                              <span class="ruby-comment">#text = add_footnotes(text, footnotes)</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_text</span> = <span class="ruby-identifier">text</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption1</span> = <span class="ruby-identifier">caption1</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption2</span> = <span class="ruby-identifier">caption2</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">link</span> = <span class="ruby-identifier">link</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">alt_text</span> = <span class="ruby-identifier">alt_text</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">nines_object_uri</span> = <span class="ruby-identifier">nines_object</span>
+                              <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">set_caption_footnote</span>(<span class="ruby-identifier">caption1_footnote</span>, <span class="ruby-string">'caption1_footnote_id'</span>)
+                              <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">set_caption_footnote</span>(<span class="ruby-identifier">caption2_footnote</span>, <span class="ruby-string">'caption2_footnote_id'</span>)
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption1_bold</span> = <span class="ruby-identifier">caption1_bold</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption1_italic</span> = <span class="ruby-identifier">caption1_italic</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption1_underline</span> = <span class="ruby-identifier">caption1_underline</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption2_bold</span> = <span class="ruby-identifier">caption2_bold</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption2_italic</span> = <span class="ruby-identifier">caption2_italic</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">caption2_underline</span> = <span class="ruby-identifier">caption2_underline</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">present?</span>
+              <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">upload</span> = <span class="ruby-identifier">file</span>
+              <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">save</span>
+
+                              <span class="ruby-keyword">if</span> (<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'NINES Object'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nines_object</span>)
+                                       <span class="ruby-constant">ExhibitObject</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>), <span class="ruby-identifier">nines_object</span>)
+                              <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">exhibit_element_id</span>
+      <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustration</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">get_illustration_type_upload</span>()
+              <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+      <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_illustration-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_illustration-method -->
+
+    
+      <div id="method-i-edit_row_of_illustrations" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_row_of_illustrations</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_row_of_illustrations-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 355</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_row_of_illustrations</span>
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element_id</span>]
+  <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:position</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">verb</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:verb</span>]
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">verb</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;left&quot;</span>
+      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">move_higher</span>()
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;right&quot;</span>
+      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">move_lower</span>()
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;delete&quot;</span>
+      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">remove_from_list</span>()
+      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">destroy</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># We need to get the records again because the local variables are probably stale.</span>
+    <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_row_of_illustrations-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_row_of_illustrations-method -->
+
+    
+      <div id="method-i-edit_text" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit_text</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit_text-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 477</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit_text</span>
+  <span class="ruby-identifier">element</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'element_id'</span>]
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">last_str</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+  <span class="ruby-identifier">first_one</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">last_str</span> <span class="ruby-operator">==</span> <span class="ruby-string">'left'</span>
+    <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">last_str</span> <span class="ruby-operator">==</span> <span class="ruby-string">'right'</span>
+    <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">first_one</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">last_str</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">end</span>
+              <span class="ruby-comment">#footnotes = JSON.parse(params['footnotes'])</span>
+
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'value'</span>]
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">clean_up_links</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">remove_empty_spans</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">strip_word_tags</span>( <span class="ruby-identifier">value</span> )
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">first_one</span>
+      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">element_text</span> = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">element</span>.<span class="ruby-identifier">element_text2</span> = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">element</span>.<span class="ruby-identifier">save</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">element</span> = <span class="ruby-keyword">nil</span>        <span class="ruby-comment">#the user probably wasn't logged in; this will cause an error to be reported below.</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit_text-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit_text-method -->
+
+    
+      <div id="method-i-find_page_containing_element" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_page_containing_element</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_page_containing_element-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 748</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_page_containing_element</span>
+  <span class="ruby-identifier">div_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element</span>]
+  <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">div_id</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">el_num</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">el_num</span>)
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_page_id</span>)
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">position</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">el_num</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find_page_containing_element-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find_page_containing_element-method -->
+
+    
+      <div id="method-i-get_alias_users" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_alias_users</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get a list of users that the current user can use to publish  Rules:</p>
+
+<pre>site admins publishing outside of a group can use anyone
+site or group admins publishing from a group can use anyone from that group</pre>
+          
+
+          
+          <div class="method-source-code" id="get_alias_users-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 834</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_alias_users</span>
+  
+  <span class="ruby-comment"># Init data</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+  <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+  <span class="ruby-identifier">curr_user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-identifier">ret</span> = []
+  
+  <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>( {<span class="ruby-value">:value</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-value">-1</span>, <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'- Select a user -'</span>})
+ 
+  <span class="ruby-comment"># get correct list of users based on role and exhibit group</span>
+  <span class="ruby-comment"># exclude the currently logged in user from the lists</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_admin?</span>
+      <span class="ruby-identifier">users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>() 
+      <span class="ruby-comment"># On IE, there are lots of characters that cause </span>
+      <span class="ruby-comment"># the json to be illegal. We'll just replace most weird characters just in case.</span>
+      <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>  
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">curr_user</span>.<span class="ruby-identifier">id</span>
+          <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[^-'a-zA-Z0-9_. ]/</span>, <span class="ruby-string">&quot;*&quot;</span>) })
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>  
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">members</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group</span>.<span class="ruby-identifier">get_membership_list</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">member</span> <span class="ruby-operator">|</span>  
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span>[<span class="ruby-value">:user_id</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">curr_user</span>.<span class="ruby-identifier">id</span>
+        <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">member</span>[<span class="ruby-value">:user_id</span>], <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">member</span>[<span class="ruby-value">:name</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[^-'a-zA-Z0-9_. ]/</span>, <span class="ruby-string">&quot;*&quot;</span>) })
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">to_json</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_alias_users-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_alias_users-method -->
+
+    
+      <div id="method-i-get_all_collected_objects" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_collected_objects</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_collected_objects-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 121</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_all_collected_objects</span>
+                <span class="ruby-identifier">chosen</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:chosen</span>]
+                <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+                <span class="ruby-identifier">ret</span> = []
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_signed_in?</span>
+                        <span class="ruby-identifier">objs</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">get_collected_objects_for_thumbnails</span>(<span class="ruby-identifier">get_curr_user_id</span>, <span class="ruby-identifier">exhibit_id</span>, <span class="ruby-identifier">chosen</span>)
+                        <span class="ruby-identifier">objs</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">hit</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">obj</span> = {}
+                                <span class="ruby-identifier">obj</span>[<span class="ruby-value">:id</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>]
+                                <span class="ruby-identifier">image</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_thumbnail_from_hit</span>(<span class="ruby-identifier">hit</span>)
+                                <span class="ruby-identifier">image</span> = <span class="ruby-identifier">view_context</span>.<span class="ruby-identifier">image_path</span>(<span class="ruby-constant">DEFAULT_THUMBNAIL_IMAGE_PATH</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-identifier">obj</span>[<span class="ruby-value">:img</span>] = <span class="ruby-identifier">image</span>
+                                <span class="ruby-identifier">obj</span>[<span class="ruby-value">:title</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>]
+                                <span class="ruby-identifier">obj</span>[<span class="ruby-value">:strFirstLine</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>]
+                                <span class="ruby-identifier">obj</span>[<span class="ruby-value">:strSecondLine</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'role_AUT'</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'role_AUT'</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'role_ART'</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'role_ART'</span>] <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
+                                <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">obj</span>)
+<span class="ruby-comment">#                       selected = ExhibitObject.find_all_by_exhibit_id(exhibit_id)</span>
+<span class="ruby-comment">#                       objs = CollectedItem.all(:conditions =&gt; [ &quot;user_id = ?&quot;, user.id ])</span>
+<span class="ruby-comment">#                       objs.each {|obj|</span>
+<span class="ruby-comment">#                               hit = CachedResource.get_hit_from_resource_id(obj.cached_resource_id)</span>
+<span class="ruby-comment">#                               if hit != nil</span>
+<span class="ruby-comment">#                                       uri = hit['uri']</span>
+<span class="ruby-comment">#                                       i = selected.detect {|sel|</span>
+<span class="ruby-comment">#                                               sel[:uri] == uri</span>
+<span class="ruby-comment">#                                       }</span>
+<span class="ruby-comment">#                                       if (i == nil &amp;&amp; chosen == 'false') || (i != nil &amp;&amp; chosen == 'true')  # i is nil if the object is not chosen</span>
+<span class="ruby-comment">#                                               image = CachedResource.get_thumbnail_from_hit(hit)</span>
+<span class="ruby-comment">#                                               image = DEFAULT_THUMBNAIL_IMAGE_PATH if image == &quot;&quot; || image == nil</span>
+<span class="ruby-comment">#                                               obj = {}</span>
+<span class="ruby-comment">#                                               obj[:id] = hit['uri']</span>
+<span class="ruby-comment">#                                               obj[:img] = image</span>
+<span class="ruby-comment">#                                               obj[:title] = hit['title'][0]</span>
+<span class="ruby-comment">#                                               obj[:strFirstLine] = hit['title'][0]</span>
+<span class="ruby-comment">#                                               obj[:strSecondLine] = hit['role_AUT'] ? hit['role_AUT'].join(', ') : hit['role_ART'] ? hit['role_ART'].join(', ') : ''</span>
+<span class="ruby-comment">#                                               ret.push(obj)</span>
+<span class="ruby-comment">#                                       end # should we include this?</span>
+<span class="ruby-comment">#                               end # does the hit exist?</span>
+                        } <span class="ruby-comment"># for each object</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">to_json</span>()
+                <span class="ruby-keyword">else</span> <span class="ruby-comment"># not logged in</span>
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Your session has timed out due to inactivity. Please login again to create an exhibit'</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- get_all_collected_objects-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_all_collected_objects-method -->
+
+    
+      <div id="method-i-import_exhibit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">import_exhibit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="import_exhibit-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 783</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">import_exhibit</span>
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopCreateNewExhibitUpload&quot;</span>, <span class="ruby-string">'Your session has timed out due to inactivity. Please login again to create an exhibit'</span>), <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+                <span class="ruby-identifier">file</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:document</span>]
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span>
+                        <span class="ruby-keyword">begin</span>
+                                <span class="ruby-identifier">paragraphs</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">process_input_file</span>(<span class="ruby-identifier">file</span>)
+                        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+                                <span class="ruby-comment"># The import failed.</span>
+                                <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+                                <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>
+                                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopCreateNewExhibitUpload&quot;</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span>), <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                                <span class="ruby-keyword">return</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)  <span class="ruby-comment">#create({ :title =&gt; exhibit_title, :user_id =&gt; user.id })</span>
+                        <span class="ruby-comment">#exhibit.reset_fonts_to_default()</span>
+                        <span class="ruby-comment">#exhibit.bump_last_change()</span>
+                        <span class="ruby-comment">#exhibit.delete_page(2)</span>
+                        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">delete_page</span>(<span class="ruby-value">1</span>)
+                        <span class="ruby-identifier">new_page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:exhibit_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">id</span>)
+                        <span class="ruby-identifier">new_page</span>.<span class="ruby-identifier">insert_at</span>(<span class="ruby-value">1</span>)
+                        <span class="ruby-identifier">paragraphs</span>.<span class="ruby-identifier">each_with_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">para</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">el</span> = <span class="ruby-identifier">new_page</span>.<span class="ruby-identifier">insert_element</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+                                <span class="ruby-identifier">el</span>.<span class="ruby-identifier">element_text</span> = <span class="ruby-identifier">para</span>[<span class="ruby-value">:text</span>]
+                                <span class="ruby-identifier">el</span>.<span class="ruby-identifier">save</span>
+                                <span class="ruby-identifier">el</span>.<span class="ruby-identifier">change_layout</span>(<span class="ruby-identifier">para</span>[<span class="ruby-value">:type</span>])
+                        }
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">respond_to_file_upload</span>(<span class="ruby-string">&quot;stopCreateNewExhibitUpload&quot;</span>, <span class="ruby-node">&quot;OK:/builder/#{exhibit_id}&quot;</span>)
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- import_exhibit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- import_exhibit-method -->
+
+    
+      <div id="method-i-insert_illustration" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">insert_illustration</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="insert_illustration-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 382</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">insert_illustration</span>
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element_id</span>]
+  <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:position</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">get_exhibit_id_from_element</span>(<span class="ruby-identifier">element</span>))
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-value">-1</span>
+      <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">factory</span>(<span class="ruby-identifier">element_id</span>, <span class="ruby-identifier">pos</span>)
+
+    <span class="ruby-comment"># We need to get the records again because the local variables are probably stale.</span>
+    <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_section'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:element_count</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- insert_illustration-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- insert_illustration-method -->
+
+    
+      <div id="method-i-modify_border" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modify_border</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modify_border-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 636</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">modify_border</span>
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'element_id'</span>]
+  <span class="ruby-identifier">borders</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'borders'</span>]
+
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_page_id</span>)
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span>
+
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">borders</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_elements</span>.<span class="ruby-identifier">length</span>
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_elements</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">set_border_type</span>(<span class="ruby-identifier">arr</span>[<span class="ruby-identifier">i</span>])
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_outline'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:element_id_selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element_id</span>, <span class="ruby-value">:is_editing_border</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- modify_border-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- modify_border-method -->
+
+    
+      <div id="method-i-modify_outline" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modify_outline</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modify_outline-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 657</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">modify_outline</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'exhibit_id'</span>]
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'element_id'</span>]
+  <span class="ruby-identifier">verb</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'verb'</span>]
+
+  <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+  <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element_id</span>)
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_page_id</span>)
+  <span class="ruby-identifier">is_editing_border</span> = <span class="ruby-keyword">false</span>
+              <span class="ruby-identifier">sel</span> = <span class="ruby-identifier">element_id</span>
+
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">verb</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;insert_element&quot;</span>
+      <span class="ruby-identifier">new_element</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">insert_element</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">new_element</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;move_element_up&quot;</span>
+      <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">move_element_up</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span>)
+                              <span class="ruby-identifier">sel</span> = <span class="ruby-identifier">ret</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ret</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;move_element_down&quot;</span>
+      <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">move_element_down</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span>)
+                              <span class="ruby-identifier">sel</span> = <span class="ruby-identifier">ret</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ret</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;delete_element&quot;</span>
+      <span class="ruby-identifier">page</span>.<span class="ruby-identifier">delete_element</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">position</span>)
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-value">-1</span>
+
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;insert_page&quot;</span>
+      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">insert_page</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">position</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_outline'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:element_id_selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sel</span>, <span class="ruby-value">:is_editing_border</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_editing_border</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- modify_outline-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- modify_outline-method -->
+
+    
+      <div id="method-i-modify_outline_add_first_element" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modify_outline_add_first_element</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modify_outline_add_first_element-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 692</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">modify_outline_add_first_element</span>
+  <span class="ruby-identifier">page_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_id</span>]
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">page_id</span>)
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span>
+  <span class="ruby-identifier">is_editing_border</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">new_element</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">insert_element</span>(<span class="ruby-value">1</span>)
+    <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">new_element</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_outline'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:element_id_selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element_id</span>, <span class="ruby-value">:is_editing_border</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">is_editing_border</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- modify_outline_add_first_element-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- modify_outline_add_first_element-method -->
+
+    
+      <div id="method-i-modify_outline_page" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modify_outline_page</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modify_outline_page-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 919</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">modify_outline_page</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'exhibit_id'</span>]
+  <span class="ruby-identifier">page_num</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'page_num'</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">verb</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'verb'</span>]
+  <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'element_id'</span>]
+
+  <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">verb</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;move_page_up&quot;</span>
+      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">move_page_up</span>(<span class="ruby-identifier">page_num</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;move_page_down&quot;</span>
+      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">move_page_down</span>(<span class="ruby-identifier">page_num</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;delete_page&quot;</span>
+      <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">delete_page</span>(<span class="ruby-identifier">page_num</span>)
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-value">-1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_outline'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:element_id_selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element_id</span>, <span class="ruby-value">:is_editing_border</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- modify_outline_page-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- modify_outline_page-method -->
+
+    
+      <div id="method-i-publish_exhibit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">publish_exhibit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="publish_exhibit-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 266</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">publish_exhibit</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">state</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:publish_state</span>]
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> = <span class="ruby-identifier">state</span>
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">is_published</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>)
+                <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">user</span>
+                        <span class="ruby-identifier">body</span> = <span class="ruby-node">&quot;#{user.fullname} has shared an exhibit \&quot;#{exhibit.title}\&quot; to the group #{group.name}.\n\n&quot;</span>
+                        <span class="ruby-identifier">exhibit_url</span> = <span class="ruby-node">&quot;#{url_for(:controller =&gt; 'exhibits')}/&quot;</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">visible_url</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">visible_url</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                          <span class="ruby-identifier">exhibit_url</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">visible_url</span>
+                        <span class="ruby-keyword">else</span>
+                          <span class="ruby-identifier">exhibit_url</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>()
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">body</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;Visit the group at #{url_for(:controller =&gt; 'groups', :action =&gt; 'show', :id =&gt; group.get_visible_id())}, or read the exhibit here: #{exhibit_url}\n\n&quot;</span>
+                        <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-string">&quot;exhibit&quot;</span>, <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">group_id</span>, <span class="ruby-node">&quot;Exhibit #{exhibit.title} shared in group #{group.name}&quot;</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">url_for</span>(<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'home'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>, <span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>))
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'overview_data'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:show_immediately</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- publish_exhibit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- publish_exhibit-method -->
+
+    
+      <div id="method-i-redraw_exhibit_page" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">redraw_exhibit_page</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="redraw_exhibit_page-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 456</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">redraw_exhibit_page</span>  <span class="ruby-comment"># This is called for a number of different ajax actions to update the view.</span>
+  <span class="ruby-identifier">page_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_id</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element_id</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>  <span class="ruby-comment"># something probably timed out if this happens</span>
+      <span class="ruby-identifier">element</span> = <span class="ruby-constant">ExhibitElement</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>) <span class="ruby-comment"># This is ok to fail: for instance, if the element was just deleted.</span>
+      <span class="ruby-identifier">page_id</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_page_id</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">element</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">page_id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span><span class="ruby-string">'Error in editing section. Please refresh your browser page.'</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span>), <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">position</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Your session has timed out due to inactivity. Please login again.'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- redraw_exhibit_page-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- redraw_exhibit_page-method -->
+
+    
+      <div id="method-i-refresh_outline" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">refresh_outline</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="refresh_outline-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 707</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">refresh_outline</span>
+  <span class="ruby-identifier">element_div_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'element_id'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">element_div_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">arr</span> = <span class="ruby-identifier">element_div_id</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+    <span class="ruby-identifier">last_str</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">last_str</span> <span class="ruby-operator">==</span> <span class="ruby-string">'left'</span>
+      <span class="ruby-identifier">id_num</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">last_str</span> <span class="ruby-operator">==</span> <span class="ruby-string">'right'</span>
+      <span class="ruby-identifier">id_num</span> = <span class="ruby-identifier">arr</span>[<span class="ruby-identifier">arr</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">id_num</span> = <span class="ruby-identifier">last_str</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">arr</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'illustration'</span>
+      <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_illustration_id</span>(<span class="ruby-identifier">id_num</span>)
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id_num</span>).<span class="ruby-identifier">exhibit_element_id</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_element_id</span>(<span class="ruby-identifier">id_num</span>)
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">id_num</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># We were passed a page id</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-constant">ExhibitPage</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>])
+    <span class="ruby-identifier">element_pos</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:element</span>].<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">exhibit</span> = <span class="ruby-identifier">page</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_id</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">page</span>
+      <span class="ruby-identifier">element_pos</span> = <span class="ruby-identifier">element_pos</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">element_pos</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">element_pos</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_elements</span>.<span class="ruby-identifier">length</span>
+        <span class="ruby-identifier">element_pos</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">element_id</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">exhibit_elements</span>[<span class="ruby-identifier">element_pos</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">id</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Error in displaying the outline. Please refresh your browser.&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_outline'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:element_id_selected</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">element_id</span>, <span class="ruby-value">:is_editing_border</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- refresh_outline-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- refresh_outline-method -->
+
+    
+      <div id="method-i-remove_additional_author" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_additional_author</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_additional_author-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 905</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_additional_author</span>
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+                <span class="ruby-identifier">authors</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">additional_authors</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">additional_authors</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+                <span class="ruby-identifier">authors</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">additional_authors</span> = <span class="ruby-identifier">authors</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">','</span>)
+                <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_additional_author-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_additional_author-method -->
+
+    
+      <div id="method-i-remove_exhibited_object" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_exhibited_object</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_exhibited_object-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 290</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_exhibited_object</span>
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:uri</span>]
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">obj</span> = <span class="ruby-constant">ExhibitObject</span>.<span class="ruby-identifier">find_by_uri_and_exhibit_id</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">obj</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/results/exhibited_objects'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:current_user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_exhibited_object-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_exhibited_object-method -->
+
+    
+      <div id="method-i-reset_exhibit_page_from_outline" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reset_exhibit_page_from_outline</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reset_exhibit_page_from_outline-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 441</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset_exhibit_page_from_outline</span>
+  <span class="ruby-identifier">page_num</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_num</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+  <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">exhibit_id</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>
+    <span class="ruby-identifier">num_pages</span> = <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">exhibit_pages</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">page_num</span> = <span class="ruby-identifier">num_pages</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_num</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num_pages</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">page_num</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Empty Exhibit]&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page_num</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reset_exhibit_page_from_outline-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reset_exhibit_page_from_outline-method -->
+
+    
+      <div id="method-i-set_exhibit_author_alias" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_exhibit_author_alias</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set an alias for the exhibit author based on the POST params</p>
+          
+
+          
+          <div class="method-source-code" id="set_exhibit_author_alias-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 871</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_exhibit_author_alias</span>  
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+  <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
+  <span class="ruby-identifier">page_num</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_num</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-comment">#user = current_user</span>
+  <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+  
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;ALIAS of EXHIBIT #{exhibit.title} is USER_ID: #{user_id}&quot;</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">alias_id</span> = <span class="ruby-identifier">user_id</span>
+    <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">==</span> <span class="ruby-value">-1</span>
+    <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">alias_id</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/exhibits/exhibit_page'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhibit</span>, <span class="ruby-value">:page_num</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page_num</span>, <span class="ruby-value">:is_edit_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:top</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:badge_pos</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'none'</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_exhibit_author_alias-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_exhibit_author_alias-method -->
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /builder/1 GET /builder/1.xml</p>
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 945</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+        <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+                <span class="ruby-ivar">@exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>)
+                <span class="ruby-ivar">@page</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'page'</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'page'</span>].<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">num_pages</span> = <span class="ruby-ivar">@exhibit</span>.<span class="ruby-identifier">exhibit_pages</span>.<span class="ruby-identifier">length</span>
+                <span class="ruby-ivar">@page</span> = <span class="ruby-identifier">num_pages</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@page</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num_pages</span>
+                <span class="ruby-ivar">@exhibit</span>.<span class="ruby-identifier">bump_last_change</span>()
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'my_collex'</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'index'</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- show-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- show-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>PUT /builder/1 PUT /builder/1.xml</p>
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 961</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+      <div id="method-i-update_fonts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_fonts</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_fonts-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_fonts</span>
+        <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-value">:use_styles</span>)
+        <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit</span>])
+        <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_fonts-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_fonts-method -->
+
+    
+      <div id="method-i-update_objects_in_exhibits" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_objects_in_exhibits</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_objects_in_exhibits-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 818</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_objects_in_exhibits</span>
+  <span class="ruby-identifier">exhibit_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exhibit_id</span>]
+  <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">can_edit</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">exhibit_id</span>)
+    <span class="ruby-identifier">objects</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:objects</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\t&quot;</span>)
+    <span class="ruby-constant">ExhibitObject</span>.<span class="ruby-identifier">set_objects</span>(<span class="ruby-identifier">exhibit_id</span>, <span class="ruby-identifier">objects</span>)
+                      <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>).<span class="ruby-identifier">bump_last_change</span>()
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'exhibit_palette'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:exhibit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">exhibit_id</span>) }
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_objects_in_exhibits-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_objects_in_exhibits-method -->
+
+    
+      <div id="method-i-update_title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_title</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_title-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 233</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_title</span> <span class="ruby-comment"># ajax call after title changes to display it on the page</span>
+        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:overview_title_dlg</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_title-method -->
+
+    
+      <div id="method-i-verify_title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_title</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="verify_title-source">
+            <pre><span class="ruby-comment"># File app/controllers/builder_controller.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verify_title</span>  <span class="ruby-comment"># Called by the &quot;new exhibit&quot; wizard</span>
+        <span class="ruby-identifier">title</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:title</span>]
+        <span class="ruby-identifier">user</span> = <span class="ruby-identifier">current_user</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Your session has timed out due to inactivity. Please login again to create an exhibit'</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">exhibit</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">find_by_user_id_and_title</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">title</span>)
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">exhibit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'You already have an exhibit by that name. Please choose another.'</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:bad_request</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-comment"># The name is ok. Now create a url.</span>
+                        <span class="ruby-identifier">url</span> = <span class="ruby-constant">Exhibit</span>.<span class="ruby-identifier">transform_url</span>(<span class="ruby-identifier">title</span>)
+
+                        <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">url</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- verify_title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- verify_title-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

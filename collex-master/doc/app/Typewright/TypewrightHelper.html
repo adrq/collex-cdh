@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>module Typewright::TypewrightHelper - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/typewright/typewright_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-draw_revision_pager">#draw_revision_pager</a>
+    
+    <li><a href="#method-i-tw_abbrev">#tw_abbrev</a>
+    
+    <li><a href="#method-i-tw_create_show_url">#tw_create_show_url</a>
+    
+    <li><a href="#method-i-tw_create_url">#tw_create_url</a>
+    
+    <li><a href="#method-i-tw_date_format">#tw_date_format</a>
+    
+    <li><a href="#method-i-tw_percent_edited_display">#tw_percent_edited_display</a>
+    
+    <li><a href="#method-i-tw_source">#tw_source</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Typewright.html">Typewright</a>
+  
+    <li><a href="../Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="../Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="../Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="../Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="../Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="../Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="../Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="../Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="../Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="../Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="../Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="../Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="../Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="../Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="../Admin.html">Admin</a>
+  
+    <li><a href="../Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="../Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="../Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="../Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="../Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="../Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="../Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="../Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="../Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="../Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="../Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="../Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="../Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="../Catalog.html">Catalog</a>
+  
+    <li><a href="../Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="../GroupsController.html">GroupsController</a>
+  
+    <li><a href="../GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../Branding.html">Branding</a>
+  
+    <li><a href="../BuilderController.html">BuilderController</a>
+  
+    <li><a href="../BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="../CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="../CachedResource.html">CachedResource</a>
+  
+    <li><a href="../CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="../ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="../ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="../Cluster.html">Cluster</a>
+  
+    <li><a href="../ClustersController.html">ClustersController</a>
+  
+    <li><a href="../CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="../CommentReport.html">CommentReport</a>
+  
+    <li><a href="../CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="../CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="../Constraint.html">Constraint</a>
+  
+    <li><a href="../DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="../DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="../DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="../DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="../DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="../DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="../Exhibit.html">Exhibit</a>
+  
+    <li><a href="../ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="../ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="../ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="../ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="../ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="../ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="../ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="../ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="../ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="../ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="../ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="../FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="../FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="../FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="../ForumController.html">ForumController</a>
+  
+    <li><a href="../FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="../FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="../GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="../GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="../Group.html">Group</a>
+  
+    <li><a href="../GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="../GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="../HelpController.html">HelpController</a>
+  
+    <li><a href="../HomeController.html">HomeController</a>
+  
+    <li><a href="../HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="../Image.html">Image</a>
+  
+    <li><a href="../ImageFull.html">ImageFull</a>
+  
+    <li><a href="../IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="../LoginController.html">LoginController</a>
+  
+    <li><a href="../LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="../LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="../MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="../MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="../PeerReview.html">PeerReview</a>
+  
+    <li><a href="../PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="../PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="../PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="../ResultsController.html">ResultsController</a>
+  
+    <li><a href="../Role.html">Role</a>
+  
+    <li><a href="../SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="../Search.html">Search</a>
+  
+    <li><a href="../SearchController.html">SearchController</a>
+  
+    <li><a href="../SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="../SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="../Session.html">Session</a>
+  
+    <li><a href="../Setup.html">Setup</a>
+  
+    <li><a href="../Tag.html">Tag</a>
+  
+    <li><a href="../TagController.html">TagController</a>
+  
+    <li><a href="../TagHelper.html">TagHelper</a>
+  
+    <li><a href="../Tagassign.html">Tagassign</a>
+  
+    <li><a href="../TestJsController.html">TestJsController</a>
+  
+    <li><a href="../TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="../TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="../VicConference.html">VicConference</a>
+  
+    <li><a href="../VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="../WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Typewright::TypewrightHelper</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-draw_revision_pager" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">draw_revision_pager</span><span
+            class="method-args">( uri, curr_page, total_pages )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="draw_revision_pager-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 26</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">draw_revision_pager</span>( <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">curr_page</span>, <span class="ruby-identifier">total_pages</span> )
+      <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+
+<span class="ruby-comment"># If there's only one page, don't show any pagination</span>
+<span class="ruby-keyword">if</span> <span class="ruby-identifier">total_pages</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># Show only a maximum of 11 items, with the current item centered if possible.</span>
+<span class="ruby-comment"># First figure out the start and end points we want to display.</span>
+<span class="ruby-keyword">if</span> <span class="ruby-identifier">total_pages</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">11</span>
+  <span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>
+  <span class="ruby-identifier">last</span> = <span class="ruby-identifier">total_pages</span>
+<span class="ruby-keyword">else</span>
+  <span class="ruby-identifier">first</span> = <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">-</span> <span class="ruby-value">5</span>
+  <span class="ruby-identifier">last</span> = <span class="ruby-identifier">curr_page</span> <span class="ruby-operator">+</span> <span class="ruby-value">5</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">first</span> = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">last</span> = <span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">total_pages</span>
+    <span class="ruby-identifier">last</span> = <span class="ruby-identifier">total_pages</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># core components of the pagining links</span>
+<span class="ruby-identifier">link</span> = <span class="ruby-node">&quot;/typewright/documents/0?uri=#{uri}&amp;revision_page=&quot;</span>
+<span class="ruby-identifier">spacing</span> = <span class="ruby-string">&quot;&amp;nbsp;&amp;nbsp;&quot;</span>
+
+<span class="ruby-comment"># if the first page in the range of pages displayed</span>
+<span class="ruby-comment"># is not 1, we must show a 'first' link to go directly</span>
+<span class="ruby-comment"># to page 1</span>
+<span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">page</span> = <span class="ruby-string">&quot;1&quot;</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-string">&quot;first&quot;</span>, <span class="ruby-identifier">link</span><span class="ruby-operator">+</span><span class="ruby-identifier">page</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;tw_revison_paging_link&quot;</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">spacing</span>
+  
+  <span class="ruby-comment"># additionally, show a skip in the pages with '...'</span>
+  <span class="ruby-comment"># and a way to skp bat by one page ( '&lt;&lt;')</span>
+  <span class="ruby-identifier">page</span> = <span class="ruby-node">&quot;#{(curr_page - 1)}&quot;</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-string">&quot;&lt;&lt;&quot;</span>, <span class="ruby-identifier">link</span><span class="ruby-operator">+</span><span class="ruby-identifier">page</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;tw_revison_paging_link&quot;</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;...&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">spacing</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># draw a linked page number for each page in the </span>
+<span class="ruby-comment"># 11 visible pages. Don't link the current page</span>
+<span class="ruby-keyword">for</span> <span class="ruby-identifier">pg</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">first</span><span class="ruby-operator">..</span><span class="ruby-identifier">last</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">pg</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">curr_page</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class='tw_curr_revision_page'&gt;#{pg}&lt;/span&gt;&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-node">&quot;#{pg}&quot;</span>
+    <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">page</span>, <span class="ruby-identifier">link</span><span class="ruby-operator">+</span><span class="ruby-identifier">page</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;tw_revison_paging_link&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">spacing</span>
+<span class="ruby-keyword">end</span> 
+
+<span class="ruby-comment"># If last visible page is &lt; total pages, show a skipped pages</span>
+<span class="ruby-comment"># marker (...), followed by a page forward marker (&gt;&gt;&gt;),</span>
+<span class="ruby-comment"># followed by a direct link to the last page</span>
+<span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">total_pages</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;...&amp;nbsp;&amp;nbsp;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_pages</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">12</span>
+  <span class="ruby-identifier">page</span> = <span class="ruby-node">&quot;#{(curr_page + 1)}&quot;</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-string">&quot;&gt;&gt;&quot;</span>, <span class="ruby-identifier">link</span><span class="ruby-operator">+</span><span class="ruby-identifier">page</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;tw_revison_paging_link&quot;</span>)
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">spacing</span>
+  <span class="ruby-identifier">page</span> = <span class="ruby-node">&quot;#{total_pages}&quot;</span>
+  <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-string">&quot;last&quot;</span>, <span class="ruby-identifier">link</span><span class="ruby-operator">+</span><span class="ruby-identifier">page</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;tw_revison_paging_link&quot;</span>)
+<span class="ruby-keyword">end</span>
+
+
+
+
+<span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>)
+  
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- draw_revision_pager-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- draw_revision_pager-method -->
+
+    
+      <div id="method-i-tw_abbrev" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tw_abbrev</span><span
+            class="method-args">(str)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tw_abbrev-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tw_abbrev</span>(<span class="ruby-identifier">str</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">32</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>)<span class="ruby-operator">+</span><span class="ruby-string">'...'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">str</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tw_abbrev-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tw_abbrev-method -->
+
+    
+      <div id="method-i-tw_create_show_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tw_create_show_url</span><span
+            class="method-args">(uri, src = @src)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tw_create_show_url-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tw_create_show_url</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">src</span> = <span class="ruby-ivar">@src</span>)
+        <span class="ruby-identifier">src</span> <span class="ruby-operator">||=</span> <span class="ruby-value">:gale</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;/typewright/documents/0?uri=#{uri}\&amp;src=#{src}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tw_create_show_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tw_create_show_url-method -->
+
+    
+      <div id="method-i-tw_create_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tw_create_url</span><span
+            class="method-args">(doc_id, page)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tw_create_url-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tw_create_url</span>(<span class="ruby-identifier">doc_id</span>, <span class="ruby-identifier">page</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;/typewright/documents/#{doc_id}/edit?src=#{@src}&amp;page=#{page}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tw_create_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tw_create_url-method -->
+
+    
+      <div id="method-i-tw_date_format" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tw_date_format</span><span
+            class="method-args">(date)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tw_date_format-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tw_date_format</span>(<span class="ruby-identifier">date</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">date</span>.<span class="ruby-identifier">iso8601</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tw_date_format-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tw_date_format-method -->
+
+    
+      <div id="method-i-tw_percent_edited_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tw_percent_edited_display</span><span
+            class="method-args">(stats)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tw_percent_edited_display-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tw_percent_edited_display</span>(<span class="ruby-identifier">stats</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">stats</span>[<span class="ruby-value">:pages_with_changes</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">stats</span>[<span class="ruby-value">:num_pages</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">percent</span> = <span class="ruby-identifier">stats</span>[<span class="ruby-value">:pages_with_changes</span>] * <span class="ruby-value">100</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">stats</span>[<span class="ruby-value">:num_pages</span>]
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&lt;1&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">percent</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">percent</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tw_percent_edited_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tw_percent_edited_display-method -->
+
+    
+      <div id="method-i-tw_source" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tw_source</span><span
+            class="method-args">(curr_src)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tw_source-source">
+            <pre><span class="ruby-comment"># File app/helpers/typewright/typewright_helper.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tw_source</span>(<span class="ruby-identifier">curr_src</span>)
+   <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;OCR Source: &quot;</span>
+   <span class="ruby-identifier">curr_src</span> = <span class="ruby-string">&quot;eMOP&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">curr_src</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;alto&quot;</span>
+   <span class="ruby-identifier">html</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;&lt;span class=\&quot;tw_selected_source\&quot;&gt;#{curr_src}&lt;/span&gt; &quot;</span>
+   <span class="ruby-keyword">return</span> <span class="ruby-identifier">html</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tw_source-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tw_source-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

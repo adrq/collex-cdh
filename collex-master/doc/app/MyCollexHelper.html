@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>module MyCollexHelper - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/my_collex_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-change_char">#change_char</a>
+    
+    <li><a href="#method-i-closed_char">#closed_char</a>
+    
+    <li><a href="#method-i-create_border_div">#create_border_div</a>
+    
+    <li><a href="#method-i-del_char">#del_char</a>
+    
+    <li><a href="#method-i-down_char">#down_char</a>
+    
+    <li><a href="#method-i-element_bullet">#element_bullet</a>
+    
+    <li><a href="#method-i-element_pic_thumbnail">#element_pic_thumbnail</a>
+    
+    <li><a href="#method-i-element_pic_thumbnail_illustration">#element_pic_thumbnail_illustration</a>
+    
+    <li><a href="#method-i-element_text_thumbnail">#element_text_thumbnail</a>
+    
+    <li><a href="#method-i-exhibit_builder_style_name">#exhibit_builder_style_name</a>
+    
+    <li><a href="#method-i-get_image_url">#get_image_url</a>
+    
+    <li><a href="#method-i-get_url_for_internal_image">#get_url_for_internal_image</a>
+    
+    <li><a href="#method-i-ins_char">#ins_char</a>
+    
+    <li><a href="#method-i-left_char">#left_char</a>
+    
+    <li><a href="#method-i-opened_char">#opened_char</a>
+    
+    <li><a href="#method-i-right_char">#right_char</a>
+    
+    <li><a href="#method-i-tree_node">#tree_node</a>
+    
+    <li><a href="#method-i-up_char">#up_char</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module MyCollexHelper</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2009 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-change_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">change_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="change_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;Delta;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- change_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- change_char-method -->
+
+    
+      <div id="method-i-closed_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">closed_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="closed_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">closed_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&amp;#x25B2;'</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- closed_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- closed_char-method -->
+
+    
+      <div id="method-i-create_border_div" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_border_div</span><span
+            class="method-args">(element, border_active, border_class)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_border_div-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_border_div</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">border_active</span>, <span class="ruby-identifier">border_class</span>)
+  <span class="ruby-comment"># This creates either an open div tag with a border, nothing, or a close div tag .</span>
+  <span class="ruby-comment"># If this is the first element in a section, then is_first is returned true .</span>
+  <span class="ruby-identifier">close_div</span> = <span class="ruby-string">&quot;&lt;/div&gt;\n&quot;</span>
+  <span class="ruby-identifier">open_div</span> = <span class="ruby-node">&quot;&lt;div class='#{border_class}'&gt;\n&quot;</span>
+  <span class="ruby-identifier">border_type</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">get_border_type</span>()
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">border_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;start_border&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">border_active</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">close_div</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">open_div</span>
+    <span class="ruby-identifier">border_active</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-comment">#is_first = true</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">border_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;start_border&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">border_active</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">open_div</span>
+    <span class="ruby-identifier">border_active</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-comment">#is_first = true</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">border_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;continue_border&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">border_active</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">border_active</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-comment">#is_first = false</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">border_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;continue_border&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">border_active</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">open_div</span>
+    <span class="ruby-identifier">border_active</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-comment">#is_first = true</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">border_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;no_border&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">border_active</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">close_div</span>
+    <span class="ruby-identifier">border_active</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-comment">#is_first = true</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">border_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;no_border&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">border_active</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">html</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">border_active</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-comment">#is_first = true</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> { <span class="ruby-value">:border_active</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">border_active</span>, <span class="ruby-value">:html</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">html</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_border_div-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_border_div-method -->
+
+    
+      <div id="method-i-del_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">del_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="del_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">del_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;times;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- del_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- del_char-method -->
+
+    
+      <div id="method-i-down_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">down_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="down_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">down_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;darr;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- down_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- down_char-method -->
+
+    
+      <div id="method-i-element_bullet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">element_bullet</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="element_bullet-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">element_bullet</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;para;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- element_bullet-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- element_bullet-method -->
+
+    
+      <div id="method-i-element_pic_thumbnail" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">element_pic_thumbnail</span><span
+            class="method-args">(element, pos)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="element_pic_thumbnail-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">element_pic_thumbnail</span>(<span class="ruby-identifier">element</span>, <span class="ruby-identifier">pos</span>)
+  <span class="ruby-identifier">illustrations</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">exhibit_illustrations</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustrations</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pos</span>
+    <span class="ruby-identifier">element_pic_thumbnail_illustration</span>(<span class="ruby-identifier">illustrations</span>[<span class="ruby-identifier">pos</span>])
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;img src='#{get_image_url(nil)}' height='16px' /&gt;&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- element_pic_thumbnail-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- element_pic_thumbnail-method -->
+
+    
+      <div id="method-i-element_pic_thumbnail_illustration" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">element_pic_thumbnail_illustration</span><span
+            class="method-args">(illustration)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="element_pic_thumbnail_illustration-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">element_pic_thumbnail_illustration</span>(<span class="ruby-identifier">illustration</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">get_illustration_type_image</span>()
+    <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;img src='#{get_image_url(illustration.image_url)}' height='16px' /&gt;&quot;</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">get_illustration_type_nines_obj</span>()
+    <span class="ruby-identifier">thumb</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_thumbnail_from_uri</span>(<span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">nines_object_uri</span>)
+    <span class="ruby-identifier">raw</span>(<span class="ruby-node">&quot;&lt;img src='#{get_image_url(thumb)}' height='16px' /&gt;&quot;</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">illustration</span>.<span class="ruby-identifier">illustration_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ExhibitIllustration</span>.<span class="ruby-identifier">get_illustration_type_text</span>()
+    <span class="ruby-string">&quot;...&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- element_pic_thumbnail_illustration-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- element_pic_thumbnail_illustration-method -->
+
+    
+      <div id="method-i-element_text_thumbnail" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">element_text_thumbnail</span><span
+            class="method-args">(text)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="element_text_thumbnail-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">element_text_thumbnail</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;[no text]&quot;</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">strip_tags</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">30</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">text</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">29</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;...&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- element_text_thumbnail-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- element_text_thumbnail-method -->
+
+    
+      <div id="method-i-exhibit_builder_style_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exhibit_builder_style_name</span><span
+            class="method-args">(exhibit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="exhibit_builder_style_name-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exhibit_builder_style_name</span>(<span class="ruby-identifier">exhibit</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">exhibit</span>.<span class="ruby-identifier">fonts_match_defaults</span>()
+                <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;#{Setup.site_name()} default&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;Custom style&quot;</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- exhibit_builder_style_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- exhibit_builder_style_name-method -->
+
+    
+      <div id="method-i-get_image_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_image_url</span><span
+            class="method-args">(url)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_image_url-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_image_url</span>(<span class="ruby-identifier">url</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">image_path</span>(<span class="ruby-constant">DEFAULT_THUMBNAIL_IMAGE_PATH</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_image_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_image_url-method -->
+
+    
+      <div id="method-i-get_url_for_internal_image" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_url_for_internal_image</span><span
+            class="method-args">(image, ty = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_url_for_internal_image-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_url_for_internal_image</span>(<span class="ruby-identifier">image</span>, <span class="ruby-identifier">ty</span> = <span class="ruby-keyword">nil</span>)
+        <span class="ruby-comment"># image is the item in the database that points to the image.</span>
+        <span class="ruby-comment"># ty is :micro, :smaller, :thumb</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span>.<span class="ruby-identifier">photo</span>.<span class="ruby-identifier">url</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;/#{image.photo.url(ty)}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ty</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;/#{image.photo.url()}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_url_for_internal_image-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_url_for_internal_image-method -->
+
+    
+      <div id="method-i-ins_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ins_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ins_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ins_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;crarr;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ins_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ins_char-method -->
+
+    
+      <div id="method-i-left_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">left_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="left_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">left_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;larr;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- left_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- left_char-method -->
+
+    
+      <div id="method-i-opened_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">opened_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="opened_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">opened_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">'&amp;#x25BC;'</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- opened_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- opened_char-method -->
+
+    
+      <div id="method-i-right_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">right_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="right_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">right_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;rarr;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- right_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- right_char-method -->
+
+    
+      <div id="method-i-tree_node" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tree_node</span><span
+            class="method-args">( page_num, item_id_prefix, class_name, toggle_function, exhibit_id, num_pages, initial_state )</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tree_node-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tree_node</span>( <span class="ruby-identifier">page_num</span>, <span class="ruby-identifier">item_id_prefix</span>, <span class="ruby-identifier">class_name</span>, <span class="ruby-identifier">toggle_function</span>, <span class="ruby-identifier">exhibit_id</span>, <span class="ruby-identifier">num_pages</span>, <span class="ruby-identifier">initial_state</span> )
+  <span class="ruby-identifier">display_none</span> = <span class="ruby-string">'style=&quot;display:none&quot;'</span>
+  <span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_pages</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>  <span class="ruby-comment"># We don't want any page controls if there is only one page.</span>
+    <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&lt;div class='outline_right_controls'&gt;\n&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_num</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">up_char</span>(), <span class="ruby-node">&quot;doAjaxLinkOnPage('move_page_up', #{exhibit_id}, #{page_num} );&quot;</span>, { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Move Page Up'</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link'</span> }) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\n&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_num</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">num_pages</span>
+      <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">down_char</span>(), <span class="ruby-node">&quot;doAjaxLinkOnPage('move_page_down', #{exhibit_id}, #{page_num} );&quot;</span>, { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Move Page Down'</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link'</span> }) <span class="ruby-operator">+</span><span class="ruby-string">&quot;\n&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&amp;nbsp;&lt;span class=&quot;close_link&quot;&gt;'</span>
+    <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">del_char</span>(), <span class="ruby-node">&quot;doAjaxLinkOnPage('delete_page', #{exhibit_id}, #{page_num} );&quot;</span>, { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Delete Page'</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link'</span> })
+    <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>
+    <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&lt;/div&gt;\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;span id=\&quot;#{item_id_prefix}_p#{page_num}_closed\&quot; #{initial_state == :open ? display_none : ''} &gt;&quot;</span>
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">closed_char</span>(),<span class="ruby-node">&quot;#{toggle_function}('#{item_id_prefix}_p#{page_num}')&quot;</span>, { <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link'</span> })
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;span id=\&quot;#{item_id_prefix}_p#{page_num}_opened\&quot; #{initial_state == :closed ? display_none : ''} &gt;&quot;</span>
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">opened_char</span>(), <span class="ruby-node">&quot;#{toggle_function}('#{item_id_prefix}_p#{page_num}')&quot;</span>, { <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'modify_link'</span>})
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;span class='#{class_name}'&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;Page &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">page_num</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">raw</span>(<span class="ruby-identifier">label</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tree_node-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tree_node-method -->
+
+    
+      <div id="method-i-up_char" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">up_char</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="up_char-source">
+            <pre><span class="ruby-comment"># File app/helpers/my_collex_helper.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">up_char</span>
+  <span class="ruby-identifier">raw</span>(<span class="ruby-string">&quot;&amp;uarr;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- up_char-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- up_char-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

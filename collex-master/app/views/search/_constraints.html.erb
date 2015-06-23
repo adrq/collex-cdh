@@ -1,0 +1,118 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+
+<%# TODO-PER: I think this code is not used anymore. %>
+
+<div class="page_subheader">Add new search criteria or select limiters to refine your search.</div>
+<% default_search_phrase = 'click here to add new search term' -%>
+<%= form_tag({:controller => "search", :action => "add_constraint"}, :onsubmit => "return searchValidation('search_year', 'search_phrase', 'search_type', 'search_submit', 'search_submit2');") do %>
+<table class="query">
+    <% fuzzy_keyword_constraint = @listed_constraints.find{ |i| i[:constraint][:fieldx] == "fuz_q"} -%>
+    <% has_keyword_search = false %>
+    <% fuzzy_title_constraint = @listed_constraints.find{ |i| i[:constraint][:fieldx] == "fuz_t"} -%>
+    <% has_title_search = false %>
+	<% @listed_constraints.each do |constraint_data| -%>
+		<% constraint = constraint_data[:constraint] -%>
+        <% has_keyword_search = true if constraint.is_a?(ExpressionConstraint) %>
+        <% has_title_search = true if constraint.is_a?(FacetConstraint) and constraint[:fieldx] == 'title' %>
+		<% index = constraint_data[:id] -%>
+		<% ret = format_constraint(constraint) -%>
+		<% if ret != nil and ret[:title].downcase.match(/fuzziness/).nil? %>
+		<tr>
+			<td class="query_type"><%= ret[:title] %></td>
+			<td class="query_term yui3-skin-sam">
+              <div><%= ret[:value] %></div>
+            </td>
+			<td class="query_and-not">
+					<%# we want to post back to the server if the user changed the selection by either a mouse click or keypress. We need to make sure that there really was a change, so only post back if the current value doesn't equal the starting value (starting value is ret[:not]) -%>
+					<% is_not = ret[:not]?'true':'false' # make sure that a string value is used for the following script -%>
+					<% and_not = "serverAction({action: { actions: '/search/invert_constraint', params: { index: '#{index}', 'phrs': $('search_phrase').getRealValue() } }, progress: { waitMessage: 'Searching...' }})" %>
+					<select class="query_and-not_select" onkeyup="if (<%= is_not %> != (this.options[this.selectedIndex].value == 'NOT')) <%=  and_not %>;" onchange="if (<%= is_not %> != (this.options[this.selectedIndex].value == 'NOT'))  <%=  and_not %>;">
+					<option value="AND">AND</option><option value="NOT" <%= "selected='selected'" if ret[:not] %>>NOT</option></select>
+			</td>
+			<td class="query_remove"><%= create_facet_link(image_tag('lvl2_trash.gif', { alt: "Remove Term" }), '/search/remove_constraint', { :index => "#{index}" }) %></td>
+		</tr>
+	    <% end -%>
+    <% end -%>
+    <% if HAS_FUZZY -%>
+      <% if has_keyword_search -%>
+          <tr>
+            <td class="query_type">Search Term Fuzziness &nbsp;</td>
+            <td>
+              <div style="width:360px">
+                <% fuzz = fuzzy_keyword_constraint.nil? ? 0 : fuzzy_keyword_constraint[:constraint][:value].to_i %>
+                <input class="fuzzy" type="radio" name="search_keyword_fuz" value="1" <% if fuzz==0 %>checked="checked"<% end %> />
+                <span class="fuzzy">Exact Match</span>
+                <input class="fuzzy" type="radio" name="search_keyword_fuz" value="2" <% if fuzz==1 %>checked="checked"<% end %>/>
+                <span class="fuzzy">Some Variance</span>
+                <input class="fuzzy" type="radio" name="search_keyword_fuz" value="3" <% if fuzz==2 %>checked="checked"<% end %> />
+                <span class="fuzzy">More Variance</span>
+              </div>
+            </td>
+            <td></td>
+            <td class="query_remove"><input id="term_fuzziness_submit" type="submit" value="Change" /></td>
+          </tr>
+      <% end -%>
+      <% if has_title_search -%>
+          <tr class="yui3-skin-sam">
+            <td class="query_type">Title Fuzziness</td>
+            <td>
+              <div style="width:360px">
+                <% fuzz = fuzzy_title_constraint.nil? ? 1 : fuzzy_title_constraint[:constraint][:value].to_i  %>
+                <input class="fuzzy" type="radio" name="search_title_fuz" value="1" <% if fuzz==0 %>checked="checked"<% end %> />
+                <span class="fuzzy">Exact Match</span>
+                <input class="fuzzy" type="radio" name="search_title_fuz" value="2" <% if fuzz==1 %>checked="checked"<% end %>/>
+                <span class="fuzzy">Some Variance</span>
+                <input class="fuzzy" type="radio" name="search_title_fuz" value="3" <% if fuzz==2 %>checked="checked"<% end %> />
+                <span class="fuzzy">More Variance</span>
+              </div>
+            </td>
+            <td></td>
+            <td class="query_remove"><input id="title_fuzziness_submit" type="submit"  value="Change" /></td>
+          </tr>
+      <% end -%>
+    <% end -%>
+	<tr>
+		<td class="query_type">
+			<select id="search_type" name="search_type" class="query_type_select" onchange='searchTypeChanged(this);'>
+              <option>Search Term</option>
+              <option>Title</option>
+              <% if HAS_FUZZY -%>
+                  <option>Language</option>
+                  <option>Year (YYYY)</option>
+                  <% @searchable_roles.each do |role| %>
+                    <option><%= role[1] %></option>
+                  <% end %>
+              <% else %>
+                  <option>Author</option>
+                  <option>Editor</option>
+                  <option>Publisher</option>
+                  <option>Artist</option>
+                  <option>Owner</option>
+                  <option>Year (YYYY)</option>
+              <% end -%>
+            </select></td>
+		<td class="query_term">
+		    <%= text_field_with_suggest :search, :phrase,  {:size=>40, :value=>@phrs ? @phrs : default_search_phrase }, {:min_chars => 2} -%>
+          <%= select_tag( :search_language, options_from_collection_for_select([IsoLanguage.new()] + Catalog.factory_create(false).get_languages(), :alpha3, :first_english_name), :class => 'search_language', :style => "display:none;") %>
+		</td>
+		<td class="query_and-not"><select id='search_not' name='search_not' class="query_and-not_select"><option>AND</option><option>NOT</option></select>
+		</td>
+		<td class="query_remove"><input id="search_submit" type="submit" value="Add" /></td>
+	</tr>
+</table>
+<% end %>

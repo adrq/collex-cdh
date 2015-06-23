@@ -1,0 +1,91 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%	tab_name = Setup.community_tab()
+	return_url = "/communities"
+	if @thread.group_id
+		group = Group.find_by_id(@thread.group_id)
+		if group
+			case group.group_type
+			when "classroom" then
+				tab_name = "Classroom"
+				return_url = "/classroom"
+			when "peer-reviewed"
+				tab_name = "Publications"
+				return_url = "/publications"
+			end
+		end
+	end
+-%>
+<% current_page tab_name -%>
+<% user_id = user_signed_in? ? get_curr_user_id : nil -%>
+<% thread_id = @thread.id -%>
+<% topic = DiscussionTopic.find(@thread.discussion_topic_id) -%>
+<%= create_breadcrumbs([{ :text => tab_name, :url => return_url }, { :text => "#{Setup.site_name()}  Forum", :url => '/forum' }, { :text => topic.topic, :url => "/forum/view_topic?topic=#{topic.id}" }], DiscussionThread.find(thread_id).get_title()) %>
+<div class="content_container2">
+<script type="text/javascript">
+	window.collex.exhibit_names = <%= raw(Exhibit.all_my_exhibits(get_curr_user_id).to_json) %>;
+</script>
+
+<div class="page_subheader">Follow and join in this discussion by using your free <%= Setup.site_name() %> account.</div>
+<br />
+<% main_comment = @thread.discussion_comments[0] -%>
+<%# the thread itself can be deleted if the current user is an administrator, or the current user created the thread and there are no comments, yet. -%>
+<% can_delete = is_admin? || (main_comment.user_id == user_id && @replies.length == 0) -%>
+<div id="<%= "comment_id_#{main_comment.id}" %>" class="FP_original_post">
+	<%= render :partial => 'comment', :locals => { :comment=> main_comment, :can_delete => can_delete, :can_edit => (main_comment.user_id == user_id), :is_main => true } %>
+</div>
+
+<div id="replies" class="FP_replies">
+	<%= render :partial => 'replies', :locals => { :total => @total, :page => @page, :replies => @replies, :num_pages => @num_pages, :thread => @thread } %>
+</div>
+
+<% if user_can_reply(main_comment) == true -%>
+	<div id="discussion_thread" class="discussion_action_bar">
+		<script type="text/javascript">
+			var onButtonClick = function (e) {
+				new ForumReplyDlg({ thread_id: <%= @thread.id %>,
+					ajax_div: 'replies',
+					submit_url: '/forum/post_comment_to_existing_thread',
+					populate_exhibit_url: '/forum/get_exhibit_list',
+					populate_collex_obj_url: '/forum/get_nines_obj_list',
+					progress_img: '<%= image_path(PROGRESS_SPINNER_PATH) %>',
+					logged_in: <%= user_signed_in? %>
+				});
+				return false;
+			};
+		</script>
+		<%= link_to("Reply", "#", :onclick => 'onButtonClick(event); return false;', :id => 'replyButton', :class => 'modify_link') %><br /><br />
+		<script type="text/javascript">
+			document.observe('dom:loaded', function() {
+	<%# couldn't get the button to work in IE 6, so we'll just use the link %>
+				if (YAHOO.env.ua.ie !== 6) {
+					var oButton = new YAHOO.widget.Button("replyButton", { onclick: { fn: onButtonClick } });
+					YAHOO.util.Event.onAvailable('replyButton-button', function() {
+						$('replyButton-button').writeAttribute('onclick', 'return false;');	// This keeps the '#' out of the address bar
+					}, this);
+				}
+			<% if @script == 'ForumReplyDlg' %>
+				onButtonClick();
+			<% end %>
+			<% if @script == 'doCollect' %>
+				doCollect("/forum/attachment", '<%= @uri %>' , <%= @row_num %> , '<%= @row_id %>', true);
+			<% end %>
+			});
+		</script>
+ 	</div>
+<% end -%>
+</div>

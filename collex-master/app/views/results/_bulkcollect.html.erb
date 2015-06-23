@@ -1,0 +1,39 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+	
+<%# bulkcollect params: string mode, int page -%>
+<div class="bulkcollect">
+<% if user_signed_in? -%>
+  <a class="modify_link" href="#" onclick="toggleAllBulkCollectCheckboxes(this); return false;"><span class="bulk_select_all">[Select All]</span><span class="bulk_unselect_all" style="display: none;">[Unselect All]</span></a>
+  
+  <% if mode == :collect or mode == :both %>
+      <a class="modify_link" href="#" onclick="bulkCollect('/tag/tag_name_autocomplete'); return false;">[Collect Selected]</a>
+  <% end %>
+  
+  <% if mode == :uncollect or mode == :both %>
+      <a class="modify_link" href="#" onclick="bulkUncollect(); return false;">[Uncollect Selected]</a>
+  <% end %>
+  
+  <a id="bulk_tag" class="modify_link" href="#" onclick="bulkTag('/tag/tag_name_autocomplete', <%= page %>); return false;">[Tag Selected]</a>
+<% end -%>
+	
+	<a class="nav_link" href="#" onclick="toggleItemExpand(); return false;">
+      <span id="expand_all">[Expand All Entries]</span>
+      <span id="collapse_all" style="display: none;">[Collapse All Entries]</span>
+   </a>
+   
+</div>

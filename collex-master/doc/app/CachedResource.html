@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class CachedResource - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/cached_resource.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-add">::add</a>
+    
+    <li><a href="#method-c-exists">::exists</a>
+    
+    <li><a href="#method-c-get_hit_from_cached_resource">::get_hit_from_cached_resource</a>
+    
+    <li><a href="#method-c-get_hit_from_resource_id">::get_hit_from_resource_id</a>
+    
+    <li><a href="#method-c-get_hit_from_uri">::get_hit_from_uri</a>
+    
+    <li><a href="#method-c-get_hits_for_tag">::get_hits_for_tag</a>
+    
+    <li><a href="#method-c-get_image_from_hit">::get_image_from_hit</a>
+    
+    <li><a href="#method-c-get_image_from_uri">::get_image_from_uri</a>
+    
+    <li><a href="#method-c-get_link_from_hit">::get_link_from_hit</a>
+    
+    <li><a href="#method-c-get_link_from_uri">::get_link_from_uri</a>
+    
+    <li><a href="#method-c-get_most_popular_tags">::get_most_popular_tags</a>
+    
+    <li><a href="#method-c-get_most_recent_tags">::get_most_recent_tags</a>
+    
+    <li><a href="#method-c-get_newest_collections">::get_newest_collections</a>
+    
+    <li><a href="#method-c-get_page_of_all_untagged">::get_page_of_all_untagged</a>
+    
+    <li><a href="#method-c-get_page_of_hits_by_user">::get_page_of_hits_by_user</a>
+    
+    <li><a href="#method-c-get_page_of_hits_for_tag">::get_page_of_hits_for_tag</a>
+    
+    <li><a href="#method-c-get_tag_cloud_info">::get_tag_cloud_info</a>
+    
+    <li><a href="#method-c-get_thumbnail_from_hit">::get_thumbnail_from_hit</a>
+    
+    <li><a href="#method-c-get_thumbnail_from_hit_no_site">::get_thumbnail_from_hit_no_site</a>
+    
+    <li><a href="#method-c-get_thumbnail_from_uri">::get_thumbnail_from_uri</a>
+    
+    <li><a href="#method-i-recache_properties">#recache_properties</a>
+    
+    <li><a href="#method-i-resource">#resource</a>
+    
+    <li><a href="#method-i-set_hit">#set_hit</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CachedResource</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2008 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add</span><span
+            class="method-args">( uri, check_if_exists = true)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add the resource at the specified URI to the cache</p>
+          
+
+          
+          <div class="method-source-code" id="add-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>( <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">check_if_exists</span> = <span class="ruby-keyword">true</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">check_if_exists</span>
+                <span class="ruby-comment"># just get it from the cache if it were already added.</span>
+                <span class="ruby-identifier">hit</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">uri</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">hit</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>
+              <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># The object isn't in the cache, so put it there</span>
+    <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:uri</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uri</span>)
+    <span class="ruby-identifier">hit</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create</span>(<span class="ruby-keyword">false</span>).<span class="ruby-identifier">get_object</span>(<span class="ruby-identifier">uri</span>)
+    <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">set_hit</span>(<span class="ruby-identifier">hit</span>)
+    <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">save!</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">check_if_exists</span>
+                <span class="ruby-comment"># Retrieve it from the cache instead of returning it directly, because the cache may filter some fields.</span>
+                <span class="ruby-comment"># This way we know for sure that we will get the same results every time we call it.</span>
+                <span class="ruby-identifier">hit</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">uri</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">hit</span>
+              <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add-method -->
+
+    
+      <div id="method-c-exists" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exists</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>check if the specified URI exists as a cached resource</p>
+          
+
+          
+          <div class="method-source-code" id="exists-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exists</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> ( <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:uri</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uri</span> ).<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- exists-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- exists-method -->
+
+    
+      <div id="method-c-get_hit_from_cached_resource" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_hit_from_cached_resource</span><span
+            class="method-args">(cr)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_hit_from_cached_resource-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 547</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_hit_from_cached_resource</span>(<span class="ruby-identifier">cr</span>)
+  <span class="ruby-identifier">hit</span> = {}
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">cached_properties</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">property</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">property</span>.<span class="ruby-identifier">name</span>] = [] <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hit</span>[<span class="ruby-identifier">property</span>.<span class="ruby-identifier">name</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">property</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'text'</span> <span class="ruby-comment"># make sure that full text never gets shown, even if it is mistakenly collected.</span>
+      <span class="ruby-identifier">hit</span>[<span class="ruby-identifier">property</span>.<span class="ruby-identifier">name</span>].<span class="ruby-identifier">insert</span>(<span class="ruby-value">-1</span>, <span class="ruby-identifier">property</span>.<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>] = <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">uri</span>
+  <span class="ruby-comment"># some fields are not multivalued, so they shouldn't be arrays</span>
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>]
+  <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">hit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_hit_from_cached_resource-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_hit_from_cached_resource-method -->
+
+    
+      <div id="method-c-get_hit_from_resource_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_hit_from_resource_id</span><span
+            class="method-args">(resource_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_hit_from_resource_id-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 524</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_hit_from_resource_id</span>(<span class="ruby-identifier">resource_id</span>)
+              <span class="ruby-identifier">uri</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">resource_id</span>)
+              <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+              <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">fill_hit</span>(<span class="ruby-identifier">resource_id</span>)
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>].<span class="ruby-identifier">blank?</span>
+                      <span class="ruby-comment"># The object must have been improperly cached, so attempt to cache it again.</span>
+                      <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">recache_properties</span>()
+                      <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">fill_hit</span>(<span class="ruby-identifier">resource_id</span>)
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>] = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">uri</span>
+              <span class="ruby-comment"># some fields are not multivalued, so they shouldn't be arrays</span>
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'freeculture'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'title'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'has_full_text'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'is_ocr'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>] = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>][<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>].<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'typewright'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+              <span class="ruby-keyword">return</span> <span class="ruby-identifier">hit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_hit_from_resource_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_hit_from_resource_id-method -->
+
+    
+      <div id="method-c-get_hit_from_uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_hit_from_uri</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_hit_from_uri-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 229</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">cr</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">cr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+              <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-keyword">false</span>)
+              <span class="ruby-identifier">cr</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">cr</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">get_hit_from_resource_id</span>(<span class="ruby-identifier">cr</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_hit_from_uri-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_hit_from_uri-method -->
+
+    
+      <div id="method-c-get_hits_for_tag" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_hits_for_tag</span><span
+            class="method-args">(tag_name, user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get all hits for a given tag.  If a user is passed, then only the objects
+for that user are returned. Otherwise all matching objects are returned.</p>
+          
+
+          
+          <div class="method-source-code" id="get_hits_for_tag-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 324</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_hits_for_tag</span>(<span class="ruby-identifier">tag_name</span>, <span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">results</span> = []
+  <span class="ruby-identifier">tag</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">tag_name</span>)
+  <span class="ruby-comment"># It's possible for this to return nil if a tag was deleted before this request was made.</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">results</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-identifier">assigns</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">all</span>(<span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [ <span class="ruby-string">&quot;tag_id = ?&quot;</span>, <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">id</span> ] )
+  <span class="ruby-identifier">assigns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">assign</span> <span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">assign</span>.<span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-identifier">hit</span> = <span class="ruby-identifier">get_hit_from_resource_id</span>(<span class="ruby-identifier">assign</span>.<span class="ruby-identifier">cached_resource_id</span>)
+      <span class="ruby-identifier">results</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">-1</span>, <span class="ruby-identifier">hit</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">results</span>.<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>[<span class="ruby-string">'uri'</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'uri'</span>]}
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">results</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_hits_for_tag-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_hits_for_tag-method -->
+
+    
+      <div id="method-c-get_image_from_hit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_image_from_hit</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_image_from_hit-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 247</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_image_from_hit</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">image</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">solr_obj_to_str</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'image'</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">image</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_thumbnail_from_hit</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">image</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_image_from_hit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_image_from_hit-method -->
+
+    
+      <div id="method-c-get_image_from_uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_image_from_uri</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_image_from_uri-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 240</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_image_from_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">uri</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">hit</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_image_from_hit</span>(<span class="ruby-identifier">hit</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_image_from_uri-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_image_from_uri-method -->
+
+    
+      <div id="method-c-get_link_from_hit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_link_from_hit</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_link_from_hit-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 294</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_link_from_hit</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">solr_obj_to_str</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'url'</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_link_from_hit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_link_from_hit-method -->
+
+    
+      <div id="method-c-get_link_from_uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_link_from_uri</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_link_from_uri-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 287</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_link_from_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">hit</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_link_from_hit</span>(<span class="ruby-identifier">hit</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_link_from_uri-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_link_from_uri-method -->
+
+    
+      <div id="method-c-get_most_popular_tags" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_most_popular_tags</span><span
+            class="method-args">(num)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_most_popular_tags-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_most_popular_tags</span>(<span class="ruby-identifier">num</span>)
+        <span class="ruby-identifier">cloud_info</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_tag_cloud_info</span>(<span class="ruby-keyword">nil</span>) <span class="ruby-comment"># get all tags and their frequencies</span>
+        <span class="ruby-identifier">tags</span> = <span class="ruby-identifier">cloud_info</span>[<span class="ruby-value">:cloud_freq</span>].<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">1</span>]} <span class="ruby-comment"># sort by frequency</span>
+        <span class="ruby-identifier">total_tags_wanted</span> = <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">length</span>
+        <span class="ruby-identifier">total_bigger_tags</span> = <span class="ruby-identifier">total_tags_wanted</span> <span class="ruby-operator">/</span> <span class="ruby-value">5</span>
+        <span class="ruby-identifier">tags</span> = <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">total_tags_wanted</span>)  <span class="ruby-comment"># we just want the top num tags.</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">total_bigger_tags</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-comment"># now make a few of the tags larger</span>
+                <span class="ruby-identifier">tags</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">2</span>] = <span class="ruby-keyword">true</span>
+        }
+        <span class="ruby-identifier">total_bigger_tags</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">total_tags_wanted</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-comment"># now make a few of the tags larger</span>
+                <span class="ruby-identifier">tags</span>[<span class="ruby-identifier">i</span>][<span class="ruby-value">2</span>] = <span class="ruby-keyword">false</span>
+        }
+        <span class="ruby-identifier">tags</span> = <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>]}  <span class="ruby-comment"># now sort by tag name for display</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">tags</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_most_popular_tags-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_most_popular_tags-method -->
+
+    
+      <div id="method-c-get_most_recent_tags" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_most_recent_tags</span><span
+            class="method-args">(num)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_most_recent_tags-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_most_recent_tags</span>(<span class="ruby-identifier">num</span>)
+        <span class="ruby-identifier">sql_recent</span> = <span class="ruby-node">&quot;SELECT DISTINCT tags.name, count(tag_id) as freq FROM tagassigns join tags on tags.id = tagassigns.tag_id GROUP BY tag_id ORDER BY MAX(updated_at) DESC limit #{num}&quot;</span>
+        <span class="ruby-identifier">cloud</span> = <span class="ruby-identifier">find_by_sql</span>([ <span class="ruby-identifier">sql_recent</span> ]) 
+        <span class="ruby-comment"># convert active record objects to [name,freq] pairs</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">cloud</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">cloud</span> = <span class="ruby-identifier">cloud</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span> [ <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">freq</span>.<span class="ruby-identifier">to_i</span> ] }
+                <span class="ruby-identifier">freqs</span> = <span class="ruby-identifier">cloud</span>.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">1</span>] }
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">freqs</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">freqs</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">third</span> = <span class="ruby-identifier">freqs</span>[<span class="ruby-identifier">freqs</span>.<span class="ruby-identifier">length</span>*<span class="ruby-value">2</span><span class="ruby-operator">/</span><span class="ruby-value">3</span>][<span class="ruby-value">1</span>]
+                <span class="ruby-identifier">cloud</span> = <span class="ruby-identifier">cloud</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span>
+                        [ <span class="ruby-identifier">tag</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">tag</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">tag</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">third</span> ]
+                }
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">cloud</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_most_recent_tags-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_most_recent_tags-method -->
+
+    
+      <div id="method-c-get_newest_collections" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_newest_collections</span><span
+            class="method-args">(user, count)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_newest_collections-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 311</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_newest_collections</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">count</span>) <span class="ruby-comment"># Pass in the actual user object (not just the user name), and get back an array of results. Each result is a hash of all the properties that were cached.</span>
+  <span class="ruby-identifier">items</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">all</span>(<span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;user_id = ?&quot;</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>], <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'updated_at DESC'</span>, <span class="ruby-value">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">count</span> )
+  <span class="ruby-identifier">results</span> = []
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hit</span> = <span class="ruby-identifier">get_hit_from_resource_id</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">cached_resource_id</span>)
+    <span class="ruby-identifier">results</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">-1</span>, <span class="ruby-identifier">hit</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">results</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_newest_collections-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_newest_collections-method -->
+
+    
+      <div id="method-c-get_page_of_all_untagged" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_page_of_all_untagged</span><span
+            class="method-args">(user, page_num, items_per_page, sort_field, direction)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_page_of_all_untagged-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 390</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_page_of_all_untagged</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">page_num</span>, <span class="ruby-identifier">items_per_page</span>, <span class="ruby-identifier">sort_field</span>, <span class="ruby-identifier">direction</span>)
+        <span class="ruby-comment"># Find all collected items that don't have any tags for the particular user.</span>
+        <span class="ruby-comment"># User contains id</span>
+        <span class="ruby-comment"># CollectedItem contains user_id, cached_resource_id</span>
+        <span class="ruby-comment"># Tagassigns contains user_id, cached_resource_id</span>
+        <span class="ruby-comment"># We want to return all the CollectedItems that that don't have a corresponding Tagassigns</span>
+  <span class="ruby-keyword">return</span> { <span class="ruby-value">:results</span> =<span class="ruby-operator">&gt;</span> [], <span class="ruby-value">:total</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">all_items</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>})
+  <span class="ruby-identifier">items</span> = []
+  <span class="ruby-identifier">all_items</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">first_tag</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">find_by_cached_resource_id_and_user_id</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">cached_resource_id</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">user_id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">first_tag</span>
+                              <span class="ruby-keyword">if</span> <span class="ruby-identifier">sort_field</span>
+                                      <span class="ruby-identifier">item</span> = <span class="ruby-identifier">add_sort_field</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">sort_field</span>)
+                              <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">items</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">-1</span>, <span class="ruby-identifier">item</span>)
+    <span class="ruby-keyword">end</span>
+  }
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">sort_field</span>
+                      <span class="ruby-identifier">items</span> = <span class="ruby-identifier">sort_algorithm</span>(<span class="ruby-identifier">items</span>, <span class="ruby-identifier">sort_field</span>)
+                      <span class="ruby-identifier">items</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">reverse</span>() <span class="ruby-keyword">if</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-string">'desc'</span>
+              <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_page_of_results</span>(<span class="ruby-identifier">items</span>, <span class="ruby-identifier">page_num</span>, <span class="ruby-identifier">items_per_page</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_page_of_all_untagged-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_page_of_all_untagged-method -->
+
+    
+      <div id="method-c-get_page_of_hits_by_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_page_of_hits_by_user</span><span
+            class="method-args">(user, page_num, items_per_page, sort_field, direction)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>called in my_collex when viewing “all collected objects”</p>
+          
+
+          
+          <div class="method-source-code" id="get_page_of_hits_by_user-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 342</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_page_of_hits_by_user</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">page_num</span>, <span class="ruby-identifier">items_per_page</span>, <span class="ruby-identifier">sort_field</span>, <span class="ruby-identifier">direction</span>)
+  <span class="ruby-identifier">items</span> = <span class="ruby-constant">CollectedItem</span>.<span class="ruby-identifier">all</span>(<span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;user_id = ?&quot;</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>], <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'updated_at DESC'</span> )
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">sort_field</span>
+                      <span class="ruby-identifier">items</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">add_sort_field</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">sort_field</span>)
+                      }
+                      <span class="ruby-identifier">items</span> = <span class="ruby-identifier">sort_algorithm</span>(<span class="ruby-identifier">items</span>, <span class="ruby-identifier">sort_field</span>)
+                      <span class="ruby-identifier">items</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">reverse</span>() <span class="ruby-keyword">if</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-string">'desc'</span>
+              <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_page_of_results</span>(<span class="ruby-identifier">items</span>, <span class="ruby-identifier">page_num</span>, <span class="ruby-identifier">items_per_page</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_page_of_hits_by_user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_page_of_hits_by_user-method -->
+
+    
+      <div id="method-c-get_page_of_hits_for_tag" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_page_of_hits_for_tag</span><span
+            class="method-args">(tag_name, user, page_num, items_per_page, sort_field, direction)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get a list of al of the items that have been tagged with the specified
+string</p>
+          
+
+          
+          <div class="method-source-code" id="get_page_of_hits_for_tag-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 356</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_page_of_hits_for_tag</span>(<span class="ruby-identifier">tag_name</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">page_num</span>, <span class="ruby-identifier">items_per_page</span>, <span class="ruby-identifier">sort_field</span>, <span class="ruby-identifier">direction</span>)
+  <span class="ruby-identifier">tag</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">tag_name</span>)
+  <span class="ruby-comment"># It's possible for this to return nil if a tag was deleted before this request was made.</span>
+  <span class="ruby-keyword">return</span> { <span class="ruby-value">:results</span> =<span class="ruby-operator">&gt;</span> [], <span class="ruby-value">:total</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-comment"># walk through all assignments that match this tag ID</span>
+        <span class="ruby-identifier">retrieved_list</span> = {}
+  <span class="ruby-identifier">items</span> = []
+  <span class="ruby-identifier">assigns</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:tag_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">select</span>(<span class="ruby-value">:cached_resource_id</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ta</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ta</span>.<span class="ruby-identifier">cached_resource_id</span>}
+  <span class="ruby-identifier">total</span> = <span class="ruby-identifier">assigns</span>.<span class="ruby-identifier">count</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">sort_field</span>
+    <span class="ruby-comment"># get sorted list of cached resource ids</span>
+    <span class="ruby-identifier">assigns_sorted</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:cached_resource</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:cached_properties</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">'cached_properties.name'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sort_field</span>, <span class="ruby-string">'tagassigns.tag_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">'tagassigns.cached_resource_id'</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">'cached_properties.value'</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ta</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ta</span>.<span class="ruby-identifier">cached_resource_id</span>}
+    <span class="ruby-identifier">assigns</span> = <span class="ruby-identifier">assigns_sorted</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">assigns</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">assigns_sorted</span>)
+    <span class="ruby-identifier">assigns</span> = <span class="ruby-identifier">assigns</span>.<span class="ruby-identifier">reverse</span>() <span class="ruby-keyword">if</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-string">'desc'</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assigns</span> = <span class="ruby-identifier">assigns</span>[(<span class="ruby-identifier">page_num</span>*<span class="ruby-identifier">items_per_page</span>)<span class="ruby-operator">..</span>(<span class="ruby-identifier">page_num</span>*<span class="ruby-identifier">items_per_page</span><span class="ruby-operator">+</span><span class="ruby-identifier">items_per_page</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)]
+  <span class="ruby-identifier">assigns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">assign</span> <span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">retrieved_list</span>[<span class="ruby-identifier">assign</span>].<span class="ruby-identifier">blank?</span>
+      <span class="ruby-identifier">hit</span> = <span class="ruby-identifier">get_hit_from_resource_id</span>( <span class="ruby-identifier">assign</span> )
+      <span class="ruby-identifier">retrieved_list</span>[<span class="ruby-identifier">assign</span>] = <span class="ruby-keyword">true</span>
+      <span class="ruby-identifier">items</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">-1</span>, <span class="ruby-identifier">hit</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+              
+              <span class="ruby-identifier">page_results</span> = {}
+              <span class="ruby-identifier">page_results</span>[<span class="ruby-value">:results</span>] = <span class="ruby-identifier">items</span>
+  <span class="ruby-identifier">page_results</span>[<span class="ruby-value">:total</span>] = <span class="ruby-identifier">total</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">page_results</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_page_of_hits_for_tag-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_page_of_hits_for_tag-method -->
+
+    
+      <div id="method-c-get_tag_cloud_info" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_tag_cloud_info</span><span
+            class="method-args">(user)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_tag_cloud_info-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_tag_cloud_info</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-comment"># This gets all the tags, the number of times they've been used, and their relative sizes in the cloud.</span>
+  <span class="ruby-comment"># The return value is a list of all tag names and their frequency, also a hash of all frequencies and their bucket size.</span>
+
+  <span class="ruby-comment"># The relative sizes of the tags should be distributed as equally as possible.</span>
+  <span class="ruby-comment"># The problem is that the number of times they've been used is not distributed equally. The lower numbers</span>
+  <span class="ruby-comment"># tend to occur much more frequently than the higher numbers, so if a pure mean were used, then most of the</span>
+  <span class="ruby-comment"># tags would be the smallest size and the last few sizes would tend to have the same number of items in it.</span>
+  <span class="ruby-comment"># Therefore, the following algorithm is used to try to distribute the sizes.</span>
+  
+  <span class="ruby-comment"># First, we create a hash with the key being the number of times a tag has occurred and the value being the number of tags</span>
+  <span class="ruby-comment"># that occur that many times. That is, the hash { 5 =&gt; 2 } means that there are two tags, each of which occurs five times.</span>
+  <span class="ruby-comment"># If there are less than 10 items in the hash, then we just distribute the tags from the smallest size and we're done.</span>
+
+  <span class="ruby-comment"># Otherwise, we have to figure out which frequencies go in each bucket.</span>
+  <span class="ruby-comment"># We fill the buckets up from smallest to largest. The first bucket starts with the least frequent tags (probably the ones occurring only once).</span>
+  <span class="ruby-comment"># We take the total number of tags / 10 to get the average number of tags we'd like in each bucket. If the first bucket has less than that number</span>
+  <span class="ruby-comment"># of tags, then we also fill it with the next batch of tags, etc, until we've put &quot;total / 10&quot; tags in the bucket.</span>
+  <span class="ruby-comment"># Now, because of our distribution, we've probably put many more tags in that bucket than we'd like, so instead of filling the rest of the buckets</span>
+  <span class="ruby-comment"># equally, we subtract the number of tags we've used from the total, then divide that number by 9 to get the ideal number of tags for the next bucket.</span>
+  
+  <span class="ruby-identifier">cloud_freq</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">tag_cloud</span>(<span class="ruby-identifier">user</span>) <span class="ruby-comment"># cloud_freq is an array of arrays, with the inner array containing 0=tag_name, 1=frequency</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cloud_freq</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">return</span> { <span class="ruby-value">:cloud_freq</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cloud_freq</span>, <span class="ruby-value">:zoom_levels</span> =<span class="ruby-operator">&gt;</span> {} }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># create a hash so we can see the frequency totals</span>
+  <span class="ruby-comment"># the key is tag frequency, and the value is the number of tags with that frequency.</span>
+  <span class="ruby-identifier">freq_totals</span> = {}
+  <span class="ruby-identifier">cloud_freq</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">tag_freq</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">last</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">freq_totals</span>[<span class="ruby-identifier">tag_freq</span>]
+      <span class="ruby-identifier">freq_totals</span>[<span class="ruby-identifier">tag_freq</span>] = <span class="ruby-identifier">freq_totals</span>[<span class="ruby-identifier">tag_freq</span>] <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">freq_totals</span>[<span class="ruby-identifier">tag_freq</span>] = <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment"># for each item in cloud_freq</span>
+  
+  
+  <span class="ruby-comment"># order the freq_totals from lowest frequency to highest</span>
+  <span class="ruby-identifier">freq_totals</span> = <span class="ruby-identifier">freq_totals</span>.<span class="ruby-identifier">sort</span>
+  
+  <span class="ruby-comment"># there are 10 zoom levels. Each level has a set of 10 buckets</span>
+  <span class="ruby-comment"># containing tags of increasing frequency (ie bucket 1 contains tags</span>
+  <span class="ruby-comment"># that occur least frequenly and bucket 10 contains tags that occur most frequently</span>
+  <span class="ruby-identifier">zoom_levels</span> = []
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">zoom_level</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">10</span> <span class="ruby-keyword">do</span>
+     <span class="ruby-identifier">bucket_size</span> = {}
+     <span class="ruby-identifier">bucket</span> = <span class="ruby-value">1</span>
+     <span class="ruby-identifier">curr_zoom</span> = <span class="ruby-value">1</span>
+     
+     <span class="ruby-comment"># one entry in coud_freq for each unique tag, so total tags is length of array</span>
+     <span class="ruby-identifier">total_tags_left</span> = <span class="ruby-identifier">cloud_freq</span>.<span class="ruby-identifier">length</span>   
+     
+     <span class="ruby-comment"># even distrib of tags per bucket</span>
+     <span class="ruby-identifier">ideal_tags_per_bucket</span> = <span class="ruby-identifier">total_tags_left</span> <span class="ruby-operator">/</span> <span class="ruby-value">10</span> 
+     <span class="ruby-identifier">num_in_this_bucket</span> = <span class="ruby-value">0</span>
+      
+     <span class="ruby-identifier">freq_totals</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">freq</span>, <span class="ruby-identifier">tag_count</span><span class="ruby-operator">|</span>
+       <span class="ruby-comment"># throw away tags that are less than the current zoom level</span>
+       <span class="ruby-keyword">if</span> <span class="ruby-identifier">curr_zoom</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">zoom_level</span>
+          <span class="ruby-identifier">num_in_this_bucket</span> = <span class="ruby-identifier">num_in_this_bucket</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tag_count</span>
+          <span class="ruby-identifier">total_tags_left</span> = <span class="ruby-identifier">total_tags_left</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">tag_count</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_in_this_bucket</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ideal_tags_per_bucket</span>
+             <span class="ruby-identifier">curr_zoom</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+             <span class="ruby-identifier">num_in_this_bucket</span> = <span class="ruby-value">0</span>
+             <span class="ruby-identifier">ideal_tags_per_bucket</span> = <span class="ruby-identifier">total_tags_left</span> <span class="ruby-operator">/</span> (<span class="ruby-value">11</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">bucket</span>)
+          <span class="ruby-keyword">end</span>
+       <span class="ruby-keyword">else</span>
+          <span class="ruby-comment"># once curr zoom level is greater or equal to target zoom,</span>
+          <span class="ruby-comment"># start throwing them into buckets</span>
+          <span class="ruby-identifier">bucket_size</span>[<span class="ruby-identifier">freq</span>] = <span class="ruby-identifier">bucket</span>
+          <span class="ruby-identifier">num_in_this_bucket</span> = <span class="ruby-identifier">num_in_this_bucket</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tag_count</span>
+          <span class="ruby-identifier">total_tags_left</span> = <span class="ruby-identifier">total_tags_left</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">tag_count</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">num_in_this_bucket</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ideal_tags_per_bucket</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">bucket</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span>
+            <span class="ruby-identifier">bucket</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-identifier">curr_zoom</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-identifier">num_in_this_bucket</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">ideal_tags_per_bucket</span> = <span class="ruby-identifier">total_tags_left</span> <span class="ruby-operator">/</span> (<span class="ruby-value">11</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">bucket</span>)
+          <span class="ruby-keyword">end</span> <span class="ruby-comment"># if we're starting a new bucket</span>
+       <span class="ruby-keyword">end</span> <span class="ruby-comment"># if  frequency skipped</span>
+     <span class="ruby-keyword">end</span> <span class="ruby-comment"># for each item in the freq_totals hash</span>
+     
+     <span class="ruby-comment"># at the end of this loop, bucket_size hash is:</span>
+     <span class="ruby-comment"># key: frequency, value: bucket number</span>
+     <span class="ruby-comment"># So, it tells that tags of frequency(key) go into bucket(value)</span>
+     <span class="ruby-identifier">zoom_levels</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">bucket_size</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> { <span class="ruby-value">:cloud_freq</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cloud_freq</span>, <span class="ruby-value">:zoom_levels</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zoom_levels</span> }
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- get_tag_cloud_info-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_tag_cloud_info-method -->
+
+    
+      <div id="method-c-get_thumbnail_from_hit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_thumbnail_from_hit</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_thumbnail_from_hit-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 263</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_thumbnail_from_hit</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">image</span> =  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">solr_obj_to_str</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">image</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+
+      <span class="ruby-identifier">arch</span> = <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>][<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">hit</span>[<span class="ruby-string">'archive'</span>]
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@site_thumbnails</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">arch</span>)
+              <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@site_thumbnails</span>[<span class="ruby-identifier">arch</span>]
+      <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">site</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create</span>(<span class="ruby-keyword">false</span>).<span class="ruby-identifier">get_archive</span>(<span class="ruby-identifier">arch</span>) <span class="ruby-comment">#Site.find_by_code(hit['archive'])</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">site</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-identifier">thumb</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">solr_obj_to_str</span>(<span class="ruby-identifier">site</span>[<span class="ruby-string">'thumbnail'</span>])
+        <span class="ruby-identifier">@@site_thumbnails</span>[<span class="ruby-identifier">arch</span>] = <span class="ruby-identifier">thumb</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">thumb</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_thumbnail_from_hit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_thumbnail_from_hit-method -->
+
+    
+      <div id="method-c-get_thumbnail_from_hit_no_site" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_thumbnail_from_hit_no_site</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_thumbnail_from_hit_no_site-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 281</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_thumbnail_from_hit_no_site</span>(<span class="ruby-identifier">hit</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hit</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">image</span> =  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">solr_obj_to_str</span>(<span class="ruby-identifier">hit</span>[<span class="ruby-string">'thumbnail'</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">image</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_thumbnail_from_hit_no_site-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_thumbnail_from_hit_no_site-method -->
+
+    
+      <div id="method-c-get_thumbnail_from_uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_thumbnail_from_uri</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_thumbnail_from_uri-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 256</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_thumbnail_from_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+ <span class="ruby-identifier">hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">hit</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_thumbnail_from_hit</span>(<span class="ruby-identifier">hit</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_thumbnail_from_uri-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_thumbnail_from_uri-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-recache_properties" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recache_properties</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="recache_properties-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 415</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier">recache_properties</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">resource</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-constant">CachedProperty</span>.<span class="ruby-identifier">delete_all</span>( [<span class="ruby-string">&quot;cached_resource_id = ?&quot;</span>, <span class="ruby-identifier">id</span>] )
+    <span class="ruby-identifier">copy_solr_resource</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;#{id}. Recaching: #{uri}&quot;</span>)
+    
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">save!</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordInvalid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-comment"># This can fail if a duplicate URI gets in the database for whatever reason. Don't worry about that</span>
+      <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;-- Duplicate record&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># The resource no longer exists. Add a property to tell us that. (Note that the current set of properties are not deleted, either)</span>
+    <span class="ruby-constant">CachedProperty</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'stale'</span>, <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'yes'</span>, <span class="ruby-value">:cached_resource_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>)
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Cached Resource \&quot;#{uri}\&quot; no longer exists in solr.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- recache_properties-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- recache_properties-method -->
+
+    
+      <div id="method-i-resource" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resource</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The actual <code>SolrResource</code> at this instances <code>uri</code>.</p>
+          
+
+          
+          <div class="method-source-code" id="resource-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource</span>
+  <span class="ruby-comment">#@resource ||= SolrResource.find_by_uri(self.uri)</span>
+              <span class="ruby-keyword">return</span> <span class="ruby-ivar">@resource</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@resource</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+              <span class="ruby-keyword">begin</span>
+              <span class="ruby-ivar">@resource</span> = <span class="ruby-constant">Catalog</span>.<span class="ruby-identifier">factory_create</span>(<span class="ruby-keyword">false</span>).<span class="ruby-identifier">get_object</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">uri</span>)
+              <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Catalog</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+                      <span class="ruby-ivar">@resource</span> = <span class="ruby-keyword">nil</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">return</span> <span class="ruby-ivar">@resource</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- resource-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- resource-method -->
+
+    
+      <div id="method-i-set_hit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_hit</span><span
+            class="method-args">(hit)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_hit-source">
+            <pre><span class="ruby-comment"># File app/models/cached_resource.rb, line 30</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_hit</span>(<span class="ruby-identifier">hit</span>)       <span class="ruby-comment"># This saves a solr call if the object is already in our hands.</span>
+                <span class="ruby-ivar">@resource</span> = <span class="ruby-identifier">hit</span>
+                <span class="ruby-comment"># never collect full text</span>
+<span class="ruby-comment">#               if @resource['text']</span>
+<span class="ruby-comment">#                       @resource['text'] = nil</span>
+<span class="ruby-comment">#               end</span>
+
+
+        <span class="ruby-keyword">end</span></pre>
+          </div><!-- set_hit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_hit-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

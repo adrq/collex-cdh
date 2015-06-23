@@ -1,0 +1,36 @@
+<% #
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<% current_page "Publications" -%>
+
+<div class="publications_images">
+<% for item in @publications -%>
+	<%= link_to raw("<img class='publications_image' src='#{PublicationImage.get_image(item.publication_image_id)}' alt='#{item.name}' />"), item.get_visible_url() %>
+<% end -%>
+</div>
+
+<hr class="search_results_hr" />
+
+<div class="publications_explanation">
+	<p>
+		These groups provide peer-reviewed scholarship created within the <%= Setup.site_name() %> <span class="publication_emphasis">Exhibit Builder</span> framework.
+		The content includes digital 'reprints' as well as work being published for the first time within <%= Setup.site_name() %>.
+		You may also search or browse these materials on the main <%= link_to "Search", "/search", { :class => 'nav_link' } %> page.
+	</p>
+	<p class="publication_footing">
+		If you would like to recommend the addition of another publication to this list, please contact the <a class="nav_link nospam" href="<%=  Setup.project_manager_email %>">Project Manager</a>.
+	</p>
+</div>

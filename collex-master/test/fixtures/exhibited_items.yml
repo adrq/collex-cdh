@@ -1,0 +1,68 @@
+##########################################################################
+# Copyright 2007 Applied Research in Patacriticism and the University of Virginia
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##########################################################################
+
+
+--- 
+dang_1_1: 
+  citation: 
+  uri: http://www.rc.umd.edu/praxis/aesthetic/pyle/intro.html
+  id: 11
+  annotation: 
+  position: 1
+  exhibited_section_id: 1
+dang_1_2: 
+  citation: 
+  uri: http://www.swinburnearchive.org/id/pb1faust00/
+  id: 12
+  annotation: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  position: 2
+  exhibited_section_id: 1
+dang_2_1: 
+  citation: 
+  uri: http://www.rossettiarchive.org/docs/1-1840.dukems.rad#1
+  id: 21
+  annotation: |-
+    It's all Greek to me. 
+  position: 1
+  exhibited_section_id: 2
+dang_2_2: 
+  citation: 
+  uri: http://www.rossettiarchive.org/docs/1-1840.dukems.rad#1
+  id: 22
+  annotation: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  position: 2
+  exhibited_section_id: 2
+dang_3_1: 
+  citation: 
+  uri: http://www.rossettiarchive.org/docs/1-1840.dukems.rad#1.3
+  id: 31
+  annotation: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  position: 1
+  exhibited_section_id: 3
+dang_3_2: 
+  citation: 
+  uri: http://www.rossettiarchive.org/docs/1-1840.dukems.rad#1.2
+  id: 32
+  annotation: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  position: 2
+  exhibited_section_id: 3
+dang_3_3: 
+  citation: 
+  uri: http://www.rc.umd.edu/praxis/aesthetic/ferris/ferris.html
+  id: 33
+  annotation: 
+  position: 3
+  exhibited_section_id: 3

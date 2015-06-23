@@ -1,0 +1,20 @@
+<% title "Denial Comment" -%>
+<% collection = Collection.find(:first, :conditions => "id = '#{params[:id]}'") -%>
+
+<% main_header "Add a comment to the denial notice." -%>
+<% extra_button "" -%>
+<% instructions "You've just denied the file <b>#{collection.get_new_filename}</b> from the <b>#{collection.project_name}</b> project. An email is about to be sent to the Project Manager. If you'd like to add a comment to the email describing the reason for the denial, enter it here." -%>
+
+<%= form_tag( { :action => 'denial_comment_submitted' }, { :id => "denial_comment_submitted" } ) %>
+<table>
+	<tr>
+		<td class="field-label">Notes:</td><td><textarea Name="notes" id="notes" rows="10" cols="43"></textarea></td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="submit comment" /></td>
+	</tr>
+</table>
+<input type="hidden" name="id" value="<%= params[:id] %>" />
+</form>
+<br />
+<div class="navigation"><%= link_to 'Cancel', editor_path %></div>

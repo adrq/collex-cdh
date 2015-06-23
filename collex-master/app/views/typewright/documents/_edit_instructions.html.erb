@@ -1,0 +1,51 @@
+<%# partial line_instructions -- no parameters %>
+<div class="tw_edit_instructions">
+	<div id="tw_debugging_table"></div>
+	<div class="tw_legend">
+		<table>
+			<caption>Keyboard Shortcuts</caption>
+			<tr><th>Key</th><th>Action</th></tr>
+			<tr><td>Ctrl+Delete</td><td>Delete the line</td></tr>
+			<tr><td>Ctrl+Enter</td><td>Assert the line is correct</td></tr>
+			<tr><td>Ctrl+Y</td><td>Undo/Redo</td></tr>
+			<tr><td>Ctrl+Shift+I</td><td>Insert line above</td></tr>
+			<tr><td>Ctrl+Shift+H</td><td>Find</td></tr>
+			<tr><td>Ctrl+I</td><td>Insert line below</td></tr>
+			<tr><td>Down Arrow</td><td>Go down one line</td></tr>
+			<tr><td>End</td><td>Move cursor to end of line</td></tr>
+			<tr><td>Enter</td><td>Go down one line</td></tr>
+			<tr><td>Home</td><td>Move cursor to beginning of line</td></tr>
+			<tr><td>Page Down</td><td>Go down three lines</td></tr>
+			<tr><td>Page Up</td><td>Go up three lines</td></tr>
+			<tr><td>Up Arrow</td><td>Go up one line</td></tr>
+		</table>
+		<div class="tw_legend_bottom">&nbsp;</div>
+	</div>
+  <div class="tw_right_side">
+  <div class="tw_live_status">
+	<div class="tw_header">
+	  Live Edit Status
+	</div>
+	<div class="tw_body">
+
+	</div>
+  </div>
+	<div class="tw_spelling_choice">In this document the original spelling should be retained.</div>
+	<div class="tw_header">Instructions:</div>
+	Use arrow buttons above-right or click on the thumbnail to jump around the page.</br>
+    You can add and delete lines; even if some lines are incompletely outlined in red, type every
+    word on the line in which the red box appears.</br></br>
+    <ul class="tw_instruction_list"><li>If a word or portion of a word is illegible, type "@" in its place; please do not make any guesses
+    about what a word might be.</li>
+    <li>Copy original spelling and punctuation, typing what you see on the page, except in the case of the
+    long 's': use 's' and not 'f' when 's' is called for.</li>
+    <li>Include end-of-line hyphens, preserving the syllables as they occur on each line.</li>
+    </ul>
+  <ul class="tw_link_list">
+	<li><a class="ext_link" title="Provide feedback on your TypeWright experiences" id="tw_survey" target="_blank" href="https://docs.google.com/forms/d/1Y6W15LDxd9hII7RulV_hpJsvYjGGBkXe99fh-ZtQVjU/viewform">Feedback</a></li>
+	<li><%= link_to_function "Help", "", { title: "More about how to edit", :class => 'nav_link tw_align_right show-in-lightbox', 'data-url' => '/typewright/documents/instructions', 'data-title' => 'Basic Tool Overview' } %></li>
+	<li><a class="ext_link" title="FAQs" target="_blank" href="/about/typewright/typewright-faqs/">FAQs</a></li>
+	<li><%= link_to_function "Optional Markup Guide", "", { :class => 'nav_link tw_align_right show-in-lightbox', 'data-url' => 'http://idhmc.tamu.edu/image-store/TW-pages/markup.html', 'data-title' => 'Optional Markup Guide'  } %></li>
+  </ul>
+</div>
+</div>

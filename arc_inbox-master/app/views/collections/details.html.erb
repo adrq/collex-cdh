@@ -1,0 +1,40 @@
+<% title "Submission Details" %>
+<% collection = Collection.find(:first, :conditions => [ "id = ?", params[:id] ] ) -%>
+<% main_header "Details for #{h collection.project_name}." -%>
+<% extra_button "" -%>
+<% instructions "" -%>
+
+<% is_editor = (params[:role] == 'editor')
+ if is_editor
+		@role_str = "editor"
+	else
+		@role_str = "contributor"
+	end %>
+
+<table class="details">
+	<tr class="details"><td class="details_label">Project Name:</td><td class="details"><%= collection.project_name %></td></tr>
+	<tr class="details"><td class="details_label">Project URL:</td><td class="details"><%= collection.project_url %></td></tr>
+	<tr class="details"><td class="details_label">Default Thumbnail:</td><td class="details"><%= collection.default_thumbnail %></td></tr>
+	<tr class="details"><td class="details_label">Creation Time:</td><td class="details"><%= collection.created_at.strftime("%b %d,%Y %I:%M %p GMT") %></td></tr>
+	<tr class="details"><td class="details_label">Last Activity Time:</td><td class="details"><%= collection.updated_at.strftime("%b %d,%Y %I:%M %p GMT") %></td></tr>
+	<% if is_editor -%>
+    	<tr class="details"><td class="details_label">Contributor:</td><td class="details"><%= raw(collection.contributor.format_name_for_screen) %></td></tr>
+    	<tr class="details"><td class="details_label">Institution:</td><td class="details"><%= collection.contributor.institution %></td></tr>
+	<% end %>
+	<tr class="details"><td class="details_label">Presiding Editor:</td><td class="details"><%= raw(collection.last_editor.format_name_for_screen) unless collection.last_editor_id == nil %></td></tr>
+	<% if is_editor -%>
+		<tr class="details"><td class="details_label">Uploaded filename:</td><td class="details"><%= collection.get_new_filename %></td></tr>
+	<% else -%>
+		<tr class="details"><td class="details_label">Uploaded filename:</td><td class="details"><%= collection.get_orig_filename %></td></tr>
+	<% end -%>
+	
+	<tr class="details"><td class="details_label">Status:</td><td class="details"><%=h Collection.to_status_string(collection.current_status) %></td></tr>
+	<tr class="details"><td class="details_label">Public Notes:</td><td class="details"><%= format_notes_for_html(collection.notes) %></td></tr>
+	<% if is_editor -%>
+   		<tr class="details"><td class="details_label">Admin Notes:</td><td class="details"><%= format_notes_for_html(collection.admin_notes) %></td></tr>
+	<% end -%>
+</table>
+<br />
+<div class="navigation">
+<%= link_to "Back", is_editor ? editor_path : contributor_path %>
+</div>

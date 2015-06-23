@@ -1,0 +1,46 @@
+<% title "My Contributions" %>
+<% main_header "My Contributions" -%>
+<% extra_button goto_editor_link -%>
+<% login_msg "You are logged in as:<br /> #{current_user.real_name}." -%>
+<% link_myaccount "yes" %>
+<% instructions "You can submit new work with the form below or manage your existing contributions by using the buttons provided on the contribution table. If you have trouble, contact the #{main_editor_link}." -%>
+
+<script type="text/javascript">
+	// Parameters for the textarea edit box
+	var textarea = '<textarea Name="textarea" id="textarea" rows="10" cols="43" onblur="onTextAreaChange()">$(STARTING_TEXT)</textarea>';
+	var textarea_form_tag = '<%= form_tag( { :action => "textarea_changed", :id => 10101010 }, { :id => "textarea-form" } ) %>';
+</script>
+
+<h2>Submit a new collection:</h2>
+<%= form_tag( { :action => 'new_submission' }, { :id => "new-form", :multipart => true } ) %>
+<table>
+	<tr>
+		<td class="field-label">Project Name:</td><td><input name="project_name" id="project_name" value="<%= params[:project_name] %>" size="50"/></td>
+	</tr>
+	<tr>
+		<td class="field-label">Project URL:</td><td><input name="project_url" id="project_url" value="<%= params[:project_url] %>" size="50"/></td>
+	</tr>
+	<tr>
+		<td class="field-label">Default Thumbnail Logo:</td><td><input name="default_thumbnail" id="default_thumbnail" value="<%= params[:default_thumbnail] %>" size="50"/></td>
+	</tr>
+	<tr>
+		<td class="field-label">File Name:</td><td><input type="file" name="file_name" id="file_name" size="50"/></td>
+	</tr>
+	<tr>
+		<td class="field-label">Notes:</td><td><textarea Name="notes" id="notes" rows="10" cols="43"><%= params[:notes] %></textarea></td>
+	</tr>
+	<tr>
+		<td></td><td><input type="submit" value="submit this file" />
+		<% if flash[:notice] -%> 
+			<div id="notice" style="color:red"><%= flash[:notice] %></div> 
+		<% end -%>
+		</td>
+	</tr>
+</table>
+</form>
+
+<hr />
+<h2>Contribution history:</h2>
+<%   @collections = Collection.get_all_for_contributor(current_user.id) -%>
+<%   @is_editor = false -%>
+<%= render :partial => "history" %> 

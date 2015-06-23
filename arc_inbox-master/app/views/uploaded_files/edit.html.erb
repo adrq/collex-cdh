@@ -1,0 +1,27 @@
+<h1>Editing uploaded_file</h1>
+
+<%= errors_for @uploaded_file %>
+<%= form_for(@uploaded_file) do |f| %>
+  <p>
+    <%= f.label :original_name %><br />
+    <%= f.text_field :original_name %>
+  </p>
+  <p>
+    <%= f.label :received_name %><br />
+    <%= f.text_field :received_name %>
+  </p>
+  <p>
+    <%= f.label :created_at %><br />
+    <%= f.datetime_select :created_at %>
+  </p>
+  <p>
+    <%= f.label :updated_at %><br />
+    <%= f.datetime_select :updated_at %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @uploaded_file %> |
+<%= link_to 'Back', uploaded_files_path %>

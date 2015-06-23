@@ -1,0 +1,117 @@
+body { 
+        background-color: #FFFFFF; 
+        margin-top: 4px; 
+        /*background-image: url(/images/nines_logo.gif);*/
+        background-repeat: no-repeat; 
+        background-position: 8px 4.3em;
+}
+
+#masthead { 
+        background-image: image-url("arc_mast.png");
+        background-repeat: no-repeat;   
+        text-align: center;
+        color:#848180;
+        font-size: 4em;
+      margin-top: 10px;
+        font-family: courier, sans-serif;
+}
+
+#logo-left {
+        position: absolute; width: 150px; height: 143px;
+}
+
+#logo-middle {
+        margin-left: 40px; margin-right: 195px; margin-top: 15px;
+}
+
+#logo-right {
+        position: absolute; width:180px; right:30px; top: 4em;
+        padding: 1em;
+        font-weight: bold;
+        
+}
+
+
+div #instructions {
+       margin-left: 40px;
+       margin-top: 20px;
+       font-family: arial, sans-serif;
+        
+}
+
+div .navigation {
+     margin-top: 10px;
+}
+
+#content {
+        position: absolute; top: 15em;
+}
+
+/* the following 12 fonts are installed on both pc and mac and are considered as 'safe'
+ arial, arial black, comic sans ms, courier, courier new, georgia,
+ helvetica, impact, palatino, times new roman, trebuchet ms, verdana */
+
+/* For the table containing the collections list on both the editor and contributor pages */
+table.collections { background-color:#C1C0C0;border-color:#DEBA84;border-width:1px;border-style:None; }
+th.collections { font-family: arial, sans-serif; color:White;background-color:#4B4949;font-weight:bold; }
+a.collections { color:White; }
+tr.collections { color:#101010;background-color:#F8F8F5; font-family: arial, sans-serif;}
+td.collections { font-family: arial, serif; border-spacing:1px; padding:3px; font-weight:bold; }
+td.status-cell { font-family: arial, serif; border-spacing:1px; padding:3px; font-weight:bold; }
+td.classification-cell { font-family: arial, serif; border-spacing:1px; padding:3px; font-weight:bold; }
+td.textarea-cell { font-family: arial, sans-serif; border-spacing:1px; padding:3px; font-weight:bold; }
+
+/* For the detail page where there is a list of labels and a list of non-editable items */
+table.details { background-color:#C1C0C0;border-color:#DEBA84;border-width:4px;border-style:None; margin:30px; }
+tr.details { color:#101010;background-color:#F7F4F4; }
+td.details_label { font-family: times, serif; padding:4px; }
+td.details { font-family: times, serif; margin:30px; padding:4px 10px 4px 10px; font-weight:bold; }
+
+/* For the text header near the top of the page that is the largest text */
+#main_header { font-family: arial black, sans-serif; font-size: 2em; }
+
+/* For the paragraph of instructions that appear near the top of the page */
+#instructions { font-family: times, serif; margin-left: 160px; margin-top: 1em; margin-right: 1em; }
+
+/* For the "you are logged in as ___" message */
+#login-msg { font-family: arial, sans-serif; font-size: .8em; }
+
+/* For error notices */ 
+#notice { font-family: times, serif;  color:#4D4747; }
+
+/* For the label to the left or above input fields */
+.field-label { font-family: arial, sans-serif; }
+
+#new_user {
+	label {
+		position: absolute;
+	}
+	input {
+		margin-left: 150px;
+	}
+}
+
+/* For all links that go between pages of this app */
+.navigation { font-family: arial, sans-serif; }
+
+/* For all the user's input, and the text on the buttons */
+input { font-family: arial, sans-serif; }
+textarea { font-family: arial, sans-serif;}
+
+/* For all the minor headings */
+h2 { font-family: arial, sans-serif;
+     font-style: italic; }
+
+a {
+    color: #A8640C;
+}
+
+a #visited {
+   color: #25383C;
+}
+
+/* For the submission's fields when confirming */
+.fields { font-family: times, serif; font-weight:bold; }
+
+/* for the webmaster link */
+#footer { font-family: arial, sans-serif; font-size: .8em;}

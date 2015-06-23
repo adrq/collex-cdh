@@ -1,0 +1,89 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+
+<% current_page Setup.community_tab() -%>
+<% user_id = user_signed_in? ? get_curr_user_id : nil -%>
+<% topics = DiscussionTopic.get_all_with_date() -%>
+<%= create_breadcrumbs([{ :text => Setup.community_tab(), :url => '/communities' }], "#{Setup.site_name()}  Forum") %>
+<div class="content_container2">
+	<div class="page_header">Forum</div>
+    <div class="page_subheader">We've set aside this portion of <%= Setup.site_name() %> for commentary, discussion and collaboration among the <%= Setup.site_name() %> community.
+	Log in to your free account to join in the conversations below and to discuss the objects of your research.</div>
+
+<% for topic_arr in topics -%>
+	<% topic = topic_arr[:topic_rec] -%>
+	<% threads = topic.discussion_threads -%>
+    <% threads = DiscussionThread.sort_by_time(threads) %>
+	<% threads = threads.delete_if { |thread| !Group.can_read(thread, user_id) } -%>
+	<table class="FH_cat_table" border="0" cellpadding="0" cellspacing="0">
+    	<tr><td colspan="5" class="FH_cat_header"><%= link_to topic.topic, { :action => 'view_topic', :topic => topic.id }, :class => 'forum_header_link' %></td></tr>
+
+    	<tr><td colspan="5" class="FH_cat_info">
+        	<p><%= topic.description %></p>
+			<% new_post_id = "new_post_#{topic.id}" -%>
+			<%= link_to("New Post", "#", :onclick => 'return false;', :id => new_post_id, :class => 'modify_link') %>
+			<script type="text/javascript">
+				document.observe('dom:loaded', function() {
+				    var onButtonClick = function (e) {
+						new ForumReplyDlg({ topic_id: <%= topic.id %>,
+							submit_url: '/forum/post_comment_to_new_thread',
+							populate_exhibit_url: '/forum/get_exhibit_list',
+							populate_collex_obj_url: '/forum/get_nines_obj_list',
+							progress_img: '<%=image_path(PROGRESS_SPINNER_PATH) %>',
+							logged_in: <%= user_signed_in? %>,
+							addTopicToLoginRedirect: true,
+							redirect: '/forum/view_topic?topic=<%= topic.id %>&page=1'
+						});
+						return false;
+				    };
+				    new YAHOO.widget.Button("<%= new_post_id %>", { onclick: { fn: onButtonClick } });
+					YAHOO.util.Event.onAvailable('<%= new_post_id %>-button', function() {
+						$('<%= new_post_id %>-button').writeAttribute('onclick', 'return false;');	// This keeps the '#' out of the address bar
+					}, this);
+				<% if @script == "ForumReplyDlg_#{topic.id}" %>
+					onButtonClick();
+				<% end %>
+				});
+			</script>
+			</td>
+    	</tr>
+		<% num_displayed = threads.length < 6 ? threads.length : 6 -%>
+		<% num_displayed.times do |i| -%>
+			<% if i == 0 || i == 3 -%>
+			<tr>
+			<% end -%>
+
+				<td class="FH_post">
+					<% if threads[i].discussion_comments.length < 1 -%>
+						ERROR: ill-formed thread. (Main comment is missing in thread <%= threads[i].id %>)<br/>
+					<% else -%>
+						<% main_comment = threads[i].discussion_comments[0] -%>
+						<%= render :partial => 'summary', :locals => { :comment=> main_comment, :thread_id => threads[i].id, :can_delete => user_signed_in? && (is_admin? || (main_comment.user_id == user_id)) } %>
+					<% end # there is a comment -%>
+				</td>
+
+			<% if i == 2 || i == num_displayed-1 -%>
+			</tr>
+			<% else -%>
+            <td class="FH_spacer"></td>
+			<% end -%>
+		<% end -%>
+	        <tr><td colspan="5" class="FH_view_all"><%= link_to("[View all #{pluralize(threads.length, topic.topic + ' Post')}]", { :action => 'view_topic', :topic => topic.id }, :class => 'nav_link') %></td>
+        </tr>    
+    </table>
+ <% end -%>   
+</div>

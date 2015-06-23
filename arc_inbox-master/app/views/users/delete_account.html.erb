@@ -1,0 +1,18 @@
+<% title "Delete Account" %>
+<% main_header "Disabling a User's Account" %>
+<% extra_button "" %>
+<% instructions "Choose the account to disable from the list below, then click \"Disable\". This will block this user from logging in." %>
+
+<%= form_tag( { :action => 'delete' }, { :id => "delete-account" } ) %>
+<br/><div class="field-label">Account to Disable:</div>
+<select id="account" name="account">
+	<% for user in User.find(:all, :conditions => [ "disabled is null" ] ) -%>
+	<option value="<%= user.id %>"><%= user.real_name %> &lt;<%= user.email %>&gt;</option>
+	<% end -%>
+</select><br />
+<input type="submit" value="Disable Account" />
+</form>
+<br />
+<div class="navigation">
+<%= link_to "Back", editor_path %>
+</div>

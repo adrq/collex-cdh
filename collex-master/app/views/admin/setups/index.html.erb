@@ -1,0 +1,188 @@
+<% current_page "admin" -%>
+<% current_sub_page "Setup" -%>
+
+<div class="setup_container">
+	<p id="notice" class="notice"><%= flash[:notice] %></p>
+
+    <% if flash[:warnings] %>
+        <p id="notice" class="notice" style="padding-left:10px">
+          <% flash[:warnings].each do |warning| %>
+            <%= warning %> <br/>
+          <% end %>
+        </p>
+    <% end %>
+
+	<p>
+		The following settings control how this version of Collex will run and what it looks like. You will most likely
+		only need to modify these settings once when you first install Collex.
+	</p>
+	<%= form_tag("/admin/setups/1", :method => "PUT") do %>
+	<h1 class="expander" data-target="email_table">Email</h1>
+	<table id="email_table" class="hidden">
+		<%= setup_table_header("Email settings (SMTP)") %>
+		<%= setup_line("Address:", "smtp_address", @setups,
+			"The address of the SMTP server.",
+			"smtp.sendgrid.net") %>
+		<%= setup_line("Port:", "smtp_port", @setups,
+			"The port on the SMTP server.",
+			"587") %>
+	    <%= setup_line("Domain:", "smtp_domain", @setups,
+		    "sendgrid.net or [blank]",
+		    "sendgrid.net") %>
+	    <%= setup_line("User Name or Email:", "smtp_user_name", @setups,
+		    "The account on the SMTP server.",
+		    "institution") %>
+		<%= setup_line("Password:", "smtp_password", @setups,
+			"The password to access the SMTP server.",
+			"super-secret") %>
+	    <%= setup_line("Authentication method:", "smtp_authentication", @setups,
+		    "The authentication method for the SMTP server.",
+		    "plain") %>
+	    <%= setup_line("enable_starttls_auto:", "smtp_enable_starttls_auto", @setups,
+		    "Set to true for gmail, false for sendgrid.",
+		    "false") %>
+	    <%= setup_line("Category:", "smtp_xsmtpapi", @setups,
+		    "The sendgrid category.",
+		    "ARC-skin") %>
+		<%= setup_table_button("Send Me A Test Email") %>
+
+		<%= setup_table_header("Project Settings") %>
+		<%= setup_line("Project manager email:", "project_manager_email", @setups,
+			"The email that is published throughout the site for contacting the project manager.",
+			"manager@institution.edu") %>
+		<%= setup_line("Webmaster email:", "webmaster_email", @setups,
+			"The email that is published throughout the site for contacting the webmaster.",
+			"manager@institution.edu") %>
+
+		<%= setup_table_header("Exception Reporting") %>
+		<%= setup_line("Exception recipients:", "exception_recipients", @setups,
+			"Comma separated list of email addresses for the people who should be notified if an error occurs.",
+			"john@institution.edu,mary@institution.edu") %>
+		<%= setup_line("Sender name:", "sender_name", @setups,
+			"The name that exception errors appear to be from.",
+			"Application Error") %>
+		<%= setup_line("Subject prefix:", "subject_prefix", @setups,
+			"The prefix in the subject line that is used on error emails.",
+			"[Collex:Production] ") %>
+		<%= setup_table_button("Simulate Error Email") %>
+	</table>
+
+	<h1 class="expander" data-target="skin_table">Skin</h1>
+	<table id="skin_table" class="hidden">
+		<%= setup_table_header("Site Labels") %>
+		<%= setup_line("Site Name:", "site_name", @setups,
+			"The name of this installation.",
+			"COLLEX") %>
+		<%= setup_line("Site Title:", "site_title", @setups,
+			"The title that appears in the browser title.",
+			"C O L L E X") %>
+		<%= setup_line("My Tab Title:", "site_my_collex", @setups,
+			"The label that appears on the leftmost tab.",
+			"MyCollex") %>
+		<%= setup_line("Community Tab Title:", "site_community_tab", @setups,
+			"The label that appears for the community tab.",
+			"Community") %>
+		<%= setup_line("Community Search Default:", "site_community_default_search", @setups,
+			"The type of objects to search for by default in the community tab.",
+			"Groups") %>
+
+		<%= setup_table_header("About") %>
+		<%= setup_line("Left About Link Label:", "site_about_label_1", @setups,
+			"The label that will appear on each page for the main about page.",
+			"What is Collex?") %>
+		<%= setup_line("Left About Link:", "site_about_url_1", @setups,
+			"The link that will appear on each page for the main about page.",
+			"/about/what_is.html") %>
+		<%= setup_line("Right About Link Label:", "site_about_label_2", @setups,
+			"The label that will appear on each page for the main about page.",
+			"Peer Review") %>
+		<%= setup_line("Right About Link:", "site_about_url_2", @setups,
+			"The link that will appear on each page for the main about page.",
+			"/about/peer_review.html") %>
+
+        <%= setup_table_header("Tab Display") %>
+        <%= setup_checkbox("Show community tab:", "enable_community_tab", @setups,
+                       "",
+                       "") %>
+        <%= setup_checkbox("Show news tab:", "enable_news_tab", @setups,
+                       "",
+                       "") %>
+        <%= setup_checkbox("Show publications tab:", "enable_publications_tab", @setups,
+                       "",
+                       "") %>
+        <%= setup_checkbox("Show classroom tab:", "enable_classroom_tab", @setups,
+                       "",
+                       "") %>
+
+      <%= setup_table_header("Facet Display Order") %>
+      <%= setup_line("Access Facet Order:", "facet_order_access", @setups,
+                     "Use a number [0-3] to determine where Access types will appear in the facet list.
+                      Leave blank to hide this facet.",
+                     "0") %>
+      <%= setup_line("Format Facet Order:", "facet_order_format", @setups,
+                     "Use a number [0-3] to determine where Formats will appear in the facet list.
+                      Leave blank to hide this facet.",
+                     "1") %>
+      <%= setup_line("Discipline Facet Order:", "facet_order_discipline", @setups,
+                     "Use a number [0-3] to determine where Disciplines will appear in the facet list.
+                      Leave blank to hide this facet.",
+                     "2") %>
+      <%= setup_line("Genre Facet Order:", "facet_order_genre", @setups,
+                     "Use a number [0-3] to determine where Genres will appear in the facet list.
+                      Leave blank to hide this facet.",
+                     "3") %>
+
+      <%= setup_table_header("Facet Display Labels") %>
+      <%= setup_line("Custom label for the Access facet:", "facet_display_name_access", @setups,
+                     "Enter a value to display as the label for the Access facet.",
+                     "Access") %>
+      <%= setup_line("Custom label for the Format facet:", "facet_display_name_format", @setups,
+                     "Enter a value to display as the label for the Format facet.",
+                     "Format") %>
+      <%= setup_line("Custom label for the Discipline facet:", "facet_display_name_discipline", @setups,
+                     "Enter a value to display as the label for the Discipline facet.",
+                     "Discipline") %>
+      <%= setup_line("Custom label for the Genre facet:", "facet_display_name_genre", @setups,
+                     "Enter a value to display as the label for the Genre facet.",
+                     "Genre") %>
+
+	  <%= setup_table_header("Footer Signature") %>
+	  <%= setup_line("HTML for footer signature:", "footer_signature_text", @setups,
+					 "Enter the HTML that you would like to appear in the footer signature. Typically this would be credits or a copyright notice.",
+					 "none", :textarea) %>
+	</table>
+
+	<h1 class="expander" data-target="solr_table">Solr</h1>
+		<% if @solr_error %>
+		<p class="search_error_message"><%= @solr_error %></p>
+		<% end %>
+	<table id="solr_table" class="hidden">
+	  <input type="hidden" id="setups_federations" name="setups[federations]" value="<%= @federations %>"/>
+		<%= setup_line("ARC Catalog location:", "site_solr_url", @setups,
+			"The URL of the ARC Catalog web service.",
+			"http://catalog.arc.com") %>
+		<%= setup_line("Default federation:", "site_default_federation", @setups,
+			"The main federation of the site that will appear if the user hasn't selected another one.",
+			"NINES") %>
+      <%= setup_table_button("Test Catalog Connection") %>
+	   <% @setups.each do |key,val| %>
+	     <% if !(key =~ /^federation_/).nil? %>
+	        <%= setup_checkbox("Enable #{key.gsub(/federation_/,'')}?", key, @setups, "","") %>
+	     <% end %>
+	   <% end %>
+	</table>
+
+	<h1 class="expander" data-target="analytics_table">Analytics</h1>
+	<table id="analytics_table" class="hidden">
+		<%= setup_line("Use Google Analytics:", "google_analytics", @setups,
+			"Either true or false if Analytics should be turned on",
+			"true/false") %>
+		<%= setup_line("Analytics ID:", "analytics_id", @setups,
+			"The ID that was given to you by Google when you signed up for Analytics.",
+			"AA-99999999-9") %>
+	</table>
+
+    <%= submit_tag("Apply Changes", {:class => "apply_changes"}) %>
+
+	<% end %>
+</div>

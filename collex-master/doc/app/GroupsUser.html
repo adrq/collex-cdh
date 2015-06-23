@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class GroupsUser - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/groups_user.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-accept_request">::accept_request</a>
+    
+    <li><a href="#method-c-auto_join">::auto_join</a>
+    
+    <li><a href="#method-c-decline_group">::decline_group</a>
+    
+    <li><a href="#method-c-decline_request">::decline_request</a>
+    
+    <li><a href="#method-c-email_hook">::email_hook</a>
+    
+    <li><a href="#method-c-get_all_pending_requests">::get_all_pending_requests</a>
+    
+    <li><a href="#method-c-get_group_from_obfuscated_id">::get_group_from_obfuscated_id</a>
+    
+    <li><a href="#method-c-get_list_of_users_to_notify">::get_list_of_users_to_notify</a>
+    
+    <li><a href="#method-c-get_notifications">::get_notifications</a>
+    
+    <li><a href="#method-c-get_user_from_obfuscated_id">::get_user_from_obfuscated_id</a>
+    
+    <li><a href="#method-c-has_login">::has_login</a>
+    
+    <li><a href="#method-c-join_group">::join_group</a>
+    
+    <li><a href="#method-c-leave_group">::leave_group</a>
+    
+    <li><a href="#method-c-request_join">::request_join</a>
+    
+    <li><a href="#method-c-set_notifications">::set_notifications</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class GroupsUser</h1>
+
+  <div id="description" class="description">
+    <hr style="height: 10px">
+
+<pre>Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+<hr style="height: 10px">
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-accept_request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">accept_request</span><span
+            class="method-args">(id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="accept_request-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">accept_request</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">pending_request</span> = <span class="ruby-keyword">false</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save!</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- accept_request-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- accept_request-method -->
+
+    
+      <div id="method-c-auto_join" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">auto_join</span><span
+            class="method-args">(group_id, user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="auto_join-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">auto_join</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-comment"># this is not called from the UI, but by a rake task that automatically joins members that should be joined.</span>
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_group_id_and_user_id</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>  <span class="ruby-comment"># guard against multiple requests coming in.</span>
+                <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-identifier">gu</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_id</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user_id</span>, <span class="ruby-value">:email</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-value">:role</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'member'</span>, <span class="ruby-value">:pending_invite</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:pending_request</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save!</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- auto_join-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- auto_join-method -->
+
+    
+      <div id="method-c-decline_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decline_group</span><span
+            class="method-args">(id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="decline_group-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">decline_group</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">destroy</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">throw</span> <span class="ruby-string">&quot;Not found&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- decline_group-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- decline_group-method -->
+
+    
+      <div id="method-c-decline_request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decline_request</span><span
+            class="method-args">(id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="decline_request-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">decline_request</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">destroy</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- decline_request-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- decline_request-method -->
+
+    
+      <div id="method-c-email_hook" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">email_hook</span><span
+            class="method-args">(notification_type, group_id, subject, body, return_url)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="email_hook-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">email_hook</span>(<span class="ruby-identifier">notification_type</span>, <span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">subject</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">return_url</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">group_id</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">user_ids</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_list_of_users_to_notify</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">notification_type</span>)
+        <span class="ruby-identifier">user_ids</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">user_id</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-constant">GenericMailer</span>.<span class="ruby-identifier">generic</span>(<span class="ruby-constant">Setup</span>.<span class="ruby-identifier">site_name</span>(), <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">return_email</span>(), <span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">subject</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">return_url</span>,
+                        <span class="ruby-node">&quot;You can manage the amount of notifications you receive from #{group.name} by logging into your #{Setup.site_name()} account from the group page and changing your Notification Level.&quot;</span>).<span class="ruby-identifier">deliver</span>
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- email_hook-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- email_hook-method -->
+
+    
+      <div id="method-c-get_all_pending_requests" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_all_pending_requests</span><span
+            class="method-args">(group_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_all_pending_requests-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_all_pending_requests</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">group_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">pending_request</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_all_pending_requests-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_all_pending_requests-method -->
+
+    
+      <div id="method-c-get_group_from_obfuscated_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_group_from_obfuscated_id</span><span
+            class="method-args">(obf)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_group_from_obfuscated_id-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_group_from_obfuscated_id</span>(<span class="ruby-identifier">obf</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">obf</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">group_id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_group_from_obfuscated_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_group_from_obfuscated_id-method -->
+
+    
+      <div id="method-c-get_list_of_users_to_notify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_list_of_users_to_notify</span><span
+            class="method-args">(group_id, notification_type)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_list_of_users_to_notify-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_list_of_users_to_notify</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">notification_type</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;0&quot;</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-identifier">user_ids</span> = []
+        <span class="ruby-identifier">notes</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">';'</span>)
+        <span class="ruby-identifier">user_ids</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">notification_type</span>)
+        <span class="ruby-identifier">members</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">group_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">group_id</span>})
+        <span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">member</span>.<span class="ruby-identifier">notifications</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                        <span class="ruby-identifier">notes</span> = <span class="ruby-identifier">member</span>.<span class="ruby-identifier">notifications</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-identifier">member</span>.<span class="ruby-identifier">notifications</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">';'</span>)
+                        <span class="ruby-identifier">user_ids</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">member</span>.<span class="ruby-identifier">user_id</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">notification_type</span>)
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">user_ids</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_list_of_users_to_notify-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_list_of_users_to_notify-method -->
+
+    
+      <div id="method-c-get_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_notifications</span><span
+            class="method-args">(group_id, user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_notifications-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 181</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_notifications</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;0&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;0&quot;</span>
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">group_id</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">';'</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user_id</span>
+
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_group_id_and_user_id</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">';'</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> []
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_notifications-method -->
+
+    
+      <div id="method-c-get_user_from_obfuscated_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_user_from_obfuscated_id</span><span
+            class="method-args">(obf)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_user_from_obfuscated_id-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_user_from_obfuscated_id</span>(<span class="ruby-identifier">obf</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">obf</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">user_id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_user_from_obfuscated_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_user_from_obfuscated_id-method -->
+
+    
+      <div id="method-c-has_login" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_login</span><span
+            class="method-args">(id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="has_login-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_login</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">user_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">gu</span>.<span class="ruby-identifier">email</span>)
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">throw</span> <span class="ruby-string">&quot;Not found&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_login-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_login-method -->
+
+    
+      <div id="method-c-join_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">join_group</span><span
+            class="method-args">(id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="join_group-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">join_group</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">id_retriever</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">gu</span>.<span class="ruby-identifier">email</span>)
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">pending_invite</span> = <span class="ruby-keyword">false</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save!</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- join_group-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- join_group-method -->
+
+    
+      <div id="method-c-leave_group" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">leave_group</span><span
+            class="method-args">(group_id, user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="leave_group-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">leave_group</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_group_id_and_user_id</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- leave_group-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- leave_group-method -->
+
+    
+      <div id="method-c-request_join" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">request_join</span><span
+            class="method-args">(group_id, user_id, url_accept, url_decline, url_home)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="request_join-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">request_join</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">url_accept</span>, <span class="ruby-identifier">url_decline</span>, <span class="ruby-identifier">url_home</span>)
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_group_id_and_user_id</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>  <span class="ruby-comment"># guard against multiple requests coming in.</span>
+                <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">user_id</span>)
+                <span class="ruby-identifier">gu</span> = <span class="ruby-constant">GroupsUser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_id</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user_id</span>, <span class="ruby-value">:email</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-value">:role</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'member'</span>, <span class="ruby-value">:pending_invite</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:pending_request</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save!</span>
+                <span class="ruby-identifier">url_accept</span> = <span class="ruby-identifier">url_accept</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-node">&quot;#{Group.id_obfuscator(gu.id)}&quot;</span>)
+                <span class="ruby-identifier">url_decline</span> = <span class="ruby-identifier">url_decline</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;PUT_ID_HERE&quot;</span>, <span class="ruby-node">&quot;#{Group.id_obfuscator(gu.id)}&quot;</span>)
+                <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+                <span class="ruby-identifier">editors</span> = <span class="ruby-identifier">group</span>.<span class="ruby-identifier">get_all_editors</span>()
+                <span class="ruby-identifier">editors</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">editor</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">ed</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">editor</span>)
+                        <span class="ruby-identifier">body</span> = <span class="ruby-node">&quot;#{user.fullname} mailto:#{user.email} #{&quot;from #{user.institution}&quot; if user.institution &amp;&amp; user.institution.length &gt; 0 } has requested to join the group #{ group.name }.\n\n&quot;</span>
+                        <span class="ruby-identifier">body</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;To allow, click here: #{ url_accept }\n\n&quot;</span>
+                        <span class="ruby-identifier">body</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;To deny, click here: #{ url_decline }\n\n&quot;</span>
+                        <span class="ruby-constant">GenericMailer</span>.<span class="ruby-identifier">generic</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">ed</span>.<span class="ruby-identifier">fullname</span>, <span class="ruby-identifier">ed</span>.<span class="ruby-identifier">email</span>, 
+                            <span class="ruby-string">&quot;Request to join a group&quot;</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">url_home</span>, <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">deliver</span>
+                }
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- request_join-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- request_join-method -->
+
+    
+      <div id="method-c-set_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_notifications</span><span
+            class="method-args">(group_id, user_id, notes)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_notifications-source">
+            <pre><span class="ruby-comment"># File app/models/groups_user.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_notifications</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">notes</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">group_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;0&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;0&quot;</span>
+        <span class="ruby-identifier">group_id</span> = <span class="ruby-identifier">group_id</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">notification</span> = <span class="ruby-identifier">notes</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">';'</span>)
+        <span class="ruby-identifier">group</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">group_id</span>)
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">group</span>.<span class="ruby-identifier">owner</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user_id</span>)
+                <span class="ruby-identifier">group</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-identifier">notification</span>
+                <span class="ruby-identifier">group</span>.<span class="ruby-identifier">save</span>
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">gu</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_by_group_id_and_user_id</span>(<span class="ruby-identifier">group_id</span>, <span class="ruby-identifier">user_id</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gu</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">notifications</span> = <span class="ruby-identifier">notification</span>
+                <span class="ruby-identifier">gu</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_notifications-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,28 @@
+<%  #
+# ------------------------------------------------------------------------
+#     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+# 
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+# 
+#         http://www.apache.org/licenses/LICENSE-2.0
+# 
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
+# ----------------------------------------------------------------------------
+%>
+<%# group_license: params: ActiveRecord group, int user_id -%>
+<script type="text/javascript">
+	// These have to be global variables to be picked up after an ajax call (this partial is redrawn after every update.)
+	gLicenseType = <%= group.license_type == nil ? 0 : group.license_type %>;
+</script>
+<% if Exhibit.is_license_specified(group.license_type) %>
+	<div><%= raw(Exhibit.get_sharing_icon_url(group.license_type)) %></div>
+	<span>Content is this group is protected by a <%= "Creative Commons' #{Exhibit.get_sharing_static(group.license_type)} License" %></span>
+<% elsif group.can_edit(user_id) -%>
+	Each <%= group.get_exhibits_label() %> can specify a license. <%# = link_to_function("[change license]", "license_dialog({ populateLicenses: '/exhibits/get_licenses?add_inherit=true&group_id=#{group.id}', selection: gLicenseType, id_name: 'group[license_type]', id: #{group.id}, update_id: 'group_license', sub_title: 'All #{group.get_exhibits_label().pluralize().downcase()} in this group use the following license:', callback_url: '/groups/update' }); return false;", { :class => "nav_link" }) %>
+<% end -%>

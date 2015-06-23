@@ -1,0 +1,56 @@
+<h1>Editing collection</h1>
+
+<%= errors_for @collection %>
+
+<%= form_for(@collection) do |f| %>
+   <p>
+    <%= f.label :contributor_id %><br />
+    <%= f.text_field :contributor_id %>
+  </p>
+  <p>
+    <%= f.label :last_editor_id %><br />
+    <%= f.text_field :last_editor_id %>
+  </p>
+  <p>
+    <%= f.label :latest_file_id %><br />
+    <%= f.text_field :latest_file_id %>
+  </p>
+  <p>
+    <%= f.label :current_status %><br />
+    <%= f.text_field :current_status %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+  <p>
+    <%= f.label :created_at %><br />
+    <%= f.datetime_select :created_at %>
+  </p>
+  <p>
+    <%= f.label :updated_at %><br />
+    <%= f.datetime_select :updated_at %>
+  </p>
+  <p>
+    <%= f.label :admin_notes %><br />
+    <%= f.text_area :admin_notes %>
+  </p>
+  <p>
+    <%= f.label :project_name %><br />
+    <%= f.text_field :project_name %>
+  </p>
+  <p>
+    <%= f.label :project_url %><br />
+    <%= f.text_field :project_url %>
+  </p>
+  <p>
+    <%= f.label :default_thumbnail %><br />
+    <%= f.text_field :default_thumbnail %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @collection %> |
+<%= link_to 'Back', collections_path %>

@@ -1,0 +1,163 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# group_details : parameters: ActiveRecord group, int user_id -%>
+<script type="text/javascript">
+	// These have to be global variables to be picked up after an ajax call (this partial is redrawn after every update.)
+	<% membership = group.get_membership_list() -%>
+	<% membership_truncated = group.get_membership_list_truncated(44) -%>
+	gMembership = <%= raw(membership.to_json()) %>;
+	gGroupData = <%= raw(group.to_json().gsub('&', '&amp;').gsub('<', '&lt;').gsub('>', '&gt;')) %>;
+</script>
+<div class="group_details_left">
+	<%= render :partial => 'common/thumbnail', :locals => { :element_id => "group_#{group.id}", :url => get_group_image_url(group), :show_immediately => true, :height => 120, :border => true } %>
+<% if group.group_type != 'classroom' && group.can_edit(user_id) -%>
+	<br /><%= link_to_function("[#{group.image == nil ? 'add' : 'edit'} thumbnail]", "new EditGroupThumbnailDlg(#{group.id}, 'Group', 'groups');", :class => 'nav_link') %>
+	<% if group.image != nil -%>
+	<div class="profile_remove_picture"><%= link_to "Remove Thumbnail", { :controller => 'groups', :action => 'remove_profile_picture', :id => group.id }, { :id => 'remove_picture', :method => 'post' } %></div>
+	<script type="text/javascript">
+		var createRemovePictureButton = function() {
+			var onButtonClick = function (e) {
+				postLink($("remove_picture-button").href);
+			};
+
+			new YAHOO.widget.Button('remove_picture', { onclick: { fn: onButtonClick } });
+			YAHOO.util.Event.onAvailable('remove_picture-button', function() {
+				$('remove_picture-button').writeAttribute('onclick', 'return false;');	// This keeps the '#' out of the address bar
+			}, this);
+		};
+		document.observe('dom:loaded', function() {
+			createRemovePictureButton();
+		});
+		try {
+			createRemovePictureButton();
+		} catch(e) {};
+	</script>
+	<% end -%>
+<% end -%>
+</div>
+<div class="group_details_right">
+	<ul class="group_link_list">
+		<!-- <li class="group_back_to_exhibits_link"><%= link_to "[ Back to Exhibits List ]", "/exhibits", :class => 'nav_link' %></li> -->
+		<% if group.can_edit(user_id) || group.show_membership %>
+		<% membership.insert(0, { :user_id => group.owner}) -%>
+		<% membership_truncated.insert(0, { :user_id => group.owner}) -%>
+		<%# membership = membership + membership + membership +membership +membership -%>
+		<li><span class="group_details_label">Group Membership</span>
+			<div class="group_member_explanation">This group has <%= pluralize(membership.length, "member")  %>. (hover over each thumbnail to see the member's name)</div>
+		<div class="group_member_palette_items">
+		<table>
+			<% count = 0 -%>
+			<% while count < membership_truncated.length do -%>
+				<tr>
+					<% 0.upto(8) do -%>
+						<td>
+							<% if count < membership_truncated.length -%>
+								<%= get_user_link_with_thumbnail(membership_truncated[count][:user_id], 25) %>
+								<% count = count + 1 -%>
+							<% else -%>
+								<div style="width:25px;height:25px;"></div>
+							<% end -%>
+						</td>
+					<% end -%>
+				</tr>
+			<% end -%>
+		</table>
+		</div>
+		</li>
+	<% end -%>
+	<% if user_id -%>
+		<% if group.can_edit(user_id) -%>
+			<% gus = GroupsUser.get_all_pending_requests(group.id) -%>
+<script type="text/javascript">
+	gPendingRequests =
+	<%= reqs = []
+		gus.each { |gu|
+			reqs.push({ :user_name => "#{escape_apos(User.find(gu.user_id).fullname)}", :group_id => "#{Group.id_obfuscator(gu.id)}" })
+		}
+		raw(reqs.to_json())
+	-%>;
+</script>
+			<% if gus.length > 0 -%>
+			<li><%= "#{gus.length} #{gus.length == 1 ? 'person has' : 'people have'}" %> requested to join this group. <%= link_to_function('[respond]', "new RespondToRequestDlg(#{group.id}, gPendingRequests);", :class => 'nav_link')  %></li>
+			<% end -%>
+		<% end -%>
+		<%= raw("<li>#{link_to_confirm("[leave this group]", { :controller => 'groups', :action => 'leave_group', :group_id => group.id, :user_id => user_id }, "Leave Group", "Are you sure you want to leave this group?")}</li>") if group.can_leave_group(user_id) %>
+	<% end -%>
+	</ul>
+</div>
+<div class="group_details_center">
+	<h1><%= group.name %><%= link_to_function('[edit title]', "editTitle(#{group.id}, '#{escape_apos(group.name)}', 'group');", :class => 'group_edit_title_link nav_link') if group.can_edit(user_id) %><%= raw("#{link_to_function('[join]', "request_to_join(#{group.id}, #{user_id});", :class => 'group_edit_title_link nav_link' )}") if group.can_request_to_join(user_id) %></h1>
+	<% if user_id -%>
+		<% pending_id = group.get_pending_id(user_id) -%>
+		<% if pending_id -%>
+	<div class="group_editors">You have been invited to join this group.
+		<%= link_to_function('[accept invitation to join]', "accept_invitation(#{pending_id});", :class => 'nav_link'); %>
+		<%= link_to_function('[ignore invitation to join]', "decline_invitation(#{pending_id});", :class => 'nav_link'); %>
+	</div>
+		<% elsif group.is_request_pending(user_id) -%>
+		<div class="group_editors">[a request to join this group is pending acceptance by the moderator]</div>
+		<% end -%>
+	<% end -%>
+
+<% if group.can_see_admins(user_id) -%>
+		<div class="group_editors"><% editors = group.get_all_editors() -%>
+		<% if group.group_type == 'classroom' -%>
+			<span class="group_details_label">Faculty:</span>
+		<% else -%>
+			<span class="group_details_label">Group Administrator<%= 's' if editors.length > 1 %>:</span>
+		<% end -%>
+		<% for editor in editors -%>
+			<%= get_user_link(editor) %>&nbsp;
+		<% end -%>
+		<% if group.can_edit(user_id) && group.group_type == 'peer-reviewed' -%>
+		<%= link_to_function "[hide admins from non members]", "hideAdmins({ method: 'PUT', url: '/groups/#{group.id}' });", :class => 'nav_link' if group.show_admins == 'all' -%>
+		<%= link_to_function "[show admins to non members]", "showAdmins({ method: 'PUT', url: '/groups/#{group.id}' });", :class => 'nav_link' if group.show_admins != 'all' -%>
+		<% end -%>
+	</div>
+<% end -%>
+	<div class="group_description_label"><span class="group_details_label">Group Description:</span> <%= link_to_function('[edit]', "editDescription(#{group.id}, '#{group.description.gsub("\n", " ").gsub("\r", " ").gsub('\'') { |apos| '\\\'' }}', 'group', '/forum/get_nines_obj_list', '#{image_path(PROGRESS_SPINNER_PATH)}');", :class => 'nav_link') if group.can_edit(user_id) %></div>
+	<div class="group_description"><%= decode_exhibit_links(group.description.gsub("\n", "<br />")) %></div>
+	<div class="group_editors"><span class="group_details_label">Group Type: </span><%= Group.type_to_friendly(group.group_type) %> <%= link_to_function('[edit group type]', "editType(#{group.id}, '#{group.group_type}', #{Group.types_to_json(true)});", :class => 'nav_link') if group.can_edit(user_id) && group.group_type != 'peer-reviewed' %></div>
+	<% if group.group_type == 'classroom' -%>
+	<div class="group_editors"><span class="group_details_label">University: </span><%= group.university %> <%= link_to_function('[edit]', "editGroupTextField(#{group.id}, '#{group.university}', 'University', 'university');", :class => 'nav_link') if group.can_edit(user_id) %></div>
+	<div class="group_editors"><span class="group_details_label">Course Name: </span><%= group.course_name %> <%= link_to_function('[edit]', "editGroupTextField(#{group.id}, '#{escape_apos(group.course_name)}', 'Course Name', 'course_name');", :class => 'nav_link') if group.can_edit(user_id) %></div>
+	<div class="group_editors"><span class="group_details_label">Course Mnemonic: </span><%= group.course_mnemonic %> <%= link_to_function('[edit]', "editGroupTextField(#{group.id}, '#{group.course_mnemonic}', 'Course Mnemonic', 'course_mnemonic');", :class => 'nav_link') if group.can_edit(user_id) %></div>
+	<% end -%>
+	<% if group.can_edit(user_id) -%>
+	<div class="group_editors"><span class="group_details_label">Administrative Options:</span><ul>
+		<li><%= link_to_function('Set Email Notification Level', "setNotificationLevel(#{group.id}, '#{escape_apos(group.name)}', #{GroupsUser.get_notifications(group.id, user_id).to_json()}, '#{group.get_exhibits_label()}', '#{group.get_clusters_label()}')", :class => 'nav_link')  %></li>
+		<li><%= link_to_function('Invite Members', "new InviteMembersDlg(#{group.id}, '#{Setup.site_name()}');", :class => 'nav_link')  %></li>
+		<li><%= link_to_function('Edit Membership', "new EditMembershipDlg(#{group.id}, gMembership, '#{group.show_membership == true ? 'Yes' : 'No' }', '#{escape_apos(User.find(group.owner).fullname)}', #{group.is_owner(user_id)});", :class => 'nav_link')  %></li>
+<% license_prompt = group.license_type == 0 ? "Set Content License" : "Change License" -%>
+		<li><span class="small_license"><%= raw(Exhibit.get_sharing_icon_url(group.license_type)) %></span>
+			<%= link_to_function(license_prompt, "license_dialog({ populateLicenses: '/exhibits/get_licenses?add_inherit=true&group_id=#{group.id}', selection: gLicenseType, id_name: 'group[license_type]', id: #{group.id}, update_id: 'group_details,group_license', sub_title: 'All #{group.get_exhibits_label().pluralize().downcase()} in this group use the following license:', callback_url: [{ method: 'PUT', url: '/groups/#{group.id}' }, '/groups/render_license'] }); return false;", { :class => "nav_link" }) %>
+			<span class="group_member_explanation"> (current license: <%= Exhibit.is_license_specified(group.license_type) ? Exhibit.get_sharing_static(group.license_type) : 'No license specified' %>)</span>
+		</li>
+		<li><%= group.get_exhibits_label() %>s are <%= Group.visibility_to_friendly(group.exhibit_visibility) %>&nbsp;<%= link_to_function("Change #{group.get_exhibits_label()} Visibility", "editVisibility(#{group.id}, gGroupData.exhibit_visibility, #{Group.visibility_to_json()}, #{Group.visibility_explanations_to_json()}, '#{group.get_exhibits_label()}');", :class => 'nav_link') %></li>
+		<%# TODO-PER: for Rails 3, we removed url_for( :controller => 'groups', :action => group.visible_url, :only_path => false) %>
+		<li>URL is <%= group.visible_url && group.visible_url.length > 0 ? "/groups/#{group.visible_url}" : "not set" %> <%= link_to_function('Change URL', "editURL(#{group.id}, '#{group.visible_url}', 'group', '/groups/');", :class => 'nav_link') %></li>
+<% if group.group_type =='peer-reviewed' %>
+		<li>Exhibits are called: <%= group.get_exhibits_label() %>s <%= link_to_function('[Change]', "changeExhibitLabel({ method: 'PUT', url: '/groups/#{group.id}' }, '#{group.get_exhibits_label()}', #{group.get_exhibit_label_list().to_json()}, 'group_details', {id: #{group.id}});", :class => 'nav_link') %></li>
+		<li>Clusters are called: <%= group.get_clusters_label() %>s <%= link_to_function('[Change]', "changeClusterLabel({ method: 'PUT', url: '/groups/#{group.id}' }, '#{group.get_clusters_label()}', #{group.get_cluster_label_list().to_json()}, 'group_details', {id: #{group.id}});", :class => 'nav_link') %></li>
+<% end -%>
+<% if group.can_delete(user_id)  && group.group_type != 'peer-reviewed' -%>
+		<li><%= link_to('Delete Group', group, :confirm => 'Are you sure you wish to permanently delete this group?', :method => :delete, :class => 'nav_link') %></li>
+<% end -%>
+	</ul></div>
+	<% end -%>
+</div>
+<div class="clear_both"></div>

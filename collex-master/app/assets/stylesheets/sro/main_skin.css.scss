@@ -1,0 +1,448 @@
+/* ------------------------------------------------------------------------
+//     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+//
+//     Licensed under the Apache License, Version 2.0 (the "License");
+//     you may not use this file except in compliance with the License.
+//     You may obtain a copy of the License at
+//
+//         http://www.apache.org/licenses/LICENSE-2.0
+//
+//     Unless required by applicable law or agreed to in writing, software
+//     distributed under the License is distributed on an "AS IS" BASIS,
+//     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//     See the License for the specific language governing permissions and
+//     limitations under the License.
+// ---------------------------------------------------------------------------- */
+
+body.federation-sro.pg-tag {
+  #tag_zoom_scale {
+    top: 220px;
+  }
+
+  #tag_explanation {
+    background-color: rgba(244,171,98,0.3);
+    margin-left: 1em;
+    padding: 10px;
+    border: 1px solid #ab7247;
+    border-radius: 5px;
+  }
+}
+
+body.federation-sro {
+	background:#ab7247;
+
+  .search-result {
+    min-height: 130px;
+  }
+  hr.linkdlg_hr {
+    background: none;
+  }
+
+  .linkdlg_item.linkdlg_item_selected {
+    background: rgba(244,171,98,0.3);
+    margin: 5px;
+    border: 1px solid #ab7247;
+    border-radius: 5px;
+    padding: 5px;
+    color: #7d1317;
+  }
+
+   .linkdlg_item {
+      margin: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px;
+   }
+
+	.dlg_tab_link_current {
+	   background: white;
+	   border: 1px solid;
+     border-radius: 8px 8px 0 0;
+     border-bottom: 0;
+     position: relative;
+     top: 2px;
+	}
+
+	.dlg_tab_link {
+	   background: none;
+	   border: 1px solid;
+	   border-radius: 8px 8px 0 0;
+	   position: relative;
+     top: 1px;
+     background-color: #f5ad61;
+     opacity: 0.4;
+     color: #7d1317 !important;
+	}
+
+	tr.limit_to_selected {
+	 background: rgba(244,171,98,0.2);
+    color: #0d7366;
+  }
+
+	.search_error_message {
+    color: red;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 16px;
+    border: 1px solid red;
+    background-color: #f8f8f8;
+    padding: 4px;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+	#search_name_facet_min {
+	   background-color: rgba(244,171,98,0.3);
+     border: 1px solid #f5ad61;
+	}
+
+  #edit_exhibit_outline {
+    padding: 0;
+
+    .selected_page {
+      background-color: #ab7247;
+      padding: 1px;
+    }
+
+    .outline_tree_elements {
+       padding: 2px;
+    }
+
+    .outline_element {
+      border: 1px dotted #f5ad61;
+      padding: 4px 0px 4px 1px;
+      border-radius: 4px;
+
+      .count a {
+        background-color: #ab7247;
+        margin: 2px;
+        border-radius: 10px;
+      }
+    }
+
+    .outline_tree_element_selected {
+      border: 1px dotted #f5ad61;
+      background-color: rgba(244,171,98, 0.4);
+    }
+  }
+
+  .breadcrumbs {
+    margin: 10px 00px 10px 00px;
+    background-color: #7d1317;
+    font-family: sans-serif;
+    font-size: .9em;
+    padding: 3px 5px;
+    color: white;
+    font-weight: 100;
+    a.nav_link {
+      color: white;
+    }
+  }
+
+	.licensedisplay {
+    background-color: #ab7247;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    border-radius: 5px;
+  }
+
+	.search_result_buttons button {
+    height: 23px;
+    width: 80px;
+    float: right;
+    margin-bottom: 4px;
+    text-align: center;
+    color: #7d1317;
+    cursor: pointer;
+    padding-top: 2px;
+    display: block;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5ad61;
+    border: 1px solid #ab7247;
+  }
+
+  hr.search_results_hr {
+    height: 1px;
+    background: #7d1317;
+    border: none;
+    margin: 7px 0px 7px 0px;
+  }
+
+	#tags {
+	  border-right: 0;
+	  border-top: #7d1317 solid 1px;
+    border-bottom: #7d1317 solid 1px;
+    border-left:#7d1317 solid 1px;
+	}
+
+	#news {
+    border-right: 0;
+    border-top: #7d1317 solid 1px;
+    border-bottom: #7d1317 solid 1px;
+    border-left:#7d1317 solid 1px;
+  }
+
+	#discussions {
+    border-top: #7d1317 solid 1px;
+    border-bottom: #7d1317 solid 1px;
+  }
+
+  #popular_container table {
+    border-top: 0;
+    border-bottom: 0
+  }
+
+  #main_container {
+  	border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  #footer_container {
+  	background:#ab7247;
+  }
+
+  .exhibit_footer {
+  	background-color: #7d1317;
+  }
+
+  .tab_link_current {
+  	background-color: white;
+    border-radius: 12px 12px 0 0;
+    color:#7d1317;
+    top: 96px;
+    padding-top: 4px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 23px;
+  }
+
+  .tab_link_long, .tab_link_logo, .tab_link,  .my_collex_link {
+    background-color: #f5ad61;
+    border-radius: 12px 12px 0 0 ;
+    color:#7d1317;
+    top: 96px;
+    padding: 4px 5px 0 4px;
+    border: 1px solid black;
+    height: 22px;
+    opacity: 0.4;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .tab_link_long_current, .tab_link_logo_current {
+  	background-color: white;
+    border-radius: 12px 12px 0 0;
+    color:#7d1317;
+    top: 96px;
+    padding-top: 4px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 23px;
+  }
+
+  .tab_link:active, .tab_link_long:active, .tab_link_logo:active, .tab_link:visited, .tab_link_long:visited, .tab_link_logo:visited, .tab_link:hover, .tab_link_long:hover, .tab_link_logo:hover {
+  	color:#7d1317;
+  }
+
+	&.pg-lvl1 #nav_container {
+		top: 125px;
+		right: 30px;
+		.home {
+		  border-radius: 12px 0 0 0;
+		}
+	}
+
+	&.pg-lvl1 a.my_collex_link {
+		top: 125px;
+	}
+  a.my_collex_link {
+    left:30px;
+    border-radius: 0 12px 0 0 ;
+    opacity: 0.85;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+.my_collex_link:active, .my_collex_link:visited, .my_collex_link:hover {
+	color:#55220F;
+}
+
+#footer_container {
+	color:#ffffff;
+	text-align: center;
+	padding: 5px 0px 30px 0px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+.nav_link, .nav_link:link, .nav_link:visited {
+	color:#7d1317;
+}
+
+.tag_link:link { color: #7d1317; }
+.tag_link:visited { color: #7d1317; }
+.tag_link:hover { color: #fff; background: #7d1317; }
+
+/* This is used for all links that change, or potentially change, the database */
+.modify_link, .modify_link:link { color: #7d1317; text-decoration: none; }
+.modify_link:visited { color: #7d1317; text-decoration: none; }
+.modify_link:hover { color: #fff; background: #7d1317; text-decoration: none; }
+
+/* This is used for all links that go to the NINES sites. */
+.nines_link { background: image-url('sro/collex_link.jpg') center right no-repeat; }
+.nines_link:link { color: #7d1317; }
+.nines_link:visited { color: #7d1317; }
+.nines_link:hover { color: #fff; background: #7d1317; }
+
+/* This is used for all links that go to external websites */
+&.wordpress #container .ext_link:link { color: #7d1317; text-decoration: none; }
+&.wordpress #container .ext_link:visited { color: #7d1317; text-decoration: none; }
+&.wordpress #container .ext_link:hover { color: #fff; background: #7d1317; text-decoration: none; }
+
+/* These are used to make non-links look like links for the exhibit builder. */
+.nines_linklike {
+	background: image-url('sro/collex_link.jpg') center right no-repeat;
+	color: #7d1317;
+} /* should match nines_link:link */
+
+.ext_linklike {
+	color: #7d1317;
+} /* should match ext_link:link */
+
+.carousel_title {
+	color: white;
+}
+
+#footer_container a, #footer_container a.link, #footer_container a.visited{
+	color:#7d1317;
+}
+
+.login_div {
+	background-image:image-url('sro/login_header.jpg');
+	background-repeat:no-repeat;
+	border: 3px solid #7d1317;
+
+	margin: -10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 70px;
+  width: 250px;
+  input[type=text], input[type=password] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+}
+
+.search_result_buttons a, .search_result_buttons button {
+}
+
+.search_result_buttons a:hover, .search_result_buttons button:hover {
+	background:image-url('sro/lvl2_result_row_button_rl.jpg') no-repeat scroll left top;
+}
+
+/*********************************/
+/* styles for all javascript-created dialogs */
+/*********************************/
+
+.container-close {
+  top: 6px;
+}
+
+.yui-panel .hd {
+	background: none;
+  background-color: #7d1317;
+	color: white;
+	font-family: sans-serif;
+	font-weight: 200;
+	height: 28px;
+}
+
+.yui-button {
+  border: 1px solid #999;
+  position: relative;
+  top: 2px;
+  border-radius: 4px;
+}
+
+.yui-button .first-child {
+   border: 0;
+}
+
+div.edit_bar .yui-button.yui-menu-button {
+   background: transparent url('http://yui.yahooapis.com/2.9.0/build/assets/skins/sam/sprite.png') repeat-x scroll 0 0;
+}
+
+.button_tab_selected {
+	background: #f5ad61;
+  border: 2px solid #7d1317;
+}
+
+/*.yui-link-button-hover,  .yui-push-button-hover{
+   background-color: #ccc;
+}
+.yui-button-hover a {
+   color: white;
+}
+.yui-push-button-hover button {
+   color: white;
+}
+*/
+	// TODO-PER: This is needed to correct for a specificity problem in the above css
+	 .yui-toolbar-container .yui-push-button, .yui-toolbar-container .yui-color-button, .yui-toolbar-container .yui-menu-button{background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/sprite.png) repeat-x 0 0;position:relative;display:block;height:22px;width:30px;_font-size:0;margin:0;border-color:#808080;color:#f2f2f2;border-style:solid;border-width:1px 0;zoom:1;}
+	 .yui-toolbar-container .yui-push-button a, .yui-toolbar-container .yui-color-button a, .yui-toolbar-container .yui-menu-button a{padding-left:35px;height:20px;text-decoration:none;font-size:0;line-height:2;display:block;color:#000;overflow:hidden;white-space:nowrap;}
+	 .yui-toolbar-container .yui-toolbar-spinbutton a, .yui-toolbar-container .yui-toolbar-select a{font-size:12px;}
+	 .yui-toolbar-container .yui-push-button .first-child, .yui-toolbar-container .yui-color-button .first-child, .yui-toolbar-container .yui-menu-button .first-child{border-color:#808080;border-style:solid;border-width:0 1px;margin:0 -1px;display:block;position:relative;}
+	 .yui-toolbar-container .yui-push-button-disabled .first-child, .yui-toolbar-container .yui-color-button-disabled .first-child, .yui-toolbar-container .yui-menu-button-disabled .first-child{border-color:#ccc;}
+	 .yui-toolbar-container .yui-push-button-disabled a, .yui-toolbar-container .yui-color-button-disabled a, .yui-toolbar-container .yui-menu-button-disabled a{color:#A6A6A6;cursor:default;}
+	 .yui-toolbar-container .yui-push-button-disabled, .yui-toolbar-container .yui-color-button-disabled, .yui-toolbar-container .yui-menu-button-disabled{border-color:#ccc;}
+	 .yui-toolbar-container .yui-button .first-child{*left:0;}
+	 .yui-toolbar-container .yui-toolbar-fontname{width:135px;} .yui-toolbar-container .yui-toolbar-heading{width:92px;}
+	 .yui-toolbar-container .yui-button-hover{background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/sprite.png) repeat-x 0 -1300px;border-color:#808080;}
+	 .yui-toolbar-container .yui-button-selected{background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/sprite.png) repeat-x 0 -1700px;border-color:#808080;}
+	 .yui-toolbar-container .yui-toolbar-nogrouplabels h3{display:none;}
+	 .yui-toolbar-container .yui-toolbar-nogrouplabels .yui-toolbar-group{margin-top:.75em;}
+	 .yui-toolbar-container .yui-push-button span.yui-toolbar-icon, .yui-toolbar-container .yui-color-button span.yui-toolbar-icon, .yui-toolbar-container .yui-menu-button span.yui-toolbar-icon{display:block;position:absolute;top:2px;height:18px;width:18px;overflow:hidden;background:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/editor-sprite.gif) no-repeat 30px 30px;}
+	 .yui-toolbar-container .yui-button-selected span.yui-toolbar-icon, .yui-toolbar-container .yui-button-hover span.yui-toolbar-icon{background-image:url(http://yui.yahooapis.com/2.8.2r1/build/assets/skins/sam/editor-sprite-active.gif);}
+	 .yui-toolbar-container .visible .yuimenuitemlabel{cursor:pointer;color:#000;*position:relative;}
+	 .yui-toolbar-container .yui-button-menu{background-color:#fff;}
+	 .yui-toolbar-container .yui-button-menu .yui-menu-body-scrolled{position:relative;}
+	 div.yuimenu li.selected{background-color:#B3D4FF;}
+	 div.yuimenu li.selected a.selected{color:#000;}
+	 .yui-toolbar-container .yui-toolbar-bold span.yui-toolbar-icon{background-position:0 0;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-strikethrough span.yui-toolbar-icon{background-position:0 -108px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-italic span.yui-toolbar-icon{background-position:0 -36px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-undo span.yui-toolbar-icon{background-position:0 -1326px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-redo span.yui-toolbar-icon{background-position:0 -1355px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-underline span.yui-toolbar-icon{background-position:0 -72px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-subscript span.yui-toolbar-icon{background-position:0 -180px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-superscript span.yui-toolbar-icon{background-position:0 -144px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-forecolor span.yui-toolbar-icon{background-position:0 -216px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-backcolor span.yui-toolbar-icon{background-position:0 -288px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifyleft span.yui-toolbar-icon{background-position:0 -324px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifycenter span.yui-toolbar-icon{background-position:0 -360px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifyright span.yui-toolbar-icon{background-position:0 -396px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-justifyfull span.yui-toolbar-icon{background-position:0 -432px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-indent span.yui-toolbar-icon{background-position:0 -720px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-outdent span.yui-toolbar-icon{background-position:0 -684px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-createlink span.yui-toolbar-icon{background-position:0 -792px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-insertimage span.yui-toolbar-icon{background-position:1px -756px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-left span.yui-toolbar-icon{background-position:0 -972px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-right span.yui-toolbar-icon{background-position:0 -936px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-inline span.yui-toolbar-icon{background-position:0 -900px;left:5px;}
+	 .yui-toolbar-container .yui-toolbar-insertunorderedlist span.yui-toolbar-icon {background-position: 0 -468px;left: 5px;}
+	 .yui-toolbar-container .yui-toolbar-insertorderedlist span.yui-toolbar-icon {background-position: 0 -504px;left: 5px;}
+
+}

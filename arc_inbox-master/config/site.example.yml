@@ -1,0 +1,75 @@
+# This contains all the site specific information (outside of database.yml) that should not be checked into version control.
+# It is read in by environment.rb.
+
+#
+# It must contain the following fields:
+#
+
+##########################
+### EMAIL
+##########################
+
+# For getting automatic emails when an error occurs
+# exception_recipients: List of all emails that should receive the notification
+# sender_address: Who the notification email will be from
+# email_prefix: What each email should be prefixed with
+exception_notifier:
+  exception_recipients: "admin@example.com"
+  sender_address: '"Application Error" <admin@example.com>'
+  email_prefix: "[ArcInbox] "
+
+# For setting up email - this example uses gmail
+smtp_settings:
+  address: "smtp.gmail.com"
+  port: 587
+  domain: 'example.com'
+  user_name: 'admin@example.com'
+  password: 'super-secret'
+  authentication: :plain
+  enable_starttls_auto: true
+  return_path: http://example.com
+
+master_editor:
+  name: "Eddie Editor"
+  email: "eddie@example.com"
+
+webmaster:
+  email: "webmaster@example.com"
+
+mail_intercept:
+  deliver_email: false
+  email_list: 'all-emails@example.com'
+
+##########################
+### Skin
+##########################
+
+skin:
+  title_prefix: 'DEV: '
+  edge: false
+
+##########################
+### SYSTEM
+##########################
+
+paths:
+  imagemagick: '/opt/local/bin'
+
+##########################
+### CAPISTRANO
+##########################
+
+capistrano:
+  edge_tamu:
+    user: 'user-name-to-login-to-server'
+    ssh_name: 'ssh-name-to-login-to-server'
+    ruby: 'ruby-1.9.3-p374'
+    system_rvm: true
+    deploy_base: '/full/path/to/folder/that/all/web/apps/are/deployed/to'
+
+  edge_rack:
+    user: 'user-name-to-login-to-server'
+    ssh_name: 'ssh-name-to-login-to-server'
+    ruby: 'ruby-1.9.3-p0'
+    system_rvm: false
+    deploy_base: '/full/path/to/folder/that/all/web/apps/are/deployed/to'

@@ -1,0 +1,23 @@
+<p>
+  <b>Original name:</b>
+  <%=h @uploaded_file.original_name %>
+</p>
+
+<p>
+  <b>Received name:</b>
+  <%=h @uploaded_file.received_name %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @uploaded_file.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @uploaded_file.updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_uploaded_file_path(@uploaded_file) %> |
+<%= link_to 'Back', uploaded_files_path %>

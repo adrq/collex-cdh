@@ -1,0 +1,38 @@
+<p>
+  <b>Contributor:</b>
+  <%=h @collection.contributor_id %>
+</p>
+
+<p>
+  <b>Last editor:</b>
+  <%=h @collection.last_editor_id %>
+</p>
+
+<p>
+  <b>Latest file:</b>
+  <%=h @collection.latest_file_id %>
+</p>
+
+<p>
+  <b>Current status:</b>
+  <%=h @collection.current_status %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @collection.notes %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @collection.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @collection.updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Back', collections_path %>

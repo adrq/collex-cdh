@@ -1,0 +1,27 @@
+<h1>Editorial Board Email List</h1>
+<div id="instructions">
+	Enter the email addresses of all Editorial Board members. The Editorial Board in a particular department will get an email whenever a submission's status changes to "In Peer Review". Editorial Board members cannot log in to the <%= PROGRAM_NAME %> without also creating a standard account.
+</div>
+<br /> 
+<table class="collections">
+  <tr class="collections">
+    <th class="collections">Name</th>
+    <th class="collections">Email</th>
+    <th class="collections">Classification</th>
+  </tr>
+
+<% for editorial_board_member in @editorial_board_members %>
+  <tr class="collections">
+    <td class="collections"><%=h editorial_board_member.name %></td>
+    <td class="collections"><%=h editorial_board_member.email %></td>
+    <td class="collections"><%=h Collection.to_classification_string(editorial_board_member.classification) %></td>
+    <td class="collections"><%= link_to 'Edit', edit_editorial_board_member_path(editorial_board_member) %></td>
+    <td class="collections"><%= link_to 'Destroy', editorial_board_member, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add Editorial Board Email', new_editorial_board_member_path %><%= link_divider() %>
+<%= link_to 'Back To Editor Page', editor_path %>

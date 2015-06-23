@@ -1,0 +1,31 @@
+<% title "Editor" %>
+<% main_header "Contributions to #{PROGRAM_NAME}" -%>
+<% extra_button goto_contributor_link -%>
+<% login_msg "You are logged in as:<br /> #{current_user.real_name}." -%>
+<% link_myaccount "yes" %>
+<% instructions "Below is a list of all the pending contributions and their current status. As you work through the list, change the status of the item. That will send an email to the contributor notifying them that their contribution has changed. The Public notes are visible to the contributor; the Admin notes are only visible on this page." -%>
+
+<script type="text/javascript">
+	// Parameters for the status combo
+	var combo = '<%= Collection.create_status_combo("status") %>';
+	var form_tag = '<%= form_tag( { :action => "status_changed", :id => 10101010 }, { :id => "status-form" } ) %>';
+	
+	// Parameters for the classification combo
+	var classification_combo = '<%= Collection.create_classification_combo("classification") %>';
+	var classification_form_tag = '<%= form_tag( { :action => "classification_changed", :id => 10101010 }, { :id => "classification-form" } ) %>';
+	
+	// Parameters for the textarea edit box
+	var textarea = '<textarea Name="textarea" id="textarea" rows="10" cols="43" onblur="onTextAreaChange()">$(STARTING_TEXT)</textarea>';
+	var textarea_form_tag = '<%= form_tag( { :action => "textarea_changed", :id => 10101010 }, { :id => "textarea-form" } ) %>';
+</script>
+
+<%   @collections = Collection.get_all() -%>
+<%   @is_editor = true -%>
+<h2>Account Administration:</h2>
+<div class="navigation">
+    <%= link_to "Create a new user account", signup_path %><%= link_divider() %>
+    <%= link_to "Disable a user account", delete_account_path %><%= link_divider() %>
+    <%= link_to "Maintain Editorial Board", maintain_editorial_board_path %>
+</div>
+<hr />
+<%= render :partial => "history" %>

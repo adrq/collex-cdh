@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class TagController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/tag_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-list">#list</a>
+    
+    <li><a href="#method-i-object">#object</a>
+    
+    <li><a href="#method-i-results">#results</a>
+    
+    <li><a href="#method-i-rss">#rss</a>
+    
+    <li><a href="#method-i-set_zoom">#set_zoom</a>
+    
+    <li><a href="#method-i-tag_name_autocomplete">#tag_name_autocomplete</a>
+    
+    <li><a href="#method-i-update_tag_cloud">#update_tag_cloud</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class TagController</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2009 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="list-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">list</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">1</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_current</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] = <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_current</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">set_cloud_list</span>(<span class="ruby-keyword">nil</span>, <span class="ruby-string">&quot;&quot;</span>)
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
+  <span class="ruby-keyword">end</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- list-method -->
+
+    
+      <div id="method-i-object" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">object</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="object-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">object</span>
+            <span class="ruby-keyword">begin</span>
+          <span class="ruby-ivar">@hit</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hit_from_uri</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:uri</span>])
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Catalog</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+                    <span class="ruby-comment"># This can happen if the URI changed on an object after it had been included in an RSS stream.</span>
+                    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;*** RSS Feed Retrieval Error: #{e.to_s}&quot;</span>)
+            <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'simple'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- object-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- object-method -->
+
+    
+      <div id="method-i-results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">results</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="results-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">results</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:script</span>]
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:script</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:script</span>]
+                      <span class="ruby-identifier">session</span>[<span class="ruby-value">:uri</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:uri</span>]
+                      <span class="ruby-identifier">session</span>[<span class="ruby-value">:row_num</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:row_num</span>]
+                      <span class="ruby-identifier">session</span>[<span class="ruby-value">:row_id</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:row_id</span>]
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:script</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:uri</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:row_num</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:row_id</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">params</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:script</span>]
+      <span class="ruby-ivar">@script</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:script</span>]
+                              <span class="ruby-ivar">@uri</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:uri</span>]
+                              <span class="ruby-ivar">@row_num</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:row_num</span>]
+                              <span class="ruby-ivar">@row_id</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:row_id</span>]
+
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:script</span>] = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:uri</span>] = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:row_num</span>] = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">session</span>[<span class="ruby-value">:row_id</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+                      <span class="ruby-comment"># parameters:</span>
+                      <span class="ruby-comment">#  :tag =&gt; 'tag_name'</span>
+
+                      <span class="ruby-comment"># we save the tag in the session object in case we are called from a place that shouldn't care which type it is.</span>
+                      <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                              <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;lt;&quot;</span>,<span class="ruby-string">&quot;&lt;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;gt;&quot;</span>, <span class="ruby-string">&quot;&gt;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;amp;&quot;</span>, <span class="ruby-string">&quot;&amp;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;quot;&quot;</span>, <span class="ruby-string">'&quot;'</span>)
+                              <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_current</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>]
+                      <span class="ruby-keyword">else</span>
+                              <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] = <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_current</span>]
+                      <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@collected_sort_by</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:srt</span>] <span class="ruby-operator">||</span> <span class="ruby-string">'title'</span>
+        <span class="ruby-ivar">@collected_sort_by_direction</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:dir</span>] <span class="ruby-operator">||</span> <span class="ruby-string">'asc'</span>
+                      <span class="ruby-comment">#do the pagination.</span>
+                      <span class="ruby-ivar">@page</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+                      <span class="ruby-comment">#session[:items_per_page] ||= MIN_ITEMS_PER_PAGE</span>
+                      <span class="ruby-identifier">items_per_page</span> = <span class="ruby-value">30</span>
+
+                      <span class="ruby-identifier">sort_field</span> = <span class="ruby-string">'title'</span>
+                      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@collected_sort_by</span>
+                      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;title&quot;</span> <span class="ruby-keyword">then</span>
+                              <span class="ruby-identifier">sort_field</span> = <span class="ruby-string">'title'</span>
+                      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;author&quot;</span> <span class="ruby-keyword">then</span>
+                              <span class="ruby-identifier">sort_field</span> = <span class="ruby-string">'role_AUT'</span>
+                      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;date&quot;</span> <span class="ruby-keyword">then</span>
+                              <span class="ruby-identifier">sort_field</span> = <span class="ruby-string">'date_label'</span>   <span class="ruby-comment"># note: the 'year' field isn't cached, so we can't sort on that. Should we cache it and refresh all objects?</span>
+                      <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;a&quot;</span> <span class="ruby-keyword">then</span>
+                              <span class="ruby-identifier">sort_field</span> = <span class="ruby-string">'archive'</span>
+                              <span class="ruby-keyword">else</span>
+                                      <span class="ruby-identifier">sort_field</span> = <span class="ruby-string">'title'</span>
+                      <span class="ruby-keyword">end</span>
+
+                      <span class="ruby-identifier">ret</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_page_of_hits_for_tag</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>], <span class="ruby-keyword">nil</span>, <span class="ruby-ivar">@page</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>, <span class="ruby-identifier">items_per_page</span>, <span class="ruby-identifier">sort_field</span>, <span class="ruby-ivar">@collected_sort_by_direction</span>)
+                      <span class="ruby-ivar">@results</span> = <span class="ruby-identifier">ret</span>[<span class="ruby-value">:results</span>]
+        <span class="ruby-ivar">@collected</span> = <span class="ruby-identifier">view_context</span>.<span class="ruby-identifier">add_non_solr_info_to_results</span>(<span class="ruby-ivar">@results</span>, <span class="ruby-keyword">nil</span>)
+                      <span class="ruby-ivar">@total_hits</span> = <span class="ruby-identifier">ret</span>[<span class="ruby-value">:total</span>]
+
+                      <span class="ruby-ivar">@num_pages</span> = <span class="ruby-ivar">@total_hits</span>.<span class="ruby-identifier">quo</span>(<span class="ruby-identifier">items_per_page</span>).<span class="ruby-identifier">ceil</span>
+              <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- results-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- results-method -->
+
+    
+      <div id="method-i-rss" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rss</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="rss-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 167</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rss</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-constant">DISALLOW_RSS</span>
+                      <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'RSS disabled for this installation'</span>
+                      <span class="ruby-keyword">return</span>
+              <span class="ruby-keyword">end</span>
+
+                     <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                             <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;lt;&quot;</span>,<span class="ruby-string">&quot;&lt;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;gt;&quot;</span>, <span class="ruby-string">&quot;&gt;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;amp;&quot;</span>, <span class="ruby-string">&quot;&amp;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;&amp;quot;&quot;</span>, <span class="ruby-string">'&quot;'</span>)
+                     <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@tag</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>]
+  <span class="ruby-ivar">@results</span> = <span class="ruby-identifier">sort_by_date_collected</span>(<span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">get_hits_for_tag</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>], <span class="ruby-keyword">nil</span>))
+  <span class="ruby-comment">#@items = [ { :title =&gt; 'first', :description =&gt; 'this is the first'}, { :title =&gt; 'second', :description =&gt; 'another entry' } ]</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'rss'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- rss-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- rss-method -->
+
+    
+      <div id="method-i-set_zoom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_zoom</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_zoom-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_zoom</span>
+  <span class="ruby-comment"># This is called by an ajax request so that the zoom level is remembered for the</span>
+  <span class="ruby-comment"># next time the user visits the page. It doesn't need to render anything or set anything</span>
+  <span class="ruby-comment"># except to save the zoom level.</span>
+  <span class="ruby-identifier">level</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:level</span>]
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">level</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'1'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">1</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'2'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">2</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'3'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">3</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'4'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">4</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'5'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">5</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'6'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">6</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'7'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">7</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'8'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">8</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'9'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">9</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'10'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">10</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_zoom</span>] = <span class="ruby-value">10</span> 
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:nothing</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_zoom-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_zoom-method -->
+
+    
+      <div id="method-i-tag_name_autocomplete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tag_name_autocomplete</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>autocomplete tag name based on partial input</p>
+          
+
+          
+          <div class="method-source-code" id="tag_name_autocomplete-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tag_name_autocomplete</span> 
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'tag'</span>][<span class="ruby-string">'name'</span>]<span class="ruby-operator">+</span><span class="ruby-string">&quot;%&quot;</span>
+  <span class="ruby-identifier">matches</span> = <span class="ruby-constant">Group</span>.<span class="ruby-identifier">find_by_sql</span> [<span class="ruby-string">&quot;select distinct name from tags where name like ?&quot;</span>, <span class="ruby-identifier">str</span>]
+  <span class="ruby-ivar">@values</span> = []
+  <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>
+     <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">push</span>( <span class="ruby-identifier">match</span>.<span class="ruby-identifier">name</span> )
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'tag_autocomplete'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tag_name_autocomplete-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tag_name_autocomplete-method -->
+
+    
+      <div id="method-i-update_tag_cloud" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_tag_cloud</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>adjust the sort order</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_by</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'search'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'search'</span>][<span class="ruby-string">'result_sort'</span>]
+    <span class="ruby-identifier">sort_param</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'search'</span>][<span class="ruby-string">'result_sort'</span>]
+             <span class="ruby-identifier">session</span>[:<span class="ruby-identifier">tag_sort_by</span>] = <span class="ruby-identifier">sort_param</span>
+     <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'search'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">'search'</span>][<span class="ruby-string">'result_sort_direction'</span>]
+    <span class="ruby-identifier">sort_param</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">'search'</span>][<span class="ruby-string">'result_sort_direction'</span>]
+             <span class="ruby-identifier">session</span>[:<span class="ruby-identifier">tag_sort_by_direction</span>] = <span class="ruby-identifier">sort_param</span>
+     <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">redirect_to</span> :<span class="ruby-identifier">action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'results'</span>
+<span class="ruby-keyword">end</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="update_tag_cloud-source">
+            <pre><span class="ruby-comment"># File app/controllers/tag_controller.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_tag_cloud</span>
+ <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_signed_in?</span>
+   <span class="ruby-identifier">set_cloud_list</span>(<span class="ruby-identifier">current_user</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">username</span>)
+
+   <span class="ruby-identifier">selected_tag</span> = (<span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_view</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'tag'</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tag_current</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>
+   <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/tag/cloud'</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:cloud_info</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@cloud_info</span>, <span class="ruby-value">:selected_tag</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">selected_tag</span>, <span class="ruby-value">:controller_for_tags</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MY_COLLEX_URL</span>, <span class="ruby-value">:hide_some</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
+ <span class="ruby-keyword">else</span>
+   <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Session expired. Please log in again.'</span>
+ <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_tag_cloud-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_tag_cloud-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

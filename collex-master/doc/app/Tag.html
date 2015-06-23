@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Tag - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/tag.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-add">::add</a>
+    
+    <li><a href="#method-c-get_tags_for_uri">::get_tags_for_uri</a>
+    
+    <li><a href="#method-c-items_in_uri_list">::items_in_uri_list</a>
+    
+    <li><a href="#method-c-normalize_tag_name">::normalize_tag_name</a>
+    
+    <li><a href="#method-c-remove">::remove</a>
+    
+    <li><a href="#method-c-rename">::rename</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Tag</h1>
+
+  <div id="description" class="description">
+    
+<p>Copyright 2007 Applied Research in Patacriticism and the University of
+Virginia</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
+use this file except in compliance with the License. You may obtain a copy
+of the License at</p>
+
+<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add</span><span
+            class="method-args">(user, uri, tag_info)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add a new tag to an item. Collected/Uncollected is irrelevant; tags are
+associated  directly with the cached resource id. If the item is not yet
+cached, it will be.</p>
+          
+
+          
+          <div class="method-source-code" id="add-source">
+            <pre><span class="ruby-comment"># File app/models/tag.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">tag_info</span>)
+  
+  <span class="ruby-comment"># See if the resource has been cached - cache it if not</span>
+  <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">add</span>( <span class="ruby-identifier">uri</span> )
+    <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># find or create the tag record.</span>
+  <span class="ruby-identifier">tag_info</span>[<span class="ruby-string">'name'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">tag</span> <span class="ruby-operator">|</span>
+     <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">strip</span>
+     <span class="ruby-identifier">tag</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">normalize_tag_name</span>(<span class="ruby-identifier">tag</span>)
+     <span class="ruby-identifier">tag_rec</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">tag</span>)
+     <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag_rec</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+       <span class="ruby-identifier">tag_rec</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag</span>)
+       <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">save!</span>
+     <span class="ruby-keyword">end</span>
+ 
+     <span class="ruby-comment"># see if this item has already been tagged</span>
+     <span class="ruby-identifier">tagassign</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">find_by_tag_id_and_cached_resource_id</span>(<span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">id</span>)
+     
+     <span class="ruby-comment"># create a new tag assign for this type of tag</span>
+     <span class="ruby-keyword">if</span> <span class="ruby-identifier">tagassign</span>.<span class="ruby-identifier">nil?</span>
+       <span class="ruby-identifier">tagassign</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:tag_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:cached_resource_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">id</span>) 
+       <span class="ruby-identifier">tagassign</span>.<span class="ruby-identifier">save!</span>
+     <span class="ruby-keyword">else</span>
+       <span class="ruby-identifier">tagassign</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:updated_at</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+     <span class="ruby-keyword">end</span>
+ 
+     <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">record_tag</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">tag</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add-method -->
+
+    
+      <div id="method-c-get_tags_for_uri" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_tags_for_uri</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get a list of tags associated with the specified URI. This list is an array
+of arrays. Format: [tagname][ usser_id]</p>
+          
+
+          
+          <div class="method-source-code" id="get_tags_for_uri-source">
+            <pre><span class="ruby-comment"># File app/models/tag.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_tags_for_uri</span>(<span class="ruby-identifier">uri</span>)
+  
+  <span class="ruby-comment"># find the cached item. If it isn't cached, we know there aren't any tags for it.</span>
+  <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">cached_resource</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> []
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">tags</span> = {}
+
+  <span class="ruby-comment"># find any times this was tagged when not collected</span>
+  <span class="ruby-identifier">assignments</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">where</span>({<span class="ruby-identifier">cached_resource_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">id</span>})
+  <span class="ruby-identifier">assignments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">assignment</span> <span class="ruby-operator">|</span>
+    <span class="ruby-identifier">tag</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">tag_id</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">tag</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-identifier">tags</span>[<span class="ruby-identifier">tag</span>.<span class="ruby-identifier">name</span>] = { <span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">assignment</span>.<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">tag</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">id</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># clear out duplicates and sort. This will return a sorted array of arrays.</span>
+  <span class="ruby-comment"># secondary array is [tagname][owner]</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">sort</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_tags_for_uri-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_tags_for_uri-method -->
+
+    
+      <div id="method-c-items_in_uri_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">items_in_uri_list</span><span
+            class="method-args">(uris,curr_user_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="items_in_uri_list-source">
+            <pre><span class="ruby-comment"># File app/models/tag.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">items_in_uri_list</span>(<span class="ruby-identifier">uris</span>,<span class="ruby-identifier">curr_user_id</span>)
+        <span class="ruby-identifier">sql_left</span> = <span class="ruby-string">&quot;select uri,name,user_id from tagassigns inner join cached_resources on tagassigns.`cached_resource_id` = cached_resources.id inner join tags on tagassigns.tag_id = tags.id where cached_resources.uri in (&quot;</span>
+        <span class="ruby-identifier">sql_right</span> = <span class="ruby-string">&quot;);&quot;</span>
+        <span class="ruby-identifier">uris</span> = <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">uri</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;\'&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">apos</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;\\\'&quot;</span> } <span class="ruby-operator">+</span> <span class="ruby-string">&quot;'&quot;</span> }
+        <span class="ruby-identifier">tags</span> = <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql_left</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">','</span>)<span class="ruby-operator">+</span><span class="ruby-identifier">sql_right</span>)
+        <span class="ruby-identifier">list</span> = {}
+        <span class="ruby-identifier">other_list</span> = {}
+        <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">curr_user_id</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]].<span class="ruby-identifier">nil?</span>
+                                <span class="ruby-identifier">list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]] = [ <span class="ruby-identifier">item</span>[<span class="ruby-value">1</span>] ]
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">item</span>[<span class="ruby-value">1</span>])
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">other_list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]].<span class="ruby-identifier">nil?</span>
+                                <span class="ruby-identifier">other_list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]] = [ <span class="ruby-identifier">item</span>[<span class="ruby-value">1</span>] ]
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">other_list</span>[<span class="ruby-identifier">item</span>[<span class="ruby-value">0</span>]].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">item</span>[<span class="ruby-value">1</span>])
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">list</span>,<span class="ruby-identifier">other_list</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- items_in_uri_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- items_in_uri_list-method -->
+
+    
+      <div id="method-c-normalize_tag_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">normalize_tag_name</span><span
+            class="method-args">(tag)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>clean up tag name</p>
+          
+
+          
+          <div class="method-source-code" id="normalize_tag_name-source">
+            <pre><span class="ruby-comment"># File app/models/tag.rb, line 169</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">normalize_tag_name</span>(<span class="ruby-identifier">tag</span>)
+  <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">strip</span>()
+  <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">downcase</span>()
+  <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">' '</span>, <span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'.'</span>, <span class="ruby-string">'_'</span>)
+  <span class="ruby-identifier">tag</span> = <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'?'</span>, <span class="ruby-string">'_'</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">tag</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'/'</span>, <span class="ruby-string">'_'</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- normalize_tag_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- normalize_tag_name-method -->
+
+    
+      <div id="method-c-remove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove</span><span
+            class="method-args">(user, uri, tag_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Delete specified tag</p>
+          
+
+          
+          <div class="method-source-code" id="remove-source">
+            <pre><span class="ruby-comment"># File app/models/tag.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">tag_id</span>)
+
+  <span class="ruby-comment"># Grab the resource associated with the URI</span>
+  <span class="ruby-identifier">cached_resource</span> = <span class="ruby-constant">CachedResource</span>.<span class="ruby-identifier">find_by_uri</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Can't delete the tag because uri #{uri} is not cached&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># find the tag record. We might have been passed either an id or the tag name.</span>
+  <span class="ruby-identifier">tag_rec</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">tag_id</span>)
+      <span class="ruby-identifier">tag_rec</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">tag_id</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-comment"># For some reason the tag was already deleted. Don't worry about it, </span>
+    <span class="ruby-comment"># it was probably a race condition or stale session.</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># do the delete</span>
+  <span class="ruby-identifier">tagassign</span> = <span class="ruby-constant">Tagassign</span>.<span class="ruby-identifier">find_by_user_id_and_tag_id_and_cached_resource_id</span>( <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">cached_resource</span>.<span class="ruby-identifier">id</span> )
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">tagassign</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Can't delete the tag because the tag #{tag_rec.name} was not assigned to the uri #{uri} by user #{user.username}&quot;</span>)
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">else</span>
+    
+    <span class="ruby-comment"># kill the assignment</span>
+    <span class="ruby-identifier">tagassign</span>.<span class="ruby-identifier">destroy</span>
+    
+    <span class="ruby-comment"># if there are no assignments for the tag, remove it too</span>
+    <span class="ruby-identifier">resources</span> = <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">cached_resources</span>
+    <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">resources</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> 
+    
+    <span class="ruby-constant">ObjectActivity</span>.<span class="ruby-identifier">record_untag</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">tag_rec</span>.<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">end</span>     
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove-method -->
+
+    
+      <div id="method-c-rename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rename</span><span
+            class="method-args">(user, uri, old_tag_str, new_tag_str)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Rename a tag from old_tag_str to new_tag_str. If these string are equal  or
+the new string is empty, do nothing</p>
+          
+
+          
+          <div class="method-source-code" id="rename-source">
+            <pre><span class="ruby-comment"># File app/models/tag.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">rename</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">old_tag_str</span>, <span class="ruby-identifier">new_tag_str</span>)
+  
+  <span class="ruby-comment"># cleanup both names</span>
+  <span class="ruby-identifier">old_tag_str</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">normalize_tag_name</span>(<span class="ruby-identifier">old_tag_str</span>)
+  <span class="ruby-identifier">new_tag_str</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">normalize_tag_name</span>(<span class="ruby-identifier">new_tag_str</span>)
+  
+  <span class="ruby-comment"># if the tag name hasn't changed, then we have nothing to do</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">old_tag_str</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">new_tag_str</span>  <span class="ruby-operator">||</span> <span class="ruby-identifier">new_tag_str</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">==</span> <span class="ruby-value">0</span> 
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, {<span class="ruby-string">'name'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">new_tag_str</span>})
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">old_tag_str</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- rename-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- rename-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

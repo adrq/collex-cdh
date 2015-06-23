@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Typewright::Line - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/typewright/line.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveResource::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-convert_from_server_to_usable">::convert_from_server_to_usable</a>
+    
+    <li><a href="#method-c-db_to_words">::db_to_words</a>
+    
+    <li><a href="#method-c-find_all_by_document_id_and_page_and_line_and_src">::find_all_by_document_id_and_page_and_line_and_src</a>
+    
+    <li><a href="#method-c-get_undoable_record">::get_undoable_record</a>
+    
+    <li><a href="#method-c-revisions">::revisions</a>
+    
+    <li><a href="#method-c-since">::since</a>
+    
+    <li><a href="#method-c-words_to_db">::words_to_db</a>
+    
+    <li><a href="#method-c-words_to_text">::words_to_text</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Typewright.html">Typewright</a>
+  
+    <li><a href="../Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="../Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="../Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="../Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="../Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="../Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="../Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="../Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="../Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="../Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="../Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="../Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="../Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="../Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="../Admin.html">Admin</a>
+  
+    <li><a href="../Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="../Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="../Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="../Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="../Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="../Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="../Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="../Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="../Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="../Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="../Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="../Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="../Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="../Catalog.html">Catalog</a>
+  
+    <li><a href="../Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="../GroupsController.html">GroupsController</a>
+  
+    <li><a href="../GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../Branding.html">Branding</a>
+  
+    <li><a href="../BuilderController.html">BuilderController</a>
+  
+    <li><a href="../BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="../CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="../CachedResource.html">CachedResource</a>
+  
+    <li><a href="../CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="../ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="../ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="../Cluster.html">Cluster</a>
+  
+    <li><a href="../ClustersController.html">ClustersController</a>
+  
+    <li><a href="../CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="../CommentReport.html">CommentReport</a>
+  
+    <li><a href="../CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="../CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="../Constraint.html">Constraint</a>
+  
+    <li><a href="../DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="../DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="../DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="../DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="../DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="../DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="../Exhibit.html">Exhibit</a>
+  
+    <li><a href="../ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="../ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="../ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="../ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="../ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="../ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="../ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="../ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="../ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="../ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="../ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="../FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="../FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="../FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="../ForumController.html">ForumController</a>
+  
+    <li><a href="../FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="../FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="../GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="../GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="../Group.html">Group</a>
+  
+    <li><a href="../GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="../GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="../HelpController.html">HelpController</a>
+  
+    <li><a href="../HomeController.html">HomeController</a>
+  
+    <li><a href="../HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="../Image.html">Image</a>
+  
+    <li><a href="../ImageFull.html">ImageFull</a>
+  
+    <li><a href="../IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="../LoginController.html">LoginController</a>
+  
+    <li><a href="../LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="../LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="../MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="../MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="../PeerReview.html">PeerReview</a>
+  
+    <li><a href="../PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="../PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="../PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="../ResultsController.html">ResultsController</a>
+  
+    <li><a href="../Role.html">Role</a>
+  
+    <li><a href="../SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="../Search.html">Search</a>
+  
+    <li><a href="../SearchController.html">SearchController</a>
+  
+    <li><a href="../SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="../SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="../Session.html">Session</a>
+  
+    <li><a href="../Setup.html">Setup</a>
+  
+    <li><a href="../Tag.html">Tag</a>
+  
+    <li><a href="../TagController.html">TagController</a>
+  
+    <li><a href="../TagHelper.html">TagHelper</a>
+  
+    <li><a href="../Tagassign.html">Tagassign</a>
+  
+    <li><a href="../TestJsController.html">TestJsController</a>
+  
+    <li><a href="../TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="../TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="../VicConference.html">VicConference</a>
+  
+    <li><a href="../VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="../WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Typewright::Line</h1>
+
+  <div id="description" class="description">
+    <hr style="height: 10px">
+
+<pre>Copyright 2011 Applied Research in Patacriticism and the University of</pre>
+
+<p>Virginia</p>
+
+<pre>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+<hr style="height: 10px">
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-convert_from_server_to_usable" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">convert_from_server_to_usable</span><span
+            class="method-args">(lines)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="convert_from_server_to_usable-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">convert_from_server_to_usable</span>(<span class="ruby-identifier">lines</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">words</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">db_to_words</span>(<span class="ruby-identifier">line</span>[<span class="ruby-string">'words'</span>])
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span>[<span class="ruby-string">'action'</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'change'</span>
+                        <span class="ruby-identifier">l</span> = <span class="ruby-value">1000000</span>
+                        <span class="ruby-identifier">t</span> = <span class="ruby-value">1000000</span>
+                        <span class="ruby-identifier">r</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">b</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">words</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">l</span> = <span class="ruby-identifier">word</span>[<span class="ruby-value">:l</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">word</span>[<span class="ruby-value">:l</span>].<span class="ruby-identifier">to_i</span>
+                                <span class="ruby-identifier">t</span> = <span class="ruby-identifier">word</span>[<span class="ruby-value">:t</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">word</span>[<span class="ruby-value">:t</span>].<span class="ruby-identifier">to_i</span>
+                                <span class="ruby-identifier">r</span> = <span class="ruby-identifier">word</span>[<span class="ruby-value">:r</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">word</span>[<span class="ruby-value">:r</span>].<span class="ruby-identifier">to_i</span>
+                                <span class="ruby-identifier">b</span> = <span class="ruby-identifier">word</span>[<span class="ruby-value">:b</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">word</span>[<span class="ruby-value">:b</span>].<span class="ruby-identifier">to_i</span>
+                        }
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">l</span> = <span class="ruby-identifier">line</span>[<span class="ruby-string">'l'</span>]
+                        <span class="ruby-identifier">t</span> = <span class="ruby-identifier">line</span>[<span class="ruby-string">'t'</span>]
+                        <span class="ruby-identifier">r</span> = <span class="ruby-identifier">line</span>[<span class="ruby-string">'r'</span>]
+                        <span class="ruby-identifier">b</span> = <span class="ruby-identifier">line</span>[<span class="ruby-string">'b'</span>]
+                     <span class="ruby-keyword">end</span>
+                {
+                        <span class="ruby-string">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-string">'id'</span>],
+                        <span class="ruby-string">'author'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Typewright</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>.<span class="ruby-identifier">get_author_username</span>(<span class="ruby-identifier">line</span>[<span class="ruby-string">'federation'</span>], <span class="ruby-identifier">line</span>[<span class="ruby-string">'orig_id'</span>]),
+                        <span class="ruby-string">'line'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-string">'line'</span>],
+                        <span class="ruby-string">'action'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-string">'action'</span>],
+                        <span class="ruby-string">'date'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-string">'date'</span>],
+                        <span class="ruby-string">'exact_time'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-string">'exact_time'</span>],
+                        <span class="ruby-string">'words'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">words</span>,
+                        <span class="ruby-string">'text'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">words_to_text</span>(<span class="ruby-identifier">words</span>),
+                        <span class="ruby-string">'l'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">l</span>,
+                        <span class="ruby-string">'t'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">t</span>,
+                        <span class="ruby-string">'r'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r</span>,
+                        <span class="ruby-string">'b'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">b</span>
+                }
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- convert_from_server_to_usable-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- convert_from_server_to_usable-method -->
+
+    
+      <div id="method-c-db_to_words" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">db_to_words</span><span
+            class="method-args">(db)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="db_to_words-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">db_to_words</span>(<span class="ruby-identifier">db</span>)
+   <span class="ruby-identifier">w</span> = []
+   <span class="ruby-identifier">words</span> = <span class="ruby-identifier">db</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">db</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>) <span class="ruby-operator">:</span> []
+   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">items</span> = <span class="ruby-identifier">word</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\t&quot;</span>)
+      <span class="ruby-identifier">w</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:l</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">items</span>[<span class="ruby-value">0</span>], <span class="ruby-value">:t</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">items</span>[<span class="ruby-value">1</span>], <span class="ruby-value">:r</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">items</span>[<span class="ruby-value">2</span>], <span class="ruby-value">:b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">items</span>[<span class="ruby-value">3</span>], <span class="ruby-value">:line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">items</span>[<span class="ruby-value">4</span>], <span class="ruby-value">:word</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">items</span>[<span class="ruby-value">5</span>] })
+   }
+   <span class="ruby-keyword">return</span> <span class="ruby-identifier">w</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- db_to_words-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- db_to_words-method -->
+
+    
+      <div id="method-c-find_all_by_document_id_and_page_and_line_and_src" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_all_by_document_id_and_page_and_line_and_src</span><span
+            class="method-args">(document_id, page, line, src)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>def self.find_all_by_document_id_and_page_and_src(document_id, page, src)</p>
+
+<pre class="ruby">   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find</span>(:<span class="ruby-identifier">all</span>, :<span class="ruby-identifier">params</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">document_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">document_id</span>, :<span class="ruby-identifier">page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page</span>,
+:<span class="ruby-identifier">src</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">src</span> })
+</pre>
+
+<p>end</p>
+          
+
+          
+          <div class="method-source-code" id="find_all_by_document_id_and_page_and_line_and_src-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_all_by_document_id_and_page_and_line_and_src</span>(<span class="ruby-identifier">document_id</span>, <span class="ruby-identifier">page</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">src</span>)
+   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:params</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:document_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">document_id</span>, <span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">page</span>, <span class="ruby-value">:line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">line</span>, <span class="ruby-value">:src</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">src</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find_all_by_document_id_and_page_and_line_and_src-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find_all_by_document_id_and_page_and_line_and_src-method -->
+
+    
+      <div id="method-c-get_undoable_record" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_undoable_record</span><span
+            class="method-args">(book, page, line, user, src)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_undoable_record-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_undoable_record</span>(<span class="ruby-identifier">book</span>, <span class="ruby-identifier">page</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">src</span>)
+   <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">corrections</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find_all_by_document_id_and_page_and_line_and_src</span>(<span class="ruby-identifier">book</span>, <span class="ruby-identifier">page</span>, <span class="ruby-identifier">line</span>, <span class="ruby-identifier">src</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">corrections</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">corrections</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">federation</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">federation</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">corrections</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">orig_id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">orig_id</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">corrections</span>.<span class="ruby-identifier">last</span>
+   <span class="ruby-keyword">rescue</span>
+   <span class="ruby-comment"># TODO: Log error here</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_undoable_record-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_undoable_record-method -->
+
+    
+      <div id="method-c-revisions" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">revisions</span><span
+            class="method-args">(uri, start, size)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="revisions-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">revisions</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">start</span>, <span class="ruby-identifier">size</span>)
+   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:params</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:uri</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">uri</span>, <span class="ruby-value">:revisions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">start</span>, <span class="ruby-value">:size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">size</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- revisions-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- revisions-method -->
+
+    
+      <div id="method-c-since" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">since</span><span
+            class="method-args">(token, user_id, document_id, page, load_time=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="since-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">since</span>(<span class="ruby-identifier">token</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">document_id</span>, <span class="ruby-identifier">page</span>, <span class="ruby-identifier">load_time</span>=<span class="ruby-keyword">nil</span>)
+        <span class="ruby-identifier">time</span> = <span class="ruby-node">&quot;&amp;load_time=#{URI.escape(load_time)}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">load_time</span>
+        <span class="ruby-identifier">ret</span> = <span class="ruby-constant">Typewright</span><span class="ruby-operator">::</span><span class="ruby-constant">Overview</span>.<span class="ruby-identifier">call_web_service</span>(<span class="ruby-node">&quot;lines/ping.json?token=#{URI.escape(token)}&amp;document_id=#{document_id}&amp;page=#{page}&amp;user_id=#{user_id}#{time}&quot;</span>, <span class="ruby-value">:json</span>)
+        <span class="ruby-identifier">ret</span>[<span class="ruby-string">'lines'</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">convert_from_server_to_usable</span>(<span class="ruby-identifier">ret</span>[<span class="ruby-string">'lines'</span>])
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">ret</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- since-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- since-method -->
+
+    
+      <div id="method-c-words_to_db" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">words_to_db</span><span
+            class="method-args">(words)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="words_to_db-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">words_to_db</span>(<span class="ruby-identifier">words</span>)
+   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">words</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+   <span class="ruby-identifier">w</span> = <span class="ruby-string">&quot;&quot;</span>
+   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">word_data</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">left</span> = <span class="ruby-identifier">word_data</span>[<span class="ruby-string">'l'</span>]
+      <span class="ruby-identifier">top</span> = <span class="ruby-identifier">word_data</span>[<span class="ruby-string">'t'</span>]
+      <span class="ruby-identifier">right</span> = <span class="ruby-identifier">word_data</span>[<span class="ruby-string">'r'</span>]
+      <span class="ruby-identifier">bottom</span> = <span class="ruby-identifier">word_data</span>[<span class="ruby-string">'b'</span>]
+      <span class="ruby-identifier">line</span> = <span class="ruby-identifier">word_data</span>[<span class="ruby-string">'line'</span>]
+      <span class="ruby-identifier">wrd</span> = <span class="ruby-identifier">word_data</span>[<span class="ruby-string">'word'</span>]
+      <span class="ruby-identifier">w</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{left}\t#{top}\t#{right}\t#{bottom}\t#{line}\t#{wrd}\n&quot;</span>
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">return</span> <span class="ruby-identifier">w</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- words_to_db-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- words_to_db-method -->
+
+    
+      <div id="method-c-words_to_text" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">words_to_text</span><span
+            class="method-args">(words)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="words_to_text-source">
+            <pre><span class="ruby-comment"># File app/models/typewright/line.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">words_to_text</span>(<span class="ruby-identifier">words</span>)
+   <span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;&quot;</span>
+   <span class="ruby-identifier">words</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+      <span class="ruby-identifier">str</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">word</span>[<span class="ruby-value">:word</span>]
+   }
+   <span class="ruby-keyword">return</span> <span class="ruby-identifier">str</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- words_to_text-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- words_to_text-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

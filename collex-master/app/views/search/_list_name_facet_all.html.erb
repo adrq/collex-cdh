@@ -1,0 +1,72 @@
+<%  #
+# ------------------------------------------------------------------------
+#     Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+# 
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+# 
+#         http://www.apache.org/licenses/LICENSE-2.0
+# 
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
+# ---------------------------------------------------------------------------- -%>
+<%# list_name_facet_all -%>
+
+<div id="show_all_name_facet">
+	<% total_names = 0 -%>
+	<% @name_facets.each { |ty, facet| -%>
+	<% total_names += facet.length %>
+	<%  } -%>
+	<div id="name_facet_title">
+		<%= link_to("close X", '#', { class: 'nav_link name_facet_close minimizeSearchNameFacet' }) %>
+		<div class="search_name_title">There are <%= number_with_delimiter(total_names) %> names associated with this search. [Showing the top 5 hits in each category. <%= link_to("Click here to show all", '#', { class: 'nav_link showAllSearchNameFacet' }) %>.]</div>
+	</div>
+	<table class="name_facet">
+		<tr>
+			<th>Author</th>
+			<th>Editor</th>
+			<th>Publisher</th>
+		</tr>
+		<% max = @name_facets['role_AUT'].length -%>
+		<% max = @name_facets['role_EDT'].length if @name_facets['role_EDT'].length > max -%>
+		<% max = @name_facets['role_PBL'].length if @name_facets['role_PBL'].length > max -%>
+		<% max = 5 if max > 5 -%>
+		<% 0.upto(max-1) do |i| -%>
+		<tr>
+			<td><%= format_name_facet(@name_facets['role_AUT'][i], 'aut') if @name_facets['role_AUT'].length > i %><%= format_no_name_message(i, @name_facets['role_AUT'].length) %></td>
+			<td><%= format_name_facet(@name_facets['role_EDT'][i], 'ed') if @name_facets['role_EDT'].length > i %><%= format_no_name_message(i, @name_facets['role_EDT'].length) %></td>
+			<td><%= format_name_facet(@name_facets['role_PBL'][i], 'pub') if @name_facets['role_PBL'].length > i %><%= format_no_name_message(i, @name_facets['role_PBL'].length) %></td>
+		</tr>
+		<% end -%>
+	</table>
+	<%= link_to_function "[What is this?]", "$('name_search_what_is_this_min').addClassName('hidden'); $('name_search_what_is_this_max').removeClassName('hidden');", :class => 'nav_link', :id => 'name_search_what_is_this_min' %>
+	<div id="name_search_what_is_this_max" class="hidden">
+		<%= link_to_function "[hide this]", "$('name_search_what_is_this_max').addClassName('hidden'); $('name_search_what_is_this_min').removeClassName('hidden');", :class => 'nav_link'  %>
+		This feature allows you to browse names in <%= Setup.site_name() %> as they were submitted by our contributors. Please note that this search covers metadata only, and does not include authors, editors or publishers mentioned in full text snippets.
+	</div>
+	<div id="full_name_facet_list" class="hidden">
+		Choose a name to add it to the constraints.
+		<table class="name_facet">
+			<tbody>
+			<tr>
+				<th>Author</th>
+				<th>Editor</th>
+				<th>Publisher</th>
+			</tr>
+			<% max = @name_facets['role_AUT'].length -%>
+			<% max = @name_facets['role_EDT'].length if @name_facets['role_EDT'].length > max -%>
+			<% max = @name_facets['role_PBL'].length if @name_facets['role_PBL'].length > max -%>
+			<% 0.upto(max-1) do |i| -%>
+			<tr>
+				<td><%= format_name_facet(@name_facets['role_AUT'][i], 'aut') if @name_facets['role_AUT'].length > i %><%= format_no_name_message(i, @name_facets['role_AUT'].length) %></td>
+				<td><%= format_name_facet(@name_facets['role_EDT'][i], 'ed') if @name_facets['role_EDT'].length > i %><%= format_no_name_message(i, @name_facets['role_EDT'].length) %></td>
+				<td><%= format_name_facet(@name_facets['role_PBL'][i], 'pub') if @name_facets['role_PBL'].length > i %><%= format_no_name_message(i, @name_facets['role_PBL'].length) %></td>
+			</tr>
+			<% end -%>
+		</tbody></table>
+	</div>
+</div>

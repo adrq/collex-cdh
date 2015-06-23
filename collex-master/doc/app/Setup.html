@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Setup - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/setup.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-about">::about</a>
+    
+    <li><a href="#method-c-analytics_id">::analytics_id</a>
+    
+    <li><a href="#method-c-community_default_search">::community_default_search</a>
+    
+    <li><a href="#method-c-community_tab">::community_tab</a>
+    
+    <li><a href="#method-c-default_federation">::default_federation</a>
+    
+    <li><a href="#method-c-display_classroom_tab-3F">::display_classroom_tab?</a>
+    
+    <li><a href="#method-c-display_community_tab-3F">::display_community_tab?</a>
+    
+    <li><a href="#method-c-display_name_for_facet_access">::display_name_for_facet_access</a>
+    
+    <li><a href="#method-c-display_name_for_facet_discipline">::display_name_for_facet_discipline</a>
+    
+    <li><a href="#method-c-display_name_for_facet_format">::display_name_for_facet_format</a>
+    
+    <li><a href="#method-c-display_name_for_facet_genre">::display_name_for_facet_genre</a>
+    
+    <li><a href="#method-c-display_news_tab-3F">::display_news_tab?</a>
+    
+    <li><a href="#method-c-display_publications_tab-3F">::display_publications_tab?</a>
+    
+    <li><a href="#method-c-display_search_tab-3F">::display_search_tab?</a>
+    
+    <li><a href="#method-c-exception_notifier">::exception_notifier</a>
+    
+    <li><a href="#method-c-facet_order">::facet_order</a>
+    
+    <li><a href="#method-c-footer_signature_text">::footer_signature_text</a>
+    
+    <li><a href="#method-c-globals">::globals</a>
+    
+    <li><a href="#method-c-init_exception_handler">::init_exception_handler</a>
+    
+    <li><a href="#method-c-init_smtp">::init_smtp</a>
+    
+    <li><a href="#method-c-my_collex">::my_collex</a>
+    
+    <li><a href="#method-c-process_email_addr">::process_email_addr</a>
+    
+    <li><a href="#method-c-project_manager_email">::project_manager_email</a>
+    
+    <li><a href="#method-c-reload">::reload</a>
+    
+    <li><a href="#method-c-return_email">::return_email</a>
+    
+    <li><a href="#method-c-site_name">::site_name</a>
+    
+    <li><a href="#method-c-site_title">::site_title</a>
+    
+    <li><a href="#method-c-solr_url">::solr_url</a>
+    
+    <li><a href="#method-c-webmaster_email">::webmaster_email</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Typewright.html">Typewright</a>
+  
+    <li><a href="./Typewright/AdminController.html">Typewright::AdminController</a>
+  
+    <li><a href="./Typewright/Document.html">Typewright::Document</a>
+  
+    <li><a href="./Typewright/DocumentUser.html">Typewright::DocumentUser</a>
+  
+    <li><a href="./Typewright/DocumentUsersController.html">Typewright::DocumentUsersController</a>
+  
+    <li><a href="./Typewright/DocumentsController.html">Typewright::DocumentsController</a>
+  
+    <li><a href="./Typewright/Line.html">Typewright::Line</a>
+  
+    <li><a href="./Typewright/LinesController.html">Typewright::LinesController</a>
+  
+    <li><a href="./Typewright/Overview.html">Typewright::Overview</a>
+  
+    <li><a href="./Typewright/OverviewsController.html">Typewright::OverviewsController</a>
+  
+    <li><a href="./Typewright/OverviewsHelper.html">Typewright::OverviewsHelper</a>
+  
+    <li><a href="./Typewright/SoapController.html">Typewright::SoapController</a>
+  
+    <li><a href="./Typewright/TwFeaturedObject.html">Typewright::TwFeaturedObject</a>
+  
+    <li><a href="./Typewright/TypewrightHelper.html">Typewright::TypewrightHelper</a>
+  
+    <li><a href="./Typewright/User.html">Typewright::User</a>
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/DefaultController.html">Admin::DefaultController</a>
+  
+    <li><a href="./Admin/DefaultHelper.html">Admin::DefaultHelper</a>
+  
+    <li><a href="./Admin/DefaultHelper/Session.html">Admin::DefaultHelper::Session</a>
+  
+    <li><a href="./Admin/DiscussionTopicsController.html">Admin::DiscussionTopicsController</a>
+  
+    <li><a href="./Admin/DiscussionTopicsHelper.html">Admin::DiscussionTopicsHelper</a>
+  
+    <li><a href="./Admin/FeaturesController.html">Admin::FeaturesController</a>
+  
+    <li><a href="./Admin/FeaturesHelper.html">Admin::FeaturesHelper</a>
+  
+    <li><a href="./Admin/SetupsController.html">Admin::SetupsController</a>
+  
+    <li><a href="./Admin/SetupsHelper.html">Admin::SetupsHelper</a>
+  
+    <li><a href="./Admin/SiteHelper.html">Admin::SiteHelper</a>
+  
+    <li><a href="./Admin/UserRolesController.html">Admin::UserRolesController</a>
+  
+    <li><a href="./Admin/UserRolesHelper.html">Admin::UserRolesHelper</a>
+  
+    <li><a href="./Catalog.html">Catalog</a>
+  
+    <li><a href="./Catalog/Error.html">Catalog::Error</a>
+  
+    <li><a href="./GroupsController.html">GroupsController</a>
+  
+    <li><a href="./GroupsController/RolesUser.html">GroupsController::RolesUser</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Branding.html">Branding</a>
+  
+    <li><a href="./BuilderController.html">BuilderController</a>
+  
+    <li><a href="./BuilderHelper.html">BuilderHelper</a>
+  
+    <li><a href="./CachedProperty.html">CachedProperty</a>
+  
+    <li><a href="./CachedResource.html">CachedResource</a>
+  
+    <li><a href="./CharSetAlter.html">CharSetAlter</a>
+  
+    <li><a href="./ClassroomController.html">ClassroomController</a>
+  
+    <li><a href="./ClassroomHelper.html">ClassroomHelper</a>
+  
+    <li><a href="./Cluster.html">Cluster</a>
+  
+    <li><a href="./ClustersController.html">ClustersController</a>
+  
+    <li><a href="./CollectedItem.html">CollectedItem</a>
+  
+    <li><a href="./CommentReport.html">CommentReport</a>
+  
+    <li><a href="./CommunitiesController.html">CommunitiesController</a>
+  
+    <li><a href="./CommunitiesHelper.html">CommunitiesHelper</a>
+  
+    <li><a href="./Constraint.html">Constraint</a>
+  
+    <li><a href="./DiscussionComment.html">DiscussionComment</a>
+  
+    <li><a href="./DiscussionThread.html">DiscussionThread</a>
+  
+    <li><a href="./DiscussionThreadsHelper.html">DiscussionThreadsHelper</a>
+  
+    <li><a href="./DiscussionTopic.html">DiscussionTopic</a>
+  
+    <li><a href="./DiscussionVisit.html">DiscussionVisit</a>
+  
+    <li><a href="./DocumentCompleteMailer.html">DocumentCompleteMailer</a>
+  
+    <li><a href="./Exhibit.html">Exhibit</a>
+  
+    <li><a href="./ExhibitElement.html">ExhibitElement</a>
+  
+    <li><a href="./ExhibitElementsController.html">ExhibitElementsController</a>
+  
+    <li><a href="./ExhibitElementsHelper.html">ExhibitElementsHelper</a>
+  
+    <li><a href="./ExhibitFootnote.html">ExhibitFootnote</a>
+  
+    <li><a href="./ExhibitIllustration.html">ExhibitIllustration</a>
+  
+    <li><a href="./ExhibitIllustrationsController.html">ExhibitIllustrationsController</a>
+  
+    <li><a href="./ExhibitObject.html">ExhibitObject</a>
+  
+    <li><a href="./ExhibitPage.html">ExhibitPage</a>
+  
+    <li><a href="./ExhibitPagesController.html">ExhibitPagesController</a>
+  
+    <li><a href="./ExhibitsController.html">ExhibitsController</a>
+  
+    <li><a href="./ExpressionConstraint.html">ExpressionConstraint</a>
+  
+    <li><a href="./FacetConstraint.html">FacetConstraint</a>
+  
+    <li><a href="./FeaturedObject.html">FeaturedObject</a>
+  
+    <li><a href="./FederationConstraint.html">FederationConstraint</a>
+  
+    <li><a href="./ForumController.html">ForumController</a>
+  
+    <li><a href="./FreeCultureConstraint.html">FreeCultureConstraint</a>
+  
+    <li><a href="./FullTextConstraint.html">FullTextConstraint</a>
+  
+    <li><a href="./GenericMailer.html">GenericMailer</a>
+  
+    <li><a href="./GetIncludeFileList.html">GetIncludeFileList</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./GroupsHelper.html">GroupsHelper</a>
+  
+    <li><a href="./GroupsUser.html">GroupsUser</a>
+  
+    <li><a href="./HelpController.html">HelpController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./Image.html">Image</a>
+  
+    <li><a href="./ImageFull.html">ImageFull</a>
+  
+    <li><a href="./IsoLanguage.html">IsoLanguage</a>
+  
+    <li><a href="./LoginController.html">LoginController</a>
+  
+    <li><a href="./LoginHelper.html">LoginHelper</a>
+  
+    <li><a href="./LoginInfo.html">LoginInfo</a>
+  
+    <li><a href="./MyCollexController.html">MyCollexController</a>
+  
+    <li><a href="./MyCollexHelper.html">MyCollexHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./ObjectActivity.html">ObjectActivity</a>
+  
+    <li><a href="./PeerReview.html">PeerReview</a>
+  
+    <li><a href="./PublicationImage.html">PublicationImage</a>
+  
+    <li><a href="./PublicationsController.html">PublicationsController</a>
+  
+    <li><a href="./PublicationsHelper.html">PublicationsHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./SavedSearchConstraint.html">SavedSearchConstraint</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./SearchHelper.html">SearchHelper</a>
+  
+    <li><a href="./SearchUserContent.html">SearchUserContent</a>
+  
+    <li><a href="./Session.html">Session</a>
+  
+    <li><a href="./Setup.html">Setup</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagController.html">TagController</a>
+  
+    <li><a href="./TagHelper.html">TagHelper</a>
+  
+    <li><a href="./Tagassign.html">Tagassign</a>
+  
+    <li><a href="./TestJsController.html">TestJsController</a>
+  
+    <li><a href="./TestJsHelper.html">TestJsHelper</a>
+  
+    <li><a href="./TypeWrightConstraint.html">TypeWrightConstraint</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsernameAlreadyExistsException.html">UsernameAlreadyExistsException</a>
+  
+    <li><a href="./VicConference.html">VicConference</a>
+  
+    <li><a href="./VicConferenceController.html">VicConferenceController</a>
+  
+    <li><a href="./WebUtils.html">WebUtils</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Setup</h1>
+
+  <div id="description" class="description">
+    <hr style="height: 10px">
+
+<pre>Copyright 2011 Applied Research in Patacriticism and the University of Virginia
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+<hr style="height: 10px">
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-about" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">about</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="about-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">about</span>()
+        <span class="ruby-keyword">return</span> { <span class="ruby-identifier">left</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">label</span><span class="ruby-operator">:</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_about_label_1'</span>], <span class="ruby-identifier">link</span><span class="ruby-operator">:</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_about_url_1'</span>] },
+                <span class="ruby-identifier">right</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">label</span><span class="ruby-operator">:</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_about_label_2'</span>], <span class="ruby-identifier">link</span><span class="ruby-operator">:</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_about_url_2'</span>] } }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- about-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- about-method -->
+
+    
+      <div id="method-c-analytics_id" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">analytics_id</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="analytics_id-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 169</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">analytics_id</span>()
+              <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'google_analytics'</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'true'</span>
+              <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'analytics_id'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- analytics_id-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- analytics_id-method -->
+
+    
+      <div id="method-c-community_default_search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">community_default_search</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="community_default_search-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">community_default_search</span>()
+        <span class="ruby-identifier">val</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_community_default_search'</span>]
+        <span class="ruby-identifier">val</span> = <span class="ruby-string">&quot;Groups&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">blank?</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">val</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- community_default_search-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- community_default_search-method -->
+
+    
+      <div id="method-c-community_tab" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">community_tab</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="community_tab-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">community_tab</span>()
+        <span class="ruby-identifier">val</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_community_tab'</span>]
+        <span class="ruby-identifier">val</span> = <span class="ruby-string">&quot;Community&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">blank?</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">val</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- community_tab-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- community_tab-method -->
+
+    
+      <div id="method-c-default_federation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">default_federation</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="default_federation-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">default_federation</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_default_federation'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- default_federation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- default_federation-method -->
+
+    
+      <div id="method-c-display_classroom_tab-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_classroom_tab?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_classroom_tab-3F-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_classroom_tab?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'enable_classroom_tab'</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'false'</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_classroom_tab-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_classroom_tab-3F-method -->
+
+    
+      <div id="method-c-display_community_tab-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_community_tab?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_community_tab-3F-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_community_tab?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'enable_community_tab'</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'false'</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_community_tab-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_community_tab-3F-method -->
+
+    
+      <div id="method-c-display_name_for_facet_access" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_name_for_facet_access</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_name_for_facet_access-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_name_for_facet_access</span>
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_display_name_access'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">'Access'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_name_for_facet_access-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_name_for_facet_access-method -->
+
+    
+      <div id="method-c-display_name_for_facet_discipline" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_name_for_facet_discipline</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_name_for_facet_discipline-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_name_for_facet_discipline</span>
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_display_name_discipline'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">'Discipline'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_name_for_facet_discipline-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_name_for_facet_discipline-method -->
+
+    
+      <div id="method-c-display_name_for_facet_format" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_name_for_facet_format</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_name_for_facet_format-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 225</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_name_for_facet_format</span>
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_display_name_format'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">'Format'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_name_for_facet_format-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_name_for_facet_format-method -->
+
+    
+      <div id="method-c-display_name_for_facet_genre" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_name_for_facet_genre</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_name_for_facet_genre-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_name_for_facet_genre</span>
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_display_name_genre'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">'Genre'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_name_for_facet_genre-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_name_for_facet_genre-method -->
+
+    
+      <div id="method-c-display_news_tab-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_news_tab?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_news_tab-3F-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_news_tab?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'enable_news_tab'</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'false'</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_news_tab-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_news_tab-3F-method -->
+
+    
+      <div id="method-c-display_publications_tab-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_publications_tab?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_publications_tab-3F-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_publications_tab?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'enable_publications_tab'</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'false'</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_publications_tab-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_publications_tab-3F-method -->
+
+    
+      <div id="method-c-display_search_tab-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_search_tab?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="display_search_tab-3F-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_search_tab?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'enable_search_tab'</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'false'</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- display_search_tab-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- display_search_tab-3F-method -->
+
+    
+      <div id="method-c-exception_notifier" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">exception_notifier</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="exception_notifier-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exception_notifier</span>()
+        <span class="ruby-identifier">recipients</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'exception_recipients'</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'exception_recipients'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>) <span class="ruby-operator">:</span> []
+        <span class="ruby-keyword">return</span> { <span class="ruby-identifier">prefix</span><span class="ruby-operator">:</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'subject_prefix'</span>], <span class="ruby-identifier">recipients</span><span class="ruby-operator">:</span> <span class="ruby-identifier">recipients</span>, <span class="ruby-identifier">sender</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{globals()['sender_name']} &lt;#{globals()['return_email']}&gt;&quot;</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- exception_notifier-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- exception_notifier-method -->
+
+    
+      <div id="method-c-facet_order" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">facet_order</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="facet_order-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">facet_order</span>()
+  <span class="ruby-identifier">order</span> = {}
+  <span class="ruby-identifier">facet_order_access</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_order_access'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">facet_order_format</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_order_format'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">facet_order_discipline</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_order_discipline'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">facet_order_genre</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'facet_order_genre'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+  <span class="ruby-identifier">dont_dupe</span> = <span class="ruby-value">0</span> <span class="ruby-comment"># value to append to a key in case the key already exists</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">facet_order_access</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_access</span>]
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_access</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dont_dupe</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-string">'access'</span>
+      <span class="ruby-identifier">dont_dupe</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_access</span>] = <span class="ruby-string">'access'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">facet_order_format</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_format</span>]
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_format</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dont_dupe</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-string">'format'</span>
+      <span class="ruby-identifier">dont_dupe</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_format</span>] = <span class="ruby-string">'format'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">facet_order_discipline</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_discipline</span>]
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_discipline</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dont_dupe</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-string">'discipline'</span>
+      <span class="ruby-identifier">dont_dupe</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_discipline</span>] = <span class="ruby-string">'discipline'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">facet_order_genre</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_genre</span>.<span class="ruby-identifier">strip</span>]
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_genre</span>.<span class="ruby-identifier">strip</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dont_dupe</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-string">'genre'</span>
+      <span class="ruby-identifier">dont_dupe</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">order</span>[<span class="ruby-identifier">facet_order_genre</span>.<span class="ruby-identifier">strip</span>] = <span class="ruby-string">'genre'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">order</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- facet_order-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- facet_order-method -->
+
+    
+      <div id="method-c-footer_signature_text" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">footer_signature_text</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="footer_signature_text-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 251</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">footer_signature_text</span>
+        <span class="ruby-identifier">value</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'footer_signature_text'</span>]
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>() <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-string">''</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- footer_signature_text-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- footer_signature_text-method -->
+
+    
+      <div id="method-c-globals" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">globals</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="globals-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">globals</span>()
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reload</span>() <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@globals</span>.<span class="ruby-identifier">blank?</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@globals</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- globals-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- globals-method -->
+
+    
+      <div id="method-c-init_exception_handler" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">init_exception_handler</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="init_exception_handler-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 131</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">init_exception_handler</span>()
+              <span class="ruby-keyword">if</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'development'</span>
+                      <span class="ruby-identifier">n</span> = <span class="ruby-constant">ExceptionNotifier</span><span class="ruby-operator">::</span><span class="ruby-constant">EmailNotifier</span>
+                      <span class="ruby-identifier">except</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exception_notifier</span>()
+                      <span class="ruby-identifier">n</span>.<span class="ruby-identifier">default_options</span>[<span class="ruby-value">:email_prefix</span>] = <span class="ruby-identifier">except</span>[<span class="ruby-value">:prefix</span>]
+                      <span class="ruby-identifier">n</span>.<span class="ruby-identifier">default_options</span>[<span class="ruby-value">:exception_recipients</span>] = <span class="ruby-identifier">except</span>[<span class="ruby-value">:recipients</span>]
+                      <span class="ruby-identifier">n</span>.<span class="ruby-identifier">default_options</span>[<span class="ruby-value">:sender_address</span>] = <span class="ruby-identifier">except</span>[<span class="ruby-value">:sender</span>]
+                      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;$$ Exceptions are mailed to #{except[:recipients].to_s}.&quot;</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;$$ Exception handler not set in development mode.&quot;</span>
+              <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- init_exception_handler-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- init_exception_handler-method -->
+
+    
+      <div id="method-c-init_smtp" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">init_smtp</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Public initialization routines</p>
+          
+
+          
+          <div class="method-source-code" id="init_smtp-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">init_smtp</span>()
+        <span class="ruby-constant">ActionMailer</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">smtp_settings</span> = {
+                <span class="ruby-value">:address</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_address'</span>],
+                <span class="ruby-value">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_port'</span>],
+                <span class="ruby-value">:domain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_domain'</span>],
+                <span class="ruby-value">:user_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_user_name'</span>],
+                <span class="ruby-value">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_password'</span>],
+                <span class="ruby-value">:authentication</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_authentication'</span>],
+                <span class="ruby-value">:enable_starttls_auto</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_enable_starttls_auto'</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span>
+        }
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'smtp_xsmtpapi'</span>].<span class="ruby-identifier">present?</span>
+                <span class="ruby-constant">ActionMailer</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">default</span> <span class="ruby-string">&quot;X-SMTPAPI&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;{\&quot;category\&quot;: \&quot;#{globals()['smtp_xsmtpapi']}\&quot;}&quot;</span>
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- init_smtp-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- init_smtp-method -->
+
+    
+      <div id="method-c-my_collex" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">my_collex</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="my_collex-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">my_collex</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_my_collex'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- my_collex-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- my_collex-method -->
+
+    
+      <div id="method-c-process_email_addr" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_email_addr</span><span
+            class="method-args">(addr)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_email_addr-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_email_addr</span>(<span class="ruby-identifier">addr</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">addr</span>.<span class="ruby-identifier">blank?</span>
+                <span class="ruby-identifier">addr</span> = <span class="ruby-identifier">addr</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">'@'</span>, <span class="ruby-string">' '</span>)
+                <span class="ruby-identifier">addr</span> = <span class="ruby-identifier">addr</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">'.'</span>, <span class="ruby-string">' '</span>).<span class="ruby-identifier">reverse</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">addr</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_email_addr-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_email_addr-method -->
+
+    
+      <div id="method-c-project_manager_email" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">project_manager_email</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Public getter functions</p>
+          
+
+          
+          <div class="method-source-code" id="project_manager_email-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">project_manager_email</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'project_manager_email'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- project_manager_email-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- project_manager_email-method -->
+
+    
+      <div id="method-c-reload" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reload</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reload-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reload</span>()
+        <span class="ruby-identifier">@@globals</span> = {}
+        <span class="ruby-keyword">begin</span>
+                <span class="ruby-comment"># This will fail when installing, before the db has been migrated.</span>
+                <span class="ruby-identifier">setup</span> = <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">all</span>
+                <span class="ruby-identifier">setup</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">rec</span><span class="ruby-operator">|</span> <span class="ruby-identifier">@@globals</span>[<span class="ruby-identifier">rec</span>.<span class="ruby-identifier">key</span>] =<span class="ruby-identifier">rec</span>.<span class="ruby-identifier">value</span> }
+        <span class="ruby-keyword">rescue</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">setup</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">setup</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;!!!!\n!!!!\n!!!!\n\tYou have not yet initialized the global settings. Run \&quot;rake bootstrap:globals\&quot;\n!!!!\n!!!!\n!!!!\n&quot;</span>
+                <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span> <span class="ruby-string">&quot;You have not yet initialized the global settings. Run \&quot;rake bootstrap:globals\&quot;&quot;</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">@@globals</span>[<span class="ruby-string">'project_manager_email'</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_email_addr</span>(<span class="ruby-identifier">@@globals</span>[<span class="ruby-string">'project_manager_email'</span>])
+        <span class="ruby-identifier">@@globals</span>[<span class="ruby-string">'return_email'</span>] = <span class="ruby-identifier">@@globals</span>[<span class="ruby-string">'webmaster_email'</span>]
+        <span class="ruby-identifier">@@globals</span>[<span class="ruby-string">'webmaster_email'</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_email_addr</span>(<span class="ruby-identifier">@@globals</span>[<span class="ruby-string">'webmaster_email'</span>])
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">init_smtp</span>()
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">init_exception_handler</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reload-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reload-method -->
+
+    
+      <div id="method-c-return_email" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">return_email</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="return_email-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">return_email</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'return_email'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- return_email-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- return_email-method -->
+
+    
+      <div id="method-c-site_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">site_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="site_name-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">site_name</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_name'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- site_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- site_name-method -->
+
+    
+      <div id="method-c-site_title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">site_title</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="site_title-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">site_title</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_title'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- site_title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- site_title-method -->
+
+    
+      <div id="method-c-solr_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">solr_url</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="solr_url-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 107</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">solr_url</span>()
+            <span class="ruby-identifier">val</span> = <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'site_solr_url'</span>]
+<span class="ruby-keyword">return</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;http://arc-staging.performantsoftware.com&quot;</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- solr_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- solr_url-method -->
+
+    
+      <div id="method-c-webmaster_email" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">webmaster_email</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="webmaster_email-source">
+            <pre><span class="ruby-comment"># File app/models/setup.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">webmaster_email</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">globals</span>()[<span class="ruby-string">'webmaster_email'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- webmaster_email-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- webmaster_email-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

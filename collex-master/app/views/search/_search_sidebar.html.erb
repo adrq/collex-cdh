@@ -1,0 +1,55 @@
+<%# ------------------------------------------------------------------------
+    Copyright 2007 Applied Research in Patacriticism and the University of Virginia
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+---------------------------------------------------------------------------- %>
+
+<div class="right_column ajax-style">
+	<div class="right_column_header" <% if @other_federations.length == 0 %>style="display:none"<% end %> >Currently Searching...</div>
+	<table class="limit_to limit_to_federation" <% if @other_federations.length == 0 %>style="display:none"<% end %> >
+		<%= federation_selector(Setup.default_federation(), 0) %>
+		<% for fed in @other_federations %>
+			<%= federation_selector(fed, 0) %>
+		<% end %>
+	</table>
+
+	<div class="right_column_header">Limit Results to...</div>
+    <p>Select a resource below to limit your search results</p>
+
+	<table class="limit_to facet-archive">
+		<tr>
+			<th>Resource</th>
+			<th class="num_objects"># of Objects</th>
+		</tr>
+	</table>
+  <br/>
+
+  <div class="right_column_header">Other helpful facets...</div>
+  <p>Select a facet below to limit your search results</p>
+
+  <% facet_order = Setup.facet_order() %>
+  <% facet_keys = facet_order.keys.sort %>
+  <% facet_keys.each do |key| %>
+    <% case facet_order[key] %>
+      <% when 'access' %>
+          <%= create_access_table(0,0,0) %>
+      <% when 'format' %>
+          <%=  create_format_table([]) %>
+      <% when 'discipline' %>
+          <%=  create_discipline_table([]) %>
+      <% when 'genre' %>
+          <%=  create_genre_table([]) %>
+      <% end %>
+  <% end %>
+
+</div>

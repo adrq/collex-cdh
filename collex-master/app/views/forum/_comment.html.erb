@@ -1,0 +1,88 @@
+<% # 
+    # ------------------------------------------------------------------------
+    # Copyright 2009 Applied Research in Patacriticism and the University of Virginia
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    #    http://www.apache.org/licenses/LICENSE-2.0
+  
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+    # ---------------------------------------------------------------------------- -%>
+<%# params: ActiveRecord comment, bool can_delete, bool can_edit, bool is_main -%>
+<%# the difference between the main comment and the others is that the main 
+	# comment has a title and a background color. -%>
+<%= raw("<div class='FP_post_header'>#{DiscussionThread.find(comment.discussion_thread_id).get_title()}&nbsp;<a href='/forum/rss/#{comment.discussion_thread_id}.xml'>#{image_tag('RSS_icon.gif', { height: '16px', alt: 'RSS' })}</a></div>") if is_main %>
+<div class="FP_user_image">
+	<% picture_src = get_user_picture(comment.user_id, :full) -%>
+	<%= render :partial => 'img_with_progress_spinner', :locals => { :src => picture_src, :alt => 'user', :klass => 'FP_user_img', :width => 100, :height => 125 } if picture_src && picture_src.length > 0 %>
+	<div class="FP_user_name"><%= get_user_link(User.find(comment.user_id)) %></div>
+</div>
+
+<div class="FP_post_body">
+	<% if is_main -%>
+		<% comment_info = get_comment_header_info(comment) -%>
+		<%= raw("<span class='group_comment'>#{comment_info[:group_comment]}</span>") if comment_info[:group_comment].length > 0 -%>
+	<% end -%>
+
+	<p>Posted by <%= get_user_link(comment.user_id) %> on <%= comment_time_format(comment.created_at) %>
+	<% if user_signed_in? -%>
+		<% action = "flagComment( '#{comment.id}', '/forum/report_comment', 'comment_id_#{comment.id}', '#{can_edit}', '#{can_delete}', '#{is_main}'  )" -%>
+	<% else -%>
+		<% action = "new RedirectIfLoggedIn('', 'You must be signed in to report a comment', false);" -%>
+	<% end -%>
+
+	<%# We show the "this has been reported" message if the user is an administrator or the user is the one who reported it. %>
+	<%# We put up the "report abuse" button if the item hasn't been reported yet by this user and if the user isn't the one who wrote the comment. %>
+	<% this_user = user_signed_in? ? get_curr_user_id : -1 %>
+	<% allow_user_to_report = (this_user > 0) && comment.has_been_reported_by(this_user) == false && (this_user != comment.user_id) %>
+	<% if allow_user_to_report -%>
+		<a class="FC_report_link" onclick="<%= action %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+ 	<% end -%>
+	
+	<% if can_edit -%>
+		&nbsp;<%= make_edit_link(comment, is_main, can_delete) %>
+	<% end -%>
+	
+	<% if can_delete -%>
+		&nbsp;<%= link_to_confirm "[remove]", "/forum/delete_comment?comment=#{comment.id}", "Delete #{is_main ? 'Thread' : 'Comment'}", "You are about to permanently delete this #{is_main ? 'thread' : 'comment'}. Are you sure?" %>
+	<% end -%>
+	</p>
+	<div id="<%= "comment_body_#{comment.id}" %>">
+		<%= decode_exhibit_links(comment.comment) %>
+	</div>
+</div>
+<% if comment.get_type() != "comment" -%>
+	<div id="attachment_<%= comment.id %>">
+		<%= render :partial => 'attachment', :locals => { :comment => comment } %>
+	</div>
+<% end -%>
+<div class="clear_both"></div>
+<% if comment.user_modified_at -%>
+	<div class="forum_modified_time">This comment was modified on <%= comment_time_format(comment.user_modified_at) %></div>
+<% end -%>
+
+<% if comment.reported  -%>
+  <% if is_admin? %>
+	  <div class="reported_comment">
+		  NOTICE: This comment has been reported as objectionable by <%= comment.get_reported_by_list()  %>, and is pending moderation.
+		</div>
+	<% else %>
+	  <% if comment.has_been_reported_by(this_user) %>
+      <div class="reported_comment">
+  		  NOTICE: You have reported this comment as objectionable and it is pending moderation.
+      </div>
+    <% end %>
+	<% end %>
+<% end -%>
+
+<% if is_main-%>
+	<div class="forum_license"><%= raw(Exhibit.get_sharing_icon_url(DiscussionThread.find(comment.discussion_thread_id).license)) %> This post is protected by a <%= Exhibit.get_sharing_static(DiscussionThread.find(comment.discussion_thread_id).license) %> Creative Commons License. Learn more <%= link_to 'here', 'http://creativecommons.org/about/licenses', :class => 'nav_link', :target => '_blank' %>.</div>
+<% end -%>
+
+

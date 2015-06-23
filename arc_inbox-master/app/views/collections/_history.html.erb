@@ -1,0 +1,55 @@
+<% if @is_editor
+		@role_str = "editor"
+	else
+		@role_str = "contributor"
+	end %>
+<% if @collections == nil || @collections.length == 0 %>
+	<h3><i> <%= if @is_editor
+			"There are no pending collections"
+		else
+			"You have not yet submitted any collections"
+		end %></i></h3>
+<% else %>
+	<table class="collections">
+	  <tr class="collections">
+	    <th class="collections"><%= create_header("Project", params, @is_editor) %></th>
+	    <th class="collections"><%= create_header("Creation Time", params, @is_editor) %></th>
+	    <th class="collections"><%= create_header("Last Activity Time", params, @is_editor) %></th>
+		<% if @is_editor -%>
+	    	<th class="collections"><%= create_header("Contributor", params, @is_editor) %></th>
+		<% end %>
+	    <th class="collections"><%= create_header("Status", params, @is_editor) %><%= raw("<br/>(click to edit)") if @is_editor %></th>
+		<% if @is_editor -%>
+	    	<th class="collections"><%= create_header("Classification", params, @is_editor) %></th>
+		<% end %>
+	    <th class="collections"><%= create_header("Public Notes", params, @is_editor) %><br/>(click to edit)</th>
+		<% if @is_editor -%>
+	    	<th class="collections"><%= create_header("Admin Notes", params, @is_editor) %><br/>(click to edit)</th>
+		<% end %>
+	  </tr>
+		<% sort_by(@collections, params[:field], params[:direction]) -%>
+		<% for collection in @collections %>
+	  <tr class="collections">
+	    <td class="collections"><%= link_to collection.project_name, { :action => 'details', :id => collection.id, :role => @role_str } %></td>
+	    <td class="collections"><%=h collection.created_at.strftime("%b %d,%Y") %><br /> <%= collection.created_at.strftime("%I:%M %p %Z") %></td>
+	    <td class="collections"><%=h collection.updated_at.strftime("%b %d,%Y") %><br /><%= collection.updated_at.strftime("%I:%M %p %Z") %></td>
+		<% if @is_editor -%>
+	    	<td class="collections"><%= raw(collection.contributor.format_name_for_screen) %><br /><%= collection.contributor.institution %></td>
+		<% end %>
+	    <td class="status-cell" id="<%= collection.id %>"><%=h Collection.to_status_string(collection.current_status) %></td>
+		<% if @is_editor -%>
+	    	<td class="classification-cell" id="<%= collection.id %>-classification"><%=h Collection.to_classification_string(collection.classification) %></td>
+		<% end %>
+	    <td class="textarea-cell" id="<%= collection.id %>-notes-<%= @role_str %>"><%= format_notes_for_html(collection.notes) %></td>
+		<% if @is_editor -%>
+	    	<td class="textarea-cell" id="<%= collection.id %>-admin_notes-<%= @role_str %>"><%= format_notes_for_html(collection.admin_notes) %></td>
+		<% end %>
+		<% if @is_editor == false -%>
+	    	<td class="navigation"><%= link_to 'Resubmit', { controller: 'collections', action: 'resubmit', id: collection.id } %></td>
+			<td><%= confirm_str = "Selecting \"Ok\" will permanently remove the project \"#{collection.project_name}\" from Nines Inbox. Are you sure you want to continue?"
+			button_to 'Remove', { :action => 'cancel_submission', :id => collection.id }, :confirm => confirm_str %></td>
+		<% end -%>
+	  </tr>
+		<% end %>
+	</table>
+<% end %>
