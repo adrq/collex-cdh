@@ -7,7 +7,7 @@
          xmlns:collex="http://www.collex.org/schema#"
          xmlns:virtualCanonLawLibrary="http://someurl">
    
-  <virtualCanonLawLibrary:Liber_extra_Decretalists rdf:about="http://abouturl">
+  <virtualCanonLawLibrary:Liber_extra_Decretalists rdf:about="https://colbycanonlaw.wordpress.com/2009/09/24/liber-extra-decretalists/">
 
       <collex:federation>NINES</collex:federation>
       <collex:archive>colby</collex:archive>
@@ -15,11 +15,16 @@
       <rdfs:seeAlso rdf:resource="https://colbycanonlaw.wordpress.com/2009/09/24/liber-extra-decretalists/"/>
 
       <dc:title>Liber extravagantium decretalium</dc:title>
+      <dcterms:alternative>Liber extra; Decretales Gregorii IX</dcterms:alternative>
       <role:AUT>unknown</role:AUT>
       <dc:date>1234</dc:date>
       <collex:discipline>Law</collex:discipline>
+      <collex:discipline>History</collex:discipline>
       <dc:type>Text</dc:type>
       <collex:genre>Collection</collex:genre>
+      <collex:freeculture>true</collex:freeculture>
+      <dc:language>lat</dc:language>
+      <dcterms:hasPart rdf:resource="http://www.hs-augsburg.de/~harsch/Chronologia/Lspost13/GregoriusIX/gre_0000.html#1" />
 
       <!--<collex:text rdf:resource="http://www.rossettiarchive.org/docs/1-1835.raw.txt"/>-->
 

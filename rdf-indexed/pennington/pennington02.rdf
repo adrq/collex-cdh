@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:role="http://www.loc.gov/loc.terms/relators/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:collex="http://www.collex.org/schema#"
+         xmlns:pennington="http://someurl">
+   
+  <pennington:baldus_consilia rdf:about="http://faculty.cua.edu/pennington/balcon2.htm">
+
+      <collex:federation>NINES</collex:federation>
+      <collex:archive>pennington</collex:archive>
+
+      <rdfs:seeAlso rdf:resource="http://faculty.cua.edu/pennington/balcon2.htm"/>
+
+      <dc:title>Consilia 1.326-327 (Milan) Consilium 3.279 (Venice)</dc:title>
+      <dcterms:alternative>Baldus de Ubaldis and the Authority of the Prince</dcterms:alternative>
+      <role:AUT>Baldus de Ubaldis</role:AUT><role:EDT>Kenneth Pennington</role:EDT>
+      <dc:date>1327,1400</dc:date>
+      <dc:source>Popes, Canonists, and Texts 1150-1550 (Aldershot 1993)</dc:source>
+      <collex:discipline>Law</collex:discipline>
+      <collex:discipline>History</collex:discipline>
+      <dc:type>Text</dc:type>
+      <collex:genre>consilia?</collex:genre> <!-- no "consilia" in collex:genre, will have to add-->
+      <collex:freeculture>true</collex:freeculture>
+      <dc:language>lat</dc:language>
+      <!--<dcterms:hasPart rdf:resource="http://www.hs-augsburg.de/~harsch/Chronologia/Lspost13/GregoriusIX/gre_0000.html#1" />-->
+
+      <!--<collex:text rdf:resource="http://www.rossettiarchive.org/docs/1-1835.raw.txt"/>-->
+
+  </pennington:baldus_consilia>
+
+</rdf:RDF>

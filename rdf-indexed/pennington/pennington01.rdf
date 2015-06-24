@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:role="http://www.loc.gov/loc.terms/relators/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:collex="http://www.collex.org/schema#"
+         xmlns:pennington="http://someurl">
+   
+  <pennington:medieval_legal_texts rdf:about="http://faculty.cua.edu/pennington/edit301.htm">
+
+      <collex:federation>NINES</collex:federation>
+      <collex:archive>pennington</collex:archive>
+
+      <rdfs:seeAlso rdf:resource="http://faculty.cua.edu/pennington/edit301.htm"/>
+
+      <dc:title>Commentary on Compilatio tertia, Book 3.1-3.22</dc:title>
+      <dcterms:alternative>Apparatus glossarum in Compilationem tertiam; Johannis Teutonici Apparatus glossarum in Compilationem tertiam</dcterms:alternative>
+      <role:AUT>Johannes Teutonicus (Zemeke)</role:AUT><role:EDT>Kenneth Pennington</role:EDT>
+      <dc:date>1170,1245</dc:date>
+      <collex:discipline>Law</collex:discipline>
+      <collex:discipline>History</collex:discipline>
+      <dc:type>Text</dc:type>
+      <collex:genre>Commentary</collex:genre> <!-- no "Commentary" in collex:genre, will have to add-->
+      <collex:freeculture>true</collex:freeculture>
+      <dc:language>lat</dc:language>
+      <!--<dcterms:hasPart rdf:resource="http://www.hs-augsburg.de/~harsch/Chronologia/Lspost13/GregoriusIX/gre_0000.html#1" />-->
+
+      <!--<collex:text rdf:resource="http://www.rossettiarchive.org/docs/1-1835.raw.txt"/>-->
+
+  </pennington:medieval_legal_texts>
+
+</rdf:RDF>
