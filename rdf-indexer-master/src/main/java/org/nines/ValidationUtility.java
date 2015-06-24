@@ -33,7 +33,7 @@ public class ValidationUtility {
         "Fiction",  "Historiography",  "Law",  "Life Writing", "Liturgy",  "Music, Other",  "Musical Analysis",
         "Musical Recording",  "Musical Score",  "Nonfiction",  "Paratext",  "Philosophy",  "Photograph",  "Poetry",
         "Religion", "Religion, Other",  "Reference Works",  "Review", "Scripture",
-        "Sermon",  "Translation",  "Travel Writing",  "Unspecified",  "Visual Art"
+        "Sermon",  "Translation",  "Travel Writing",  "Unspecified",  "Visual Art", "Commentary" /*adrian - added "Commentary" genre*/
     };
 
     // List of all valid disciplines
