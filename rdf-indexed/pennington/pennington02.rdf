@@ -25,7 +25,6 @@
       <collex:genre>consilia?</collex:genre> <!-- no "consilia" in collex:genre, will have to add-->
       <collex:freeculture>true</collex:freeculture>
       <dc:language>lat</dc:language>
-      <test>test</test>
 
 
   </pennington:baldus_consilia>
