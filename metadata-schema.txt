@@ -1,0 +1,296 @@
+Metada schema
+
+Required fields
+
+
+<custom:namespace>
+This tag consists of two parts, the actual custom namespace and the rdf:about attribute
+
+Custom namespace identifies the project. Examples:
+walters:wam
+rose:book
+rose:illus
+diamm:diamm
+
+rdf:about is a URI that uniquely identifies the record.
+
+Example: <pennington:baldus_consilia rdf:about="http://faculty.cua.edu/pennington/balcon2.htm">
+
+
+<collex:archive> 
+A shorthand reference to the contributing project or collection. Single word (no spaces)
+Examples from NINES:
+DIAMM
+WALTERS
+BL
+For LL, here are some values:
+AMES
+CCL
+COLBY
+PENNINGTON
+Required? YES
+	Can appear multiple? No.
+	
+Example: <collex:archive>pennington</collex:archive>
+
+
+<dc:title>
+Title of the object. Format will depend on the type of object, and its context. Titles may be created by combining fields from the source metadata.
+examples:
+Laylá and Majnūn reunited in the wilderness, W.605, fol. 100a (Walters)
+Pierre Alexandre, Praelectiones de matrimonio (Parker)
+Wing, right (fragment of a diptych), 1 register, 1 arch across (plaquette) (Courtauld)
+Cologny, Fondation Martin Bodmer, Cod. Bodmer 48 : Chaucer, Canterbury Tales (to l. 1061) (e-codices)
+Required? YES
+Can appear multiple? No.
+
+Example: <dc:title>Consilia 1.326-327 (Milan) Consilium 3.279 (Venice)</dc:title>
+
+
+<dc:type> 
+A value (may be more than one) to describe the medium or format of an object. Think of this as the material of which the object physically consists (whether as solid, still matter or a moving image or a sound).  
+Values must come from the following controlled list:
+Might also consider using DCMI Type Vocabulary http://dublincore.org/documents/dcmi-type-vocabulary/#dcmitype-Collection
+Codex
+Collection
+Drawing
+Illustration
+Interactive Resource
+Manuscript
+Map
+Physical Object
+Roll
+Sheet
+Still Image
+Typescript
+
+Required? YES
+Can appear multiple? No.
+We might have to create our own namespace to define list of allowed types <ll:type>.
+
+Example: <dc:type>Text</dc:type>
+
+
+<role:XXX>
+Used to identify individuals or institutions involved in the creation of an object. With medieval texts, it may be possible that no know human creative figure is known about a text. However, even in that case, the Publisher should still be given. 
+Visual Artist
+<role:AUT> for Author
+<role:EDT> for Editor
+<role:PBL> for Publisher
+<role:TRL> for Translator
+<role:CRE> for Creator
+<role:ETR> for Etcher
+<role:EGR> for Engraver
+<role:OWN> for Owner
+<role:ART> for Artist
+<role:ARC> for Architect
+<role:BND> for Binder
+<role:BKD> for Book designer
+<role:BKP> for Book producer
+<role:CLL> for Calligrapher
+<role:CTG> for Cartographer
+<role:COL> for Collector
+<role:CLR> for Colorist
+<role:CWT> for Commentator for written text
+<role:COM> for Compiler
+<role:CMT> for Compositor
+<role:CRE> for Creator
+<role:DUB> for Dubious author
+<role:FAC> for Facsimilist
+<role:ILU> for Illuminator
+<role:ILL> for Illustrator
+<role:LTG> for Lithographer
+<role:PRT> for Printer
+<role:POP> for Printer of plates
+<role:PRM> for Printmaker
+<role:RPS> for Repository
+<role:RBR> for Rubricator
+<role:SCR> for Scribe
+<role:SCL> for Sculptor
+<role:TYD> for Type designer
+<role:TYG> for Typographer
+<role:WDE> for Wood engraver
+<role:WDC> for Wood cutter
+
+Example: <role:AUT>Baldus de Ubaldis</role:AUT
+<role:EDT>Kenneth Pennington</role:EDT>
+
+
+<collex:genre>
+Basic descriptive genre for the object. 
+This is different from TYPE in that it describes the resource by its customary or conventional classification – how does it fit into human cultural production? For instance, the genre may be poetry but the type might be variously a manuscript, sheet or a typescript. 
+
+Drawn from a controlled list. We will have to either extend the <collex:genre> namespace or create our own to define controlled list for this project.
+Controlled list:
+Canon
+Code of laws
+Commentary
+Consilium
+Decretal
+Imperial constitution
+Purely for reference, following are examples from NINES. There is a complete list on the Collex Wiki.
+Scripture
+Sermon
+Poetry
+Visual Art
+Required? YES
+Can appear multiple? Yes.
+
+
+<dc:date>
+Machine readable date.
+Machine-readable dates must be either
+ - a four-digit year, e.g. “1425” or “0850”
+ - two four-digit years, separated by a comma, indicating a span of time e.g.“1425,1450”
+ - three digits followed by “u”, indicating a decade, e.g. “145u”
+ - two digits followed by “uu”, indicating a century, e.g. “08uu”
+ 
+Example: <dc:date>1327,1400</dc:date>
+
+
+<collex:date>
+Human readable date.
+Labels can be any human-readable date, and will be displayed in LL.
+Examples:
+14th century
+not before 1475
+c. 1100
+1300-1350
+
+
+<rdfs:seeAlso>
+URL pointing from LL Collex back to the digital object out there in a digital repository/collection somewhere on the interweb.
+
+Example: <rdfs:seeAlso rdf:resource="http://faculty.cua.edu/pennington/balcon2.htm"/>
+
+
+<provenance?>
+A statement of any changes in ownership and custody of the object since its creation that are significant for its authenticity, integrity, and interpretation. Includes origin.
+
+
+<collex:freeculture>
+Is the digital version of the object “free”, i.e. in the public domain or released under an open access license? If yes, then the permalink in SEE ALSO should lead to the digital surrogate without any proxy or pay wall. 
+Values: true or false 
+Required? Yes.
+Can appear multiple? No.
+
+Example: <collex:freeculture>true</collex:freeculture>
+
+
+<collex:federation>
+Value:
+The value for this field is always Libri legales.
+Required.
+
+
+
+OPTIONAL FIELDS
+
+<collex:text> & <collex:fulltext>
+The purpose of this field is to either hold or point directly to a digital transcript of the resource. Data in this field will be available for full-text searching in LL. 
+
+We need to discuss cases of excerpts vs. actual full text.
+
+
+<collex:image>
+Points to the web-accessible, full-size digital image (a.k.a. digital surrogate) of the object.
+Not required.
+Can appear multiple? No. 
+
+
+<dcterms:alternative>
+An alternative title, for example a nickname for a manuscript when the official title is provided in TITLE.
+This field should also be used to record customary forms of citation, in other words, conventional ways that the object might be referred to, e.g. “Const. Antonin.”, “X”, or “Digestum Vetus.” Perhaps even conventional, ambiguous shorthand forms of citation, such as “Paulus”.
+Not required.
+Can appear multiple? Yes. 
+
+Example: <dcterms:alternative>Baldus de Ubaldis and the Authority of the Prince</dcterms:alternative>
+
+
+<dc:source>
+Title of the larger work, resource, or collection of which the present object takes part. Can be used for the title of a journal, anthology, book, online collection, etc.
+Not required.
+Good practice: Recommended whenever applicable (which will be often). See related Is Part Of  field.
+
+
+SUBJECT
+might be merged with “discipline”?
+Subject keywords that can be used for searching. May be populated from a project’s existing keyword lists. 
+Not required.
+Can appear multiple? Yes. 
+
+
+<collex:source_xml>
+Points to the web-accessible source code for the item metadata in XML format.
+Use for example if you have a TEI-XML encoded manuscript description (i.e. metadata) available in source.
+Example: <collex:source_xml>http://thedigitalwalters.org/Data/WaltersManuscripts/ManuscriptDescriptions/W683_tei.xml</collex:source_xml>
+Not required.
+Can appear multiple? No.
+
+
+<collex:source_html>
+Points to the web-accessible source code for the item metadata in HTML format.
+Use for example if you have an HTML version of a manuscript description (i.e. metadata) available in source.
+Do not use if it is the same as the object you are pointing to.
+Example:
+<collex:source_html>http://thedigitalwalters.org/Data/WaltersManuscripts/html/W683/description.html</collex:source_html>
+Not required.
+Can appear multiple? No. 
+
+<collex:ocr>
+Was the FULL TEXT created using OCR? 
+Two possible answers:
+true of false
+Not required.
+Can appear multiple? No. 
+
+
+<dcterms:hasPart rdf:resource=""/>
+Points to a URI that is a child object
+Required? NO
+Can appear? MULTIPLE
+
+
+<dcterms:isPartOf rdf:resource=""/>
+Points to a URI that is a parent object
+Required? NO
+Can appear? MULTIPLE
+
+
+<collex:thumbnail>
+Points to the web-accessible, thumbnail-sized (we need to define what "thumbnail-sized" means) digital image of the object.
+Providing THUMBNAIL means a small version of the object will be visible for browse and search results
+Not required. 
+Can appear multiple? No. 
+Good practice: Recommended.
+
+
+<collex:discipline>
+Identifies disciplines that may be interested in the object. Drawn from a controlled list.
+Anthropology
+Archaeology	Architecture
+Art History
+Book History
+Classics and Ancient History
+Ethnic Studies
+Film Studies
+Gender Studies
+Geography
+History
+Law
+Literature
+Manuscript Studies
+Math
+Musicology
+Philosophy
+Religious Studies
+Science	Theater Studies
+
+we will have to extend this list, or create our own namespace
+
+
+<dc:language>
+This field states the human language in which the object was written, for instance, Latin, Old English, etc. 
+Format: language code from the ISO 639-2 Language Code List
+
+Example: <dc:language>lat</dc:language>
