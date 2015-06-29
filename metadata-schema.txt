@@ -37,10 +37,7 @@ Example: <collex:archive>pennington</collex:archive>
 <dc:title>
 Title of the object. Format will depend on the type of object, and its context. Titles may be created by combining fields from the source metadata.
 examples:
-Laylá and Majnūn reunited in the wilderness, W.605, fol. 100a (Walters)
-Pierre Alexandre, Praelectiones de matrimonio (Parker)
-Wing, right (fragment of a diptych), 1 register, 1 arch across (plaquette) (Courtauld)
-Cologny, Fondation Martin Bodmer, Cod. Bodmer 48 : Chaucer, Canterbury Tales (to l. 1061) (e-codices)
+
 Required? YES
 Can appear multiple? No.
 

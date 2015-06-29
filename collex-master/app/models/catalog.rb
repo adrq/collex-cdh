@@ -223,9 +223,7 @@ class Catalog
    end
 
    def get_archives()
-      if @@archives == nil
-         get_resource_list()
-      end
+       get_resource_list()#adrian - removed 'if' to make sure always call Catalog to get archive list
       return @@archives
    end
 

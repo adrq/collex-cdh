@@ -19,7 +19,7 @@ class HelpController < ApplicationController
 
   def sites
     @sites = Catalog.factory_create(false).get_archives() #Site.find(:all, :order => "description ASC")
-	@sites = @sites.delete_if {|site| site['handle'].index('exhibit_') == 0 }
+    @sites = @sites.delete_if {|site| site['handle'] == nil} #adrian - problem with model @sites.delete_if {|site| site['handle'].index('exhibit_') == 0 }
     render :partial => '/help/sites'
   end
   
