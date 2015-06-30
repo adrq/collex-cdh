@@ -41,7 +41,7 @@ class LocalsController < ApplicationController
 	def index
 		federation = Federation.find_by({ name: params[:federation] })
 		ip = request.headers['REMOTE_ADDR']
-        if federation && ip == federation.ip
+		if federation && ip == federation.ip
 			begin
 				query_params = QueryFormat.locals_format()
 				QueryFormat.transform_raw_parameters(params)
