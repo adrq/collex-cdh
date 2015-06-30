@@ -768,9 +768,9 @@ class QueryFormat
 		# If this isn't an authorized call, then only return free culture items.
 		if request_ip && !Federation.request_from_federation(request_ip)
 			if params['o'].blank?
-                #params['o'] = '+freeculture' #adrian - commenting this out makes a lot of things work //need to figure out why
+                params['o'] = '+freeculture' #reenable ip check, be sure collex ip is added to catalog whitelist
 			else
-            #params['o'] = params['o'].gsub(/[+-]freeculture/, '') + '+freeculture'
+            params['o'] = params['o'].gsub(/[+-]freeculture/, '') + '+freeculture'
 			end
     end
 
