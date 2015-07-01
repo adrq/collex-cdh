@@ -33,7 +33,7 @@
 <% current_page tab_name -%>
 <% user_id = user_signed_in? ? get_curr_user_id : nil -%>
 <% thread_id = @thread.id -%>
-<% topic = DiscussionTopic.find(@thread.discussion_topic_id) -%>
+<% topic = DiscussionTopic.find(@thread.discussion_topic_id) #make sure you have set up forum topics in collex admin-%>
 <%= create_breadcrumbs([{ :text => tab_name, :url => return_url }, { :text => "#{Setup.site_name()}  Forum", :url => '/forum' }, { :text => topic.topic, :url => "/forum/view_topic?topic=#{topic.id}" }], DiscussionThread.find(thread_id).get_title()) %>
 <div class="content_container2">
 <script type="text/javascript">
