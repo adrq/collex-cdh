@@ -43,6 +43,9 @@ gem 'paperclip'
 
 gem 'exception_notification'
 
+#use thin instead of webrick
+gem 'thin'
+
 # Use Capistrano for deployment
 gem 'capistrano', require: false, group: :development
 gem 'capistrano-rvm', group: :development
