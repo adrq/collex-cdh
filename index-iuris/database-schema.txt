@@ -1,0 +1,19 @@
+<!-- 
+create table statements:
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `password_hash` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `submissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` text,
+  `data_format` varchar(255) DEFAULT NULL,
+  `rdf_version` varchar(255) DEFAULT NULL,
+  `date_submitted` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+ -->
