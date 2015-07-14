@@ -27,6 +27,7 @@ window.location = "../index-iuris/login.php"
 
 <form action="rdf-form.php" method="post">
 
+
 <div class="form-item">
 <div class="form-metadata-item">
 <h3 class="form-item-label">Custom namespace</h3>
@@ -56,6 +57,7 @@ Would you be able to decide what goes after the colon? <br>
 </div>
 </div>
 
+
 <div class="form-item">
 <div class="form-metadata-item">
 <h3 class="form-item-label">rdf:about</h3>
@@ -71,6 +73,11 @@ Would you be able to decide what goes after the colon? <br>
 </div>
 <div class="form-item-question">
 <label>rdf:about</label><input type="text" class="text-input" name="rdf:about">
+</div>
+</div>
+<div class="form-poll-item">
+<div class="form-item-question">
+<label>Comments: </label><textarea name="comments-rdf-about" rows="4" cols="50"></textarea>
 </div>
 </div>
 </div>
@@ -374,6 +381,9 @@ two four-digit year separated by a semi-colon indicate that the text or object w
 <label>Yes</label><input type="radio" name="date-available" value="true">
 <label>No</label><input type="radio" name="date-available" value="false">
 </div>
+<div class="form-item-question">
+<label>Comments: </label><textarea name="comments-date" rows="4" cols="50"></textarea>
+</div>
 </div>
 </div>
 
@@ -556,9 +566,55 @@ CEEC: Codices Electronici Ecclesiae Coloniensis
 
 <div class="form-item">
 <div class="form-metadata-item">
-<h3>isPartOf and hasPart will go here</h3>
+<h3 class="form-item-label">Is part of</h3>
+<div class="form-item-description">
+<p>
+<span class="monospace">isPartOf</span> is a useful field for legal texts, which often are compilations of many texts. This field is optional.
+</p>
+<p>Examples:</p>
+<p class="form-item-example">
+For the Bulla “Rex Pacificus”, one could have <span class="bold-text">IsPartOf</span> Liber extravagantium decretalium<br>
+For a particular transcription of the Council of Arles, on could have <span class="bold-text">IsPartOf</span> Collectio Hispana<br>
+For a particular Novel of Justinian, one could have <span class="bold-text">IsPartOf</span> Corpus iuris civilis<br>
+</p>
+</div>
+<div class="form-item-question">
+<label>Is part of:</label><input type="text" class="text-input" name="is-part-of">
 </div>
 </div>
+<div class="form-poll-item">
+<div class="form-item-question">
+<label>Comments:</label><textarea name="is-part-of-comments" rows="4" cols="50"></textarea>
+</div>
+</div>
+</div>
+
+
+<div class="form-item">
+<div class="form-metadata-item">
+<h3 class="form-item-label">Has part</h3>
+<div class="form-item-description">
+<p>
+<span class="monospace">hasPart</span> is the obverse of <span class="monospace">isPartOf</span>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.
+</p>
+<p>The final form will have the option to add multilple <span class="monospace">hasPart</span> fields.</p>
+<p>Examples:</p>
+<p class="form-item-example">
+Collectio Dacheriana <span class="bold-text">HasPart</span> Book I, Book II, Book III
+Collectio Dionysiana <span class="bold-text">HasPart</span> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.
+</p>
+</div>
+<div class="form-item-question">
+<label>Has part:</label><input type="text" class="text-input" name="has-part">
+</div>
+</div>
+<div class="form-poll-item">
+<div class="form-item-question">
+<label>Comments:</label><textarea name="has-part-comments" rows="4" cols="50"></textarea>
+</div>
+</div>
+</div>
+<?php //TODO - add multiple hasPart?>
 
 
 <div class="form-item">
@@ -579,19 +635,40 @@ The Decretum is divided into three parts.  The first part has 101 distinctiones;
 <label>Divisions of the text:</label><textarea name="text-divisions" rows="4" cols="50"></textarea>
 </div>
 </div>
+<div class="form-poll-item">
+<div class="form-item-question">
+<label>Comments: </label><textarea name="comments-text-divisions" rows="4" cols="50"></textarea>
+</div>
+</div>
 </div>
 
 
 <div class="form-item">
 <div class="form-metadata-item">
-<h3>Language will go here</h3>
+<h3 class="form-item-label">Language</h3>
+<div class="form-item-description">
+<p>
+<span class="monospace">Language</span> identifies the language of the object using language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.
+</p>
+</div>
+<div class="form-item-question">
+<label>Language:</label><input type="text" class="text-input" name="language">
+</div>
 </div>
 </div>
 
 
 <div class="form-item">
 <div class="form-metadata-item">
-<h3>metadata source code??</h3>
+<h3 class="form-item-label">Metadata source code</h3>
+<div class="form-item-description">
+<p>
+<span class="monospace">metadata source code</span> is an optional field. If your project has metadata that does not duplicate the descriptions in the fields above that should be included in Index Iuris, you may use this field for the URL or URI for the web-accessible XML or HTML metadata.
+</p>
+</div>
+<div class="form-item-question">
+<label>URL of source code:</label><input type="text" class="text-input" name="url-source-code">
+</div>
 </div>
 </div>
 
@@ -632,6 +709,11 @@ This edition retains the orthography of the medieval manuscript.
 <label>Notes:</label><textarea name="notes" rows="4" cols="50"></textarea>
 </div>
 </div>
+<div class="form-poll-item">
+<div class="form-item-question">
+<label>Comments: </label><textarea name="comments-notes" rows="4" cols="50"></textarea>
+</div>
+</div>
 </div>
 
 
@@ -655,10 +737,20 @@ This edition retains the orthography of the medieval manuscript.
 </div>
 </div>
 </div>
-<div class="form-item">
 <input type="hidden" name="submitted" value="true">
-<input type="submit">
+<div class="form-item">
+	<div class="form-metadata-item">
+		<span ><input type="submit" id="submit-form-button"></span>
+	</div>
 </div>
+<div class="form-item">
+	<div class="form-metadata-item">
+	</div>
+	<div class="form-poll-item">
+	</div>
+</div>
+
+
 </form>
 
 <?php else: ?>
@@ -680,7 +772,7 @@ $dbCon = mysqli_connect($database_host,$database_username,$database_password,$da
 if (!$dbCon) {
 	die('Could not connect: ' . mysql_error());
 }
-$query = "INSERT INTO submissions (data,data_format,rdf_version,date_submitted) VALUES ('".mysqli_real_escape_string($dbCon,$jsonString)."','json','0.1',NOW());";
+$query = "INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user) VALUES ('".mysqli_real_escape_string($dbCon,$jsonString)."','json','0.1',NOW(),'".$_SESSION['username']."');";
 
 echo $query;
 
