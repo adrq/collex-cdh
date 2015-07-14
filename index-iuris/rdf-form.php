@@ -722,7 +722,7 @@ This edition retains the orthography of the medieval manuscript.
 <h3 class="form-item-label">File format</h3>
 <div class="form-item-description">
 <p>
-<span class="monospace"></span>22.	File Format is a required field for each item, so that we can implement full-text searching whenever possible.
+<span class="monospace"></span>File Format is a required field for each item, so that we can implement full-text searching whenever possible.
 </p>
 <p>Examples:</p>
 <p class="form-item-example">
@@ -743,6 +743,8 @@ This edition retains the orthography of the medieval manuscript.
 		<span ><input type="submit" id="submit-form-button"></span>
 	</div>
 </div>
+
+
 <div class="form-item">
 	<div class="form-metadata-item">
 	</div>
