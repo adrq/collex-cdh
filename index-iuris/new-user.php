@@ -1,5 +1,5 @@
 <?php
-$pageTitle="Index Iuris create user";
+$pageTitle="Index Iuris - create user";
 include("header.php")?>
 
 <?php if (!isset($_POST['user'])) : ?>

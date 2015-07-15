@@ -13,10 +13,18 @@ include("config.php");
 <body>
 <div id="main-container">
 <div id="header-container">
-<a href="index.php">Home</a> - <a href="rdf-form.php">RDF form</a> - 
+<div id="header-banner">
+<img src="" alt="logo goes here">
+</div>
+<div id="navigation-container">
+<hr>
+<div class="nav-item"><a href="index.php">Home</a></div>
 <?php if ($_SESSION['logged-in']==true) :?>
-<p>Welcome, <?php echo $_SESSION['username']?> - <a href="logout.php">logout</a></p>
+<div class="nav-item"><a href="rdf-form.php">Metadata submission form</a></div>
+<div class="nav-item"><a href="governance.php">Governance</a></div>
+<div class="nav-item">Welcome, <?php echo $_SESSION['username']?> - <a href="logout.php">Log out</a></div>
 <?php else:?>
-<a href="login.php">login</a>
+<div class="nav-item"><a href="login.php">Log in</a></div>
 <?php endif;?>
+</div>
 </div>

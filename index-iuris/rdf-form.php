@@ -1,4 +1,4 @@
-<?php $pageTitle="Index Iuris Metadata Form" //require php v5.5?>
+<?php $pageTitle="Index Iuris - Metadata Submission Form" //require php v5.5?>
 <?php include("header.php")?>
 <?php if($_SESSION['logged-in']!=true): ?>
 <div id="login-container">
@@ -780,13 +780,13 @@ echo $query;
 
 $rdf = generateRDF($submission);
 echo '<pre>'.htmlspecialchars($rdf).'</pre>';
-
+/*
 if (mysqli_query($dbCon, $query)){
 	echo 'Updated database';
 }
 else {
 	echo "Error: " . $query . "<br>" . mysqli_error($dbCon);
-}
+}*/
 
 
 
