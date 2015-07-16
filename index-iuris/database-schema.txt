@@ -17,4 +17,14 @@ CREATE TABLE `submissions` (
   `user` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `constitution_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `comment_text` text,
+  `date_submitted` datetime DEFAULT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
  -->

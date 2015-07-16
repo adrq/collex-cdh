@@ -21,14 +21,16 @@ if (!$dbCon) {
 }
 $username=$_POST['user'];
 
-$query = "SELECT password_hash FROM users WHERE username='$username'";
+$query = "SELECT password_hash,id FROM users WHERE username='$username'";
 
 $result = mysqli_query($dbCon, $query);
 $password_hash;
+$user_id;
 
 if ($result->num_rows==1){
 	$row = $result->fetch_assoc();
 	$password_hash = $row[password_hash];
+	$user_id = $row[id];
 }
 else {
 	echo "ERROR";
@@ -40,6 +42,8 @@ if (password_verify($_POST['pass'], $password_hash)) : ?>
 <?php
 $_SESSION['logged-in'] = true; 
 $_SESSION['username'] = $username;
+$_SESSION['user_id'] = $user_id;
+
 ?>
 <div id="login-container">
 <script type="text/javascript">

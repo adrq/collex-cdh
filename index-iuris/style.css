@@ -40,9 +40,30 @@ body{
 
 }
 
+a {
+	color: #E60000;
+}
+
+.color-text {
+	color: #E60000;
+}
+
+#logo-div {
+	float: left;
+}
+
+#contact-div {
+	padding-top: 1em;
+	float: right;
+}
+
+#contact-div p{
+	margin: .2em;
+}
+
 #navigation-container {
 	clear:both;
-	background-color: #E6E6E6;
+	background-color: #999999;
 	height: 2em;
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -57,10 +78,15 @@ body{
 	padding-right: 1em;
 	padding-top: .5em;
 	padding-bottom: .3em;
-	maring
+	color: white;
 }
+
+.nav-item a{
+	color: white;
+}
+
 .nav-item:hover {
-	background-color: lightblue;
+	background-color: #8D1919;
 }
 
 p {
@@ -142,4 +168,36 @@ FORM INPUT
 
 .bold-text {
 	font-weight: bold;
+}
+
+
+/*GOVERNANCE COMMENTS*/
+
+.comment {
+	clear:both;
+	margin:1em;
+}
+
+.comment p {
+	margin:1em;
+}
+
+.comment-meta {
+	background-color: #F2F2F2;
+	border-radius: 1em;
+	
+	width: 30%;
+	float: left;
+}
+
+.comment-text {
+	background-color: #F2F2F2;
+	border-radius: 1em;
+	margin-bottom: 1em;
+	width: 70%;
+	float:right;
+}
+
+#new-comment-div {
+	clear:both;
 }

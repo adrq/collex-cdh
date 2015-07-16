@@ -774,22 +774,22 @@ $dbCon = mysqli_connect($database_host,$database_username,$database_password,$da
 if (!$dbCon) {
 	die('Could not connect: ' . mysql_error());
 }
-$query = "INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user) VALUES ('".mysqli_real_escape_string($dbCon,$jsonString)."','json','0.1',NOW(),'".$_SESSION['username']."');";
+$query = "INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user) VALUES ('".mysqli_real_escape_string($dbCon,$jsonString)."','json','0.1',NOW(),'".$_SESSION['user_id']."');";
 
 echo $query;
 
 $rdf = generateRDF($submission);
 echo '<pre>'.htmlspecialchars($rdf).'</pre>';
-/*
+
 if (mysqli_query($dbCon, $query)){
 	echo 'Updated database';
 }
 else {
 	echo "Error: " . $query . "<br>" . mysqli_error($dbCon);
-}*/
+}
 
 
-
+$dbCon->close();
 
 ?>
 <div><a href="rdf-form.php">Submit a new form</a>

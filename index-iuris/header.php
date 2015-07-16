@@ -14,7 +14,14 @@ include("config.php");
 <div id="main-container">
 <div id="header-container">
 <div id="header-banner">
-<img src="" alt="logo goes here">
+<div id="logo-div">
+<img src="iilogo8.jpg" alt="Index Iuris Logo" height="120px">
+</div>
+<div id="contact-div">
+<p>Contact us:
+<p><a href="mailto:WILDERCF@mailbox.sc.edu">Colin Wilder (University of South Carolina)</a></p>
+<p><a href="mailto:afire2@uky.edu">Abigail Firey (University of Kentucky)</a></p>
+</div>
 </div>
 <div id="navigation-container">
 <hr>

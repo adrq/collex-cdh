@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 function generateRDF($submission){
 	//mb_internal_encoding("UTF-8");
 	$rdfNamespaces = [

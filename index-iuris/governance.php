@@ -59,7 +59,70 @@ DRAFT   DRAFT  DRAFT!!!
 	<li>Members of <span class="monospace">Index Iuris</span> must notify the Governing Council of any significant changes in the location, URLs or URIs, data structures, technical redesign, or curation plans for their projects.</li>
 	<li>Members of <span class="monospace">Index Iuris</span> should strive to attain accuracy in metadata, transcriptions, encoding, and all other aspects of their projects.  <span class="monospace">Index Iuris</span> is a scholarly research environment, and its value depends upon the quality of the data and metadata.</li>
 	</ol>
+<hr>
+<div id="comments-container">
+<div id="comments">
+<h3>Comments:</h3>
+<?php 
+$dbCon = mysqli_connect($database_host,$database_username,$database_password,$database_database);
+if (!$dbCon) {
+	die('Could not connect: ' . mysql_error());
+}
 
+$query = "SELECT user_id,comment_text,date_submitted FROM constitution_comments ORDER BY date_submitted";
+
+$comment = [];
+$comments = [];
+
+//load comments into memory
+if ($result = mysqli_query($dbCon, $query)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+    	
+    	$query = "SELECT username FROM users WHERE id=".$row['user_id'];
+    	$result2 = mysqli_query($dbCon, $query);
+    	if ($result2->num_rows==1){
+    		$row2 = $result2->fetch_assoc();
+    		$comment['user'] = $row2['username'];
+    	}
+    	else {
+    		echo "ERROR";
+    	}    	
+        
+        $comment['comment_text'] = $row['comment_text'];
+        $comment['date_submitted'] = $row['date_submitted'];
+        array_push($comments, $comment);
+    }
+    mysqli_free_result($result);
+}
+
+//display all comments
+
+foreach ($comments as $comment){?>
+	<div class="comment">
+	<div class="comment-meta">
+	<p class="bold-text"><span class="color-text"><?php echo $comment['user'] ?></span></p>
+	<p class="monospace"><?php echo $comment['date_submitted']?></p>
+	</div>
+	<div class="comment-text">
+	<p>Membership applications will be reviewed by the Governing Council once a year, in June. Applications will be ranked by vote of the entire Council. The Chair of the Council will communicate decisions promptly to applicants. The Council may recommend that a project not admitted to the federation in the current round apply in the following year.</p>
+	</div>
+	</div>
+
+<?php 
+	
+}
+
+
+?>
+</div>
+<div id="new-comment-div">
+<form method="post" action="new-comment.php">
+<label>New comment (will be visible to other users who have logged in):</label><br>
+<textarea name="comment_text" rows="4" cols="100">Please enter your comments here</textarea><br>
+<input type="submit">
+</form>
+</div>
+</div>
 <?php 
 include("footer.php");
 ?>
