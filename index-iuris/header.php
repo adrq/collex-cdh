@@ -15,7 +15,7 @@ include("config.php");
 <div id="header-container">
 <div id="header-banner">
 <div id="logo-div">
-<img src="iilogo8.jpg" alt="Index Iuris Logo" height="120px">
+<a href="index.php"><img src="iilogo8.jpg" alt="Index Iuris Logo" height="120px"></a>
 </div>
 <div id="contact-div">
 <p>Contact us:

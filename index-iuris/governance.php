@@ -17,12 +17,13 @@ window.location = "../index-iuris/login.php"
 <?php endif;?>
 
 <h2>Proposed framework for governance, Index Iuris</h2>
-
+<div id="comment-link"><a href="#new-comment-div">Please comment below</a></div>
 DRAFT   DRAFT  DRAFT!!!
 
 <h2>I.  Entity, Purpose, Membership</h2>
+
 <p><span class="monospace">Index Iuris</span> is a federation of digital projects and archives that offer open-access primary source materials for the study of legal history in western Europe, from Roman law to early modern civil codes, encompassing both secular and ecclesiastical legal materials.  Each project or archive in the federation retains its own form, purpose, data structure, and full autonomy; membership in <span class="monospace">Index Iuris</span> brings enhanced access to and awareness of the content of member projects, and in time will support investigation of legal history across centuries and places, so that the materials of each project can be better contextualised in the larger sweep of legal history.  For example, a scholar could use the <span class="monospace">Index Iuris</span> site to find and assemble a collection of texts that form a sequence of legal thought on standards of proof, or could generate a visualization of the geographical and temporal concentrations of the term “spolia”, or could trace the quotation of a legal maxim in a range of texts.</p>  
-<p>[Note: to get a sense of how this works, look at the NINES project (nines.org).  In the main page search box, type “Justice”.  To limit the 37,000+ results, go to the facetted search feature, and check “collections”.  There will be 10 hits, most from the Ruskin and Livingston projects.  If you click on one of those results, you will be taken to the text in those projects that has the word “Justice” in it.  So, the project “Ruskin at Walkely: Reconstructing the St. George Museum” has a description of an artefact “the Virtues”: one of those virtues is Justice, described by Ruskin in his “Seven Lamps of Architecture”.  David Livingston’s 1871 Diary has two references (one to justice and one to injustice) in his observations about African tribes.  There are, of course, many options from which to choose among the facetted search functions.]</p>
+<p>[Note: to get a sense of how this works, look at the NINES project (<a href="http://www.nines.org/" target="_blank">nines.org</a>).  In the main page search box, type “Justice”.  To limit the 37,000+ results, go to the facetted search feature, and check “collections”.  There will be 10 hits, most from the Ruskin and Livingston projects.  If you click on one of those results, you will be taken to the text in those projects that has the word “Justice” in it.  So, the project “Ruskin at Walkely: Reconstructing the St. George Museum” has a description of an artefact “the Virtues”: one of those virtues is Justice, described by Ruskin in his “Seven Lamps of Architecture”.  David Livingston’s 1871 Diary has two references (one to justice and one to injustice) in his observations about African tribes.  There are, of course, many options from which to choose among the facetted search functions.]</p>
 <p>Projects or archives seeking to have some or all of their primary source materials indexed in <span class="monospace">Index Iuris</span> may apply for membership; such applications will be reviewed by the Governing Council (see below) of <span class="monospace">Index Iuris</span>.  Projects must be scholarly, suitable in content, sustainable, curated, and have data structures that meet international standards.  In some instances, the Governing Council may recommend assistance from <span class="monospace">Index Iuris</span> technical staff to facilitate integration into <span class="monospace">Index Iuris</span>, if time and funding permit.</p>
 <p>The technical infrastructure for <span class="monospace">Index Iuris</span> is an installation of Collex, in conjunction with Solr and Blacklight software, hosted pro tem at the Center for Digital Humanities at the University of South Carolina.  For projects to contribute data to <span class="monospace">Index Iuris</span>, they must provide appropriate metadata in RDF for all objects they wish to have accessible through <span class="monospace">Index Iuris</span>.</p>
 <h2>II.  Governance</h2>
@@ -104,7 +105,7 @@ foreach ($comments as $comment){?>
 	<p class="monospace"><?php echo $comment['date_submitted']?></p>
 	</div>
 	<div class="comment-text">
-	<p>Membership applications will be reviewed by the Governing Council once a year, in June. Applications will be ranked by vote of the entire Council. The Chair of the Council will communicate decisions promptly to applicants. The Council may recommend that a project not admitted to the federation in the current round apply in the following year.</p>
+	<p><?php echo $comment['comment_text']?></p>
 	</div>
 	</div>
 

@@ -87,6 +87,8 @@ a {
 
 .nav-item:hover {
 	background-color: #8D1919;
+	border-bottom-left-radius: .5em;
+	border-bottom-right-radius: .5em;
 }
 
 p {
@@ -185,7 +187,7 @@ FORM INPUT
 .comment-meta {
 	background-color: #F2F2F2;
 	border-radius: 1em;
-	
+	margin-bottom: 1em;
 	width: 30%;
 	float: left;
 }
@@ -196,8 +198,14 @@ FORM INPUT
 	margin-bottom: 1em;
 	width: 70%;
 	float:right;
+	white-space: pre-line;
 }
 
 #new-comment-div {
+	margin-left: 1em;
 	clear:both;
+}
+
+#comment-link {
+	float: right;
 }
