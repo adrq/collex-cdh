@@ -106,6 +106,7 @@ notes text DEFAULT NULL,
 file_format varchar(255) DEFAULT NULL,
 date_created datetime DEFAULT NULL,
 date_updated datetime DEFAULT NULL,
+user_id varchar(255) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
