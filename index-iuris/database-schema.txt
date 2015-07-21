@@ -27,4 +27,89 @@ CREATE TABLE `constitution_comments` (
 );
 
 
+********METADATA TABLES************
+
+CREATE TABLE roles (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	object_id int(11),
+	role varchar(255) DEFAULT NULL,
+	value text DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE alt_titles (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	object_id int(11),
+	alt_title text DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE dates (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	object_id int(11),
+	type varchar(255) DEFAULT NULL,
+	machine_date varchar(255) DEFAULT NULL,
+	human_date text DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE genres (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	object_id int(11),
+	genre text DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE disciplines (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	object_id int(11),
+	discipline text DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE subjects (
+	id int(11) NOT NULL AUTO_INCREMENT,
+	object_id int(11),
+	subject text DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE objects (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  custom_namespace varchar(255) DEFAULT NULL,
+rdf_about text DEFAULT NULL,
+archive varchar(255) DEFAULT NULL,
+title text DEFAULT NULL,
+type varchar(255) DEFAULT NULL,
+url text DEFAULT NULL,
+origin text DEFAULT NULL,
+provenance text DEFAULT NULL,
+place_of_composition text DEFAULT NULL,
+shelfmark text DEFAULT NULL,
+freeculture varchar(255) DEFAULT NULL,
+full_text_url text DEFAULT NULL,
+full_text_plain text DEFAULT NULL,
+is_full_text varchar(255) DEFAULT NULL,
+image_url text DEFAULT NULL,
+source text DEFAULT NULL,
+metadata_xml_url text DEFAULT NULL,
+metadata_html_url text DEFAULT NULL,
+is_part_of text DEFAULT NULL,
+has_part text DEFAULT NULL,
+text_divisions text DEFAULT NULL,
+language varchar(255) DEFAULT NULL,
+ocr varchar(255) DEFAULT NULL,
+thumbnail_url text DEFAULT NULL,
+notes text DEFAULT NULL,
+file_format varchar(255) DEFAULT NULL,
+date_created datetime DEFAULT NULL,
+date_updated datetime DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+
+
+
  -->
