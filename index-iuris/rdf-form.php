@@ -232,7 +232,7 @@ Would you be able to use the terms in the dropdown to complete the form for the 
 <label>Value:</label><input type="text" class="text-input" name="role-value[]">
 </div>
 </div>
-<div><button type="button" id="add_field_button" >Add another role</button>
+<div><button type="button" id="add_role_button" >Add another role</button>
 </div>
 </div>
 
@@ -259,6 +259,8 @@ Would you be able to use the these terms to complete the form for the items in y
 </p>
 </div>
 <div class="form-item-question">
+<div id="genre_fields_wrap">
+<div>
 <label>Genre:</label>
 <select name="genre">
 <option>Account</option>
@@ -333,7 +335,14 @@ Would you be able to use the these terms to complete the form for the items in y
 <option>Writ</option>
 </select>
 </div>
+
 </div>
+<div><button type="button" id="add_genre_button" >Add another genre</button>
+</div>
+</div>
+
+</div>
+
 <div class="form-poll-item">
 <div class="form-item-question">
 <p>Should this field be required or optional?</p>

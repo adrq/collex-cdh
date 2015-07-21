@@ -12,11 +12,12 @@ include("config.php");
 <script> <?php //TODO: add this to head only on rdf-form page?>
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $("#role_fields_wrap"); //Fields wrapper
-    var add_button      = $("#add_field_button"); //Add button ID
+    var role_wrapper         = $("#role_fields_wrap"); //Fields wrapper
+    var genre_wrapper         = $("#genre_fields_wrap"); //Fields wrapper
+    var add_role_button      = $("#add_role_button"); //Add button ID
     
     var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
+    $(add_role_button).click(function(e){ //on add input button click
         var inputFields;
     	$.ajax({
     		  url: "/index-iuris/form-include.php",
@@ -25,14 +26,33 @@ $(document).ready(function() {
     		  },
     		  success: function( data ) {
     		    inputFields = data;
-    		    $(wrapper).append(inputFields);
+    		    $(role_wrapper).append(inputFields);
+    		  }
+    		});
+        e.preventDefault();
+
+    });
+
+    $(add_genre_button).click(function(e){ //on add input button click
+        var inputFields;
+    	$.ajax({
+    		  url: "/index-iuris/form-include.php",
+    		  data: {
+    		    "form-element" : "genre"
+    		  },
+    		  success: function( data ) {
+    		    inputFields = data;
+    		    $(genre_wrapper).append(inputFields);
     		  }
     		});
         e.preventDefault();
 
     });
     
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+    $(genre_wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+    $(role_wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
