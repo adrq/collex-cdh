@@ -10,7 +10,7 @@ $_SESSION['logged-in'] = false;
 window.location = "../index-iuris/index.php"
 //-->
 </script>
-<h2>Logged in successfully. Click <a href="index.php">here</a> to continue</h2>
+<h2>Logged out successfully. Click <a href="index.php">here</a> to continue</h2>
 </div>
 
 

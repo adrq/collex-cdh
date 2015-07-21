@@ -185,9 +185,10 @@ Would you be able to use the terms in the dropdown to complete the form for the 
 </p>
 </div>
 <div class="form-item-question">
+<div id="role_fields_wrap">
+<div>
 <label>Role:</label>
-<select name="role">
-<option>Visual Artist</option>
+<select name="role[]">
 <option>Author</option>
 <option>Editor</option>
 <option>Publisher</option>
@@ -223,13 +224,18 @@ Would you be able to use the terms in the dropdown to complete the form for the 
 <option>Sculptor</option>
 <option>Type designer</option>
 <option>Typographer</option>
+<option>Visual Artist</option>
 <option>Wood engraver</option>
 <option>Wood cutter</option>
 </select>
+<br>
+<label>Value:</label><input type="text" class="text-input" name="role-value[]">
 </div>
-<div class="form-item-question">
-<label>Value:</label><input type="text" class="text-input" name="role-value">
 </div>
+<div><button type="button" id="add_field_button" >Add another role</button>
+</div>
+</div>
+
 </div>
 <div class="form-poll-item">
 <div class="form-item-question">

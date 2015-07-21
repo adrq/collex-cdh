@@ -7,6 +7,36 @@ include("config.php");
 <meta charset="UTF-8">
 
 <link rel="stylesheet" type="text/css" href="style.css">
+<script src="js/jquery-1.11.3.js"></script>
+
+<script> <?php //TODO: add this to head only on rdf-form page?>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $("#role_fields_wrap"); //Fields wrapper
+    var add_button      = $("#add_field_button"); //Add button ID
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        var inputFields;
+    	$.ajax({
+    		  url: "/index-iuris/form-include.php",
+    		  data: {
+    		    "form-element" : "role"
+    		  },
+    		  success: function( data ) {
+    		    inputFields = data;
+    		    $(wrapper).append(inputFields);
+    		  }
+    		});
+        e.preventDefault();
+
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
 
 </head>
 
@@ -29,6 +59,7 @@ include("config.php");
 <?php if ($_SESSION['logged-in']==true) :?>
 <div class="nav-item"><a href="rdf-form.php">Metadata submission form</a></div>
 <div class="nav-item"><a href="governance.php">Governance</a></div>
+<div class="nav-item"><a href="view-submissions.php">View submissions</a></div>
 <div class="nav-item">Welcome, <?php echo $_SESSION['username']?> - <a href="logout.php">Log out</a></div>
 <?php else:?>
 <div class="nav-item"><a href="login.php">Log in</a></div>
