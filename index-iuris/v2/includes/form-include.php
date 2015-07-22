@@ -133,6 +133,15 @@ if (isset($_GET['form-element'])){
 <br>
 <a href="#" class="remove_field">Remove</a>
 </div>
+
+	<?php
+	elseif ($_GET['form-element'] == 'has-part') :?>
+	<div>
+<label>Has part:</label><input type="text" class="text-input" name="has-part[]">
+<br>
+<a href="#" class="remove_field">Remove</a>
+</div>	
+	
 <?php 
 	
 	endif;

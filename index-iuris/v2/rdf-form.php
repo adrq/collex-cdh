@@ -600,12 +600,12 @@ CEEC: Codices Electronici Ecclesiae Coloniensis
 <p>
 <span class="monospace">isPartOf</span> is a useful field for legal texts, which often are compilations of many texts. This field is optional.
 </p>
-<p>Examples:</p>
+<!-- <p>Examples:</p>
 <p class="form-item-example">
 For the Bulla “Rex Pacificus”, one could have <span class="bold-text">IsPartOf</span> Liber extravagantium decretalium<br>
 For a particular transcription of the Council of Arles, on could have <span class="bold-text">IsPartOf</span> Collectio Hispana<br>
 For a particular Novel of Justinian, one could have <span class="bold-text">IsPartOf</span> Corpus iuris civilis<br>
-</p>
+</p>-->
 </div>
 <div class="form-item-question">
 <label>Is part of:</label><input type="text" class="text-input" name="is-part-of">
@@ -626,15 +626,22 @@ For a particular Novel of Justinian, one could have <span class="bold-text">IsPa
 <p>
 <span class="monospace">hasPart</span> is the obverse of <span class="monospace">isPartOf</span>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.
 </p>
-<p>The final form will have the option to add multilple <span class="monospace">hasPart</span> fields.</p>
-<p>Examples:</p>
+<!-- <p>Examples:</p>
 <p class="form-item-example">
 Collectio Dacheriana <span class="bold-text">HasPart</span> Book I, Book II, Book III
 Collectio Dionysiana <span class="bold-text">HasPart</span> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.
-</p>
+</p>-->
 </div>
 <div class="form-item-question">
-<label>Has part:</label><input type="text" class="text-input" name="has-part">
+<div id="has-part-wrap">
+<div>
+<label>Has part:</label><input type="text" class="text-input" name="has-part[]">
+</div>
+</div>
+
+<div><button type="button" id="add-has-part-button">Add another part</button>
+</div>
+
 </div>
 </div>
 <div class="form-poll-item">
@@ -643,7 +650,7 @@ Collectio Dionysiana <span class="bold-text">HasPart</span> Canones Apostolorum,
 </div>
 </div>
 </div>
-<?php //TODO - add multiple hasPart?>
+
 
 
 <div class="form-item">

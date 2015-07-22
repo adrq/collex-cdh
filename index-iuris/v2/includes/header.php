@@ -31,6 +31,8 @@ $(document).ready(function() {
     var add_genre_button      = $("#add-genre-button"); //Add button ID
     var alt_title_wrapper = $("#alt-title-fields-wrap"); //Fields wrapper
     var add_alt_title_button      = $("#add-alt-title-button"); //Add button ID
+    var has_part_wrapper = $("#has-part-wrap"); //Fields wrapper
+    var add_has_part_button      = $("#add-has-part-button"); //Add button ID
     
     $(add_role_button).click(function(e){ //on add input button click
         var inputFields;
@@ -79,6 +81,22 @@ $(document).ready(function() {
         e.preventDefault();
 
     });
+
+    $(add_has_part_button).click(function(e){ //on add input button click
+        var inputFields;
+    	$.ajax({
+    		  url: "includes/form-include.php",
+    		  data: {
+    		    "form-element" : "has-part"
+    		  },
+    		  success: function( data ) {
+    		    inputFields = data;
+    		    $(has_part_wrapper).append(inputFields);
+    		  }
+    		});
+        e.preventDefault();
+
+    });
     
     
     $(genre_wrapper).on("click",".remove_field", function(e){ //user click on remove text
@@ -88,6 +106,9 @@ $(document).ready(function() {
         e.preventDefault(); $(this).parent('div').remove();
     })
     $(alt_title_wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove();
+    })
+    $(has_part_wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove();
     })
 });
