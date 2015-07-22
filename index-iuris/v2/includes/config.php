@@ -8,7 +8,7 @@ $database_username = "collex";
 $database_password = "password";
 $database_database = "cdh_rdf_inbox";
 
-define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "root");
-define("DB_BASE", "collex");
+define("DB_HOST", "127.0.0.1");
+define("DB_USER", "collex");
+define("DB_PASS", "password");
+define("DB_BASE", "cdh_rdf_inbox");

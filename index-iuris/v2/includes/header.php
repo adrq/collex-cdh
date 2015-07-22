@@ -19,6 +19,83 @@ require_once "config.php";
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/collex.css">
   <link rel="stylesheet" href="css/style.css">
+  
+  <script src="js/jquery.min.js"></script>
+
+<script> <?php //TODO: add this to head only on rdf-form page ?>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var role_wrapper         = $("#role_fields_wrap"); //Fields wrapper
+    var genre_wrapper         = $("#genre-fields-wrap"); //Fields wrapper
+    var add_role_button      = $("#add-role-button"); //Add button ID
+    var add_genre_button      = $("#add-genre-button"); //Add button ID
+    var alt_title_wrapper = $("#alt-title-fields-wrap"); //Fields wrapper
+    var add_alt_title_button      = $("#add-alt-title-button"); //Add button ID
+    
+    
+    var x = 1; //initlal text box count
+    $(add_role_button).click(function(e){ //on add input button click
+        var inputFields;
+    	$.ajax({
+    		  url: "/index-iuris/form-include.php",
+    		  data: {
+    		    "form-element" : "role"
+    		  },
+    		  success: function( data ) {
+    		    inputFields = data;
+    		    $(role_wrapper).append(inputFields);
+    		  }
+    		});
+        e.preventDefault();
+
+    });
+
+    $(add_genre_button).click(function(e){ //on add input button click
+        var inputFields;
+    	$.ajax({
+    		  url: "/index-iuris/form-include.php",
+    		  data: {
+    		    "form-element" : "genre"
+    		  },
+    		  success: function( data ) {
+    		    inputFields = data;
+    		    $(genre_wrapper).append(inputFields);
+    		  }
+    		});
+        e.preventDefault();
+
+    });
+
+    $(add_alt_title_button).click(function(e){ //on add input button click
+        var inputFields;
+    	$.ajax({
+    		  url: "/index-iuris/form-include.php",
+    		  data: {
+    		    "form-element" : "alt-title"
+    		  },
+    		  success: function( data ) {
+    		    inputFields = data;
+    		    $(alt_title_wrapper).append(inputFields);
+    		  }
+    		});
+        e.preventDefault();
+
+    });
+    
+    
+    $(genre_wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+    $(role_wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+    $(alt_title_wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
+  
+  
 </head>
 <body>
 

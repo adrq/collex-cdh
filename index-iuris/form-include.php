@@ -52,7 +52,7 @@ if (isset($_GET['form-element'])){
 	elseif ($_GET['form-element'] == 'genre') :?>
 <div>
 <label>Genre:</label>
-<select name="genre">
+<select name="genre[]">
 <option>Account</option>
 <option>Accusation</option>
 <option>Aide</option>
@@ -127,7 +127,13 @@ if (isset($_GET['form-element'])){
 <br>
 <a href="#" class="remove_field">Remove</a>
 </div>
-<?php
+
+<?php elseif ($_GET['form-element'] == 'alt-title') :?>
+<div><label>Alternative title:</label><input type="text" class="text-input" name="alternative-title[]">
+<br>
+<a href="#" class="remove_field">Remove</a>
+</div>
+<?php 
 	
 	endif;
 }

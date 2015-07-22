@@ -1,10 +1,16 @@
-<?php $pageTitle="Index Iuris - Metadata Submission Form" //require php v5.5?>
-<?php include("header.php")?>
+<?php
+/**
+ * @file rdf-form.php
+ * metadata submission form
+ */
+$title = "Metadata Submission Form";
+require "includes/header.php";
+?>
 <?php if($_SESSION['logged-in']!=true): ?>
 <div id="login-container">
 <script type="text/javascript">
 <!--
-window.location = "../index-iuris/login.php"
+//window.location = "../index-iuris/v2/login.php"
 //-->
 </script>
 <h2>Please click <a href="login.php">here</a> to login</h2>
@@ -818,5 +824,4 @@ $dbCon->close();
 <div><a href="rdf-form.php">Submit a new form</a>
 </div>
 <?php endif;
-include("footer.php");
-?>
+require "includes/footer.php"; ?>
