@@ -1,9 +1,9 @@
 <?php
 /**
  * @file index.php
- * Prints the home pagae.
+ * view submissions
  */
-$title = "Home";
+$title = "View submissions";
 require "includes/header.php";
 ?>
 

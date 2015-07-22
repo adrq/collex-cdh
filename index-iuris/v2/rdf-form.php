@@ -798,7 +798,6 @@ include 'includes/rdf-generator.php';
 
 $submission = [];
 foreach ($_POST as $key => $item){
-	//echo '<span class="bold-text">'.$key.'</span> : '.$item.'<br>';
 	$submission[$key] = $item;
 }
 
@@ -818,10 +817,8 @@ $rdf_version = '0.1';
 $user_id = $_SESSION['user_id'];
 $escaped_json = "'".$mysqli->real_escape_string($jsonString)."'";
 $statement->bind_param("ssss", $escaped_json,$data_format,$rdf_version,$user_id);
-//$statement->execute();
+$statement->execute();
 
-//$rdf = generateRDF($submission);
-//echo '<pre>'.htmlspecialchars($rdf).'</pre>';
 
 
 
