@@ -32,12 +32,10 @@ $(document).ready(function() {
     var alt_title_wrapper = $("#alt-title-fields-wrap"); //Fields wrapper
     var add_alt_title_button      = $("#add-alt-title-button"); //Add button ID
     
-    
-    var x = 1; //initlal text box count
     $(add_role_button).click(function(e){ //on add input button click
         var inputFields;
     	$.ajax({
-    		  url: "/index-iuris/form-include.php",
+    		  url: "includes/form-include.php",
     		  data: {
     		    "form-element" : "role"
     		  },
@@ -53,7 +51,7 @@ $(document).ready(function() {
     $(add_genre_button).click(function(e){ //on add input button click
         var inputFields;
     	$.ajax({
-    		  url: "/index-iuris/form-include.php",
+    		  url: "includes/form-include.php",
     		  data: {
     		    "form-element" : "genre"
     		  },
@@ -69,7 +67,7 @@ $(document).ready(function() {
     $(add_alt_title_button).click(function(e){ //on add input button click
         var inputFields;
     	$.ajax({
-    		  url: "/index-iuris/form-include.php",
+    		  url: "includes/form-include.php",
     		  data: {
     		    "form-element" : "alt-title"
     		  },
@@ -84,13 +82,13 @@ $(document).ready(function() {
     
     
     $(genre_wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+        e.preventDefault(); $(this).parent('div').remove();
     })
     $(role_wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+        e.preventDefault(); $(this).parent('div').remove();
     })
     $(alt_title_wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
+        e.preventDefault(); $(this).parent('div').remove();
     })
 });
 </script>
