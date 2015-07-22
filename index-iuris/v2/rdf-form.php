@@ -145,6 +145,7 @@ Summa “Animal est substantia”
 <div class="form-item-question">
 <label>Type:</label>
 <select name="type">
+<option selected></option>
 <option>Critical edition</option>
 <option>Digital image</option>
 <option>Drawing</option>
@@ -195,6 +196,7 @@ Would you be able to use the terms in the dropdown to complete the form for the 
 <div>
 <label>Role:</label>
 <select name="role[]">
+<option selected></option>
 <option>Author</option>
 <option>Editor</option>
 <option>Publisher</option>
@@ -269,6 +271,7 @@ Would you be able to use the these terms to complete the form for the items in y
 <div>
 <label>Genre:</label>
 <select name="genre[]">
+<option selected></option>
 <option>Account</option>
 <option>Accusation</option>
 <option>Aide</option>
@@ -613,7 +616,7 @@ For a particular Novel of Justinian, one could have <span class="bold-text">IsPa
 </div>
 <div class="form-poll-item">
 <div class="form-item-question">
-<label>Comments:</label><textarea name="is-part-of-comments" rows="4" cols="50"></textarea>
+<label>Comments:</label><textarea name="comments-is-part-of" rows="4" cols="50"></textarea>
 </div>
 </div>
 </div>
@@ -646,7 +649,7 @@ Collectio Dionysiana <span class="bold-text">HasPart</span> Canones Apostolorum,
 </div>
 <div class="form-poll-item">
 <div class="form-item-question">
-<label>Comments:</label><textarea name="has-part-comments" rows="4" cols="50"></textarea>
+<label>Comments:</label><textarea name="comments-has-part" rows="4" cols="50"></textarea>
 </div>
 </div>
 </div>
