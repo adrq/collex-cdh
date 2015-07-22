@@ -4,11 +4,13 @@
  * Prints the login page.
  */
 $title = "Login";
+$loginRequired = false;
 require "includes/header.php";
 ?>
 <div class="container">
   <div class="row page-header">
     <div class="col-xs-6 center-block">
+
       <?php if (!isset($_POST["username"])): ?>
         <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
           <legend>Login</legend>
@@ -59,8 +61,7 @@ require "includes/header.php";
             $_SESSION["username"]  = $username;
             $_SESSION["logged-in"] = true;
 
-            //header("Location: index"); Need to change this to JS to redirect. Headers already sent
-            print "Logged in successfully. Click <a href='./'>here</a> to continue.";
+            ?><script>window.location = "index";</script><?php
           } else { ?>
             <h2>Unable to log in, please try again.</h2>
             <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
@@ -68,14 +69,14 @@ require "includes/header.php";
               <fieldset>
                 <div class="form-group">
                   <label for="username" class="col-xs-2 control-label">Username</label>
-                  <div class="col-xs-10">
+                  <div class="col-xs-10 has-error">
                     <input type="text" class="form-control" id="username" name="username">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="password" class="col-xs-2 control-label">Password</label>
-                  <div class="col-xs-10">
+                  <div class="col-xs-10 has-error">
                     <input type="password" class="form-control" id="password" name="password">
                   </div>
                 </div>

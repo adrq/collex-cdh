@@ -4,6 +4,7 @@
  * Prints out the registration page.
  */
 $title = "Register";
+$loginRequired = false;
 require "includes/header.php";
 ?>
 <div class="container">
@@ -14,28 +15,28 @@ require "includes/header.php";
           <legend>Register</legend>
           <fieldset>
             <div class="form-group">
-              <label for="username" class="col-xs-2 control-label">Username</label>
-              <div class="col-xs-10">
+              <label for="username" class="col-xs-4 control-label">Username</label>
+              <div class="col-xs-8">
                 <input type="text" class="form-control" id="username" name="username">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="password1" class="col-xs-2 control-label">Password</label>
-              <div class="col-xs-10">
+              <label for="password1" class="col-xs-4 control-label">Password</label>
+              <div class="col-xs-8">
                 <input type="password" class="form-control" id="password1" name="password1">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="password2" class="col-xs-2 control-label">Password, Again</label>
-              <div class="col-xs-10">
+              <label for="password2" class="col-xs-4 control-label">Confirm Password</label>
+              <div class="col-xs-8">
                 <input type="password" class="form-control" id="password2" name="password2">
               </div>
             </div>
 
             <div class="form-group">
-              <div class="col-xs-2">
+              <div class="col-xs-3">
                 <button type="submit" class="btn btn-primary col-xs-12">Register</button>
               </div>
             </div>
@@ -63,7 +64,7 @@ require "includes/header.php";
         $statement = $mysqli->prepare("SELECT 1 FROM users WHERE username = ?");
         $statement->bind_param("s", $username);
         $statement->execute();
-        $statement->store_results();
+        $statement->store_result();
 
         $register;
         $action = "";
@@ -79,7 +80,7 @@ require "includes/header.php";
         }
 
         $register->execute();
-        $register->store_results();
+        $register->store_result();
 
         if ($register->errno) {
           print "<h3 class='text-danger'>There was an error trying to register. (" . $register->errno . ")</h3>";
