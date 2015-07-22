@@ -794,11 +794,11 @@ This edition retains the orthography of the medieval manuscript.
 <?php else: ?>
 
 <?php 
-include 'rdf-generator.php';
+include 'includes/rdf-generator.php';
 
 $submission = [];
 foreach ($_POST as $key => $item){
-	echo '<span class="bold-text">'.$key.'</span> : '.$item.'<br>';
+	//echo '<span class="bold-text">'.$key.'</span> : '.$item.'<br>';
 	$submission[$key] = $item;
 }
 
@@ -806,26 +806,24 @@ $jsonString = json_encode($submission, JSON_PRETTY_PRINT);
 
 echo '<pre>'.$jsonString.'</pre>';
 
-$dbCon = mysqli_connect($database_host,$database_username,$database_password,$database_database);
-if (!$dbCon) {
-	die('Could not connect: ' . mysql_error());
-}
-$query = "INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user) VALUES ('".mysqli_real_escape_string($dbCon,$jsonString)."','json','0.1',NOW(),'".$_SESSION['user_id']."');";
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
 
-echo $query;
-
-$rdf = generateRDF($submission);
-echo '<pre>'.htmlspecialchars($rdf).'</pre>';
-
-if (mysqli_query($dbCon, $query)){
-	echo 'Updated database';
-}
-else {
-	echo "Error: " . $query . "<br>" . mysqli_error($dbCon);
+if ($mysqli->connect_error) {
+	exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
 }
 
+$statement = $mysqli->prepare("INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user_id) VALUES (?,?,?,NOW(),?)");
+$data_format = 'json';
+$rdf_version = '0.1';
+$user_id = $_SESSION['user_id'];
+$escaped_json = "'".$mysqli->real_escape_string($jsonString)."'";
+$statement->bind_param("ssss", $escaped_json,$data_format,$rdf_version,$user_id);
+//$statement->execute();
 
-$dbCon->close();
+//$rdf = generateRDF($submission);
+//echo '<pre>'.htmlspecialchars($rdf).'</pre>';
+
+
 
 ?>
 <div><a href="rdf-form.php">Submit a new form</a>

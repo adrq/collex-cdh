@@ -24,7 +24,6 @@ require_once "config.php";
 
 <script> <?php //TODO: add this to head only on rdf-form page ?>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
     var role_wrapper         = $("#role_fields_wrap"); //Fields wrapper
     var genre_wrapper         = $("#genre-fields-wrap"); //Fields wrapper
     var add_role_button      = $("#add-role-button"); //Add button ID
@@ -142,6 +141,7 @@ $(document).ready(function() {
           <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
           <li><a href="rdf-form">Metadata Submission</a></li>
           <li><a href="governance">Governance</a></li>
+          <li><a href="view-submissions">View submissions</a></li>
           <li>Welcome, <?php print $_SESSION["username"]; ?> - <a href="logout">Logout</a></li>
           <?php else: ?>
           <li><a href="login">Login</a></li>
