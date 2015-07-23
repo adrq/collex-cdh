@@ -3,15 +3,17 @@
  * @file header.php
  * Prints out the HTML structure.
  */
-error_reporting(-1);
-ini_set("display_errors", "On");
 session_start();
 
-require_once "config.php";
-
-if (isset($loginRequired) && $loginRequired && !$_SESSION["logged-in"]) {
+$loginRequired = isset($loginRequired) ? $loginRequired : false;
+if ($loginRequired && !isset($_SESSION["logged-in"]) && !$_SESSION["logged-in"]) {
   header("Location: login");
 }
+
+error_reporting(-1);
+ini_set("display_errors", "On");
+
+require_once "config.php";
 
 ?><!DOCTYPE html>
 <html>
@@ -25,15 +27,19 @@ if (isset($loginRequired) && $loginRequired && !$_SESSION["logged-in"]) {
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <noscript>
+    <style>nav, .container { display: none !important; }</style>
+    <p>You need JavaScript enabled to use this site.</p>
+  </noscript>
 
   <nav class="nav navbar-default">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
-          <?php for ($i = 0; $i < 3; $i++): ?>
-            <span class="icon-bar"></span>
-          <?php endfor; ?>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
         <?php
         // TODO: Convert to image.

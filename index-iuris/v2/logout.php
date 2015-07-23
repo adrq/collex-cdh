@@ -1,21 +1,10 @@
 <?php
 /**
- * @file index.php
- * Prints the home pagae.
+ * @file logout.php
+ * Logs a user out.
  */
-$title = "Logout";
-require "includes/header.php";
-?>
-<?php
-$_SESSION['logged-in'] = false; 
-?>
-<div id="login-container">
-<h2>Logged out successfully. Click <a href="index.php">here</a> to continue</h2>
-</div>
+session_start();
 
-
-
-</body>
-
-
-</html>
+if (session_destroy()) {
+  header("Location: ./");
+}
