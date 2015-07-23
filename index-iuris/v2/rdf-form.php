@@ -78,7 +78,7 @@ if (!isset($_POST['submitted'])): ?>
               <div class="form-group">
                 <label for="rdfAbout" class="control-label col-xs-2">rdf:about</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="rdf:about" id="rdfAbout" required="">
+                  <input type="text" class="form-control" name="rdf-about" id="rdfAbout" required="">
                 </div>
               </div>
             </div>
@@ -537,7 +537,7 @@ if (!isset($_POST['submitted'])): ?>
               <div class="form-group">
                 <label for="isPartOf" class="control-label col-xs-2">Is part of</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control col-xs-10" name="is-part-of" id="isPartOf">
+                  <input type="text" class="form-control col-xs-10" name="is-part-of[]" id="isPartOf">
                 </div>
               </div>
             </div>
@@ -739,7 +739,153 @@ else:
     exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
   }
 
-  $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?, ?, ?, NOW(), ?)");
+  $statement = $mysqli->prepare("SELECT id FROM objects WHERE url = ?");
+  $statement->bind_param("s", $_POST['seeAlso']);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($id);
+  
+  if ($statement->num_rows > 0) {
+  	//TODO: record already exists - redirect user to view submissions page
+  	echo "record already exists";
+  }
+  
+  
+  //store in metadata tables
+  $query = "INSERT INTO objects (
+      		custom_namespace,
+rdf_about,
+archive,
+title,
+type,
+url,
+origin,
+provenance,
+place_of_composition,
+shelfmark,
+freeculture,
+full_text_url,
+full_text_plain,
+is_full_text,
+image_url,
+source,
+metadata_xml_url,
+metadata_html_url,
+text_divisions,
+language,
+ocr,
+thumbnail_url,
+notes,
+file_format,
+date_created,
+date_updated,
+user_id)
+      		VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?)";
+  $statement = $mysqli->prepare($query);
+  $custom_namespace = $_POST['custom-namespace'];
+$rdf_about = $_POST['rdf-about']; 
+$archive = $_POST['archive'];
+$title = $_POST['title'];
+$type = $_POST['type'];
+$url = $_POST['seeAlso'];
+$origin = $_POST['origin'];
+$provenance = $_POST['provenance'];
+$place_of_composition = $_POST['place-of-composition'];
+$shelfmark = $_POST['shelfmark'];
+$freeculture = 'true'; //TODO add this field to form, pending approval from Colin and Abigail
+$full_text_url = '';//TODO add this field to form, pending approval from Colin and Abigail
+$full_text_plain = '';//TODO add this field to form, pending approval from Colin and Abigail
+$is_full_text = '';//TODO add this field to form, pending approval from Colin and Abigail
+$image_url = '';//TODO add this field to form, pending approval from Colin and Abigail
+$source = $_POST['source'];
+$metadata_xml_url = $_POST['url-source-code']; //TODO: determine format from input and add to appropriate variable
+$metadata_html_url = $_POST['url-source-code'];
+$text_divisions = $_POST['text-divisions'];
+$language = $_POST['language'];
+$ocr = $_POST['ocr'];
+$thumbnail_url = '';//TODO add this field to form, pending approval from Colin and Abigail
+$notes = $_POST['notes'];
+$file_format = $_POST['file-format'];
+  
+  $statement->bind_param("sssssssssssssssssssssssss", 
+  		$custom_namespace,
+  		$rdf_about,
+  		$archive,
+  		$title,
+  		$type,
+  		$url,
+  		$origin,
+  		$provenance,
+  		$place_of_composition,
+  		$shelfmark,
+  		$freeculture,
+  		$full_text_url,
+  		$full_text_plain,
+  		$is_full_text,
+  		$image_url,
+  		$source,
+  		$metadata_xml_url,
+  		$metadata_html_url,
+  		$text_divisions,
+  		$language,
+  		$ocr,
+  		$thumbnail_url,
+  		$notes,
+  		$file_format,
+  		$userID
+  		);
+  $statement->execute();
+  
+  $last_id = $mysqli->insert_id;
+  
+  //loop through and add alternative titles to table
+  $alt_titles = $_POST['alternative-title'];
+  foreach ($alt_titles as $alt_title){
+  	$statement = $mysqli->prepare("INSERT INTO alt_titles (object_id,alt_title) VALUES (?,?)");
+  	$statement->bind_param("is",$last_id,$alt_title);
+  	$statement->execute();
+  }
+  
+  //loop through and add genres to table
+  $genres = $_POST['genre'];
+  foreach ($genres as $genre){
+  	$statement = $mysqli->prepare("INSERT INTO genres (object_id,genre) VALUES (?,?)");
+  	$statement->bind_param("is",$last_id,$genre);
+  	$statement->execute();
+  }
+
+  //add date to table
+  $statement = $mysqli->prepare("INSERT INTO dates (object_id,type,machine_date,human_date) VALUES (?,?,?,?)");
+  $machine_date = $_POST['date-machine'];
+  $human_date = $_POST['date-human'];
+  $date_type = 'text';
+  $statement->bind_param("isss",$last_id,$date_type,$machine_date,$human_date);
+  $statement->execute();
+  
+  //loop through and add isPart to table
+  $isPartOf_parts = $_POST['is-part-of'];
+  $part_type = 'isPartOf';
+  foreach ($isPartOf_parts as $part_id){
+  	$statement = $mysqli->prepare("INSERT INTO parts (object_id,type,part_id) VALUES (?,?,?)");
+  	$statement->bind_param("isi",$last_id,$part_type,$part_id);
+  	$statement->execute();
+  }
+  
+  //loop through and add isPart to table
+  $hasPart_parts = $_POST['has-part'];
+  $part_type = 'hasPart';
+  foreach ($hasPart_parts as $part_id){
+  	$statement = $mysqli->prepare("INSERT INTO parts (object_id,type,part_id) VALUES (?,?,?)");
+  	$statement->bind_param("isi",$last_id,$part_type,$part_id);
+  	$statement->execute();
+  }
+  
+
+  //TODO: role, subject, discipline
+
+  
+  
+  $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?,?,?,NOW(),?)");
   $statement->bind_param("ssss", $json, $format, $version, $userID);
   $statement->execute();
   $statement->store_result();
@@ -769,6 +915,7 @@ else:
     <div class="row">
       <div class="col-xs-3 center-block">
         <a href="rdf-form" class="btn btn-primary col-xs-8 center-block">Submit a New Form</a>
+        <?php //TODO: add a link to view-submissions page ?>
       </div>
     </div>
   </div>

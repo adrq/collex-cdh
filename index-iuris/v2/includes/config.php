@@ -14,10 +14,10 @@ $database_password = "password";
 $database_database = "cdh_rdf_inbox";
 
 // TODO: Convert these to proper values.
-define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "root");
-define("DB_BASE", "collex");
+define("DB_HOST", "127.0.0.1");
+define("DB_USER", "collex");
+define("DB_PASS", "password");
+define("DB_BASE", "cdh_rdf_inbox");
 
 global $mysqli;
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);

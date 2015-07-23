@@ -91,7 +91,6 @@ require "includes/header.php";
       ?>
       <div class="col-xs-8">
         <h4><?php print $username; ?> - <time><?php print $date; ?><time></h4>
-        <?php // TODO: Figure out if there is a way to revert escaped characters (i.e. \' => ') without reverting HTML tags. ?>
         <p class="comment-text"><?php print $comment; ?></p>
         <hr>
       </div>
