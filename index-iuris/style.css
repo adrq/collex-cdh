@@ -8,8 +8,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video,  {
 	margin: 0;
@@ -69,7 +69,7 @@ a {
 	margin-bottom: 1em;
 	border-bottom-left-radius: .5em;
 	border-bottom-right-radius: .5em;
-	
+
 }
 
 .nav-item {
@@ -193,7 +193,7 @@ FORM INPUT
 	float: left;
 }
 
-.comment-text {
+.comment-text-old {
 	background-color: #F2F2F2;
 	border-radius: 1em;
 	margin-bottom: 1em;

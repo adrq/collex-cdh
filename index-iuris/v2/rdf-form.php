@@ -1,7 +1,7 @@
 <?php
 /**
  * @file rdf-form.php
- * metadata submission form
+ * Prints the Metdata Submission Form.
  */
 $title = "Metadata Submission Form";
 $loginRequired = true;
@@ -419,394 +419,329 @@ if (!isset($_POST['submitted'])): ?>
           </section>
 
 
-        <legend>Shelfmark</legend>
-        <section class="form-group">
-          <div class="col-xs-8 text-justify">
-            <p><samp>Shelfmark</samp> is required for items that are manuscripts. This is the unique, internationally known identifier for a manuscript. Consists of City, Repository (library), fond (internal library collection), number. For incunabula or other rare printings, this field may be used for library identifications of the physical artefcat, as well. This field is optional for all other publications or editions.</p>
-            <p>Examples:</p>
-            <ul class="list-unstyled form-item-example">
-              <?php foreach (array("Admont en Styrie, Bibliothèque du monastère, 162", "Berlin, Staatsbibliothek Preussischer Kulturbesitz, Lat. fol. 626", "Vaticano, Città del, Biblioteca Apostolica Vaticana, Ottobon. lat. 3295", "Würzburg, Universitätsbibliothek, M.p.th.f.72", "Lexington, University of Kentucky, Margaret I. King Library, Special Collections, KBR197.6 .C36 1525") as $example): ?>
-                <li><?php print $example; ?></li>
-              <?php endforeach; ?>
-            </ul>
+          <legend>Shelfmark</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>Shelfmark</samp> is required for items that are manuscripts. This is the unique, internationally known identifier for a manuscript. Consists of City, Repository (library), fond (internal library collection), number. For incunabula or other rare printings, this field may be used for library identifications of the physical artefcat, as well. This field is optional for all other publications or editions.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <?php foreach (array("Admont en Styrie, Bibliothèque du monastère, 162", "Berlin, Staatsbibliothek Preussischer Kulturbesitz, Lat. fol. 626", "Vaticano, Città del, Biblioteca Apostolica Vaticana, Ottobon. lat. 3295", "Würzburg, Universitätsbibliothek, M.p.th.f.72", "Lexington, University of Kentucky, Margaret I. King Library, Special Collections, KBR197.6 .C36 1525") as $example): ?>
+                  <li><?php print $example; ?></li>
+                <?php endforeach; ?>
+              </ul>
 
-            <label for="shelfmark" class="control-label col-xs-2">Shelfmark</label>
-            <div class="col-xs-10">
-              <input type="text" class="form-control" name="shelfmark" id="shelfmark">
+              <label for="shelfmark" class="control-label col-xs-2">Shelfmark</label>
+              <div class="col-xs-10">
+                <input type="text" class="form-control" name="shelfmark" id="shelfmark">
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
+          <?php /*
+          <section class="form-group">
+            <div class="form-metadata-item">
+              <h3>freeculture?</h3>
+            </div>
+          </section>
 
-        <!--
-        <section class="form-group">
-          <div class="col-xs-8 text-justify">
+          <section class="form-group">
+            <div class="form-metadata-item">
+              <h3>Full text goes here</h3>
+            </div>
+          </section>
+
+          <section class="form-group">
+            <div class="form-metadata-item">
+              <h3>Image goes here</h3>
+            </div>
+          </section>
+          */ ?>
+
+          <legend>Alternative title</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>Alternative title</samp> is an optional field that can be used for common, "pet" names of a text or manuscript. The final form will include the option to submit more than one <samp>alternative title</samp>.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <li>"The Florence Codex"</li>
+                <li>"X"</li>
+                <li>"Concordia Discordantium Canonum"</li>
+              </ul>
+
+              <div class="form-group">
+                <label for="altTitle" class="control-label col-xs-2">Alt Title</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="alternative-title[]" id="altTitle">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-4 pull-right">
+                  <?php // TODO: Make this work. ?>
+                  <button type="button" class="btn btn-default col-xs-12">Add Another Alternative Title</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <legend>Source</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p>This field should not be confused with provenance, place of origin of object, place of composition or isPartOf. <samp>Source</samp> is used for the title of the larger work, resource, or collection of which the present object is a part. Can be used for the title of a journal, anthology, book, online collection, etc.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <li>The Spoils of the Pope and the Pirates, 1357: the complete legal dossier form the Vatican Archives</li>
+                <li>The Common and Piepowder Courts of Southampton, 1426-1483</li>
+                <li>CEEC: Codices Electronici Ecclesiae Coloniensis</li>
+              </ul>
+
+              <label for="source" class="control-label col-xs-2">Source</label>
+              <div class="col-xs-10">
+                <input type="text" class="form-control" name="source" id="source">
+              </div>
+            </div>
+          </section>
+
+          <legend>Is part of</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
+              <?php /*
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <li>For the Bulla “Rex Pacificus”, one could have <strong>IsPartOf</strong> Liber extravagantium decretalium</li>
+                <li>For a particular transcription of the Council of Arles, on could have <strong>IsPartOf</strong> Collectio Hispana</li>
+                <li>For a particular Novel of Justinian, one could have <strong>IsPartOf</strong> Corpus iuris civilis</li>
+              </ul>
+              */ ?>
+
+              <label for="isPartOf" class="control-label col-xs-2">Is part of</label>
+              <div class="col-xs-10">
+                <input type="text" class="control-label col-xs-10" name="is-part-of" id="isPartOf">
+              </div>
             </div>
             <div class="col-xs-4">
+              <label for="isPartOfComments" class="control-label col-xs-3">Comments:</label>
+              <div class="col-xs-12">
+                <textarea class="form-control" name="comments-is-part-of" id="isPartOfComments" rows="4"></textarea>
               </div>
-        <div class="form-metadata-item">
-        <h3>freeculture?</h3>
-        </div>
-        </div>
+            </div>
+          </section>
 
+          <legend>Has part</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>hasPart</samp> is the obverse of <samp>isPartOf</samp>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.</p>
+              <?php /*
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <li>Collectio Dacheriana <strong>HasPart</strong> Book I, Book II, Book III</li>
+                <li>Collectio Dionysiana <strong>HasPart</strong> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.</li>
+              </ul>
+              */ ?>
 
-        <section class="form-group">
-          <div class="col-xs-8 text-justify">
+              <div class="form-group">
+                <label for="hasPart" class="control-label col-xs-2">Has Part</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="has-part[]" id="hasPart">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-3 pull-right">
+                  <button type="button" class="btn btn-default col-xs-12" id="add-has-part-button">Add Another Part</button>
+                </div>
+              </div>
             </div>
             <div class="col-xs-4">
+              <label for="hasPartComments" class="control-label col-xs-3">Comments</label>
+              <div class="col-xs-12">
+                <textarea class="form-control" name="comments-has-part" id="hasPartComments" rows="4"></textarea>
               </div>
-        <div class="form-metadata-item">
-        <h3>Full text goes here</h3>
-        </div>
-        </div>
+            </div>
+          </section>
 
+          <legend>Divisions of the text</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p>Divisions of the text is an optional field that is purely for information (that is, it does not affect digital display or processing). Here it is possible to give useful descriptions of how a compilation is structured, organized, or divided.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <li>The Collection in 74 Titles is divided into “titles”, each of which is divided into “canons”</li>
+                <li>The Dionysiana is divided into councils, each of which is preceded by a tabula titulorum and followed by a subscription list.  The body of the conciliar text is divided into canons.</li>
+                <li>The Decretum is divided into three parts.  The first part has 101 distinctiones; the second part has 36 causae, the third part, entitled “De consecration” contains 5 distinctiones.  Each causa is divided into quaestiones… etc.</li>
+              </ul>
 
-        <section class="form-group">
-          <div class="col-xs-8 text-justify">
+              <label for="textDivisions" class="control-label col-xs-2">Divisions</label>
+              <div class="col-xs-10">
+                <textarea class="form-control" name="text-divisions" id="textDivisions" rows="4"></textarea>
+              </div>
             </div>
             <div class="col-xs-4">
+              <label for="textDivisionsComments" class="control-label col-xs-3">Comments:</label>
+              <div class="col-xs-12">
+                <textarea class="form-control" name="comments-text-divisions" id="textDivisionsComments" rows="4"></textarea>
               </div>
-        <div class="form-metadata-item">
-        <h3>Image goes here</h3>
-        </div>
-        </div>
-      -->
-      <legend>Alternative title</legend>
-      <section class="form-group">
-        <div class="col-xs-8 text-justify">
-        </div>
-        <div class="col-xs-4">
-        </div>
-        <div class="form-metadata-item">
+            </div>
+          </section>
 
-          <div class="form-item-description">
-            <p>
-              <span class="monospace">alternative title</span> is an optional field that can be used for common, “pet” names of a text or manuscripts.
-            </p>
-            <p>The final form will include the option to submit more than one <span class="monospace">alternative title</span>.</p>
-            <p>Examples:</p>
-            <p class="form-item-example">
-              “The Florence Codex”<br>
-              “X”<br>
-              “Concordia Discordantium Canonum”
-            </p>
-          </div>
-          <div class="form-item-question">
-            <div id="alt-title-fields-wrap">
-              <div>
-                <label>Alternative title:</label><input type="text" class="text-input" name="alternative-title[]">
+          <legend>Language</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>Language</samp> identifies the language of the object using language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.</p>
+
+              <label for="language" class="control-label col-xs-2">Language</label>
+              <div class="col-xs-10">
+                <input type="text" class="form-control" name="language" id="language">
               </div>
-
             </div>
-            <div><button type="button" id="add-alt-title-button">Add another alternative title</button>
+          </section>
+
+          <legend>Metadata source code</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>Metadata source code</samp> is an optional field. If your project has metadata that does not duplicate the descriptions in the fields above that should be included in Index Iuris, you may use this field for the URL or URI for the web-accessible XML or HTML metadata.</p>
+
+              <label for="metadataSourceCode" class="control-label col-xs-2">URL</label>
+              <div class="col-xs-10">
+                <input type="text" class="form-control" name="url-source-code" id="metadataSourceCode">
+              </div>
             </div>
+          </section>
 
-          </div>
-        </div>
-     </section>
+          <legend>OCR</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>OCR</samp> is an optional field for recording whether the text was generated using OCR. The possible answers are yes or no.</p>
 
-      <!-- Need to add possibility for multiple alternative titles. -->
+              <div class="form-group">
+                <label class="control-label col-xs-5">Was this document generated with OCR?</label>
+                <div class="col-xs-2">
+                  <div class="radio">
+                    <label><input type="radio" name="ocr" value="true">Yes</label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="ocr" value="false">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-      <legend>Source</legend>
-      <section class="form-group">
-        <div class="col-xs-8 text-justify">
-        </div>
-        <div class="col-xs-4">
-        </div>
-        <div class="form-metadata-item">
+          <legend>Notes</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>Notes</samp> is an option, free-form field for recording information about the item that the contributor deems important.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <li>This set of images is missing fol. 54v, 55r, and 74r.</li>
+                <li>Images of the manuscript from which this transcription was made are available at http://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10181604_00005.html</li>
+                <li>There is another edition of this text at http://ancientrome.ru/ius/library/gaius/gai.htm</li>
+                <li>This edition retains the orthography of the medieval manuscript.</li>
+              </ul>
 
-          <div class="form-item-description">
-            <p>
-              <span class="monospace"></span> This field should not be confused with Provenance, Place of origin of object, Place of composition, or IsPartOf! <span class="monospace">source</span> is used for the title of the larger work, resource, or collection of which the present object is a part. Can be used for the title of a journal, anthology, book, online collection, etc.
-            </p>
-            <p>Examples:</p>
-            <p class="form-item-example">
-              The Spoils of the Pope and the Pirates, 1357: the complete legal dossier from the Vatican Archives<br>
-              The Common and Piepowder Courts of Southampton, 1426-1483<br>
-              CEEC: Codices Electronici Ecclesiae Coloniensis
-            </p>
-          </div>
-          <div class="form-item-question">
-            <label>Source:</label><input type="text" class="text-input" name="source">
-          </div>
-        </div>
-      </section>
+              <label for="notes" class="control-label col-xs-2">Notes</label>
+              <div class="col-xs-10">
+                <textarea class="form-control" name="notes" id="notes" rows="4"></textarea>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <label for="noteComments" class="control-label col-xs-3">Comments:</label>
+              <div class="col-xs-12">
+                <textarea class="form-control" name="comments-notes" id="noteComments" rows="4"></textarea>
+              </div>
+            </div>
+          </section>
 
+          <legend>File format</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p>File Format is a required field for each item, so that we can implement full-text searching whenever possible.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <?php foreach (array(".pdf files", ".xml files (TEI P5)", ".html files", ".jpg files") as $example): ?>
+                  <li><?php print $example; ?></li>
+                <?php endforeach; ?>
+              </ul>
 
-      <legend>Is part of</legend>
-      <section class="form-group">
-        <div class="col-xs-8 text-justify">
-        </div>
-        <div class="col-xs-4">
-        </div>
-        <div class="form-metadata-item">
+              <label for="fileFormat" class="control-label col-xs-2">Format</label>
+              <div class="col-xs-10">
+                <input type="text" class="form-control" name="file-format" id="fileFormat" required="">
+              </div>
+            </div>
+          </section>
 
-          <div class="form-item-description">
-            <p>
-              <span class="monospace">isPartOf</span> is a useful field for legal texts, which often are compilations of many texts. This field is optional.
-            </p>
-        <!-- <p>Examples:</p>
-        <p class="form-item-example">
-        For the Bulla “Rex Pacificus”, one could have <span class="bold-text">IsPartOf</span> Liber extravagantium decretalium<br>
-        For a particular transcription of the Council of Arles, on could have <span class="bold-text">IsPartOf</span> Collectio Hispana<br>
-        For a particular Novel of Justinian, one could have <span class="bold-text">IsPartOf</span> Corpus iuris civilis<br>
-      </p>-->
-    </div>
-    <div class="form-item-question">
-      <label>Is part of:</label><input type="text" class="text-input" name="is-part-of">
-    </div>
-  </div>
-  <div class="form-poll-item">
-    <div class="form-item-question">
-      <label>Comments:</label><textarea name="comments-is-part-of" rows="4" cols="50"></textarea>
-    </div>
-  </div>
-</section>
+          <input type="hidden" class="hide" name="submitted" value="true">
 
+          <section class="form-group">
+            <div class="col-xs-3 pull-right">
+              <button type="submit" class="btn btn-success col-xs-12" id="submit-form-button">Submit</button>
+            </div>
+          </section>
 
-  <legend>Has part</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
+          <section class="form-group">
+            <div class="form-metadata-item"></div>
+            <div class="form-poll-item"></div>
+          </section>
 
-    <div class="form-item-description">
-      <p>
-        <span class="monospace">hasPart</span> is the obverse of <span class="monospace">isPartOf</span>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.
-      </p>
-        <!-- <p>Examples:</p>
-        <p class="form-item-example">
-        Collectio Dacheriana <span class="bold-text">HasPart</span> Book I, Book II, Book III
-        Collectio Dionysiana <span class="bold-text">HasPart</span> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.
-      </p>-->
-    </div>
-    <div class="form-item-question">
-      <div id="has-part-wrap">
-        <div>
-          <label>Has part:</label><input type="text" class="text-input" name="has-part[]">
-        </div>
-      </div>
+        </fieldset>
+      </form>
 
-      <div><button type="button" id="add-has-part-button">Add another part</button>
-      </div>
-
-    </div>
-  </div>
-  <div class="form-poll-item">
-    <div class="form-item-question">
-      <label>Comments:</label><textarea name="comments-has-part" rows="4" cols="50"></textarea>
-    </div>
-  </div>
-</section>
-
-
-
-  <legend>Divisions of the text</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-
-    <div class="form-item-description">
-      <p>
-        <span class="monospace"></span>Divisions of the text is an optional field that is purely for information (that is, it does not affect digital display or processing).  Here it is possible to give useful descriptions of how a compilation is structured, organized, divided.
-      </p>
-      <p>Examples:</p>
-      <p class="form-item-example">
-        The Collection in 74 Titles is divided into “titles”, each of which is divided into “canons”<br>
-        The Dionysiana is divided into councils, each of which is preceded by a tabula titulorum and followed by a subscription list.  The body of the conciliar text is divided into canons.<br>
-        The Decretum is divided into three parts.  The first part has 101 distinctiones; the second part has 36 causae, the third part, entitled “De consecration” contains 5 distinctiones.  Each causa is divided into quaestiones… etc.
-      </p>
-    </div>
-    <div class="form-item-question">
-      <label>Divisions of the text:</label><textarea name="text-divisions" rows="4" cols="50"></textarea>
-    </div>
-  </div>
-  <div class="form-poll-item">
-    <div class="form-item-question">
-      <label>Comments: </label><textarea name="comments-text-divisions" rows="4" cols="50"></textarea>
-    </div>
-  </div>
-</section>
-
-  <legend>Language</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-
-    <div class="form-item-description">
-      <p>
-        <span class="monospace">Language</span> identifies the language of the object using language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.
-      </p>
-    </div>
-    <div class="form-item-question">
-      <label>Language:</label><input type="text" class="text-input" name="language">
-    </div>
-  </div>
-</section>
-
-  <legend>Metadata source code</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-
-    <div class="form-item-description">
-      <p>
-        <span class="monospace">metadata source code</span> is an optional field. If your project has metadata that does not duplicate the descriptions in the fields above that should be included in Index Iuris, you may use this field for the URL or URI for the web-accessible XML or HTML metadata.
-      </p>
-    </div>
-    <div class="form-item-question">
-      <label>URL of source code:</label><input type="text" class="text-input" name="url-source-code">
-    </div>
-  </div>
-</section>
-
-  <legend>OCR</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-
-    <div class="form-item-description">
-      <p>
-        <span class="monospace">OCR</span> is an optional field for recording whether the text was generated using OCR.  The possible answers are yes or no.
-      </p>
-    </div>
-    <div class="form-item-question">
-      Was the document generated with OCR?
-      <label>Yes</label><input type="radio" name="ocr" value="true">
-      <label>No</label><input type="radio" name="ocr" value="false">
-    </div>
-  </div>
-</section>
-
-  <legend>Notes</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-
-    <div class="form-item-description">
-      <p>
-        <span class="monospace">notes</span> is an option, free-form field for recording information about the item that the contributor deems important.
-      </p>
-      <p>Examples:</p>
-      <p class="form-item-example">
-        This set of images is missing fol. 54v, 55r, and 74r.<br>
-        Images of the manuscript from which this transcription was made are available at http://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10181604_00005.html<br>
-        There is another edition of this text at http://ancientrome.ru/ius/library/gaius/gai.htm<br>
-        This edition retains the orthography of the medieval manuscript.
-      </p>
-    </div>
-    <div class="form-item-question">
-      <label>Notes:</label><textarea name="notes" rows="4" cols="50"></textarea>
-    </div>
-  </div>
-  <div class="form-poll-item">
-    <div class="form-item-question">
-      <label>Comments: </label><textarea name="comments-notes" rows="4" cols="50"></textarea>
-    </div>
-  </div>
-</section>
-
-  <legend>File format</legend>
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-
-    <div class="form-item-description">
-      <p>
-        <span class="monospace"></span>File Format is a required field for each item, so that we can implement full-text searching whenever possible.
-      </p>
-      <p>Examples:</p>
-      <p class="form-item-example">
-        .pdf files<br>
-        .xml files (TEI P5)<br>
-        .html files<br>
-        .jpg files<br>
-      </p>
-    </div>
-    <div class="form-item-question">
-      <label>File format:</label><input type="text" class="text-input" name="file-format">
     </div>
   </div>
 </div>
-<input type="hidden" name="submitted" value="true">
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-    <span ><input type="submit" id="submit-form-button"></span>
-  </div>
-</section>
+<?php
+else:
+  include "includes/rdf-generator.php";
 
+  $mysqli  = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
+  $json    = $mysqli->real_escape_string(json_encode($_POST, JSON_PRETTY_PRINT));
+  $userID  = $mysqli->real_escape_string($_SESSION['user_id']);
+  $format  = "json";
+  $version = "0.1";
 
-<section class="form-group">
-  <div class="col-xs-8 text-justify">
-  </div>
-  <div class="col-xs-4">
-  </div>
-  <div class="form-metadata-item">
-  </div>
-  <div class="form-poll-item">
-  </div>
-</section>
+  print "<h3>Submitted:</h3><pre>" . print_r($_POST, true) . "</pre>";
+  print "<h3>Being Stored:</h3><pre>" . print_r($json, true) . "</pre>";
 
-</fieldset>
-</form>
+  if ($mysqli->connect_error) {
+    exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
+  }
 
-<?php else: ?>
+  $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?, ?, ?, NOW(), ?)");
+  $statement->bind_param("ssss", $json, $format, $version, $userID);
+  $statement->execute();
+  $statement->store_result();
 
+  if ($statement->affected_rows === 0): ?>
+  <div class="container">
+    <div class="row page-header">
+      <h1 class="text-danger text-center">Form Submission Failed</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <p>This isn't good. INSERT shouldn't fail.</p>
+        <p>Unless the server is down. No, that can't be it, you're reading this.</p>
+        <p>Maybe the MySQL Database is disconnected. No, that can't be it either, we'd get a database connection error earlier...</p>
+      </div>
+    </div>
+  </div>
+  <?php else: ?>
+  <div class="container">
+    <div class="row page-header">
+      <div class="col-xs-12">
+        <h1 class="text-center">Form Submitted Successfully!</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3 center-block">
+        <a href="rdf-form" class="btn btn-primary col-xs-8 center-block">Submit a New Form</a>
+      </div>
+    </div>
+  </div>
   <?php
-  include 'includes/rdf-generator.php';
+  endif;
+endif;
 
-  $submission = [];
-  foreach ($_POST as $key => $item){
-   $submission[$key] = $item;
- }
-
- $jsonString = json_encode($submission, JSON_PRETTY_PRINT);
-
- echo '<pre>'.$jsonString.'</pre>';
-
- $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
-
- if ($mysqli->connect_error) {
-   exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
- }
-
- $statement = $mysqli->prepare("INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user_id) VALUES (?,?,?,NOW(),?)");
- $data_format = 'json';
- $rdf_version = '0.1';
- $user_id = $_SESSION['user_id'];
- $escaped_json = "'".$mysqli->real_escape_string($jsonString)."'";
- $statement->bind_param("ssss", $escaped_json,$data_format,$rdf_version,$user_id);
- $statement->execute();
-
-
-
-
- ?>
- <div><a href="rdf-form.php">Submit a new form</a>
- </div>
- <?php endif;
- require "includes/footer.php"; ?>
+require "includes/footer.php";
