@@ -727,8 +727,8 @@ else:
   include "includes/rdf-generator.php";
 
   $mysqli  = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
-  $json    = $mysqli->real_escape_string(json_encode($_POST, JSON_PRETTY_PRINT));
-  $userID  = $mysqli->real_escape_string($_SESSION['user_id']);
+  $json    = json_encode($_POST, JSON_PRETTY_PRINT); //removed escape function to save plain json in db
+  $userID  = $_SESSION['user_id'];
   $format  = "json";
   $version = "0.1";
 
