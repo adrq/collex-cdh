@@ -40,9 +40,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>Pennington:consilia</li>
               </ul>
 
-              <label for="customNamespace" class="control-label col-xs-2">Namespace</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="custom-namespace" id="customNamespace" required="">
+              <div class="form-group">
+                <label for="customNamespace" class="control-label col-xs-2">Namespace</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="custom-namespace" id="customNamespace" required="">
+                </div>
               </div>
             </div>
 
@@ -73,9 +75,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>&lt;CCL:manuscripts rdf:about="http://ccl.rch.uky.edu/aboutBod718"&gt;</li>
               </ul>
 
-              <label for="rdfAbout" class="control-label col-xs-2">rdf:about</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="rdf:about" id="rdfAbout" required="">
+              <div class="form-group">
+                <label for="rdfAbout" class="control-label col-xs-2">rdf:about</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="rdf:about" id="rdfAbout" required="">
+                </div>
               </div>
             </div>
 
@@ -99,9 +103,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>PENNINGTON (for Kenneth Pennington's website)</li>
               </ul>
 
-              <label for="archive" class="control-label col-xs-2">Archive</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="archive" id="archive" required="">
+              <div class="form-group">
+                <label for="archive" class="control-label col-xs-2">Archive</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="archive" id="archive" required="">
+                </div>
               </div>
             </div>
           </section>
@@ -118,9 +124,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>Summa "Animal est substantia"</li>
               </ul>
 
-              <label for="title" class="control-label col-xs-2">Title</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="title" id="title" required="">
+              <div class="form-group">
+                <label for="title" class="control-label col-xs-2">Title</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="title" id="title" required="">
+                </div>
               </div>
             </div>
           </section>
@@ -130,14 +138,16 @@ if (!isset($_POST['submitted'])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Type</samp> is required. It describes the type of medium or artifact of the the item to be integrated into Index Iuris. This term will be selected from a pre-determined list (controlled vocabulary).</p>
 
-              <label for="type" class="control-label col-xs-2">Type</label>
-              <div class="col-xs-10">
-                <select class="form-control" id="type" name="type" required="">
-                  <option selected=""></option>
-                  <?php foreach (array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript") as $type): ?>
-                    <option><?php print $type; ?></option>
-                  <?php endforeach; ?>
-                </select>
+              <div class="form-group">
+                <label for="type" class="control-label col-xs-2">Type</label>
+                <div class="col-xs-10">
+                  <select class="form-control" id="type" name="type" required="">
+                    <option selected=""></option>
+                    <?php foreach (array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript") as $type): ?>
+                      <option><?php print $type; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -170,7 +180,7 @@ if (!isset($_POST['submitted'])): ?>
               <p>This field can appear multiple times.</p>
 
               <div class="form-group">
-                <label for="role" class="control-label col-xs-2">Role</label>
+                <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">
                   <select class="form-control" id="role" name="role[]">
                     <option selected=""></option>
@@ -190,8 +200,7 @@ if (!isset($_POST['submitted'])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
-                  <?php // TODO: Make this work ?>
-                  <button type="button" class="btn btn-default col-xs-12" id="addRoleButon">Add Another Role</button>
+                  <button type="button" class="btn btn-default col-xs-12" id="addRoleButton">Add Another Role</button>
                 </div>
               </div>
             </div>
@@ -223,7 +232,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>Genre</samp> differs from "type" in that it describes the textual form, rather than the physical medium or artifact.</p>
 
               <div class="form-group">
-                <label for="genre" class="control-label col-xs-2">Genre</label>
+                <label for="genre" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Genre</label>
                 <div class="col-xs-10">
                   <select class="form-control" id="genre" name="genre[]">
                     <option selected=""></option>
@@ -236,7 +245,6 @@ if (!isset($_POST['submitted'])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
-                  <?php // TODO: Make this work. ?>
                   <button type="button" class="btn btn-default col-xs-12" id="addGenreButton">Add Another Genre</button>
                 </div>
               </div>
@@ -255,9 +263,8 @@ if (!isset($_POST['submitted'])): ?>
               </div>
 
               <div class="form-group">
-                <?php // TODO: Add popover for text after the question mark. ?>
-                <label class="control-label col-xs-8">Should this field have controlled vocabulary, or be free-form? Controlled vocabulary supports check-box searches for all index items of a particular genre (if you want to look only at imperial edicts); free-form allows a wider range of description. Note: we can split the difference, and have auto-suggestions as you type.</label>
-                <div class="col-xs-4">
+                <label class="control-label col-xs-8">Should this field have controlled vocabulary, or be free-form?</label>
+                <div class="col-xs-4" data-toggle="tooltip" data-placement="top" title="Controlled vocabulary supports check-box searches for all index items of a particular genre (if you want to look only at imperial edicts); free-form allows a wider range of description. Note: we can split the difference, and have auto-suggestions as you type.">
                   <div class="radio">
                     <label><input type="radio" name="genre-controlled" value="true">Controlled</label>
                   </div>
@@ -288,9 +295,11 @@ if (!isset($_POST['submitted'])): ?>
                   <li><?php print $date; ?></li>
                 <?php endforeach; ?>
               </ul>
-              <label for="humanDate" class="control-label col-xs-2">Human Date</label>
-              <div class="col-xs-10" style="margin-bottom: 20px;">
-                <input type="text" class="form-control" name="date-human" id="humanDate" required="">
+              <div class="form-group">
+                <label for="humanDate" class="control-label col-xs-2">Human Date</label>
+                <div class="col-xs-10" style="margin-bottom: 20px;">
+                  <input type="text" class="form-control" name="date-human" id="humanDate" required="">
+                </div>
               </div>
 
               <p>Machine-readable dates example:</p>
@@ -299,12 +308,14 @@ if (!isset($_POST['submitted'])): ?>
                   <li><?php print $date; ?></li>
                 <?php endforeach; ?>
               </ul>
-
-              <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="date-machine" id="machineDate" required="">
+              <div class="form-group">
+                <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="date-machine" id="machineDate" required="">
+                </div>
               </div>
             </div>
+
             <div class="col-xs-4">
               <div class="form-group">
                 <label class="control-label col-xs-10">Would you be able to complete this field for items in your project to be integrated in Index Iuris, following these models?</label>
@@ -339,11 +350,14 @@ if (!isset($_POST['submitted'])): ?>
                 <li>http://faculty.cua.edu/Pennington/edit323.htm</li>
               </ul>
 
-              <label for="seeAlso" class="control-label col-xs-2">URL</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="seeAlso" id="seeAlso" required="">
+              <div class="form-group">
+                <label for="seeAlso" class="control-label col-xs-2">URL</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="seeAlso" id="seeAlso" required="">
+                </div>
               </div>
             </div>
+
             <div class="col-xs-4">
               <label class="control-label col-xs-10">Would you be able to supply a URI or URL for each item to be integrated into Index Iuris?</label>
               <div class="col-xs-2">
@@ -385,6 +399,7 @@ if (!isset($_POST['submitted'])): ?>
                 </div>
               </div>
             </div>
+
             <div class="col-xs-4">
               <label for="provenanceComments" class="control-label col-xs-3">Comments:</label>
               <div class="col-xs-12">
@@ -410,6 +425,7 @@ if (!isset($_POST['submitted'])): ?>
                 </div>
               </div>
             </div>
+
             <div class="col-xs-4">
               <label for="compositionComments" class="control-label col-xs-3">Comments:</label>
               <div class="col-xs-12">
@@ -430,9 +446,11 @@ if (!isset($_POST['submitted'])): ?>
                 <?php endforeach; ?>
               </ul>
 
-              <label for="shelfmark" class="control-label col-xs-2">Shelfmark</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="shelfmark" id="shelfmark">
+              <div class="form-group">
+                <label for="shelfmark" class="control-label col-xs-2">Shelfmark</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="shelfmark" id="shelfmark">
+                </div>
               </div>
             </div>
           </section>
@@ -469,7 +487,7 @@ if (!isset($_POST['submitted'])): ?>
               </ul>
 
               <div class="form-group">
-                <label for="altTitle" class="control-label col-xs-2">Alt Title</label>
+                <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="alternative-title[]" id="altTitle">
                 </div>
@@ -477,8 +495,7 @@ if (!isset($_POST['submitted'])): ?>
 
               <div class="form-group">
                 <div class="col-xs-4 pull-right">
-                  <?php // TODO: Make this work. ?>
-                  <button type="button" class="btn btn-default col-xs-12">Add Another Alternative Title</button>
+                  <button type="button" class="btn btn-default col-xs-12" id="addAltTitleButton">Add Another Alternative Title</button>
                 </div>
               </div>
             </div>
@@ -495,9 +512,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>CEEC: Codices Electronici Ecclesiae Coloniensis</li>
               </ul>
 
-              <label for="source" class="control-label col-xs-2">Source</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="source" id="source">
+              <div class="form-group">
+                <label for="source" class="control-label col-xs-2">Source</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="source" id="source">
+                </div>
               </div>
             </div>
           </section>
@@ -515,11 +534,14 @@ if (!isset($_POST['submitted'])): ?>
               </ul>
               */ ?>
 
-              <label for="isPartOf" class="control-label col-xs-2">Is part of</label>
-              <div class="col-xs-10">
-                <input type="text" class="control-label col-xs-10" name="is-part-of" id="isPartOf">
+              <div class="form-group">
+                <label for="isPartOf" class="control-label col-xs-2">Is part of</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control col-xs-10" name="is-part-of" id="isPartOf">
+                </div>
               </div>
             </div>
+
             <div class="col-xs-4">
               <label for="isPartOfComments" class="control-label col-xs-3">Comments:</label>
               <div class="col-xs-12">
@@ -541,7 +563,7 @@ if (!isset($_POST['submitted'])): ?>
               */ ?>
 
               <div class="form-group">
-                <label for="hasPart" class="control-label col-xs-2">Has Part</label>
+                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="has-part[]" id="hasPart">
                 </div>
@@ -549,7 +571,7 @@ if (!isset($_POST['submitted'])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="add-has-part-button">Add Another Part</button>
+                  <button type="button" class="btn btn-default col-xs-12" id="addHasPartButton">Add Another Part</button>
                 </div>
               </div>
             </div>
@@ -572,9 +594,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>The Decretum is divided into three parts.  The first part has 101 distinctiones; the second part has 36 causae, the third part, entitled “De consecration” contains 5 distinctiones.  Each causa is divided into quaestiones… etc.</li>
               </ul>
 
-              <label for="textDivisions" class="control-label col-xs-2">Divisions</label>
-              <div class="col-xs-10">
-                <textarea class="form-control" name="text-divisions" id="textDivisions" rows="4"></textarea>
+              <div class="form-group">
+                <label for="textDivisions" class="control-label col-xs-2">Divisions</label>
+                <div class="col-xs-10">
+                  <textarea class="form-control" name="text-divisions" id="textDivisions" rows="4"></textarea>
+                </div>
               </div>
             </div>
             <div class="col-xs-4">
@@ -590,9 +614,11 @@ if (!isset($_POST['submitted'])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Language</samp> identifies the language of the object using language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.</p>
 
-              <label for="language" class="control-label col-xs-2">Language</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="language" id="language">
+              <div class="form-group">
+                <label for="language" class="control-label col-xs-2">Language</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="language" id="language">
+                </div>
               </div>
             </div>
           </section>
@@ -602,9 +628,11 @@ if (!isset($_POST['submitted'])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Metadata source code</samp> is an optional field. If your project has metadata that does not duplicate the descriptions in the fields above that should be included in Index Iuris, you may use this field for the URL or URI for the web-accessible XML or HTML metadata.</p>
 
-              <label for="metadataSourceCode" class="control-label col-xs-2">URL</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="url-source-code" id="metadataSourceCode">
+              <div class="form-group">
+                <label for="metadataSourceCode" class="control-label col-xs-2">URL</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="url-source-code" id="metadataSourceCode">
+                </div>
               </div>
             </div>
           </section>
@@ -630,7 +658,7 @@ if (!isset($_POST['submitted'])): ?>
 
           <legend>Notes</legend>
           <section class="form-group">
-            <div class="col-xs-8 text-justify">
+            <div class="col-xs-8">
               <p><samp>Notes</samp> is an option, free-form field for recording information about the item that the contributor deems important.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
@@ -640,9 +668,11 @@ if (!isset($_POST['submitted'])): ?>
                 <li>This edition retains the orthography of the medieval manuscript.</li>
               </ul>
 
-              <label for="notes" class="control-label col-xs-2">Notes</label>
-              <div class="col-xs-10">
-                <textarea class="form-control" name="notes" id="notes" rows="4"></textarea>
+              <div class="form-group">
+                <label for="notes" class="control-label col-xs-2">Notes</label>
+                <div class="col-xs-10">
+                  <textarea class="form-control" name="notes" id="notes" rows="4"></textarea>
+                </div>
               </div>
             </div>
             <div class="col-xs-4">
@@ -664,18 +694,20 @@ if (!isset($_POST['submitted'])): ?>
                 <?php endforeach; ?>
               </ul>
 
-              <label for="fileFormat" class="control-label col-xs-2">Format</label>
-              <div class="col-xs-10">
-                <input type="text" class="form-control" name="file-format" id="fileFormat" required="">
+              <div class="form-group">
+                <label for="fileFormat" class="control-label col-xs-2">Format</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="file-format" id="fileFormat" required="">
+                </div>
               </div>
             </div>
           </section>
 
           <input type="hidden" class="hide" name="submitted" value="true">
 
-          <section class="form-group">
-            <div class="col-xs-3 pull-right">
-              <button type="submit" class="btn btn-success col-xs-12" id="submit-form-button">Submit</button>
+          <section class="form-group" style="margin-top: 5%; margin-bottom: 15%;">
+            <div class="col-xs-3 pull-left">
+              <button type="submit" class="btn btn-success col-xs-12">Submit</button>
             </div>
           </section>
 
