@@ -31,7 +31,7 @@ require "includes/header.php";
 			if($row['user_id'] == $_SESSION['user_id']){
 				foreach ($row as $key => $value){
 					?>
-					<p><?php print $key?>: <?php print $value?></p>		
+					<p><?php print $objectsTableColumDisplayNames[$key]?>: <?php print $value?></p>		
 					<?php
 				}
 			}
