@@ -177,7 +177,7 @@ if (!isset($_POST['submitted'])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Role</samp> is an optional field, however if used, the terms will be selected from a per-determined list (controlled vocabulary).</p>
               <p>This field can appear multiple times.</p>
-
+<?php //TODO: make sure that role and role value?>
               <div class="form-group">
                 <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">
@@ -199,6 +199,7 @@ if (!isset($_POST['submitted'])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
+                <?php //TODO: make sure that role and role value are both added when this button is clicked?>
                   <button type="button" class="btn btn-default col-xs-12" id="addRoleButton">Add Another Role</button>
                 </div>
               </div>
@@ -881,7 +882,8 @@ $file_format = $_POST['file-format'];
   $statement->store_result();
   
   $comments = [];
- 
+  
+  //TODO: perform some sort of check to make sure all fields are set in $_POST before this loop
   foreach ($_POST as $key => $item){
   	if(preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)){
   			$comments[$key]=$item;
