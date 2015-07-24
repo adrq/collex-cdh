@@ -121,6 +121,25 @@ $("section.form-group").on("click", ".control-label > .close", function (e) {
   e.target.blur();
 });
 
+$("select#comment").on("change", function () {
+  var value = $(this).val();
+  $.ajax({
+    url: "includes/view-comments",
+    type: "GET",
+    data: "comments=" + value,
+    beforeSend: function () {
+      console.info("Attempting to grab comments. - " + value);
+    },
+    success: function (result) {
+      console.log(result);
+      $("#commentResults").html(result);
+    },
+    error: function (result) {
+      console.error("Error connecting to the server. Message: " + result.responseText);
+    }
+  });
+});
+
 /**
  * Increase a ID on a <input> or <select> for better user experience when
  * a user clicks the corresponding <label>.
