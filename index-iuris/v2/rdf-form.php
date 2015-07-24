@@ -6,6 +6,7 @@
 $title = "Metadata Submission Form";
 $loginRequired = true;
 require "includes/header.php";
+
 if (!isset($_POST['submitted'])): ?>
 <div class="container">
   <div class="row page-header">
@@ -177,7 +178,7 @@ if (!isset($_POST['submitted'])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Role</samp> is an optional field, however if used, the terms will be selected from a per-determined list (controlled vocabulary).</p>
               <p>This field can appear multiple times.</p>
-<?php //TODO: make sure that role and role value?>
+
               <div class="form-group">
                 <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">
@@ -191,7 +192,7 @@ if (!isset($_POST['submitted'])): ?>
               </div>
 
               <div class="form-group">
-                <label for="value" class="control-label col-xs-2">Value</label>
+                <label for="value" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" id="value" name="role-value[]">
                 </div>
@@ -199,7 +200,6 @@ if (!isset($_POST['submitted'])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
-                <?php //TODO: make sure that role and role value are both added when this button is clicked?>
                   <button type="button" class="btn btn-default col-xs-12" id="addRoleButton">Add Another Role</button>
                 </div>
               </div>
@@ -461,11 +461,13 @@ if (!isset($_POST['submitted'])): ?>
               <h3>freeculture?</h3>
             </div>
           </section>
+
           <section class="form-group">
             <div class="form-metadata-item">
               <h3>Full text goes here</h3>
             </div>
           </section>
+
           <section class="form-group">
             <div class="form-metadata-item">
               <h3>Image goes here</h3>
@@ -723,201 +725,142 @@ if (!isset($_POST['submitted'])): ?>
 <?php
 else:
   include "includes/rdf-generator.php";
-  $mysqli  = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
-  $json    = json_encode($_POST, JSON_PRETTY_PRINT); //removed escape function to save plain json in db
+
+  global $mysqli;
+  $json    = json_encode($_POST, JSON_PRETTY_PRINT);
   $userID  = $_SESSION['user_id'];
   $format  = "json";
   $version = "0.1";
-  print "<h3>Submitted:</h3><pre>" . print_r($_POST, true) . "</pre>";
-  print "<h3>Being Stored:</h3><pre>" . print_r($json, true) . "</pre>";
-  if ($mysqli->connect_error) {
-    exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
-  }
-  $statement = $mysqli->prepare("SELECT id FROM objects WHERE url = ?");
-  $statement->bind_param("s", $_POST['seeAlso']);
-  $statement->execute();
-  $statement->store_result();
-  $statement->bind_result($id);
-  
-  if ($statement->num_rows > 0) {
-  	//TODO: record already exists - redirect user to view submissions page
-  	echo "record already exists";
-  }
-  
-  
-  //store in metadata tables
-  $query = "INSERT INTO objects (
-      		custom_namespace,
-rdf_about,
-archive,
-title,
-type,
-url,
-origin,
-provenance,
-place_of_composition,
-shelfmark,
-freeculture,
-full_text_url,
-full_text_plain,
-is_full_text,
-image_url,
-source,
-metadata_xml_url,
-metadata_html_url,
-text_divisions,
-language,
-ocr,
-thumbnail_url,
-notes,
-file_format,
-date_created,
-date_updated,
-user_id)
-      		VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?)";
-  $statement = $mysqli->prepare($query);
-  $custom_namespace = $_POST['custom-namespace'];
-$rdf_about = $_POST['rdf-about']; 
-$archive = $_POST['archive'];
-$title = $_POST['title'];
-$type = $_POST['type'];
-$url = $_POST['seeAlso'];
-$origin = $_POST['origin'];
-$provenance = $_POST['provenance'];
-$place_of_composition = $_POST['place-of-composition'];
-$shelfmark = $_POST['shelfmark'];
-$freeculture = 'true'; //TODO add this field to form, pending approval from Colin and Abigail
-$full_text_url = '';//TODO add this field to form, pending approval from Colin and Abigail
-$full_text_plain = '';//TODO add this field to form, pending approval from Colin and Abigail
-$is_full_text = '';//TODO add this field to form, pending approval from Colin and Abigail
-$image_url = '';//TODO add this field to form, pending approval from Colin and Abigail
-$source = $_POST['source'];
-$metadata_xml_url = $_POST['url-source-code']; //TODO: determine format from input and add to appropriate variable
-$metadata_html_url = $_POST['url-source-code'];
-$text_divisions = $_POST['text-divisions'];
-$language = $_POST['language'];
-$ocr = $_POST['ocr'];
-$thumbnail_url = '';//TODO add this field to form, pending approval from Colin and Abigail
-$notes = $_POST['notes'];
-$file_format = $_POST['file-format'];
-  
-  $statement->bind_param("sssssssssssssssssssssssss", 
-  		$custom_namespace,
-  		$rdf_about,
-  		$archive,
-  		$title,
-  		$type,
-  		$url,
-  		$origin,
-  		$provenance,
-  		$place_of_composition,
-  		$shelfmark,
-  		$freeculture,
-  		$full_text_url,
-  		$full_text_plain,
-  		$is_full_text,
-  		$image_url,
-  		$source,
-  		$metadata_xml_url,
-  		$metadata_html_url,
-  		$text_divisions,
-  		$language,
-  		$ocr,
-  		$thumbnail_url,
-  		$notes,
-  		$file_format,
-  		$userID
-  		);
-  $statement->execute();
-  
-  $last_id = $mysqli->insert_id;
-  
-  //loop through and add alternative titles to table
-  $alt_titles = $_POST['alternative-title'];
-  foreach ($alt_titles as $alt_title){
-  	$statement = $mysqli->prepare("INSERT INTO alt_titles (object_id,alt_title) VALUES (?,?)");
-  	$statement->bind_param("is",$last_id,$alt_title);
-  	$statement->execute();
-  }
-  
-  //loop through and add genres to table
-  $genres = $_POST['genre'];
-  foreach ($genres as $genre){
-  	$statement = $mysqli->prepare("INSERT INTO genres (object_id,genre) VALUES (?,?)");
-  	$statement->bind_param("is",$last_id,$genre);
-  	$statement->execute();
-  }
-  //add date to table
-  $statement = $mysqli->prepare("INSERT INTO dates (object_id,type,machine_date,human_date) VALUES (?,?,?,?)");
-  $machine_date = $_POST['date-machine'];
-  $human_date = $_POST['date-human'];
-  $date_type = 'text';
-  $statement->bind_param("isss",$last_id,$date_type,$machine_date,$human_date);
-  $statement->execute();
-  
-  //loop through and add isPart to table
-  $isPartOf_parts = $_POST['is-part-of'];
-  $part_type = 'isPartOf';
-  foreach ($isPartOf_parts as $part_id){
-  	$statement = $mysqli->prepare("INSERT INTO parts (object_id,type,part_id) VALUES (?,?,?)");
-  	$statement->bind_param("isi",$last_id,$part_type,$part_id);
-  	$statement->execute();
-  }
-  
-  //loop through and add isPart to table
-  $hasPart_parts = $_POST['has-part'];
-  $part_type = 'hasPart';
-  foreach ($hasPart_parts as $part_id){
-  	$statement = $mysqli->prepare("INSERT INTO parts (object_id,type,part_id) VALUES (?,?,?)");
-  	$statement->bind_param("isi",$last_id,$part_type,$part_id);
-  	$statement->execute();
-  }
-  
-  //TODO: role, subject, discipline
-  
-  
-  $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?,?,?,NOW(),?)");
+
+  print "<pre class='hide'><h3>Submitted:</h3>" . print_r($_POST, true) . "</pre>";
+  print "<pre class='hide'><h3>Being Stored:</h3>" . print_r($json, true) . "</pre>";
+
+  $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?, ?, ?, NOW(), ?)");
   $statement->bind_param("ssss", $json, $format, $version, $userID);
   $statement->execute();
+
+  /*
+  $statement = $mysqli->prepare("SELECT id FROM objects WHERE url = ?");
+  $statement->bind_param("s", $_POST["seeAlso"]);
+  $statement->execute();
   $statement->store_result();
-  
-  $comments = [];
-  
-  //TODO: perform some sort of check to make sure all fields are set in $_POST before this loop
-  foreach ($_POST as $key => $item){
-  	if(preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)){
-  			$comments[$key]=$item;
-  		}else{ 
-  			$submission[$key] = $item;
-  		}
+
+  if ($statement->num_rows > 0) {
+     ?><script>alert("This record already exists."); window.location = "view-submissions";</script><?php
   }
-  //jsonString_comments = json_encode($comments, JSON_PRETTY_PRINT);
-  
-  //adds the data into comments table
-  $statement_comments = $mysqli->prepare(" INSERT INTO comments (comments_rdf_about,comments_date,comments_provenance,comments_place_of_composition,comments_is_part_of,comments_has_part,comments_text_divisions,comments_notes,custom_namespace_available,type_available,role_available,genre_required_available,genre_controled_available,date_available,url_available,suggested_terms_type,suggested_terms_role,suggested_terms_genre,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-  $comments_rdf_about= $comments['comments-rdf-about'];
-  $comments_date= $comments['comments-date'];
-  $comments_provenance= $comments['comments-provenance'];
-  $comments_place_of_composition= $comments['comments-place-of-composition'];
-  $comments_is_part_of= $comments['comments-is-part-of'];
-  $comments_has_part= $comments['comments-has-part'];
-  $comments_text_divisions= $comments['comments-text-divisions'];
-  $comments_notes= $comments['comments-notes'];
-  $custom_namespace_available = $comments['custom-namespace-available'];
-  $type_available = $comments['type-available'];
-  $role_available = $comments['role-available'];
-  $genre_required_available = $comments['genre-required-available'];
-  $genre_controled_available  = $comments['genre-controlled-available'];
-  $date_available = $comments['date-available'];
-  $url_available  = $comments['url-available'];
-  $suggested_terms_type = $comments['suggested-terms-type'];
-  $suggested_terms_role = $comments['suggested-terms-role'];
-  $suggested_terms_genre = $comments['suggested-terms-genre'];
-  $user_id=$_SESSION['user_id'];
-  $statement_comments->bind_param("sssssssssssssssssss", $comments_rdf_about,$comments_date,$comments_provenance,$comments_place_of_composition,$comments_is_part_of,$comments_has_part,$comments_text_divisions,$comments_notes,$custom_namespace_available,$type_available,$role_available,$genre_required_available,$genre_controled_available,$date_available,$url_available,$suggested_terms_type,$suggested_terms_role,$suggested_terms_genre,$user_id);
-  $statement_comments->execute();
-  
-  
+  */
+
+  $customNamespace  = $_POST["custom-namespace"];
+  $rdfAbout         = $_POST["rdf-about"];
+  $archive          = $_POST["archive"];
+  $title            = $_POST["title"];
+  $type             = $_POST["type"];
+  $url              = $_POST["seeAlso"];
+  $origin           = $_POST["origin"];
+  $provenance       = $_POST["provenance"];
+  $compositionPlace = $_POST["place-of-composition"];
+  $shelfmark        = $_POST["shelfmark"];
+
+  // TODO: Add these fields to the form, pending approval from Colin and Abigail.
+  $freeculture      = "true";
+  $fullTextURL      = "";
+  $fullTextPlain    = "";
+  $isFullText       = "";
+  $imageURL         = "";
+
+  $source           = $_POST["source"];
+
+  // TODO: Determine format from input and add to appropriate variable
+  $metadataXMLURL   = $_POST["url-source-code"];
+  $metdataHTMLURL   = $_POST["url-source-code"];
+  $textDivisions    = $_POST["text-divisions"];
+  $language         = $_POST["language"];
+  $ocr              = isset($_POST["ocr"]) ? $_POST["ocr"] : NULL;
+
+  // TODO: Add this field to form, pending approval from Colin and Abigail.
+  $thumbnailURL     = "";
+
+  $notes            = $_POST["notes"];
+  $fileFormat       = $_POST["file-format"];
+
+  $statement = $mysqli->prepare("INSERT INTO objects (custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
+  $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $language, $ocr, $thumbnailURL, $notes, $fileFormat, $userID);
+  $statement->execute();
+  $statement->store_result();
+
+  $lastID = $statement->insert_id;
+
+  // Add alternative titles to its table.
+  foreach ($_POST["alternative-title"] as $item) {
+    $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
+    $insert->bind_param("is", $lastID, $item);
+    $insert->execute();
+  }
+
+  // Add genres to its table.
+  foreach ($_POST["genre"] as $item) {
+    $insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
+    $insert->bind_param("is", $lastID, $item);
+    $insert->execute();
+  }
+
+  // Add date to its table.
+  $dateType    = "text";
+  $humanDate   = $_POST["date-human"];
+  $machineDate = $_POST["date-machine"];
+  $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
+  $insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
+  $insert->execute();
+
+  // Add isPartOf to its table.
+  $partType = "isPartOf";
+  foreach ($_POST["is-part-of"] as $item) {
+    $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
+    $insert->bind_param("isi", $lastID, $partType, $item);
+    $insert->execute();
+  }
+
+  // Add hasPart to its table.
+  $partType = "hasPart";
+  foreach ($_POST["has-part"] as $item) {
+    $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
+    $insert->bind_param("isi", $lastID, $partType, $item);
+    $insert->execute();
+  }
+
+  // TODO: Role, Subject, Discipline.
+
+  $comments = [];
+  // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.
+  foreach ($_POST as $key=>$item) {
+    if (preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)) {
+      $comments[$key] = $item;
+    }
+  }
+
+  $comments_rdf_about            = $comments["comments-rdf-about"];
+  $comments_date                 = $comments["comments-date"];
+  $comments_provenance           = $comments["comments-provenance"];
+  $comments_place_of_composition = $comments["comments-place-of-composition"];
+  $comments_is_part_of           = $comments["comments-is-part-of"];
+  $comments_has_part             = $comments["comments-has-part"];
+  $comments_text_divisions       = $comments["comments-text-divisions"];
+  $comments_notes                = $comments["comments-notes"];
+  $custom_namespace_available    = isset($comments["custom-namespace-available"]) ? $comments["custom-namespace-available"] : NULL;
+  $type_available                = isset($comments["type-available"]) ? $comments["type-available"] : NULL;
+  $role_available                = isset($comments["role-available"]) ? $comments["role-available"] : NULL;
+  $genre_required_available      = isset($comments["genre-required-available"]) ? $comments["genre-required-available"] : NULL;
+  $genre_controled_available     = isset($comments["genre-controlled-available"]) ? $comments["genre-controlled-available"] : NULL;
+  $date_available                = isset($comments["date-available"]) ? $comments["date-available"] : NULL;
+  $url_available                 = isset($comments["url-available"]) ? $comments["url-available"] : NULL;
+  $suggested_terms_type          = $comments["suggested-terms-type"];
+  $suggested_terms_role          = $comments["suggested-terms-role"];
+  $suggested_terms_genre         = $comments["suggested-terms-genre"];
+
+  $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $statement->bind_param("sssssssssssssssssss", $comments_rdf_about, $comments_date, $comments_provenance, $comments_place_of_composition, $comments_is_part_of, $comments_has_part, $comments_text_divisions, $comments_notes, $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $date_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
+  $statement->execute();
+
   if ($statement->affected_rows === 0): ?>
   <div class="container">
     <div class="row page-header">
@@ -941,13 +884,17 @@ $file_format = $_POST['file-format'];
     </div>
 
     <div class="row">
-      <div class="col-xs-3 center-block">
+      <div class="col-xs-6">
         <a href="rdf-form" class="btn btn-primary col-xs-8 center-block">Submit a New Form</a>
-        <?php //TODO: add a link to view-submissions page ?>
+      </div>
+
+      <div class="col-xs-6">
+        <a href="view-submissions" class="btn btn-success col-xs-8 center-block">View Submissions</a>
       </div>
     </div>
   </div>
   <?php
   endif;
 endif;
+
 require "includes/footer.php";

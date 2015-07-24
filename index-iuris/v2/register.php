@@ -36,7 +36,7 @@ require "includes/header.php";
             </div>
 
             <div class="form-group">
-              <div class="col-xs-3">
+              <div class="col-xs-3 pull-right">
                 <button type="submit" class="btn btn-primary col-xs-12">Register</button>
               </div>
             </div>
@@ -44,12 +44,7 @@ require "includes/header.php";
         </form>
       <?php
       else:
-        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
-
-        if ($mysqli->connect_error) {
-          exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
-        }
-
+        global $mysqli;
         $username  = $mysqli->real_escape_string($_POST["username"]);
         $password  = "";
         $password1 = $mysqli->real_escape_string($_POST["password1"]);
@@ -87,8 +82,6 @@ require "includes/header.php";
         } else {
           print "<h3>User " . $action . " successfully! <a href='login'>Login</a></h3>";
         }
-
-        $mysqli->close();
       endif;
       ?>
     </div>

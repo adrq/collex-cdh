@@ -9,7 +9,7 @@ session_start();
 if (isset($_POST) && $_SESSION["logged-in"]) {
   global $mysqli;
   $userID  = $_SESSION["user_id"];
-  $comment = htmlspecialchars($_POST["commentText"]); //removed real_escape_string - no need with prepared statements
+  $comment = htmlspecialchars($_POST["commentText"]);
 
   $statement = $mysqli->prepare("INSERT INTO constitution_comments (comment_text, date_submitted, user_id) VALUES (?, NOW(), ?)");
   $statement->bind_param("ss", $comment, $userID);

@@ -56,8 +56,9 @@ require_once "config.php";
           <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
           <li><a href="rdf-form">Metadata Submission</a></li>
           <li><a href="governance">Governance</a></li>
-          <li><a href="submissions">View submissions</a></li>
-		  <li><a href="comments">Comments</a></li><?php //TODO: show this tab only if user is superuser?>
+          <li><a href="submissions">View Submissions</a></li>
+          <?php // TODO: Show this tab only if the user is superuser. ?>
+          <li><a href="comments">Comments</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -66,6 +67,7 @@ require_once "config.php";
           </li>
           <?php else: ?>
           <li <?php print $title == "Login" ? "class='active'" : ""; ?> ><a href="login">Login</a></li>
+          <li <?php print $title == "Register" ? "class='active'" : ""; ?> ><a href="register">Register</a></li>
           <?php endif; ?>
 
           <li class="dropdown">
@@ -80,4 +82,3 @@ require_once "config.php";
       </div>
     </div>
   </nav>
-
