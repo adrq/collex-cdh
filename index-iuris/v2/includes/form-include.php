@@ -5,6 +5,7 @@ if (isset($_GET['form-element'])){
 <div>
 <label>Role:</label>
 <select name="role[]">
+<option selected></option>
 <option>Author</option>
 <option>Editor</option>
 <option>Publisher</option>
@@ -53,6 +54,7 @@ if (isset($_GET['form-element'])){
 <div>
 <label>Genre:</label>
 <select name="genre[]">
+<option selected></option>
 <option>Account</option>
 <option>Accusation</option>
 <option>Aide</option>
