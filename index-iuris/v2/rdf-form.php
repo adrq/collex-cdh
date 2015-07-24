@@ -253,10 +253,10 @@ if (!isset($_POST['submitted'])): ?>
                 <label class="control-label col-xs-8">Should this field be required or optional?</label>
                 <div class="col-xs-4">
                   <div class="radio">
-                    <label><input type="radio" name="genre-required" value="true">Required</label>
+                    <label><input type="radio" name="genre-required-available" value="true">Required</label>
                   </div>
                   <div class="radio">
-                    <label><input type="radio" name="genre-required" value="false">Optional</label>
+                    <label><input type="radio" name="genre-required-available" value="false">Optional</label>
                   </div>
                 </div>
               </div>
@@ -265,10 +265,10 @@ if (!isset($_POST['submitted'])): ?>
                 <label class="control-label col-xs-8">Should this field have controlled vocabulary, or be free-form?</label>
                 <div class="col-xs-4" data-toggle="tooltip" data-placement="top" title="Controlled vocabulary supports check-box searches for all index items of a particular genre (if you want to look only at imperial edicts); free-form allows a wider range of description. Note: we can split the difference, and have auto-suggestions as you type.">
                   <div class="radio">
-                    <label><input type="radio" name="genre-controlled" value="true">Controlled</label>
+                    <label><input type="radio" name="genre-controlled-available" value="true">Controlled</label>
                   </div>
                   <div class="radio">
-                    <label><input type="radio" name="genre-controlled" value="false">Free-form</label>
+                    <label><input type="radio" name="genre-controlled-available" value="false">Free-form</label>
                   </div>
                 </div>
               </div>
@@ -879,6 +879,43 @@ $file_format = $_POST['file-format'];
   $statement->bind_param("ssss", $json, $format, $version, $userID);
   $statement->execute();
   $statement->store_result();
+  
+  $comments = [];
+ 
+  foreach ($_POST as $key => $item){
+  	if(preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)){
+  			$comments[$key]=$item;
+  		}else{ 
+  			$submission[$key] = $item;
+  		}
+  }
+  //jsonString_comments = json_encode($comments, JSON_PRETTY_PRINT);
+  
+  //adds the data into comments table
+  $statement_comments = $mysqli->prepare(" INSERT INTO comments (comments_rdf_about,comments_date,comments_provenance,comments_place_of_composition,comments_is_part_of,comments_has_part,comments_text_divisions,comments_notes,custom_namespace_available,type_available,role_available,genre_required_available,genre_controled_available,date_available,url_available,suggested_terms_type,suggested_terms_role,suggested_terms_genre,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+  $comments_rdf_about= $comments['comments-rdf-about'];
+  $comments_date= $comments['comments-date'];
+  $comments_provenance= $comments['comments-provenance'];
+  $comments_place_of_composition= $comments['comments-place-of-composition'];
+  $comments_is_part_of= $comments['comments-is-part-of'];
+  $comments_has_part= $comments['comments-has-part'];
+  $comments_text_divisions= $comments['comments-text-divisions'];
+  $comments_notes= $comments['comments-notes'];
+  $custom_namespace_available = $comments['custom-namespace-available'];
+  $type_available = $comments['type-available'];
+  $role_available = $comments['role-available'];
+  $genre_required_available = $comments['genre-required-available'];
+  $genre_controled_available  = $comments['genre-controlled-available'];
+  $date_available = $comments['date-available'];
+  $url_available  = $comments['url-available'];
+  $suggested_terms_type = $comments['suggested-terms-type'];
+  $suggested_terms_role = $comments['suggested-terms-role'];
+  $suggested_terms_genre = $comments['suggested-terms-genre'];
+  $user_id=$_SESSION['user_id'];
+  $statement_comments->bind_param("sssssssssssssssssss", $comments_rdf_about,$comments_date,$comments_provenance,$comments_place_of_composition,$comments_is_part_of,$comments_has_part,$comments_text_divisions,$comments_notes,$custom_namespace_available,$type_available,$role_available,$genre_required_available,$genre_controled_available,$date_available,$url_available,$suggested_terms_type,$suggested_terms_role,$suggested_terms_genre,$user_id);
+  $statement_comments->execute();
+  
+  
   if ($statement->affected_rows === 0): ?>
   <div class="container">
     <div class="row page-header">

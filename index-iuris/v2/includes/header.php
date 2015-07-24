@@ -56,6 +56,7 @@ require_once "config.php";
           <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
           <li><a href="rdf-form">Metadata Submission</a></li>
           <li><a href="governance">Governance</a></li>
+		  <li><a href="comments">Comments</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
