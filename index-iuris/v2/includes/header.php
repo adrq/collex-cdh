@@ -22,7 +22,7 @@ require_once "config.php";
 
   <title><?php print isset($title) ? $title . " - " : ""; ?>Index Iuris</title>
 
-  <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css", "style.css") as $style): ?>
+  <?php foreach (array("bootstrap-cosmo.css", "dataTables.bootstrap.css", "collex.css", "style.css") as $style): ?>
   <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
 </head>
@@ -56,7 +56,7 @@ require_once "config.php";
           <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
           <li <?php print $title == "Metadata Submission Form" ? "class='active'" : ""; ?> ><a href="rdf-form">Metadata Submission</a></li>
           <li <?php print $title == "Governance" ? "class='active'" : ""; ?> ><a href="governance">Governance</a></li>
-          <li <?php print $title == "View Submissions" ? "class='active'" : ""; ?> ><a href="submissions">View Submissions</a></li>
+          <li <?php print $title == "View Submissions" || $title == "View Submission" ? "class='active'" : ""; ?> ><a href="submissions">View Submissions</a></li>
           <?php // TODO: Show this tab only if the user is superuser. ?>
           <li <?php print $title == "Comments" ? "class='active'" : ""; ?> ><a href="comments">Comments</a></li>
           <li class="dropdown">

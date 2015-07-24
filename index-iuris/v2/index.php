@@ -4,6 +4,7 @@
  * Prints the home pagae.
  */
 $title = "Home";
+$loginRequired = false;
 require "includes/header.php";
 ?>
 
