@@ -116,6 +116,53 @@ user_id varchar(255) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+CREATE TABLE comments(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_rdf_about text DEFAULT NULL,
+	comments_date text DEFAULT NULL,
+	comments_provenance text DEFAULT NULL,
+	comments_place_of_composition text DEFAULT NULL,
+	comments_is_part_of text DEFAULT NULL,
+	comments_has_part text DEFAULT NULL,
+	comments_text_divisions text DEFAULT NULL,
+	comments_notes text DEFAULT NULL,
+	custom_namespace_available tinyint(1),
+	type_available tinyint(1),
+	role_available tinyint(1),
+	genre_required_available tinyint(1),
+	genre_controled_available tinyint(1),
+	date_available tinyint(1),
+	url_available tinyint(1),
+	suggested_terms_type text DEFAULT NULL,
+	suggested_terms_role text DEFAULT NULL,
+	suggested_terms_genre text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
+);
+
+
+
+=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
 
 
 
