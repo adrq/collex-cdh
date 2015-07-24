@@ -54,11 +54,11 @@ require_once "config.php";
           <li <?php print $title == "Home" ? "class='active'" : ""; ?> ><a href="./">Home</a></li>
 
           <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
-          <li><a href="rdf-form">Metadata Submission</a></li>
-          <li><a href="governance">Governance</a></li>
-          <li><a href="submissions">View Submissions</a></li>
+          <li <?php print $title == "Metadata Submission Form" ? "class='active'" : ""; ?> ><a href="rdf-form">Metadata Submission</a></li>
+          <li <?php print $title == "Governance" ? "class='active'" : ""; ?> ><a href="governance">Governance</a></li>
+          <li <?php print $title == "View Submissions" ? "class='active'" : ""; ?> ><a href="submissions">View Submissions</a></li>
           <?php // TODO: Show this tab only if the user is superuser. ?>
-          <li><a href="comments">Comments</a></li>
+          <li <?php print $title == "Comments" ? "class='active'" : ""; ?> ><a href="comments">Comments</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">

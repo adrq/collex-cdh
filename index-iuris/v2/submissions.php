@@ -3,7 +3,7 @@
  * @file submissions.php
  * Prints the User's Submissions page.
  */
-$title = "View submissions";
+$title = "View Submissions";
 $loginRequired = true;
 require "includes/header.php";
 ?>
