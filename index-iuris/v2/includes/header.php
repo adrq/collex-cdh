@@ -22,9 +22,9 @@ require_once "config.php";
 
   <title><?php print isset($title) ? $title . " - " : ""; ?>Index Iuris</title>
 
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/collex.css">
-  <link rel="stylesheet" href="css/style.css">
+  <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css", "style.css") as $style): ?>
+  <link rel="stylesheet" href="css/<?php print $style; ?>">
+  <?php endforeach; ?>
 </head>
 <body>
   <noscript>

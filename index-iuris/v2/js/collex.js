@@ -12,6 +12,9 @@
 $(document).ready(function() {
   // Initialize all tooltips.
   $("[data-toggle='tooltip']").tooltip();
+
+  // Initialize all DataTables.
+  $(".dt").dataTable();
 });
 
 /**
