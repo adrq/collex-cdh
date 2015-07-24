@@ -3,7 +3,7 @@
  * @file index.php
  * view submission
  */
-$title = "Edit submission";
+$title = "View submission";
 $loginRequired = true;
 
 require "includes/header.php";
