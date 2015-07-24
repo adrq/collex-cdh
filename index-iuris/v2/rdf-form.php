@@ -6,7 +6,6 @@
 $title = "Metadata Submission Form";
 $loginRequired = true;
 require "includes/header.php";
-
 if (!isset($_POST['submitted'])): ?>
 <div class="container">
   <div class="row page-header">
@@ -461,13 +460,11 @@ if (!isset($_POST['submitted'])): ?>
               <h3>freeculture?</h3>
             </div>
           </section>
-
           <section class="form-group">
             <div class="form-metadata-item">
               <h3>Full text goes here</h3>
             </div>
           </section>
-
           <section class="form-group">
             <div class="form-metadata-item">
               <h3>Image goes here</h3>
@@ -725,20 +722,16 @@ if (!isset($_POST['submitted'])): ?>
 <?php
 else:
   include "includes/rdf-generator.php";
-
   $mysqli  = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
   $json    = json_encode($_POST, JSON_PRETTY_PRINT); //removed escape function to save plain json in db
   $userID  = $_SESSION['user_id'];
   $format  = "json";
   $version = "0.1";
-
   print "<h3>Submitted:</h3><pre>" . print_r($_POST, true) . "</pre>";
   print "<h3>Being Stored:</h3><pre>" . print_r($json, true) . "</pre>";
-
   if ($mysqli->connect_error) {
     exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
   }
-
   $statement = $mysqli->prepare("SELECT id FROM objects WHERE url = ?");
   $statement->bind_param("s", $_POST['seeAlso']);
   $statement->execute();
@@ -853,7 +846,6 @@ $file_format = $_POST['file-format'];
   	$statement->bind_param("is",$last_id,$genre);
   	$statement->execute();
   }
-
   //add date to table
   $statement = $mysqli->prepare("INSERT INTO dates (object_id,type,machine_date,human_date) VALUES (?,?,?,?)");
   $machine_date = $_POST['date-machine'];
@@ -880,16 +872,13 @@ $file_format = $_POST['file-format'];
   	$statement->execute();
   }
   
-
   //TODO: role, subject, discipline
-
   
   
   $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?,?,?,NOW(),?)");
   $statement->bind_param("ssss", $json, $format, $version, $userID);
   $statement->execute();
   $statement->store_result();
-
   if ($statement->affected_rows === 0): ?>
   <div class="container">
     <div class="row page-header">
@@ -922,79 +911,4 @@ $file_format = $_POST['file-format'];
   <?php
   endif;
 endif;
-<<<<<<< Local Changes
-=======
-</section>
-
-</fieldset>
-</form>
-
-<?php else: ?>
-
-<<<<<<< Updated upstream
-  <?php
-  include 'includes/rdf-generator.php';
-
-  $submission = [];
-  foreach ($_POST as $key => $item){
-   $submission[$key] = $item;
- }
-
- $jsonString = json_encode($submission, JSON_PRETTY_PRINT);
-
- echo '<pre>'.$jsonString.'</pre>';
-=======
-<?php 
-include 'includes/rdf-generator.php';
-$comments = [];
-$submission = [];
-foreach ($_POST as $key => $item){
-	if(preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/available$/", $key)){
-			$comments[$key]=$item;
-		}else{ 
-			$submission[$key] = $item;
-		}
-}
-
-$jsonString = json_encode($submission, JSON_PRETTY_PRINT);
-$jsonString_comments = json_encode($comments, JSON_PRETTY_PRINT);
-
-echo '<pre>'.$jsonString.'</pre>';
-echo '<pre>'.$jsonString_comments.'</pre>';
->>>>>>> Stashed changes
-
- $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
-
- if ($mysqli->connect_error) {
-   exit("<h2 class='text-danger'>Database connection error. (" . $mysqli->connect_errno . ")</h2>");
- }
-
-<<<<<<< Updated upstream
- $statement = $mysqli->prepare("INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user_id) VALUES (?,?,?,NOW(),?)");
- $data_format = 'json';
- $rdf_version = '0.1';
- $user_id = $_SESSION['user_id'];
- $escaped_json = "'".$mysqli->real_escape_string($jsonString)."'";
- $statement->bind_param("ssss", $escaped_json,$data_format,$rdf_version,$user_id);
- $statement->execute();
-=======
-$statement = $mysqli->prepare("INSERT INTO submissions (data,data_format,rdf_version,date_submitted,user_id) VALUES (?,?,?,NOW(),?)");
-$data_format = 'json';
-//$date = date("Y-m-d H:i:s");
-$rdf_version = '0.1';
-$user_id = $_SESSION['user_id'];
-$escaped_json = "'".$mysqli->real_escape_string($jsonString)."'";
-$statement->bind_param("ssss", $escaped_json,$data_format,$rdf_version,$user_id);
-$statement->execute();
->>>>>>> Stashed changes
-
-
-
-
-
-
->>>>>>> Stashed changes
-=======
->>>>>>> External Changes
-
 require "includes/footer.php";
