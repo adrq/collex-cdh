@@ -40,3 +40,5 @@
  */
 button.close,
 button.close:hover { color: #000000; }
+
+.well-sm { overflow: auto; }
