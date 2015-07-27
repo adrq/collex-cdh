@@ -66,20 +66,18 @@ require "includes/header.php";
               <select class="form-control" id="comment" name="comment">
                 <option selected=""></option>
                 <option value="comments_rdf_about">RDF: About</option>
-                <option value="comments_date">Date</option>
                 <option value="comments_provenance">Provenance</option>
                 <option value="comments_place_of_composition">Place of composition</option>
                 <option value="comments_is_part_of">Is-Part-Of</option>
                 <option value="comments_has_part">Has-Part</option>
                 <option value="comments_text_divisions">Text-Division</option>
                 <option value="comments_notes">Notes</option>
-                <option value="genre_required_available">Required/Optional Decisions</option>
-                <option value="genre_controled_available">Controlled/Free-form Decisions</option>
-                <option value="suggested_terms_genre">Suggested Genre Terms</option>
+                <option value="genre">Suggested Genre Terms</option>
                 <option value="custom_namespace_available">Custom Namespace Decisions</option>
                 <option value="url_available">URI or URL Decisions</option>
                 <option value="type_available">Type Decisions</option>
                 <option value="role_available">Role Decisions</option>
+				<option value="date">Date</option>
               </select>
             </div>
           </div>
