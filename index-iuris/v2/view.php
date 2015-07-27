@@ -89,6 +89,56 @@ else:
             <?php endforeach; ?>
           </div>
         </div>
+        <div class="row"> <?php //display role/value pairs?>
+          <div class="col-xs-12">
+            <?php 
+            $id = $_GET["id"];
+            $statement2 = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
+            $statement2->bind_param("s", $id);
+            $statement2->execute();
+            
+            $result = $statement2->get_result();
+            while($row2 = $result->fetch_assoc()):
+            ?>
+            	<p><?php print $row2['role']?>: <?php print $row2['value']?></p>
+            <?php endwhile;?>
+
+          </div>
+        </div>
+        <div class="row"><?php //display genres?>
+          <div class="col-xs-12">
+            <?php 
+            $id = $_GET["id"];
+            $statement2 = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
+            $statement2->bind_param("s", $id);
+            $statement2->execute();
+            
+            $result = $statement2->get_result();
+            while($row2 = $result->fetch_assoc()):
+            ?>
+            	<p>Genre: <?php print $row2['genre']?></p>
+            <?php endwhile;?>
+
+          </div>
+        </div>
+        <div class="row"><?php //display dates?>
+          <div class="col-xs-12">
+            <?php 
+            $id = $_GET["id"];
+            $statement2 = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
+            $statement2->bind_param("s", $id);
+            $statement2->execute();
+            
+            $result = $statement2->get_result();
+            while($row2 = $result->fetch_assoc()):
+            ?>
+            	<p>Date type: <?php print $row2['type']?></p>
+            	<p>Human date: <?php print $row2['human_date']?></p>
+            	<p>Machine date: <?php print $row2['machine_date']?></p>
+            <?php endwhile;?>
+
+          </div>
+        </div>
       </div>
       <?php
     else:
@@ -129,6 +179,8 @@ function printPanel($text, $column) {
   </div>
   <?php
 }
+
+
 /**
  * Prints a well with an anchor tag.
  *
