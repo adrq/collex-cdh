@@ -23,7 +23,6 @@ $(document).ready(function() {
  * @param {HTML DOM Event} e: The event happening.
  */
 $("#addRoleButton").click(function (e) {
-
   var section = $(this).parentsUntil("section").parent();
   var group   = section.find("select[name='role[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "select");
@@ -36,7 +35,7 @@ $("#addRoleButton").click(function (e) {
   group = section.find("input[name='role-value[]']").last().parent().parent().clone();
   newID = increaseID(group, "input");
 
-  group.find("input").prop("id", newID);
+  group.find("input").prop("id", newID).val("");
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
@@ -76,7 +75,7 @@ $("#addAltTitleButton").click(function (e) {
   var group   = section.find("input[name='alternative-title[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "input");
 
-  group.find("input").prop("id", newID);
+  group.find("input").prop("id", newID).val("");
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
@@ -96,7 +95,7 @@ $("#addHasPartButton").click(function (e) {
   var group   = section.find("input[name='has-part[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "input");
 
-  group.find("input").prop("id", newID);
+  group.find("input").prop("id", newID).val("");
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
