@@ -57,3 +57,35 @@ $objectsTableColumDisplayNames = array(
 		"date_updated" => "Date updated",
 		"user_id" => "User ID"
 );
+
+global $objectsTableInputTypes;
+
+$objectsTableInputTypes = array(
+		"custom_namespace" => "text" ,
+		"rdf_about" => "textarea" ,
+		"archive" => "text" ,
+		"title" => "textarea" ,
+		"type" => "text" ,
+		"url" => "text" ,
+		"origin" => "text" ,
+		"provenance" => "text" ,
+		"place_of_composition" => "text" ,
+		"shelfmark" => "text" ,
+		"freeculture" => "radio" ,
+		"full_text_url" => "text" ,
+		"full_text_plain" => "textarea" ,
+		"is_full_text" => "radio" ,
+		"image_url" => "text" ,
+		"source" => "text" ,
+		"metadata_xml_url" => "text" ,
+		"metadata_html_url" => "text" ,
+		"text_divisions" => "textarea" ,
+		"language" => "text" ,
+		"ocr" => "radio" ,
+		"thumbnail_url" => "text" ,
+		"notes" => "textarea" ,
+		"file_format" => "text" ,
+		"date_created" => "date",
+		"date_updated" => "date",
+		"user_id" => "user"
+);
