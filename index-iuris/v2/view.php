@@ -121,6 +121,22 @@ else:
 
           </div>
         </div>
+        <div class="row"><?php //display alt_titles?>
+          <div class="col-xs-12">
+            <?php 
+            $id = $_GET["id"];
+            $statement2 = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
+            $statement2->bind_param("s", $id);
+            $statement2->execute();
+            
+            $result = $statement2->get_result();
+            while($row2 = $result->fetch_assoc()):
+            ?>
+            	<p>Alternative title: <?php print $row2['alt_title']?></p>
+            <?php endwhile;?>
+
+          </div>
+        </div>
         <div class="row"><?php //display dates?>
           <div class="col-xs-12">
             <?php 
