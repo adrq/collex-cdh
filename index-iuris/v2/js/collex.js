@@ -52,7 +52,7 @@ $("#addRoleButton").click(function (e) {
  */
 $("#addGenreButton").click(function (e) {
   var section = $(this).parentsUntil("section").parent();
-  var group   = section.find("select[name='genre']").last().parent().parent().clone();
+  var group   = section.find("select[name='genre[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "select");
 
   group.find("select").prop("id", newID);
