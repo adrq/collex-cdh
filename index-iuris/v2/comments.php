@@ -3,6 +3,47 @@
  * @file comments.php
  * Prints all comments for super users.
  */
+require_once "includes/config.php";
+
+if (isset($_GET["comments"])) {
+  global $mysqli;
+  session_start();
+
+  $commentName = $_GET["comments"];
+
+  $statement = $mysqli->prepare("SELECT user_id, $commentName FROM comments");
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($userID, $commentColumn);
+  ?>
+  <table class="table table-striped table-hover dt">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      while ($statement->fetch()):
+        $temp = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
+        $temp->bind_param("s", $userID);
+        $temp->execute();
+        $temp->store_result();
+        $temp->bind_result($username);
+        $temp->fetch();
+        ?>
+        <tr>
+          <td><?php print $username; ?></td>
+          <td><?php print $commentColumn; ?></td>
+        </tr>
+      <?php endwhile; ?>
+    </tbody>
+  </table>
+  <?php
+  exit();
+}
+
 $title = "Comments and Suggested Items";
 $loginRequired = true;
 require "includes/header.php";

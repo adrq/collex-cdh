@@ -157,7 +157,7 @@ $("#newCommentButton").click(function (e) {
 $("select#comment").on("change", function () {
   var value = $(this).val();
   $.ajax({
-    url: "includes/view-comments",
+    url: "comments",
     type: "GET",
     data: "comments=" + value,
     beforeSend: function () {
