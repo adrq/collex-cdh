@@ -7,8 +7,26 @@
  */
 
 /**
+ * Global Tags
+ */
+a { color: #82172A; }
+a:hover,
+a:focus { color: #681422; }
+
+/**
  * Metadata Submission Form
  */
+.form-group > .control-label > .close {
+  opacity: 0;
+  margin-top: -3px;
+
+  -webkit-transition: opacity 0.2s ease-in-out;
+     -moz-transition: opacity 0.2s ease-in-out;
+      -ms-transition: opacity 0.2s ease-in-out;
+       -o-transition: opacity 0.2s ease-in-out;
+          transition: opacity 0.2s ease-in-out;
+}
+
 .form-group:hover > .control-label > .close {
   opacity: 1;
 
@@ -19,15 +37,15 @@
           transition: opacity 0.2s ease-in-out;
 }
 
-.control-label > .close {
-  opacity: 0;
-  margin-top: -3px;
+.form-item-example {
+  margin: 15px;
+  padding: 15px;
 
-  -webkit-transition: opacity 0.2s ease-in-out;
-     -moz-transition: opacity 0.2s ease-in-out;
-      -ms-transition: opacity 0.2s ease-in-out;
-       -o-transition: opacity 0.2s ease-in-out;
-          transition: opacity 0.2s ease-in-out;
+  color: #82172A;
+  font-family: monospace;
+
+  border: 1px dotted #000000;
+  border-radius: 15px;
 }
 
 /**

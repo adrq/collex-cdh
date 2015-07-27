@@ -23,7 +23,7 @@ require_once "config.php";
   <title><?php print isset($title) ? $title . " - " : ""; ?>Index Iuris</title>
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-  <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css", "style.css") as $style): ?>
+  <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css") as $style): ?>
   <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
 </head>

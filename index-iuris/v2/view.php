@@ -46,6 +46,7 @@ else:
         <div class="col-xs-4">
           <ul class="list-group">
             <?php
+            print printListItem("Type", $row["type"]);
             print printListItem("Language", $row["language"]);
             print printListItem("Origin", $row["origin"]);
             print printListItem("Provenance", $row["provenance"]);
@@ -66,7 +67,9 @@ else:
 
         <div class="col-xs-3">
           <?php
+          print printWell("URL", $row["url"]);
           print printWell("Image URL", $row["image_url"]);
+          print printWell("Thumbnail URL", $row["thumbnail_url"]);
           print printWell("Full Text URL", $row["full_text_url"]);
           print printWell("HTML Metadata URL", $row["metadata_html_url"]);
           print printWell("XML Metadata URL", $row["metadata_xml_url"]);
@@ -78,6 +81,7 @@ else:
       <div class="row">
         <div class="col-xs-12">
           <?php foreach ($row as $key=>$value): ?>
+          <?php if (in_array($key, array("type", "url", "language", "origin", "provenance", "place_of_composition", "file_format", "shelfmark", "text_divisions", "source", "notes", "image_url", "thumbnail_url", "full_text_url", "metadata_html_url", "metadata_xml_url", "title", "custom_namespace", "archive", "date_created", "date_updated"))) { continue; } ?>
           <p><?php print $objectsTableColumDisplayNames[$key]?>: <?php print $value?></p>
           <?php endforeach; ?>
         </div>
@@ -99,8 +103,9 @@ require "includes/footer.php";
  * @param {String} $column: The string of an array representing the value of a column.
  */
 function printListItem($text, $column) {
+  $column = trim($column) === "" ? "<em>Blank</em>" : trim($column);
   ?>
-  <li class="list-group-item"><strong><?php print $text; ?></strong>: <?php print $column === "" ? "<em>Blank</em>" : $column; ?></li>
+  <li class="list-group-item"><strong><?php print $text; ?></strong>: <?php print $column; ?></li>
   <?php
 }
 
@@ -111,6 +116,7 @@ function printListItem($text, $column) {
  * @param {String} $column: The string of an array representing the value of a column.
  */
 function printPanel($text, $column) {
+  $column = trim($column) === "" ? "<em>Blank</em>" : trim($column);
   ?>
   <div class="panel panel-default">
     <div class="panel-heading"><?php print $text; ?></div>
@@ -125,11 +131,10 @@ function printPanel($text, $column) {
  * @param {String} $column: The string of an array representing the value of a column.
  */
 function printWell($text, $column) {
+  $column = trim($column) === "" ? "<em>Blank</em>" : trim($column);
   ?>
   <p><?php print $text; ?>:</p>
-  <div class="well well-sm">
-    <a href="<?php print $column; ?>" target="_blank"><?php print $column; ?></a>
-  </div>
+  <div class="well well-sm"><?php print $column; ?></div>
   <?php
 }
 
