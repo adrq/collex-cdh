@@ -62,9 +62,9 @@ global $objectsTableInputTypes;
 
 $objectsTableInputTypes = array(
 		"custom_namespace" => "text" ,
-		"rdf_about" => "textarea" ,
+		"rdf_about" => "text" ,
 		"archive" => "text" ,
-		"title" => "textarea" ,
+		"title" => "text" ,
 		"type" => "text" ,
 		"url" => "text" ,
 		"origin" => "text" ,
