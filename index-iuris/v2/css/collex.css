@@ -54,6 +54,15 @@ a:focus { color: #681422; }
 .comment-text { white-space: pre-line; }
 
 /**
+ * Edit Submission Page
+ */
+.last-updated {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/**
  * Bootstrap Modifications
  */
 button.close,
