@@ -184,7 +184,7 @@ if (!isset($_POST['submitted'])): ?>
                 <div class="col-xs-10">
                   <select class="form-control" id="role" name="role[]">
                     <option selected=""></option>
-                    <?php foreach (array("Author", "Editor", "Publisher", "Translator", "Creator", "Etcher", "Engraver", "Owner", "Artist", "Architect", "Binder", "Book designer", "Book producer", "Calligrapher", "Cartographer", "Collector", "Colorist", "Commentator for written text", "Compiler", "Compositor", "Creator", "Dubious author", "Facsimilist", "Illuminator", "Illustrator", "Lithographer", "Printer", "Printer of plates", "Printmaker", "Repository", "Rubricator", "Scribe", "Sculptor", "Type designer", "Typographer", "Visual Artist", "Wood engraver", "Wood cutter") as $role): ?>
+                    <?php foreach ($rolesArray as $role): ?>
                       <option><?php print $role; ?></option>
                     <?php endforeach; ?>
                   </select>
@@ -236,7 +236,7 @@ if (!isset($_POST['submitted'])): ?>
                 <div class="col-xs-10">
                   <select class="form-control" id="genre" name="genre[]">
                     <option selected=""></option>
-                    <?php foreach (array("Account", "Accusation", "Aide", "Amercement", "Appeal", "Assize", "Benefice", "Brief", "Canon", "Casus", "Causa", "Census", "Certificate", "Challenge", "Charge", "Code of laws", "Collection", "Commentary", "Consilium", "Consistory", "Contract", "Corpus", "Council", "Covenant", "Damages", "Defense", "Decretal", "Deposition", "Dicta", "Dispensation", "Distinction", "Edict", "Enfeoffement", "Evidence", "Formula", "Gloss", "Handbook", "Immunity", "Imperial constitution", "Inquest", "Inquisition", "Investigation", "Judgment", "Manumission", "Narrative", "Oath", "Opinion", "Petition", "Plea", "Prescription", "Privilege", "Process", "Proof", "Receipt", "Regulation", "Rescript", "Response", "Statute", "Summa", "Summation", "Synod", "Testament", "Testimony", "Treatise", "Trial", "Textbook", "Verdict", "Voucher", "Will", "Writ") as $genre): ?>
+                    <?php foreach ($genresArray as $genre): ?>
                       <option><?php print $genre; ?></option>
                     <?php endforeach; ?>
                   </select>
@@ -828,7 +828,23 @@ else:
     $insert->execute();
   }
 
-  // TODO: Role, Subject, Discipline.
+  // TODO: Subject, Discipline.
+  
+  //Add roles to its table
+  $i = 0;
+  $roleValues = [];
+  foreach ($_POST["role-value"] as $value){
+  	array_push($roleValues, $value);
+  }
+  foreach ($_POST["role"] as $item) {
+  	$role = $item;
+  	$role_value = $roleValues[$i++];
+  	$insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
+  	$insert->bind_param("iss", $lastID, $role, $role_value);
+  	$insert->execute();
+  }
+  
+  
 
   $comments = [];
   // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.

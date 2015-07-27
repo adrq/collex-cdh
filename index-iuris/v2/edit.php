@@ -3,7 +3,7 @@
  * @file edit.php
  * Prints the edit submission page.
  */
-if (isset($_GET["custom_namespace"], $_GET["archive"], $_GET["type"])) {
+if (isset($_POST["custom_namespace"], $_GET["archive"], $_GET["type"])) {
   // Do stuff.
 }
 
@@ -37,7 +37,7 @@ else:
 
         <div class="row">
           <div class="col-xs-12">
-            <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="GET">
+            <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
               <fieldset>
                 <?php foreach ($row as $key=>$value): ?>
                   <?php switch ($objectsTableInputTypes[$key]): case "text": // Need a reason as to why PHP can be stupid? Any trailing whitespace between switch and the first case throws an error. http://php.net/manual/en/control-structures.alternative-syntax.php ?>
@@ -67,7 +67,98 @@ else:
                     <hr>
                     <?php break; ?>
                   <?php endswitch; ?>
-                <?php endforeach; ?>
+                <?php endforeach; 
+                
+                $id = $_GET["id"];
+                $statement2 = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
+                $statement2->bind_param("s", $id);
+                $statement2->execute();
+                
+                $result = $statement2->get_result();
+                while($row2 = $result->fetch_assoc()):
+                ?>
+                <section class="form-group">
+                <select id="role" name="role[]" class="form-control">
+                    <option selected=""></option>
+                    <?php foreach ($rolesArray as $role): ?>
+                      <option<?php if($role == $row2['role']) print " selected=\"\""?>><?php print $role; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                   <div>
+                   	<input type="text" id="value" name="role-value[]" value="<?php print $row2['value']?>">
+                   </div><?php //TODO: add button for multiple role/value pairs?>
+                  </section>
+                  <section class="form-group">
+                	<div>
+                  	<button type="button">Add Another Role</button>
+                  	</div>
+              	  </section>
+                <?php endwhile;
+                $id = $_GET["id"];
+                $statement2 = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
+                $statement2->bind_param("s", $id);
+                $statement2->execute();
+                
+                $result = $statement2->get_result();
+                while($row2 = $result->fetch_assoc()):
+                ?>
+                <section class="form-group">
+                	<select class="form-control" id="genre" name="genre[]">
+                    <option selected=""></option>
+                    <?php foreach ($genresArray as $genre): ?>
+                      <option<?php if($genre == $row2['genre']) print " selected=\"\""?>><?php print $genre; ?></option>
+                    <?php endforeach; ?>
+                  	</select>
+                </section>
+                <section class="form-group">
+                <div>
+                  <button type="button">Add Another Genre</button>
+                </div>
+                </section>
+                <?php endwhile;
+                $id = $_GET["id"];
+                $statement2 = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
+                $statement2->bind_param("s", $id);
+                $statement2->execute();
+                
+                $result = $statement2->get_result();
+                while($row2 = $result->fetch_assoc()):
+                ?>
+                <div class="form-group">
+                <label for="altTitle">Alt Title</label>
+                <div>
+                <input type="text" class="form-control" name="alternative-title[]" id="altTitle"  value="<?php print $row2['alt_title']?>">
+                </div>
+                </div>
+
+                <section class="form-group">
+                <div>
+                <button type="button" id="addAltTitleButton">Add Another Alternative Title</button>
+                </div>
+                </section>
+                <?php endwhile;
+                
+                $id = $_GET["id"];
+                $statement2 = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
+                $statement2->bind_param("s", $id);
+                $statement2->execute();
+                
+                $result = $statement2->get_result();
+                while($row2 = $result->fetch_assoc()):
+                ?>
+                <section class="form-group">
+                <label for="humanDate">Human Date</label>
+                <div>
+                <input type="text" class="form-control" name="date-human" id="humanDate" value="<?php print $row2['human_date']?>" required="">
+                </div>
+                </section>
+                <section class="form-group">
+                <label for="machineDate">Machine Date</label>
+                <div>
+                <input type="text" class="form-control" name="date-machine" id="machineDate" value="<?php print $row2['machine_date']?>" required="">
+                </div>
+                </section>
+                <?php endwhile;?>
                 <section class="form-group" style="margin-bottom: 15%">
                   <input type="hidden" class="hide" name="id" value="<?php print $id; ?>">
                   <button type="submit" class="btn btn-success">Save Changes</button>
