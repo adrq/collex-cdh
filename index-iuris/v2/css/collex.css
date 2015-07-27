@@ -34,3 +34,9 @@
  * Governance Page
  */
 .comment-text { white-space: pre-line; }
+
+/**
+ * Bootstrap Modifications
+ */
+button.close,
+button.close:hover { color: #000000; }

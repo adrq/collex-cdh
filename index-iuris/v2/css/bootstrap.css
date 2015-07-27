@@ -1,15 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700");
 /*!
  * bootswatch v3.3.5
  * Homepage: http://bootswatch.com
  * Copyright 2012-2015 Thomas Park
  * Licensed under MIT
  * Based on Bootstrap
-*/
-/*!
+ *
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ *
+ * Modified for Index Iuris by Center for Digital Humanities - University of South Carolina.
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -3061,25 +3061,25 @@ fieldset[disabled] a.btn {
 }
 .btn-default {
   color: #ffffff;
-  background-color: #222222;
-  border-color: #222222;
+  background-color: #82172A;
+  border-color: #82172A;
 }
 .btn-default:focus,
 .btn-default.focus {
   color: #ffffff;
-  background-color: #090909;
+  background-color: #681422;
   border-color: #000000;
 }
 .btn-default:hover {
   color: #ffffff;
-  background-color: #090909;
+  background-color: #681422;
   border-color: #040404;
 }
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   color: #ffffff;
-  background-color: #090909;
+  background-color: #681422;
   border-color: #040404;
 }
 .btn-default:active:hover,
@@ -3118,11 +3118,11 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #222222;
-  border-color: #222222;
+  background-color: #82172A;
+  border-color: #82172A;
 }
 .btn-default .badge {
-  color: #222222;
+  color: #82172A;
   background-color: #ffffff;
 }
 .btn-primary {
@@ -4545,7 +4545,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #222222;
+  background-color: #82172A;
   border-color: #121212;
 }
 .navbar-default .navbar-brand {
@@ -4565,13 +4565,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #ffffff;
-  background-color: #090909;
+  background-color: #681422;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #ffffff;
-  background-color: #090909;
+  background-color: #681422;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -4584,7 +4584,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #090909;
+  background-color: #681422;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #ffffff;
@@ -4596,7 +4596,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #090909;
+  background-color: #681422;
   color: #ffffff;
 }
 @media (max-width: 767px) {
@@ -4606,13 +4606,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #ffffff;
-    background-color: #090909;
+    background-color: #681422;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ffffff;
-    background-color: #090909;
+    background-color: #681422;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -4920,11 +4920,11 @@ a.label:focus {
   top: -1px;
 }
 .label-default {
-  background-color: #222222;
+  background-color: #82172A;
 }
 .label-default[href]:hover,
 .label-default[href]:focus {
-  background-color: #090909;
+  background-color: #681422;
 }
 .label-primary {
   background-color: #2780e3;

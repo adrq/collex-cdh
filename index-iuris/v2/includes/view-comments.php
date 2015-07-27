@@ -9,34 +9,39 @@ if (isset($_GET["comments"])) {
   global $mysqli;
   session_start();
 
-  $userID = $_SESSION["user_id"];
+  $commentName = $_GET["comments"];
 
-  
-  
+  $statement = $mysqli->prepare("SELECT user_id, $commentName FROM comments");
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($userID, $commentColumn);
+  ?>
+  <table class="table table-striped table-hover dt">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      while ($statement->fetch()):
+        $temp = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
+        $temp->bind_param("s", $userID);
+        $temp->execute();
+        $temp->store_result();
+        $temp->bind_result($username);
+        $temp->fetch();
+        ?>
+        <tr>
+          <td><?php print $username; ?></td>
+          <td><?php print $commentColumn; ?></td>
+        </tr>
+      <?php endwhile; ?>
+    </tbody>
+  </table>
+  <?php
 
-  $comment_name=$_GET["comments"];
-  $results = $mysqli->query("select user_id,$comment_name from comments");
-  print '<table border="3">';
-  print '<tr>';
-  print '<th> User Name    </th>';
-  print '<th> Comment </th>';
-  print '</tr>';
-  while($row = $results->fetch_assoc()) {
-  	    print '<tr>';
-	    $statement = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
-	    $statement->bind_param("s", $row["user_id"]);
-	    $statement->execute();
-	    $statement->store_result();
-	    $statement->bind_result($username);
-	    $statement->fetch();
-	    print '<td>' .$username.'</td>';
-  	    print '<td>' .$row[$_GET["comments"]].'</td>';
-  	    print '</tr>';
-  	}  
-  print '</table>';
-  
-
-  //print "<p>" . $commentResult . "</p>";
   exit();
 } else {
   header("Location: ./");

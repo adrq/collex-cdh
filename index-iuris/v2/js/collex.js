@@ -19,8 +19,11 @@ $(document).ready(function() {
 
 /**
  * Add another role to the role section within the RDF form.
+ *
+ * @param {HTML DOM Event} e: The event happening.
  */
-$("#addRoleButton").click(function () {
+$("#addRoleButton").click(function (e) {
+
   var section = $(this).parentsUntil("section").parent();
   var group   = section.find("select[name='role[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "select");
@@ -39,12 +42,16 @@ $("#addRoleButton").click(function () {
   $(group).insertBefore($(this).parent().parent());
 
   section.find(".close.hide").removeClass("hide");
+
+  e.target.blur();
 });
 
 /**
  * Add another genre to the genre section within the RDF form.
+ *
+ * @param {HTML DOM Event} e: The event happening.
  */
-$("#addGenreButton").click(function () {
+$("#addGenreButton").click(function (e) {
   var section = $(this).parentsUntil("section").parent();
   var group   = section.find("select[name='genre']").last().parent().parent().clone();
   var newID   = increaseID(group, "select");
@@ -55,12 +62,16 @@ $("#addGenreButton").click(function () {
   $(group).insertBefore($(this).parent().parent());
 
   section.find(".close.hide").removeClass("hide");
+
+  e.target.blur();
 });
 
 /**
  * Add another alternative title to the alternative title section within the RDF form.
+ *
+ * @param {HTML DOM Event} e: The event happening.
  */
-$("#addAltTitleButton").click(function () {
+$("#addAltTitleButton").click(function (e) {
   var section = $(this).parentsUntil("section").parent();
   var group   = section.find("input[name='alternative-title[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "input");
@@ -71,12 +82,16 @@ $("#addAltTitleButton").click(function () {
   $(group).insertBefore($(this).parent().parent());
 
   section.find(".close.hide").removeClass("hide");
+
+  e.target.blur();
 });
 
 /**
  * Add another has part to the has part section within the RDF form.
+ *
+ * @param {HTML DOM Event} e: The event happening.
  */
-$("#addHasPartButton").click(function () {
+$("#addHasPartButton").click(function (e) {
   var section = $(this).parentsUntil("section").parent();
   var group   = section.find("input[name='has-part[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "input");
@@ -87,12 +102,14 @@ $("#addHasPartButton").click(function () {
   $(group).insertBefore($(this).parent().parent());
 
   section.find(".close.hide").removeClass("hide");
+
+  e.target.blur();
 });
 
 /**
  * Remove a duplicate within the RDF form.
  *
- * @param e: The event happening.
+ * @param {HTML DOM Event} e: The event happening.
  */
 $("section.form-group").on("click", ".control-label > .close", function (e) {
   var group   = $(this).parentsUntil("div.form-group").parent();
@@ -121,6 +138,22 @@ $("section.form-group").on("click", ".control-label > .close", function (e) {
   e.target.blur();
 });
 
+/**
+ * Visually slide the user down to add a new comment.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$("#newCommentButton").click(function (e) {
+  $("html, body").animate({
+    scrollTop: $("#newComment").position().top
+  }, 1200);
+
+  e.target.blur();
+});
+
+/**
+ * Renders all comments for super users.
+ */
 $("select#comment").on("change", function () {
   var value = $(this).val();
   $.ajax({
@@ -131,8 +164,7 @@ $("select#comment").on("change", function () {
       console.info("Attempting to grab comments. - " + value);
     },
     success: function (result) {
-      console.log(result);
-      $("#commentResults").html(result);
+      $("#commentResults").html(result).find("table.dt").dataTable();
     },
     error: function (result) {
       console.error("Error connecting to the server. Message: " + result.responseText);
@@ -151,23 +183,11 @@ $("select#comment").on("change", function () {
 function increaseID(group, search) {
   var id = group.find(search).prop("id");
 
-  if (!(/^\d+$/).test(id.substring(id.length - 1, id.length))) {
-    return id + "1";
+  if ((/^\d+$/).test(id.substring(id.length - id.replace(/\D/g, ""), id.length))) {
+    var number = parseInt(id.substring(id.length - id.replace(/\D/g, "").length, id.length), 10);
+
+    return id.substring(0, id.length - number.toString().length) + (number + 1);
   } else {
-    var idLength = id.length;
-
-    var idReplace = id.replace(/\D/g, "");
-
-    var number = parseInt(id.substring(idLength - idReplace.length, idLength), 10);
-
-    var newNumb = number + 1;
-
-    var newID = id.substring(0, idLength - number.toString().length);
-
-    return newID + newNumb;
-
-    // var oldNumb = parseInt(id.substring(id.length - id.replace(/\D/g, "").length), id.length, 10);
-    // return id.substring(0, id.length - 1) + parseInt(id.substring(id.length - id.replace(/\D/g, "").length, id.length), 10) + 1;
-    // return id.substring(0, id.length - oldNumb.toString().length) + (oldNumb + 1);
+    return id + "1";
   }
 }

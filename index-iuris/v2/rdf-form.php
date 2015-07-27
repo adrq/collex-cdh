@@ -49,7 +49,7 @@ if (!isset($_POST['submitted'])): ?>
             </div>
 
             <div class="col-xs-4">
-              <label class="control-label col-xs-6">Would you be able to decide what goes after the column?</label>
+              <label class="control-label col-xs-6">Would you be able to decide what goes after the colon?</label>
               <div class="col-xs-6">
                 <div class="radio">
                   <label>

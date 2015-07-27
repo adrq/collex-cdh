@@ -22,7 +22,8 @@ require_once "config.php";
 
   <title><?php print isset($title) ? $title . " - " : ""; ?>Index Iuris</title>
 
-  <?php foreach (array("bootstrap-cosmo.css", "dataTables.bootstrap.css", "collex.css", "style.css") as $style): ?>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+  <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css", "style.css") as $style): ?>
   <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
 </head>
@@ -58,7 +59,7 @@ require_once "config.php";
           <li <?php print $title == "Governance" ? "class='active'" : ""; ?> ><a href="governance">Governance</a></li>
           <li <?php print $title == "View Submissions" || $title == "View Submission" ? "class='active'" : ""; ?> ><a href="submissions">View Submissions</a></li>
           <?php // TODO: Show this tab only if the user is superuser. ?>
-          <li <?php print $title == "Comments" ? "class='active'" : ""; ?> ><a href="comments">Comments</a></li>
+          <li <?php print $title == "Comments and Suggested Items" ? "class='active'" : ""; ?> ><a href="comments">Comments</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">

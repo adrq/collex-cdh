@@ -46,7 +46,7 @@ require "includes/header.php";
   					<td><?php print $archive; ?></td>
   					<td><?php print $type; ?></td>
   					<td><?php print $id; ?></td>
-  					<td>
+  					<td class="text-center">
 						  <a href="view?id=<?php print $id; ?>" class="btn btn-primary">View</a>
 						  <a href="#" class="btn btn-success">Edit</a>
   					</td>
