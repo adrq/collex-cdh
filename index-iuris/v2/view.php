@@ -34,6 +34,7 @@ else:
           <div class="col-xs-9">
             <h3><?php print $row["custom_namespace"]; ?></h3>
             <h5><?php print $row["archive"]; ?></h5>
+            <p><?php print $row["rdf_about"]; ?></p>
           </div>
 
           <div class="col-xs-3 text-right">
@@ -80,79 +81,75 @@ else:
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-xs-3">
+            <h2>Roles</h2>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->bind_result($role, $value);
+
+              while ($temp->fetch()): ?>
+              <li class="list-group-item"><strong><?php print $role; ?></strong>: <?php print $value; ?></li>
+              <?php endwhile; ?>
+            </ul>
+          </div>
+
+          <div class="col-xs-3">
+            <h2>Genres</h2>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->bind_result($genre);
+
+              while ($temp->fetch()): ?>
+              <li class="list-group-item"><strong>Genre</strong>: <?php print $genre; ?></li>
+              <?php endwhile; ?>
+            </ul>
+          </div>
+
+          <div class="col-xs-3">
+            <h2>Alternative Titles</h2>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->bind_result($altTitle);
+
+              while ($temp->fetch()): ?>
+              <li class="list-group-item"><strong>Title</strong>: <?php print $altTitle; ?></li>
+              <?php endwhile; ?>
+            </ul>
+          </div>
+
+          <div class="col-xs-3">
+            <h2>Dates</h2>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->bind_result($type, $machine, $human);
+
+              while ($temp->fetch()): ?>
+              <li class="list-group-item"><strong>Human</strong>: <?php print $human; ?></li>
+              <li class="list-group-item"><strong>Machine</strong>: <?php print $machine; ?></li>
+              <?php endwhile; ?>
+            </ul>
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-xs-12">
             <?php foreach ($row as $key=>$value): ?>
-            <?php if (in_array($key, array("type", "url", "language", "origin", "provenance", "place_of_composition", "file_format", "shelfmark", "text_divisions", "source", "notes", "image_url", "thumbnail_url", "full_text_url", "metadata_html_url", "metadata_xml_url", "title", "custom_namespace", "archive", "date_created", "date_updated"))) { continue; } ?>
+            <?php if (in_array($key, array("type", "rdf_about", "url", "language", "origin", "provenance", "place_of_composition", "file_format", "shelfmark", "text_divisions", "source", "notes", "image_url", "thumbnail_url", "full_text_url", "metadata_html_url", "metadata_xml_url", "title", "custom_namespace", "archive", "date_created", "date_updated"))) { continue; } ?>
             <p><?php print $objectsTableColumDisplayNames[$key]?>: <?php print $value?></p>
             <?php endforeach; ?>
-          </div>
-        </div>
-        <div class="row"> <?php //display role/value pairs?>
-          <div class="col-xs-12">
-            <?php 
-            $id = $_GET["id"];
-            $statement2 = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
-            $statement2->bind_param("s", $id);
-            $statement2->execute();
-            
-            $result = $statement2->get_result();
-            while($row2 = $result->fetch_assoc()):
-            ?>
-            	<p><?php print $row2['role']?>: <?php print $row2['value']?></p>
-            <?php endwhile;?>
-
-          </div>
-        </div>
-        <div class="row"><?php //display genres?>
-          <div class="col-xs-12">
-            <?php 
-            $id = $_GET["id"];
-            $statement2 = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
-            $statement2->bind_param("s", $id);
-            $statement2->execute();
-            
-            $result = $statement2->get_result();
-            while($row2 = $result->fetch_assoc()):
-            ?>
-            	<p>Genre: <?php print $row2['genre']?></p>
-            <?php endwhile;?>
-
-          </div>
-        </div>
-        <div class="row"><?php //display alt_titles?>
-          <div class="col-xs-12">
-            <?php 
-            $id = $_GET["id"];
-            $statement2 = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
-            $statement2->bind_param("s", $id);
-            $statement2->execute();
-            
-            $result = $statement2->get_result();
-            while($row2 = $result->fetch_assoc()):
-            ?>
-            	<p>Alternative title: <?php print $row2['alt_title']?></p>
-            <?php endwhile;?>
-
-          </div>
-        </div>
-        <div class="row"><?php //display dates?>
-          <div class="col-xs-12">
-            <?php 
-            $id = $_GET["id"];
-            $statement2 = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
-            $statement2->bind_param("s", $id);
-            $statement2->execute();
-            
-            $result = $statement2->get_result();
-            while($row2 = $result->fetch_assoc()):
-            ?>
-            	<p>Date type: <?php print $row2['type']?></p>
-            	<p>Human date: <?php print $row2['human_date']?></p>
-            	<p>Machine date: <?php print $row2['machine_date']?></p>
-            <?php endwhile;?>
-
           </div>
         </div>
       </div>
@@ -195,8 +192,6 @@ function printPanel($text, $column) {
   </div>
   <?php
 }
-
-
 /**
  * Prints a well with an anchor tag.
  *
