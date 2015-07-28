@@ -179,7 +179,7 @@ if (!isset($_POST['submitted'])): ?>
               <div class="form-group">
                 <label for="value" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="value" name="role-value[]">
+                  <input type="text" class="form-control" id="value" name="role_value[]">
                 </div>
               </div>
 
@@ -459,7 +459,7 @@ if (!isset($_POST['submitted'])): ?>
               <div class="form-group">
                 <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="alternative-title[]" id="altTitle">
+                  <input type="text" class="form-control" name="alternative_title[]" id="altTitle">
                 </div>
               </div>
 
@@ -744,7 +744,7 @@ else:
   $lastID = $statement->insert_id;
 
   // Add alternative titles to its table.
-  foreach ($_POST["alternative-title"] as $altTitle) {
+  foreach ($_POST["alternative_title"] as $altTitle) {
     $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
     $insert->bind_param("is", $lastID, $altTitle);
     $insert->execute();
@@ -784,7 +784,7 @@ else:
   // Add roles to its table
   $i = 0;
   $roleValues = array();
-  foreach ($_POST["role-value"] as $value) {
+  foreach ($_POST["role_value"] as $value) {
     array_push($roleValues, $value);
   }
 

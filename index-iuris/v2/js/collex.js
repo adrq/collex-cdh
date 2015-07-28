@@ -32,7 +32,7 @@ $("#addRoleButton").click(function (e) {
 
   $(group).insertBefore($(this).parent().parent());
 
-  group = section.find("input[name='role-value[]']").last().parent().parent().clone();
+  group = section.find("input[name='role_value[]']").last().parent().parent().clone();
   newID = increaseID(group, "input");
 
   group.find("input").prop("id", newID).val("");
@@ -72,7 +72,7 @@ $("#addGenreButton").click(function (e) {
  */
 $("#addAltTitleButton").click(function (e) {
   var section = $(this).parentsUntil("section").parent();
-  var group   = section.find("input[name='alternative-title[]']").last().parent().parent().clone();
+  var group   = section.find("input[name='alternative_title[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "input");
 
   group.find("input").prop("id", newID).val("");
