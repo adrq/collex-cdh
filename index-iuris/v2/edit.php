@@ -18,6 +18,7 @@ else:
   if (isset($_POST["id"])){
 	$id = $_POST["id"];
 	saveObjectToDB($_POST,$id);
+	?><script>alert("Submission updated successfully"); window.location = "edit?id=<?php print $id?>";</script><?php
   }
   else {
   	$id = $_GET["id"];
@@ -208,7 +209,7 @@ else:
                   $counter++;
                 endwhile;
                 
-                //has_part
+                //is_part_of
                 $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = ?");
                 $type = "isPartOf";
                 $temp->bind_param("ss", $id,$type);
@@ -228,8 +229,16 @@ else:
                 <hr>
                 <?php
                 $counter++;
-                endwhile;
+                endwhile;?>
+                <?php //TODO: add field when button is clicked, max 1?>
+                <div class="form-group">
+                <div class="col-xs-12">
+                <button type="button" class="btn btn-default pull-right" id="addIsPartOfButton">Add isPartOf</button>
+                </div>
+                </div>
+                <hr>
                 
+                <?php 
                 //has_part
                 $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = ?");
                 $type = "hasPart";
@@ -247,13 +256,17 @@ else:
                     <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="has_part[]" value="<?php print $part_id; ?>" required="">
                     </div>
                  </section>
-                 <?php //TODO: add button for multiple has_part?>
                  <?php
                  $counter++;
                  endwhile;
-                
-                
                 ?>
+                <?php //TODO: add field when button is clicked, can have multiple?>
+                <div class="form-group">
+                <div class="col-xs-12">
+                <button type="button" class="btn btn-default pull-right" id="addHasPartButton">Add hasPart</button>
+                </div>
+                </div>
+                
                 <hr>
                 <section class="form-group" style="margin-bottom: 15%">
                   <input type="hidden" class="hide" name="id" value="<?php print $id; ?>">
