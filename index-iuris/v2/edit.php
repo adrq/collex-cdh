@@ -91,9 +91,9 @@ else:
                       <label for="role<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                       <div class="col-xs-10">
                         <select class="form-control" id="role<?php print $counter; ?>" name="role[]">
-                          <option selected=""></option>
+                          <option<?php print $role === "" ? " selected=''" : ""; ?>></option>
                           <?php foreach ($rolesArray as $item): ?>
-                            <option <?php print $item == $role ? "selected=''" : ""; ?> ><?php print $item; ?></option>
+                            <option<?php print $item == $role ? " selected=''" : ""; ?>><?php print $item; ?></option>
                           <?php endforeach; ?>
                         </select>
                       </div>
@@ -134,9 +134,9 @@ else:
                       <label for="genre<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Genre</label>
                       <div class="col-xs-10">
                         <select class="form-control" id="genre<?php print $counter; ?>" name="genre[]">
-                          <option></option>
+                          <option<?php print $genre === "" ? " selected=''" : ""; ?>></option>
                           <?php foreach ($genresArray as $item): ?>
-                            <option <?php print $item == $role ? "selected=''" : ""; ?> ><?php print $item; ?></option>
+                            <option<?php print $item == $genre ? " selected=''" : ""; ?>><?php print $item; ?></option>
                           <?php endforeach; ?>
                         </select>
                       </div>
