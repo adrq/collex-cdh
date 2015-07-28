@@ -3,20 +3,25 @@
  * @file edit.php
  * Prints the edit submission page.
  */
-if (isset($_POST["custom_namespace"], $_GET["archive"], $_GET["type"])) {
-  // Do stuff.
-}
 
 $title = "Edit Submission";
 $loginRequired = true;
 require "includes/header.php";
 
-if (!isset($_GET["id"])):
+if (!isset($_GET["id"]) && !isset($_POST["id"])):
   ?><script>window.location = "submissions";</script><?php
 else:
   global $mysqli;
-
-  $id = $_GET["id"];
+  
+  include("includes/functions.php");
+  
+  if (isset($_POST["id"])){
+	$id = $_POST["id"];
+	saveObjectToDB($_POST,$id);
+  }
+  else {
+  	$id = $_GET["id"];
+  }
 
   $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("s", $id);
@@ -100,7 +105,7 @@ else:
                     <div class="form-group">
                       <label for="value<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role-value[]" value="<?php print $value; ?>">
+                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role_value[]" value="<?php print $value; ?>">
                       </div>
                     </div>
                     <?php
@@ -163,7 +168,7 @@ else:
                     <div class="form-group">
                       <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative-title[]" value="<?php print $altTitle; ?>">
+                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative_title[]" value="<?php print $altTitle; ?>">
                       </div>
                     </div>
                     <?php
@@ -189,18 +194,65 @@ else:
                   <section class="form-group">
                     <label for="humanDate<?php print $counter; ?>" class="control-label col-xs-2">Human Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="date-human" value="<?php print $humanDate; ?>" required="">
+                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="human_date" value="<?php print $humanDate; ?>" required="">
                     </div>
                   </section>
                   <section class="form-group">
                     <label for="machineDate<?php print $counter; ?>" class="control-label col-xs-2">Machine Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="date-machine" value="<?php print $machineDate; ?>" required="">
+                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" value="<?php print $machineDate; ?>" required="">
                     </div>
                   </section>
+                  <hr>
                   <?php
                   $counter++;
                 endwhile;
+                
+                //has_part
+                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = ?");
+                $type = "isPartOf";
+                $temp->bind_param("ss", $id,$type);
+                $temp->execute();
+                $temp->bind_result($part_id);
+                
+                $counter = 1;
+                while ($temp->fetch()):
+           
+                ?>
+                <section class="form-group">
+                	<label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Is part of</label>
+                    	<div class="col-xs-10">
+                        	<input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" value="<?php print $part_id; ?>" required="">
+                        </div>
+                </section>
+                <hr>
+                <?php
+                $counter++;
+                endwhile;
+                
+                //has_part
+                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = ?");
+                $type = "hasPart";
+                $temp->bind_param("ss", $id,$type);
+                $temp->execute();
+                $temp->bind_result($part_id);
+                
+                $counter = 1;
+                while ($temp->fetch()):
+                 
+                ?>
+                <section class="form-group">
+                	<label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Has part</label>
+                	<div class="col-xs-10">
+                    <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="has_part[]" value="<?php print $part_id; ?>" required="">
+                    </div>
+                 </section>
+                 <?php //TODO: add button for multiple has_part?>
+                 <?php
+                 $counter++;
+                 endwhile;
+                
+                
                 ?>
                 <hr>
                 <section class="form-group" style="margin-bottom: 15%">
