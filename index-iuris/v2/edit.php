@@ -43,7 +43,7 @@ else:
                     <section class="form-group">
                       <label for="<?php print $key; ?>" class="control-label col-xs-2"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" name="<?php print $key; ?>" id="<?php print $key; ?>" value="<?php print $value; ?>">
+                        <input type="text" class="form-control" name="<?php print $key; ?>" id="<?php print $key; ?>" value="<?php print $value; ?>"<?php printRequired($key); ?>>
                       </div>
                     </section>
                     <hr>
@@ -52,7 +52,7 @@ else:
                     <section class="form-group">
                       <label for="<?php print $key; ?>" class="control-label col-xs-2"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
                       <div class="col-xs-10">
-                        <textarea class="form-control" name="<?php print $key ;?>" id="<?php print $key; ?>" rows="4"><?php print $value; ?></textarea>
+                        <textarea class="form-control" name="<?php print $key ;?>" id="<?php print $key; ?>" rows="4"<?php printRequired($key); ?>><?php print $value; ?></textarea>
                       </div>
                     </section>
                     <hr>
@@ -62,10 +62,10 @@ else:
                       <label for="<?php print $key; ?>" class="control-label col-xs-2"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
                       <div class="col-xs-10">
                         <div class="radio">
-                          <label><input type="radio" name="<?php print $key; ?>" value="true" <?php print $value == "true" ? "checked=''" : ""; ?> >Yes</label>
+                          <label><input type="radio" name="<?php print $key; ?>" value="true"<?php print $value == "true" ? " checked=''" : ""; ?>>Yes</label>
                         </div>
                         <div class="radio">
-                          <label><input type="radio" name="<?php print $key; ?>" value="false" <?php print $value == "false" ? "checked=''" : ""; ?> >No</label>
+                          <label><input type="radio" name="<?php print $key; ?>" value="false"<?php print $value == "false" ? " checked=''" : ""; ?>>No</label>
                         </div>
                       </div>
                     </section>
@@ -79,14 +79,12 @@ else:
                 $temp->bind_param("s", $id);
                 $temp->execute();
                 $temp->bind_result($role, $value);
-
                 ?>
                 <span class="hide">Role</span>
                 <section>
                   <?php
                   $counter = 1;
-                  while ($temp->fetch()) {
-                    ?>
+                  while ($temp->fetch()): ?>
                     <div class="form-group">
                       <label for="role<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                       <div class="col-xs-10">
@@ -107,7 +105,7 @@ else:
                     </div>
                     <?php
                     $counter++;
-                  } // while ($temp->fetch())
+                  endwhile;
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
@@ -115,21 +113,19 @@ else:
                     </div>
                   </div>
                 </section>
+
                 <hr>
                 <?php
-
                 $temp = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
                 $temp->bind_param("s", $id);
                 $temp->execute();
                 $temp->bind_result($genre);
-
                 ?>
                 <span class="hide">Genre</span>
                 <section>
                   <?php
                   $counter = 1;
-                  while ($temp->fetch()) {
-                    ?>
+                  while ($temp->fetch()): ?>
                     <div class="form-group">
                       <label for="genre<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Genre</label>
                       <div class="col-xs-10">
@@ -143,7 +139,7 @@ else:
                     </div>
                     <?php
                     $counter++;
-                  } // while ($temp->fetch())
+                  endwhile;
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
@@ -151,21 +147,19 @@ else:
                     </div>
                   </div>
                 </section>
+
                 <hr>
                 <?php
-
                 $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
                 $temp->bind_param("s", $id);
                 $temp->execute();
                 $temp->bind_result($altTitle);
-
                 ?>
                 <span class="hide">Alternative Title</span>
                 <section>
                   <?php
                   $counter = 1;
-                  while ($temp->fetch()) {
-                    ?>
+                  while ($temp->fetch()): ?>
                     <div class="form-group">
                       <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
                       <div class="col-xs-10">
@@ -174,7 +168,7 @@ else:
                     </div>
                     <?php
                     $counter++;
-                  } // while ($temp->fetch())
+                  endwhile;
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
@@ -182,17 +176,16 @@ else:
                     </div>
                   </div>
                 </section>
+
                 <hr>
                 <?php
-
                 $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
                 $temp->bind_param("s", $id);
                 $temp->execute();
                 $temp->bind_result($type, $machineDate, $humanDate);
 
                 $counter = 1;
-                while ($temp->fetch()) {
-                  ?>
+                while ($temp->fetch()): ?>
                   <section class="form-group">
                     <label for="humanDate<?php print $counter; ?>" class="control-label col-xs-2">Human Date</label>
                     <div class="col-xs-10">
@@ -207,7 +200,7 @@ else:
                   </section>
                   <?php
                   $counter++;
-                } // while ($temp->fetch())
+                endwhile;
                 ?>
                 <hr>
                 <section class="form-group" style="margin-bottom: 15%">
@@ -230,4 +223,13 @@ else:
   endif; // if ($row)
 endif; // if (!isset($_GET["id"]))
 
-require "includes/footer.php"; ?>
+require "includes/footer.php";
+
+/**
+ * Prints if the form field is required or not.
+ *
+ * @param {String} $key: The form field name.
+ */
+function printRequired($key) {
+  print in_array($key, array("custom_namespace", "rdf_about", "archive", "title", "type", "file_format")) ? ' required=""' : "";
+}

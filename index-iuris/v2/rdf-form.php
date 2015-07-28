@@ -33,11 +33,7 @@ if (!isset($_POST['submitted'])): ?>
               <p>This field is required, and its format is predetermined for technical reasons. Custom namespace is a short code to identify the project. It is formatted as two pieces of text separated by a colon. The text before the colon identifies the main project or collection; the text after teh colon identifies the collection or subcollection.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>CarolingianCanonLawProject:transcript</li>
-                <li>AmesFoundation:book</li>
-                <li>VirtualCanonLawLibrary:commentary</li>
-                <li>VirtualCanonLawLibrary:book</li>
-                <li>Pennington:consilia</li>
+                <?php printExamples(array("CarolingianCanonLawProject:transcript", "AmesFoundation:book", "VirtualCanonLawLibrary:commentary", "VirtualCanonLawLibrary:book", "Pennington:consilia")); ?>
               </ul>
 
               <div class="form-group">
@@ -71,8 +67,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>rdf:about</samp> is a required attribute of <samp>custom namespace</samp>, and its format is predetermined for technical reasons. <samp>rdf:about</samp> is a URI or a URL that uniquely identifies the record to be index.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>&lt;pennington:medieval_legal_texts rdf:about="http://faculty.cua.edu/pennington/edit301.html"&gt;</li>
-                <li>&lt;CCL:manuscripts rdf:about="http://ccl.rch.uky.edu/aboutBod718"&gt;</li>
+                <?php printExamples(array("&lt;pennington:medieval_legal_texts rdf:about=\"http://faculty.cua.edu/pennington/edit301.html\"&gt;", "&lt;CCL:manuscripts rdf:about=\"http://ccl.rch.uky.edu/aboutBod718\"&gt;")); ?>
               </ul>
 
               <div class="form-group">
@@ -97,10 +92,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>Archive</samp> is required. It should be a clear, short version of the name or identity of the member project. It must be a single word or a string of characters, with no spaces.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>AMES (for Ames Foundation, Harvard Law School project)</li>
-                <li>CCL (for the Carolingian Canon Law Project)</li>
-                <li>VirtualCanonLawLibrary (for the Virtual Library of Medieval Canon Law at Colby)</li>
-                <li>PENNINGTON (for Kenneth Pennington's website)</li>
+                <?php printExamples(array("AMES (for Ames Foundation, Harvard Law School project)", "CCL (for the Carolingian Canon Law Project)", "VirtualCanonLawLibrary (for the Virtual Library of Medieval Canon Law at Colby)", "PENNINGTON (for Kenneth Pennington's website)")); ?>
               </ul>
 
               <div class="form-group">
@@ -118,10 +110,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>Title</samp> is required. Each item to be integrated in Index Iuris must have a title. It is expected that some titles will occur more than once (several items may have the title "Summa"), however, each item can have only one title (you cannot give both "Corpus iuris civilis" and "Digest" as the title for the same item.)</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>Collectio Dacheriana</li>
-                <li>Consilia</li>
-                <li>De Legibus et Consuetudinibus Angliae</li>
-                <li>Summa "Animal est substantia"</li>
+                <?php printExamples(array("Collectio Dacheriana", "Consilia", "De Legibus et Consuetudinibus Angliae", "Summa \"Animal est substantia\"")); ?>
               </ul>
 
               <div class="form-group">
@@ -143,9 +132,7 @@ if (!isset($_POST['submitted'])): ?>
                 <div class="col-xs-10">
                   <select class="form-control" id="type" name="type" required="">
                     <option selected=""></option>
-                    <?php foreach (array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript") as $type): ?>
-                      <option><?php print $type; ?></option>
-                    <?php endforeach; ?>
+                    <?php printOptions(array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript")); ?>
                   </select>
                 </div>
               </div>
@@ -184,9 +171,7 @@ if (!isset($_POST['submitted'])): ?>
                 <div class="col-xs-10">
                   <select class="form-control" id="role" name="role[]">
                     <option selected=""></option>
-                    <?php foreach ($rolesArray as $role): ?>
-                      <option><?php print $role; ?></option>
-                    <?php endforeach; ?>
+                    <?php printOptions($rolesArray); ?>
                   </select>
                 </div>
               </div>
@@ -236,9 +221,7 @@ if (!isset($_POST['submitted'])): ?>
                 <div class="col-xs-10">
                   <select class="form-control" id="genre" name="genre[]">
                     <option selected=""></option>
-                    <?php foreach ($genresArray as $genre): ?>
-                      <option><?php print $genre; ?></option>
-                    <?php endforeach; ?>
+                    <?php printOptions($genresArray); ?>
                   </select>
                 </div>
               </div>
@@ -291,9 +274,7 @@ if (!isset($_POST['submitted'])): ?>
 
               <p>Human-readable dates example:</p>
               <ul class="list-unstyled form-item-example">
-                <?php foreach (array("14th century", "not before 1475", "saec. IXin-med", "0850; 1122", "c. 1100", "1300-1350", "1st part of manuscript 9th century; 2nd part early 12th century") as $date): ?>
-                  <li><?php print $date; ?></li>
-                <?php endforeach; ?>
+                <?php printExamples(array("14th century", "not before 1475", "saec. IXin-med", "0850; 1122", "c. 1100", "1300-1350", "1st part of manuscript 9th century; 2nd part early 12th century")); ?>
               </ul>
               <div class="form-group">
                 <label for="humanDate" class="control-label col-xs-2">Human Date</label>
@@ -304,9 +285,7 @@ if (!isset($_POST['submitted'])): ?>
 
               <p>Machine-readable dates example:</p>
               <ul class="list-unstyled form-item-example">
-                <?php foreach (array("four-digital year, e.g. \"1425\" or \"0850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit year separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.") as $date): ?>
-                  <li><?php print $date; ?></li>
-                <?php endforeach; ?>
+                <?php printExamples(array("four-digital year, e.g. \"1425\" or \"0850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit year separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.")); ?>
               </ul>
               <div class="form-group">
                 <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
@@ -344,10 +323,7 @@ if (!isset($_POST['submitted'])): ?>
               <p>This required field is completed with a URI or URL that is the address for the specific item to be displayed, such as a manuscript image, a page of a transcription, or a document.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>http://pds.lib.harvard.edu/pds/view/14856910?n=3384</li>
-                <li>http://ccl.rch.uky.edu/node/1419</li>
-                <li>http://ccl.rch.uky.edu/node/3908</li>
-                <li>http://faculty.cua.edu/Pennington/edit323.htm</li>
+                <?php printExamples(array("http://pds.lib.harvard.edu/pds/view/14856910?n=3384", "http://ccl.rch.uky.edu/node/1419", "http://ccl.rch.uky.edu/node/3908", "http://faculty.cua.edu/Pennington/edit323.htm")); ?>
               </ul>
 
               <div class="form-group">
@@ -376,12 +352,10 @@ if (!isset($_POST['submitted'])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Provenance</samp> is actually two fields, both optional (although we recommend completing at least one).</p>
               <p>The first field is <samp>origin</samp>, which can be used for the place where a manuscript written, or a work published. The second field is <samp>provenance</samp>, which can be used for ownership information, or likely area of use or circulation, or the earliest known information about an items whereabouts. Note: See below for <samp>place of composition</samp>.</p>
+
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>Origin: Bologna</li><?php // Today I learned that Bologna is a providence in Italy... ?>
-                <li>Origin: Northeast France</li>
-                <li>Provenance: St. Gall</li>
-                <li>Provenance: Durham Cathedral Priory (suppressed 1540); Thomas Allen (d. 1632); George Henry Lee, 3rd Earl of Lichfield (d. 1772); Reverend Thomas Phillips, S.J. (d. 1774); Stonyhurst College; British Library</li>
+                <?php printExamples(array("Origin: Bologna", "Origin: Northeast France", "Provenance: St. Gall", "Provenance: Durham Cathedral Priory (suppressed 1540); Thomas Allen (d. 1632); George Henry Lee, 3rd Earl of Lichfield (d. 1772); Reverend Thomas Phillips, S.J. (d. 1774); Stonyhurst College; British Library")); ?>
               </ul>
               <p>If there is nothing in the <samp>origin</samp> field, the <samp>provenance</samp> information is displayed in the basic metadata; if there is information in the <samp>origin</samp> field, that is what is displayed in the basic metadata.</p>
 
@@ -412,10 +386,10 @@ if (!isset($_POST['submitted'])): ?>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Place of composition</samp> is used for the place where a text was composed, if known. This field is optional.</p>
+
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>place of composition: Rome</li>
-                <li>place of composition: University of Paris</li>
+                <?php printExamples(array("place of composition: Rome", "place of composition: University of Paris")); ?>
               </ul>
 
               <div class="form-group">
@@ -441,9 +415,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>Shelfmark</samp> is required for items that are manuscripts. This is the unique, internationally known identifier for a manuscript. Consists of City, Repository (library), fond (internal library collection), number. For incunabula or other rare printings, this field may be used for library identifications of the physical artefcat, as well. This field is optional for all other publications or editions.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php foreach (array("Admont en Styrie, Bibliothèque du monastère, 162", "Berlin, Staatsbibliothek Preussischer Kulturbesitz, Lat. fol. 626", "Vaticano, Città del, Biblioteca Apostolica Vaticana, Ottobon. lat. 3295", "Würzburg, Universitätsbibliothek, M.p.th.f.72", "Lexington, University of Kentucky, Margaret I. King Library, Special Collections, KBR197.6 .C36 1525") as $example): ?>
-                  <li><?php print $example; ?></li>
-                <?php endforeach; ?>
+                <?php printExamples(array("Admont en Styrie, Bibliothèque du monastère, 162", "Berlin, Staatsbibliothek Preussischer Kulturbesitz, Lat. fol. 626", "Vaticano, Città del, Biblioteca Apostolica Vaticana, Ottobon. lat. 3295", "Würzburg, Universitätsbibliothek, M.p.th.f.72", "Lexington, University of Kentucky, Margaret I. King Library, Special Collections, KBR197.6 .C36 1525")); ?>
               </ul>
 
               <div class="form-group">
@@ -481,9 +453,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>Alternative title</samp> is an optional field that can be used for common, "pet" names of a text or manuscript. The final form will include the option to submit more than one <samp>alternative title</samp>.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>"The Florence Codex"</li>
-                <li>"X"</li>
-                <li>"Concordia Discordantium Canonum"</li>
+                <?php printExamples(array("\"The Florence Codex\"", "\"X\"", "\"Concordia Discordantium Canonum\"")); ?>
               </ul>
 
               <div class="form-group">
@@ -507,9 +477,7 @@ if (!isset($_POST['submitted'])): ?>
               <p>This field should not be confused with provenance, place of origin of object, place of composition or isPartOf. <samp>Source</samp> is used for the title of the larger work, resource, or collection of which the present object is a part. Can be used for the title of a journal, anthology, book, online collection, etc.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>The Spoils of the Pope and the Pirates, 1357: the complete legal dossier form the Vatican Archives</li>
-                <li>The Common and Piepowder Courts of Southampton, 1426-1483</li>
-                <li>CEEC: Codices Electronici Ecclesiae Coloniensis</li>
+                <?php printExamples(array("The Spoils of the Pope and the Pirates, 1357: the complete legal dossier form the Vatican Archives", "The Common and Piepowder Courts of Southampton, 1426-1483", "CEEC: Codices Electronici Ecclesiae Coloniensis")); ?>
               </ul>
 
               <div class="form-group">
@@ -528,9 +496,7 @@ if (!isset($_POST['submitted'])): ?>
               <?php /*
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>For the Bulla “Rex Pacificus”, one could have <strong>IsPartOf</strong> Liber extravagantium decretalium</li>
-                <li>For a particular transcription of the Council of Arles, on could have <strong>IsPartOf</strong> Collectio Hispana</li>
-                <li>For a particular Novel of Justinian, one could have <strong>IsPartOf</strong> Corpus iuris civilis</li>
+                <?php printExamples(array("For the Bulla \"Rex Pacificus\", one could have <strong>IsPartOf</strong> Liber extravagantium decretalium", "For a particular transcription of the Council of Arles, on could have <strong>IsPartOf</strong> Collectio Hispana", "For a particular Novel of Justinian, one could have <strong>IsPartOf</strong> Corpus iuris civilis")); ?>
               </ul>
               */ ?>
 
@@ -557,8 +523,7 @@ if (!isset($_POST['submitted'])): ?>
               <?php /*
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>Collectio Dacheriana <strong>HasPart</strong> Book I, Book II, Book III</li>
-                <li>Collectio Dionysiana <strong>HasPart</strong> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.</li>
+                <?php printExamples(array("Collectio Dacheriana <strong>HasPart</strong> Book I, Book II, Book III", "Collectio Dionysiana <strong>HasPart</strong> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.")); ?>
               </ul>
               */ ?>
 
@@ -589,9 +554,7 @@ if (!isset($_POST['submitted'])): ?>
               <p>Divisions of the text is an optional field that is purely for information (that is, it does not affect digital display or processing). Here it is possible to give useful descriptions of how a compilation is structured, organized, or divided.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>The Collection in 74 Titles is divided into “titles”, each of which is divided into “canons”</li>
-                <li>The Dionysiana is divided into councils, each of which is preceded by a tabula titulorum and followed by a subscription list.  The body of the conciliar text is divided into canons.</li>
-                <li>The Decretum is divided into three parts.  The first part has 101 distinctiones; the second part has 36 causae, the third part, entitled “De consecration” contains 5 distinctiones.  Each causa is divided into quaestiones… etc.</li>
+                <?php printExamples(array("The Collection in 74 Titles is divided into \"titles\", each of which is divided into \"canons\"", "The Dionysiana is divided into councils, each of which is preceded by a tabula titulorum and followed by a subscription list.  The body of the conciliar text is divided into canons.", "The Decretum is divided into three parts.  The first part has 101 distinctiones; the second part has 36 causae, the third part, entitled \"De consecration\" contains 5 distinctiones.  Each causa is divided into quaestiones… etc.")); ?>
               </ul>
 
               <div class="form-group">
@@ -662,10 +625,7 @@ if (!isset($_POST['submitted'])): ?>
               <p><samp>Notes</samp> is an option, free-form field for recording information about the item that the contributor deems important.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <li>This set of images is missing fol. 54v, 55r, and 74r.</li>
-                <li>Images of the manuscript from which this transcription was made are available at http://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10181604_00005.html</li>
-                <li>There is another edition of this text at http://ancientrome.ru/ius/library/gaius/gai.htm</li>
-                <li>This edition retains the orthography of the medieval manuscript.</li>
+                <?php printExamples(array("This set of images is missing fol. 54v, 55r, and 74r.", "Images of the manuscript from which this transcription was made are available at http://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10181604_00005.html", "There is another edition of this text at http://ancientrome.ru/ius/library/gaius/gai.htm", "This edition retains the orthography of the medieval manuscript.")); ?>
               </ul>
 
               <div class="form-group">
@@ -689,9 +649,7 @@ if (!isset($_POST['submitted'])): ?>
               <p>File Format is a required field for each item, so that we can implement full-text searching whenever possible.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php foreach (array(".pdf files", ".xml files (TEI P5)", ".html files", ".jpg files") as $example): ?>
-                  <li><?php print $example; ?></li>
-                <?php endforeach; ?>
+                <?php printExamples(array(".pdf files", ".xml files (TEI P5)", ".html files", ".jpg files")); ?>
               </ul>
 
               <div class="form-group">
@@ -706,7 +664,7 @@ if (!isset($_POST['submitted'])): ?>
           <input type="hidden" class="hide" name="submitted" value="true">
 
           <section class="form-group" style="margin-top: 5%; margin-bottom: 15%;">
-            <div class="col-xs-3 pull-left">
+            <div class="col-xs-3">
               <button type="submit" class="btn btn-success col-xs-12">Submit</button>
             </div>
           </section>
@@ -910,3 +868,25 @@ else:
 endif;
 
 require "includes/footer.php";
+
+/**
+ * Prints an example list.
+ *
+ * @param {Array} $array: The pre-determined array list of examples.
+ */
+function printExamples($array) {
+  foreach ($array as $example) {
+    print "<li>" . $example . "</li>";
+  }
+}
+
+/**
+ * Prints multiple options in a select dropdown.
+ *
+ * @param {Array} $array: The pre-determined array list of options.
+ */
+function printOptions($array) {
+  foreach ($array as $option) {
+    print "<option>" . $option . "</option>";
+  }
+}
