@@ -12,13 +12,13 @@ if (!isset($_POST['submitted'])): ?>
   <div class="row page-header">
     <div class="col-xs-12 text-justify">
       <p class="lead"><strong>Dear PI or Project Manager,</strong></p>
-      <p>As we develop <span class="monospace">Index Iuris</span>, we seek to understand the needs and preferences of potential members of the federation.  We would be very grateful if you could take a little time to review this form, experiment with filling it out, and offer your views in the comment boxes provided.  In the end, membership in Index Iuris should not be a burden!</p>
+      <p>As we develop <samp>Index Iuris</samp>, we seek to understand the needs and preferences of potential members of the federation.  We would be very grateful if you could take a little time to review this form, experiment with filling it out, and offer your views in the comment boxes provided.  In the end, membership in Index Iuris should not be a burden!</p>
       <p>Thanks so much!</p>
       <p>The Index Iuris team</p>
 
       <hr>
 
-      <p>The following form, once finalized, will be the fundamental mechanism for integrating the content of member projects into the <span class="monospace">Index Iuris</span> portal to all projects.  The metadata supplied in this form makes possible effective searching, and meaningful display of search results.  Not all the information in this form will be required or displayed, but some of the fields are necessary if we are to conform to best practices and technical requirements.</p>
+      <p>The following form, once finalized, will be the fundamental mechanism for integrating the content of member projects into the <samp>Index Iuris</samp> portal to all projects.  The metadata supplied in this form makes possible effective searching, and meaningful display of search results.  Not all the information in this form will be required or displayed, but some of the fields are necessary if we are to conform to best practices and technical requirements.</p>
     </div>
   </div>
 
@@ -739,7 +739,6 @@ else:
   $statement->bind_param("ssss", $json, $format, $version, $userID);
   $statement->execute();
 
-  /*
   $statement = $mysqli->prepare("SELECT id FROM objects WHERE url = ?");
   $statement->bind_param("s", $_POST["seeAlso"]);
   $statement->execute();
@@ -748,7 +747,6 @@ else:
   if ($statement->num_rows > 0) {
      ?><script>alert("This record already exists."); window.location = "view-submissions";</script><?php
   }
-  */
 
   $customNamespace  = $_POST["custom-namespace"];
   $rdfAbout         = $_POST["rdf-about"];
@@ -791,16 +789,16 @@ else:
   $lastID = $statement->insert_id;
 
   // Add alternative titles to its table.
-  foreach ($_POST["alternative-title"] as $item) {
+  foreach ($_POST["alternative-title"] as $altTitle) {
     $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
-    $insert->bind_param("is", $lastID, $item);
+    $insert->bind_param("is", $lastID, $altTitle);
     $insert->execute();
   }
 
   // Add genres to its table.
-  foreach ($_POST["genre"] as $item) {
+  foreach ($_POST["genre"] as $genre) {
     $insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
-    $insert->bind_param("is", $lastID, $item);
+    $insert->bind_param("is", $lastID, $genre);
     $insert->execute();
   }
 
@@ -814,37 +812,35 @@ else:
 
   // Add isPartOf to its table.
   $partType = "isPartOf";
-  foreach ($_POST["is-part-of"] as $item) {
+  foreach ($_POST["is-part-of"] as $id) {
     $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
-    $insert->bind_param("isi", $lastID, $partType, $item);
+    $insert->bind_param("isi", $lastID, $partType, $id);
     $insert->execute();
   }
 
   // Add hasPart to its table.
   $partType = "hasPart";
-  foreach ($_POST["has-part"] as $item) {
+  foreach ($_POST["has-part"] as $id) {
     $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
-    $insert->bind_param("isi", $lastID, $partType, $item);
+    $insert->bind_param("isi", $lastID, $partType, $id);
+    $insert->execute();
+  }
+
+  // Add roles to its table
+  $i = 0;
+  $roleValues = [];
+  foreach ($_POST["role-value"] as $value) {
+    array_push($roleValues, $value);
+  }
+
+  foreach ($_POST["role"] as $role) {
+    $value  = $roleValues[$i++];
+    $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
+    $insert->bind_param("iss", $lastID, $role, $value);
     $insert->execute();
   }
 
   // TODO: Subject, Discipline.
-  
-  //Add roles to its table
-  $i = 0;
-  $roleValues = [];
-  foreach ($_POST["role-value"] as $value){
-  	array_push($roleValues, $value);
-  }
-  foreach ($_POST["role"] as $item) {
-  	$role = $item;
-  	$role_value = $roleValues[$i++];
-  	$insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
-  	$insert->bind_param("iss", $lastID, $role, $role_value);
-  	$insert->execute();
-  }
-  
-  
 
   $comments = [];
   // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.

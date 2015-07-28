@@ -25,8 +25,7 @@ else:
   $row = $statement->get_result()->fetch_assoc();
 
   if ($row):
-    if ($row["user_id"] == $_SESSION["user_id"]):
-      ?>
+    if ($row["user_id"] == $_SESSION["user_id"]): ?>
       <div class="container">
         <div class="row page-header">
           <div class="col-xs-12">
@@ -42,126 +41,180 @@ else:
                 <?php foreach ($row as $key=>$value): ?>
                   <?php switch ($objectsTableInputTypes[$key]): case "text": // Need a reason as to why PHP can be stupid? Any trailing whitespace between switch and the first case throws an error. http://php.net/manual/en/control-structures.alternative-syntax.php ?>
                     <section class="form-group">
-                      <label for="<?php print $key; ?>" class="control-label"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
-                      <input type="text" class="form-control" name="<?php print $key; ?>" id="<?php print $key; ?>" value="<?php print $value; ?>">
+                      <label for="<?php print $key; ?>" class="control-label col-xs-2"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" name="<?php print $key; ?>" id="<?php print $key; ?>" value="<?php print $value; ?>">
+                      </div>
                     </section>
                     <hr>
                     <?php break; ?>
                     <?php case "textarea": ?>
                     <section class="form-group">
-                      <label for="<?php print $key; ?>" class="control-label"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
-                      <textarea class="form-control" name="<?php print $key ;?>" id="<?php print $key; ?>" rows="4"><?php print $value; ?></textarea>
+                      <label for="<?php print $key; ?>" class="control-label col-xs-2"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
+                      <div class="col-xs-10">
+                        <textarea class="form-control" name="<?php print $key ;?>" id="<?php print $key; ?>" rows="4"><?php print $value; ?></textarea>
+                      </div>
                     </section>
                     <hr>
                     <?php break; ?>
                     <?php case "radio": ?>
                     <section class="form-group">
-                      <label for="<?php print $key; ?>" class="control-label"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
-                      <div class="radio">
-                        <label><input type="radio" name="<?php print $key; ?>" value="true" <?php print $value == "true" ? "checked=''" : ""; ?> >Yes</label>
-                      </div>
-                      <div class="radio">
-                        <label><input type="radio" name="<?php print $key; ?>" value="false" <?php print $value == "false" ? "checked=''" : ""; ?> >No</label>
+                      <label for="<?php print $key; ?>" class="control-label col-xs-2"><?php print $objectsTableColumDisplayNames[$key]; ?></label>
+                      <div class="col-xs-10">
+                        <div class="radio">
+                          <label><input type="radio" name="<?php print $key; ?>" value="true" <?php print $value == "true" ? "checked=''" : ""; ?> >Yes</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="<?php print $key; ?>" value="false" <?php print $value == "false" ? "checked=''" : ""; ?> >No</label>
+                        </div>
                       </div>
                     </section>
                     <hr>
                     <?php break; ?>
                   <?php endswitch; ?>
-                <?php endforeach; 
-                
-                $id = $_GET["id"];
-                $statement2 = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
-                $statement2->bind_param("s", $id);
-                $statement2->execute();
-                
-                $result = $statement2->get_result();
-                while($row2 = $result->fetch_assoc()):
+                <?php
+                endforeach;
+
+                $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($role, $value);
+
                 ?>
-                <section class="form-group">
-                <select id="role" name="role[]" class="form-control">
-                    <option selected=""></option>
-                    <?php foreach ($rolesArray as $role): ?>
-                      <option<?php if($role == $row2['role']) print " selected=\"\""?>><?php print $role; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                   <div>
-                   	<input type="text" id="value" name="role-value[]" value="<?php print $row2['value']?>">
-                   </div><?php //TODO: add button for multiple role/value pairs?>
+                <span class="hide">Role</span>
+                <section>
+                  <?php
+                  $counter = 1;
+                  while ($temp->fetch()) {
+                    ?>
+                    <div class="form-group">
+                      <label for="role<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
+                      <div class="col-xs-10">
+                        <select class="form-control" id="role<?php print $counter; ?>" name="role[]">
+                          <option selected=""></option>
+                          <?php foreach ($rolesArray as $item): ?>
+                            <option <?php print $item == $role ? "selected=''" : ""; ?> ><?php print $item; ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="value<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role-value[]" value="<?php print $value; ?>">
+                      </div>
+                    </div>
+                    <?php
+                    $counter++;
+                  } // while ($temp->fetch())
+                  ?>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" id="addRoleButton">Add Another Role</button>
+                    </div>
+                  </div>
+                </section>
+                <hr>
+                <?php
+
+                $temp = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($genre);
+
+                ?>
+                <span class="hide">Genre</span>
+                <section>
+                  <?php
+                  $counter = 1;
+                  while ($temp->fetch()) {
+                    ?>
+                    <div class="form-group">
+                      <label for="genre<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Genre</label>
+                      <div class="col-xs-10">
+                        <select class="form-control" id="genre<?php print $counter; ?>" name="genre[]">
+                          <option></option>
+                          <?php foreach ($genresArray as $item): ?>
+                            <option <?php print $item == $role ? "selected=''" : ""; ?> ><?php print $item; ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                    </div>
+                    <?php
+                    $counter++;
+                  } // while ($temp->fetch())
+                  ?>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" id="addGenreButton">Add Another Genre</button>
+                    </div>
+                  </div>
+                </section>
+                <hr>
+                <?php
+
+                $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($altTitle);
+
+                ?>
+                <span class="hide">Alternative Title</span>
+                <section>
+                  <?php
+                  $counter = 1;
+                  while ($temp->fetch()) {
+                    ?>
+                    <div class="form-group">
+                      <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative-title[]" value="<?php print $altTitle; ?>">
+                      </div>
+                    </div>
+                    <?php
+                    $counter++;
+                  } // while ($temp->fetch())
+                  ?>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add Another Alternative Title</button>
+                    </div>
+                  </div>
+                </section>
+                <hr>
+                <?php
+
+                $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($type, $machineDate, $humanDate);
+
+                $counter = 1;
+                while ($temp->fetch()) {
+                  ?>
+                  <section class="form-group">
+                    <label for="humanDate<?php print $counter; ?>" class="control-label col-xs-2">Human Date</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="date-human" value="<?php print $humanDate; ?>" required="">
+                    </div>
                   </section>
                   <section class="form-group">
-                	<div>
-                  	<button type="button">Add Another Role</button>
-                  	</div>
-              	  </section>
-                <?php endwhile;
-                $id = $_GET["id"];
-                $statement2 = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
-                $statement2->bind_param("s", $id);
-                $statement2->execute();
-                
-                $result = $statement2->get_result();
-                while($row2 = $result->fetch_assoc()):
+                    <label for="machineDate<?php print $counter; ?>" class="control-label col-xs-2">Machine Date</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="date-machine" value="<?php print $machineDate; ?>" required="">
+                    </div>
+                  </section>
+                  <?php
+                  $counter++;
+                } // while ($temp->fetch())
                 ?>
-                <section class="form-group">
-                	<select class="form-control" id="genre" name="genre[]">
-                    <option selected=""></option>
-                    <?php foreach ($genresArray as $genre): ?>
-                      <option<?php if($genre == $row2['genre']) print " selected=\"\""?>><?php print $genre; ?></option>
-                    <?php endforeach; ?>
-                  	</select>
-                </section>
-                <section class="form-group">
-                <div>
-                  <button type="button">Add Another Genre</button>
-                </div>
-                </section>
-                <?php endwhile;
-                $id = $_GET["id"];
-                $statement2 = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
-                $statement2->bind_param("s", $id);
-                $statement2->execute();
-                
-                $result = $statement2->get_result();
-                while($row2 = $result->fetch_assoc()):
-                ?>
-                <div class="form-group">
-                <label for="altTitle">Alt Title</label>
-                <div>
-                <input type="text" class="form-control" name="alternative-title[]" id="altTitle"  value="<?php print $row2['alt_title']?>">
-                </div>
-                </div>
-
-                <section class="form-group">
-                <div>
-                <button type="button" id="addAltTitleButton">Add Another Alternative Title</button>
-                </div>
-                </section>
-                <?php endwhile;
-                
-                $id = $_GET["id"];
-                $statement2 = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
-                $statement2->bind_param("s", $id);
-                $statement2->execute();
-                
-                $result = $statement2->get_result();
-                while($row2 = $result->fetch_assoc()):
-                ?>
-                <section class="form-group">
-                <label for="humanDate">Human Date</label>
-                <div>
-                <input type="text" class="form-control" name="date-human" id="humanDate" value="<?php print $row2['human_date']?>" required="">
-                </div>
-                </section>
-                <section class="form-group">
-                <label for="machineDate">Machine Date</label>
-                <div>
-                <input type="text" class="form-control" name="date-machine" id="machineDate" value="<?php print $row2['machine_date']?>" required="">
-                </div>
-                </section>
-                <?php endwhile;?>
+                <hr>
                 <section class="form-group" style="margin-bottom: 15%">
                   <input type="hidden" class="hide" name="id" value="<?php print $id; ?>">
-                  <button type="submit" class="btn btn-success">Save Changes</button>
+                  <div class="col-xs-3 center-block">
+                    <button type="submit" class="btn btn-success col-xs-12">Save Changes</button>
+                  </div>
                 </section>
               </fieldset>
             </form>

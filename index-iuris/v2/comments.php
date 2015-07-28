@@ -3,39 +3,83 @@
  * @file comments.php
  * Prints all comments for super users.
  */
-require_once "includes/config.php";
 
 if (isset($_GET["comments"])) {
+  require_once "includes/config.php";
+
   global $mysqli;
   session_start();
 
+  $statement;
   $commentName = $_GET["comments"];
 
-  $statement = $mysqli->prepare("SELECT user_id, $commentName FROM comments");
+  if ($commentName == "genre") {
+    $statement = $mysqli->prepare("SELECT user_id, genre_required_available, genre_controled_available, suggested_terms_genre FROM comments");
+  } else if ($commentName == "type_available" || $commentName == "role_available" || $commentName == "date") {
+    $statement = $mysqli->prepare("SELECT user_id, type_available, role_available, date_available, suggested_terms_type, suggested_terms_role, comments_date FROM comments");
+  } else {
+    $statement = $mysqli->prepare("SELECT user_id, $commentName FROM comments");
+  }
+
   $statement->execute();
   $statement->store_result();
-  $statement->bind_result($userID, $commentColumn);
+
+  if ($commentName == "genre") {
+    $statement->bind_result($userID, $genreRequired, $genreControlled, $suggestedGenre);
+  } else if ($commentName == "type_available" || $commentName == "role_available" || $commentName == "date") {
+    $statement->bind_result($userID, $typeAvailable, $roleAvailable, $dateAvailable, $suggestedType, $suggestedRole, $commentDate);
+  } else {
+    $statement->bind_result($userID, $commentColumn);
+  }
+
   ?>
   <table class="table table-striped table-hover dt">
     <thead>
       <tr>
         <th>Username</th>
-        <th>Comment</th>
+
+        <?php if ($commentName == "genre"): ?>
+          <th>Required/Optional</th>
+          <th>Controlled/Free-Form</th>
+          <th>Suggested Term</th>
+        <?php elseif ($commentName == "type_available" || $commentName == "role_available" || $commentName == "date"): ?>
+          <th>Decision</th>
+          <th>Comments</th>
+        <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
+          <th>Decision</th>
+        <?php else: ?>
+          <th>Comment</th>
+        <?php endif; ?>
       </tr>
     </thead>
     <tbody>
       <?php
+      $temp = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
       while ($statement->fetch()):
-        $temp = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
         $temp->bind_param("s", $userID);
         $temp->execute();
-        $temp->store_result();
         $temp->bind_result($username);
         $temp->fetch();
         ?>
         <tr>
           <td><?php print $username; ?></td>
-          <td><?php print $commentColumn; ?></td>
+
+          <?php if ($commentName == "genre"): ?>
+            <td><?php print $genreRequired; ?></td>
+            <td><?php print $genreControlled; ?></td>
+            <td><?php print $suggestedGenre; ?></td>
+          <?php elseif ($commentName == "type_available"): ?>
+            <td><?php print $typeAvailable; ?></td>
+            <td><?php print $suggestedType; ?></td>
+          <?php elseif ($commentName == "role_available"): ?>
+            <td><?php print $roleAvailable; ?></td>
+            <td><?php print $suggestedRole; ?></td>
+          <?php elseif ($commentName == "date"): ?>
+            <td><?php print $dateAvailable; ?></td>
+            <td><?php print $commentDate; ?></td>
+          <?php else: ?>
+            <td><?php print $commentColumn; ?></td>
+          <?php endif; ?>
         </tr>
       <?php endwhile; ?>
     </tbody>
@@ -57,7 +101,7 @@ require "includes/header.php";
   </div>
 
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12">
       <form class="form-horizontal">
         <fieldset>
           <div class="form-group">
@@ -77,7 +121,7 @@ require "includes/header.php";
                 <option value="url_available">URI or URL Decisions</option>
                 <option value="type_available">Type Decisions</option>
                 <option value="role_available">Role Decisions</option>
-				<option value="date">Date</option>
+                <option value="date">Date</option>
               </select>
             </div>
           </div>
@@ -86,11 +130,8 @@ require "includes/header.php";
 
       <section id="commentResults"></section>
     </div>
-
-    <div class="col-xs-6">
-      <?php // TODO: Insert other area. ?>
-    </div>
   </div>
+
 </div>
 
 <?php require "includes/footer.php"; ?>

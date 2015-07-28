@@ -27,7 +27,7 @@ $("#addRoleButton").click(function (e) {
   var group   = section.find("select[name='role[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "select");
 
-  group.find("select").prop("id", newID);
+  group.find("select").prop("id", newID).find("> option:selected").removeAttr("selected").parent().find("> option:first-child").prop("selected", "true");
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
@@ -55,7 +55,7 @@ $("#addGenreButton").click(function (e) {
   var group   = section.find("select[name='genre[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "select");
 
-  group.find("select").prop("id", newID);
+  group.find("select").prop("id", newID).find("> option:selected").removeAttr("selected").parent().find("> option:first-child").prop("selected", "true");
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
@@ -110,9 +110,9 @@ $("#addHasPartButton").click(function (e) {
  *
  * @param {HTML DOM Event} e: The event happening.
  */
-$("section.form-group").on("click", ".control-label > .close", function (e) {
+$("section").on("click", ".control-label > .close", function (e) {
   var group   = $(this).parentsUntil("div.form-group").parent();
-  var section = $(this).parentsUntil("section.form-group").parent();
+  var section = $(this).parentsUntil("section").parent();
 
   // fadeOut for visuals, then remove from the DOM.
   if (section.prev().get(0).innerText == "Role" && $(this).parent().text().substring(1) == "Role") {
