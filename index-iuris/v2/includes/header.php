@@ -14,6 +14,7 @@ error_reporting(-1);
 ini_set("display_errors", "On");
 
 require_once "config.php";
+require_once "functions.php";
 
 ?><!DOCTYPE html>
 <html>
