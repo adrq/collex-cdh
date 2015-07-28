@@ -1,7 +1,7 @@
 <?php
 /**
  * @file rdf-form.php
- * Prints the Metdata Submission Form.
+ * Prints the Metadata Submission Form.
  */
 $title = "Metadata Submission Form";
 $loginRequired = true;
@@ -24,7 +24,7 @@ if (!isset($_POST['submitted'])): ?>
 
   <div class="row">
     <div class="col-xs-12">
-      <form class="form-horizontal" action="rdf-form" method="POST">
+      <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
         <fieldset>
 
           <legend>Custom Namespace</legend>
@@ -690,9 +690,6 @@ else:
   $format  = "json";
   $version = "0.1";
 
-  print "<pre class='hide'><h3>Submitted:</h3>" . print_r($_POST, true) . "</pre>";
-  print "<pre class='hide'><h3>Being Stored:</h3>" . print_r($json, true) . "</pre>";
-
   $statement = $mysqli->prepare("INSERT INTO submissions (data, data_format, rdf_version, date_submitted, user_id) VALUES (?, ?, ?, NOW(), ?)");
   $statement->bind_param("ssss", $json, $format, $version, $userID);
   $statement->execute();
@@ -703,7 +700,7 @@ else:
   $statement->store_result();
 
   if ($statement->num_rows > 0) {
-     ?><script>alert("This record already exists."); window.location = "view-submissions";</script><?php
+    ?><script>alert("This record already exists."); window.location = "view-submissions";</script><?php
   }
 
   $customNamespace  = $_POST["custom-namespace"];
@@ -786,7 +783,7 @@ else:
 
   // Add roles to its table
   $i = 0;
-  $roleValues = [];
+  $roleValues = array();
   foreach ($_POST["role-value"] as $value) {
     array_push($roleValues, $value);
   }
@@ -800,7 +797,7 @@ else:
 
   // TODO: Subject, Discipline.
 
-  $comments = [];
+  $comments = array();
   // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.
   foreach ($_POST as $key=>$item) {
     if (preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)) {
