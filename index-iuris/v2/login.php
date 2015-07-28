@@ -2,6 +2,10 @@
 /**
  * @file login.php
  * Prints the login page.
+ *
+ * 7/28/15 - Lichen has PHP v.5.3.3 installed whereas the local machines have PHP v.5.5.x.
+ * Since this is the case, some changes had to be made.
+ *
  */
 $title = "Login";
 $loginRequired = false;
@@ -24,7 +28,12 @@ if (isset($_POST["username"], $_POST["password"])) {
   if ($statement->num_rows == 1) {
     $statement->fetch();
 
-    if (password_verify($password, $pass)) {
+    // 7/28/15 - Add the following when PHP v5.5.x is installed on Lichen:
+    // if (password_verify($password, $pass)) {
+
+    // 7/28/15 - Remove the following when PHP v5.5.x is installed on Lichen:
+    $password = hash("sha512", $password);
+    if ($pass == $password) {
       $_SESSION["user_id"]   = $id;
       $_SESSION["username"]  = $username;
       $_SESSION["logged-in"] = true;

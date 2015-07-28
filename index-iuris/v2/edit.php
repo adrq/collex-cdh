@@ -2,31 +2,32 @@
 /**
  * @file edit.php
  * Prints the edit submission page.
+ *
+ * 7/28/15 - This page does not load on Lichen server due to the fact that it does not have MySQLnd installed.
+ * The only way to work around this (aside from installing the driver) is to remove $statement->get_result() and
+ * workaround that method - which will be a pain.
+ *
  */
-
 $title = "Edit Submission";
 $loginRequired = true;
 require "includes/header.php";
 
-if (!isset($_GET["id"]) && !isset($_POST["id"])):
-  ?><script>window.location = "submissions";</script><?php
-else:
+if (!isset($_GET["id"], $_POST["id"])): ?>
+  <script>window.location = "submissions";</script>
+<?php else:
   global $mysqli;
-  
-  include("includes/functions.php");
-  
-  if (isset($_POST["id"])){
-	$id = $_POST["id"];
-	saveObjectToDB($_POST,$id);
-	?><script>alert("Submission updated successfully"); window.location = "edit?id=<?php print $id?>";</script><?php
-  }
-  else {
-  	$id = $_GET["id"];
+
+  $id = isset($_POST["id"]) ? $_POST["id"] : $_GET["id"];
+
+  if (isset($_POST["id"])) {
+    saveObjectToDB($_POST, $id);
+    ?><script>alert("Submission updated successfully."); window.location.reload();</script><?php
   }
 
   $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("s", $id);
   $statement->execute();
+  $statement->store_result();
 
   $row = $statement->get_result()->fetch_assoc();
 
@@ -204,69 +205,65 @@ else:
                       <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" value="<?php print $machineDate; ?>" required="">
                     </div>
                   </section>
-                  <hr>
                   <?php
                   $counter++;
                 endwhile;
-                
-                //is_part_of
-                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = ?");
-                $type = "isPartOf";
-                $temp->bind_param("ss", $id,$type);
+
+                ?><hr><?php
+                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'isPartOf'");
+                $temp->bind_param("s", $id);
                 $temp->execute();
-                $temp->bind_result($part_id);
-                
-                $counter = 1;
-                while ($temp->fetch()):
-           
+                $temp->bind_result($partID);
                 ?>
-                <section class="form-group">
-                	<label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Is part of</label>
-                    	<div class="col-xs-10">
-                        	<input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" value="<?php print $part_id; ?>" required="">
-                        </div>
-                </section>
-                <hr>
-                <?php
-                $counter++;
-                endwhile;?>
-                <?php //TODO: add field when button is clicked, max 1?>
-                <div class="form-group">
-                <div class="col-xs-12">
-                <button type="button" class="btn btn-default pull-right" id="addIsPartOfButton">Add isPartOf</button>
-                </div>
-                </div>
-                <hr>
-                
-                <?php 
-                //has_part
-                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = ?");
-                $type = "hasPart";
-                $temp->bind_param("ss", $id,$type);
-                $temp->execute();
-                $temp->bind_result($part_id);
-                
-                $counter = 1;
-                while ($temp->fetch()):
-                 
-                ?>
-                <section class="form-group">
-                	<label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Has part</label>
-                	<div class="col-xs-10">
-                    <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="has_part[]" value="<?php print $part_id; ?>" required="">
+                <span class="hide">Is Part Of</span>
+                <section>
+                  <?php
+                  $counter = 1;
+                  while ($temp->fetch()): ?>
+                    <div class="form-group">
+                      <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Is Part Of</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" value="<?php print $partID; ?>" required="">
+                      </div>
                     </div>
-                 </section>
-                 <?php
-                 $counter++;
-                 endwhile;
+                    <?php
+                    $counter++;
+                  endwhile;
+                  ?>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" id="addIsPartOfButton">Add Another Is Part Of</button>
+                    </div>
+                  </div>
+                </section>
+                <?php
+                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'hasPart'");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($partID);
                 ?>
-                <?php //TODO: add field when button is clicked, can have multiple?>
-                <div class="form-group">
-                <div class="col-xs-12">
-                <button type="button" class="btn btn-default pull-right" id="addHasPartButton">Add hasPart</button>
-                </div>
-                </div>
-                
+                <span class="hide">Has Part</span>
+                <section>
+                  <?php
+                  $counter = 1;
+                  while ($temp->fetch()): ?>
+                    <div class="form-group">
+                      <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2">Has Part</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>" required="">
+                      </div>
+                    </div>
+                    <?php
+                    $counter++;
+                  endwhile;
+                  ?>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" id="addHasPartButton">Add Another Has Part</button>
+                    </div>
+                  </div>
+                </section>
+
                 <hr>
                 <section class="form-group" style="margin-bottom: 15%">
                   <input type="hidden" class="hide" name="id" value="<?php print $id; ?>">

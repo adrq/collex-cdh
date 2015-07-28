@@ -2,6 +2,9 @@
 /**
  * @file register.php
  * Prints out the registration page.
+ *
+ * 7/28/15 - Lichen has PHP v.5.3.3 installed whereas the local machines have PHP v.5.5.x.
+ * Since this is the case, some changes had to be made.
  */
 $title = "Register";
 $loginRequired = false;
@@ -53,7 +56,11 @@ require "includes/header.php";
         if (strcmp($password1, $password2) !== 0) {
           exit("<h3 class='text-danger'>Passwords do not match.</h3>");
         } else {
-          $password = password_hash($password1, PASSWORD_DEFAULT);
+          // 7/28/15 - Add the following when PHP v5.5.x is installed on Lichen:
+          // $password = password_hash($password1, PASSWORD_DEFAULT);
+
+          // 7/28/15 - Remove the following when PHP v5.5.x is installed on Lichen:
+          $password = hash("sha512", $password1);
         }
 
         $statement = $mysqli->prepare("SELECT 1 FROM users WHERE username = ?");

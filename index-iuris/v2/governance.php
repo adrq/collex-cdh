@@ -17,7 +17,7 @@ require "includes/header.php";
 
   <div class="row">
     <div class="col-xs-12">
-      <button type="button" class="btn btn-primary pull-right" id="newCommentButton" style="margin-top: 20px;">Add a Comment</button>
+      <button type="button" class="btn btn-default pull-right" id="newCommentButton" style="margin-top: 20px;">Add a Comment</button>
       <h2>I. Entity, Purpose, Membership</h2>
 
       <p><samp>Index Iuris</samp> is a federation of digital projects and archives that offer open-access primary source materials for the study of legal history in western Europe, from Roman law to early modern civil codes, encompassing both secular and ecclesiastical legal materials.  Each project or archive in the federation retains its own form, purpose, data structure, and full autonomy; membership in <samp>Index Iuris</samp> brings enhanced access to and awareness of the content of member projects, and in time will support investigation of legal history across centuries and places, so that the materials of each project can be better contextualized in the larger sweep of legal history.  For example, a scholar could use the <samp>Index Iuris</samp> site to find and assemble a collection of texts that form a sequence of legal thought on standards of proof, or could generate a visualization of the geographical and temporal concentrations of the term "spolia", or could trace the quotation of a legal maxim in a range of texts.</p>
@@ -110,7 +110,7 @@ require "includes/header.php";
 
           <div class="form-group">
             <div class="col-xs-2">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
         </fieldset>
