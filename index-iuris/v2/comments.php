@@ -42,9 +42,12 @@ if (isset($_GET["comments"])) {
           <th>Required/Optional</th>
           <th>Controlled/Free-Form</th>
           <th>Suggested Term</th>
-        <?php elseif ($commentName == "type_available" || $commentName == "role_available" || $commentName == "date"): ?>
+        <?php elseif ($commentName == "type_available" || $commentName == "role_available"): ?>
           <th>Decision</th>
-          <th>Comments</th>
+          <th>Suggested items</th>
+		<?php elseif ($commentName == "date"): ?>
+	       <th>Decision</th>
+	       <th>Comments</th>
         <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
           <th>Decision</th>
         <?php else: ?>
@@ -116,7 +119,7 @@ require "includes/header.php";
                 <option value="comments_has_part">Has-Part</option>
                 <option value="comments_text_divisions">Text-Division</option>
                 <option value="comments_notes">Notes</option>
-                <option value="genre">Suggested Genre Terms</option>
+                <option value="genre">Genre </option>
                 <option value="custom_namespace_available">Custom Namespace Decisions</option>
                 <option value="url_available">URI or URL Decisions</option>
                 <option value="type_available">Type Decisions</option>
