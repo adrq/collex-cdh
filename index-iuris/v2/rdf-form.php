@@ -700,8 +700,9 @@ else:
   $statement->store_result();
 
   if ($statement->num_rows > 0) {
-    ?><script>alert("This record already exists."); window.location = "view-submissions";</script><?php
+    ?><script>alert("This record already exists."); window.location = "submissions";</script><?php
   }
+  else {
 
   $customNamespace  = $_POST["custom-namespace"];
   $rdfAbout         = $_POST["rdf-about"];
@@ -745,6 +746,7 @@ else:
 
   // Add alternative titles to its table.
   foreach ($_POST["alternative_title"] as $altTitle) {
+  	if ($altTitle == "") continue;
     $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
     $insert->bind_param("is", $lastID, $altTitle);
     $insert->execute();
@@ -761,13 +763,17 @@ else:
   $dateType    = "text";
   $humanDate   = $_POST["date-human"];
   $machineDate = $_POST["date-machine"];
-  $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
-  $insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
-  $insert->execute();
+  if (!($humanDate=="" && $machineDate=="")){
+  	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
+  	$insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
+  	$insert->execute();
+  }
+  
 
   // Add isPartOf to its table.
   $partType = "isPartOf";
   foreach ($_POST["is-part-of"] as $id) {
+  	if ($id=="") continue;
     $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
     $insert->bind_param("isi", $lastID, $partType, $id);
     $insert->execute();
@@ -776,6 +782,7 @@ else:
   // Add hasPart to its table.
   $partType = "hasPart";
   foreach ($_POST["has-part"] as $id) {
+  	if ($id=="") continue;
     $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
     $insert->bind_param("isi", $lastID, $partType, $id);
     $insert->execute();
@@ -789,6 +796,7 @@ else:
   }
 
   foreach ($_POST["role"] as $role) {
+  	if ($roleValues[$i]=="") continue;
     $value  = $roleValues[$i++];
     $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
     $insert->bind_param("iss", $lastID, $role, $value);
@@ -827,7 +835,7 @@ else:
   $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   $statement->bind_param("sssssssssssssssssss", $comments_rdf_about, $comments_date, $comments_provenance, $comments_place_of_composition, $comments_is_part_of, $comments_has_part, $comments_text_divisions, $comments_notes, $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $date_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
   $statement->execute();
-
+  
   if ($statement->affected_rows === 0): ?>
   <div class="container">
     <div class="row page-header">
@@ -862,6 +870,7 @@ else:
   </div>
   <?php
   endif;
+  }// if ($statement->num_rows > 0) {} else {
 endif;
 
 require "includes/footer.php";
