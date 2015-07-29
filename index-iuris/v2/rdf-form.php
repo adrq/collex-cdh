@@ -685,7 +685,8 @@ else:
   include "includes/rdf-generator.php";
 
   global $mysqli;
-  $json    = json_encode($_POST, JSON_PRETTY_PRINT);
+  // 7/29/15 - Insert JSON_PRETTY_PRINT as second parameters into json_encode when PHP is updated to v5.4.x.
+  $json    = json_encode($_POST);
   $userID  = $_SESSION['user_id'];
   $format  = "json";
   $version = "0.1";
@@ -868,7 +869,7 @@ else:
         </div>
 
         <div class="col-xs-6">
-          <a href="view-submissions" class="btn btn-success col-xs-8 center-block">View Submissions</a>
+          <a href="submissions" class="btn btn-success col-xs-8 center-block">View Submissions</a>
         </div>
       </div>
     </div>

@@ -12,31 +12,39 @@ $title = "Edit Submission";
 $loginRequired = true;
 require "includes/header.php";
 
-if (!isset($_GET["id"]) && !isset($_POST["id"])): ?>
-  <script>window.location = "submissions";</script>
-<?php else:
+if (!isset($_GET["id"]) && !isset($_POST["id"])):
+  ?><script>window.location = "submissions";</script><?php
+else:
   global $mysqli;
 
   $id = isset($_POST["id"]) ? $_POST["id"] : $_GET["id"];
 
   if (isset($_POST["id"])) {
     saveObjectToDB($_POST, $id);
-    ?><script>alert("Submission updated successfully."); window.location="edit?id=<?php print $id?>";</script><?php
+    ?><script>alert("Submission updated successfully."); window.location = "edit?id=<?php print $id; ?>":</script><?php
   }
 
   $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("s", $id);
   $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
-  $row = $statement->get_result()->fetch_assoc();
+  // 7/29/15 - Removed until MySQLnd is installed onto Lichen.
+  // $row = $statement->get_result()->fetch_assoc();
 
-  if ($row):
-    if ($row["user_id"] == $_SESSION["user_id"]): ?>
+  // 7/29/15 - When MySQLnd is installed, replace the following two uncommented
+  // if statements with the following two commented if statements.
+  // if ($row)
+  // if ($row["user_id"])
+
+  if ($statement->fetch()):
+    if ($user_id == $_SESSION["user_id"]): ?>
       <div class="container">
         <div class="row page-header">
           <div class="col-xs-12">
-            <h1 class="pull-left">Edit <?php print $row["title"]; ?></h1>
-            <p class="last-updated">Last Updated: <time><?php print $row["date_updated"]; ?></time></p>
+            <h1 class="pull-left">Edit <?php print $title; ?></h1>
+            <p class="last-updated">Last Updated: <time><?php print $date_updated; ?></time></p>
           </div>
         </div>
 
@@ -44,6 +52,36 @@ if (!isset($_GET["id"]) && !isset($_POST["id"])): ?>
           <div class="col-xs-12">
             <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
               <fieldset>
+                <?php
+                // 7/29/15 - Current workaround until MySQLnd is installed onto Lichen.
+                printResult("custom_namespace", "Custom Namespace", $custom_namespace, "input");
+                printResult("rdf_about", "Unique Identifier (URI)", $rdf_about, "input");
+                printResult("archive", "Archive", $archive, "input");
+                printResult("title", "Title", $title, "input");
+                printResult("type", "Type", $type, "input");
+                printResult("url", "URL", $url, "input");
+                printResult("origin", "Origin", $origin, "input");
+                printResult("provenance", "Provenance", $provenance, "input");
+                printResult("place_of_composition", "Place of Composition", $place_of_composition, "input");
+                printResult("shelfmark", "Shelfmark", $shelfmark, "input");
+                printResult("freeculture", "Freeculture", $freeculture, "radio");
+                printResult("full_text_url", "Full text URL", $full_text_url, "input");
+                printResult("full_text_plain", "Full text", $full_text_plain, "textarea");
+                printResult("is_full_text", "Fulltext", $is_full_text, "radio");
+                printResult("image_url", "Image URL", $image_url, "input");
+                printResult("source", "Source", $source, "input");
+                printResult("metadata_xml_url", "XML Metadata URL", $metadata_xml_url, "input");
+                printResult("metadata_html_url", "HTML Metadata URL", $metadata_html_url, "input");
+                printResult("text_divisions", "Divisions of the Text", $text_divisions, "textarea");
+                printResult("language", "Language", $language, "input");
+                printResult("ocr", "OCR", $ocr, "radio");
+                printResult("thumbnail_url", "Thumbnail URL", $thumbnail_url, "input");
+                printResult("notes", "Notes", $notes ,"textarea");
+                printResult("file_format", "File Format", $file_format, "input");
+
+                // This is literally the worst.
+
+                /* 7/29/15 - Removed until MySQLnd is installed onto Lichen.
                 <?php foreach ($row as $key=>$value): ?>
                   <?php switch ($objectsTableInputTypes[$key]): case "text": // Need a reason as to why PHP can be stupid? Any trailing whitespace between switch and the first case throws an error. http://php.net/manual/en/control-structures.alternative-syntax.php ?>
                     <section class="form-group">
@@ -80,6 +118,7 @@ if (!isset($_GET["id"]) && !isset($_POST["id"])): ?>
                   <?php endswitch; ?>
                 <?php
                 endforeach;
+                */
 
                 $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
                 $temp->bind_param("s", $id);
@@ -278,7 +317,7 @@ if (!isset($_GET["id"]) && !isset($_POST["id"])): ?>
     <?php
     else:
       ?><script>alert("You do not have permission to view this record."); window.location = "submissions";</script><?php
-    endif; // if ($row["user_id"] == $_SESSION["user_id"])
+    endif; // if ($user_id == $_SESSION["user_id"])
   else:
     ?><script>alert("This record does not exist."); window.location = "submissions";</script><?php
   endif; // if ($row)
@@ -293,4 +332,35 @@ require "includes/footer.php";
  */
 function printRequired($key) {
   print in_array($key, array("custom_namespace", "rdf_about", "archive", "title", "type", "file_format")) ? ' required=""' : "";
+}
+
+function printResult($name, $label, $value, $type) {
+  ?>
+  <section class="form-group">
+    <label for="<?php print $name; ?>" class="control-label col-xs-2"><?php print $label; ?></label>
+    <div class="col-xs-10">
+      <?php
+      switch ($type) {
+        case "input":
+        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" value="<?php print $value; ?>"<?php printRequired($name); ?>><?php
+        break;
+        case "radio":
+        ?>
+        <div class="radio">
+          <label><input type="radio" name="<?php print $name; ?>" value="true"<?php print $value == "true" ? " checked=''" : ""; ?>>Yes</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="<?php print $name; ?>" value="false"<?php print $value == "false" ? " checked=''" : ""; ?>>No</label>
+        </div>
+        <?php
+        break;
+        case "textarea":
+        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php print $value; ?></textarea><?php
+        break;
+      }
+      ?>
+    </div>
+  </section>
+  <hr>
+  <?php
 }
