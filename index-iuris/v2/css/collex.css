@@ -4,6 +4,13 @@
  * Author: Center for Digital Humanities - University of South Carolina.
  * Version: Alpha.
  * Copyright: 2015. All Rights Reserved.
+ *
+ * Table of Contents:
+ * - Global Tags
+ * - Global Classes
+ * - Governance Page
+ * - Edit Submission Page
+ * - Bootstrap Modifications
  */
 
 /**
@@ -14,7 +21,7 @@ a:hover,
 a:focus { color: #681422; }
 
 /**
- * Metadata Submission Form
+ * Global Classes
  */
 .form-group > .control-label > .close {
   opacity: 0;

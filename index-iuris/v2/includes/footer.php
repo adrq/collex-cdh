@@ -3,7 +3,7 @@
  * @file footer.php
  * Prints the closing of the HTML structure.
  */
-$scripts = array("jquery.min.js", "bootstrap.min.js", "dataTables.min.js", "dataTables.bootstrap.js", "collex.js");
+$scripts = array("jquery.min.js", "bootstrap.min.js", "dataTables.min.js", "dataTables.bootstrap.js", "platform.min.js", "collex.js");
 
 foreach ($scripts as $script): ?>
   <script src="js/<?php print $script; ?>"></script>

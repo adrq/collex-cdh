@@ -2,7 +2,7 @@
  * collex.js
  *
  * Author: Center for Digital Humanities - University of South Carolina.
- * Version: 1.0.
+ * Version: Alpha.
  * Copyright: 2015. All Rights Reserved.
  */
 
@@ -10,6 +10,12 @@
  * Executed when the DOM is ready.
  */
 $(document).ready(function() {
+  if (platform.name == "IE" && parseInt(platform.version, 10) < 10) {
+    $("#alerter").show();
+  } else {
+    $("#alerter").remove();
+  }
+
   // Initialize all tooltips.
   $("[data-toggle='tooltip']").tooltip();
 
