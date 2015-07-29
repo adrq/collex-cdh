@@ -1,5 +1,9 @@
 <?php
 
+function printAttribute($value){
+	print preg_replace("/\"/", "&quot;", $value);
+}
+
 function saveObjectToDB($data,$object_id){
 	
 	global $mysqli;

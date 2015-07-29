@@ -163,7 +163,7 @@ else:
                     <div class="form-group">
                       <label for="value<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role_value[]" value="<?php print $value; ?>">
+                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role_value[]" value="<?php printAttribute($value); ?>">
                       </div>
                     </div>
                     <?php
@@ -233,7 +233,7 @@ else:
                     <div class="form-group">
                       <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Alt Title</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative_title[]" value="<?php print $altTitle; ?>">
+                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative_title[]" value="<?php printAttribute($altTitle); ?>">
                       </div>
                     </div>
                     <?php
@@ -259,13 +259,13 @@ else:
                   <section class="form-group">
                     <label for="humanDate<?php print $counter; ?>" class="control-label col-xs-2">Human Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="human_date" value="<?php print $humanDate; ?>" required="">
+                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="human_date" value="<?php printAttribute($humanDate); ?>" required="">
                     </div>
                   </section>
                   <section class="form-group">
                     <label for="machineDate<?php print $counter; ?>" class="control-label col-xs-2">Machine Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" value="<?php print $machineDate; ?>" required="">
+                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" value="<?php printAttribute($machineDate); ?>" required="">
                     </div>
                   </section>
                   <?php
@@ -315,6 +315,7 @@ else:
                 $temp->bind_param("s", $id);
                 $temp->execute();
                 $temp->bind_result($partID);
+                $temp->store_result();
                 ?>
                 <hr>
                 <span class="hide">Has Part</span>
@@ -330,11 +331,18 @@ else:
                 
                   <?php
                   $counter = 1;
-                  while ($temp->fetch()): ?>
+                  while ($temp->fetch()): 
+                  /*
+                   * once Colin and Abigail decide on the functionality add this code below
+                  $temp2 = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
+              	  $temp2->bind_param("s", $partID);
+              	  $temp2->execute();
+              	  $temp2row = $temp2->get_result()->fetch_assoc();*/
+              	  ?>
                     <div class="form-group">
                       <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2">Has Part</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>">
+                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php printAttribute($partID); /*printAttribute($temp2row["title"]); //discuss with Colin and Abigail how they want this functionality*/ ?>">
                       </div>
                     </div>
                     <?php
@@ -388,7 +396,7 @@ function printResult($name, $label, $value, $type) {
       <?php
       switch ($type) {
         case "input":
-        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" value="<?php print preg_replace("/\"/", "&quot;", $value); ?>"<?php printRequired($name); ?>><?php
+        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" value="<?php printAttribute($value); ?>"<?php printRequired($name); ?>><?php
         break;
         case "radio":
         ?>
@@ -401,7 +409,7 @@ function printResult($name, $label, $value, $type) {
         <?php
         break;
         case "textarea":
-        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php print preg_replace("/\"/", "&quot;", $value); ?></textarea><?php
+        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printAttribute($value); ?></textarea><?php
         break;
       }
       ?>
