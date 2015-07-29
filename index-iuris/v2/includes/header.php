@@ -16,10 +16,18 @@ ini_set("display_errors", "On");
 require_once "config.php";
 require_once "functions.php";
 
+/*
+ * Note: Do not copy this file over on top of the current header file on Lichen.
+ * There is a Google Analytics script installed on the server but not locally.
+ */
+
 ?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="author" content="Center for Digital Humanities - University of South Carolina">
+  <meta name="keywords" content="">
+  <meta name="description" content="Index Iuris is a federation of digital projects that offer the original texts for the study of the legal history in western Europe, from Roman law to early modern civil codes, both secular and ecclesiastical.">
 
   <title><?php print isset($title) ? $title . " - " : ""; ?>Index Iuris</title>
 
@@ -43,24 +51,20 @@ require_once "functions.php";
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <?php
-        // TODO: Convert to image.
-        // TOOD: Convert to .png
-        // <img src="img/logo.jpg" class="img-responsive" alt="Index Iuris">
-        ?>
         <a href="./" class="navbar-brand">Index Iuris</a>
       </div>
 
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-right">
-          <li <?php print $title == "Home" ? "class='active'" : ""; ?> ><a href="./">Home</a></li>
+          <li<?php print $title == "Home" ? " class='active'" : ""; ?>><a href="./">Home</a></li>
 
           <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
-          <li <?php print $title == "Metadata Submission Form" ? "class='active'" : ""; ?> ><a href="rdf-form">Metadata Submission</a></li>
-          <li <?php print $title == "Governance" ? "class='active'" : ""; ?> ><a href="governance">Governance</a></li>
-          <li <?php print $title == "View Submissions" || $title == "View Submission" ? "class='active'" : ""; ?> ><a href="submissions">View Submissions</a></li>
+          <li<?php print $title == "Metadata Submission Form" ? " class='active'" : ""; ?>><a href="rdf-form">Metadata Submission</a></li>
+          <li<?php print $title == "Governance" ? " class='active'" : ""; ?>><a href="governance">Governance</a></li>
+          <li<?php print $title == "View Submissions" || $title == "View Submission" ? " class='active'" : ""; ?>><a href="submissions">View Submissions</a></li>
+
           <?php // TODO: Show this tab only if the user is superuser. ?>
-          <li <?php print $title == "Comments and Suggested Items" ? "class='active'" : ""; ?> ><a href="comments">Comments</a></li>
+          <li<?php print $title == "Comments and Suggested Items" ? " class='active'" : ""; ?>><a href="comments">Comments</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -68,8 +72,8 @@ require_once "functions.php";
             </ul>
           </li>
           <?php else: ?>
-          <li <?php print $title == "Login" ? "class='active'" : ""; ?> ><a href="login">Login</a></li>
-          <li <?php print $title == "Register" ? "class='active'" : ""; ?> ><a href="register">Register</a></li>
+          <li<?php print $title == "Login" ? " class='active'" : ""; ?>><a href="login">Login</a></li>
+          <li<?php print $title == "Register" ? " class='active'" : ""; ?>><a href="register">Register</a></li>
           <?php endif; ?>
 
           <li class="dropdown">

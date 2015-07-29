@@ -4,20 +4,21 @@
  * Determines variables to be used throughout the site.
  */
 
-// Error Reporting
+// Assure error reporting is on.
 error_reporting(-1);
 ini_set("display_errors", "On");
 
-define("DB_HOST", "127.0.0.1");
-define("DB_USER", "collex");
-define("DB_PASS", "password");
-define("DB_BASE", "cdh_rdf_inbox");
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "root");
+define("DB_BASE", "collex");
+define("ROOT_FOLDER", "http://" . $_SERVER["HTTP_HOST"] . "/indexiuris/");
 
 global $mysqli;
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
 
 if ($mysqli->connect_error || $mysqli->connect_errno) {
-  print "<h1 class='text-danger'>Database Connection Error (" . $mysqli->connect_errno . ")</h1>";
+  exit("<h1 class='text-danger'>Database Connection Error (" . $mysqli->connect_errno . "): " . $mysqli->connect_error . "</h1>");
 }
 
 $objectsTableColumDisplayNames = array(
