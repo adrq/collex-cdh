@@ -297,7 +297,7 @@ else:
                     <div class="form-group">
                       <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Is Part Of</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" value="<?php print $partID; ?>" required="">
+                        <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" value="<?php print $partID; ?>">
                       </div>
                     </div>
                     <?php
@@ -323,7 +323,7 @@ else:
                 <div class="form-group"style="display:none;">
                       <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>">
+                        <input type="text" class="form-control" id="hasPart" name="has_part[]" value="">
                       </div>
                     </div>
                 
@@ -334,7 +334,7 @@ else:
                     <div class="form-group">
                       <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2">Has Part</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>" required="">
+                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>">
                       </div>
                     </div>
                     <?php

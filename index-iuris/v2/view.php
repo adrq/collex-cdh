@@ -143,6 +143,30 @@ else:
             </ul>
           </div>
         </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>Parts</h2>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT type, part_id FROM parts WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->store_result();
+              $temp->bind_result($type, $part_id);
+
+              while ($temp->fetch()): 
+              $temp2 = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
+              $temp2->bind_param("s", $part_id);
+              $temp2->execute();
+              $temp2row = $temp2->get_result()->fetch_assoc();
+              //$temp2->store_result();
+              //$temp2->bind_result($part_title);
+              ?>
+              <li class="list-group-item"><strong><?php print $type; ?></strong>: <a href="view?id=<?php print $part_id?>"><?php print $temp2row["title"]; ?></a></li>
+              <?php endwhile; ?>
+            </ul>
+          </div>
+       </div>
 
         <div class="row">
           <div class="col-xs-12">
