@@ -388,7 +388,7 @@ function printResult($name, $label, $value, $type) {
       <?php
       switch ($type) {
         case "input":
-        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" value="<?php print $value; ?>"<?php printRequired($name); ?>><?php
+        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" value="<?php print preg_replace("/\"/", "&quot;", $value); ?>"<?php printRequired($name); ?>><?php
         break;
         case "radio":
         ?>
@@ -401,7 +401,7 @@ function printResult($name, $label, $value, $type) {
         <?php
         break;
         case "textarea":
-        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php print $value; ?></textarea><?php
+        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php print preg_replace("/\"/", "&quot;", $value); ?></textarea><?php
         break;
       }
       ?>
