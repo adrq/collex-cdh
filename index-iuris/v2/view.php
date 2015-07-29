@@ -71,9 +71,10 @@ else:
           <div class="col-xs-3">
             <?php
             print printWell("URL", $row["url"]);
-            // 7/27/15 - Temporarily removed until submission form gives off these fields.
-            // print printWell("Image URL", $row["image_url"]);
-            // print printWell("Thumbnail URL", $row["thumbnail_url"]);
+            /* 7/27/15 - Temporarily removed until submission form gives off these fields.
+             * print printWell("Image URL", $row["image_url"]);
+             * print printWell("Thumbnail URL", $row["thumbnail_url"]);
+             */
             print printWell("Full Text URL", $row["full_text_url"]);
             print printWell("HTML Metadata URL", $row["metadata_html_url"]);
             print printWell("XML Metadata URL", $row["metadata_xml_url"]);
@@ -82,36 +83,71 @@ else:
         </div>
 
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-xs-4">
             <h2>Roles</h2>
             <ul class="list-group">
               <?php
               $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
               $temp->bind_param("s", $id);
               $temp->execute();
+              $temp->store_result();
               $temp->bind_result($role, $value);
+              ?>
 
-              while ($temp->fetch()): ?>
-              <li class="list-group-item"><strong><?php print $role; ?></strong>: <?php print $value; ?></li>
-              <?php endwhile; ?>
+              <?php if ($temp->num_rows === 0): ?>
+                <li class="list-group-item"><em>None</em></li>
+              <?php else: ?>
+                <?php while ($temp->fetch()): ?>
+                  <li class="list-group-item"><strong><?php print $role; ?></strong>: <?php print $value; ?></li>
+                <?php endwhile; ?>
+              <?php endif; ?>
             </ul>
           </div>
 
-          <div class="col-xs-3">
+          <div class="col-xs-4">
             <h2>Genres</h2>
             <ul class="list-group">
               <?php
               $temp = $mysqli->prepare("SELECT genre FROM genres WHERE object_id = ?");
               $temp->bind_param("s", $id);
               $temp->execute();
+              $temp->store_result();
               $temp->bind_result($genre);
+              ?>
 
-              while ($temp->fetch()): ?>
-              <li class="list-group-item"><strong>Genre</strong>: <?php print $genre; ?></li>
-              <?php endwhile; ?>
+              <?php if ($temp->num_rows === 0): ?>
+                <li class="list-group-item"><em>None</em></li>
+              <?php else: ?>
+                <?php while ($temp->fetch()): ?>
+                  <li class="list-group-item"><strong>Genre</strong>: <?php print $genre; ?></li>
+                <?php endwhile; ?>
+              <?php endif; ?>
             </ul>
           </div>
-          
+
+          <div class="col-xs-4">
+            <h2>Alternative Titles</h2>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->store_result();
+              $temp->bind_result($altTitle);
+              ?>
+
+              <?php if ($temp->num_rows === 0): ?>
+                <li class="list-group-item"><em>None</em></li>
+              <?php else: ?>
+                <?php while ($temp->fetch()): ?>
+                  <li class="list-group-item"><strong>Title</strong>: <?php print $altTitle; ?></li>
+                <?php endwhile; ?>
+              <?php endif; ?>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-xs-6">
             <h2>Parts</h2>
             <ul class="list-group">
@@ -120,75 +156,57 @@ else:
               $temp->bind_param("s", $id);
               $temp->execute();
               $temp->store_result();
-              $temp->bind_result($type, $part_id);
-
-              while ($temp->fetch()): 
-              $temp2 = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
-              $temp2->bind_param("s", $part_id);
-              $temp2->execute();
-              $temp2row = $temp2->get_result()->fetch_assoc();
-              //$temp2->store_result();
-              //$temp2->bind_result($part_title);
+              $temp->bind_result($type, $partID);
               ?>
-              <li class="list-group-item"><strong><?php print $type; ?></strong>: <a href="view?id=<?php print $part_id?>"><?php print $temp2row["title"]; ?></a></li>
-              <?php endwhile; ?>
+
+              <?php if ($temp->num_rows == 0): ?>
+                <li class="list-group-item"><em>None</em></li>
+              <?php else: ?>
+                <?php while ($temp->fetch()): ?>
+                  <?php
+                  $select = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
+                  $select->bind_param("s", $partID);
+                  $select->execute();
+                  $select->bind_result($title);
+                  ?>
+                  <li class="list-group-item"><strong><?php print $type; ?></strong>: <a href="view?id=<?php print $partID; ?>"><?php print $title; ?></a></li>
+                <?php endwhile; ?>
+              <?php endif; ?>
             </ul>
           </div>
 
-          
-        </div>
-        <div class="row">
           <div class="col-xs-6">
-            <h2>Alternative Titles</h2>
-            <ul class="list-group">
-              <?php
-              $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
-              $temp->bind_param("s", $id);
-              $temp->execute();
-              $temp->bind_result($altTitle);
-
-              while ($temp->fetch()): ?>
-              <li class="list-group-item"><strong>Title</strong>: <?php print $altTitle; ?></li>
-              <?php endwhile; ?>
-            </ul>
-          </div>
-
-          <div class="col-xs-3">
             <h2>Dates</h2>
             <ul class="list-group">
               <?php
               $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
               $temp->bind_param("s", $id);
               $temp->execute();
+              $temp->store_result();
               $temp->bind_result($type, $machine, $human);
+              ?>
 
-              while ($temp->fetch()): ?>
-              <li class="list-group-item"><strong>Human</strong>: <?php print $human; ?></li>
-              <li class="list-group-item"><strong>Machine</strong>: <?php print $machine; ?></li>
-              <?php endwhile; ?>
+              <?php if ($temp->num_rows === 0): ?>
+                <li class="list-group-item"><em>None</em></li>
+              <?php else: ?>
+                <?php while ($temp->fetch()): ?>
+                  <li class="list-group-item"><strong>Human</strong>: <?php print $human; ?></li>
+                  <li class="list-group-item"><strong>Machine</strong>: <?php print $machine; ?></li>
+                <?php endwhile; ?>
+              <?php endif; ?>
             </ul>
-          </div>
-       </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <?php foreach ($row as $key=>$value): ?>
-            <?php if (in_array($key, array("type", "rdf_about", "url", "language", "origin", "provenance", "place_of_composition", "file_format", "shelfmark", "text_divisions", "source", "notes", "image_url", "thumbnail_url", "full_text_url", "metadata_html_url", "metadata_xml_url", "title", "custom_namespace", "archive", "date_created", "date_updated"))) { continue; } ?>
-            <p><?php print $objectsTableColumDisplayNames[$key]?>: <?php print $value?></p>
-            <?php endforeach; ?>
           </div>
         </div>
       </div>
-      <?php
-    else:
-      ?><script>alert("You do not have permission to view this record."); window.location = "submissions";</script><?php
-    endif; // if ($row["user_id"] == $_SESSION["user_id"])
-  else:
-    ?><script>alert("This record does not exist."); window.location = "submissions";</script><?php
-  endif; // if ($row)
-endif; // if (!isset($_GET["id"]))
+    <?php else: ?>
+      <script>alert("You do not have permission to view this record."); window.location = "submissions";</script>
+    <?php endif; // if ($row["user_id"] == $_SESSION["user_id"]) ?>
+  <?php else: ?>
+    <script>alert("This record does not exist."); window.location = "submissions";</script>
+  <?php endif; // if ($row) ?>
+<?php endif; // if (!isset($_GET["id"])) ?>
 
-require "includes/footer.php";
+<?php require "includes/footer.php";
 
 /**
  * Prints a list item.

@@ -125,7 +125,7 @@ if (!isset($_POST["submitted"])): ?>
           <legend>Type</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Type</samp> is required. It describes the type of medium or artifact of the the item to be integrate into Index Iuris. This term will be selected from a pre-determined list (controlled vocabulary).</p>
+              <p><samp>Type</samp> is required. It describes the type of medium of the item or artifact to be integrated into Index Iuris. This term will be selected from a pre-determined list (controlled vocabulary).</p>
 
               <div class="form-group">
                 <label for="type" class="control-label col-xs-2">Type</label>
@@ -140,7 +140,7 @@ if (!isset($_POST["submitted"])): ?>
 
             <div class="col-xs-4">
               <div class="form-group">
-                <label class="control-label col-xs-10">Would you be able to use the terms in the dropdown to complete the form for the items in your project that you would integrated into Index Iuris? If not, please identify additional terms that should be added to this list.</label>
+                <label class="control-label col-xs-10">Would you be able to use the terms in the dropdown to complete the form for the items in your project that you would integrate into Index Iuris? If not, please identify additional terms that should be added to this list.</label>
                 <div class="col-xs-2">
                   <div class="radio">
                     <label><input type="radio" name="type-available" value="true">Yes</label>
@@ -163,10 +163,10 @@ if (!isset($_POST["submitted"])): ?>
           <legend>Role</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Role</samp> is an optional field, however if used, the terms will be selected from a per-determined list (controlled vocabulary).</p>
+              <p><samp>Role</samp> is an optional field, however if used, the terms will be selected from a pre-determined list (controlled vocabulary).</p>
               <p>This field can appear multiple times.</p>
 
-              <div class="form-group" style="display:none;">
+              <div class="form-group" style="display: none;">
                 <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">
                   <select class="form-control" id="role" name="role[]">
@@ -176,7 +176,7 @@ if (!isset($_POST["submitted"])): ?>
                 </div>
               </div>
 
-              <div class="form-group" style="display:none;">
+              <div class="form-group" style="display: none;">
                 <label for="value" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" id="value" name="role_value[]">
@@ -274,7 +274,7 @@ if (!isset($_POST["submitted"])): ?>
 
               <p>Human-readable dates examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("14th century", "not before 1475", "saec. IXin-med", "0850; 1122", "c. 1100", "1300-1350", "1st part of manuscript 9th century; 2nd part early 12th century")); ?>
+                <?php printExamples(array("14th century", "not before 1475", "saec. IXin-med", "850; 1122", "c. 1100", "1300-1350", "1st part of manuscript 9th century; 2nd part early 12th century")); ?>
               </ul>
               <div class="form-group">
                 <label for="humanDate" class="control-label col-xs-2">Human Date</label>
@@ -285,7 +285,7 @@ if (!isset($_POST["submitted"])): ?>
 
               <p>Machine-readable dates examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("four-digit year, e.g. \"1425\" or \"850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit year separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.")); ?>
+                <?php printExamples(array("four-digit year, e.g. \"1425\" or \"0850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit years separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.")); ?>
               </ul>
               <div class="form-group">
                 <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
@@ -456,7 +456,7 @@ if (!isset($_POST["submitted"])): ?>
                 <?php printExamples(array("\"The Florence Codex\"", "\"X\"", "\"Concordia Discordantium Canonum\"")); ?>
               </ul>
 
-              <div class="form-group" style="display:none;">
+              <div class="form-group" style="display: none;">
                 <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="alternative_title[]" id="altTitle">
@@ -489,7 +489,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Is part of</legend>
+          <legend>IsPartOf</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
@@ -501,7 +501,7 @@ if (!isset($_POST["submitted"])): ?>
               */ ?>
 
               <div class="form-group">
-                <label for="isPartOf" class="control-label col-xs-2">Is part of</label>
+                <label for="isPartOf" class="control-label col-xs-2">IsPartOf</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control col-xs-10" name="is-part-of[]" id="isPartOf">
                 </div>
@@ -516,19 +516,19 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Has part</legend>
+          <legend>hasPart</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>hasPart</samp> is the obverse of <samp>isPartOf</samp>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.</p>
               <?php /*
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("Collectio Dacheriana <strong>HasPart</strong> Book I, Book II, Book III", "Collectio Dionysiana <strong>HasPart</strong> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.")); ?>
+                <?php printExamples(array("Collectio Dacheriana <strong>HasPart</strong> Book I, Book II, Book III", "Collectio Dionysiana <strong>hasPart</strong> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.")); ?>
               </ul>
               */ ?>
 
-              <div class="form-group" style="display:none;">
-                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Has Part</label>
+              <div class="form-group" style="display: none;">
+                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="has_part[]" id="hasPart">
                 </div>
@@ -800,8 +800,9 @@ else:
     }
 
     foreach ($_POST["role"] as $role) {
-      $value  = trim($roleValues[$i++]);
-      if ($value == "") { continue; }
+      $value = trim($roleValues[$i++]);
+      if ($value === "") { continue; }
+
       $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
       $insert->bind_param("iss", $lastID, $role, $value);
       $insert->execute();

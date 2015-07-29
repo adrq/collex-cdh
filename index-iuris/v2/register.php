@@ -20,7 +20,7 @@ require "includes/header.php";
             <div class="form-group">
               <label for="username" class="col-xs-4 control-label">Username</label>
               <div class="col-xs-8">
-                <input type="text" class="form-control" id="username" name="username">
+                <input type="text" class="form-control" id="username" name="username" autofocus="">
               </div>
             </div>
 

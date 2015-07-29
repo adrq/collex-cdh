@@ -127,29 +127,29 @@ else:
                 ?>
                 <span class="hide">Role</span>
                 <section>
-                <div class="form-group" style="display:none;">
-                      <label for="role" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Role</label>
-                      <div class="col-xs-10">
-                        <select class="form-control" id="role" name="role[]">
-                          <option selected=""></option>
-                          <?php foreach ($rolesArray as $item): ?>
-                            <option><?php print $item; ?></option>
-                          <?php endforeach; ?>
-                        </select>
-                      </div>
+                  <div class="form-group" style="display: none;">
+                    <label for="role" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Role</label>
+                    <div class="col-xs-10">
+                      <select class="form-control" id="role" name="role[]">
+                        <option<?php print $role === "" ? " selected=''" : "";?>></option>
+                        <?php foreach ($rolesArray as $item): ?>
+                          <option<?php print $item == $role ? " selected=''" : ""; ?>><?php print $item; ?></option>
+                        <?php endforeach; ?>
+                      </select>
                     </div>
+                  </div>
 
-                    <div class="form-group" style="display:none;">
-                      <label for="value" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Value</label>
-                      <div class="col-xs-10">
-                        <input type="text" class="form-control" id="value" name="role_value[]">
-                      </div>
+                  <div class="form-group">
+                    <label for="value" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Value</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="value" name="role_value[]">
                     </div>
+                  </div>
                   <?php
                   $counter = 1;
                   while ($temp->fetch()): ?>
                     <div class="form-group">
-                      <label for="role<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
+                      <label for="role<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Role</label>
                       <div class="col-xs-10">
                         <select class="form-control" id="role<?php print $counter; ?>" name="role[]">
                           <option<?php print $role === "" ? " selected=''" : ""; ?>></option>
@@ -161,9 +161,9 @@ else:
                     </div>
 
                     <div class="form-group">
-                      <label for="value<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
+                      <label for="value<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Value</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role_value[]" value="<?php printAttribute($value); ?>">
+                        <input type="text" class="form-control" id="value<?php print $counter; ?>" name="role_value[]" <?php printValue($value); ?>>
                       </div>
                     </div>
                     <?php
@@ -172,7 +172,7 @@ else:
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" id="addRoleButton">Add Another Role</button>
+                      <button type="button" class="btn btn-default pull-right" id="addRoleButton">Add a Role</button>
                     </div>
                   </div>
                 </section>
@@ -190,7 +190,7 @@ else:
                   $counter = 1;
                   while ($temp->fetch()): ?>
                     <div class="form-group">
-                      <label for="genre<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Genre</label>
+                      <label for="genre<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Genre</label>
                       <div class="col-xs-10">
                         <select class="form-control" id="genre<?php print $counter; ?>" name="genre[]">
                           <option<?php print $genre === "" ? " selected=''" : ""; ?>></option>
@@ -206,34 +206,34 @@ else:
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" id="addGenreButton">Add Another Genre</button>
+                      <button type="button" class="btn btn-default pull-right" id="addGenreButton">Add a Genre</button>
                     </div>
                   </div>
                 </section>
 
                 <hr>
-                <?php
-                $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
-                $temp->bind_param("s", $id);
-                $temp->execute();
-                $temp->bind_result($altTitle);
-                ?>
+
                 <span class="hide">Alternative Title</span>
                 <section>
-                <div class="form-group" style="display:none;">
-                      <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Alt Title</label>
-                      <div class="col-xs-10">
-                        <input type="text" class="form-control" id="altTitle" name="alternative_title[]" value="">
-                      </div>
-                </div>
-                
+                  <div class="form-group" style="display: none;">
+                    <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Alt Title</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="altTitle" name="alternative_title[]">
+                    </div>
+                  </div>
+
                   <?php
+                  $temp = $mysqli->prepare("SELECT alt_title FROM alt_titles WHERE object_id = ?");
+                  $temp->bind_param("s", $id);
+                  $temp->execute();
+                  $temp->bind_result($altTitle);
+
                   $counter = 1;
                   while ($temp->fetch()): ?>
                     <div class="form-group">
                       <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Alt Title</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative_title[]" value="<?php printAttribute($altTitle); ?>">
+                        <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative_title[]" <?php printValue($altTitle); ?>>
                       </div>
                     </div>
                     <?php
@@ -242,7 +242,7 @@ else:
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add alternative title</button>
+                      <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add an Alternative Title</button>
                     </div>
                   </div>
                 </section>
@@ -259,13 +259,13 @@ else:
                   <section class="form-group">
                     <label for="humanDate<?php print $counter; ?>" class="control-label col-xs-2">Human Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="human_date" value="<?php printAttribute($humanDate); ?>" required="">
+                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="human_date" <?php printValue($humanDate); ?> required="">
                     </div>
                   </section>
                   <section class="form-group">
                     <label for="machineDate<?php print $counter; ?>" class="control-label col-xs-2">Machine Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" value="<?php printAttribute($machineDate); ?>" required="">
+                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" <?php printValue($machineDate); ?> required="">
                     </div>
                   </section>
                   <?php
@@ -273,31 +273,29 @@ else:
                 endwhile;
 
                 ?><hr>
-                
-                <?php //hidden isPartOf?>
+
+                <span class="hide">isPartOf</span>
                 <section>
-                <div class="form-group" style="display:none;">
-                      <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Is Part Of</label>
-                      <div class="col-xs-10">
-                        <input type="text" class="form-control" id="isPartOf" name="is_part_of[]" value="">
-                      </div>
-                </div>
-                
-                <?php
-                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'isPartOf'");
-                $temp->bind_param("s", $id);
-                $temp->execute();
-                $temp->bind_result($partID);
-                ?>
-                <span class="hide">Is Part Of</span>
-                
+                  <?php // Hidden isPartOf ?>
+                  <div class="form-group" style="display: none;">
+                    <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="isPartOf" name="is_part_of[]">
+                    </div>
+                  </div>
+
                   <?php
+                  $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'isPartOf'");
+                  $temp->bind_param("s", $id);
+                  $temp->execute();
+                  $temp->bind_result($partID);
+
                   $counter = 1;
                   while ($temp->fetch()): ?>
                     <div class="form-group">
-                      <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">Is Part Of</label>
+                      <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">isPartOf</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" value="<?php print $partID; ?>">
+                        <input type="text" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" <?php printValue($partID); ?>>
                       </div>
                     </div>
                     <?php
@@ -310,39 +308,44 @@ else:
                     </div>
                   </div>
                 </section>
-                <?php
-                $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'hasPart'");
-                $temp->bind_param("s", $id);
-                $temp->execute();
-                $temp->bind_result($partID);
-                $temp->store_result();
-                ?>
+
                 <hr>
-                <span class="hide">Has Part</span>
+
+                <span class="hide">hasPart</span>
                 <section>
-                <?php //hidden hasPart?>
-                <div class="form-group"style="display:none;">
-                      <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
-                      <div class="col-xs-10">
-                        <input type="text" class="form-control" id="hasPart" name="has_part[]" value="">
-                      </div>
+                  <?php // Hidden hasPart ?>
+                  <div class="form-group" style="display: none;">
+                    <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="hasPart" name="has_part[]">
                     </div>
-                
-                
+                  </div>
+
                   <?php
+                  $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'hasPart'");
+                  $temp->bind_param("s", $id);
+                  $temp->execute();
+                  $temp->store_result();
+                  $temp->bind_result($partID);
+
                   $counter = 1;
-                  while ($temp->fetch()): 
-                  /*
-                   * once Colin and Abigail decide on the functionality add this code below
-                  $temp2 = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
-              	  $temp2->bind_param("s", $partID);
-              	  $temp2->execute();
-              	  $temp2row = $temp2->get_result()->fetch_assoc();*/
-              	  ?>
+                  while ($temp->fetch()):
+                    /*
+                     * Once Colin and Abigail decide on the functionality, add the code below:
+                     * $select = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
+                     * $select->bind_param("s", $partID);
+                     * $select->execute();
+                     * $select->bind_result($title);
+                     * $select->fetch();
+                     *
+                     * (This gets added after printValue($partID) inside <input>)
+                     * printValue($title);
+                     */
+                    ?>
                     <div class="form-group">
-                      <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2">Has Part</label>
+                      <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2">hasPart</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php printAttribute($partID); /*printAttribute($temp2row["title"]); //discuss with Colin and Abigail how they want this functionality*/ ?>">
+                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" <?php printValue($partID); ?>>
                       </div>
                     </div>
                     <?php
@@ -396,7 +399,7 @@ function printResult($name, $label, $value, $type) {
       <?php
       switch ($type) {
         case "input":
-        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" value="<?php printAttribute($value); ?>"<?php printRequired($name); ?>><?php
+        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" <?php printValue($value); printRequired($name); ?>><?php
         break;
         case "radio":
         ?>
@@ -409,7 +412,7 @@ function printResult($name, $label, $value, $type) {
         <?php
         break;
         case "textarea":
-        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printAttribute($value); ?></textarea><?php
+        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printValue($value); ?></textarea><?php
         break;
       }
       ?>

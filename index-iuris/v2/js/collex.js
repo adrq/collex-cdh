@@ -18,7 +18,7 @@ $(document).ready(function() {
 });
 
 /**
- * Add another role to the role section within the RDF form.
+ * Add another role to the role section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
  */
@@ -31,7 +31,7 @@ $("#addRoleButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
-  $(group).css('display','inline');
+  group.show();
 
   group = section.find("input[name='role_value[]']").last().parent().parent().clone();
   newID = increaseID(group, "input");
@@ -40,7 +40,7 @@ $("#addRoleButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
-  $(group).css('display','inline');
+  group.show();
 
   section.find(".close.hide").removeClass("hide");
 
@@ -48,7 +48,7 @@ $("#addRoleButton").click(function (e) {
 });
 
 /**
- * Add another genre to the genre section within the RDF form.
+ * Add another genre to the genre section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
  */
@@ -61,6 +61,7 @@ $("#addGenreButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
+  group.show();
 
   section.find(".close.hide").removeClass("hide");
 
@@ -68,7 +69,7 @@ $("#addGenreButton").click(function (e) {
 });
 
 /**
- * Add another alternative title to the alternative title section within the RDF form.
+ * Add another alternative title to the alternative title section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
  */
@@ -81,7 +82,7 @@ $("#addAltTitleButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
-  $(group).css('display','inline');
+  group.show();
 
   section.find(".close.hide").removeClass("hide");
 
@@ -89,7 +90,7 @@ $("#addAltTitleButton").click(function (e) {
 });
 
 /**
- * Add another has part to the has part section within the RDF form.
+ * Add another hasPart to the hasPart section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
  */
@@ -102,7 +103,7 @@ $("#addHasPartButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
-  $(group).css('display','inline');
+  group.show();
 
   section.find(".close.hide").removeClass("hide");
 
@@ -110,7 +111,7 @@ $("#addHasPartButton").click(function (e) {
 });
 
 /**
- * Add another isPartOf to the has part section within the RDF form.
+ * Add another isPartOf to the isPartOf section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
  */
@@ -123,7 +124,7 @@ $("#addIsPartOfButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
-  $(group).css('display','inline');
+  group.show();
 
   section.find(".close.hide").removeClass("hide");
 
@@ -131,7 +132,7 @@ $("#addIsPartOfButton").click(function (e) {
 });
 
 /**
- * Remove a duplicate within the RDF form.
+ * Remove a form group within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
  */
@@ -179,14 +180,10 @@ $("#newCommentButton").click(function (e) {
  * Renders all comments for super users.
  */
 $("select#comment").on("change", function () {
-  var value = $(this).val();
   $.ajax({
     url: "comments",
     type: "GET",
-    data: "comments=" + value,
-    beforeSend: function () {
-      console.info("Attempting to grab comments. - " + value);
-    },
+    data: "comments=" + $(this).val(),
     success: function (result) {
       $("#commentResults").html(result).find("table.dt").dataTable();
     },

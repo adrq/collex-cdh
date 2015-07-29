@@ -22,7 +22,7 @@ require_once "functions.php";
  */
 
 ?><!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="Center for Digital Humanities - University of South Carolina">
