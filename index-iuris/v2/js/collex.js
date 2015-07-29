@@ -15,6 +15,9 @@ $(document).ready(function() {
 
   // Initialize all DataTables.
   $(".dt").dataTable();
+
+  // Render all times.
+  renderTimes();
 });
 
 /**
@@ -170,7 +173,7 @@ $("section").on("click", ".control-label > .close", function (e) {
  */
 $("#newCommentButton").click(function (e) {
   $("html, body").animate({
-    scrollTop: $("#newComment").position().top
+    scrollTop: $("#new").position().top
   }, 1200);
 
   e.target.blur();
@@ -210,5 +213,62 @@ function increaseID(group, search) {
     return id.substring(0, id.length - number.toString().length) + (number + 1);
   } else {
     return id + "1";
+  }
+}
+
+/**
+ * Render all <time> tags from YYYY-MM-DD HH:MM:SS format to Month DD, YYYY HH:MM<am/pm> format.
+ */
+function renderTimes() {
+  $("time").each(function () {
+    var text  = $.trim($(this).text());
+    var hour = parseInt(text.substring(11, 13), 10);
+
+    if (hour.toString().substring(0, 1) === 0) {
+      hour = hour.toString().substring(1);
+    }
+
+    var meridiem = hour < 13 ? "am" : "pm";
+
+    if (hour > 12) {
+      hour = hour - 12;
+    }
+
+    $(this).text(convertMonth(parseInt(text.substring(5, 7), 10)) + " " + parseInt(text.substring(8, 10), 10) + ", " + parseInt(text.substring(0, 4), 10) + " - " + hour + ":" + text.substring(14, 16) + meridiem);
+  });
+}
+
+/**
+ * Converts a month from number format to word format.
+ *
+ * @param {int} number: The number of the year the month is.
+ * @return {String}
+ */
+function convertMonth(number) {
+  switch (number) {
+    case 1:
+      return "January";
+    case 2:
+      return "February";
+    case 3:
+      return "March";
+    case 4:
+      return "April";
+    case 5:
+      return "May";
+    case 6:
+      return "June";
+    case 7:
+      return "July";
+    case 8:
+      return "August";
+    case 9:
+      return "September";
+    case 10:
+      return "October";
+    case 11:
+      return "November";
+    case 12:
+      return "December";
   }
 }

@@ -6,7 +6,15 @@
 $title = "Governance";
 $loginRequired = true;
 require "includes/header.php";
-?>
+
+if (isset($_POST["commentText"]) && $_SESSION["logged-in"]): ?>
+  <?php if (submitGovernanceComment($_POST["commentText"])): ?>
+    <script>window.location = "governance#new";</script>
+  <?php else: ?>
+    <script>alert("Your comment was unable to be submitted. Please try again later.");</script>
+  <?php endif; ?>
+<?php endif; ?>
+
 <div class="container">
   <div class="row page-header">
     <div class="col-xs-12">
@@ -73,33 +81,13 @@ require "includes/header.php";
 
   <div class="row">
     <h3>Comments:</h3>
-    <?php
-    global $mysqli;
-
-    $statement = $mysqli->prepare("SELECT comment_text, date_submitted, user_id FROM constitution_comments ORDER BY date_submitted");
-    $statement->execute();
-    $statement->store_result();
-    $statement->bind_result($comment, $date, $userID);
-
-    while ($statement->fetch()):
-      $search = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
-      $search->bind_param("s", $userID);
-      $search->execute();
-      $search->store_result();
-      $search->bind_result($username);
-      $search->fetch();
-      ?>
-      <div class="col-xs-8">
-        <h4><?php print $username; ?> - <time><?php print $date; ?><time></h4>
-        <p class="comment-text"><?php print $comment; ?></p>
-        <hr>
-      </div>
-    <?php endwhile; ?>
+    <h6>All times are in Eastern Standard Time</h6>
+    <?php renderGovernanceComments(); ?>
   </div>
 
   <div class="row">
-    <div id="newComment" style="margin-bottom: 15%;">
-      <form class="form-horizontal" action="new-comment" method="POST">
+    <div id="new" style="margin-bottom: 15%;">
+      <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
         <fieldset>
           <div class="form-group">
             <label for="text" class="control-label col-xs-2" style="text-align: left;">New Comment:</label>
@@ -117,6 +105,6 @@ require "includes/header.php";
       </form>
     </div>
   </div>
-
 </div>
+
 <?php require "includes/footer.php"; ?>
