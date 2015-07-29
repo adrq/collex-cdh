@@ -56,10 +56,20 @@ function saveObjectToDB($data,$object_id){
 	}
 	
 	// Add genres to its table.
-	$insert = $mysqli->prepare("DELETE FROM genres WHERE object_id=?");
-	$insert->bind_param("s", $object_id);
-	$insert->execute();
+	
+	//validate genres before deleting from table:
+	$genres = array();
 	foreach ($data["genre"] as $genre) {
+		if (trim($genre)==="") continue;
+		array_push($genres,$genre);
+	}
+	if (sizeof($genres) != 0){
+		$insert = $mysqli->prepare("DELETE FROM genres WHERE object_id=?");
+		$insert->bind_param("s", $object_id);
+		$insert->execute();
+	}
+	foreach ($genres as $genre) {
+		if (trim($genre)==="") continue;
 		$insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
 		$insert->bind_param("is", $lastID, $genre);
 		$insert->execute();

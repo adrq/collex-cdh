@@ -530,7 +530,7 @@ if (!isset($_POST["submitted"])): ?>
               <div class="form-group">
                 <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="has-part[]" id="hasPart">
+                  <input type="text" class="form-control" name="has_part[]" id="hasPart">
                 </div>
               </div>
 

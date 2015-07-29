@@ -247,14 +247,25 @@ else:
                   $counter++;
                 endwhile;
 
-                ?><hr><?php
+                ?><hr>
+                
+                <?php //hidden isPartOf?>
+                <section>
+                <div class="form-group" style="display:none;">
+                      <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Is Part Of</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="isPartOf" name="is_part_of[]" value="" required="">
+                      </div>
+                </div>
+                
+                <?php
                 $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'isPartOf'");
                 $temp->bind_param("s", $id);
                 $temp->execute();
                 $temp->bind_result($partID);
                 ?>
                 <span class="hide">Is Part Of</span>
-                <section>
+                
                   <?php
                   $counter = 1;
                   while ($temp->fetch()): ?>
@@ -280,8 +291,18 @@ else:
                 $temp->execute();
                 $temp->bind_result($partID);
                 ?>
+                <hr>
                 <span class="hide">Has Part</span>
                 <section>
+                <?php //hidden hasPart?>
+                <div class="form-group"style="display:none;">
+                      <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>" required="">
+                      </div>
+                    </div>
+                
+                
                   <?php
                   $counter = 1;
                   while ($temp->fetch()): ?>

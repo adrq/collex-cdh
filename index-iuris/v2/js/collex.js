@@ -92,13 +92,35 @@ $("#addAltTitleButton").click(function (e) {
  */
 $("#addHasPartButton").click(function (e) {
   var section = $(this).parentsUntil("section").parent();
-  var group   = section.find("input[name='has-part[]']").last().parent().parent().clone();
+  var group   = section.find("input[name='has_part[]']").last().parent().parent().clone();
   var newID   = increaseID(group, "input");
 
   group.find("input").prop("id", newID).val("");
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
+  $(group).css('display','inline');
+
+  section.find(".close.hide").removeClass("hide");
+
+  e.target.blur();
+});
+
+/**
+ * Add another isPartOf to the has part section within the RDF form.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$("#addIsPartOfButton").click(function (e) {
+  var section = $(this).parentsUntil("section").parent();
+  var group   = section.find("input[name='is_part_of[]']").last().parent().parent().clone();
+  var newID   = increaseID(group, "input");
+
+  group.find("input").prop("id", newID).val("");
+  group.find("label").attr("for", newID);
+
+  $(group).insertBefore($(this).parent().parent());
+  $(group).css('display','inline');
 
   section.find(".close.hide").removeClass("hide");
 
