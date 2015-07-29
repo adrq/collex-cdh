@@ -46,10 +46,12 @@ function saveObjectToDB($data,$object_id){
 	$lastID = $object_id;
 	
 	// Add alternative titles to its table.
+	
 	$insert = $mysqli->prepare("DELETE FROM alt_titles WHERE object_id=?");
 	$insert->bind_param("s", $object_id);
 	$insert->execute();
 	foreach ($data["alternative_title"] as $altTitle) {
+		if (trim($altTitle)==="") continue;
 		$insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
 		$insert->bind_param("is", $lastID, $altTitle);
 		$insert->execute();
@@ -95,6 +97,7 @@ function saveObjectToDB($data,$object_id){
 	$partType = "isPartOf";
 	if (isset($data["is_part_of"])){
 		foreach ($data["is_part_of"] as $id) {
+			if (trim($id)==="") continue;
 			$insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
 			$insert->bind_param("isi", $lastID, $partType, $id);
 			$insert->execute();
@@ -106,6 +109,7 @@ function saveObjectToDB($data,$object_id){
 	$partType = "hasPart";
 	if (isset($data["has_part"])){
 		foreach ($data["has_part"] as $id) {
+			if (trim($id)==="") continue;
 			$insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
 			$insert->bind_param("isi", $lastID, $partType, $id);
 			$insert->execute();

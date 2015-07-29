@@ -202,11 +202,18 @@ else:
                 ?>
                 <span class="hide">Alternative Title</span>
                 <section>
+                <div class="form-group" style="display:none;">
+                      <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Alt Title</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="altTitle" name="alternative_title[]" value="">
+                      </div>
+                </div>
+                
                   <?php
                   $counter = 1;
                   while ($temp->fetch()): ?>
                     <div class="form-group">
-                      <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
+                      <label for="altTitle<?php print $counter;?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Alt Title</label>
                       <div class="col-xs-10">
                         <input type="text" class="form-control" id="altTitle<?php print $counter; ?>" name="alternative_title[]" value="<?php print $altTitle; ?>">
                       </div>
@@ -217,7 +224,7 @@ else:
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add Another Alternative Title</button>
+                      <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add alternative title</button>
                     </div>
                   </div>
                 </section>
@@ -281,7 +288,7 @@ else:
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" id="addIsPartOfButton">Add Another Is Part Of</button>
+                      <button type="button" class="btn btn-default pull-right" id="addIsPartOfButton">Add isPartOf</button>
                     </div>
                   </div>
                 </section>
@@ -318,7 +325,7 @@ else:
                   ?>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" id="addHasPartButton">Add Another Has Part</button>
+                      <button type="button" class="btn btn-default pull-right" id="addHasPartButton">Add hasPart</button>
                     </div>
                   </div>
                 </section>

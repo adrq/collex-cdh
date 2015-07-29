@@ -166,7 +166,7 @@ if (!isset($_POST["submitted"])): ?>
               <p><samp>Role</samp> is an optional field, however if used, the terms will be selected from a per-determined list (controlled vocabulary).</p>
               <p>This field can appear multiple times.</p>
 
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">
                   <select class="form-control" id="role" name="role[]">
@@ -176,7 +176,7 @@ if (!isset($_POST["submitted"])): ?>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="value" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" id="value" name="role_value[]">
@@ -185,7 +185,7 @@ if (!isset($_POST["submitted"])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addRoleButton">Add Another Role</button>
+                  <button type="button" class="btn btn-default col-xs-12" id="addRoleButton">Add a Role</button>
                 </div>
               </div>
             </div>
@@ -456,7 +456,7 @@ if (!isset($_POST["submitted"])): ?>
                 <?php printExamples(array("\"The Florence Codex\"", "\"X\"", "\"Concordia Discordantium Canonum\"")); ?>
               </ul>
 
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="alternative_title[]" id="altTitle">
@@ -465,7 +465,7 @@ if (!isset($_POST["submitted"])): ?>
 
               <div class="form-group">
                 <div class="col-xs-4 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addAltTitleButton">Add Another Alternative Title</button>
+                  <button type="button" class="btn btn-default col-xs-12" id="addAltTitleButton">Add an Alternative Title</button>
                 </div>
               </div>
             </div>
@@ -527,8 +527,8 @@ if (!isset($_POST["submitted"])): ?>
               </ul>
               */ ?>
 
-              <div class="form-group">
-                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
+              <div class="form-group" style="display:none;">
+                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Has Part</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="has_part[]" id="hasPart">
                 </div>
@@ -536,7 +536,7 @@ if (!isset($_POST["submitted"])): ?>
 
               <div class="form-group">
                 <div class="col-xs-3 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addHasPartButton">Add Another Part</button>
+                  <button type="button" class="btn btn-default col-xs-12" id="addHasPartButton">Add hasPart</button>
                 </div>
               </div>
             </div>

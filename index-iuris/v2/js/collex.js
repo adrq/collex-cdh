@@ -31,6 +31,7 @@ $("#addRoleButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
+  $(group).css('display','inline');
 
   group = section.find("input[name='role_value[]']").last().parent().parent().clone();
   newID = increaseID(group, "input");
@@ -39,6 +40,7 @@ $("#addRoleButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
+  $(group).css('display','inline');
 
   section.find(".close.hide").removeClass("hide");
 
@@ -79,6 +81,7 @@ $("#addAltTitleButton").click(function (e) {
   group.find("label").attr("for", newID);
 
   $(group).insertBefore($(this).parent().parent());
+  $(group).css('display','inline');
 
   section.find(".close.hide").removeClass("hide");
 
