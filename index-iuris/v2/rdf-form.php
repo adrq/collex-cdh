@@ -7,7 +7,7 @@ $title = "Metadata Submission Form";
 $loginRequired = true;
 require "includes/header.php";
 
-if (!isset($_POST['submitted'])): ?>
+if (!isset($_POST["submitted"])): ?>
 <div class="container">
   <div class="row page-header">
     <div class="col-xs-12 text-justify">
@@ -30,10 +30,10 @@ if (!isset($_POST['submitted'])): ?>
           <legend>Custom Namespace</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p>This field is required, and its format is predetermined for technical reasons. Custom namespace is a short code to identify the project. It is formatted as two pieces of text separated by a colon. The text before the colon identifies the main project or collection; the text after teh colon identifies the collection or subcollection.</p>
+              <p>This field is required, and its format is predetermined for technical reasons. Custom namespace is a short code to identify the project. It is formatted as two pieces of text separated by a colon. The text before the colon identifies the main project or collection; the text after the colon identifies the collection or subcollection.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("CarolingianCanonLawProject:transcript", "AmesFoundation:book", "VirtualCanonLawLibrary:commentary", "VirtualCanonLawLibrary:book", "Pennington:consilia")); ?>
+                <?php printExamples(array("CarolingianCanonLawProject:transcription", "AmesFoundation:book", "VirtualCanonLawLibrary:commentary", "VirtualCanonLawLibrary:book", "Pennington:consilia")); ?>
               </ul>
 
               <div class="form-group">
@@ -64,10 +64,10 @@ if (!isset($_POST['submitted'])): ?>
           <legend>rdf:about</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>rdf:about</samp> is a required attribute of <samp>custom namespace</samp>, and its format is predetermined for technical reasons. <samp>rdf:about</samp> is a URI or a URL that uniquely identifies the record to be index.</p>
+              <p><samp>rdf:about</samp> is a required attribute of <samp>custom namespace</samp>, and its format is predetermined for technical reasons. <samp>rdf:about</samp> is a URI or a URL that uniquely identifies the record to be indexed.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("&lt;pennington:medieval_legal_texts rdf:about=\"http://faculty.cua.edu/pennington/edit301.html\"&gt;", "&lt;CCL:manuscripts rdf:about=\"http://ccl.rch.uky.edu/aboutBod718\"&gt;")); ?>
+                <?php printExamples(array("&lt;pennington:legal_texts rdf:about=\"http://faculty.cua.edu/pennington/edit301.html\"&gt;", "&lt;CCL:manuscripts rdf:about=\"http://ccl.rch.uky.edu/aboutBod718\"&gt;")); ?>
               </ul>
 
               <div class="form-group">
@@ -125,7 +125,7 @@ if (!isset($_POST['submitted'])): ?>
           <legend>Type</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Type</samp> is required. It describes the type of medium or artifact of the the item to be integrated into Index Iuris. This term will be selected from a pre-determined list (controlled vocabulary).</p>
+              <p><samp>Type</samp> is required. It describes the type of medium or artifact of the the item to be integrate into Index Iuris. This term will be selected from a pre-determined list (controlled vocabulary).</p>
 
               <div class="form-group">
                 <label for="type" class="control-label col-xs-2">Type</label>
@@ -270,9 +270,9 @@ if (!isset($_POST['submitted'])): ?>
           <legend>Date</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Date</samp> refers to the date of original composition, to the extent that it is know. This field is required. Index Iuris will use both human readable expressions in its displays, and also machine readable formats to facilitate searching by date range.</p>
+              <p><samp>Date</samp> refers to the date of original composition, to the extent that it is known. This field is required. Index Iuris will use both human readable expressions in its displays, and also machine readable formats to facilitate searching by date range.</p>
 
-              <p>Human-readable dates example:</p>
+              <p>Human-readable dates examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("14th century", "not before 1475", "saec. IXin-med", "0850; 1122", "c. 1100", "1300-1350", "1st part of manuscript 9th century; 2nd part early 12th century")); ?>
               </ul>
@@ -283,9 +283,9 @@ if (!isset($_POST['submitted'])): ?>
                 </div>
               </div>
 
-              <p>Machine-readable dates example:</p>
+              <p>Machine-readable dates examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("four-digital year, e.g. \"1425\" or \"0850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit year separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.")); ?>
+                <?php printExamples(array("four-digit year, e.g. \"1425\" or \"850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit year separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.")); ?>
               </ul>
               <div class="form-group">
                 <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
@@ -351,7 +351,7 @@ if (!isset($_POST['submitted'])): ?>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Provenance</samp> is actually two fields, both optional (although we recommend completing at least one).</p>
-              <p>The first field is <samp>origin</samp>, which can be used for the place where a manuscript written, or a work published. The second field is <samp>provenance</samp>, which can be used for ownership information, or likely area of use or circulation, or the earliest known information about an items whereabouts. Note: See below for <samp>place of composition</samp>.</p>
+              <p>The first field is <samp>origin</samp>, which can be used for the place where a manuscript was written, or a work published. The second field is <samp>provenance</samp>, which can be used for ownership information, or likely area of use or circulation, or the earliest known information regarding the whereabouts of a manuscript. Note: See below for <samp>place of composition</samp>.</p>
 
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
@@ -412,7 +412,7 @@ if (!isset($_POST['submitted'])): ?>
           <legend>Shelfmark</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Shelfmark</samp> is required for items that are manuscripts. This is the unique, internationally known identifier for a manuscript. Consists of City, Repository (library), fond (internal library collection), number. For incunabula or other rare printings, this field may be used for library identifications of the physical artefcat, as well. This field is optional for all other publications or editions.</p>
+              <p><samp>Shelfmark</samp> is required for items that are manuscripts. This is the unique, internationally known identifier for a manuscript. The shelfmark consists of City, Repository (library), fond (internal library collection), number. For incunabula or other rare printings, this field may be used for library identifications of the physical artefact, as well. This field is optional for all other publications or editions.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("Admont en Styrie, Bibliothèque du monastère, 162", "Berlin, Staatsbibliothek Preussischer Kulturbesitz, Lat. fol. 626", "Vaticano, Città del, Biblioteca Apostolica Vaticana, Ottobon. lat. 3295", "Würzburg, Universitätsbibliothek, M.p.th.f.72", "Lexington, University of Kentucky, Margaret I. King Library, Special Collections, KBR197.6 .C36 1525")); ?>
@@ -474,10 +474,10 @@ if (!isset($_POST['submitted'])): ?>
           <legend>Source</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p>This field should not be confused with provenance, place of origin of object, place of composition or isPartOf. <samp>Source</samp> is used for the title of the larger work, resource, or collection of which the present object is a part. Can be used for the title of a journal, anthology, book, online collection, etc.</p>
+              <p>This field should not be confused with provenance, place of origin of object, place of composition or isPartOf. <samp>Source</samp> is used for the title of the larger work, resource, or collection of which the present object is a part. It can be used for the title of a journal, anthology, book, online collection, etc.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("The Spoils of the Pope and the Pirates, 1357: the complete legal dossier form the Vatican Archives", "The Common and Piepowder Courts of Southampton, 1426-1483", "CEEC: Codices Electronici Ecclesiae Coloniensis")); ?>
+                <?php printExamples(array("\"The Spoils of the Pope and the Pirates, 1357: the complete legal dossier from the Vatican Archives\"", "The Common and Piepowder Courts of Southampton, 1426-1483", "CEEC: Codices Electronici Ecclesiae Coloniensis")); ?>
               </ul>
 
               <div class="form-group">
@@ -622,7 +622,7 @@ if (!isset($_POST['submitted'])): ?>
           <legend>Notes</legend>
           <section class="form-group">
             <div class="col-xs-8">
-              <p><samp>Notes</samp> is an option, free-form field for recording information about the item that the contributor deems important.</p>
+              <p><samp>Notes</samp> is an optional, free-form field for recording information about the item that the contributor deems important.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("This set of images is missing fol. 54v, 55r, and 74r.", "Images of the manuscript from which this transcription was made are available at http://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10181604_00005.html", "There is another edition of this text at http://ancientrome.ru/ius/library/gaius/gai.htm", "This edition retains the orthography of the medieval manuscript.")); ?>
@@ -699,179 +699,183 @@ else:
   $statement->execute();
   $statement->store_result();
 
-  if ($statement->num_rows > 0) {
+  if ($statement->num_rows > 0):
     ?><script>alert("This record already exists."); window.location = "submissions";</script><?php
-  }
-  else {
+  else:
+    $customNamespace  = $_POST["custom-namespace"];
+    $rdfAbout         = $_POST["rdf-about"];
+    $archive          = $_POST["archive"];
+    $title            = $_POST["title"];
+    $type             = $_POST["type"];
+    $url              = $_POST["seeAlso"];
+    $origin           = $_POST["origin"];
+    $provenance       = $_POST["provenance"];
+    $compositionPlace = $_POST["place-of-composition"];
+    $shelfmark        = $_POST["shelfmark"];
 
-  $customNamespace  = $_POST["custom-namespace"];
-  $rdfAbout         = $_POST["rdf-about"];
-  $archive          = $_POST["archive"];
-  $title            = $_POST["title"];
-  $type             = $_POST["type"];
-  $url              = $_POST["seeAlso"];
-  $origin           = $_POST["origin"];
-  $provenance       = $_POST["provenance"];
-  $compositionPlace = $_POST["place-of-composition"];
-  $shelfmark        = $_POST["shelfmark"];
+    // TODO: Add these fields to the form, pending approval from Colin and Abigail.
+    $freeculture      = "true";
+    $fullTextURL      = "";
+    $fullTextPlain    = "";
+    $isFullText       = "";
+    $imageURL         = "";
 
-  // TODO: Add these fields to the form, pending approval from Colin and Abigail.
-  $freeculture      = "true";
-  $fullTextURL      = "";
-  $fullTextPlain    = "";
-  $isFullText       = "";
-  $imageURL         = "";
+    $source           = $_POST["source"];
 
-  $source           = $_POST["source"];
+    // TODO: Determine format from input and add to appropriate variable
+    $metadataXMLURL   = $_POST["url-source-code"];
+    $metdataHTMLURL   = $_POST["url-source-code"];
+    $textDivisions    = $_POST["text-divisions"];
+    $language         = $_POST["language"];
+    $ocr              = isset($_POST["ocr"]) ? $_POST["ocr"] : NULL;
 
-  // TODO: Determine format from input and add to appropriate variable
-  $metadataXMLURL   = $_POST["url-source-code"];
-  $metdataHTMLURL   = $_POST["url-source-code"];
-  $textDivisions    = $_POST["text-divisions"];
-  $language         = $_POST["language"];
-  $ocr              = isset($_POST["ocr"]) ? $_POST["ocr"] : NULL;
+    // TODO: Add this field to form, pending approval from Colin and Abigail.
+    $thumbnailURL     = "";
 
-  // TODO: Add this field to form, pending approval from Colin and Abigail.
-  $thumbnailURL     = "";
+    $notes            = $_POST["notes"];
+    $fileFormat       = $_POST["file-format"];
 
-  $notes            = $_POST["notes"];
-  $fileFormat       = $_POST["file-format"];
+    $statement = $mysqli->prepare("INSERT INTO objects (custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
+    $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $language, $ocr, $thumbnailURL, $notes, $fileFormat, $userID);
+    $statement->execute();
+    $statement->store_result();
 
-  $statement = $mysqli->prepare("INSERT INTO objects (custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
-  $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $language, $ocr, $thumbnailURL, $notes, $fileFormat, $userID);
-  $statement->execute();
-  $statement->store_result();
+    $lastID = $statement->insert_id;
 
-  $lastID = $statement->insert_id;
+    // Add alternative titles to its table.
+    foreach ($_POST["alternative_title"] as $altTitle) {
+      if (trim($altTitle) === "") { continue; }
 
-  // Add alternative titles to its table.
-  foreach ($_POST["alternative_title"] as $altTitle) {
-  	if ($altTitle == "") continue;
-    $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
-    $insert->bind_param("is", $lastID, $altTitle);
-    $insert->execute();
-  }
-
-  // Add genres to its table.
-  foreach ($_POST["genre"] as $genre) {
-    $insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
-    $insert->bind_param("is", $lastID, $genre);
-    $insert->execute();
-  }
-
-  // Add date to its table.
-  $dateType    = "text";
-  $humanDate   = $_POST["date-human"];
-  $machineDate = $_POST["date-machine"];
-  if (!($humanDate=="" && $machineDate=="")){
-  	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
-  	$insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
-  	$insert->execute();
-  }
-  
-
-  // Add isPartOf to its table.
-  $partType = "isPartOf";
-  foreach ($_POST["is-part-of"] as $id) {
-  	if ($id=="") continue;
-    $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
-    $insert->bind_param("isi", $lastID, $partType, $id);
-    $insert->execute();
-  }
-
-  // Add hasPart to its table.
-  $partType = "hasPart";
-  foreach ($_POST["has-part"] as $id) {
-  	if ($id=="") continue;
-    $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
-    $insert->bind_param("isi", $lastID, $partType, $id);
-    $insert->execute();
-  }
-
-  // Add roles to its table
-  $i = 0;
-  $roleValues = array();
-  foreach ($_POST["role_value"] as $value) {
-    array_push($roleValues, $value);
-  }
-
-  foreach ($_POST["role"] as $role) {
-  	if ($roleValues[$i]=="") continue;
-    $value  = $roleValues[$i++];
-    $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
-    $insert->bind_param("iss", $lastID, $role, $value);
-    $insert->execute();
-  }
-
-  // TODO: Subject, Discipline.
-
-  $comments = array();
-  // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.
-  foreach ($_POST as $key=>$item) {
-    if (preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)) {
-      $comments[$key] = $item;
+      $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
+      $insert->bind_param("is", $lastID, $altTitle);
+      $insert->execute();
     }
-  }
 
-  $comments_rdf_about            = $comments["comments-rdf-about"];
-  $comments_date                 = $comments["comments-date"];
-  $comments_provenance           = $comments["comments-provenance"];
-  $comments_place_of_composition = $comments["comments-place-of-composition"];
-  $comments_is_part_of           = $comments["comments-is-part-of"];
-  $comments_has_part             = $comments["comments-has-part"];
-  $comments_text_divisions       = $comments["comments-text-divisions"];
-  $comments_notes                = $comments["comments-notes"];
-  $custom_namespace_available    = isset($comments["custom-namespace-available"]) ? $comments["custom-namespace-available"] : NULL;
-  $type_available                = isset($comments["type-available"]) ? $comments["type-available"] : NULL;
-  $role_available                = isset($comments["role-available"]) ? $comments["role-available"] : NULL;
-  $genre_required_available      = isset($comments["genre-required-available"]) ? $comments["genre-required-available"] : NULL;
-  $genre_controled_available     = isset($comments["genre-controlled-available"]) ? $comments["genre-controlled-available"] : NULL;
-  $date_available                = isset($comments["date-available"]) ? $comments["date-available"] : NULL;
-  $url_available                 = isset($comments["url-available"]) ? $comments["url-available"] : NULL;
-  $suggested_terms_type          = $comments["suggested-terms-type"];
-  $suggested_terms_role          = $comments["suggested-terms-role"];
-  $suggested_terms_genre         = $comments["suggested-terms-genre"];
+    // Add genres to its table.
+    foreach ($_POST["genre"] as $genre) {
+      $insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
+      $insert->bind_param("is", $lastID, $genre);
+      $insert->execute();
+    }
 
-  $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $statement->bind_param("sssssssssssssssssss", $comments_rdf_about, $comments_date, $comments_provenance, $comments_place_of_composition, $comments_is_part_of, $comments_has_part, $comments_text_divisions, $comments_notes, $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $date_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
-  $statement->execute();
-  
-  if ($statement->affected_rows === 0): ?>
-  <div class="container">
-    <div class="row page-header">
-      <h1 class="text-danger text-center">Form Submission Failed</h1>
-    </div>
+    // Add date to its table.
+    $dateType    = "text";
+    $humanDate   = trim($_POST["date-human"]);
+    $machineDate = trim($_POST["date-machine"]);
+    if ($humanDate !== "" && $machineDate !== "") {
+      $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
+      $insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
+      $insert->execute();
+    }
+    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
+    $insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
+    $insert->execute();
 
-    <div class="row">
-      <div class="col-xs-12">
-        <p>This isn't good. INSERT shouldn't fail.</p>
-        <p>Unless the server is down. No, that can't be it, you're reading this.</p>
-        <p>Maybe the MySQL Database is disconnected. No, that can't be it either, we'd get a database connection error earlier...</p>
+    // Add isPartOf to its table.
+    $partType = "isPartOf";
+    foreach ($_POST["is-part-of"] as $id) {
+      if (trim($id) === "") { continue; }
+
+      $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
+      $insert->bind_param("isi", $lastID, $partType, $id);
+      $insert->execute();
+    }
+
+    // Add hasPart to its table.
+    $partType = "hasPart";
+    foreach ($_POST["has-part"] as $id) {
+      if (trim($id) === "") { continue; }
+
+      $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
+      $insert->bind_param("isi", $lastID, $partType, $id);
+      $insert->execute();
+    }
+
+    // Add roles to its table
+    $i = 0;
+    $roleValues = array();
+    foreach ($_POST["role_value"] as $value) {
+      array_push($roleValues, $value);
+    }
+
+    foreach ($_POST["role"] as $role) {
+      if (trim($roleValues[$i]) === "") { continue; }
+
+      $value  = $roleValues[$i++];
+      $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
+      $insert->bind_param("iss", $lastID, $role, $value);
+      $insert->execute();
+    }
+
+    // TODO: Subject, Discipline.
+
+    $comments = array();
+    // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.
+    foreach ($_POST as $key=>$item) {
+      if (preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)) {
+        $comments[$key] = $item;
+      }
+    }
+
+    $comments_rdf_about            = $comments["comments-rdf-about"];
+    $comments_date                 = $comments["comments-date"];
+    $comments_provenance           = $comments["comments-provenance"];
+    $comments_place_of_composition = $comments["comments-place-of-composition"];
+    $comments_is_part_of           = $comments["comments-is-part-of"];
+    $comments_has_part             = $comments["comments-has-part"];
+    $comments_text_divisions       = $comments["comments-text-divisions"];
+    $comments_notes                = $comments["comments-notes"];
+    $custom_namespace_available    = isset($comments["custom-namespace-available"]) ? $comments["custom-namespace-available"] : NULL;
+    $type_available                = isset($comments["type-available"]) ? $comments["type-available"] : NULL;
+    $role_available                = isset($comments["role-available"]) ? $comments["role-available"] : NULL;
+    $genre_required_available      = isset($comments["genre-required-available"]) ? $comments["genre-required-available"] : NULL;
+    $genre_controled_available     = isset($comments["genre-controlled-available"]) ? $comments["genre-controlled-available"] : NULL;
+    $date_available                = isset($comments["date-available"]) ? $comments["date-available"] : NULL;
+    $url_available                 = isset($comments["url-available"]) ? $comments["url-available"] : NULL;
+    $suggested_terms_type          = $comments["suggested-terms-type"];
+    $suggested_terms_role          = $comments["suggested-terms-role"];
+    $suggested_terms_genre         = $comments["suggested-terms-genre"];
+
+    $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $statement->bind_param("sssssssssssssssssss", $comments_rdf_about, $comments_date, $comments_provenance, $comments_place_of_composition, $comments_is_part_of, $comments_has_part, $comments_text_divisions, $comments_notes, $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $date_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
+    $statement->execute();
+
+    if ($statement->affected_rows === 0): ?>
+    <div class="container">
+      <div class="row page-header">
+        <h1 class="text-danger text-center">Form Submission Failed</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <p>This isn't good. INSERT shouldn't fail.</p>
+          <p>Unless the server is down. No, that can't be it, you're reading this.</p>
+          <p>Maybe the MySQL Database is disconnected. No, that can't be it either, we'd get a database connection error earlier...</p>
+        </div>
       </div>
     </div>
-  </div>
-  <?php else: ?>
-  <div class="container">
-    <div class="row page-header">
-      <div class="col-xs-12">
-        <h1 class="text-center">Form Submitted Successfully!</h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-6">
-        <a href="rdf-form" class="btn btn-primary col-xs-8 center-block">Submit a New Form</a>
+    <?php else: ?>
+    <div class="container">
+      <div class="row page-header">
+        <div class="col-xs-12">
+          <h1 class="text-center">Form Submitted Successfully!</h1>
+        </div>
       </div>
 
-      <div class="col-xs-6">
-        <a href="view-submissions" class="btn btn-success col-xs-8 center-block">View Submissions</a>
+      <div class="row">
+        <div class="col-xs-6">
+          <a href="rdf-form" class="btn btn-primary col-xs-8 center-block">Submit a New Form</a>
+        </div>
+
+        <div class="col-xs-6">
+          <a href="view-submissions" class="btn btn-success col-xs-8 center-block">View Submissions</a>
+        </div>
       </div>
     </div>
-  </div>
-  <?php
-  endif;
-  }// if ($statement->num_rows > 0) {} else {
-endif;
+    <?php
+    endif; // if ($statement->affected_rows === 0)
+  endif; // if ($statement->num_rows > 0)
+endif; // if (!isset($_POST["submitted"]))
 
 require "includes/footer.php";
 
