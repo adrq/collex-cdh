@@ -784,7 +784,7 @@ else:
 
     // Add hasPart to its table.
     $partType = "hasPart";
-    foreach ($_POST["has-part"] as $id) {
+    foreach ($_POST["has_part"] as $id) {
       if (trim($id) === "") { continue; }
 
       $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
@@ -800,9 +800,8 @@ else:
     }
 
     foreach ($_POST["role"] as $role) {
-      if (trim($roleValues[$i]) === "") { continue; }
-
-      $value  = $roleValues[$i++];
+      $value  = trim($roleValues[$i++]);
+      if ($value == "") { continue; }
       $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
       $insert->bind_param("iss", $lastID, $role, $value);
       $insert->execute();

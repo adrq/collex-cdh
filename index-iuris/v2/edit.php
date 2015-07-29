@@ -21,7 +21,7 @@ else:
 
   if (isset($_POST["id"])) {
     saveObjectToDB($_POST, $id);
-    ?><script>alert("Submission updated successfully."); window.location = "edit?id=<?php print $id; ?>":</script><?php
+    ?><script>alert("Submission updated successfully."); window.location = "edit?id=<?php print $id; ?>";</script><?php
   }
 
   $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
@@ -127,6 +127,24 @@ else:
                 ?>
                 <span class="hide">Role</span>
                 <section>
+                <div class="form-group" style="display:none;">
+                      <label for="role" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Role</label>
+                      <div class="col-xs-10">
+                        <select class="form-control" id="role" name="role[]">
+                          <option selected=""></option>
+                          <?php foreach ($rolesArray as $item): ?>
+                            <option><?php print $item; ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group" style="display:none;">
+                      <label for="value" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Value</label>
+                      <div class="col-xs-10">
+                        <input type="text" class="form-control" id="value" name="role_value[]">
+                      </div>
+                    </div>
                   <?php
                   $counter = 1;
                   while ($temp->fetch()): ?>
@@ -261,7 +279,7 @@ else:
                 <div class="form-group" style="display:none;">
                       <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Is Part Of</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="isPartOf" name="is_part_of[]" value="" required="">
+                        <input type="text" class="form-control" id="isPartOf" name="is_part_of[]" value="">
                       </div>
                 </div>
                 
@@ -305,7 +323,7 @@ else:
                 <div class="form-group"style="display:none;">
                       <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Has Part</label>
                       <div class="col-xs-10">
-                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>" required="">
+                        <input type="text" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" value="<?php print $partID; ?>">
                       </div>
                     </div>
                 

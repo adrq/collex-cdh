@@ -128,9 +128,9 @@ function saveObjectToDB($data,$object_id){
 		foreach ($data["role_value"] as $value) {
 			array_push($roleValues, $value);
 		}
-		
 		foreach ($data["role"] as $role) {
-			$value  = $roleValues[$i++];
+			$value  = trim($roleValues[$i++]);
+			if ($value=="") continue;
 			$insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
 			$insert->bind_param("iss", $lastID, $role, $value);
 			$insert->execute();
