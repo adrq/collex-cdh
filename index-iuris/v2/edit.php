@@ -412,7 +412,7 @@ function printResult($name, $label, $value, $type) {
         <?php
         break;
         case "textarea":
-        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printValue($value); ?></textarea><?php
+        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printValue($value, true); ?></textarea><?php
         break;
       }
       ?>

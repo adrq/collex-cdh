@@ -15,9 +15,14 @@ ini_set("display_errors", "On");
  * - Currently only detects quotation marks.
  *
  * @param {String} $text: The MySQL value.
+ * @param {Boolean} $ignore: Ignore the "value=''" attribute.
  */
-function printValue($text) {
-	print 'value="' . preg_replace("/\"/", "&quot;", $text) . '"';
+function printValue($text, $ignore = false) {
+	if ($ignore) {
+		print preg_replace("/\"/", "&quot;", $text);
+	} else {
+		print 'value="' . preg_replace("/\"/", "&quot;", $text) . '"';
+	}
 }
 
 /**
