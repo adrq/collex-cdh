@@ -21,12 +21,14 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 ?>
 
 <div class="container">
-  <div class="row page-header">
+	<div class="row page-header">
+		<h3> Comments of : <?php print $comment_name; ?> </h3>
+		</div>
     <div class="col-xs-12">
 		
 				<?php
 						
-						while ($statement->fetch()):
+							while ($statement->fetch()): 
 							$temp = $mysqli->prepare("SELECT user_id,$comment_name FROM comments WHERE id = ?");
 							$temp2 = $mysqli->prepare("SELECT username from users where id = ?");
 						    $temp->bind_param("s", $comment_id);
@@ -41,16 +43,15 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 							$temp2->close();
 				?>
 		          <tr>
-					  <h5> Commented By : <?php print $username; ?></h5>
-					  <h5> Original Comment : <?php print $comment; ?></h5>
-					  <h5> Replied By : <?php print $replied_by; ?></h5>
-					  <h5> Replied Comment : <?php print $reply_comment; ?></h5>
-					  <br>
-						<?php endwhile; ?>
-  		  
+					  <p> Commented By : <?php print $username; ?></p>
+					  <p> Original Comment : <?php print $comment; ?></p>
+					  <p> Replied By : <?php print $replied_by; ?></p>
+					  <p> Replied Comment : <?php print $reply_comment; ?></p>						
+  		  			  <hr>
+					  <?php endwhile; ?>
 	</div>
 </div>
-</div>	
+	
 
 
 
