@@ -55,10 +55,10 @@ if (isset($_GET["comments"])) {
         <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
           <th>Decision</th>
         <?php else: ?>
-		  <th>Commented By</th>
+		  <th>Comment By</th>
           <th>Comment</th>
 		  <th>Reply</th>
-		  <th>View All Reply</th>
+		  <th>View All Replies</th>
         <?php endif; ?>
       </tr>
     </thead>
@@ -91,7 +91,7 @@ if (isset($_GET["comments"])) {
 				  <a href="reply?username=<?php print $username; ?>&comment_name=<?php print $commentDate ?>&table_name=<?php print $commentName; ?>&id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
 			</td>
 			<td class="text-center">
-				  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $commentName; ?>" class="btn btn-success">View all Replys</a>
+				  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $commentName; ?>" class="btn btn-success">View all Replies</a>
 			</td>
           <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
             <td><?php print $commentColumn; ?></td>	

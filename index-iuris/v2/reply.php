@@ -28,7 +28,7 @@ $reply_username = $_SESSION["username"];
   </div>
   <form method="POST" >
   <div class="form-group">
-    <label for="replyforcomment" class="control-label col-xs-12">Please Reply for the comment here:</label>
+    <label for="replyforcomment" class="control-label col-xs-12">Please Reply to the comment here:</label>
     <div class="col-xs-12">
       <input type="text" class="form-control" name="replycomment" id="replycomment">
     </div>
@@ -49,6 +49,7 @@ $reply_username = $_SESSION["username"];
  <?php
  if (isset($_POST['button1'])):  
 	 $statement = $mysqli->prepare("INSERT into $table_name(comments_id,reply_comment,replied_by) values(?,?,?)");
+ 	 print $mysqli->error;
 	 $statement->bind_param("sss", $_GET["id"], $_POST["replycomment"],$reply_username);
 	 $statement->execute();
 	 $statement->close();
@@ -59,10 +60,10 @@ $reply_username = $_SESSION["username"];
 		<br>
 		<br>
 		<br>
-		<h4> Successfully commented & Please click the below button to view all reviews</h4>
+		<h4> Comment submitted succesfully. Please click below to view all comments.</h4>
 		<br>
 	<td class="text-center">
-		  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $table; ?>" class="btn btn-success">View all Replys</a>
+		  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $table; ?>" class="btn btn-success">View all Replies</a>
 	</td> 
 	 </section> 
 <?php endif; ?> 	   	

@@ -3,6 +3,7 @@ Index Iuris TODO List:
 Home
 
 Metadata Submission (rdf-form)
+- Add dropdown for archive/namespace (pending discussion with C&A)
 - Incorporate new hasPart and isPartOf functionality from edit page
 - Discussion about multiple dates.
 - Multiple fields need approval from Colin and Abigail
@@ -15,6 +16,7 @@ Governance
 View Submissions
 
 Edit Submission
+- Add dropdown for archive/namespace (pending discussion with C&A)
 - Test new hasPart and isPartOf functionality
 	write js to update modal dialogs when user deletes a part
 

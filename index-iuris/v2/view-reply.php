@@ -22,7 +22,7 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 
 <div class="container">
 	<div class="row page-header">
-		<h3> Comments of : <?php print $comment_name; ?> </h3>
+		<h3> Comments for : <?php print $comment_name; ?> </h3>
 		</div>
     <div class="col-xs-12">
 		
@@ -43,10 +43,10 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 							$temp2->close();
 				?>
 		          <tr>
-					  <p> Commented By : <?php print $username; ?></p>
-					  <p> Original Comment : <?php print $comment; ?></p>
-					  <p> Replied By : <?php print $replied_by; ?></p>
-					  <p> Replied Comment : <?php print $reply_comment; ?></p>						
+					  <p> Comment by : <?php print $username; ?></p>
+					  <p> Comment : <?php print $comment; ?></p>
+					  <p> Reply by : <?php print $replied_by; ?></p>
+					  <p> Reply : <?php print $reply_comment; ?></p>						
   		  			  <hr>
 					  <?php endwhile; ?>
 	</div>
