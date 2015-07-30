@@ -36,23 +36,26 @@ if (isset($_GET["comments"])) {
   <table class="table table-striped table-hover dt">
     <thead>
       <tr>
-        <th>UserName</th>
 
         <?php if ($commentName == "genre"): ?>
+		  <th>User</th>
           <th>Required/Optional</th>
           <th>Controlled/Free-Form</th>
           <th>Suggested Term</th>
         <?php elseif ($commentName == "type_available" || $commentName == "role_available"): ?>
-          <th>Decision</th>
+          <th>Commented By</th>
+		  <th>Decision</th>
           <th>Suggested items</th>
         <?php elseif ($commentName == "comments_date"): ?>
-         <th>Decision</th>
+         <th>Commented By</th>
+		 <th>Decision</th>
          <th>Comments</th>
 		 <th>Reply</th>
 		 <th>View All Reply</th>
         <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
           <th>Decision</th>
         <?php else: ?>
+		  <th>Commented By</th>
           <th>Comment</th>
 		  <th>Reply</th>
 		  <th>View All Reply</th>

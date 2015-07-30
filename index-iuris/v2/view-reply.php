@@ -26,10 +26,10 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 		<table class="table table-striped table-hover dt">
   		  	<thead>
     			<tr>
-      			  <th>UserName</th>
+      			  <th>Commented By</th>
 				  <th>Original Comment</th>
-				  <th>Replied Comment</th>
 				  <th>Replied By </th>
+				  <th>Replied Comment</th>
     		    </tr>
   		    </thead>
   		    <tbody>
@@ -52,8 +52,8 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 		          <tr>
 					  <td><?php print $username; ?></td>
 					  <td><?php print $comment; ?></td>
+					  <td><?php print $replied_by; ?></td>
 					  <td><?php print $reply_comment; ?></td>
-        			  <td><?php print $replied_by; ?></td>
 		          </tr>
 						<?php endwhile; ?>
   		  	</tbody>
