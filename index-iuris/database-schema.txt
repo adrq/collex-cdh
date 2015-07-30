@@ -141,3 +141,75 @@ CREATE TABLE comments(
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE reply_comments_rdf_about(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_provenance(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_place_of_composition(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_is_part_of(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_has_part(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_text_divisions(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_notes(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
+CREATE TABLE reply_comments_date(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_id int(11) NOT NULL,
+	reply_comment text DEFAULT NULL,
+	replied_by varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (comments_id) REFERENCES comments(id)
+);
+
