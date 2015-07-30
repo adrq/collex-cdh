@@ -23,16 +23,7 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 <div class="container">
   <div class="row page-header">
     <div class="col-xs-12">
-		<table class="table table-striped table-hover dt">
-  		  	<thead>
-    			<tr>
-      			  <th>Commented By</th>
-				  <th>Original Comment</th>
-				  <th>Replied By </th>
-				  <th>Replied Comment</th>
-    		    </tr>
-  		    </thead>
-  		    <tbody>
+		
 				<?php
 						
 						while ($statement->fetch()):
@@ -50,14 +41,13 @@ $statement->bind_result($comment_id,$reply_comment,$replied_by);
 							$temp2->close();
 				?>
 		          <tr>
-					  <td><?php print $username; ?></td>
-					  <td><?php print $comment; ?></td>
-					  <td><?php print $replied_by; ?></td>
-					  <td><?php print $reply_comment; ?></td>
-		          </tr>
+					  <h5> Commented By : <?php print $username; ?></h5>
+					  <h5> Original Comment : <?php print $comment; ?></h5>
+					  <h5> Replied By : <?php print $replied_by; ?></h5>
+					  <h5> Replied Comment : <?php print $reply_comment; ?></h5>
+					  <br>
 						<?php endwhile; ?>
-  		  	</tbody>
-		</table>
+  		  
 	</div>
 </div>
 </div>	
