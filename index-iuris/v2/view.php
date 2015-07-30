@@ -180,9 +180,10 @@ else:
                   $select->bind_param("s", $partID);
                   $select->execute();
                   $select->store_result();
-                  $select->bind_result($title);
+                  $select->bind_result($partTitle);
+                  $select->fetch();
                   ?>
-                  <li class="list-group-item"><strong><?php print $type; ?></strong>: <a href="view?id=<?php print $partID; ?>"><?php print $title; ?></a></li>
+                  <li class="list-group-item"><strong><?php print $type; ?></strong>: <a href="view?id=<?php print $partID; ?>"><?php print $partTitle; ?></a></li>
                 <?php endwhile; ?>
               <?php endif; ?>
             </ul>

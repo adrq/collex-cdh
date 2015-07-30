@@ -99,6 +99,65 @@ $("#addAltTitleButton").click(function (e) {
 });
 
 /**
+ * Displays hasPartModal dialog and allows user to select a part
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$(".hasPartListItem > button").click(function(e){
+	var section = $(this).parentsUntil("section").parent();
+	var oldGroup = section.find("input[name='has_part[]']").last().parent().parent();
+	var group   = oldGroup.clone();
+	var newID   = increaseID(group, "input");
+
+	group.find("input").prop("id", newID).val($(this).val());
+	group.find("label").attr("for", newID);
+	
+	var partLink = "view?id="+ $(this).val();
+	group.find("a").attr("href",partLink);
+	group.find("a").text($(this).attr("title"));
+
+	$(group).insertAfter(oldGroup);
+	group.show();
+
+	section.find(".close.hide").removeClass("hide");
+	
+	$("#hasPartModal").modal("hide");
+
+	e.target.blur();
+});
+
+
+/**
+ * Displays isPartOfModal dialog and allows user to select a part
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$(".isPartOfListItem > button").click(function(e){
+	var section = $(this).parentsUntil("section").parent();
+	var oldGroup = section.find("input[name='is_part_of[]']").last().parent().parent();
+	var group   = oldGroup.clone();
+
+	var newID   = increaseID(group, "input");
+
+	group.find("input").prop("id", newID).val($(this).val());
+	group.find("label").attr("for", newID);
+	
+	var partLink = "view?id="+ $(this).val();
+	group.find("a").attr("href",partLink);
+	group.find("a").text($(this).attr("title"));
+
+	$(group).insertAfter(oldGroup);
+	group.show();
+
+	section.find(".close.hide").removeClass("hide");
+	
+	$("#isPartOfModal").modal("hide");
+
+	e.target.blur();
+});
+
+
+/**
  * Add another hasPart to the hasPart section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.

@@ -3,9 +3,11 @@ Index Iuris TODO List:
 Home
 
 Metadata Submission (rdf-form)
+- Incorporate new hasPart and isPartOf functionality from edit page
 - Discussion about multiple dates.
 - Multiple fields need approval from Colin and Abigail
 - Functionality to add subject and discipline to database.
+	This will need to be discussed with Colin and Abigail
 - Perform a check for to see if commented, available, suggested fields were passed in.
 
 Governance
@@ -13,7 +15,8 @@ Governance
 View Submissions
 
 Edit Submission
-- Colin and Abigail's decision on title - value functionality for hasPart.
+- Test new hasPart and isPartOf functionality
+	write js to update modal dialogs when user deletes a part
 
 View Individual Submission
 
