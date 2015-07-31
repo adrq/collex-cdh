@@ -29,7 +29,7 @@ View Reply
 
 Other
 - Contact switches to either a page with two separate forms or a dropdown modal for each user to remove the email address from public eyes.
-- Move register's password update to a "View Account" page.
+- Remove change password from register page
 - Possible: A "view account" page.
 - User Roles. (Super User, etc.)
 - Possible: First and last Name for each account.

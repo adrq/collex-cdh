@@ -68,6 +68,7 @@ require_once "functions.php";
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><a href="account">Account</a></li>
               <li><a href="logout">Logout</a></li>
             </ul>
           </li>
