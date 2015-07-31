@@ -75,8 +75,16 @@ if (isset($_GET["comments"])) {
           <td><?php print $username; ?></td>
 
           <?php if ($commentName == "genre"): ?>
-            <td><?php print $genreRequired; ?></td>
-            <td><?php print $genreControlled; ?></td>
+			<?php if ($genreRequired == "true"):?>
+				<td><?php print 'Required'; ?></td>
+			<?php else:?>
+				<td><?php print 'Optional'; ?></td>	
+			<?php endif;?>
+			<?php if ($genreControlled == "true"):?>
+				<td><?php print 'Controlled'; ?></td>
+			<?php else:?>
+				<td><?php print 'Free-form'; ?></td>	
+			<?php endif;?>
             <td><?php print $suggestedGenre; ?></td>
           <?php elseif ($commentName == "type_available"): ?>
             <td><?php print $typeAvailable; ?></td>
