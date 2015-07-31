@@ -27,7 +27,7 @@ require "includes/header.php";
   					<th>Archive</th>
   					<th>Type</th>
   					<th>Object ID</th>
-  					<?php if ($_SESSION["user_role"]=="superuser") :?>
+  					<?php if (isset($_SESSION["user_role"]) && $_SESSION["user_role"]=="superuser" ) :?>
   					<th>User</th>
   					<?php endif;?>
   					<th></th>
@@ -36,7 +36,7 @@ require "includes/header.php";
   			<tbody>
   				<?php
   				global $mysqli;
-  				if ($_SESSION["user_role"]=="superuser"){
+  				if (isset($_SESSION["user_role"]) && $_SESSION["user_role"]=="superuser"){
   					$statement = $mysqli->prepare("SELECT id, url, title, archive, type, user_id FROM objects");
   					$statement->execute();
   					$statement->store_result();
@@ -57,7 +57,7 @@ require "includes/header.php";
   					<td><?php print $archive; ?></td>
   					<td><?php print $type; ?></td>
   					<td><?php print $id; ?></td>
-  					<?php if ($_SESSION["user_role"]=="superuser") :?>
+  					<?php if (isset($_SESSION["user_role"]) && $_SESSION["user_role"]=="superuser") :?>
   					<td><?php
   					$statement2 = $mysqli->prepare("SELECT username FROM users WHERE id=? LIMIT 1");
   					$statement2->bind_param("s", $user_id);
