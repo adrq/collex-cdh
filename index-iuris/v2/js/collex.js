@@ -216,13 +216,18 @@ $("#newCommentButton").click(function (e) {
 /**
  * Renders all comments for super users.
  */
-$("select#comment").on("change", function () {
+$(".viewer").click(function () {
+  $(".viewer.viewer-active").removeClass("viewer-active");
+  $(this).addClass("viewer-active");
   $.ajax({
     url: "comments",
     type: "GET",
-    data: "comments=" + $(this).val(),
+    data: "comments=" + $(this).data("value"),
     success: function (result) {
-      $("#commentResults").html(result).find("table.dt").dataTable();
+      if (result.indexOf("<b>Notice</b>") > -1) {
+        console.error("There is a notice inside the PHP code. Result:\n" + result);
+      }
+      $("#commentResults").empty().html(result).find("table.dt").dataTable();
     },
     error: function (result) {
       console.error("Error connecting to the server. Message: " + result.responseText);

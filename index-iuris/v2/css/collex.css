@@ -72,6 +72,30 @@ a:focus { color: #681422; }
 .list-part { margin-bottom: 10px; }
 
 /**
+ * Comments and Suggested Viewers
+ */
+.viewer {
+  display: inline-block;
+  width: 24%;
+  margin: 5px 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  text-align: center;
+
+  border-radius: 3px;
+  background-color: #ECECEC;
+
+  cursor: pointer;
+}
+.viewer:hover,
+.viewer-active {
+  -webkit-box-shadow: 0 0 1px #000000;
+     -moz-box-shadow: 0 0 1px #000000;
+          box-shadow: 0 0 1px #000000;
+}
+
+/**
  * Bootstrap Modifications
  */
 button.close,

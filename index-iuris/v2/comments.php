@@ -16,9 +16,9 @@ if (isset($_GET["comments"])) {
   if ($commentName == "genre") {
     $statement = $mysqli->prepare("SELECT user_id, genre_required_available, genre_controled_available, suggested_terms_genre FROM comments");
   } else if ($commentName == "type_available" || $commentName == "role_available" || $commentName == "comments_date") {
-    $statement = $mysqli->prepare("SELECT id,user_id, type_available, role_available, date_available, suggested_terms_type, suggested_terms_role, comments_date FROM comments");
+    $statement = $mysqli->prepare("SELECT id, user_id, type_available, role_available, date_available, suggested_terms_type, suggested_terms_role, comments_date FROM comments");
   } else {
-    $statement = $mysqli->prepare("SELECT id,user_id, $commentName FROM comments");
+    $statement = $mysqli->prepare("SELECT id, user_id, $commentName FROM comments");
   }
 
   $statement->execute();
@@ -27,38 +27,38 @@ if (isset($_GET["comments"])) {
   if ($commentName == "genre") {
     $statement->bind_result($userID, $genreRequired, $genreControlled, $suggestedGenre);
   } else if ($commentName == "type_available" || $commentName == "role_available" || $commentName == "comments_date") {
-    $statement->bind_result($id,$userID, $typeAvailable, $roleAvailable, $dateAvailable, $suggestedType, $suggestedRole, $commentDate);
+    $statement->bind_result($id, $userID, $typeAvailable, $roleAvailable, $dateAvailable, $suggestedType, $suggestedRole, $commentDate);
   } else {
-    $statement->bind_result($id,$userID, $commentColumn);
+    $statement->bind_result($id, $userID, $commentColumn);
   }
 
   ?>
   <table class="table table-striped table-hover dt">
     <thead>
       <tr>
-
         <?php if ($commentName == "genre"): ?>
-		  <th>User</th>
+          <th>User</th>
           <th>Required/Optional</th>
           <th>Controlled/Free-Form</th>
           <th>Suggested Term</th>
         <?php elseif ($commentName == "type_available" || $commentName == "role_available"): ?>
           <th>Commented By</th>
-		  <th>Decision</th>
+          <th>Decision</th>
           <th>Suggested items</th>
         <?php elseif ($commentName == "comments_date"): ?>
-         <th>Commented By</th>
-		 <th>Decision</th>
-         <th>Comments</th>
-		 <th>Reply</th>
-		 <th>View All Reply</th>
+          <th>Commented By</th>
+          <th>Decision</th>
+          <th>Comments</th>
+          <th>Reply</th>
+          <th>All Replies</th>
         <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
+          <th>User</th>
           <th>Decision</th>
         <?php else: ?>
-		  <th>Comment By</th>
+          <th>Commented By</th>
           <th>Comment</th>
-		  <th>Reply</th>
-		  <th>View All Replies</th>
+          <th>Reply</th>
+          <th>All Replies</th>
         <?php endif; ?>
       </tr>
     </thead>
@@ -87,22 +87,22 @@ if (isset($_GET["comments"])) {
           <?php elseif ($commentName == "comments_date"): ?>
             <td><?php print $dateAvailable; ?></td>
             <td><?php print $commentDate; ?></td>
-			<td class="text-center">
-				  <a href="reply?username=<?php print $username; ?>&comment_name=<?php print $commentDate ?>&table_name=<?php print $commentName; ?>&id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
-			</td>
-			<td class="text-center">
-				  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $commentName; ?>" class="btn btn-success">View all Replies</a>
-			</td>
+            <td class="text-center">
+              <a href="reply?username=<?php print $username; ?>&amp;commentName=<?php print $commentDate; ?>&amp;tableName=<?php print $commentName; ?>&amp;id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
+            </td>
+            <td class="text-center">
+              <a href="view-reply?id=<?php print $id; ?>&amp;commentName=<?php print $commentName; ?>" class="btn btn-success">View</a>
+            </td>
           <?php elseif ($commentName == "custom_namespace_available" || $commentName == "url_available"): ?>
-            <td><?php print $commentColumn; ?></td>	
+            <td><?php print $commentColumn; ?></td>
           <?php else: ?>
             <td><?php print $commentColumn; ?></td>
-	  		<td class="text-center">
-	  			  <a href="reply?username=<?php print $username; ?>&comment_name=<?php print $commentColumn ?>&table_name=<?php print $commentName; ?>&id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
-	  		</td>
-	  		<td class="text-center">
-	  			  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $commentName; ?>" class="btn btn-success">View all Replys</a>
-	  		</td>
+            <td class="text-center">
+              <a href="reply?username=<?php print $username; ?>&amp;commentName=<?php print $commentDate; ?>&amp;tableName=<?php print $commentName; ?>&amp;id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
+            </td>
+            <td class="text-center">
+              <a href="view-reply?id=<?php print $id; ?>&amp;commentName=<?php print $commentName; ?>" class="btn btn-success">View</a>
+            </td>
           <?php endif; ?>
         </tr>
       <?php endwhile; ?>
@@ -121,37 +121,40 @@ require "includes/header.php";
   <div class="row page-header">
     <div class="col-xs-12">
       <h1>Comment and Suggested Items Viewer</h1>
+      <p class="lead">View what users are saying.</p>
     </div>
   </div>
 
+  <?php
+  $array = array(
+    array("value" => "comments_rdf_about", "title" => "RDF: About"),
+    array("value" => "comments_provenance", "title" => "Provenance"),
+    array("value" => "comments_place_of_composition", "title" => "Place of Composition"),
+    array("value" => "comments_is_part_of", "title" => "isPartOf"),
+    array("value" => "comments_has_part", "title" => "Has-Part"),
+    array("value" => "comments_text_divisions", "title" => "Text-Division"),
+    array("value" => "comments_notes", "title" => "Notes"),
+    array("value" => "genre", "title" => "Genre"),
+    array("value" => "custom_namespace_available", "title" => "Custom Namespace Decisions"),
+    array("value" => "url_available", "title" => "URI or URL Decisions"),
+    array("value" => "type_available", "title" => "Type Decisions"),
+    array("value" => "role_available", "title" => "Role Decisions"),
+    array("value" => "comments_date", "title" => "Date")
+  );
+  ?>
+
+  <div class="row">
+    <?php foreach ($array as $item): ?>
+      <div class="viewer" data-value="<?php print $item['value']; ?>">
+        <h4><?php print $item["title"]; ?></h4>
+      </div>
+    <?php endforeach; ?>
+  </div>
+
+  <hr class="row">
+
   <div class="row">
     <div class="col-xs-12">
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="form-group">
-            <label for="comment" class="control-label col-xs-3">Suggested Item</label>
-            <div class="col-xs-9">
-              <select class="form-control" id="comment" name="comment">
-                <option selected=""></option>
-                <option value="comments_rdf_about">RDF: About</option>
-                <option value="comments_provenance">Provenance</option>
-                <option value="comments_place_of_composition">Place of composition</option>
-                <option value="comments_is_part_of">Is-Part-Of</option>
-                <option value="comments_has_part">Has-Part</option>
-                <option value="comments_text_divisions">Text-Division</option>
-                <option value="comments_notes">Notes</option>
-                <option value="genre">Genre</option>
-                <option value="custom_namespace_available">Custom Namespace Decisions</option>
-                <option value="url_available">URI or URL Decisions</option>
-                <option value="type_available">Type Decisions</option>
-                <option value="role_available">Role Decisions</option>
-                <option value="comments_date">Date</option>
-              </select>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-
       <section id="commentResults"></section>
     </div>
   </div>
