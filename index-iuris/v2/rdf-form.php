@@ -11,7 +11,7 @@ if (!isset($_POST["submitted"])): ?>
 <div class="container">
   <div class="row page-header">
     <div class="col-xs-12 text-justify">
-      <p class="lead"><strong>Dear PI or Project Manager,</strong></p>
+      <h1>Dear PI or Project Manager,</h1>
       <p>As we develop <samp>Index Iuris</samp>, we seek to understand the needs and preferences of potential members of the federation.  We would be very grateful if you could take a little time to review this form, experiment with filling it out, and offer your views in the comment boxes provided.  In the end, membership in Index Iuris should not be a burden!</p>
       <p>Thanks so much!</p>
       <p>The Index Iuris team</p>
@@ -184,8 +184,8 @@ if (!isset($_POST["submitted"])): ?>
               </div>
 
               <div class="form-group">
-                <div class="col-xs-3 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addRoleButton">Add a Role</button>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" id="addRoleButton">Add a Role</button>
                 </div>
               </div>
             </div>
@@ -227,8 +227,8 @@ if (!isset($_POST["submitted"])): ?>
               </div>
 
               <div class="form-group">
-                <div class="col-xs-3 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addGenreButton">Add Another Genre</button>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" id="addGenreButton">Add a Genre</button>
                 </div>
               </div>
             </div>
@@ -464,8 +464,8 @@ if (!isset($_POST["submitted"])): ?>
               </div>
 
               <div class="form-group">
-                <div class="col-xs-4 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addAltTitleButton">Add an Alternative Title</button>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add an Alternative Title</button>
                 </div>
               </div>
             </div>
@@ -491,121 +491,120 @@ if (!isset($_POST["submitted"])): ?>
 
           <legend>IsPartOf</legend>
           <section class="form-group">
-                  <?php // Hidden isPartOf ?>
-              <div class="col-xs-8 text-justify">
-              	<p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
-                  <div class="form-group" style="display: none;">
-                    <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
-                    <div class="col-xs-10">
-                      <input type="hidden" class="form-control" id="isPartOf" name="is_part_of[]">
-                      <label class="control-label"><a href="" target="_blank"></a></label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#isPartOfModal">Add isPartOf</button>
-                    </div>
-                  </div>
-                </div>  
-                <div class="col-xs-4">
-              		<label for="isPartOfComments" class="control-label col-xs-3">Comments:</label>
-              		<div class="col-xs-12">
-                		<textarea class="form-control" name="comments-is-part-of" id="isPartOfComments" rows="4"></textarea>
-              		</div>
-            	</div>
-                
-                 <div id="isPartOfModal" class="modal fade" role="dialog">
-                   <div class="modal-dialog modal-lg">
-                     <div class="modal-content">
-                       <div class="modal-header">
-                         <button type="button" class="close" data-dismiss="modal">x</button>
-                         <h4 class="modal-title">Add isPartOf</h4>
-                         <p>Please select another submission that <strong>this</strong> is a part of.</p>
-                       </div>
-                       <div class="modal-body">
-                         <?php // TODO: Better layout. Possibly some grid style. ?>
-                         <div class="col-xs-6 center-block">
-                           <ul class="list-unstyled">
-                             <?php
-                             $temp = $mysqli->prepare("SELECT title, id FROM objects");
-                             $temp->execute();
-                             $temp->store_result();
-                             $temp->bind_result($objectTitle, $partID);
-                              while ($temp->fetch()):
-                                 ?>
-                                 <li class="list-part">
-                                   <?php print $objectTitle; ?>
-                                   <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php print printValue($objectTitle, true); ?>">Select</button>
-                                  </li>
-                             <?php endwhile; ?>
-                           </ul>
-                         </div>
-                       </div>
-                       <div class="modal-footer">
-                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-          </section>
-          
-          <legend>hasPart</legend>
-          <section>
-                  <?php // Hidden hasPart ?>
-          	<div class="col-xs-8 text-justify">
-              <p><samp>hasPart</samp> is the obverse of <samp>isPartOf</samp>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.</p>
-          	  <div class="form-group" style="display: none;">
-           	    <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
-                  <div class="col-xs-10">
-                	<input type="hidden" class="form-control" id="hasPart" name="has_part[]">
-                    <label class="control-label"><a href="" target="_blank"></a></label>
-                 </div>
+            <div class="col-xs-8 text-justify">
+              <p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
+              <div class="form-group" style="display: none;">
+                <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
+                <div class="col-xs-10">
+                  <input type="hidden" class="form-control" id="isPartOf" name="is_part_of[]">
+                  <label class="control-label"><a href="" target="_blank"></a></label>
+                </div>
               </div>
+
               <div class="form-group">
-                    <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#hasPartModal">Add hasPart</button>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#isPartOfModal">Add isPartOf</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <label for="isPartOfComments" class="control-label col-xs-3">Comments:</label>
+              <div class="col-xs-12">
+                <textarea class="form-control" name="comments-is-part-of" id="isPartOfComments" rows="4"></textarea>
+              </div>
+            </div>
+
+            <div id="isPartOfModal" class="modal fade" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">Add isPartOf</h4>
+                    <p>Please select another submission that <strong>this</strong> is a part of.</p>
+                  </div>
+                  <div class="modal-body">
+                    <?php // TODO: Better layout. Possibly some grid style. ?>
+                    <div class="col-xs-6 center-block">
+                      <ul class="list-unstyled">
+                        <?php
+                        $temp = $mysqli->prepare("SELECT title, id FROM objects");
+                        $temp->execute();
+                        $temp->store_result();
+                        $temp->bind_result($objectTitle, $partID);
+                        while ($temp->fetch()): ?>
+                          <li class="list-part">
+                            <?php print $objectTitle; ?>
+                            <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php print printValue($objectTitle, true); ?>">Select</button>
+                          </li>
+                        <?php endwhile; ?>
+                      </ul>
                     </div>
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <legend>hasPart</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>hasPart</samp> is the obverse of <samp>isPartOf</samp>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.</p>
+
+              <div class="form-group" style="display: none;">
+                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
+                <div class="col-xs-10">
+                  <input type="hidden" class="form-control" name="has_part[]" id="hasPart">
+                  <label class="control-label"><a href="" target="_blank"></a></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#hasPartModal">Add hasPart</button>
+                </div>
+              </div>
             </div>
             <div class="col-xs-4">
               <label for="hasPartComments" class="control-label col-xs-3">Comments</label>
-                <div class="col-xs-12">
-                  <textarea class="form-control" name="comments-has-part" id="hasPartComments" rows="4"></textarea>
-                </div>
-            </div>    
-                  <div id="hasPartModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">x</button>
-                          <h4 class="modal-title">Add hasPart</h4>
-                          <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
-                        </div>
-                        <div class="modal-body">
-                          <div class="col-xs-6 center-block">
-                            <ul class="list-unstyled">
-                              <?php
-                              $temp = $mysqli->prepare("SELECT title, id FROM objects");
-                              $temp->execute();
-                              $temp->store_result();
-                              $temp->bind_result($objectTitle, $partID);
+              <div class="col-xs-12">
+                <textarea class="form-control" name="comments-has-part" id="hasPartComments" rows="4"></textarea>
+              </div>
+            </div>
+            <div id="hasPartModal" class="modal fade" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">Add hasPart</h4>
+                    <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-xs-6 center-block">
+                      <ul class="list-unstyled">
+                        <?php
+                        $temp = $mysqli->prepare("SELECT title, id FROM objects");
+                        $temp->execute();
+                        $temp->store_result();
+                        $temp->bind_result($objectTitle, $partID);
 
-                              while ($temp->fetch()):
-                                ?>
-                                  <li class="list-part">
-                                    <?php print $objectTitle; ?>
-                                    <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php printValue($objectTitle, true); ?>">Select</button>
-                                  </li>
-                              <?php endwhile; ?>
-                            </ul>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
+                        while ($temp->fetch()): ?>
+                          <li class="list-part">
+                            <?php print $objectTitle; ?>
+                            <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php printValue($objectTitle, true); ?>">Select</button>
+                          </li>
+                        <?php endwhile; ?>
+                      </ul>
                     </div>
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <legend>Divisions of the text</legend>
@@ -763,16 +762,16 @@ else:
   if ($statement->num_rows > 0):
     ?><script>alert("This record already exists."); window.location = "submissions";</script><?php
   else:
-    $customNamespace  = $_POST["custom-namespace"];
-    $rdfAbout         = $_POST["rdf-about"];
-    $archive          = $_POST["archive"];
-    $title            = $_POST["title"];
-    $type             = $_POST["type"];
-    $url              = $_POST["seeAlso"];
-    $origin           = $_POST["origin"];
-    $provenance       = $_POST["provenance"];
-    $compositionPlace = $_POST["place-of-composition"];
-    $shelfmark        = $_POST["shelfmark"];
+    $customNamespace  = htmlspecialchars(trim($_POST["custom-namespace"]));
+    $rdfAbout         = htmlspecialchars(trim($_POST["rdf-about"]));
+    $archive          = htmlspecialchars(trim($_POST["archive"]));
+    $title            = htmlspecialchars(trim($_POST["title"]));
+    $type             = htmlspecialchars(trim($_POST["type"]));
+    $url              = htmlspecialchars(trim($_POST["seeAlso"]));
+    $origin           = htmlspecialchars(trim($_POST["origin"]));
+    $provenance       = htmlspecialchars(trim($_POST["provenance"]));
+    $compositionPlace = htmlspecialchars(trim($_POST["place-of-composition"]));
+    $shelfmark        = htmlspecialchars(trim($_POST["shelfmark"]));
 
     // TODO: Add these fields to the form, pending approval from Colin and Abigail.
     $freeculture      = "true";
@@ -781,20 +780,20 @@ else:
     $isFullText       = "";
     $imageURL         = "";
 
-    $source           = $_POST["source"];
+    $source           = htmlspecialchars(trim($_POST["source"]));
 
     // TODO: Determine format from input and add to appropriate variable
-    $metadataXMLURL   = $_POST["url-source-code"];
-    $metdataHTMLURL   = $_POST["url-source-code"];
-    $textDivisions    = $_POST["text-divisions"];
-    $language         = $_POST["language"];
-    $ocr              = isset($_POST["ocr"]) ? $_POST["ocr"] : NULL;
+    $metadataXMLURL   = htmlspecialchars(trim($_POST["url-source-code"]));
+    $metdataHTMLURL   = htmlspecialchars(trim($_POST["url-source-code"]));
+    $textDivisions    = htmlspecialchars(trim($_POST["text-divisions"]));
+    $language         = htmlspecialchars(trim($_POST["language"]));
+    $ocr              = isset($_POST["ocr"]) ? htmlspecialchars(trim($_POST["ocr"])) : NULL;
 
     // TODO: Add this field to form, pending approval from Colin and Abigail.
     $thumbnailURL     = "";
 
-    $notes            = $_POST["notes"];
-    $fileFormat       = $_POST["file-format"];
+    $notes            = htmlspecialchars(trim($_POST["notes"]));
+    $fileFormat       = htmlspecialchars(trim($_POST["file-format"]));
 
     $statement = $mysqli->prepare("INSERT INTO objects (custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
     $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $language, $ocr, $thumbnailURL, $notes, $fileFormat, $userID);
@@ -805,7 +804,9 @@ else:
 
     // Add alternative titles to its table.
     foreach ($_POST["alternative_title"] as $altTitle) {
-      if (trim($altTitle) === "") { continue; }
+      $altTitle = htmlspecialchars(trim($altTitle));
+
+      if ($altTitle === "") { continue; }
 
       $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
       $insert->bind_param("is", $lastID, $altTitle);
@@ -814,28 +815,33 @@ else:
 
     // Add genres to its table.
     foreach ($_POST["genre"] as $genre) {
+      $genre = htmlspecialchars(trim($genre));
+
+      if ($genre === "") { continue; }
+
       $insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
       $insert->bind_param("is", $lastID, $genre);
       $insert->execute();
     }
 
     // Add date to its table.
-    $dateType    = "text";
-    $humanDate   = trim($_POST["date-human"]);
-    $machineDate = trim($_POST["date-machine"]);
+    $humanDate   = htmlspecialchars(trim($_POST["date-human"]));
+    $machineDate = htmlspecialchars(trim($_POST["date-machine"]));
     if ($humanDate !== "" && $machineDate !== "") {
-      $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
-      $insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
+      $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
+      $insert->bind_param("iss", $lastID, $machineDate, $humanDate);
       $insert->execute();
     }
-    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
-    $insert->bind_param("isss", $lastID, $dateType, $machineDate, $humanDate);
+    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
+    $insert->bind_param("iss", $lastID, $machineDate, $humanDate);
     $insert->execute();
 
     // Add isPartOf to its table.
     $partType = "isPartOf";
     foreach ($_POST["is-part-of"] as $id) {
-      if (trim($id) === "") { continue; }
+      $id = htmlspecialchars(trim($id));
+
+      if ($id === "") { continue; }
 
       $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
       $insert->bind_param("isi", $lastID, $partType, $id);
@@ -845,7 +851,9 @@ else:
     // Add hasPart to its table.
     $partType = "hasPart";
     foreach ($_POST["has_part"] as $id) {
-      if (trim($id) === "") { continue; }
+      $id = htmlspecialchars(trim($id));
+
+      if ($id === "") { continue; }
 
       $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
       $insert->bind_param("isi", $lastID, $partType, $id);
@@ -860,8 +868,10 @@ else:
     }
 
     foreach ($_POST["role"] as $role) {
-      $value = trim($roleValues[$i++]);
-      if ($value === "") { continue; }
+      $value = htmlspecialchars(trim($roleValues[$i++]));
+      $role  = htmlspecialchars(trim($role));
+
+      if ($value === "" || $role === "") { continue; }
 
       $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
       $insert->bind_param("iss", $lastID, $role, $value);
@@ -874,7 +884,7 @@ else:
     // TODO: perform some sort of check to make sure all fields are set in $_POST before this loop.
     foreach ($_POST as $key=>$item) {
       if (preg_match("/^comments/", $key) || preg_match("/^suggested/", $key) || preg_match("/-available$/", $key)) {
-        $comments[$key] = $item;
+        $comments[$key] = htmlspecialchars(trim($item));
       }
     }
 
@@ -939,25 +949,3 @@ else:
 endif; // if (!isset($_POST["submitted"]))
 
 require "includes/footer.php";
-
-/**
- * Prints an example list.
- *
- * @param {Array} $array: The pre-determined array list of examples.
- */
-function printExamples($array) {
-  foreach ($array as $example) {
-    print "<li>" . $example . "</li>";
-  }
-}
-
-/**
- * Prints multiple options in a select dropdown.
- *
- * @param {Array} $array: The pre-determined array list of options.
- */
-function printOptions($array) {
-  foreach ($array as $option) {
-    print "<option>" . $option . "</option>";
-  }
-}

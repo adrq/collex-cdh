@@ -72,6 +72,28 @@ function renderGovernanceComments() {
 } // function renderGovernanceComments()
 
 /**
+ * Prints an example list.
+ *
+ * @param {Array} $array: The pre-determined array list of examples.
+ */
+function printExamples($array) {
+  foreach ($array as $example) {
+    print "<li>" . $example . "</li>";
+  }
+}
+
+/**
+ * Prints multiple options in a select dropdown.
+ *
+ * @param {Array} $array: The pre-determined array list of options.
+ */
+function printOptions($array) {
+  foreach ($array as $option) {
+    print "<option>" . $option . "</option>";
+  }
+}
+
+/**
  * Saves an entire object to the database.
  *
  * @param {$_POST} $data: The posted data from a form.
@@ -81,16 +103,16 @@ function saveObjectToDB($data, $objectID) {
   global $mysqli;
   $userID = $_SESSION["user_id"];
 
-  $customNamespace  = $data["custom_namespace"];
-  $rdfAbout         = $data["rdf_about"];
-  $archive          = $data["archive"];
-  $title            = $data["title"];
-  $type             = $data["type"];
-  $url              = $data["url"];
-  $origin           = $data["origin"];
-  $provenance       = $data["provenance"];
-  $compositionPlace = $data["place_of_composition"];
-  $shelfmark        = $data["shelfmark"];
+  $customNamespace  = htmlspecialchars(trim($data["custom_namespace"]));
+  $rdfAbout         = htmlspecialchars(trim($data["rdf_about"]));
+  $archive          = htmlspecialchars(trim($data["archive"]));
+  $title            = htmlspecialchars(trim($data["title"]));
+  $type             = htmlspecialchars(trim($data["type"]));
+  $url              = htmlspecialchars(trim($data["url"]));
+  $origin           = htmlspecialchars(trim($data["origin"]));
+  $provenance       = htmlspecialchars(trim($data["provenance"]));
+  $compositionPlace = htmlspecialchars(trim($data["place_of_composition"]));
+  $shelfmark        = htmlspecialchars(trim($data["shelfmark"]));
 
   // TODO: Add these fields to the form, pending approval from Colin and Abigail.
   $freeculture      = "true";
@@ -99,14 +121,14 @@ function saveObjectToDB($data, $objectID) {
   $isFullText       = "";
   $imageURL         = "";
 
-  $source           = $data["source"];
+  $source           = htmlspecialchars(trim($data["source"]));
 
   // TODO: Determine format from input and add to appropriate variable
-  $metadataXMLURL   = $data["metadata_xml_url"];
-  $metdataHTMLURL   = $data["metadata_html_url"];
-  $textDivisions    = $data["text_divisions"];
-  $language         = $data["language"];
-  $ocr              = isset($data["ocr"]) ? $data["ocr"] : NULL;
+  $metadataXMLURL   = htmlspecialchars(trim($data["metadata_xml_url"]));
+  $metdataHTMLURL   = htmlspecialchars(trim($data["metadata_html_url"]));
+  $textDivisions    = htmlspecialchars(trim($data["text_divisions"]));
+  $language         = htmlspecialchars(trim($data["language"]));
+  $ocr              = isset($data["ocr"]) ? htmlspecialchars(trim($data["ocr"])) : NULL;
 
   // TODO: Add this field to form, pending approval from Colin and Abigail.
   $thumbnailURL     = "";
@@ -125,7 +147,9 @@ function saveObjectToDB($data, $objectID) {
   $insert->execute();
 
   foreach ($data["alternative_title"] as $altTitle) {
-    if (trim($altTitle === "")) { continue; }
+    $altTitle = htmlspecialchars(trim($altTitle));
+
+    if ($altTitle === "") { continue; }
 
     $insert = $mysqli->prepare("INSERT INTO alt_titles (object_id, alt_title) VALUES (?, ?)");
     $insert->bind_param("is", $objectID, $altTitle);
@@ -136,7 +160,10 @@ function saveObjectToDB($data, $objectID) {
   $genres = array();
   // TODO: Determine if $data["genre"] can just be used as an array instead of pushing all its contents into a new array.
   foreach ($data["genre"] as $genre) {
-    if (trim($genre) === "") { continue; }
+    $genre = htmlspecialchars(trim($genre));
+
+    if ($genre === "") { continue; }
+
     array_push($genres, $genre);
   }
 
@@ -147,8 +174,6 @@ function saveObjectToDB($data, $objectID) {
   }
 
   foreach ($genres as $genre) {
-    if (trim($genre) === "") { continue; }
-
     $insert = $mysqli->prepare("INSERT INTO genres (object_id, genre) VALUES (?, ?)");
     $insert->bind_param("is", $objectID, $genre);
     $insert->execute();
@@ -159,12 +184,11 @@ function saveObjectToDB($data, $objectID) {
   $insert->bind_param("s", $objectID);
   $insert->execute();
 
-  $dateType    = "text";
-  $humanDate   = $data["human_date"];
-  $machineDate = $data["machine_date"];
+  $humanDate   = htmlspecialchars(trim($data["human_date"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date"]));
 
-  $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, ?, ?, ?)");
-  $insert->bind_param("isss", $objectID, $dateType, $machineDate, $humanDate);
+  $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
+  $insert->bind_param("iss", $objectID, $machineDate, $humanDate);
   $insert->execute();
 
   $insert = $mysqli->prepare("DELETE FROM parts WHERE object_id = ?");
@@ -173,24 +197,26 @@ function saveObjectToDB($data, $objectID) {
 
   // Add isPartOf to its table.
   if (isset($data["is_part_of"])) {
-    $partType = "isPartOf";
     foreach ($data["is_part_of"] as $id) {
-      if (trim($id) === "") { continue; }
+      $id = htmlspecialchars(trim($id));
 
-      $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
-      $insert->bind_param("isi", $objectID, $partType, $id);
+      if ($id === "") { continue; }
+
+      $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, 'isPartOf', ?)");
+      $insert->bind_param("ii", $objectID, $id);
       $insert->execute();
     }
   }
 
   // Add hasPart to its table.
   if (isset($data["has_part"])) {
-    $partType = "hasPart";
     foreach ($data["has_part"] as $id) {
-      if (trim($id) === "") { continue; }
+      $id = htmlspecialchars(trim($id));
 
-      $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, ?, ?)");
-      $insert->bind_param("isi", $objectID, $partType, $id);
+      if ($id === "") { continue; }
+
+      $insert = $mysqli->prepare("INSERT INTO parts (object_id, type, part_id) VALUES (?, 'hasPart', ?)");
+      $insert->bind_param("ii", $objectID, $id);
       $insert->execute();
     }
   }
@@ -209,8 +235,10 @@ function saveObjectToDB($data, $objectID) {
     }
 
     foreach ($data["role"] as $role) {
-      $value = trim($roleValues[$i++]);
-      if ($value === "") { continue; }
+      $value = htmlspecialchars(trim($roleValues[$i++]));
+      $role  = htmlspecialchars(trim($role));
+
+      if ($value === "" || $role === "") { continue; }
 
       $insert = $mysqli->prepare("INSERT INTO roles (object_id, role, value) VALUES (?, ?, ?)");
       $insert->bind_param("iss", $objectID, $role, $value);
