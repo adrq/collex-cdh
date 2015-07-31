@@ -20,7 +20,7 @@ require "includes/header.php";
     <div class="col-xs-6 center-block">
       <div class="alert alert-warning">
         <h1>Warning</h1>
-        <p>We've detected that you're using an outdated version of Internet Explorer. Not all functionalities inside this website will not work as intended.</p>
+        <p>We've detected that you're using an outdated version of Internet Explorer. Not all functionalities inside this website will work as intended.</p>
         <p>We recommend you to <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">upgrade to at least v10.0</a> or switch to another browser.</p>
       </div>
     </div>

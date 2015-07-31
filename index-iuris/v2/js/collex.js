@@ -251,6 +251,24 @@ $(".viewer").click(function () {
 });
 
 /**
+ * Displays a textbox for a user wanting to reply.
+ */
+$("#results").on("click", ".reply", function () {
+  var group = $(this).parentsUntil("div").parent();
+  var reply = $("<div class='col-xs-9' style='padding-left: 0; padding-right: 0; margin-bottom: 1%;'><textarea placeholder='Reply to the comment...'></textarea><a class='btn btn-default pull-right' style='margin-top: 1%;'>Submit</a></div>");
+  reply.hide().css("margin-left", group.css("margin-left")).find("textarea").addClass("form-control").parent().insertAfter(group).slideDown();
+});
+
+/**
+ * Submits a reply comment.
+ */
+$("#results").on("click", "a.btn-default", function (e) {
+  alert("Submitting comment. Except not really.");
+
+  e.target.blur();
+});
+
+/**
  * Render the comments produced by users.
  *
  * @param {String} title: The title of the page.
@@ -263,11 +281,7 @@ function renderComments(title, value) {
     type: "GET",
     data: "comments=" + value,
     success: function (result) {
-      if (result.indexOf("<b>Notice</b>") > -1) {
-        console.error("There is a notice inside the PHP code. Result:\n" + result);
-      }
-
-      $("#commentResults").empty().html(result).find("table.dt").dataTable();
+      $("#results").empty().html(result).find("table.dt").dataTable();
 
       $("title").text(title);
 

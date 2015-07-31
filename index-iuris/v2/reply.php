@@ -49,7 +49,7 @@ require "includes/header.php";
   <div class="row page-header">
     <div class="col-xs-12">
       <h4>
-      <h4>Commented by: <?php print $username; ?></h4>
+      <h4>Commented By: <?php print $username; ?></h4>
       <h4>Comment:<?php print $commentName; ?></h4>
     </div>
   </div>

@@ -11,6 +11,24 @@ error_reporting(-1);
 ini_set("display_errors", "On");
 
 /**
+ * Grabs a username based on the id.
+ *
+ * @param {int} $id: The unique id of the username.
+ * @return {String}
+ */
+function findUsername($id) {
+  global $mysqli;
+  $statement = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
+  $statement->bind_param("i", $id);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($username);
+  $statement->fetch();
+
+  return $username;
+} // function findUsername($id);
+
+/**
  * Renders MySQL values into HTML-ready entities.
  * - Currently only detects quotation marks.
  *
@@ -80,7 +98,7 @@ function printExamples($array) {
   foreach ($array as $example) {
     print "<li>" . $example . "</li>";
   }
-}
+} // function printExamples($array)
 
 /**
  * Prints multiple options in a select dropdown.
@@ -91,7 +109,127 @@ function printOptions($array) {
   foreach ($array as $option) {
     print "<option>" . $option . "</option>";
   }
+} // function printOptions($array)
+
+/**
+ * Renders a hierarchy list of comments on the comments page.
+ *
+ * @param {String} $value: The value of the selected item.
+ */
+function renderComments($value) {
+  global $mysqli;
+  $statement = $mysqli->prepare("SELECT id, comments_id, reply_comment, replied_by FROM reply_$value");
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($id, $commentID, $reply, $replier);
+  $statement->fetch();
+
+  $original = $mysqli->prepare("SELECT $value, user_id FROM comments WHERE id = ?");
+  $original->bind_param("i", $commentID);
+  $original->execute();
+  $original->store_result();
+  $original->bind_result($comment, $userID);
+  $original->fetch();
+  ?>
+  <div class="comment col-xs-9">
+    <?php renderCommentInterior(findUsername($userID), $comment); ?>
+  </div>
+  <?php // Print out the first comment because of the mandatory fetch above. ?>
+  <div class="comment-reply col-xs-9">
+    <?php renderCommentInterior($replier, $reply); ?>
+  </div>
+  <?php while ($statement->fetch()): ?>
+    <div class="comment-reply col-xs-9">
+      <?php renderCommentInterior($replier, $reply); ?>
+    </div>
+  <?php endwhile;
+} // function renderComment($value)
+
+function renderCommentInterior($user, $text) {
+  ?>
+  <h4><?php print $user; ?><span class="reply pull-right">Reply</span></h4>
+  <p><?php print $text; ?></p>
+  <?php
 }
+
+/**
+ * Renders a data table on the comments page.
+ *
+ * @param {String} $value: The value of the selected item.
+ */
+function renderTable($value) {
+  global $mysqli;
+  $statement;
+
+  if ($value == "genre") {
+    $statement = $mysqli->prepare("SELECT genre_required_available, genre_controlled_available, suggested_terms_genre, user_id FROM comments");
+  } else if ($value == "type_available") {
+    $statement = $mysqli->prepare("SELECT type_available, suggested_terms_type, user_id FROM comments");
+  } else if ($value == "role_available") {
+    $statement = $mysqli->prepare("SELECT role_available, suggested_terms_role, user_id FROM comments");
+  } else {
+    $statement = $mysqli->prepare("SELECT $value, user_id FROM comments");
+  }
+
+  $statement->execute();
+  $statement->store_result();
+
+  if ($value == "genre") {
+    $statement->bind_result($required, $controlled, $suggested, $userID);
+  } else if ($value == "type_available" || $value == "role_available") {
+    $statement->bind_result($available, $suggested, $userID);
+  } else {
+    $statement->bind_result($commentColumn, $userID);
+  }
+  ?>
+  <table class="table table-striped table-hover dt">
+    <thead>
+      <tr>
+        <th>Username</th>
+
+        <?php if ($value == "genre"): ?>
+          <th>Required/Optional</th>
+          <th>Controlled/Free-Form</th>
+          <th>Suggested Terms</th>
+        <?php elseif ($value == "type_available" || $value == "role_available"): ?>
+          <th>Available</th>
+          <th>Suggested Terms</th>
+        <?php else: ?>
+          <th>Decision</th>
+        <?php endif; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php while ($statement->fetch()): ?>
+        <tr>
+          <td><?php print findUsername($userID); ?></td>
+
+          <?php if ($value == "genre"): ?>
+            <td><?php print $required == "true" ? "Required" : $required == "false" ? "Optional" : "<em>No data given</em>"; ?></td>
+            <td><?php print $controlled == "true" ? "Controlled" : $required == "false" ? "Free-form" : "<em>No data given</em>"; ?></td>
+            <td><?php print renderTableCell($suggested); ?></td>
+          <?php elseif ($value == "type_available" || $value == "role_available"): ?>
+            <td><?php print renderTableCell($available); ?></td>
+            <td><?php print renderTableCell($suggested); ?></td>
+          <?php else: ?>
+            <td><?php print renderTableCell($commentColumn); ?></td>
+          <?php endif; ?>
+        </tr>
+      <?php endwhile; ?>
+    </tbody>
+  </table>
+  <?php
+} // function renderTable($value)
+
+/**
+ * Renders a table cell's data.
+ *
+ * @param {String} $data: The data.
+ * @return {String}
+ */
+function renderTableCell($data) {
+  return $data === "" || $data === NULL ? "<em>No data given</em>" : $data;
+} // function renderTabelCell($data)
 
 /**
  * Saves an entire object to the database.

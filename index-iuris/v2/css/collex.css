@@ -96,6 +96,34 @@ a:focus { color: #681422; }
           box-shadow: 0 0 4px #000000;
 }
 
+.comment {
+  margin-bottom: 1%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+
+  border: 1px solid #ECECEC;
+  border-radius: 7px;
+}
+
+.reply {
+  font-size: 12px;
+
+  cursor: pointer;
+}
+.reply:hover { text-decoration: underline; }
+
+.comment-reply {
+  margin-left: 2%;
+  margin-bottom: 1%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+
+  border: 1px solid #ECECEC;
+  border-radius: 7px;
+}
+
 /**
  * Bootstrap Modifications
  */
