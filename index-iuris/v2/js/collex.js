@@ -25,7 +25,35 @@ $(document).ready(function() {
 
   // Render all times.
   renderTimes();
+
+  // Detect pushState()
+  if (window.location.pathname.indexOf("comments") > -1 && window.location.hash !== "") {
+    $(".viewer").each(function () {
+      if (window.location.hash.substring(1) == $(this).data("value")) {
+        renderComments($(this).text(), $(this).data("value"));
+        $(this).addClass("viewer-active");
+        return false;
+      }
+    });
+  }
 });
+
+/**
+ * Executed when a user goes back in their history.
+ */
+window.onpopstate = function () {
+  // Detect pushState()
+  if (window.location.pathname.indexOf("comments") > -1 && window.location.hash !== "") {
+    $(".viewer").each(function () {
+      if (window.location.hash.substring(1) == $(this).data("value")) {
+        renderComments($(this).text(), $(this).data("value"));
+        $(".viewer.viewer-active").removeClass("viewer-active");
+        $(this).addClass("viewer-active");
+        return false;
+      }
+    });
+  }
+};
 
 /**
  * Add another role to the role section within the RDF creation or edit form.
@@ -199,7 +227,6 @@ $(".list-part > button").click(function (e) {
   e.target.blur();
 });
 
-
 /**
  * Visually slide the user down to add a new comment.
  *
@@ -219,21 +246,40 @@ $("#newCommentButton").click(function (e) {
 $(".viewer").click(function () {
   $(".viewer.viewer-active").removeClass("viewer-active");
   $(this).addClass("viewer-active");
+
+  renderComments($(this).text(), $(this).data("value"));
+});
+
+/**
+ * Render the comments produced by users.
+ *
+ * @param {String} title: The title of the page.
+ * @param {String} value: The value of the item.
+ */
+function renderComments(title, value) {
+  title += " - Comments and Suggested Items - Index Iuris";
   $.ajax({
     url: "comments",
     type: "GET",
-    data: "comments=" + $(this).data("value"),
+    data: "comments=" + value,
     success: function (result) {
       if (result.indexOf("<b>Notice</b>") > -1) {
         console.error("There is a notice inside the PHP code. Result:\n" + result);
       }
+
       $("#commentResults").empty().html(result).find("table.dt").dataTable();
+
+      $("title").text(title);
+
+      window.history.pushState({
+        title : "#" + value
+      }, title, "#" + value);
     },
     error: function (result) {
       console.error("Error connecting to the server. Message: " + result.responseText);
     }
   });
-});
+}
 
 /**
  * Increase a ID on a <input> or <select> for better user experience when
