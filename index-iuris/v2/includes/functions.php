@@ -29,6 +29,15 @@ function findUsername($id) {
 } // function findUsername($id);
 
 /**
+ * Determines if a user is a superuser or not.
+ *
+ * @return {Boolean}
+ */
+function isSuper() {
+  return $_SESSION["user_role"] == "superuser";
+}
+
+/**
  * Renders MySQL values into HTML-ready entities.
  * - Currently only detects quotation marks.
  *

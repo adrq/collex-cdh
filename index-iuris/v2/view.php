@@ -32,7 +32,7 @@ else:
   $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
   if ($statement->fetch()):
-    if ($user_id == $_SESSION["user_id"] || (isset($_SESSION["user_role"]) && $_SESSION["user_role"]=="superuser" )):
+    if ($user_id == $_SESSION["user_id"] || isSuper()):
       ?>
       <div class="container">
         <div class="row page-header">

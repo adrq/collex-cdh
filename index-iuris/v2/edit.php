@@ -39,7 +39,7 @@ else:
   // if ($row["user_id"])
 
   if ($statement->fetch()):
-    if ($user_id == $_SESSION["user_id"] || (isset($_SESSION["user_role"]) && $_SESSION["user_role"]=="superuser" )): ?>
+    if ($user_id == $_SESSION["user_id"] || isSuper()): ?>
       <div class="container">
         <div class="row page-header">
           <div class="col-xs-12">
