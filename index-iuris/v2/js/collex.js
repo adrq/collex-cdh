@@ -10,6 +10,7 @@
  * Executed when the DOM is ready.
  */
 $(document).ready(function() {
+  // Internet Explorer v9 and below detection.
   if (platform.name == "IE" && parseInt(platform.version, 10) < 10) {
     $("#alerter").show();
   } else {
@@ -99,65 +100,6 @@ $("#addAltTitleButton").click(function (e) {
 });
 
 /**
- * Displays hasPartModal dialog and allows user to select a part
- *
- * @param {HTML DOM Event} e: The event happening.
- */
-$(".hasPartListItem > button").click(function(e){
-	var section = $(this).parentsUntil("section").parent();
-	var oldGroup = section.find("input[name='has_part[]']").last().parent().parent();
-	var group   = oldGroup.clone();
-	var newID   = increaseID(group, "input");
-
-	group.find("input").prop("id", newID).val($(this).val());
-	group.find("label").attr("for", newID);
-	
-	var partLink = "view?id="+ $(this).val();
-	group.find("a").attr("href",partLink);
-	group.find("a").text($(this).attr("title"));
-
-	$(group).insertAfter(oldGroup);
-	group.show();
-
-	section.find(".close.hide").removeClass("hide");
-	
-	$("#hasPartModal").modal("hide");
-
-	e.target.blur();
-});
-
-
-/**
- * Displays isPartOfModal dialog and allows user to select a part
- *
- * @param {HTML DOM Event} e: The event happening.
- */
-$(".isPartOfListItem > button").click(function(e){
-	var section = $(this).parentsUntil("section").parent();
-	var oldGroup = section.find("input[name='is_part_of[]']").last().parent().parent();
-	var group   = oldGroup.clone();
-
-	var newID   = increaseID(group, "input");
-
-	group.find("input").prop("id", newID).val($(this).val());
-	group.find("label").attr("for", newID);
-	
-	var partLink = "view?id="+ $(this).val();
-	group.find("a").attr("href",partLink);
-	group.find("a").text($(this).attr("title"));
-
-	$(group).insertAfter(oldGroup);
-	group.show();
-
-	section.find(".close.hide").removeClass("hide");
-	
-	$("#isPartOfModal").modal("hide");
-
-	e.target.blur();
-});
-
-
-/**
  * Add another hasPart to the hasPart section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
@@ -230,6 +172,33 @@ $("section").on("click", ".control-label > .close", function (e) {
 
   e.target.blur();
 });
+
+/**
+ * Visually duplicate a user selection inside add modal on edit.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$(".list-part > button").click(function (e) {
+  var section  = $(this).parentsUntil("section").parent();
+  var modal    = $(this).parentsUntil("[role='dialog']").parent().prop("id");
+  var oldGroup = modal == "isPartOfModal" ? section.find("input[name='is_part_of[]']").last().parent().parent() : section.find("input[name='has_part[]']").last().parent().parent();
+  var group    = oldGroup.clone();
+  var newID    = increaseID(group, "input");
+
+  group.find("input").prop("id", newID).val($(this).val());
+  group.find("label").attr("for", newID);
+  group.find("a").attr("href", "view?id=" + $(this).val()).text($(this).attr("title"));
+
+  $(group).insertAfter(oldGroup);
+  group.show();
+
+  section.find(".close.hide").removeClass("hide");
+
+  $("#" + modal).modal("hide");
+
+  e.target.blur();
+});
+
 
 /**
  * Visually slide the user down to add a new comment.

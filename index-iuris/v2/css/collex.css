@@ -69,6 +69,8 @@ a:focus { color: #681422; }
   bottom: 0;
 }
 
+.list-part { margin-bottom: 10px; }
+
 /**
  * Bootstrap Modifications
  */

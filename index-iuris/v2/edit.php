@@ -281,7 +281,7 @@ else:
                     <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
                     <div class="col-xs-10">
                       <input type="hidden" class="form-control" id="isPartOf" name="is_part_of[]">
-                        <label class="control-label"><a href="" target="_blank"></a></label>
+                      <label class="control-label"><a href="" target="_blank"></a></label>
                     </div>
                   </div>
                   <?php
@@ -291,18 +291,16 @@ else:
                   $temp->store_result();
                   $temp->bind_result($partID);
 
-                  $counter = 1;
-                  
+                  $counter     = 1;
                   $isPartOfIDs = array();
-                  
                   while ($temp->fetch()):
-                  	array_push($isPartOfIDs, $partID);
+                    array_push($isPartOfIDs, $partID);
                     ?>
                     <div class="form-group">
-                      <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2">isPartOf</label>
+                      <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">isPartOf</label>
                       <div class="col-xs-10">
                         <input type="hidden" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" <?php printValue($partID); ?>>
-                        <?php 
+                        <?php
                         $select = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
                         $select->bind_param("s", $partID);
                         $select->execute();
@@ -310,61 +308,63 @@ else:
                         $select->bind_result($title);
                         $select->fetch();
                         ?>
-                        <label class="control-label"><a href="view?id=<?php print $partID; ?>" target="_blank"><?php print $title;?></a></label>
+                        <label class="control-label"><a href="view?id=<?php print $partID; ?>" target="_blank"><?php print $title; ?></a></label>
                       </div>
                     </div>
                     <?php
                     $counter++;
                   endwhile;
                   ?>
-                  
-				<div id="isPartOfModal" class="modal fade" role="dialog">
-				  <div class="modal-dialog modal-lg">
 
-				    <!-- Modal content-->
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">Add isPartOf</h4>
-				      </div>
-				      <div class="modal-body">
-				        <p>Please select another submission that <strong><?php print $title ?></strong> is a part of.</p>
-				        <ul>
-				        <?php
-				        $temp = $mysqli->prepare("SELECT title,id FROM objects WHERE id != ?");
-				        print $mysqli->error;
-				        $temp->bind_param("s", $id);
-				        $temp->execute();
-				        $temp->store_result();
-				        $temp->bind_result($objectTitle,$partID);
-				        
-				        while($temp->fetch()) :
-				        	$isPart=false;
-				        	foreach ($isPartOfIDs as $currentPartID){
-				        		//$isPart = ($currentPartID == $partID);//TODO: re-enable this after writing js code to handle part deletions in modal dialog
-				        	}
-				        	if (!$isPart) : ?>
-				        	<li class="isPartOfListItem"><?php print $objectTitle ?>
-				        		<button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID) ?> title="<?php printValue($objectTitle,true)?>">Select</button>
-				        	</li>
-				        <?php endif;
-				        endwhile;
-				        ?>
-				        </ul>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-                  
+                  <div id="isPartOfModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">x</button>
+                          <h4 class="modal-title">Add isPartOf</h4>
+                          <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                        </div>
+                        <div class="modal-body">
+                          <?php // TODO: Better layout. Possibly some grid style. ?>
+                          <div class="col-xs-3 center-block">
+                            <ul class="list-unstyled">
+                              <?php
+                              $temp = $mysqli->prepare("SELECT title, id FROM objects WHERE id != ?");
+                              $temp->bind_param("s", $id);
+                              $temp->execute();
+                              $temp->store_result();
+                              $temp->bind_result($objectTitle, $partID);
+
+                              while ($temp->fetch()):
+                                $isPart = false;
+                              // TODO: Re-enable this after writing JS code to handle part deletions in modal dialog.
+                              // foreach ($isPartOfIDs as $currentPartID) {
+                              //   $isPart = $currentPartID == $partID;
+                              // }
+                                if (!$isPart): ?>
+                                  <li class="list-part">
+                                    <?php print $objectTitle; ?>
+                                    <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>"<?php printValue($partID); ?> title="<?php print printValue($objectTitle, true); ?>">Select</button>
+                                  </li>
+                                <?php endif; ?>
+                              <?php endwhile; ?>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#isPartOfModal" >Add isPartOf</button>
+                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#isPartOfModal">Add isPartOf</button>
                     </div>
                   </div>
                 </section>
+
                 <hr>
 
                 <span class="hide">hasPart</span>
@@ -374,10 +374,9 @@ else:
                     <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
                     <div class="col-xs-10">
                       <input type="hidden" class="form-control" id="hasPart" name="has_part[]">
-                        <label class="control-label"><a href="" target="_blank"></a></label>
+                      <label class="control-label"><a href="" target="_blank"></a></label>
                     </div>
                   </div>
-
                   <?php
                   $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'hasPart'");
                   $temp->bind_param("s", $id);
@@ -385,18 +384,16 @@ else:
                   $temp->store_result();
                   $temp->bind_result($partID);
 
-                  $counter = 1;
-                  
+                  $counter    = 1;
                   $hasPartIDs = array();
-                  
                   while ($temp->fetch()):
-                  	array_push($hasPartIDs, $partID);
+                    array_push($hasPartIDs, $partID);
                     ?>
                     <div class="form-group">
                       <label for="hasPart<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
                       <div class="col-xs-10">
                         <input type="hidden" class="form-control" id="hasPart<?php print $counter; ?>" name="has_part[]" <?php printValue($partID); ?>>
-                        <?php 
+                        <?php
                         $select = $mysqli->prepare("SELECT title FROM objects WHERE id = ? LIMIT 1");
                         $select->bind_param("s", $partID);
                         $select->execute();
@@ -404,57 +401,57 @@ else:
                         $select->bind_result($title);
                         $select->fetch();
                         ?>
-                        <label class="control-label"><a href="view?id=<?php print $partID; ?>" target="_blank"><?php print $title;?></a></label>
+                        <label class="control-label"><a href="view?id=<?php print $partID; ?>" target="_blank"><?php print $title; ?></a></label>
                       </div>
                     </div>
                     <?php
                     $counter++;
                   endwhile;
                   ?>
-                  
-				<div id="hasPartModal" class="modal fade" role="dialog">
-				  <div class="modal-dialog modal-lg">
+                  <div id="hasPartModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">x</button>
+                          <h4 class="modal-title">Add hasPart</h4>
+                          <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                        </div>
+                        <div class="modal-body">
+                          <div class="col-xs-4 center-block">
+                            <ul class="list-unstyled">
+                              <?php
+                              $temp = $mysqli->prepare("SELECT title, id FROM objects WHERE id != ?");
+                              $temp->bind_param("s", $id);
+                              $temp->execute();
+                              $temp->store_result();
+                              $temp->bind_result($objectTitle, $partID);
 
-				    <!-- Modal content-->
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">Add hasPart</h4>
-				      </div>
-				      <div class="modal-body">
-				        <p>Please select another submission that is part of: <strong><?php print $title ?></strong>.</p>
-				        <ul>
-				        <?php
-				        $temp = $mysqli->prepare("SELECT title,id FROM objects WHERE id != ?");
-				        $temp->bind_param("s", $id);
-				        $temp->execute();
-				        $temp->store_result();
-				        $temp->bind_result($objectTitle,$partID);
-				        
-				        while($temp->fetch()) :
-				        	$isPart=false;
-				        	foreach ($hasPartIDs as $currentPartID){
-				        		//$isPart = ($currentPartID == $partID); //TODO: re-enable this after writing js code to handle part deletions in modal dialog
-				        	}
-				        	if (!$isPart) : ?>
-				        	<li class="hasPartListItem"><?php print $objectTitle ?>
-				        		<button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID) ?> title="<?php printValue($objectTitle,true)?>">Select</button>
-				        	</li>
-				        <?php endif;
-				        endwhile;
-				        ?>
-				        </ul>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-                  
+                              while ($temp->fetch()):
+                                $isPart = false;
+                                // TODO: Re-enable this after writing JS code to handle part deletions in modal dialog.
+                                // foreach ($hasPartIDs as $currentPartID) {
+                                //   $isPart = $currentPartID == $partID;
+                                // }
+                                if (!$isPart): ?>
+                                  <li class="list-part">
+                                    <?php print $objectTitle; ?>
+                                    <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php printValue($objectTitle, true); ?>">Select</button>
+                                  </li>
+                                <?php endif; ?>
+                              <?php endwhile; ?>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#hasPartModal" >Add hasPart</button>
+                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#hasPartModal">Add hasPart</button>
                     </div>
                   </div>
                 </section>
