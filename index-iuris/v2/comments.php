@@ -98,7 +98,7 @@ if (isset($_GET["comments"])) {
           <?php else: ?>
             <td><?php print $commentColumn; ?></td>
             <td class="text-center">
-              <a href="reply?username=<?php print $username; ?>&amp;commentName=<?php print $commentDate; ?>&amp;tableName=<?php print $commentName; ?>&amp;id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
+              <a href="reply?username=<?php print $username; ?>&amp;commentName=<?php print $commentColumn; ?>&amp;tableName=<?php print $commentName; ?>&amp;id=<?php print $id; ?>" class="btn btn-primary">Reply</a>
             </td>
             <td class="text-center">
               <a href="view-reply?id=<?php print $id; ?>&amp;commentName=<?php print $commentName; ?>" class="btn btn-success">View</a>
