@@ -4,7 +4,6 @@ Home
 
 Metadata Submission (rdf-form)
 - Add dropdown for archive/namespace (pending discussion with C&A)
-- Incorporate new hasPart and isPartOf functionality from edit page
 - Discussion about multiple dates.
 - Multiple fields need approval from Colin and Abigail
 - Functionality to add subject and discipline to database.

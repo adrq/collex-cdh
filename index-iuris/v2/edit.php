@@ -297,7 +297,7 @@ else:
                     array_push($isPartOfIDs, $partID);
                     ?>
                     <div class="form-group">
-                      <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2">isPartOf</label>
+                      <label for="isPartOf<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
                       <div class="col-xs-10">
                         <input type="hidden" class="form-control" id="isPartOf<?php print $counter; ?>" name="is_part_of[]" <?php printValue($partID); ?>>
                         <?php
@@ -326,7 +326,7 @@ else:
                         </div>
                         <div class="modal-body">
                           <?php // TODO: Better layout. Possibly some grid style. ?>
-                          <div class="col-xs-3 center-block">
+                          <div class="col-xs-6 center-block">
                             <ul class="list-unstyled">
                               <?php
                               $temp = $mysqli->prepare("SELECT title, id FROM objects WHERE id != ?");
@@ -344,7 +344,7 @@ else:
                                 if (!$isPart): ?>
                                   <li class="list-part">
                                     <?php print $objectTitle; ?>
-                                    <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>"<?php printValue($partID); ?> title="<?php print printValue($objectTitle, true); ?>">Select</button>
+                                    <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php print printValue($objectTitle, true); ?>">Select</button>
                                   </li>
                                 <?php endif; ?>
                               <?php endwhile; ?>
@@ -417,7 +417,7 @@ else:
                           <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
                         </div>
                         <div class="modal-body">
-                          <div class="col-xs-4 center-block">
+                          <div class="col-xs-6 center-block">
                             <ul class="list-unstyled">
                               <?php
                               $temp = $mysqli->prepare("SELECT title, id FROM objects WHERE id != ?");

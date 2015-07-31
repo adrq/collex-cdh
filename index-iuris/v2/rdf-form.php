@@ -491,61 +491,121 @@ if (!isset($_POST["submitted"])): ?>
 
           <legend>IsPartOf</legend>
           <section class="form-group">
-            <div class="col-xs-8 text-justify">
-              <p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
-              <?php /*
-              <p>Examples:</p>
-              <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("For the Bulla \"Rex Pacificus\", one could have <strong>IsPartOf</strong> Liber extravagantium decretalium", "For a particular transcription of the Council of Arles, on could have <strong>IsPartOf</strong> Collectio Hispana", "For a particular Novel of Justinian, one could have <strong>IsPartOf</strong> Corpus iuris civilis")); ?>
-              </ul>
-              */ ?>
-
-              <div class="form-group">
-                <label for="isPartOf" class="control-label col-xs-2">IsPartOf</label>
-                <div class="col-xs-10">
-                  <input type="text" class="form-control col-xs-10" name="is-part-of[]" id="isPartOf">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-4">
-              <label for="isPartOfComments" class="control-label col-xs-3">Comments:</label>
-              <div class="col-xs-12">
-                <textarea class="form-control" name="comments-is-part-of" id="isPartOfComments" rows="4"></textarea>
-              </div>
-            </div>
+                  <?php // Hidden isPartOf ?>
+              <div class="col-xs-8 text-justify">
+              	<p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
+                  <div class="form-group" style="display: none;">
+                    <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
+                    <div class="col-xs-10">
+                      <input type="hidden" class="form-control" id="isPartOf" name="is_part_of[]">
+                      <label class="control-label"><a href="" target="_blank"></a></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#isPartOfModal">Add isPartOf</button>
+                    </div>
+                  </div>
+                </div>  
+                <div class="col-xs-4">
+              		<label for="isPartOfComments" class="control-label col-xs-3">Comments:</label>
+              		<div class="col-xs-12">
+                		<textarea class="form-control" name="comments-is-part-of" id="isPartOfComments" rows="4"></textarea>
+              		</div>
+            	</div>
+                
+                 <div id="isPartOfModal" class="modal fade" role="dialog">
+                   <div class="modal-dialog modal-lg">
+                     <div class="modal-content">
+                       <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal">x</button>
+                         <h4 class="modal-title">Add isPartOf</h4>
+                         <p>Please select another submission that <strong>this</strong> is a part of.</p>
+                       </div>
+                       <div class="modal-body">
+                         <?php // TODO: Better layout. Possibly some grid style. ?>
+                         <div class="col-xs-6 center-block">
+                           <ul class="list-unstyled">
+                             <?php
+                             $temp = $mysqli->prepare("SELECT title, id FROM objects");
+                             $temp->execute();
+                             $temp->store_result();
+                             $temp->bind_result($objectTitle, $partID);
+                              while ($temp->fetch()):
+                                 ?>
+                                 <li class="list-part">
+                                   <?php print $objectTitle; ?>
+                                   <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php print printValue($objectTitle, true); ?>">Select</button>
+                                  </li>
+                             <?php endwhile; ?>
+                           </ul>
+                         </div>
+                       </div>
+                       <div class="modal-footer">
+                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
           </section>
-
+          
           <legend>hasPart</legend>
-          <section class="form-group">
-            <div class="col-xs-8 text-justify">
+          <section>
+                  <?php // Hidden hasPart ?>
+          	<div class="col-xs-8 text-justify">
               <p><samp>hasPart</samp> is the obverse of <samp>isPartOf</samp>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.</p>
-              <?php /*
-              <p>Examples:</p>
-              <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("Collectio Dacheriana <strong>HasPart</strong> Book I, Book II, Book III", "Collectio Dionysiana <strong>hasPart</strong> Canones Apostolorum, Conc. Nicea, Conc. Ancyra, Conc. Neocaesarea, Conc. Constantinople, Conc. Gangra, Conc. Sardica, etc.")); ?>
-              </ul>
-              */ ?>
-
-              <div class="form-group" style="display: none;">
-                <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
-                <div class="col-xs-10">
-                  <input type="text" class="form-control" name="has_part[]" id="hasPart">
-                </div>
+          	  <div class="form-group" style="display: none;">
+           	    <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
+                  <div class="col-xs-10">
+                	<input type="hidden" class="form-control" id="hasPart" name="has_part[]">
+                    <label class="control-label"><a href="" target="_blank"></a></label>
+                 </div>
               </div>
-
               <div class="form-group">
-                <div class="col-xs-3 pull-right">
-                  <button type="button" class="btn btn-default col-xs-12" id="addHasPartButton">Add hasPart</button>
-                </div>
-              </div>
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#hasPartModal">Add hasPart</button>
+                    </div>
+                  </div>
             </div>
             <div class="col-xs-4">
               <label for="hasPartComments" class="control-label col-xs-3">Comments</label>
-              <div class="col-xs-12">
-                <textarea class="form-control" name="comments-has-part" id="hasPartComments" rows="4"></textarea>
-              </div>
-            </div>
+                <div class="col-xs-12">
+                  <textarea class="form-control" name="comments-has-part" id="hasPartComments" rows="4"></textarea>
+                </div>
+            </div>    
+                  <div id="hasPartModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">x</button>
+                          <h4 class="modal-title">Add hasPart</h4>
+                          <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                        </div>
+                        <div class="modal-body">
+                          <div class="col-xs-6 center-block">
+                            <ul class="list-unstyled">
+                              <?php
+                              $temp = $mysqli->prepare("SELECT title, id FROM objects");
+                              $temp->execute();
+                              $temp->store_result();
+                              $temp->bind_result($objectTitle, $partID);
+
+                              while ($temp->fetch()):
+                                ?>
+                                  <li class="list-part">
+                                    <?php print $objectTitle; ?>
+                                    <button type="button" class="btn btn-xs btn-default pull-right" id="part<?php print $partID; ?>" <?php printValue($partID); ?> title="<?php printValue($objectTitle, true); ?>">Select</button>
+                                  </li>
+                              <?php endwhile; ?>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
           </section>
 
           <legend>Divisions of the text</legend>
