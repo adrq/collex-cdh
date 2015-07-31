@@ -23,6 +23,12 @@ Edit Submission
 View Individual Submission
 
 Comments
+- Grid/Button layout instead of dropdown.
+- Ability to detect select's value on window.onpopstate.
+
+View Reply
+- Ability to redirect when there are no replies.
+- Prior page detection when there are no replies.
 
 Other
 - Contact switches to either a page with two separate forms or a dropdown modal for each user to remove the email address from public eyes.

@@ -1,71 +1,78 @@
 <?php
 /**
- * @file edit.php
- * Prints the edit submission page.
- *
- * 7/28/15 - This page does not load on Lichen server due to the fact that it does not have MySQLnd installed.
- * The only way to work around this (aside from installing the driver) is to remove $statement->get_result() and
- * workaround that method - which will be a pain.
- *
+ * @file reply.php
+ * Prints the reply page.
  */
-$title = "View All Reply";
+
+if (isset($_POST["comment"], $_POST["table"])) {
+  require_once "includes/config.php";
+  session_start();
+  global $mysqli;
+
+  $id = $_POST["id"];
+  $table = $_POST["table"];
+
+  if (!in_array($table, array("comments_date", "comments_has_part", "comments_is_part_of", "comments_notes", "comments_place_of_composition", "comments_provenance", "comments_rdf_about", "comments_text_divisions"))) {
+    ?><script>alert("Please do not alter hidden values."); window.location = "logout";</script><?php
+  }
+
+  $comment = trim($_POST["comment"]);
+  $currentUser = $_SESSION["username"];
+
+  $statement = $mysqli->prepare("INSERT INTO reply_$table (comments_id, reply_comment, replied_by) VALUES (?, ?, ?)");
+  $statement->bind_param("iss", $id, $comment, $currentUser);
+  $statement->execute();
+  $statement->store_result();
+
+  if ($statement->affected_rows === 0) {
+    ?><script>alert("Your comment was unable to be submitted. Please try again later."); window.location = "comments";</script><?php
+  } else {
+    header("Location: view-reply?id=" . $id . "&commentName=" . $table);
+  }
+}
+
+$id          = $_GET["id"];
+$table       = $_GET["tableName"];
+$username    = $_GET["username"];
+$commentName = $_GET["commentName"];
+
+$title = "Reply";
 $loginRequired = true;
 require "includes/header.php";
-$comment_name = $_GET["comment_name"];
-$username = $_GET["username"];
-$table_name = "reply_".$_GET["table_name"];
-$id = $_GET["id"];
-$table = $_GET["table_name"];
-$reply_username = $_SESSION["username"];
 ?>
 
 <div class="container">
   <div class="row page-header">
     <div class="col-xs-12">
-      <h4><?php print "User Name : $username"; ?></h4>
-	  <h4><?php print "User Comment : $comment_name"; ?></h4>
+      <h4>
+      <h4>Username: <?php print $username; ?></h4>
+      <h4>Comment:<?php print $commentName; ?></h4>
     </div>
   </div>
-  <form method="POST" >
-  <div class="form-group">
-    <label for="replyforcomment" class="control-label col-xs-12">Please Reply to the comment here:</label>
+
+  <div class="row">
     <div class="col-xs-12">
-      <input type="text" class="form-control" name="replycomment" id="replycomment">
+      <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <fieldset>
+          <section class="form-group">
+            <label for="comment" class="control-label col-xs-2">Reply</label>
+            <div class="col-xs-10">
+              <input type="text" class="form-control" id="comment" name="comment">
+            </div>
+          </section>
+
+          <section class="form-group">
+            <div class="col-xs-3 center-block">
+              <input type="hidden" name="id" value="<?php print $id; ?>">
+              <input type="hidden" name="table" value="<?php print $table; ?>">
+              <button type="submit" class="btn btn-success col-xs-12">Submit</button>
+            </div>
+          </section>
+        </fieldset>
+      </form>
     </div>
-	
   </div>
-  <br>
-  <br>
-  	
+
 </div>
 
-<section class="form-group " style=" margin-top: 1%; margin-left: 25%">
-  	<div class="col-xs-1">
-        <button type="submit" class="btn btn-success col-xs-12" name="button1">Submit</button>
-  	</div>
- </section> 
- </form>
- 
- <?php
- if (isset($_POST['button1'])):  
-	 $statement = $mysqli->prepare("INSERT into $table_name(comments_id,reply_comment,replied_by) values(?,?,?)");
- 	 print $mysqli->error;
-	 $statement->bind_param("sss", $_GET["id"], $_POST["replycomment"],$reply_username);
-	 $statement->execute();
-	 $statement->close();
-	 
-?>	 
-	
-	<section class="form-group " style=" margin-top: 1%; margin-left: 25%">
-		<br>
-		<br>
-		<br>
-		<h4> Comment submitted succesfully. Please click below to view all comments.</h4>
-		<br>
-	<td class="text-center">
-		  <a href="view-reply?id=<?php print $id; ?>&comment_name=<?php print $table; ?>" class="btn btn-success">View all Replies</a>
-	</td> 
-	 </section> 
-<?php endif; ?> 	   	
-    
 <?php require "includes/footer.php"; ?>
