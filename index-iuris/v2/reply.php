@@ -3,24 +3,28 @@
  * @file reply.php
  * Prints the reply page.
  */
-
-if (isset($_POST["comment"], $_POST["table"])) {
+if (isset($_POST["comment"], $_POST["table"], $_POST["id"])) {
   require_once "includes/config.php";
   session_start();
   global $mysqli;
 
-  $id = $_POST["id"];
+  $id    = $_POST["id"];
   $table = $_POST["table"];
 
-  if (!in_array($table, array("comments_date", "comments_has_part", "comments_is_part_of", "comments_notes", "comments_place_of_composition", "comments_provenance", "comments_rdf_about", "comments_text_divisions"))) {
-    ?><script>alert("Please do not alter hidden values."); window.location = "logout";</script><?php
+  if (!in_array($table, array("comments_date", "comments_has_part", "comments_is_part_of", "comments_notes", "comments_place_of_composition", "comments_provenance", "comments_rdf_about", "comments_text_divisions"))) { ?>
+    <script>alert("Please do not alter hidden values."); window.location = "logout";</script>
+    <?php
+    // For a split second, JavaScript does not execute.
+    // This header will be the fall-back and exit() will reassure that nothing else will be displayed.
+    header("Location: logout");
+    exit();
   }
 
-  $comment = trim($_POST["comment"]);
-  $currentUser = $_SESSION["username"];
+  $comment  = htmlspecialchars(trim($_POST["comment"]));
+  $username = $_SESSION["username"];
 
   $statement = $mysqli->prepare("INSERT INTO reply_$table (comments_id, reply_comment, replied_by) VALUES (?, ?, ?)");
-  $statement->bind_param("iss", $id, $comment, $currentUser);
+  $statement->bind_param("iss", $id, $comment, $username);
   $statement->execute();
   $statement->store_result();
 

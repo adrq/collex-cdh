@@ -88,11 +88,12 @@ a:focus { color: #681422; }
 
   cursor: pointer;
 }
+.viewer:nth-child(4n+1) { margin-left: 7px; }
 .viewer:hover,
 .viewer-active {
-  -webkit-box-shadow: 0 0 1px #000000;
-     -moz-box-shadow: 0 0 1px #000000;
-          box-shadow: 0 0 1px #000000;
+  -webkit-box-shadow: 0 0 4px #000000;
+     -moz-box-shadow: 0 0 4px #000000;
+          box-shadow: 0 0 4px #000000;
 }
 
 /**
