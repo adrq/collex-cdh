@@ -139,7 +139,7 @@ else:
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label for="value" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>Value</label>
                     <div class="col-xs-10">
                       <input type="text" class="form-control" id="value" name="role_value[]">
