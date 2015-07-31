@@ -19,11 +19,11 @@ if (isset($_POST["username"], $_POST["password"])) {
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
 
-  $statement = $mysqli->prepare("SELECT id, password_hash FROM users WHERE username = ?");
+  $statement = $mysqli->prepare("SELECT id, password_hash,user_role FROM users WHERE username = ?");
   $statement->bind_param("s", $username);
   $statement->execute();
   $statement->store_result();
-  $statement->bind_result($id, $pass);
+  $statement->bind_result($id, $pass, $user_role);
 
   if ($statement->num_rows == 1) {
     $statement->fetch();
@@ -37,7 +37,7 @@ if (isset($_POST["username"], $_POST["password"])) {
       $_SESSION["user_id"]   = $id;
       $_SESSION["username"]  = $username;
       $_SESSION["logged-in"] = true;
-
+      $_SESSION["user_role"] = $user_role;
       ?><script>window.location = "index";</script><?php
     } else {
       $loginValid   = false;

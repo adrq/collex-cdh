@@ -76,7 +76,7 @@ require "includes/header.php";
           $register->bind_param("ss", $password, $username);
           $action = "updated";
         } else {
-          $register = $mysqli->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
+          $register = $mysqli->prepare("INSERT INTO users (username, password_hash, user_role) VALUES (?, ?, 'contributor')");
           $register->bind_param("ss", $username, $password);
           $action = "created";
         }
