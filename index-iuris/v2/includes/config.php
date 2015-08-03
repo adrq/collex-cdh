@@ -8,12 +8,17 @@
 error_reporting(-1);
 ini_set("display_errors", "On");
 
+// Start up any sessions
+session_start();
+
+// Define variables.
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "root");
 define("DB_BASE", "collex");
 define("ROOT_FOLDER", "http://" . $_SERVER["HTTP_HOST"] . "/indexiuris/");
 
+// Global MySQL Database Connection.
 global $mysqli;
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_BASE);
 

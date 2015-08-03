@@ -56,6 +56,19 @@ window.onpopstate = function () {
 };
 
 /**
+ * For all required <input> and <textarea>, toggle the has-error class if the inside value is empty.
+ */
+$("form").on("input", "input, textarea", function () {
+  if ($(this).attr("required") === undefined) { return; }
+
+  if ($(this).val() === "") {
+    $(this).parent().addClass("has-error");
+  } else if ($(this).val() !== "") {
+    $(this).parent().removeClass("has-error");
+  }
+});
+
+/**
  * Add another role to the role section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
@@ -266,6 +279,23 @@ $("#results").on("click", "a.btn-default", function (e) {
   alert("Submitting comment. Except not really.");
 
   e.target.blur();
+});
+
+/**
+ * Verify that the password inputs are the same before server-side verification.
+ */
+$("#accountUpdate").on("input", "input", function () {
+  var name  = $(this).prop("name");
+  var value = $.trim($(this).val());
+  var pass1 = $.trim($("#accountUpdate input#password1").val());
+  var pass2 = $.trim($("#accountUpdate input#password2").val());
+
+  // Compare the password inputs with each other.
+  if ((name == "password1" && pass2 !== "" && value !== pass2) || (name == "password2" && pass1 !== "" && value !== pass1)) {
+    $("input#password1, input#password2").parent().addClass("has-error");
+  } else {
+    $("input#password1, input#password2").parent().removeClass("has-error");
+  }
 });
 
 /**

@@ -3,18 +3,13 @@
  * @file header.php
  * Prints out the HTML structure.
  */
-session_start();
+require_once "config.php";
+require_once "functions.php";
 
 $loginRequired = isset($loginRequired) ? $loginRequired : false;
 if ($loginRequired && !isset($_SESSION["logged-in"]) && !$_SESSION["logged-in"]) {
   header("Location: login");
 }
-
-error_reporting(-1);
-ini_set("display_errors", "On");
-
-require_once "config.php";
-require_once "functions.php";
 
 /*
  * Note: Do not copy this file over on top of the current header file on Lichen.
