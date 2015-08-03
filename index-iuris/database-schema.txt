@@ -132,7 +132,7 @@ CREATE TABLE comments(
 	type_available varchar(255) DEFAULT NULL,
 	role_available varchar(255) DEFAULT NULL,
 	genre_required_available varchar(255) DEFAULT NULL,
-	genre_controled_available varchar(255) DEFAULT NULL,
+	genre_controlled_available varchar(255) DEFAULT NULL,
 	date_available varchar(255) DEFAULT NULL,
 	url_available varchar(255) DEFAULT NULL,
 	suggested_terms_type text DEFAULT NULL,
