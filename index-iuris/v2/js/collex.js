@@ -259,8 +259,21 @@ $("#newCommentButton").click(function (e) {
 $(".viewer").click(function () {
   $(".viewer.viewer-active").removeClass("viewer-active");
   $(this).addClass("viewer-active");
-
-  renderComments($(this).text(), $(this).data("value"));
+  $.ajax({
+    url: "comments",
+    type: "GET",
+    data: "comments=" + $(this).data("value"),
+    success: function (result) {
+		console.log(result);
+      if (result.indexOf("<b>Notice</b>") > -1) {
+        console.error("There is a notice inside the PHP code. Result:\n" + result);
+      }
+      $("#results").empty().html(result).find("table.dt").dataTable();
+    },
+    error: function (result) {
+      console.error("Error connecting to the server. Message: " + result.responseText);
+    }
+  });
 });
 
 /**
@@ -276,9 +289,22 @@ $("#results").on("click", ".reply", function () {
  * Submits a reply comment.
  */
 $("#results").on("click", "a.btn-default", function (e) {
-  alert("Submitting comment. Except not really.");
-
-  e.target.blur();
+	alert("Submtting comment.");
+	var value = $.trim((this).prev().val());
+	
+	$.ajax({
+		url: "post-commment",
+		type: "POST",
+		data: "comment=" + value,
+		success: function (result) {
+			alert("The comment was posted.");
+		},
+		error: function (result) {
+			alert("Error: " + result.responseText);
+		}
+	});
+	
+	e.target.blur();
 });
 
 /**

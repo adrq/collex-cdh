@@ -137,11 +137,11 @@ function printOptions($array) {
 function renderComments($value) {
   global $mysqli;
 
-  $original = $mysqli->prepare("SELECT id, $value, user_id FROM comments WHERE id = ?");
-  $original->bind_param("i", $commentID);
+  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value");
   $original->execute();
   $original->store_result();
   $original->bind_result($commentID, $comment, $userID);
+  
   ?>
 
   <?php while ($original->fetch()): ?>
@@ -150,7 +150,7 @@ function renderComments($value) {
     $statement->bind_param("i", $commentID);
     $statement->execute();
     $statement->store_result();
-    $statement->bind_result($id, $commentID, $reply, $replier);
+    $statement->bind_result($id, $reply, $replier);
     $statement->fetch();
     ?>
     <div class="comment col-xs-9">

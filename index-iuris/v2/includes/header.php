@@ -67,10 +67,9 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
             <li<?php print $title == "Metadata Submission Form" ? ' class="active"' : ""; ?>><a href="rdf-form">Metadata Submission</a></li>
             <li<?php print $title == "Governance" ? ' class="active"' : ""; ?>><a href="governance">Governance</a></li>
             <li<?php print $title == "View Submission" || $title == "View Submissions" ? ' class="active"' : ""; ?>><a href="submissions">View Submissions</a></li>
-
-            <?php if (isSuper()): ?>
+		  
               <li<?php print $title == "Comments and Suggested Items" ? ' class="active"' : ""; ?>><a href="comments">Comments</a></li>
-            <?php endif; ?>
+            
 
             <li class="dropdown<?php print $title == 'Account Details' ? ' active' : ''; ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" ara-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
