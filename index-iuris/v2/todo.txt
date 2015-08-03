@@ -28,7 +28,6 @@ View Reply
 - Prior page detection when there are no replies.
 
 Other
-- Contact switches to either a page with two separate forms or a dropdown modal for each user to remove the email address from public eyes.
 - User Roles. (Super User, etc.)
 - Possible: First and last Name for each account.
 - Email address per account for password recovery.

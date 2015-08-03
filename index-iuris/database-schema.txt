@@ -1,11 +1,10 @@
 
-create table statements:
-
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password_hash` varchar(255) DEFAULT NULL,
   `user_role` varchar(255),
+  `email` varchar(255),
   PRIMARY KEY (`id`)
 );
 
@@ -31,178 +30,178 @@ CREATE TABLE `constitution_comments` (
 ********METADATA TABLES************
 
 CREATE TABLE roles (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	role varchar(255) DEFAULT NULL,
-	value text DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  role varchar(255) DEFAULT NULL,
+  value text DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 
 CREATE TABLE alt_titles (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	alt_title text DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  alt_title text DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 
 CREATE TABLE dates (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	type varchar(255) DEFAULT NULL,
-	machine_date varchar(255) DEFAULT NULL,
-	human_date text DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  type varchar(255) DEFAULT NULL,
+  machine_date varchar(255) DEFAULT NULL,
+  human_date text DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE genres (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	genre text DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  genre text DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE disciplines (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	discipline text DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  discipline text DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE subjects (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	subject text DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  subject text DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE parts(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	object_id int(11),
-	type varchar(255),
-	part_id int(11),
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  type varchar(255),
+  part_id int(11),
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE objects (
   id int(11) NOT NULL AUTO_INCREMENT,
   custom_namespace varchar(255) DEFAULT NULL,
-rdf_about text DEFAULT NULL,
-archive varchar(255) DEFAULT NULL,
-title text DEFAULT NULL,
-type varchar(255) DEFAULT NULL,
-url text DEFAULT NULL,
-origin text DEFAULT NULL,
-provenance text DEFAULT NULL,
-place_of_composition text DEFAULT NULL,
-shelfmark text DEFAULT NULL,
-freeculture varchar(255) DEFAULT NULL,
-full_text_url text DEFAULT NULL,
-full_text_plain text DEFAULT NULL,
-is_full_text varchar(255) DEFAULT NULL,
-image_url text DEFAULT NULL,
-source text DEFAULT NULL,
-metadata_xml_url text DEFAULT NULL,
-metadata_html_url text DEFAULT NULL,
-text_divisions text DEFAULT NULL,
-language varchar(255) DEFAULT NULL,
-ocr varchar(255) DEFAULT NULL,
-thumbnail_url text DEFAULT NULL,
-notes text DEFAULT NULL,
-file_format varchar(255) DEFAULT NULL,
-date_created datetime DEFAULT NULL,
-date_updated datetime DEFAULT NULL,
-user_id varchar(255) DEFAULT NULL,
+  rdf_about text DEFAULT NULL,
+  archive varchar(255) DEFAULT NULL,
+  title text DEFAULT NULL,
+  type varchar(255) DEFAULT NULL,
+  url text DEFAULT NULL,
+  origin text DEFAULT NULL,
+  provenance text DEFAULT NULL,
+  place_of_composition text DEFAULT NULL,
+  shelfmark text DEFAULT NULL,
+  freeculture varchar(255) DEFAULT NULL,
+  full_text_url text DEFAULT NULL,
+  full_text_plain text DEFAULT NULL,
+  is_full_text varchar(255) DEFAULT NULL,
+  image_url text DEFAULT NULL,
+  source text DEFAULT NULL,
+  metadata_xml_url text DEFAULT NULL,
+  metadata_html_url text DEFAULT NULL,
+  text_divisions text DEFAULT NULL,
+  language varchar(255) DEFAULT NULL,
+  ocr varchar(255) DEFAULT NULL,
+  thumbnail_url text DEFAULT NULL,
+  notes text DEFAULT NULL,
+  file_format varchar(255) DEFAULT NULL,
+  date_created datetime DEFAULT NULL,
+  date_updated datetime DEFAULT NULL,
+  user_id varchar(255) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
 
 CREATE TABLE comments(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_rdf_about text DEFAULT NULL,
-	comments_date text DEFAULT NULL,
-	comments_provenance text DEFAULT NULL,
-	comments_place_of_composition text DEFAULT NULL,
-	comments_is_part_of text DEFAULT NULL,
-	comments_has_part text DEFAULT NULL,
-	comments_text_divisions text DEFAULT NULL,
-	comments_notes text DEFAULT NULL,
-	custom_namespace_available varchar(255) DEFAULT NULL,
-	type_available varchar(255) DEFAULT NULL,
-	role_available varchar(255) DEFAULT NULL,
-	genre_required_available varchar(255) DEFAULT NULL,
-	genre_controlled_available varchar(255) DEFAULT NULL,
-	date_available varchar(255) DEFAULT NULL,
-	url_available varchar(255) DEFAULT NULL,
-	suggested_terms_type text DEFAULT NULL,
-	suggested_terms_role text DEFAULT NULL,
-	suggested_terms_genre text DEFAULT NULL,
-	user_id varchar(255) DEFAULT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_rdf_about text DEFAULT NULL,
+  comments_date text DEFAULT NULL,
+  comments_provenance text DEFAULT NULL,
+  comments_place_of_composition text DEFAULT NULL,
+  comments_is_part_of text DEFAULT NULL,
+  comments_has_part text DEFAULT NULL,
+  comments_text_divisions text DEFAULT NULL,
+  comments_notes text DEFAULT NULL,
+  custom_namespace_available varchar(255) DEFAULT NULL,
+  type_available varchar(255) DEFAULT NULL,
+  role_available varchar(255) DEFAULT NULL,
+  genre_required_available varchar(255) DEFAULT NULL,
+  genre_controlled_available varchar(255) DEFAULT NULL,
+  date_available varchar(255) DEFAULT NULL,
+  url_available varchar(255) DEFAULT NULL,
+  suggested_terms_type text DEFAULT NULL,
+  suggested_terms_role text DEFAULT NULL,
+  suggested_terms_genre text DEFAULT NULL,
+  user_id varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_rdf_about(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_provenance(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_place_of_composition(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_is_part_of(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_has_part(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_text_divisions(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_notes(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
-	);
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+);
 
 CREATE TABLE reply_comments_date(
-	id int(11) NOT NULL AUTO_INCREMENT,
-	comments_id int(11) NOT NULL,
-	reply_comment text DEFAULT NULL,
-	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id)
+  id int(11) NOT NULL AUTO_INCREMENT,
+  comments_id int(11) NOT NULL,
+  reply_comment text DEFAULT NULL,
+  replied_by varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 );
 
