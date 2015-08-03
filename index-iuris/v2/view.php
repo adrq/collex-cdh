@@ -52,6 +52,7 @@ else:
           <div class="col-xs-3 text-right">
             <p>Created: <time><?php print $date_created; ?></time></p>
             <p>Updated: <time><?php print $date_updated; ?></time></p>
+            <p><a href="rdf?id=<?php print $id; ?>">View RDF</a></p>
           </div>
         </div>
 
