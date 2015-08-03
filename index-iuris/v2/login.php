@@ -5,19 +5,15 @@
  *
  * 7/28/15 - Lichen has PHP v.5.3.3 installed whereas the local machines have PHP v.5.5.x.
  * Since this is the case, some changes had to be made.
- *
  */
-$title = "Login";
-$loginRequired = false;
-require "includes/header.php";
 
-$loginValid   = true;
-$loginMessage = "";
-
+$dialog = "";
 if (isset($_POST["username"], $_POST["password"])) {
+  require_once "includes/config.php";
   global $mysqli;
-  $username = trim($_POST["username"]);
-  $password = trim($_POST["password"]);
+
+  $username = $mysqli->real_escape_string($_POST["username"]);
+  $password = $mysqli->real_escape_string($_POST["password"]);
 
   $statement = $mysqli->prepare("SELECT id, password_hash, user_role FROM users WHERE username = ?");
   $statement->bind_param("s", $username);
@@ -39,34 +35,44 @@ if (isset($_POST["username"], $_POST["password"])) {
       $_SESSION["logged-in"] = true;
       $_SESSION["user_role"] = $role;
 
-      ?><script>window.location = "index";</script><?php
+      header("Location: account");
     } else {
-      $loginValid   = false;
-      $loginMessage = "Please try again.";
+      $dialog = "Please try your password again.";
     } // if (password_verify($password, $pass))
   } else {
-    $loginValid   = false;
-    $loginMessage = "This username does not exist.";
+    $dialog = "This username does not exist.";
   } // if ($statement->num_rows == 1)
 } // if (isset($_POST["username"], $_POST["password"]))
+
+$title = "Login";
+$loginRequired = false;
+require "includes/header.php";
 ?>
 
 <div class="container">
   <div class="row page-header">
+    <div class="col-xs-12">
+      <h1>Login</h1>
+      <?php if ($dialog !== ""): ?>
+        <p class="lead text-danger text-center"><?php print $dialog; ?></p>
+      <?php endif; ?>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-xs-6 center-block">
       <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
-        <legend>Login<?php print $loginValid ? "" : " - " . $loginMessage; ?></legend>
         <fieldset>
           <div class="form-group">
             <label for="username" class="col-xs-4 control-label">Username</label>
-            <div class="col-xs-8 <?php print $loginValid ? '' : 'has-error'; ?>">
+            <div class="col-xs-8">
               <input type="text" class="form-control" id="username" name="username" autofocus="">
             </div>
           </div>
 
           <div class="form-group">
             <label for="password" class="col-xs-4 control-label">Password</label>
-            <div class="col-xs-8 <?php print $loginValid ? '' : 'has-error'; ?>">
+            <div class="col-xs-8">
               <input type="password" class="form-control" id="password" name="password">
             </div>
           </div>
