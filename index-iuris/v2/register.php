@@ -9,8 +9,9 @@
 
 $dialog = "";
 if (isset($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["g-recaptcha-response"])) {
-  $captcha = $_POST["g-recaptcha-response"];
+  require_once "includes/config.php";
 
+  $captcha  = $_POST["g-recaptcha-response"];
   $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=" . $captcha));
   if ($response->success != 1) {
     if ($response->{"error-codes"}[0] == "missing-input-response") {
@@ -22,7 +23,6 @@ if (isset($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["
     }
   }
 
-  require_once "includes/config.php";
   global $mysqli;
   $username  = $mysqli->real_escape_string($_POST["username"]);
   $password1 = $mysqli->real_escape_string($_POST["password1"]);
