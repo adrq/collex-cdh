@@ -28,7 +28,7 @@ else:
   $statement->bind_param("s", $id);
   $statement->execute();
   $statement->store_result();
-  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitle, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
   // 7/29/15 - Removed until MySQLnd is installed onto Lichen.
   // $row = $statement->get_result()->fetch_assoc();
@@ -43,7 +43,7 @@ else:
       <div class="container">
         <div class="row page-header">
           <div class="col-xs-12">
-            <h1 class="pull-left">Edit <?php print $title; ?></h1>
+            <h1 class="pull-left">Edit <?php print $submissionTitle; ?></h1>
             <p class="last-updated">Last Updated: <time><?php print $date_updated; ?></time></p>
           </div>
         </div>
@@ -57,7 +57,7 @@ else:
                 printResult("custom_namespace", "Custom Namespace", $custom_namespace, "input");
                 printResult("rdf_about", "Unique Identifier (URI)", $rdf_about, "input");
                 printResult("archive", "Archive", $archive, "input");
-                printResult("title", "Title", $title, "input");
+                printResult("title", "Title", $submissionTitle, "input");
                 printResult("type", "Type", $type, "input");
                 printResult("url", "URL", $url, "input");
                 printResult("origin", "Origin", $origin, "input");
@@ -322,7 +322,7 @@ else:
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">x</button>
                           <h4 class="modal-title">Add isPartOf</h4>
-                          <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                          <p>Please select another submission that <strong><?php print $submissionTitle; ?></strong> is a part of.</p>
                         </div>
                         <div class="modal-body">
                           <?php // TODO: Better layout. Possibly some grid style. ?>
@@ -414,7 +414,7 @@ else:
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">x</button>
                           <h4 class="modal-title">Add hasPart</h4>
-                          <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                          <p>Please select another submission that <strong><?php print $submissionTitle; ?></strong> is a part of.</p>
                         </div>
                         <div class="modal-body">
                           <div class="col-xs-6 center-block">

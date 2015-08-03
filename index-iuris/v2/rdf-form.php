@@ -579,7 +579,7 @@ if (!isset($_POST["submitted"])): ?>
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">x</button>
                     <h4 class="modal-title">Add hasPart</h4>
-                    <p>Please select another submission that <strong><?php print $title; ?></strong> is a part of.</p>
+                    <p>Please select another submission that is a part of <strong>this</strong>.</p>
                   </div>
                   <div class="modal-body">
                     <div class="col-xs-6 center-block">
@@ -832,13 +832,10 @@ else:
       $insert->bind_param("iss", $lastID, $machineDate, $humanDate);
       $insert->execute();
     }
-    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
-    $insert->bind_param("iss", $lastID, $machineDate, $humanDate);
-    $insert->execute();
-
+    
     // Add isPartOf to its table.
     $partType = "isPartOf";
-    foreach ($_POST["is-part-of"] as $id) {
+    foreach ($_POST["is_part_of"] as $id) {
       $id = htmlspecialchars(trim($id));
 
       if ($id === "") { continue; }
@@ -907,7 +904,7 @@ else:
     $suggested_terms_role          = $comments["suggested-terms-role"];
     $suggested_terms_genre         = $comments["suggested-terms-genre"];
 
-    $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controlled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $statement->bind_param("sssssssssssssssssss", $comments_rdf_about, $comments_date, $comments_provenance, $comments_place_of_composition, $comments_is_part_of, $comments_has_part, $comments_text_divisions, $comments_notes, $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $date_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
     $statement->execute();
 
