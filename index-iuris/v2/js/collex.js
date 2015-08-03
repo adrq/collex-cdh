@@ -299,6 +299,87 @@ $("#accountUpdate").on("input", "input", function () {
 });
 
 /**
+ * Activates and manipulates the contact modal.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$("li.dropdown").on("click", "li > a[data-target]", function (e) {
+  if ($(this).data("target") === 0) {
+    $("footer.modal .modal-title").text("Contact Colin Wilder");
+  } else {
+    $("footer.modal .modal-title").text("Contact Abigail Firey");
+  }
+
+  $("footer.modal").modal("show");
+
+  e.target.blur();
+  e.preventDefault();
+});
+
+/**
+ * Send off contact information.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$("body").on("submit", "footer.modal form", function (e) {
+  var name     = $.trim($(this).find("input[name='name']").val());
+  var email    = $.trim($(this).find("input[name='email']").val());
+  var message  = $.trim($(this).find("textarea[name='message']").val());
+  var captcha  = $.trim($("[name='g-recaptcha-response']").val());
+  var alerter  = $(this).find(".alert");
+  var receiver = $(this).find(".modal-title").text().split(" ")[1];
+
+  alerter.removeClass("alert-info alert-warning alert-danger alert-success").empty().fadeOut();
+
+  if (name === "") {
+    $(this).find("input[name='name']").parent().addClass("has-error");
+    alerter.addClass("alert-warning").html("<h4>Warning</h4><p>Please enter in a name.</p>").fadeIn();
+    return false;
+  }
+
+  if (email === "" || !(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i).test(email)) {
+    $(this).find("input[name='email']").parent().addClass("has-error");
+    alerter.addClass("alert-warning").html("<h4>Warning</h4><p>Please enter in a valid email.</p>").fadeIn();
+    return false;
+  }
+
+  if (message === "") {
+    $(this).find("textarea[name='message']").parent().addClass("has-error");
+    alerter.addClass("alert-warning").html("<h4>Warning</h4><p>Please enter in a message.</p>").fadeIn();
+    return false;
+  }
+
+  $.ajax({
+    url: window.location.href,
+    type: "POST",
+    data: {
+      name: name,
+      email: email,
+      message: message,
+      captcha: captcha,
+      receiver: receiver
+    },
+    dataType: "json",
+    beforeSend: function () {
+      alerter.addClass("alert-info").html("<p>Sending off your email now...</p>").fadeIn();
+    },
+    success: function (result) {
+      alerter.removeClass("alert-info").addClass("alert-" + result.type).html(result.text);
+
+      if (result.type == "success") {
+        $("footer.modal form input, footer.modal form textarea").val("");
+      }
+    },
+    error: function (result) {
+      alerter.removeClass("alert-info").addClass("alert-danger").html("<h4>Error</h4><p>There was an error connecting to the server.</p><p>" + result.responseText + "</p>");
+    }
+  });
+
+  e.preventDefault();
+  return false;
+});
+
+/**
  * Render the comments produced by users.
  *
  * @param {String} title: The title of the page.

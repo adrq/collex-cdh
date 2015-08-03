@@ -17,6 +17,7 @@ define("DB_USER", "root");
 define("DB_PASS", "root");
 define("DB_BASE", "collex");
 define("ROOT_FOLDER", "http://" . $_SERVER["HTTP_HOST"] . "/indexiuris/");
+define("CAPTCHA_SECRET_KEY", "6LcrxgkTAAAAAGwNKxaLOjygIeF-_814mdhhxDkf");
 
 // Global MySQL Database Connection.
 global $mysqli;

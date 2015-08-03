@@ -29,13 +29,22 @@ function findUsername($id) {
 } // function findUsername($id);
 
 /**
+ * Determines if a user is logged in.
+ *
+ * @return {Boolean}
+ */
+function isLoggedIn() {
+  return isset($_SESSION["logged-in"]) && $_SESSION["logged-in"];
+} // function isLoggedIn()
+
+/**
  * Determines if a user is a superuser or not.
  *
  * @return {Boolean}
  */
 function isSuper() {
   return $_SESSION["user_role"] == "superuser";
-}
+} // function isSuper()
 
 /**
  * Renders MySQL values into HTML-ready entities.
@@ -127,31 +136,31 @@ function printOptions($array) {
  */
 function renderComments($value) {
   global $mysqli;
- 
-  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value");
+
+  $original = $mysqli->prepare("SELECT id, $value, user_id FROM comments WHERE id = ?");
+  $original->bind_param("i", $commentID);
   $original->execute();
   $original->store_result();
-  $original->bind_result($commentId,$comment, $userID);
-  $original->fetch();
+  $original->bind_result($commentID, $comment, $userID);
   ?>
-<?php while ($original->fetch()): ?>
-	<?php
-  $statement = $mysqli->prepare("SELECT id, reply_comment, replied_by FROM reply_$value where comments_id=?");
-  $statement->bind_param("s",$commentId);
-  $statement->execute();
-  $statement->store_result();
-  $statement->bind_result($id, $reply, $replier);
-  $statement->fetch();
-  ?>
-  <div class="comment col-xs-9">
-    <?php renderCommentInterior(findUsername($userID), $comment); ?>
-  </div>
-  <?php while ($statement->fetch()): ?>
-  <?php // Print out the first comment because of the mandatory fetch above. ?>
-    <div class="comment-reply col-xs-9">
-      <?php renderCommentInterior($replier, $reply); ?>
+
+  <?php while ($original->fetch()): ?>
+    <?php
+    $statement = $mysqli->prepare("SELECT id, reply_comment, replied_by FROM reply_$value WHERE comments_id = ?");
+    $statement->bind_param("i", $commentID);
+    $statement->execute();
+    $statement->store_result();
+    $statement->bind_result($id, $commentID, $reply, $replier);
+    $statement->fetch();
+    ?>
+    <div class="comment col-xs-9">
+      <?php renderCommentInterior(findUsername($userID), $comment); ?>
     </div>
-  <?php endwhile;?>
+    <?php while ($statement->fetch()): ?>
+      <div class="comment-reply col-xs-9">
+        <?php renderCommentInterior($replier, $reply); ?>
+      </div>
+    <?php endwhile; ?>
   <?php endwhile;
 } // function renderComment($value)
 
@@ -160,7 +169,7 @@ function renderCommentInterior($user, $text) {
   <h4><?php print $user; ?><span class="reply pull-right">Reply</span></h4>
   <p><?php print $text; ?></p>
   <?php
-}
+} // function renderCommentInterior($user, $text)
 
 /**
  * Renders a data table on the comments page.
@@ -170,9 +179,9 @@ function renderCommentInterior($user, $text) {
 function renderTable($value) {
   global $mysqli;
   $statement;
-  
+
   if ($value == "genre") {
-    $statement = $mysqli->prepare("SELECT genre_required_available,genre_controled_available, suggested_terms_genre, user_id FROM comments");
+    $statement = $mysqli->prepare("SELECT genre_required_available, genre_controlled_available, suggested_terms_genre, user_id FROM comments");
   } else if ($value == "type_available") {
     $statement = $mysqli->prepare("SELECT type_available, suggested_terms_type, user_id FROM comments");
   } else if ($value == "role_available") {
@@ -395,4 +404,64 @@ function saveObjectToDB($data, $objectID) {
   }
 } // function saveObjectToDB($data, $objectID)
 
+/**
+ * Send off a piece of mail.
+ *
+ * @param {String} $name: The contacting user's name.
+ * @param {String} $email: The contacting user's email.
+ * @param {String} $message: The contacting user's message.
+ * @param {String} $captcha: The Google Captcha's client-sided value.
+ * @param {String} $receiver: The word directly after "Contact" inside the .modal-header > h4.modal-title
+ */
+function sendMail($name, $email, $message, $captcha, $receiver) {
+  $name    = trim($name);
+  $email   = trim($email);
+  $message = trim($message);
+  $captcha = trim($captcha);
+  $catcher = "";
 
+  if ($receiver == "Colin") {
+    // $catcher = "wildercf@mailbox.sc.edu";
+    $catcher = "collinhaines@me.com";
+  } else if ($receiver == "Abigail") {
+    // $catcher = "afire2@uky.edu";
+    $catcher = "collinhaines@me.com";
+  } else {
+    return array("type" => "danger", "text" => "Please do not alter the webpage.");
+  }
+
+  if ($name === "") {
+    return array("type" => "warning", "text" => "Please enter in a name.");
+  }
+
+  if ($email === "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return array("type" => "warning", "text" => "Please enter in a valid email.");
+  }
+
+  if ($message === "") {
+    return array("type" => "warning", "text" => "Please enter in a message.");
+  }
+
+  $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=" . $captcha));
+  if ($response->success != 1) {
+    if ($response->{"error-codes"}[0] == "missing-input-response") {
+      return array("type" => "warning", "text" => "The CAPTCHA response is missing.");
+    } else if ($response->{"error-codes"}[0] == "invalid-input-response") {
+      return array("type" => "danger", "text" => "The CAPTCHA response is invalid or malformed.");
+    } else {
+      return array("type" => "warning", "text" => "Something went wrong while trying to validate the CAPTCHA. Please try again.");
+    }
+  }
+
+  $headers  = "From: " . $email . "\r\n";
+  $headers .= "Reply-To: " . $email . "\r\n";
+  $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+  $headers .= "MIME-Version: 1.0 \r\n";
+  $headers .= "Content-Type: text/html; charset=UTF-8";
+
+  if (mail($catcher, "Contact from Index Iuris", $message, $headers)) {
+    return array("type" => "success", "text" => "Thank you " . $name . ", your message has been sent!");
+  } else {
+    return array("type" => "warning", "text" => "There was an error sending your message. Please try again.");
+  }
+} // function sendMail($name, $email, $message, $captcha, $receiver)

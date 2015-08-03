@@ -7,8 +7,17 @@ require_once "config.php";
 require_once "functions.php";
 
 $loginRequired = isset($loginRequired) ? $loginRequired : false;
-if ($loginRequired && !isset($_SESSION["logged-in"]) && !$_SESSION["logged-in"]) {
+if ($loginRequired && !$loginRequired) {
   header("Location: login");
+}
+
+if (isset($_GET["modal"])) {
+  retreiveModal($_GET["modal"]);
+  exit();
+}
+
+if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])) {
+  exit(json_encode(sendMail($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])));
 }
 
 /*
@@ -30,6 +39,8 @@ if ($loginRequired && !isset($_SESSION["logged-in"]) && !$_SESSION["logged-in"])
   <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css") as $style): ?>
   <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
+
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
   <noscript>
@@ -51,33 +62,34 @@ if ($loginRequired && !isset($_SESSION["logged-in"]) && !$_SESSION["logged-in"])
 
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav navbar-right">
-          <li<?php print $title == "Home" ? " class='active'" : ""; ?>><a href="./">Home</a></li>
+          <li<?php print $title == "Home" ? ' class="active"' : ""; ?>><a href="./">Home</a></li>
+          <?php if (isLoggedIn()): ?>
+            <li<?php print $title == "Metadata Submission Form" ? ' class="active"' : ""; ?>><a href="rdf-form">Metadata Submission</a></li>
+            <li<?php print $title == "Governance" ? ' class="active"' : ""; ?>><a href="governance">Governance</a></li>
+            <li<?php print $title == "View Submission" || $title == "View Submissions" ? ' class="active"' : ""; ?>><a href="submissions">View Submissions</a></li>
 
-          <?php if (isset($_SESSION["logged-in"]) && $_SESSION["logged-in"]): ?>
-          <li<?php print $title == "Metadata Submission Form" ? " class='active'" : ""; ?>><a href="rdf-form">Metadata Submission</a></li>
-          <li<?php print $title == "Governance" ? " class='active'" : ""; ?>><a href="governance">Governance</a></li>
-          <li<?php print $title == "View Submissions" || $title == "View Submission" ? " class='active'" : ""; ?>><a href="submissions">View Submissions</a></li>
+            <?php if (isSuper()): ?>
+              <li<?php print $title == "Comments and Suggested Items" ? ' class="active"' : ""; ?>><a href="comments">Comments</a></li>
+            <?php endif; ?>
 
-          <?php // TODO: Show this tab only if the user is superuser. ?>
-          <li<?php print $title == "Comments and Suggested Items" ? " class='active'" : ""; ?>><a href="comments">Comments</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="account">Account</a></li>
-              <li><a href="logout">Logout</a></li>
-            </ul>
-          </li>
+            <li class="dropdown<?php print $title == 'Account Details' ? ' active' : ''; ?>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" ara-expanded="false"><?php print $_SESSION["username"]; ?> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="account">Account Details</a></li>
+                <li role="seperator" class="divider"></li>
+                <li><a href="logout">Logout</a></li>
+              </ul>
+            </li>
           <?php else: ?>
-          <li<?php print $title == "Login" ? " class='active'" : ""; ?>><a href="login">Login</a></li>
-          <li<?php print $title == "Register" ? " class='active'" : ""; ?>><a href="register">Register</a></li>
+            <li<?php print $title == "Login" ? ' class="active"' : ""; ?>><a href="login">Login</a></li>
+            <li<?php print $title == "Register" ? ' class="active"' : ""; ?>><a href="register">Register</a></li>
           <?php endif; ?>
-
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="mailto:wildercf@mailbox.sc.edu">Colin Wilder (University of South Carolina)</a></li>
+              <li><a href="#" data-target="0">Colin Wilder (University of South Carolina)</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="mailto:afire2@uky.edu">Abigail Firey (University of Kentucky)</a></li>
+              <li><a href="#" data-target="1">Abigail Firey (University of Kentucky)</a></li>
             </ul>
           </li>
         </ul>
