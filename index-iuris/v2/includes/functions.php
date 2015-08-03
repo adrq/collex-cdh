@@ -127,30 +127,31 @@ function printOptions($array) {
  */
 function renderComments($value) {
   global $mysqli;
-  $statement = $mysqli->prepare("SELECT id, comments_id, reply_comment, replied_by FROM reply_$value");
-  $statement->execute();
-  $statement->store_result();
-  $statement->bind_result($id, $commentID, $reply, $replier);
-  $statement->fetch();
-
-  $original = $mysqli->prepare("SELECT $value, user_id FROM comments WHERE id = ?");
-  $original->bind_param("i", $commentID);
+ 
+  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value");
   $original->execute();
   $original->store_result();
-  $original->bind_result($comment, $userID);
+  $original->bind_result($commentId,$comment, $userID);
   $original->fetch();
+  ?>
+<?php while ($original->fetch()): ?>
+	<?php
+  $statement = $mysqli->prepare("SELECT id, reply_comment, replied_by FROM reply_$value where comments_id=?");
+  $statement->bind_param("s",$commentId);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($id, $reply, $replier);
+  $statement->fetch();
   ?>
   <div class="comment col-xs-9">
     <?php renderCommentInterior(findUsername($userID), $comment); ?>
   </div>
-  <?php // Print out the first comment because of the mandatory fetch above. ?>
-  <div class="comment-reply col-xs-9">
-    <?php renderCommentInterior($replier, $reply); ?>
-  </div>
   <?php while ($statement->fetch()): ?>
+  <?php // Print out the first comment because of the mandatory fetch above. ?>
     <div class="comment-reply col-xs-9">
       <?php renderCommentInterior($replier, $reply); ?>
     </div>
+  <?php endwhile;?>
   <?php endwhile;
 } // function renderComment($value)
 
@@ -169,9 +170,9 @@ function renderCommentInterior($user, $text) {
 function renderTable($value) {
   global $mysqli;
   $statement;
-
+  
   if ($value == "genre") {
-    $statement = $mysqli->prepare("SELECT genre_required_available, genre_controlled_available, suggested_terms_genre, user_id FROM comments");
+    $statement = $mysqli->prepare("SELECT genre_required_available,genre_controled_available, suggested_terms_genre, user_id FROM comments");
   } else if ($value == "type_available") {
     $statement = $mysqli->prepare("SELECT type_available, suggested_terms_type, user_id FROM comments");
   } else if ($value == "role_available") {

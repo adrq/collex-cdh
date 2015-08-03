@@ -147,8 +147,7 @@ CREATE TABLE reply_comments_rdf_about(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_provenance(
@@ -156,8 +155,7 @@ CREATE TABLE reply_comments_provenance(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_place_of_composition(
@@ -165,8 +163,7 @@ CREATE TABLE reply_comments_place_of_composition(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_is_part_of(
@@ -174,8 +171,7 @@ CREATE TABLE reply_comments_is_part_of(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_has_part(
@@ -183,8 +179,7 @@ CREATE TABLE reply_comments_has_part(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_text_divisions(
@@ -192,8 +187,7 @@ CREATE TABLE reply_comments_text_divisions(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_notes(
@@ -201,16 +195,14 @@ CREATE TABLE reply_comments_notes(
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
-);
+	PRIMARY KEY (id)
+	);
 
 CREATE TABLE reply_comments_date(
 	id int(11) NOT NULL AUTO_INCREMENT,
 	comments_id int(11) NOT NULL,
 	reply_comment text DEFAULT NULL,
 	replied_by varchar(255) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (comments_id) REFERENCES comments(id)
+	PRIMARY KEY (id)
 );
 
