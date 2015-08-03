@@ -72,23 +72,19 @@ require "includes/header.php";
         $action = "";
 
         if ($statement->num_rows == 1) {
-          $register = $mysqli->prepare("UPDATE users SET password_hash = ? WHERE username = ?");
-          $register->bind_param("ss", $password, $username);
-          $action = "updated";
+          $action = "already exists.";
         } else {
           $register = $mysqli->prepare("INSERT INTO users (username, password_hash, user_role) VALUES (?, ?, 'contributor')");
           $register->bind_param("ss", $username, $password);
-          $action = "created";
+          $register->execute();
+          $register->store_result();
+          $action = "created successfully!";
+          if ($register->errno) {
+          	print "<h3 class='text-danger'>There was an error trying to register. (" . $register->errno . ")</h3>";
+          }
         }
-
-        $register->execute();
-        $register->store_result();
-
-        if ($register->errno) {
-          print "<h3 class='text-danger'>There was an error trying to register. (" . $register->errno . ")</h3>";
-        } else {
-          print "<h3>User " . $action . " successfully! <a href='login'>Login</a></h3>";
-        }
+        print "<h3>User " . $action . " <a href='login'>Login</a></h3>";
+        
       endif;
       ?>
     </div>
