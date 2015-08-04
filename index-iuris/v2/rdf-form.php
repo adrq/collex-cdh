@@ -904,9 +904,58 @@ else:
     $suggested_terms_role          = $comments["suggested-terms-role"];
     $suggested_terms_genre         = $comments["suggested-terms-genre"];
 
-    $statement = $mysqli->prepare("INSERT INTO comments (comments_rdf_about, comments_date, comments_provenance, comments_place_of_composition, comments_is_part_of, comments_has_part, comments_text_divisions, comments_notes, custom_namespace_available, type_available, role_available, genre_required_available, genre_controlled_available, date_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $statement->bind_param("sssssssssssssssssss", $comments_rdf_about, $comments_date, $comments_provenance, $comments_place_of_composition, $comments_is_part_of, $comments_has_part, $comments_text_divisions, $comments_notes, $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $date_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
+   
+	
+	$statement_rdf = $mysqli->prepare("INSERT INTO comments_rdf_about(comments_rdf_about,user_id) VALUES(?,?)"); 
+	$statement_rdf->bind_param("ss",$comments_rdf_about,$userID);
+	$statement_rdf->execute();
+	$statement_rdf->close();
+	
+	$statement_date = $mysqli->prepare("INSERT INTO comments_date(comments_date,date_available,user_id) VALUES(?,?,?)"); 
+	$statement_date->bind_param("sss",$comments_date,$date_available,$userID);
+	$statement_date->execute();
+	$statement_date->close();
+	
+	$statement_provenance = $mysqli->prepare("INSERT INTO comments_provenance(comments_provenance,user_id) VALUES(?,?)"); 
+	$statement_provenance->bind_param("ss",$comments_provenance,$userID);
+	$statement_provenance->execute();
+	$statement_provenance->close();
+	
+	$statement_place_of_composition = $mysqli->prepare("INSERT INTO comments_place_of_composition(comments_place_of_composition,user_id) VALUES(?,?)"); 
+	$statement_place_of_composition->bind_param("ss",$comments_place_of_composition,$userID);
+	$statement_place_of_composition->execute();
+	$statement_place_of_composition->close();
+	
+	$statement_is_part_of = $mysqli->prepare("INSERT INTO comments_is_part_of(comments_is_part_of,user_id) VALUES(?,?)"); 
+	$statement_is_part_of->bind_param("ss",$comments_is_part_of,$userID);
+	$statement_is_part_of->execute();
+	$statement_is_part_of->close();
+	
+	$statement_has_part = $mysqli->prepare("INSERT INTO comments_has_part(comments_has_part,user_id) VALUES(?,?)"); 
+	$statement_has_part->bind_param("ss",$comments_has_part,$userID);
+	$statement_has_part->execute();
+	$statement_has_part->close();
+	
+	
+	$statement_text_divisions = $mysqli->prepare("INSERT INTO comments_text_divisions(comments_text_divisions,user_id) VALUES(?,?)"); 
+	$statement_text_divisions->bind_param("ss",$comments_text_divisions,$userID);
+	$statement_text_divisions->execute();
+	$statement_text_divisions->close();
+	
+	
+	$statement_notes = $mysqli->prepare("INSERT INTO comments_notes(comments_notes,user_id) VALUES(?,?)"); 
+	$statement_notes->bind_param("ss",$comments_notes,$userID);
+	$statement_notes->execute();
+	$statement_notes->close();
+	
+    $statement = $mysqli->prepare("INSERT INTO comments ( custom_namespace_available, type_available, role_available, genre_required_available, genre_controlled_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $statement->bind_param("ssssssssss", $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
     $statement->execute();
+	
+	
+	
+	
+	
 
     if ($statement->affected_rows === 0): ?>
     <div class="container">
