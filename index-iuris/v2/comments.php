@@ -10,7 +10,6 @@ if (isset($_GET["comments"])) {
   $commentName = $_GET["comments"];
 
   if (strpos($commentName, "comments_") !== false) {
-	  print $commentName;
     renderComments($commentName);
   } else {
     renderTable($commentName);
