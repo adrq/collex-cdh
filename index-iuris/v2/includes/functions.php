@@ -141,7 +141,6 @@ function renderComments($value) {
   $original->execute();
   $original->store_result();
   $original->bind_result($commentID, $comment, $userID);
-  
   ?>
 
   <?php while ($original->fetch()): ?>
@@ -164,6 +163,12 @@ function renderComments($value) {
   <?php endwhile;
 } // function renderComment($value)
 
+/**
+ * Renders the inside of a comment.
+ *
+ * @param {String} $user: The username.
+ * @param {String} $text: The comment text.
+ */
 function renderCommentInterior($user, $text) {
   ?>
   <h4><?php print $user; ?><span class="reply pull-right">Reply</span></h4>

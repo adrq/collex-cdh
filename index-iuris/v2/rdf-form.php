@@ -832,7 +832,7 @@ else:
       $insert->bind_param("iss", $lastID, $machineDate, $humanDate);
       $insert->execute();
     }
-    
+
     // Add isPartOf to its table.
     $partType = "isPartOf";
     foreach ($_POST["is_part_of"] as $id) {

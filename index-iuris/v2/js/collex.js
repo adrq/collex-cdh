@@ -259,12 +259,13 @@ $("#newCommentButton").click(function (e) {
 $(".viewer").click(function () {
   $(".viewer.viewer-active").removeClass("viewer-active");
   $(this).addClass("viewer-active");
+
   $.ajax({
     url: "comments",
     type: "GET",
     data: "comments=" + $(this).data("value"),
     success: function (result) {
-		console.log(result);
+    console.log(result);
       if (result.indexOf("<b>Notice</b>") > -1) {
         console.error("There is a notice inside the PHP code. Result:\n" + result);
       }
@@ -274,6 +275,8 @@ $(".viewer").click(function () {
       console.error("Error connecting to the server. Message: " + result.responseText);
     }
   });
+
+  // renderComments($(this).text(), $(this).data("value"));
 });
 
 /**
@@ -289,22 +292,56 @@ $("#results").on("click", ".reply", function () {
  * Submits a reply comment.
  */
 $("#results").on("click", "a.btn-default", function (e) {
-	alert("Submtting comment.");
-	var value = $.trim((this).prev().val());
-	
-	$.ajax({
-		url: "post-commment",
-		type: "POST",
-		data: "comment=" + value,
-		success: function (result) {
-			alert("The comment was posted.");
-		},
-		error: function (result) {
-			alert("Error: " + result.responseText);
-		}
-	});
-	
-	e.target.blur();
+  alert("Submitting comment.");
+
+  var value = $.trim((this).prev().val());
+
+  $.ajax({
+    url: "post-commment",
+    type: "POST",
+    data: "comment=" + value,
+    success: function (result) {
+      alert("The comment was posted.");
+    },
+    error: function (result) {
+      alert("Error: " + result.responseText);
+    }
+  });
+
+  e.target.blur();
+});
+
+/**
+ * Sends off a verification email.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$("#verification").click(function (e) {
+  if ($(this).next().is("span.label")) { return; }
+  var button = $(this);
+  $.ajax({
+    url: "account",
+    type: "POST",
+    data: {
+      resend: $(this).parent().find("> span").text()
+    },
+    dataType: "json",
+    beforeSend: function () {
+      $("<span class='label label-primary' style='position: relative; top: 3px; left: 5px;'>Sending...</span>").insertAfter(button);
+    },
+    success: function (result) {
+      if (result.type === 0) {
+        button.next().toggleClass("label-primary label-warning").text("Failed");
+      } else if (result.type == 1) {
+        button.next().toggleClass("label-primary label-success").text("Sent");
+      }
+    },
+    error: function (result) {
+      button.next().toggleClass("label-primary label-danger").text("Error");
+      console.error("Error. Result: " + result.responseText);
+    }
+  });
+  e.target.blur();
 });
 
 /**

@@ -55,6 +55,9 @@ require "includes/header.php";
       <h1>Login</h1>
       <?php if ($dialog !== ""): ?>
         <p class="lead text-danger text-center"><?php print $dialog; ?></p>
+        <?php if ($dialog == "This username does not exist."): ?>
+          <a href="register">Do you need to register?</a>
+        <?php endif; ?>
       <?php endif; ?>
     </div>
   </div>
@@ -78,8 +81,8 @@ require "includes/header.php";
           </div>
 
           <div class="form-group">
-            <div class="col-xs-2 pull-right">
-              <button type="submit" class="btn btn-primary col-xs-12">Login</button>
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-primary pull-right">Login</button>
             </div>
           </div>
         </fieldset>
