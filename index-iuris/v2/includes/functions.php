@@ -62,6 +62,18 @@ function printValue($text, $ignore = false) {
 } // function printValue($text, $ignore = false)
 
 /**
+ * Unescapes HTML entities
+ * - Currently only detects quotation marks.
+ * - Unescapes double quotes but leaves other html entities intact
+ *   if you want to remove all escaped html entities use htmlspecialchars_decode()
+ * @param {String} $text: HTML text to be unescaped
+ * @return {String}
+ */
+function unescapeHTMLEntities($text) {
+	return preg_replace("/&quot;/", "\"", $text);
+} // function unescapeHTMLEntities($text)
+
+/**
  * Submit a comment on the governance page to the database.
  *
  * @param {String} $comment: The comment.

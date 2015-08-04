@@ -54,6 +54,7 @@ $rolesRDFArray = array(
  * @return {String}
  */
 
+//TODO: 
 function generateRDF($objectID) {
   global $mysqli;
 	
@@ -78,91 +79,92 @@ function generateRDF($objectID) {
   	return;  			
   }
   
-  $rdf .= file_get_contents("includes/rdf-header.rdf") . "\n\t<". $custom_namespace . " rdf:about=\"" . $rdf_about. "\">\n\t";
+  $rdf .= file_get_contents("includes/rdf-header.rdf") . "\n\t<".unescapeHTMLEntities($custom_namespace) . " rdf:about=\"" . unescapeHTMLEntities($rdf_about). "\">\n\t";
+  
   //TODO: add namespace identifier and uri once namespaces have been defined
-  $rdf .= "<rdfs:seeAlso rdf:resource=\"" . $url. "\"/>\n\t<collex:federation>INDEXIURIS</collex:federation>\n";
+  $rdf .= "<rdfs:seeAlso rdf:resource=\"" . unescapeHTMLEntities($url). "\"/>\n\t<collex:federation>INDEXIURIS</collex:federation>\n";
 
   
   if ($archive!=""){
-  	$rdf .= "\t<collex:archive>".$archive."</collex:archive>\n";
+  	$rdf .= "\t<collex:archive>".unescapeHTMLEntities($archive)."</collex:archive>\n";
   }
 
   if ($title!=""){
-  	$rdf .= "\t<dc:title>".$title."</dc:title>\n";
+  	$rdf .= "\t<dc:title>".unescapeHTMLEntities($title)."</dc:title>\n";
   }
 
   if ($type!=""){
-  	$rdf .= "\t<ii:type>".$type."</ii:type>\n";
+  	$rdf .= "\t<ii:type>".unescapeHTMLEntities($type)."</ii:type>\n";
   }
 
   if ($origin!=""){
-  	$rdf .= "\t<ii:origin>".$origin."</ii:origin>\n";
+  	$rdf .= "\t<ii:origin>".unescapeHTMLEntities($origin)."</ii:origin>\n";
   }
 
   if ($provenance!=""){
-  	$rdf .= "\t<ii:provenance>".$provenance."</ii:provenance>\n";
+  	$rdf .= "\t<ii:provenance>".unescapeHTMLEntities($provenance)."</ii:provenance>\n";
   }
 
   //place of composition TODO: check namespace name with Colin and Abigail
   if($place_of_composition!=""){
-  	$rdf .= "\t<ii:composition>".$place_of_composition."</ii:composition>\n";
+  	$rdf .= "\t<ii:composition>".unescapeHTMLEntities($place_of_composition)."</ii:composition>\n";
   }
   
   if ($shelfmark!=""){
-  	$rdf .= "\t<ii:shelfmark>".$shelfmark."</ii:shelfmark>\n";
+  	$rdf .= "\t<ii:shelfmark>".unescapeHTMLEntities($shelfmark)."</ii:shelfmark>\n";
   }
   
   if ($freeculture!=""){
-  	$rdf .= "\t<collex:freeculture>".$freeculture."</collex:freeculture>\n";
+  	$rdf .= "\t<collex:freeculture>".unescapeHTMLEntities($freeculture)."</collex:freeculture>\n";
   }  
   
   //fulltext
   if ($is_full_text == "true"){
   	if ($full_text_url != ""){
-  		$rdf .= "\t<collex:text rdf:resource=\">".$full_text_url."\"/>\n";
+  		$rdf .= "\t<collex:text rdf:resource=\">".unescapeHTMLEntities($full_text_url)."\"/>\n";
   	}
   	else {
-  		$rdf .= "\t<collex:text>".$full_text_plain."</collex:text>\n";
+  		$rdf .= "\t<collex:text>".unescapeHTMLEntities($full_text_plain)."</collex:text>\n";
   	}
   }
 
   if ($image_url!=""){
-  	$rdf .= "\t<collex:image rdf:resource=\"".$image_url."\"/>\n";
+  	$rdf .= "\t<collex:image rdf:resource=\"".unescapeHTMLEntities($image_url)."\"/>\n";
   }
   if($source!=""){
-  	$rdf .= "\t<dc:source>".$source."</dc:title>\n";
+  	$rdf .= "\t<dc:source>".unescapeHTMLEntities($source)."</dc:source>\n";
   }
 
   if($metadata_xml_url!=""){
-  	$rdf .= "\t<collex:source_xml>".$metadata_xml_url."</collex:source_xml>\n";
+  	$rdf .= "\t<collex:source_xml>".unescapeHTMLEntities($metadata_xml_url)."</collex:source_xml>\n";
   }
 
   if($metadata_html_url!=""){
-  	$rdf .= "\t<collex:source_html>".$metadata_html_url."</collex:source_html>\n";
+  	$rdf .= "\t<collex:source_html>".unescapeHTMLEntities($metadata_html_url)."</collex:source_html>\n";
   }
 
-  if($text_divisions!=""){
-  	$rdf .= "\t<ii:divisions>".$text_divisions."</ii:divisions>\n";
+  if($text_divisions!=""){ //TODO: check namespace name with Colin and Abigail
+  	$rdf .= "\t<ii:divisions>".unescapeHTMLEntities($text_divisions)."</ii:divisions>\n";
   }
 
   if($language!=""){
-  	$rdf .= "\t<dc:language>".$language."</dc:language>\n";
+  	$rdf .= "\t<dc:language>".unescapeHTMLEntities($language)."</dc:language>\n";
   }
 
   if($ocr!=""){
-  	$rdf .= "\t<collex:ocr>".$ocr."</collex:ocr>\n";
+  	$rdf .= "\t<collex:ocr>".unescapeHTMLEntities($ocr)."</collex:ocr>\n";
   }
 
   if($thumbnail_url!=""){
-  	$rdf .= "\t<collex:thumbnail rdf:resource=\"".$thumbnail_url."\"/>\n";
+  	$rdf .= "\t<collex:thumbnail rdf:resource=\"".unescapeHTMLEntities($thumbnail_url)."\"/>\n";
   }
 
   if($notes!=""){
-  	$rdf .= "\t<ii:notes>".$notes."</ii:notes>\n";
+  	$rdf .= "\t<ii:notes>".unescapeHTMLEntities($notes)."</ii:notes>\n";
   }
 
   if($file_format!=""){
-  	$rdf .= "\t<ii:format>".$file_format."</ii:format>\n";
+  	$rdf .= "\t<ii:format>".unescapeHTMLEntities($file_format)."</ii:format>\n";
   }
   
   //role
@@ -173,7 +175,7 @@ function generateRDF($objectID) {
   $temp->bind_result($role, $value);
   
   while ($temp->fetch()){
-  	$rdf .= "\t<role:".$rolesRDFArray[$role].">".$value."</role:".$rolesRDFArray[$role].">\n";
+  	$rdf .= "\t<role:".$rolesRDFArray[$role].">".unescapeHTMLEntities($value)."</role:".$rolesRDFArray[$role].">\n";
   }
 
   
@@ -185,7 +187,7 @@ function generateRDF($objectID) {
   $temp->bind_result($genre);
   
   while ($temp->fetch()){
-  	$rdf .= "\t<ii:genre>".$genre."</ii:genre>\n";
+  	$rdf .= "\t<ii:genre>".unescapeHTMLEntities($genre)."</ii:genre>\n";
   }
   
   //alternative titles
@@ -196,7 +198,7 @@ function generateRDF($objectID) {
   $temp->bind_result($altTitle);
   
   while ($temp->fetch()){
-  	$rdf .= "\t<dcterms:alternative>".$altTitle."</dcterms:alternative>\n";
+  	$rdf .= "\t<dcterms:alternative>".unescapeHTMLEntities($altTitle)."</dcterms:alternative>\n";
   }
   
   //parts
@@ -214,7 +216,7 @@ function generateRDF($objectID) {
   	$part->bind_result($part_rdf_about);
   	$part->fetch();
   	
-  	$rdf .= "\t<dcterms:$type rdf:resource=\"".$part_rdf_about."\"/>\n";
+  	$rdf .= "\t<dcterms:$type rdf:resource=\"".unescapeHTMLEntities($part_rdf_about)."\"/>\n";
   }
   
   //date
@@ -225,7 +227,7 @@ function generateRDF($objectID) {
   $temp->bind_result($type, $machine, $human);
   
   while ($temp->fetch()){
-  	$rdf .= "\t<dc:date>\n\t  <collex:date>\n\t    <rdfs:label>".$human."</rdfs:label>\n\t    <rdf:value>".$machine."<rdf:value>\n\t  </collex:date>\n\t</dc:date>\n";
+  	$rdf .= "\t<dc:date>\n\t  <collex:date>\n\t    <rdfs:label>".unescapeHTMLEntities($human)."</rdfs:label>\n\t    <rdf:value>".unescapeHTMLEntities($machine)."<rdf:value>\n\t  </collex:date>\n\t</dc:date>\n";
   }
   
 

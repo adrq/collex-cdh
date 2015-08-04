@@ -65,8 +65,9 @@ require "includes/header.php";
                 <td><?php print findUsername($userID); ?></td>
               <?php endif; ?>
               <td class="text-center">
-                <a href="view?id=<?php print $id; ?>" class="btn btn-primary">View</a>
-                <a href="edit?id=<?php print $id; ?>" class="btn btn-success">Edit</a>
+                <a href="view?id=<?php print $id; ?>" class="btn btn-sm btn-primary">View</a>
+                <a href="edit?id=<?php print $id; ?>" class="btn btn-sm btn-success">Edit</a>
+                <a href="rdf?id=<?php print $id; ?>"class="btn btn-sm btn-default">RDF</a>
               </td>
             </tr>
           <?php endwhile; ?>

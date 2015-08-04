@@ -6,6 +6,7 @@
 
 require "includes/rdf-generator.php";
 require_once "includes/config.php";
+require_once "includes/functions.php";
 if (isset($_GET["id"])) :
   $id = $_GET["id"];
   if (isset($_GET["download"]) && $_GET["download"]=="true"){ //download the rdf file instead of displaying it
@@ -28,6 +29,10 @@ require "includes/header.php";
       <h1 class="pull-left">View RDF</h1>
       <h3 class="pull-right"><a href="view?id=<?php print $id?>">Return to submission</a></h3>
     </div>
+    <div class="col-xs-12">
+      <a href="rdf?id=<?php print $id?>&download=true" class="btn btn-default">Download RDF</a>
+    </div>
+    
     <div class="col-xs-12">
       <pre>
         <?php print htmlspecialchars(generateRDF($id));?>
