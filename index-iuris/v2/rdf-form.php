@@ -916,6 +916,8 @@ else:
     $suggested_terms_type          = $comments["suggested-terms-type"];
     $suggested_terms_role          = $comments["suggested-terms-role"];
     $suggested_terms_genre         = $comments["suggested-terms-genre"];
+	
+	
 
    
 	

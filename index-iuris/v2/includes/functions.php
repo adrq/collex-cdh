@@ -148,7 +148,7 @@ function printOptions($array) {
  */
 function renderComments($value) {
   global $mysqli;
-  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value");
+  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value where $value !=''");
   $original->execute();
   $original->store_result();
   $original->bind_result($commentID, $comment, $userID);
