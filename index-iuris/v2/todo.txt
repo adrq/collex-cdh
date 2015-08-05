@@ -15,6 +15,7 @@ Governance
 View Submissions
 
 Edit Submission
+-Add dropdown for Type field! - same as rdf-form
 - Add dropdown for archive/namespace (pending discussion with C&A)
 - Test new hasPart and isPartOf functionality
 	write js to update modal dialogs when user deletes a part

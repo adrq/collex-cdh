@@ -85,6 +85,13 @@ CREATE TABLE parts(
   PRIMARY KEY (id)
 );
 
+CREATE TABLE languages(
+  id int(11) NOT NULL AUTO_INCREMENT,
+  object_id int(11),
+  language varchar(255),
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE objects (
   id int(11) NOT NULL AUTO_INCREMENT,
   custom_namespace varchar(255) DEFAULT NULL,
@@ -106,7 +113,6 @@ CREATE TABLE objects (
   metadata_xml_url text DEFAULT NULL,
   metadata_html_url text DEFAULT NULL,
   text_divisions text DEFAULT NULL,
-  language varchar(255) DEFAULT NULL,
   ocr varchar(255) DEFAULT NULL,
   thumbnail_url text DEFAULT NULL,
   notes text DEFAULT NULL,
