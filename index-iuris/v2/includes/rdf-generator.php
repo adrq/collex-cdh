@@ -16,7 +16,7 @@ $rolesRDFArray = array(
 		"Etcher" => "ETR",
 		"Engraver" => "EGR",
 		"Owner" => "OWN",
-		"Visual Artist" => "ART",
+		"Artist" => "ART",
 		"Architect" => "ARC",
 		"Binder" => "BND",
 		"Book designer" => "BKD",
@@ -61,12 +61,12 @@ function generateRDF($objectID) {
   global $rolesRDFArray;
 
 
-  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("s", $objectID);
   $statement->execute();
   $statement->store_result();
   
-  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
   if ($statement->num_rows != 1){
   	return "RECORD \"$objectID\" DOES NOT EXIST";
   }
@@ -154,10 +154,6 @@ function generateRDF($objectID) {
   	$rdf .= "\t<ii:divisions>".unescapeHTMLEntities($text_divisions)."</ii:divisions>\n";
   }
 
-  if($language!=""){
-  	$rdf .= "\t<dc:language>".unescapeHTMLEntities($language)."</dc:language>\n";
-  }
-
   if($ocr!=""){
   	$rdf .= "\t<collex:ocr>".unescapeHTMLEntities($ocr)."</collex:ocr>\n";
   }
@@ -172,6 +168,18 @@ function generateRDF($objectID) {
 
   if($file_format!=""){
   	$rdf .= "\t<ii:format>".unescapeHTMLEntities($file_format)."</ii:format>\n";
+  }
+  
+  
+  //language
+  $temp = $mysqli->prepare("SELECT language FROM languages WHERE object_id = ?");
+  $temp->bind_param("s", $objectID);
+  $temp->execute();
+  $temp->store_result();
+  $temp->bind_result($language);
+  
+  while ($temp->fetch()){
+  	$rdf .= "\t<dc:language>".unescapeHTMLEntities($language)."</dc:language>\n";
   }
   
   //role
