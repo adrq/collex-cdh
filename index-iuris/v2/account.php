@@ -5,29 +5,27 @@
  */
 
 $dialog = "";
-if (isset($_POST["oldPassword"], $_POST["password1"], $_POST["password2"])) {
+if (isset($_POST)) {
   require_once "includes/userFunctions.php";
+}
 
+if (isset($_POST["oldPassword"], $_POST["password1"], $_POST["password2"])) {
   if (strcmp(trim($_POST["password1"]), trim($_POST["password2"])) === 0) {
     $dialog = updatePassword($_POST["oldPassword"], $_POST["password1"]);
   } else {
     $dialog = "Your passwords do not match.";
-  } // if (strcmp(trim($_POST["password1"]), trim($_POST["password2"])) === 0)
-} // if (isset($_POST["oldPassword"], $_POST["password1"], $_POST["password2"]))
+  }
+}
 
 if (isset($_POST["oldEmail"], $_POST["email1"], $_POST["email2"])) {
-  require_once "includes/userFunctions.php";
-
   if (strcmp(trim($_POST["email1"]), trim($_POST["email2"])) === 0) {
     $dialog = updateEmail($_POST["oldEmail"], $_POST["email1"]);
   } else {
     $dialog = "Your emails do not match.";
-  } // if (strcmp(trim($_POST["email1"]), trim($_POST["email2"])) === 0)
-} // if (isset($_POST["oldEmail"], $_POST["email1"], $_POST["email2"]))
+  }
+}
 
 if (isset($_POST["resend"])) {
-  require_once "includes/userFunctions.php";
-
   exit(json_encode(array("type" => sendEmailVerification($_POST["resend"]))));
 }
 
@@ -53,7 +51,7 @@ require "includes/header.php";
 
     <?php if (isset($_GET["update"]) && $_GET["update"] == "password"): ?>
       <div class="col-xs-6">
-        <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST" id="accountUpdate">
+        <form class="form-horizontal" id="passwordUpdate" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
           <fieldset>
             <section class="form-group">
               <label for="old" class="col-xs-4 control-label">Old Password</label>
@@ -192,7 +190,7 @@ require "includes/header.php";
             $statement->fetch();
             ?>
             <span class="badge"><?php print $count; ?></span>
-            Governance Comments Made
+            Governance Comments
           </li>
         </ul>
       </div>

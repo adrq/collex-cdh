@@ -294,17 +294,17 @@ $("#results").on("click", ".reply", function () {
 $("#results").on("click", "a.btn-default", function (e) {
   alert("Submitting comment.");
 
-  var value = $.trim((this).prev().val());
+  var value = $.trim($(this).prev().val());
 
   $.ajax({
-    url: "post-commment",
+    url: "comments",
     type: "POST",
     data: "comment=" + value,
     success: function (result) {
-      alert("The comment was posted.");
+      console.log(result);
     },
     error: function (result) {
-      alert("Error: " + result.responseText);
+      console.error("Error: " + result.responseText);
     }
   });
 
@@ -347,11 +347,11 @@ $("#verification").click(function (e) {
 /**
  * Verify that the password inputs are the same before server-side verification.
  */
-$("#accountUpdate").on("input", "input", function () {
+$("form#passwordUpdate").on("input", "input", function () {
   var name  = $(this).prop("name");
   var value = $.trim($(this).val());
-  var pass1 = $.trim($("#accountUpdate input#password1").val());
-  var pass2 = $.trim($("#accountUpdate input#password2").val());
+  var pass1 = $.trim($("#passwordUpdate input#password1").val());
+  var pass2 = $.trim($("#passwordUpdate input#password2").val());
 
   // Compare the password inputs with each other.
   if ((name == "password1" && pass2 !== "" && value !== pass2) || (name == "password2" && pass1 !== "" && value !== pass1)) {

@@ -85,6 +85,48 @@ function register($username, $password1, $password2, $email, $captcha) {
 } // function register($username, $password1, $password2, $email, $captcha)
 
 /**
+ * Sends a password reset to an email address.
+ *
+ * @param {String} $username: The user inputted email address.
+ * @return {String}
+ */
+function sendPasswordReset($username) {
+  global $mysqli;
+  $unique = uniqid(uniqid(uniqid("", true), true), true);
+
+  $statement = $mysqli->prepare("UPDATE users SET request_time = NOW(), password_uid = ? WHERE username = ?");
+  $statement->bind_param("ss", $unique, $username);
+  $statement->execute();
+
+  $statement = $mysqli->prepare("SELECT email FROM users WHERE username = ?");
+  $statement->bind_param("s", $username);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($email);
+
+  // Send the email only if the username exists.
+  if ($statement->fetch()) {
+    $reset = ROOT_FOLDER . "reset?id=" . $unique;
+
+    $message  = "Hello " . $username . ",<br><br>";
+    $message .= "<p>You've recently requested to reset your password.</p>";
+    $message .= "<p>If you did not initiate this action then please ignore this email. The link will expire in 24 hours from this email.</p><br>";
+    $message .= "<p>Otherwise, please <a href='" . $reset . "'>visit this link</a> to reset your password.</p><br>";
+    $message .= "<p>" . $reset . "</p>";
+
+    $headers  = "From: cdh@sc.edu \r\n";
+    $headers .= "Reply-To: cdh@sc.edu \r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $headers .= "MIME-Version: 1.0 \r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8";
+
+    mail($email, "Password Reset", $message, $headers);
+  }
+
+  return "Password reset has been sent.";
+} // function sendPasswordReset($username)
+
+/**
  * Sends off a email verification.
  *
  * @param {String} $email: The receiving email.
@@ -107,7 +149,7 @@ function sendEmailVerification($email) {
   $headers .= "Content-Type: text/html; charset=UTF-8";
 
   return mail($email, "Email Verification", $message, $headers);
-}
+} // function sendEmailVerification($email)
 
 /**
  * Updates a user's email address.
@@ -118,6 +160,11 @@ function sendEmailVerification($email) {
  */
 function updateEmail($oldEmail, $newEmail) {
   global $mysqli;
+
+  // Filter the new email.
+  if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
+    return "Please enter in a valid email.";
+  }
 
   // Assure the emails have been escaped.
   $oldEmail = $mysqli->real_escape_string(trim($oldEmail));
@@ -152,7 +199,7 @@ function updateEmail($oldEmail, $newEmail) {
   sendEmailVerification($newEmail);
 
   return $statement->affected_rows > 0 ? "Email address updated successfully. Verification sent." : "Failed to update your email address.";
-}
+} // function updateEmail($oldEmail, $newEmail)
 
 /**
  * Update a user's password.
@@ -164,8 +211,7 @@ function updateEmail($oldEmail, $newEmail) {
 function updatePassword($oldPassword, $newPassword) {
   global $mysqli;
 
-  // Note: We do not have to escape the passwords due to the fact that
-  // they will be hashed prior to touching the database.
+  // Note: We do not have to escape the passwords due to the fact that they will be hashed prior to touching the database.
 
   // Hash the passwords.
   $oldPassword = hash("sha512", trim($oldPassword));
@@ -190,4 +236,4 @@ function updatePassword($oldPassword, $newPassword) {
   $statement->store_result();
 
   return $statement->affected_rows > 0 ? "Password updated successfully." : "Failed to update your password.";
-}
+} // function updatePassword($oldPassword, $newPassword)
