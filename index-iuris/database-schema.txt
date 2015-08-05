@@ -6,6 +6,8 @@ CREATE TABLE `users` (
   `user_role` varchar(255),
   `email` varchar(255),
   `email_verify` tinyint(1),
+  `request_time` datetime DEFAULT "0000-00-00 00:00:00",
+  `password_uid` varchar(255),
   PRIMARY KEY (`id`)
 );
 
