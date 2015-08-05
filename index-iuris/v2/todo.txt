@@ -3,8 +3,9 @@ Index Iuris TODO List:
 Home
 
 Metadata Submission (rdf-form)
+- Add functionality for multiple dates
+- Add dropdown for file format
 - Add dropdown for archive/namespace (pending discussion with C&A)
-- Discussion about multiple dates.
 - Multiple fields need approval from Colin and Abigail
 - Functionality to add subject and discipline to database.
 	This will need to be discussed with Colin and Abigail
@@ -15,7 +16,8 @@ Governance
 View Submissions
 
 Edit Submission
--Add dropdown for Type field! - same as rdf-form
+- Add functionality for multiple dates
+- Add dropdown for file format
 - Add dropdown for archive/namespace (pending discussion with C&A)
 - Test new hasPart and isPartOf functionality
 	write js to update modal dialogs when user deletes a part
@@ -23,12 +25,15 @@ Edit Submission
 View Individual Submission
 
 Comments
+- Update database tables on Lichen to reflect new schema for comments, upload new pages!!!
 
 View Reply
 - Ability to redirect when there are no replies.
 - Prior page detection when there are no replies.
 
 Other
+- Possible: add column to objects table to show "edited by user_id"
+	- Fix edit page (saveObjectToDB function) so that edit does not change user_id in objects table
 - User Roles. (Super User, etc.)
 - Possible: First and last Name for each account.
 - Email address per account for password recovery.

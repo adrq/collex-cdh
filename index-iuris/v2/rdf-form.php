@@ -64,10 +64,10 @@ if (!isset($_POST["submitted"])): ?>
           <legend>rdf:about</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>rdf:about</samp> is a required attribute of <samp>custom namespace</samp>, and its format is predetermined for technical reasons. <samp>rdf:about</samp> is a URI or a URL that uniquely identifies the record to be indexed.</p>
+              <p><samp>rdf:about</samp> is required. <samp>rdf:about</samp> is a URI or a URL that uniquely identifies the record to be indexed.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("&lt;pennington:legal_texts rdf:about=\"http://faculty.cua.edu/pennington/edit301.html\"&gt;", "&lt;CCL:manuscripts rdf:about=\"http://ccl.rch.uky.edu/aboutBod718\"&gt;")); ?>
+                <?php printExamples(array("http://faculty.cua.edu/pennington/edit301.html", "http://ccl.rch.uky.edu/aboutBod718")); ?>
               </ul>
 
               <div class="form-group">
@@ -163,9 +163,8 @@ if (!isset($_POST["submitted"])): ?>
           <legend>Role</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Role</samp> is an optional field, however if used, the terms will be selected from a pre-determined list (controlled vocabulary).</p>
+              <p><samp>Role</samp> is used to identify individuals who had a role in the creation/edition of the object. Use this field to list Authors, Editors, etc.</p>
               <p>This field can appear multiple times.</p>
-
               <div class="form-group" style="display: none;">
                 <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">

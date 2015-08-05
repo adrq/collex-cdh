@@ -58,7 +58,6 @@ else:
                 printResult("rdf_about", "Unique Identifier (URI)", $rdf_about, "input");
                 printResult("archive", "Archive", $archive, "input");
                 printResult("title", "Title", $submissionTitle, "input");
-                printResult("type", "Type", $type, "input");
                 printResult("url", "URL", $url, "input");
                 printResult("origin", "Origin", $origin, "input");
                 printResult("provenance", "Provenance", $provenance, "input");
@@ -118,7 +117,29 @@ else:
                 <?php
                 endforeach;
                 */
-
+                ?>
+                
+                <span class="hide">Type</span>
+                <section>
+                  <div class="form-group">
+                    <label for="type" class="control-label col-xs-2">Type</label>
+                  <div class="col-xs-10">
+                    <select class="form-control" id="type" name="type" required="">
+                    <?php 
+                    $typesArray = array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript");
+                    foreach ($typesArray as $currentType):
+                    ?>
+                      <option<?php print $currentType == $type ? " selected=''": "";?>><?php print $currentType?></option> 
+                    <?php
+                    endforeach;
+                    ?>
+                    </select>
+                  </div>
+                </div>
+                
+                </section>
+                <hr>
+                <?php 
                 $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
                 $temp->bind_param("s", $id);
                 $temp->execute();
