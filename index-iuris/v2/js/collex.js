@@ -315,19 +315,21 @@ $("#results").on("click", ".reply", function () {
  * Submits a reply comment.
  */
 $("#results").on("click", "a.btn-default", function (e) {
-  alert("Submitting comment.");
 
   var value = $.trim($(this).prev().val());
-
+  var id = $(this).parent().prev().find("> h3").data("id");
+  var tablename = $(this).parent().prev().find("> h3").data("tablename");
+  
   $.ajax({
     url: "comments",
     type: "POST",
-    data: "comment=" + value,
+    data: "postComment=" + value + "&commentID=" + id + "&tablename=" + tablename,
     success: function (result) {
-      console.log(result);
+		$("#results").html(result);
+      // alert("The comment was posted.");
     },
     error: function (result) {
-      console.error("Error: " + result.responseText);
+		alert("it is an error\n" + result.responseText);
     }
   });
 

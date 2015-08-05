@@ -924,8 +924,8 @@ else:
 	$statement_rdf->execute();
 	$statement_rdf->close();
 	
-	$statement_date = $mysqli->prepare("INSERT INTO comments_date(comments_date,date_available,user_id) VALUES(?,?,?)"); 
-	$statement_date->bind_param("sss",$comments_date,$date_available,$userID);
+	$statement_date = $mysqli->prepare("INSERT INTO comments_date(comments_date,user_id) VALUES(?,?)"); 
+	$statement_date->bind_param("ss",$comments_date,$userID);
 	$statement_date->execute();
 	$statement_date->close();
 	
@@ -961,8 +961,8 @@ else:
 	$statement_notes->execute();
 	$statement_notes->close();
 	
-    $statement = $mysqli->prepare("INSERT INTO comments ( custom_namespace_available, type_available, role_available, genre_required_available, genre_controlled_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $statement->bind_param("ssssssssss", $custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
+    $statement = $mysqli->prepare("INSERT INTO comments ( date_available,custom_namespace_available, type_available, role_available, genre_required_available, genre_controlled_available, url_available, suggested_terms_type, suggested_terms_role, suggested_terms_genre, user_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+    $statement->bind_param("sssssssssss", $date_available,$custom_namespace_available, $type_available, $role_available, $genre_required_available, $genre_controled_available, $url_available, $suggested_terms_type, $suggested_terms_role, $suggested_terms_genre, $userID);
     $statement->execute();
 	
 	

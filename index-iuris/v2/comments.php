@@ -17,6 +17,30 @@ if (isset($_GET["comments"])) {
   exit();
 }
 
+if (isset($_POST["postComment"])) {
+    require_once "includes/config.php";
+	require_once "includes/functions.php";
+    global $mysqli;
+
+    //$id    = $_POST["id"];
+    //$table = $_POST["table"];
+
+    $reply_comment  = $_POST["postComment"];
+    $username = $_SESSION["username"];
+	$userid = $_POST["commentID"];
+	$tablename = "reply_".$_POST["tablename"];
+	
+    $statement = $mysqli->prepare("INSERT INTO $tablename (comments_id, reply_comment, replied_by) VALUES (?,?,?)");
+	$statement->bind_param("sss",$userid,$reply_comment,$username);
+    $statement->execute();
+    $statement->store_result();
+	$statement->close();
+	
+	renderComments($_POST["tablename"]);
+    
+	exit();
+}
+
 $title = "Comments and Suggested Items";
 $loginRequired = true;
 require "includes/header.php";
@@ -44,7 +68,8 @@ require "includes/header.php";
     array("value" => "custom_namespace_available", "title" => "Custom Namespace Decisions"),
     array("value" => "url_available", "title" => "URI or URL Decisions"),
     array("value" => "type_available", "title" => "Type Decisions"),
-    array("value" => "role_available", "title" => "Role Decisions")
+    array("value" => "role_available", "title" => "Role Decisions"),
+	array("value" => "date_available", "title" => "Date Decisions")
   );
   ?>
 

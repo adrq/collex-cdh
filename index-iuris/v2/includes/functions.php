@@ -148,30 +148,31 @@ function printOptions($array) {
  */
 function renderComments($value) {
   global $mysqli;
-
   $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value");
   $original->execute();
   $original->store_result();
   $original->bind_result($commentID, $comment, $userID);
+	
   ?>
 
   <?php while ($original->fetch()): ?>
     <?php
-    $statement = $mysqli->prepare("SELECT id, reply_comment, replied_by FROM reply_$value WHERE comments_id = ?");
+    $statement = $mysqli->prepare("SELECT reply_comment, replied_by FROM reply_$value WHERE comments_id = ?");
     $statement->bind_param("i", $commentID);
     $statement->execute();
     $statement->store_result();
-    $statement->bind_result($id, $reply, $replier);
-    $statement->fetch();
+    $statement->bind_result( $reply, $replier);
+	
     ?>
     <div class="comment col-xs-9">
-      <?php renderCommentInterior(findUsername($userID), $comment); ?>
+      <?php renderCommentInterior(findUsername($userID), $comment, $commentID,$value); ?>
     </div>
     <?php while ($statement->fetch()): ?>
       <div class="comment-reply col-xs-9">
-        <?php renderCommentInterior($replier, $reply); ?>
+        <?php renderreplyCommentInterior($replier, $reply); ?>
       </div>
     <?php endwhile; ?>
+	<?php $statement->close(); ?>
   <?php endwhile;
 } // function renderComment($value)
 
@@ -181,12 +182,19 @@ function renderComments($value) {
  * @param {String} $user: The username.
  * @param {String} $text: The comment text.
  */
-function renderCommentInterior($user, $text) {
+function renderCommentInterior($user, $text, $id,$value) {
   ?>
-  <h4><?php print $user; ?><span class="reply pull-right">Reply</span></h4>
-  <p><?php print $text; ?></p>
+  <h3 data-id=<?php print $id; ?> data-tablename=<?php print $value; ?>><?php print $text; ?></h3>
+  <p>Comment by: <?php print $user; ?><span class="reply pull-right">Reply</span></p>
   <?php
 } // function renderCommentInterior($user, $text)
+
+function renderreplyCommentInterior($user, $text) {
+  ?>
+  <p><?php print $text; ?></p>
+  <p>Comment by: <?php print $user; ?></p>
+  <?php
+} 
 
 /**
  * Renders a data table on the comments page.
