@@ -301,7 +301,6 @@ function saveObjectToDB($data, $objectID) {
   $metadataXMLURL   = htmlspecialchars(trim($data["metadata_xml_url"]));
   $metdataHTMLURL   = htmlspecialchars(trim($data["metadata_html_url"]));
   $textDivisions    = htmlspecialchars(trim($data["text_divisions"]));
-  $language         = htmlspecialchars(trim($data["language"]));
   $ocr              = isset($data["ocr"]) ? htmlspecialchars(trim($data["ocr"])) : NULL;
 
   // TODO: Add this field to form, pending approval from Colin and Abigail.
@@ -310,11 +309,26 @@ function saveObjectToDB($data, $objectID) {
   $notes            = $data["notes"];
   $fileFormat       = $data["file_format"];
 
-  $statement = $mysqli->prepare("UPDATE objects SET custom_namespace = ?, rdf_about = ?, archive = ?, title = ?, type = ?, url = ?, origin = ?, provenance = ?, place_of_composition = ?, shelfmark = ?, freeculture = ?, full_text_url = ?, full_text_plain = ?, is_full_text = ?, image_url = ?, source = ?, metadata_xml_url = ?, metadata_html_url = ?, text_divisions = ?, language = ?, ocr = ?, thumbnail_url = ?, notes = ?, file_format = ?, date_updated = NOW(), user_id = ? WHERE id = ?");
-  $statement->bind_param("ssssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $language, $ocr, $thumbnailURL, $notes, $fileFormat, $userID, $objectID);
+  $statement = $mysqli->prepare("UPDATE objects SET custom_namespace = ?, rdf_about = ?, archive = ?, title = ?, type = ?, url = ?, origin = ?, provenance = ?, place_of_composition = ?, shelfmark = ?, freeculture = ?, full_text_url = ?, full_text_plain = ?, is_full_text = ?, image_url = ?, source = ?, metadata_xml_url = ?, metadata_html_url = ?, text_divisions = ?, ocr = ?, thumbnail_url = ?, notes = ?, file_format = ?, date_updated = NOW(), user_id = ? WHERE id = ?");
+  $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $ocr, $thumbnailURL, $notes, $fileFormat, $userID, $objectID);
   $statement->execute();
   $statement->store_result();
 
+  //Save languages to table
+  $insert = $mysqli->prepare("DELETE FROM languages WHERE object_id = ?");
+  $insert->bind_param("s", $objectID);
+  $insert->execute();
+  
+  foreach ($data["language"] as $language) {
+  	$language = htmlspecialchars(trim($language));
+  
+  	if ($language === "") { continue; }
+  
+  	$insert = $mysqli->prepare("INSERT INTO languages (object_id, language) VALUES (?, ?)");
+  	$insert->bind_param("is", $objectID, $language);
+  	$insert->execute();
+  }
+  
   // Add alternative titles to its table.
   $insert = $mysqli->prepare("DELETE FROM alt_titles WHERE object_id = ?");
   $insert->bind_param("s", $objectID);

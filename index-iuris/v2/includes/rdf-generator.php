@@ -79,7 +79,14 @@ function generateRDF($objectID) {
   	return;  			
   }
   
-  $rdf .= file_get_contents("includes/rdf-header.rdf") . "\n\t<".unescapeHTMLEntities($custom_namespace) . " rdf:about=\"" . unescapeHTMLEntities($rdf_about). "\">\n\t";
+  $rdf .= file_get_contents("includes/rdf-header.rdf") . "\n";
+  
+  //get namespace from custom_namespace
+  $namespace = explode(":",$custom_namespace);
+  
+  $rdf .= "\txmlns:".$namespace[0]."=\"http://someurl\">\n\n";
+  
+  $rdf .= "<".unescapeHTMLEntities($custom_namespace) . " rdf:about=\"" . unescapeHTMLEntities($rdf_about). "\">\n\t";
   
   //TODO: add namespace identifier and uri once namespaces have been defined
   $rdf .= "<rdfs:seeAlso rdf:resource=\"" . unescapeHTMLEntities($url). "\"/>\n\t<collex:federation>INDEXIURIS</collex:federation>\n";
@@ -229,6 +236,12 @@ function generateRDF($objectID) {
   while ($temp->fetch()){
   	$rdf .= "\t<dc:date>\n\t  <collex:date>\n\t    <rdfs:label>".unescapeHTMLEntities($human)."</rdfs:label>\n\t    <rdf:value>".unescapeHTMLEntities($machine)."<rdf:value>\n\t  </collex:date>\n\t</dc:date>\n";
   }
+
+  //Discipline - All submissions are Law & History
+  $rdf .= "\t<collex:discipline>Law</collex:discipline>\n";
+  $rdf .= "\t<collex:discipline>History</collex:discipline>\n";
+  
+  //Todo subject
   
 
   $rdf .= "\t</" . $custom_namespace . ">\n</rdf:RDF>\n";

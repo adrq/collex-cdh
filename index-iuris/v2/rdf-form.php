@@ -634,12 +634,16 @@ if (!isset($_POST["submitted"])): ?>
           <legend>Language</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Language</samp> identifies the language of the object using language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.</p>
-
-              <div class="form-group">
-                <label for="language" class="control-label col-xs-2">Language</label>
+              <p><samp>Language</samp> identifies the language of the object. If available, please use language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.</p>
+              <div class="form-group" style="display: none;">
+                <label for="language" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Language</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="language" id="language">
+                  <input type="text" class="form-control" name="language[]" id="language">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" id="addLanguageButton">Add a language</button>
                 </div>
               </div>
             </div>
@@ -786,7 +790,6 @@ else:
     $metadataXMLURL   = htmlspecialchars(trim($_POST["url-source-code"]));
     $metdataHTMLURL   = htmlspecialchars(trim($_POST["url-source-code"]));
     $textDivisions    = htmlspecialchars(trim($_POST["text-divisions"]));
-    $language         = htmlspecialchars(trim($_POST["language"]));
     $ocr              = isset($_POST["ocr"]) ? htmlspecialchars(trim($_POST["ocr"])) : NULL;
 
     // TODO: Add this field to form, pending approval from Colin and Abigail.
@@ -795,12 +798,23 @@ else:
     $notes            = htmlspecialchars(trim($_POST["notes"]));
     $fileFormat       = htmlspecialchars(trim($_POST["file-format"]));
 
-    $statement = $mysqli->prepare("INSERT INTO objects (custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
-    $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $language, $ocr, $thumbnailURL, $notes, $fileFormat, $userID);
+    $statement = $mysqli->prepare("INSERT INTO objects (custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)");
+    $statement->bind_param("ssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $ocr, $thumbnailURL, $notes, $fileFormat, $userID);
     $statement->execute();
     $statement->store_result();
 
     $lastID = $statement->insert_id;
+    
+    //Add languages to table
+    foreach ($_POST["language"] as $language) {
+    	$language = htmlspecialchars(trim($language));
+    
+    	if ($language === "") { continue; }
+    
+    	$insert = $mysqli->prepare("INSERT INTO languages (object_id, language) VALUES (?, ?)");
+    	$insert->bind_param("is", $lastID, $language);
+    	$insert->execute();
+    }
 
     // Add alternative titles to its table.
     foreach ($_POST["alternative_title"] as $altTitle) {

@@ -18,7 +18,7 @@ else:
   global $mysqli;
 
   $id = $_GET["id"];
-  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("s", $id);
   $statement->execute();
   $statement->store_result();
@@ -29,7 +29,7 @@ else:
   // if ($row["user_id"] == $_SESSION["user_id"]):
 
   // 7/29/15 - Remove the following uncommented code when MySQLnd is installed.
-  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
   if ($statement->fetch()):
     if ($user_id == $_SESSION["user_id"] || isSuper()):
@@ -63,11 +63,22 @@ else:
             <ul class="list-group">
               <?php
               print printListItem("Type", $type);
-              print printListItem("Language", $language);
               print printListItem("Origin", $origin);
               print printListItem("Provenance", $provenance);
               print printListItem("Place of Composition", $place_of_composition);
               print printListItem("File Format", $file_format);
+              ?>
+            </ul>
+            <h4>Languages</h4>
+            <ul class="list-group">
+              <?php
+              $temp = $mysqli->prepare("SELECT language FROM languages WHERE object_id = ?");
+              $temp->bind_param("s", $id);
+              $temp->execute();
+              $temp->bind_result($language);
+              while ($temp->fetch()){
+              	print printListItem("Language", $language);
+              }
               ?>
             </ul>
           </div>

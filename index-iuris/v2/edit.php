@@ -24,11 +24,11 @@ else:
     ?><script>alert("Submission updated successfully."); window.location = "edit?id=<?php print $id; ?>";</script><?php
   }
 
-  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, language, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("s", $id);
   $statement->execute();
   $statement->store_result();
-  $statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitle, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitle, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
   // 7/29/15 - Removed until MySQLnd is installed onto Lichen.
   // $row = $statement->get_result()->fetch_assoc();
@@ -73,7 +73,6 @@ else:
                 printResult("metadata_xml_url", "XML Metadata URL", $metadata_xml_url, "input");
                 printResult("metadata_html_url", "HTML Metadata URL", $metadata_html_url, "input");
                 printResult("text_divisions", "Divisions of the Text", $text_divisions, "textarea");
-                printResult("language", "Language", $language, "input");
                 printResult("ocr", "OCR", $ocr, "radio");
                 printResult("thumbnail_url", "Thumbnail URL", $thumbnail_url, "input");
                 printResult("notes", "Notes", $notes ,"textarea");
@@ -173,6 +172,39 @@ else:
                   <div class="form-group">
                     <div class="col-xs-12">
                       <button type="button" class="btn btn-default pull-right" id="addRoleButton">Add a Role</button>
+                    </div>
+                  </div>
+                </section>
+                
+                <hr>
+                <span class="hide">Language</span>
+                <section>
+                  <div class="form-group" style="display: none;">
+                    <label for="language" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Language</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" name="language[]" id="language">
+                    </div>
+                  </div>
+                  <?php 
+                  $temp = $mysqli->prepare("SELECT language FROM languages WHERE object_id = ?");
+                  $temp->bind_param("s", $id);
+                  $temp->execute();
+                  $temp->bind_result($language);
+                  $counter = 1;
+                  while ($temp->fetch()):
+                  ?>
+                  <div class="form-group">
+                    <label for="language<?php print $counter; ?>" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Language</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" name="language[]" id="language<?php print $counter; ?>" <?php printValue($language);?>>
+                    </div>
+                  </div>
+                  <?php
+                  $counter++;
+                  endwhile;?>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <button type="button" class="btn btn-default pull-right" id="addLanguageButton">Add a language</button>
                     </div>
                   </div>
                 </section>
