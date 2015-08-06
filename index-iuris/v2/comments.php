@@ -18,27 +18,22 @@ if (isset($_GET["comments"])) {
 }
 
 if (isset($_POST["postComment"])) {
-    require_once "includes/config.php";
-	require_once "includes/functions.php";
-    global $mysqli;
+  require_once "includes/functions.php";
+  global $mysqli;
 
-    //$id    = $_POST["id"];
-    //$table = $_POST["table"];
+  $reply     = $_POST["postComment"];
+  $userID    = $_POST["commentID"];
+  $username  = $_SESSION["username"];
+  $tablename = "reply_" . $_POST["tablename"];
 
-    $reply_comment  = $_POST["postComment"];
-    $username = $_SESSION["username"];
-	$userid = $_POST["commentID"];
-	$tablename = "reply_".$_POST["tablename"];
-	
-    $statement = $mysqli->prepare("INSERT INTO $tablename (comments_id, reply_comment, replied_by) VALUES (?,?,?)");
-	$statement->bind_param("sss",$userid,$reply_comment,$username);
-    $statement->execute();
-    $statement->store_result();
-	$statement->close();
-	
-	renderComments($_POST["tablename"]);
-    
-	exit();
+  $statement = $mysqli->prepare("INSERT INTO $tablename (comments_id, reply_comment, replied_by) VALUES (?, ?, ?)");
+  $statement->bind_param("sss", $userID, $reply, $username);
+  $statement->execute();
+  $statement->store_result();
+
+  renderComments($_POST["tablename"]);
+
+  exit();
 }
 
 $title = "Comments and Suggested Items";
@@ -69,7 +64,7 @@ require "includes/header.php";
     array("value" => "url_available", "title" => "URI or URL Decisions"),
     array("value" => "type_available", "title" => "Type Decisions"),
     array("value" => "role_available", "title" => "Role Decisions"),
-	array("value" => "date_available", "title" => "Date Decisions")
+    array("value" => "date_available", "title" => "Date Decisions")
   );
   ?>
 

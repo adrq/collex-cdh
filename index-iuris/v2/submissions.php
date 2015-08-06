@@ -13,6 +13,7 @@ require "includes/header.php";
     <div class="row">
       <div class="col-xs-12">
         <h1>View Submissions</h1>
+        <p><?php print isSuper() ? "Superuser View" : "Contributor View"; ?></p>
       </div>
     </div>
   </div>
@@ -53,8 +54,8 @@ require "includes/header.php";
           } else {
             $statement->bind_result($id, $url, $title, $archive, $type);
           }
-
-          while ($statement->fetch()): ?>
+          ?>
+          <?php while ($statement->fetch()): ?>
             <tr>
               <td><?php print $title; ?></td>
               <td><?php print $url; ?></td>
@@ -67,7 +68,7 @@ require "includes/header.php";
               <td class="text-center">
                 <a href="view?id=<?php print $id; ?>" class="btn btn-sm btn-primary">View</a>
                 <a href="edit?id=<?php print $id; ?>" class="btn btn-sm btn-success">Edit</a>
-                <a href="rdf?id=<?php print $id; ?>"class="btn btn-sm btn-default">RDF</a>
+                <a href="rdf?id=<?php print $id; ?>" class="btn btn-sm btn-default">RDF</a>
               </td>
             </tr>
           <?php endwhile; ?>

@@ -287,7 +287,7 @@ $("#results").on("click", "a.btn-default", function (e) {
   $.ajax({
     url: "comments",
     type: "POST",
-    data: "postComment=" + value + "&commentID=" + id + "&tablename=" + tablename,
+    data: "postComment=" + value + "&commentID=" + id + "&tablename=" + table,
     success: function (result) {
       $("#results").html(result);
     },
