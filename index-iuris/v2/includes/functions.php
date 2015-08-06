@@ -160,8 +160,8 @@ function renderComments($value) {
  */
 function renderCommentOriginal($user, $text, $id, $table) {
   ?>
-  <h3 data-id="<?php print $id; ?>" data-tablename="<?php print $table; ?>"><?php print $user; ?><span class="reply pull-right">Reply</span></h3>
-  <p><?php print $text; ?></p>
+  <h3 data-id="<?php print $id; ?>" data-tablename="<?php print $table; ?>"><?php print $text; ?><span class="reply pull-right">Reply</span></h3>
+  <p>Comment by: <?php print $user; ?></p>
   <?php
 } // function renderCommentOriginal($user, $text)
 /**
