@@ -176,11 +176,11 @@ function renderCommentReply($user, $text,$id,$value) {
   <p><?php print $text; ?></p>
    <?php if(isSuper($_SESSION["user_role"])){ ?>
     <p>
-  	  Comment by: <?php print $user; ?> <span class="delete pull-right"> Delete</span>
+  	  Reply by: <?php print $user; ?> <span class="delete pull-right"> Delete</span>
     </p>
     <?php } else {?>
   	  <p>
-  		  Comment by: <?php print $user; ?> 
+  		  Reply by: <?php print $user; ?> 
   	  </p>
   <?php }?>
   <?php

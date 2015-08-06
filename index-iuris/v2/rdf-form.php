@@ -25,8 +25,11 @@ if (!isset($_POST["submitted"])): ?>
   <div class="row">
     <div class="col-xs-12">
       <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <h2>Required fields</h2>
+        <hr>
         <fieldset>
-
+          
+          
           <legend>Custom Namespace</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
@@ -165,22 +168,23 @@ if (!isset($_POST["submitted"])): ?>
             <div class="col-xs-8 text-justify">
               <p><samp>Role</samp> is used to identify individuals who had a role in the creation/edition of the object. Use this field to list Authors, Editors, etc.</p>
               <p>This field can appear multiple times.</p>
-              <div class="form-group" style="display: none;">
+              <div class="form-group">
                 <label for="role" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Role</label>
                 <div class="col-xs-10">
-                  <select class="form-control" id="role" name="role[]">
+                  <select class="form-control" id="role" name="role[]" required="">
                     <option selected=""></option>
                     <?php printOptions($rolesArray); ?>
                   </select>
                 </div>
               </div>
 
-              <div class="form-group" style="display: none;">
+              <div class="form-group">
                 <label for="value" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Value</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="value" name="role_value[]">
+                  <input type="text" class="form-control" id="value" name="role_value[]" required="">
                 </div>
               </div>
+              
 
               <div class="form-group">
                 <div class="col-xs-12">
@@ -264,8 +268,62 @@ if (!isset($_POST["submitted"])): ?>
               </div>
             </div>
           </section>
+          
+          <legend>Link to Digital Item</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p>This required field is completed with a URI or URL that is the address for the specific item to be displayed, such as a manuscript image, a page of a transcription, or a document.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <?php printExamples(array("http://pds.lib.harvard.edu/pds/view/14856910?n=3384", "http://ccl.rch.uky.edu/node/1419", "http://ccl.rch.uky.edu/node/3908", "http://faculty.cua.edu/Pennington/edit323.htm")); ?>
+              </ul>
 
-          <?php // TODO: Discuss possibility of entering multiple dates. ?>
+              <div class="form-group">
+                <label for="seeAlso" class="control-label col-xs-2">URL</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="seeAlso" id="seeAlso" required="">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-4">
+              <label class="control-label col-xs-10">Would you be able to supply a URI or URL for each item to be integrated into Index Iuris?</label>
+              <div class="col-xs-2">
+                <div class="radio">
+                  <label><input type="radio" name="url-available" value="true">Yes</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="url-available" value="false">No</label>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <legend>File format</legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p>File Format is a required field for each item, so that we can implement full-text searching whenever possible.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <?php printExamples(array(".pdf files", ".xml files (TEI P5)", ".html files", ".jpg files")); ?>
+              </ul>
+
+              <div class="form-group">
+                <label for="fileFormat" class="control-label col-xs-2">Format</label>
+                <div class="col-xs-10">
+                  <select class="form-control" name="file-format" id="fileFormat" required="">
+                    <option selected=""></option>
+                    <option value="html">Web accessible HTML (html,php, etc.)</option>
+                    <option value="xml">Web accessible XML (TEI, RDF, etc.)</option>
+                    <option value="pdf">PDF</option>
+                    <option value="image">Image files (jpg, png, etc.)</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <legend>Dates</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
@@ -310,7 +368,7 @@ if (!isset($_POST["submitted"])): ?>
               <div class="form-group">
                 <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="date-machine-digital" id="machineDate" required="">
+                  <input type="text" class="form-control" name="date-machine-digital" id="machineDate">
                 </div>
               </div>
               <div class="form-group">
@@ -343,37 +401,10 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Link to Digital Items</legend>
-          <section class="form-group">
-            <div class="col-xs-8 text-justify">
-              <p>This required field is completed with a URI or URL that is the address for the specific item to be displayed, such as a manuscript image, a page of a transcription, or a document.</p>
-              <p>Examples:</p>
-              <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("http://pds.lib.harvard.edu/pds/view/14856910?n=3384", "http://ccl.rch.uky.edu/node/1419", "http://ccl.rch.uky.edu/node/3908", "http://faculty.cua.edu/Pennington/edit323.htm")); ?>
-              </ul>
-
-              <div class="form-group">
-                <label for="seeAlso" class="control-label col-xs-2">URL</label>
-                <div class="col-xs-10">
-                  <input type="text" class="form-control" name="seeAlso" id="seeAlso" required="">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-4">
-              <label class="control-label col-xs-10">Would you be able to supply a URI or URL for each item to be integrated into Index Iuris?</label>
-              <div class="col-xs-2">
-                <div class="radio">
-                  <label><input type="radio" name="url-available" value="true">Yes</label>
-                </div>
-                <div class="radio">
-                  <label><input type="radio" name="url-available" value="false">No</label>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <legend>Provenance</legend>
+          <hr>
+          <h2>Optional fields</h2>
+          <br>
+          <legend>Provenance <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Provenance</samp> is actually two fields, both optional (although we recommend completing at least one).</p>
@@ -407,8 +438,8 @@ if (!isset($_POST["submitted"])): ?>
               </div>
             </div>
           </section>
-
-          <legend>Place of composition</legend>
+          
+          <legend>Place of composition <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Place of composition</samp> is used for the place where a text was composed, if known. This field is optional.</p>
@@ -435,7 +466,7 @@ if (!isset($_POST["submitted"])): ?>
           </section>
 
 
-          <legend>Shelfmark</legend>
+          <legend>Shelfmark <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Shelfmark</samp> is required for items that are manuscripts. This is the unique, internationally known identifier for a manuscript. The shelfmark consists of City, Repository (library), fond (internal library collection), number. For incunabula or other rare printings, this field may be used for library identifications of the physical artefact, as well. This field is optional for all other publications or editions.</p>
@@ -473,7 +504,7 @@ if (!isset($_POST["submitted"])): ?>
           </section>
           */ ?>
 
-          <legend>Alternative title</legend>
+          <legend>Alternative title <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Alternative title</samp> is an optional field that can be used for common, "pet" names of a text or manuscript. The final form will include the option to submit more than one <samp>alternative title</samp>.</p>
@@ -497,7 +528,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Source</legend>
+          <legend>Source <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p>This field should not be confused with provenance, place of origin of object, place of composition or isPartOf. <samp>Source</samp> is used for the title of the larger work, resource, or collection of which the present object is a part. It can be used for the title of a journal, anthology, book, online collection, etc.</p>
@@ -515,7 +546,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>IsPartOf</legend>
+          <legend>IsPartOf <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>IsPartOf</samp> is a useful field for legal texts, which often are compilations of many texts. This field is optional.</p>
@@ -574,7 +605,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>hasPart</legend>
+          <legend>hasPart <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>hasPart</samp> is the obverse of <samp>isPartOf</samp>. This field is optional. For texts that contain many other texts, this field can be used to list one or more items included in the larger work.</p>
@@ -633,7 +664,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Divisions of the text</legend>
+          <legend>Divisions of the text <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p>Divisions of the text is an optional field that is purely for information (that is, it does not affect digital display or processing). Here it is possible to give useful descriptions of how a compilation is structured, organized, or divided.</p>
@@ -657,7 +688,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Language</legend>
+          <legend>Language <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Language</samp> identifies the language of the object. If available, please use language codes from the <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-2 Language Code List</a>.</p>
@@ -675,7 +706,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Metadata source code</legend>
+          <legend>Metadata source code <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Metadata source code</samp> is an optional field. If your project has metadata that does not duplicate the descriptions in the fields above that should be included in Index Iuris, you may use this field for the URL or URI for the web-accessible XML or HTML metadata.</p>
@@ -689,7 +720,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>OCR</legend>
+          <legend>OCR <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>OCR</samp> is an optional field for recording whether the text was generated using OCR. The possible answers are yes or no.</p>
@@ -708,7 +739,7 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
 
-          <legend>Notes</legend>
+          <legend>Notes <small>(optional)</small></legend>
           <section class="form-group">
             <div class="col-xs-8">
               <p><samp>Notes</samp> is an optional, free-form field for recording information about the item that the contributor deems important.</p>
@@ -728,24 +759,6 @@ if (!isset($_POST["submitted"])): ?>
               <label for="noteComments" class="control-label col-xs-3">Comments:</label>
               <div class="col-xs-12">
                 <textarea class="form-control" name="comments-notes" id="noteComments" rows="4"></textarea>
-              </div>
-            </div>
-          </section>
-
-          <legend>File format</legend>
-          <section class="form-group">
-            <div class="col-xs-8 text-justify">
-              <p>File Format is a required field for each item, so that we can implement full-text searching whenever possible.</p>
-              <p>Examples:</p>
-              <ul class="list-unstyled form-item-example">
-                <?php printExamples(array(".pdf files", ".xml files (TEI P5)", ".html files", ".jpg files")); ?>
-              </ul>
-
-              <div class="form-group">
-                <label for="fileFormat" class="control-label col-xs-2">Format</label>
-                <div class="col-xs-10">
-                  <input type="text" class="form-control" name="file-format" id="fileFormat" required="">
-                </div>
               </div>
             </div>
           </section>

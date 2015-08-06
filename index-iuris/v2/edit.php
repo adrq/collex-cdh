@@ -75,7 +75,6 @@ else:
                 printResult("ocr", "OCR", $ocr, "radio");
                 printResult("thumbnail_url", "Thumbnail URL", $thumbnail_url, "input");
                 printResult("notes", "Notes", $notes ,"textarea");
-                printResult("file_format", "File Format", $file_format, "input");
 
                 // This is literally the worst.
 
@@ -118,6 +117,24 @@ else:
                 endforeach;
                 */
                 ?>
+                
+                <span class="hide">File format</span>
+                <section>
+                  <div class="form-group">
+                    <label for="type" class="control-label col-xs-2">File format</label>
+                  <div class="col-xs-10">
+                    <select class="form-control" name="file_format" id="fileFormat" required="">
+                      <option value="html"<?php print $file_format == "html" ? " selected=\"\"" : ""; ?>>Web accessible HTML (html,php, etc.)</option>
+                      <option value="xml"<?php print $file_format == "xml" ? " selected=\"\"" : ""; ?>>Web accessible XML (TEI, RDF, etc.)</option>
+                      <option value="pdf"<?php print $file_format == "pdf" ? " selected=\"\"" : ""; ?>>PDF</option>
+                      <option value="image"<?php print $file_format == "image" ? " selected=\"\"" : ""; ?>>Image files (jpg, png, etc.)</option>
+                      <option value="other"<?php print $file_format == "other" ? " selected=\"\"" : ""; ?>>Other</option>
+                  </select>
+                  </div>
+                </div>
+                
+                </section>
+                <hr>
                 
                 <span class="hide">Type</span>
                 <section>
@@ -239,6 +256,7 @@ else:
                 ?>
                 <span class="hide">Genre</span>
                 <section>
+                <input type="hidden" name="genre[]" value="">
                   <?php
                   $counter = 1;
                   while ($temp->fetch()): ?>
