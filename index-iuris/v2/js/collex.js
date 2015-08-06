@@ -89,6 +89,27 @@ $("#addGenreButton").click(function (e) {
 });
 
 /**
+ * Add another language within the RDF creation or edit form.
+ *
+ * @param {HTML DOM Event} e: The event happening.
+ */
+$("#addLanguageButton").click(function (e) {
+  var section = $(this).parentsUntil("section").parent();
+  var group   = section.find("input[name='language[]']").last().parent().parent().clone();
+  var newID   = increaseID(group, "input");
+
+  group.find("input").prop("id", newID).val("");
+  group.find("label").attr("for", newID);
+
+  $(group).insertBefore($(this).parent().parent());
+  group.show();
+
+  section.find(".close.hide").removeClass("hide");
+
+  e.target.blur();
+});
+
+/**
  * Add another alternative title to the alternative title section within the RDF creation or edit form.
  *
  * @param {HTML DOM Event} e: The event happening.
