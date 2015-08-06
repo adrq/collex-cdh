@@ -267,6 +267,8 @@ $(".viewer").click(function () {
   });
 });
 
+
+
 /**
  * Displays a textbox for a user wanting to reply.
  */
@@ -293,6 +295,28 @@ $("#results").on("click", "a.btn-default", function (e) {
     },
     error: function (result) {
       console.error("There was an error connecting to the server: " + result.responseText);
+    }
+  });
+
+  e.target.blur();
+});
+
+$("#results").on("click", ".delete", function (e) {
+
+  var id = $(this).parent().parent().find("> h4").data("id");
+  var tablename = $(this).parent().parent().find("> h4").data("tablename");
+  console.log(id);
+  console.log(tablename);
+  $.ajax({
+    url: "comments",
+    type: "POST",
+    data: "commentID=" + id + "&tablename=" + tablename,
+    success: function (result) {
+		$("#results").html(result);
+      // alert("The comment was posted.");
+    },
+    error: function (result) {
+		alert("it is an error\n" + result.responseText);
     }
   });
 

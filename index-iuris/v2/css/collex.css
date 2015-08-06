@@ -113,6 +113,14 @@ a:focus { color: #681422; }
 }
 .reply:hover { text-decoration: underline; }
 
+.delete{
+    font-size: 15px;
+    color: #722F37;
+    cursor: pointer;
+}
+
+.delete:hover { text-decoration: underline; }
+
 .comment-reply {
   margin-left: 6%;
   margin-bottom: 1%;
