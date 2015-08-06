@@ -338,15 +338,38 @@ function saveObjectToDB($data, $objectID) {
     $insert->bind_param("is", $objectID, $genre);
     $insert->execute();
   }
-  // Add date to its table.
+// Add date to its table.
   $insert = $mysqli->prepare("DELETE FROM dates WHERE object_id = ?");
   $insert->bind_param("s", $objectID);
   $insert->execute();
-  $humanDate   = htmlspecialchars(trim($data["human_date"]));
-  $machineDate = htmlspecialchars(trim($data["machine_date"]));
-  $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
-  $insert->bind_param("iss", $objectID, $machineDate, $humanDate);
-  $insert->execute();
+
+  $humanDate   = htmlspecialchars(trim($data["human_date_text"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date_text"]));
+  
+  if ($humanDate!=="" && $machineDate!==""){
+  	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
+  	$insert->bind_param("iss", $objectID, $machineDate, $humanDate);
+  	$insert->execute();
+  }
+  
+  $humanDate   = htmlspecialchars(trim($data["human_date_object"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date_object"]));
+  
+  if ($humanDate!=="" && $machineDate!==""){
+  	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'object', ?, ?)");
+  	$insert->bind_param("iss", $objectID, $machineDate, $humanDate);
+  	$insert->execute();
+  }
+  
+  $humanDate   = htmlspecialchars(trim($data["human_date_digital"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date_digital"]));
+  
+  if ($humanDate!=="" && $machineDate!==""){
+  	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'digital', ?, ?)");
+  	$insert->bind_param("iss", $objectID, $machineDate, $humanDate);
+  	$insert->execute();
+  }
+  //add parts
   $insert = $mysqli->prepare("DELETE FROM parts WHERE object_id = ?");
   $insert->bind_param("s", $objectID);
   $insert->execute();

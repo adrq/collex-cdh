@@ -266,30 +266,57 @@ if (!isset($_POST["submitted"])): ?>
           </section>
 
           <?php // TODO: Discuss possibility of entering multiple dates. ?>
-          <legend>Date</legend>
+          <legend>Dates</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
               <p><samp>Date</samp> refers to the date of original composition, to the extent that it is known. This field is required. Index Iuris will use both human readable expressions in its displays, and also machine readable formats to facilitate searching by date range.</p>
-
+              
               <p>Human-readable dates examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("14th century", "not before 1475", "saec. IXin-med", "850; 1122", "c. 1100", "1300-1350", "1st part of manuscript 9th century; 2nd part early 12th century")); ?>
               </ul>
-              <div class="form-group">
-                <label for="humanDate" class="control-label col-xs-2">Human Date</label>
-                <div class="col-xs-10" style="margin-bottom: 20px;">
-                  <input type="text" class="form-control" name="date-human" id="humanDate" required="">
-                </div>
-              </div>
-
+                           
               <p>Machine-readable dates examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("four-digit year, e.g. \"1425\" or \"0850\"", "two four-digit years, separated by a hyphen, indicating a span of time e.g. \"1425-1450\". The conventions for \"beginning, middle, third-quarter, end, etc.\" of centuries are converted to 25 year increments: 0800, 0825, 0850, 0875", "two four-digit years separated by a semi-colon indicate that the text or object was composed or created at two dates. Both should be searchable.")); ?>
               </ul>
+              <h4>Date of text composition</h4>
               <div class="form-group">
                 <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="date-machine" id="machineDate" required="">
+                  <input type="text" class="form-control" name="date-machine-text" id="machineDate" required="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="humanDate" class="control-label col-xs-2">Human Date</label>
+                <div class="col-xs-10" style="margin-bottom: 20px;">
+                  <input type="text" class="form-control" name="date-human-text" id="humanDate" required="">
+                </div>
+              </div>
+              <h4>Date of manuscript or print publication</h4>
+              <div class="form-group">
+                <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="date-machine-object" id="machineDate" required="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="humanDate" class="control-label col-xs-2">Human Date</label>
+                <div class="col-xs-10" style="margin-bottom: 20px;">
+                  <input type="text" class="form-control" name="date-human-object" id="humanDate" required="">
+                </div>
+              </div>
+              <h4>Date of digital surrogate (optional)</h4>
+              <div class="form-group">
+                <label for="machineDate" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="date-machine-digital" id="machineDate" required="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="humanDate" class="control-label col-xs-2">Human Date</label>
+                <div class="col-xs-10" style="margin-bottom: 20px;">
+                  <input type="text" class="form-control" name="date-human-digital" id="humanDate">
                 </div>
               </div>
             </div>
@@ -837,13 +864,27 @@ else:
       $insert->execute();
     }
 
-    // Add date to its table.
-    $humanDate   = htmlspecialchars(trim($_POST["date-human"]));
-    $machineDate = htmlspecialchars(trim($_POST["date-machine"]));
+    // Add dates to db
+    $humanDate   = htmlspecialchars(trim($_POST["date-human-text"]));
+    $machineDate = htmlspecialchars(trim($_POST["date-machine-text"]));
     if ($humanDate !== "" && $machineDate !== "") {
       $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
       $insert->bind_param("iss", $lastID, $machineDate, $humanDate);
       $insert->execute();
+    }
+    $humanDate   = htmlspecialchars(trim($_POST["date-human-object"]));
+    $machineDate = htmlspecialchars(trim($_POST["date-machine-object"]));
+    if ($humanDate !== "" && $machineDate !== "") {
+    	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'object', ?, ?)");
+    	$insert->bind_param("iss", $lastID, $machineDate, $humanDate);
+    	$insert->execute();
+    }
+    $humanDate   = htmlspecialchars(trim($_POST["date-human-digital"]));
+    $machineDate = htmlspecialchars(trim($_POST["date-machine-digital"]));
+    if ($humanDate !== "" && $machineDate !== "") {
+    	$insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'digital', ?, ?)");
+    	$insert->bind_param("iss", $lastID, $machineDate, $humanDate);
+    	$insert->execute();
     }
 
     // Add isPartOf to its table.

@@ -42,6 +42,7 @@ $rolesRDFArray = array(
 		"Sculptor" => "SCL",
 		"Type designer" => "TYD",
 		"Typographer" => "TYG",
+		"Visual Artist" => "ART",
 		"Wood engraver" => "WDE",
 		"Wood cutter" => "WDC",
 );
@@ -80,18 +81,17 @@ function generateRDF($objectID) {
   }
   
   $rdf .= file_get_contents("includes/rdf-header.rdf") . "\n";
+  //TODO: add <ii> namespace uri to rdf-header.rdf once this is defined
   
   //get namespace from custom_namespace
   $namespace = explode(":",$custom_namespace);
   
+  //TODO: add actual namespace definition uri once these are defined
   $rdf .= "\txmlns:".$namespace[0]."=\"http://someurl\">\n\n";
   
   $rdf .= "<".unescapeHTMLEntities($custom_namespace) . " rdf:about=\"" . unescapeHTMLEntities($rdf_about). "\">\n\t";
-  
-  //TODO: add namespace identifier and uri once namespaces have been defined
   $rdf .= "<rdfs:seeAlso rdf:resource=\"" . unescapeHTMLEntities($url). "\"/>\n\t<collex:federation>INDEXIURIS</collex:federation>\n";
 
-  
   if ($archive!=""){
   	$rdf .= "\t<collex:archive>".unescapeHTMLEntities($archive)."</collex:archive>\n";
   }

@@ -302,30 +302,119 @@ else:
 
                 <hr>
                 <?php
-                $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
+                $temp = $mysqli->prepare("SELECT machine_date, human_date FROM dates WHERE object_id = ? AND type='text' LIMIT 1");
                 $temp->bind_param("s", $id);
                 $temp->execute();
-                $temp->bind_result($type, $machineDate, $humanDate);
-
-                $counter = 1;
-                while ($temp->fetch()): ?>
-                  <section class="form-group">
-                    <label for="humanDate<?php print $counter; ?>" class="control-label col-xs-2">Human Date</label>
+                $temp->bind_result($machineDate, $humanDate);
+                if ($temp->fetch()):?>
+                <h4>Date of text composition</h4>
+                <section class="form-group">
+                    <label for="machineDateText" class="control-label col-xs-2">Machine Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="humanDate<?php print $counter; ?>" name="human_date" <?php printValue($humanDate); ?> required="">
+                      <input type="text" class="form-control" id="machineDateText" name="machine_date_text" <?php printValue($machineDate); ?> required="">
                     </div>
                   </section>
-                  <section class="form-group">
-                    <label for="machineDate<?php print $counter; ?>" class="control-label col-xs-2">Machine Date</label>
+                <section class="form-group">
+                    <label for="humanDateText" class="control-label col-xs-2">Human Date</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="machineDate<?php print $counter; ?>" name="machine_date" <?php printValue($machineDate); ?> required="">
+                      <input type="text" class="form-control" id="humanDateText" name="human_date_text" <?php printValue($humanDate); ?> required="">
                     </div>
                   </section>
-                  <?php
-                  $counter++;
-                endwhile;
-
-                ?><hr>
+                  
+                <?php
+                else:?>
+                <h4>Date of text composition</h4>
+                <section class="form-group">
+                    <label for="machineDateText" class="control-label col-xs-2">Machine Date</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="machineDateText" name="machine_date_object" value="" required="">
+                    </div>
+                  </section>
+                <section class="form-group">
+                    <label for="humanDateText" class="control-label col-xs-2">Human Date</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" id="humanDateText" name="human_date_object" value="" required="">
+                    </div>
+                  </section>
+                  
+                <?php 
+                endif;
+                $temp = NULL;
+                $temp = $mysqli->prepare("SELECT machine_date, human_date FROM dates WHERE object_id = ? AND type='object' LIMIT 1");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($machineDate, $humanDate);
+                
+                if ($temp->fetch()):?>
+                <h4>Date of manuscript or print publication</h4>
+                <section class="form-group">
+                <label for="machineDateObject" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+                <input type="text" class="form-control" id="machineDateObject" name="machine_date_object" <?php printValue($machineDate); ?> required="">
+                </div>
+                </section>
+                <section class="form-group">
+                <label for="humanDateObject" class="control-label col-xs-2">Human Date</label>
+                <div class="col-xs-10">
+                <input type="text" class="form-control" id="humanDateObject" name="human_date_object" <?php printValue($humanDate); ?> required="">
+                </div>
+                </section>
+                <?php
+                else:?>
+                <h4>Date of manuscript or print publication</h4>
+                <section class="form-group">
+                <label for="machineDateObject" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+                <input type="text" class="form-control" id="machineDateObject" name="machine_date_object" value="" required="">
+                </div>
+                </section>
+                <section class="form-group">
+                <label for="humanDateObject" class="control-label col-xs-2">Human Date</label>
+                <div class="col-xs-10">
+                <input type="text" class="form-control" id="humanDateObject" name="human_date_object" value="" required="">
+                </div>
+                </section>
+                <?php 
+                endif;
+                
+                $temp = NULL;
+                $temp = $mysqli->prepare("SELECT machine_date, human_date FROM dates WHERE object_id = ? AND type='digital' LIMIT 1");
+                $temp->bind_param("s", $id);
+                $temp->execute();
+                $temp->bind_result($machineDate, $humanDate);
+                if ($temp->fetch()):?>
+                <h4>Date of digital surrogate (optional)</h4>
+                <section class="form-group">
+                <label for="machineDateDigital" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+                <input type="text" class="form-control" id="machineDateDigital" name="machine_date_digital" <?php printValue($machineDate); ?>>
+                </div>
+                </section>
+                <section class="form-group">
+               <label for="humanDateDigital" class="control-label col-xs-2">Human Date</label>
+             <div class="col-xs-10">
+                 <input type="text" class="form-control" id="humanDateDigital" name="human_date_digital" <?php printValue($humanDate); ?>>
+                 </div>
+                 </section>
+                 <?php
+                 else:?>
+                <h4>Date of digital surrogate (optional)</h4>
+                <section class="form-group">
+                <label for="machineDateDigital" class="control-label col-xs-2">Machine Date</label>
+                <div class="col-xs-10">
+               <input type="text" class="form-control" id="machineDateDigital" name="machine_date_digital" value="">
+                 </div>
+                 </section>
+                 <section class="form-group">
+                 <label for="humanDateDigital" class="control-label col-xs-2">Human Date</label>
+                 <div class="col-xs-10">
+                 <input type="text" class="form-control" id="humanDateDigital" name="human_date_digital" value="">
+                </div>
+                </section>
+                <?php 
+                endif;?>
+                
+                <hr>
 
                 <span class="hide">isPartOf</span>
                 <section>
@@ -338,6 +427,7 @@ else:
                     </div>
                   </div>
                   <?php
+                  $temp = NULL;
                   $temp = $mysqli->prepare("SELECT part_id FROM parts WHERE object_id = ? AND type = 'isPartOf'");
                   $temp->bind_param("s", $id);
                   $temp->execute();

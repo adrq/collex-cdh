@@ -216,6 +216,17 @@ else:
                 <li class="list-group-item"><em>None</em></li>
               <?php else: ?>
                 <?php while ($temp->fetch()): ?>
+                  <h4><?php 
+                  switch ($type) {
+                  	case "text": print "Date of text composition";
+                  	break;
+                  	case "object": print "Date of manuscript or print publication";
+                  	break;
+                  	case "digital": print"Date of digital surrogate";
+                  	break;
+                  }
+                  ?>
+                  </h4>
                   <li class="list-group-item"><strong>Human</strong>: <?php print $human; ?></li>
                   <li class="list-group-item"><strong>Machine</strong>: <?php print $machine; ?></li>
                 <?php endwhile; ?>
