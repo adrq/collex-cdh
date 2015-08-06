@@ -110,7 +110,7 @@ if (!isset($_POST["submitted"])): ?>
           <legend>Title</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p><samp>Title</samp> is required. Each item to be integrated in Index Iuris must have a title. It is expected that some titles will occur more than once (several items may have the title "Summa"), however, each item can have only one title (you cannot give both "Corpus iuris civilis" and "Digest" as the title for the same item.)</p>
+              <p><samp>Title</samp> is required. Each item to be integrated in Index Iuris must have a title. It is expected that some titles will occur more than once (several items may have the title "Summa") but each item can have only one title (you cannot give both "Corpus iuris civilis" and "Digest" as the title for the same item.) You may, however, specify alternative titles below.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("Collectio Dacheriana", "Consilia", "De Legibus et Consuetudinibus Angliae", "Summa \"Animal est substantia\"")); ?>
@@ -120,6 +120,30 @@ if (!isset($_POST["submitted"])): ?>
                 <label for="title" class="control-label col-xs-2">Title</label>
                 <div class="col-xs-10">
                   <input type="text" class="form-control" name="title" id="title" required="">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <legend>Alternative title(s) <small>(optional)</small></legend>
+          <section class="form-group">
+            <div class="col-xs-8 text-justify">
+              <p><samp>Alternative title</samp> is an optional field that can be used for common, "pet" names of a text or manuscript.</p>
+              <p>Examples:</p>
+              <ul class="list-unstyled form-item-example">
+                <?php printExamples(array("\"The Florence Codex\"", "\"X\"", "\"Concordia Discordantium Canonum\"")); ?>
+              </ul>
+
+              <div class="form-group" style="display: none;">
+                <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="alternative_title[]" id="altTitle">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add an Alternative Title</button>
                 </div>
               </div>
             </div>
@@ -272,7 +296,7 @@ if (!isset($_POST["submitted"])): ?>
           <legend>Link to Digital Item</legend>
           <section class="form-group">
             <div class="col-xs-8 text-justify">
-              <p>This required field is completed with a URI or URL that is the address for the specific item to be displayed, such as a manuscript image, a page of a transcription, or a document.</p>
+              <p>This required field is a valid, web accessible URL that is the address for the specific item to be displayed, such as a manuscript image, a page of a transcription, or a document.</p>
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
                 <?php printExamples(array("http://pds.lib.harvard.edu/pds/view/14856910?n=3384", "http://ccl.rch.uky.edu/node/1419", "http://ccl.rch.uky.edu/node/3908", "http://faculty.cua.edu/Pennington/edit323.htm")); ?>
@@ -315,6 +339,7 @@ if (!isset($_POST["submitted"])): ?>
                     <option selected=""></option>
                     <option value="html">Web accessible HTML (html,php, etc.)</option>
                     <option value="xml">Web accessible XML (TEI, RDF, etc.)</option>
+                    <option value="plaintext">Plain text document (txt)</option>
                     <option value="pdf">PDF</option>
                     <option value="image">Image files (jpg, png, etc.)</option>
                     <option value="other">Other</option>
@@ -446,7 +471,7 @@ if (!isset($_POST["submitted"])): ?>
 
               <p>Examples:</p>
               <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("place of composition: Rome", "place of composition: University of Paris")); ?>
+                <?php printExamples(array("Rome", "University of Paris")); ?>
               </ul>
 
               <div class="form-group">
@@ -503,30 +528,6 @@ if (!isset($_POST["submitted"])): ?>
             </div>
           </section>
           */ ?>
-
-          <legend>Alternative title <small>(optional)</small></legend>
-          <section class="form-group">
-            <div class="col-xs-8 text-justify">
-              <p><samp>Alternative title</samp> is an optional field that can be used for common, "pet" names of a text or manuscript. The final form will include the option to submit more than one <samp>alternative title</samp>.</p>
-              <p>Examples:</p>
-              <ul class="list-unstyled form-item-example">
-                <?php printExamples(array("\"The Florence Codex\"", "\"X\"", "\"Concordia Discordantium Canonum\"")); ?>
-              </ul>
-
-              <div class="form-group" style="display: none;">
-                <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>
-                <div class="col-xs-10">
-                  <input type="text" class="form-control" name="alternative_title[]" id="altTitle">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-xs-12">
-                  <button type="button" class="btn btn-default pull-right" id="addAltTitleButton">Add an Alternative Title</button>
-                </div>
-              </div>
-            </div>
-          </section>
 
           <legend>Source <small>(optional)</small></legend>
           <section class="form-group">

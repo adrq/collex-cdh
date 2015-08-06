@@ -126,6 +126,7 @@ else:
                     <select class="form-control" name="file_format" id="fileFormat" required="">
                       <option value="html"<?php print $file_format == "html" ? " selected=\"\"" : ""; ?>>Web accessible HTML (html,php, etc.)</option>
                       <option value="xml"<?php print $file_format == "xml" ? " selected=\"\"" : ""; ?>>Web accessible XML (TEI, RDF, etc.)</option>
+                      <option value="plaintext"<?php print $file_format == "plaintext" ? " selected=\"\"" : ""; ?>>Plain text document (txt)</option>
                       <option value="pdf"<?php print $file_format == "pdf" ? " selected=\"\"" : ""; ?>>PDF</option>
                       <option value="image"<?php print $file_format == "image" ? " selected=\"\"" : ""; ?>>Image files (jpg, png, etc.)</option>
                       <option value="other"<?php print $file_format == "other" ? " selected=\"\"" : ""; ?>>Other</option>

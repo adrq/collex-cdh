@@ -3,8 +3,6 @@ Index Iuris TODO List:
 Home
 
 Metadata Submission (rdf-form)
-- Add functionality for multiple dates
-- Add dropdown for file format
 - Add dropdown for archive/namespace (pending discussion with C&A)
 - Multiple fields need approval from Colin and Abigail
 - Functionality to add subject and discipline to database.
@@ -16,8 +14,6 @@ Governance
 View Submissions
 
 Edit Submission
-- Add functionality for multiple dates
-- Add dropdown for file format
 - Add dropdown for archive/namespace (pending discussion with C&A)
 - Test new hasPart and isPartOf functionality
 	write js to update modal dialogs when user deletes a part
