@@ -64,13 +64,13 @@ function printValue($text, $ignore = false) {
 /**
  * Unescapes HTML entities
  * - Currently only detects quotation marks.
- * - Unescapes double quotes but leaves other html entities intact
- *   if you want to remove all escaped html entities use htmlspecialchars_decode()
+ * - Unescapes double quotes but leaves other HTML entities intact
+ *   if you want to remove all escaped HTML entities use htmlspecialchars_decode()
  * @param {String} $text: HTML text to be unescaped
  * @return {String}
  */
 function unescapeHTMLEntities($text) {
-	return preg_replace("/&quot;/", "\"", $text);
+  return preg_replace("/&quot;/", "\"", $text);
 } // function unescapeHTMLEntities($text)
 
 /**
@@ -101,22 +101,15 @@ function renderGovernanceComments() {
   $statement->execute();
   $statement->store_result();
   $statement->bind_result($comment, $date, $userID);
-
-  while ($statement->fetch()) {
-    $search = $mysqli->prepare("SELECT username FROM users WHERE id = ?");
-    $search->bind_param("s", $userID);
-    $search->execute();
-    $search->store_result();
-    $search->bind_result($username);
-    $search->fetch();
-    ?>
+  ?>
+  <?php while ($statement->fetch()): ?>
+    <?php $date = new DateTime($date); ?>
     <div class="col-xs-8">
-      <h4><?php print $username; ?><time class="pull-right"><?php print $date; ?></time></h4>
+      <h4><?php print findUsername($userID); ?><time class="pull-right"><?php print $date->format("F jS, Y - g:ia"); ?></time></h4>
       <p class="comment-text"><?php print $comment; ?></p>
       <hr>
     </div>
-  <?php
-  } // while ($statement->fetch())
+  <?php endwhile;
 } // function renderGovernanceComments()
 
 /**
@@ -148,31 +141,27 @@ function printOptions($array) {
  */
 function renderComments($value) {
   global $mysqli;
-  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value where $value !=''");
+  $original = $mysqli->prepare("SELECT id, $value, user_id FROM $value WHERE $value != ''");
   $original->execute();
   $original->store_result();
   $original->bind_result($commentID, $comment, $userID);
-	
   ?>
-
   <?php while ($original->fetch()): ?>
     <?php
     $statement = $mysqli->prepare("SELECT reply_comment, replied_by FROM reply_$value WHERE comments_id = ?");
     $statement->bind_param("i", $commentID);
     $statement->execute();
     $statement->store_result();
-    $statement->bind_result( $reply, $replier);
-	
+    $statement->bind_result($reply, $replier);
     ?>
     <div class="comment col-xs-9">
-      <?php renderCommentInterior(findUsername($userID), $comment, $commentID,$value); ?>
+      <?php renderCommentOriginal(findUsername($userID), $comment, $commentID, $value); ?>
     </div>
     <?php while ($statement->fetch()): ?>
       <div class="comment-reply col-xs-9">
-        <?php renderreplyCommentInterior($replier, $reply); ?>
+        <?php renderCommentReply($replier, $reply); ?>
       </div>
     <?php endwhile; ?>
-	<?php $statement->close(); ?>
   <?php endwhile;
 } // function renderComment($value)
 
@@ -181,20 +170,28 @@ function renderComments($value) {
  *
  * @param {String} $user: The username.
  * @param {String} $text: The comment text.
+ * @param {int} $id: The ID of the comment.
+ * @param {String} $value: The database table.
  */
-function renderCommentInterior($user, $text, $id,$value) {
+function renderCommentOriginal($user, $text, $id, $table) {
   ?>
-  <h3 data-id=<?php print $id; ?> data-tablename=<?php print $value; ?>><?php print $text; ?></h3>
-  <p>Comment by: <?php print $user; ?><span class="reply pull-right">Reply</span></p>
-  <?php
-} // function renderCommentInterior($user, $text)
-
-function renderreplyCommentInterior($user, $text) {
-  ?>
+  <h3 data-id="<?php print $id; ?>" data-tablename="<?php print $table; ?>"><?php print $user; ?><span class="reply pull-right">Reply</span></h4>
   <p><?php print $text; ?></p>
-  <p>Comment by: <?php print $user; ?></p>
   <?php
-} 
+} // function renderCommentOriginal($user, $text)
+
+/**
+ * Renders a comment reply.
+ *
+ * @param {String} $user: The username.
+ * @param {String} $text: The comment text.
+ */
+function renderCommentReply($user, $text) {
+  ?>
+  <h4><?php print $user; ?></h4>
+  <p><?php print $text; ?></p>
+  <?php
+} // function renderCommentReply($user, $text)
 
 /**
  * Renders a data table on the comments page.
@@ -322,21 +319,21 @@ function saveObjectToDB($data, $objectID) {
   $statement->execute();
   $statement->store_result();
 
-  //Save languages to table
+  // Add languages to its table.
   $insert = $mysqli->prepare("DELETE FROM languages WHERE object_id = ?");
   $insert->bind_param("s", $objectID);
   $insert->execute();
-  
+
   foreach ($data["language"] as $language) {
-  	$language = htmlspecialchars(trim($language));
-  
-  	if ($language === "") { continue; }
-  
-  	$insert = $mysqli->prepare("INSERT INTO languages (object_id, language) VALUES (?, ?)");
-  	$insert->bind_param("is", $objectID, $language);
-  	$insert->execute();
+    $language = htmlspecialchars(trim($language));
+
+    if ($language === "") { continue; }
+
+    $insert = $mysqli->prepare("INSERT INTO languages (object_id, language) VALUES (?, ?)");
+    $insert->bind_param("is", $objectID, $language);
+    $insert->execute();
   }
-  
+
   // Add alternative titles to its table.
   $insert = $mysqli->prepare("DELETE FROM alt_titles WHERE object_id = ?");
   $insert->bind_param("s", $objectID);

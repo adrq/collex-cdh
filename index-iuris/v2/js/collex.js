@@ -22,38 +22,7 @@ $(document).ready(function() {
 
   // Initialize all DataTables.
   $(".dt").dataTable();
-
-  // Render all times.
-  renderTimes();
-
-  // Detect pushState()
-  if (window.location.pathname.indexOf("comments") > -1 && window.location.hash !== "") {
-    $(".viewer").each(function () {
-      if (window.location.hash.substring(1) == $(this).data("value")) {
-        renderComments($(this).text(), $(this).data("value"));
-        $(this).addClass("viewer-active");
-        return false;
-      }
-    });
-  }
 });
-
-/**
- * Executed when a user goes back in their history.
- */
-window.onpopstate = function () {
-  // Detect pushState()
-  if (window.location.pathname.indexOf("comments") > -1 && window.location.hash !== "") {
-    $(".viewer").each(function () {
-      if (window.location.hash.substring(1) == $(this).data("value")) {
-        renderComments($(this).text(), $(this).data("value"));
-        $(".viewer.viewer-active").removeClass("viewer-active");
-        $(this).addClass("viewer-active");
-        return false;
-      }
-    });
-  }
-};
 
 /**
  * For all required <input> and <textarea>, toggle the has-error class if the inside value is empty.
@@ -118,29 +87,6 @@ $("#addGenreButton").click(function (e) {
 
   e.target.blur();
 });
-
-
-/**
- * Add another language within the RDF creation or edit form.
- *
- * @param {HTML DOM Event} e: The event happening.
- */
-$("#addLanguageButton").click(function (e) {
-  var section = $(this).parentsUntil("section").parent();
-  var group   = section.find("input[name='language[]']").last().parent().parent().clone();
-  var newID   = increaseID(group, "input");
-
-  group.find("input").prop("id", newID).val("");
-  group.find("label").attr("for", newID);
-
-  $(group).insertBefore($(this).parent().parent());
-  group.show();
-
-  section.find(".close.hide").removeClass("hide");
-
-  e.target.blur();
-});
-
 
 /**
  * Add another alternative title to the alternative title section within the RDF creation or edit form.
@@ -288,18 +234,16 @@ $(".viewer").click(function () {
     type: "GET",
     data: "comments=" + $(this).data("value"),
     success: function (result) {
-    console.log(result);
-      if (result.indexOf("<b>Notice</b>") > -1) {
-        console.error("There is a notice inside the PHP code. Result:\n" + result);
+      if ($.trim(result) === "") {
+        $("#results").html("<h2><em>No data was returned</em></h2>");
+      } else {
+        $("#results").html(result).find("table.dt").dataTable();
       }
-      $("#results").empty().html(result).find("table.dt").dataTable();
     },
     error: function (result) {
       console.error("Error connecting to the server. Message: " + result.responseText);
     }
   });
-
-  // renderComments($(this).text(), $(this).data("value"));
 });
 
 /**
@@ -315,21 +259,19 @@ $("#results").on("click", ".reply", function () {
  * Submits a reply comment.
  */
 $("#results").on("click", "a.btn-default", function (e) {
-
+  var id    = $(this).parent().prev().find("> h3").data("id");
+  var table = $(this).parent().prev().find("> h3").data("tablename");
   var value = $.trim($(this).prev().val());
-  var id = $(this).parent().prev().find("> h3").data("id");
-  var tablename = $(this).parent().prev().find("> h3").data("tablename");
-  
+
   $.ajax({
     url: "comments",
     type: "POST",
     data: "postComment=" + value + "&commentID=" + id + "&tablename=" + tablename,
     success: function (result) {
-		$("#results").html(result);
-      // alert("The comment was posted.");
+      $("#results").html(result);
     },
     error: function (result) {
-		alert("it is an error\n" + result.responseText);
+      console.error("There was an error connecting to the server: " + result.responseText);
     }
   });
 
@@ -468,33 +410,6 @@ $("body").on("submit", "footer.modal form", function (e) {
 });
 
 /**
- * Render the comments produced by users.
- *
- * @param {String} title: The title of the page.
- * @param {String} value: The value of the item.
- */
-function renderComments(title, value) {
-  title += " - Comments and Suggested Items - Index Iuris";
-  $.ajax({
-    url: "comments",
-    type: "GET",
-    data: "comments=" + value,
-    success: function (result) {
-      $("#results").empty().html(result).find("table.dt").dataTable();
-
-      $("title").text(title);
-
-      window.history.pushState({
-        title : "#" + value
-      }, title, "#" + value);
-    },
-    error: function (result) {
-      console.error("Error connecting to the server. Message: " + result.responseText);
-    }
-  });
-}
-
-/**
  * Increase a ID on a <input> or <select> for better user experience when
  * a user clicks the corresponding <label>.
  *
@@ -511,62 +426,5 @@ function increaseID(group, search) {
     return id.substring(0, id.length - number.toString().length) + (number + 1);
   } else {
     return id + "1";
-  }
-}
-
-/**
- * Render all <time> tags from YYYY-MM-DD HH:MM:SS format to Month DD, YYYY HH:MM<am/pm> format.
- */
-function renderTimes() {
-  $("time").each(function () {
-    var text  = $.trim($(this).text());
-    var hour = parseInt(text.substring(11, 13), 10);
-
-    if (hour.toString().substring(0, 1) === 0) {
-      hour = hour.toString().substring(1);
-    }
-
-    var meridiem = hour < 13 ? "am" : "pm";
-
-    if (hour > 12) {
-      hour = hour - 12;
-    }
-
-    $(this).text(convertMonth(parseInt(text.substring(5, 7), 10)) + " " + parseInt(text.substring(8, 10), 10) + ", " + parseInt(text.substring(0, 4), 10) + " - " + hour + ":" + text.substring(14, 16) + meridiem);
-  });
-}
-
-/**
- * Converts a month from number format to word format.
- *
- * @param {int} number: The number of the year the month is.
- * @return {String}
- */
-function convertMonth(number) {
-  switch (number) {
-    case 1:
-      return "January";
-    case 2:
-      return "February";
-    case 3:
-      return "March";
-    case 4:
-      return "April";
-    case 5:
-      return "May";
-    case 6:
-      return "June";
-    case 7:
-      return "July";
-    case 8:
-      return "August";
-    case 9:
-      return "September";
-    case 10:
-      return "October";
-    case 11:
-      return "November";
-    case 12:
-      return "December";
   }
 }

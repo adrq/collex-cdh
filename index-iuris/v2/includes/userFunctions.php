@@ -204,8 +204,6 @@ function sendUsername($email) {
   } else {
     return "This email address is not in our records.";
   }
-
-  mail();
 } // function sendUsername($email)
 
 /**

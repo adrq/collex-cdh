@@ -55,9 +55,6 @@ if (!isset($_GET["id"])) {
 
   $statement->fetch();
 
-  // Assure that the timezone is EST since the Database is in EST.
-  date_default_timezone_set("America/New_York");
-
   $request = new DateTime($time);
   $current = new DateTime();
   $current->sub(new DateInterval("PT24H"));

@@ -8,8 +8,11 @@
 error_reporting(-1);
 ini_set("display_errors", "On");
 
-// Start up any sessions
+// Start up any sessions.
 session_start();
+
+// Set the timezone.
+date_default_timezone_set("America/New_York");
 
 // Define variables.
 define("DB_HOST", "localhost");
