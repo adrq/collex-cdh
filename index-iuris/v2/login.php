@@ -10,44 +10,25 @@
  */
 
 $dialog = isset($_GET["dialog"]) ? $_GET["dialog"] : "";
+
+if (isset($_POST)) {
+  require_once "includes/userFunctions.php";
+}
+
 if (isset($_POST["username"], $_POST["password"])) {
-  require_once "includes/config.php";
-  global $mysqli;
+  $dialog = login($_POST["username"], $_POST["password"]);
 
-  $username = $mysqli->real_escape_string($_POST["username"]);
-  $password = hash("sha512", $_POST["password"]);
-
-  $statement = $mysqli->prepare("SELECT id, password_hash, user_role FROM users WHERE username = ?");
-  $statement->bind_param("s", $username);
-  $statement->execute();
-  $statement->store_result();
-  $statement->bind_result($id, $pass, $role);
-
-  if ($statement->num_rows == 1) {
-    $statement->fetch();
-    if ($pass == $password) {
-      $_SESSION["user_id"]   = $id;
-      $_SESSION["username"]  = $username;
-      $_SESSION["logged-in"] = true;
-      $_SESSION["user_role"] = $role;
-
-      header("Location: account");
-    } else {
-      $dialog = "Please try your password again.";
-    } // if ($pass == $password)
-  } else {
-    $dialog = "This username does not exist.";
-  } // if ($statement->num_rows == 1)
-} // if (isset($_POST["username"], $_POST["password"]))
+  if ($dialog == "Success") {
+    header("Location: account");
+  }
+}
 
 if (isset($_POST["username"]) && !isset($_POST["password"])) {
-  require_once "includes/userFunctions.php";
-
   $dialog = sendPasswordReset($_POST["username"]);
 }
 
 if (isset($_POST["email"])) {
-
+  $dialog = sendUsername($_POST["email"]);
 }
 
 // I literally made these up.
@@ -93,62 +74,76 @@ require "includes/header.php";
   </div>
 
   <div class="row">
-    <div class="col-xs-6 center-block">
-      <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
-        <fieldset>
-          <?php if (isset($_GET["forgot"]) && $_GET["forgot"] == "password"): ?>
+    <?php if (isset($_GET["forgot"])): ?>
+      <div class="col-xs-6">
+        <form class="form-horizontal" action="login" method="POST">
+          <legend>Username Retrieval</legend>
+          <fieldset>
             <section class="form-group">
-              <label for="username" class="col-xs-4 control-label">Username</label>
-              <div class="col-xs-8">
-                <input type="text" class="form-control" id="username" name="username" autofocus="">
+              <label for="email" class="col-xs-2 control-label">Email</label>
+              <div class="col-xs-10">
+                <input type="email" class="form-control" id="email" name="email" autocomplete="off" required="">
               </div>
             </section>
 
             <section class="form-group">
               <div class="col-xs-12">
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </section>
-          <?php elseif (isset($_GET["forgot"]) && $_GET["forgot"] == "username"): ?>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="col-xs-6">
+        <form class="form-horizontal" action="login" method="POST">
+          <legend>Password Retrieval</legend>
+          <fieldset>
             <section class="form-group">
-              <label for="email" class="col-xs-4 control-label">Email</label>
-              <div class="col-xs-8">
-                <input type="email" class="form-control" id="email" name="email">
+              <label for="username" class="col-xs-2 control-label">Username</label>
+              <div class="col-xs-10">
+                <input type="text" class="form-control" id="username" name="username" autocomplete="off" required="">
               </div>
             </section>
 
             <section class="form-group">
               <div class="col-xs-12">
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </section>
-          <?php else: ?>
+          </fieldset>
+        </form>
+      </div>
+    <?php else: ?>
+      <div class="col-xs-6 center-block">
+        <form class="form-horizontal" action="login" method="POST">
+          <fieldset>
             <section class="form-group">
-              <label for="username" class="col-xs-4 control-label">Username</label>
-              <div class="col-xs-8">
+              <label for="username" class="col-xs-2 control-label">Username</label>
+              <div class="col-xs-10">
                 <input type="text" class="form-control" id="username" name="username" autofocus="">
               </div>
             </section>
 
             <section class="form-group">
-              <label for="password" class="col-xs-4 control-label">Password</label>
-              <div class="col-xs-8">
+              <label for="password" class="col-xs-2 control-label">Password</label>
+              <div class="col-xs-10">
                 <input type="password" class="form-control" id="password" name="password">
               </div>
             </section>
 
             <section class="form-group">
-              <div class="col-xs-4 text-right">
-                <a href="login?forgot=password" style="display: block; margin-top: 11px;">Forgot your password?</a>
-              </div>
-              <div class="col-xs-8">
+              <div class="col-xs-12">
+                <a href="login?forgot" class="pull-left" style="display: block; margin-top: 10px;">Forget your username or password?</a>
                 <button type="submit" class="btn btn-primary pull-right">Login</button>
               </div>
             </section>
-          <?php endif; ?>
+
         </fieldset>
       </form>
+
     </div>
+    <?php endif; ?>
   </div>
 </div>
 

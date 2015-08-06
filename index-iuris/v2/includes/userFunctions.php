@@ -24,8 +24,8 @@ function register($username, $password1, $password2, $email, $captcha) {
   global $mysqli;
   $email     = $mysqli->real_escape_string(trim($email));
   $username  = $mysqli->real_escape_string(trim($username));
-  $password1 = $mysqli->real_escape_string(trim($password1));
-  $password2 = $mysqli->real_escape_string(trim($password2));
+  $password1 = trim($password1);
+  $password2 = trim($password2);
   $response  = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=" . $captcha));
 
   if ($response->success != 1) {
@@ -85,9 +85,46 @@ function register($username, $password1, $password2, $email, $captcha) {
 } // function register($username, $password1, $password2, $email, $captcha)
 
 /**
+ * Logs a user in.
+ *
+ * @param {String} $username
+ * @param {String} $passwrod
+ */
+function login($username, $password) {
+  global $mysqli;
+  $username = $mysqli->real_escape_string($username);
+  $password = hash("sha512", $password);
+
+  $statement = $mysqli->prepare("SELECT id, password_hash, user_role FROM users WHERE username = ?");
+  $statement->bind_param("s", $username);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($id, $pass, $role);
+
+  if ($statement->num_rows == 1) {
+    $statement->fetch();
+
+    if (strcmp($password, $pass) === 0) {
+      $_SESSION["user_id"]   = $id;
+      $_SESSION["username"]  = $username;
+      $_SESSION["logged-in"] = true;
+      $_SESSION["user_role"] = $role;
+
+      return "Success";
+    } else {
+      return "Incorrect username and password combination.";
+    }
+  } else {
+    // It's widely considered to not display that the username does not exist on login - only on register.
+    // I agree with this because bots will struggle with CAPTCHAs. A CAPTCHA is not necessary on login.
+    return "Incorrect username and password combination.";
+  }
+} // function login($username, $password)
+
+/**
  * Sends a password reset to an email address.
  *
- * @param {String} $username: The user inputted email address.
+ * @param {String} $username
  * @return {String}
  */
 function sendPasswordReset($username) {
@@ -115,7 +152,6 @@ function sendPasswordReset($username) {
     $message .= "<p>" . $reset . "</p>";
 
     $headers  = "From: cdh@sc.edu \r\n";
-    $headers .= "Reply-To: cdh@sc.edu \r\n";
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     $headers .= "MIME-Version: 1.0 \r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8";
@@ -125,6 +161,52 @@ function sendPasswordReset($username) {
 
   return "Password reset has been sent.";
 } // function sendPasswordReset($username)
+
+/**
+ * Sends an email to a user stating what username is attached to
+ * the corresponding email.
+ *
+ * @param {String} $email
+ * @return {String}
+ */
+function sendUsername($email) {
+  global $mysqli;
+
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return "Please enter in a valid email.";
+  }
+
+  $email = $mysqli->real_escape_string(trim($email));
+
+  $statement = $mysqli->prepare("SELECT username FROM users WHERE email = ? LIMIT 1");
+  $statement->bind_param("s", $email);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($username);
+
+  if ($statement->fetch()) {
+    $message  = "Hello " . $username . ",<br><br>";
+    $message .= "<p>You've recently requested what your username was.</p>";
+    $message .= "<p>It is " . $username . " and it is ready to be used!</p>";
+    $message .= "<p>If you did not initiate this action, please ignore this email. This does not pose a threat to your security.</p>";
+    $message .= "<br><p>Thank you,<br>The Index Iuris Team</p>";
+
+    $headers  = "From: cdh@sc.edu \r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $headers .= "MIME-Version: 1.0 \r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8";
+
+    if (mail($email, "Username Retrieval", $message, $headers)) {
+      return "Email has been sent.";
+    } else {
+      return "There was an error trying to send the email, please try again later.";
+    }
+  } else {
+    return "This email address is not in our records.";
+  }
+
+  mail();
+} // function sendUsername($email)
 
 /**
  * Sends off a email verification.
