@@ -53,7 +53,7 @@
   </div>
 </footer>
 
-<?php foreach (array("jquery.min.js", "bootstrap.min.js", "dataTables.min.js", "dataTables.bootstrap.js", "platform.min.js", "collex.js") as $script): ?>
+<?php foreach (array("jquery.min.js", "bootstrap.min.js", "dataTables.min.js", "dataTables.bootstrap.min.js", "platform.min.js", "collex.js") as $script): ?>
   <script src="js/<?php print $script; ?>"></script>
 <?php endforeach; ?>
 

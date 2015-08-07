@@ -12,11 +12,6 @@ if ($loginRequired && !$loginRequired) {
   header("Location: login");
 }
 
-if (isset($_GET["modal"])) {
-  retreiveModal($_GET["modal"]);
-  exit();
-}
-
 if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])) {
   exit(json_encode(sendContactMail($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])));
 }
@@ -37,7 +32,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
   <title><?php print isset($title) ? $title . " - " : ""; ?>Index Iuris</title>
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-  <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css") as $style): ?>
+  <?php foreach (array("bootstrap-cosmo.min.css", "dataTables.bootstrap.css", "collex.css") as $style): ?>
     <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
 
@@ -67,7 +62,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
           <?php if (isLoggedIn()): ?>
             <li<?php print $title == "Metadata Submission Form" ? ' class="active"' : ""; ?>><a href="rdf-form">Metadata Submission</a></li>
             <li<?php print $title == "Governance" ? ' class="active"' : ""; ?>><a href="governance">Governance</a></li>
-            <li<?php print $title == "View Submission" || $title == "View Submissions" ? ' class="active"' : ""; ?>><a href="submissions">View Submissions</a></li>
+            <li<?php print $title == "View Submissions" ? ' class="active"' : ""; ?>><a href="submissions">View Submissions</a></li>
             <li<?php print $title == "Comments and Suggested Items" ? ' class="active"' : ""; ?>><a href="comments">Comments</a></li>
 
             <li class="dropdown<?php print $title == 'Account Details' ? ' active' : ''; ?>">
