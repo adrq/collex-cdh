@@ -69,12 +69,32 @@ function saveObjectToDB($data, $objectID) {
   // Add date to its table.
   deleteOneValue($objectID, "dates");
 
-  $humanDate   = htmlspecialchars(trim($data["human_date"]));
-  $machineDate = htmlspecialchars(trim($data["machine_date"]));
+  $humanDate   = htmlspecialchars(trim($data["human_date_text"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date_text"]));
 
-  $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
-  $insert->bind_param("iss", $objectID, $machineDate, $humanDate);
-  $insert->execute();
+  if ($humanDate !== "" && $machineDate !== "") {
+    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'text', ?, ?)");
+    $insert->bind_param("iss", $objectID, $machineDate, $humanDate);
+    $insert->execute();
+  }
+
+  $humanDate   = htmlspecialchars(trim($data["human_date_object"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date_object"]));
+
+  if ($humanDate !== "" && $machineDate !== "") {
+    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'object', ?, ?)");
+    $insert->bind_param("iss", $objectID, $machineDate, $humanDate);
+    $insert->execute();
+  }
+
+  $humanDate   = htmlspecialchars(trim($data["human_date_digital"]));
+  $machineDate = htmlspecialchars(trim($data["machine_date_digital"]));
+
+  if ($humanDate !== "" && $machineDate !== "") {
+    $insert = $mysqli->prepare("INSERT INTO dates (object_id, type, machine_date, human_date) VALUES (?, 'digital', ?, ?)");
+    $insert->bind_param("iss", $objectID, $machineDate, $humanDate);
+    $insert->execute();
+  }
 
   deleteOneValue($objectID, "parts");
 

@@ -11,6 +11,7 @@ if (!isset($_GET["id"]) && !isset($_POST["id"])) {
 $id = isset($_POST["id"]) ? $_POST["id"] : $_GET["id"];
 
 if (isset($_POST["id"])) {
+  require_once "includes/dataFunctions.php";
   saveObjectToDB($_POST, $id);
   header("Location: edit?id=" . $id);
 }
@@ -113,7 +114,7 @@ if ($statement->fetch()): ?>
                   <div class="col-xs-10">
                     <select class="form-control" name="file_format" id="fileFormat" required="">
                       <?php foreach (array("html" => "Web Accessible HTML (HTML, PHP, etc.)", "xml" => "Web Accessible XML (TEI, RDF, etc.)", "plaintext" => "Plain Text Document", "pdf" => "PDF", "image" => "Image files (jpg, png, etc.", "other" => "Other") as $value=>$text): ?>
-                        <option<?php print $file_format == $value ? ' selected="" ' : ""; ?>value="<?php print $value; ?>"><?php print $text; ?></option>
+                        <option<?php print $file_format == $value ? ' selected="" ' : " "; ?>value="<?php print $value; ?>"><?php print $text; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -129,7 +130,7 @@ if ($statement->fetch()): ?>
                   <div class="col-xs-10">
                     <select class="form-control" id="type" name="type" required="">
                       <?php foreach (array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript") as $item): ?>
-                        <option<?php print $type == $item ? 'selected=""' : ""; ?>value="<?php print $item; ?>"><?php print $item; ?></option>
+                        <option<?php print $type == $item ? ' selected="" ' : " "; ?>value="<?php print $item; ?>"><?php print $item; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -565,15 +566,14 @@ if ($statement->fetch()): ?>
         </div>
       </div>
     </div>
-  <?php
-  else:
-    ?><script>alert("You do not have permission to view this record."); window.location = "submissions";</script><?php
-  endif; // if ($user_id == $_SESSION["user_id"])
-else:
-  ?><script>alert("This record does not exist."); window.location = "submissions";</script><?php
-endif; // if ($row)
+  <?php else: ?>
+    <script>alert("You do not have permission to view this record."); window.location = "submissions";</script>
+  <?php endif; // if ($user_id == $_SESSION["user_id"]) ?>
+<?php else: ?>
+  <script>alert("This record does not exist."); window.location = "submissions";</script>
+<?php endif; // if ($row) ?>
 
-require "includes/footer.php";
+<?php require "includes/footer.php";
 
 /**
 * Prints if the form field is required or not.
@@ -581,36 +581,36 @@ require "includes/footer.php";
 * @param {String} $key: The form field name.
 */
 function printRequired($key) {
-print in_array($key, array("custom_namespace", "rdf_about", "archive", "title", "type", "file_format")) ? ' required=""' : "";
+  print in_array($key, array("custom_namespace", "rdf_about", "archive", "title", "type", "file_format")) ? ' required=""' : "";
 }
 
 function printResult($name, $label, $value, $type) {
-?>
-<section class="form-group">
-  <label for="<?php print $name; ?>" class="control-label col-xs-2"><?php print $label; ?></label>
-  <div class="col-xs-10">
-    <?php
-    switch ($type) {
-      case "input":
-      ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" <?php printValue($value); printRequired($name); ?>><?php
-      break;
-      case "radio":
-      ?>
-      <div class="radio">
-        <label><input type="radio" name="<?php print $name; ?>" value="true"<?php print $value == "true" ? " checked=''" : ""; ?>>Yes</label>
-      </div>
-      <div class="radio">
-        <label><input type="radio" name="<?php print $name; ?>" value="false"<?php print $value == "false" ? " checked=''" : ""; ?>>No</label>
-      </div>
+  ?>
+  <section class="form-group">
+    <label for="<?php print $name; ?>" class="control-label col-xs-2"><?php print $label; ?></label>
+    <div class="col-xs-10">
       <?php
-      break;
-      case "textarea":
-      ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printValue($value, true); ?></textarea><?php
-      break;
-    }
-    ?>
-  </div>
-</section>
-<hr>
-<?php
+      switch ($type) {
+        case "input":
+        ?><input type="text" class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" <?php printValue($value); printRequired($name); ?>><?php
+        break;
+        case "radio":
+        ?>
+        <div class="radio">
+          <label><input type="radio" name="<?php print $name; ?>" value="true"<?php print $value == "true" ? " checked=''" : ""; ?>>Yes</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="<?php print $name; ?>" value="false"<?php print $value == "false" ? " checked=''" : ""; ?>>No</label>
+        </div>
+        <?php
+        break;
+        case "textarea":
+        ?><textarea class="form-control" name="<?php print $name; ?>" id="<?php print $name; ?>" rows="4"<?php printRequired($name); ?>><?php printValue($value, true); ?></textarea><?php
+        break;
+      }
+      ?>
+    </div>
+  </section>
+  <hr>
+  <?php
 }

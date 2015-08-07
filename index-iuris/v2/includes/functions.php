@@ -51,22 +51,22 @@ function isSuper() {
  *
  * @param {Array} $array: The pre-determined array list of examples.
  */
-function printListItems($array) {
+function printExamples($array) {
   foreach ($array as $example) {
     print "<li>" . $example . "</li>";
   }
-} // function printListItems($array)
+} // function printExamples($array)
 
 /**
  * Prints multiple options in a select dropdown.
  *
  * @param {Array} $array: The pre-determined array list of options.
  */
-function printSelectOptions($array) {
+function printOptions($array) {
   foreach ($array as $option) {
     print "<option>" . $option . "</option>";
   }
-} // function printSelectOptions($array)
+} // function printOptions($array)
 
 /**
  * Renders MySQL values into HTML-ready entities.
