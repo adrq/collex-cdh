@@ -3,7 +3,6 @@
  * @file userFunctions.php
  * Functionalities used throughout the website focused mainly on the user.
  */
-
 // Assure that the config file is imported prior.
 require_once "config.php";
 
@@ -151,12 +150,7 @@ function sendPasswordReset($username) {
     $message .= "<p>Otherwise, please <a href='" . $reset . "'>visit this link</a> to reset your password.</p><br>";
     $message .= "<p>" . $reset . "</p>";
 
-    $headers  = "From: cdh@sc.edu \r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-    $headers .= "MIME-Version: 1.0 \r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8";
-
-    mail($email, "Password Reset", $message, $headers);
+    mail($email, "Password Reset", $message, getHeaders("cdh@sc.edu"));
   }
 
   return "Password reset has been sent.";
@@ -191,12 +185,7 @@ function sendUsername($email) {
     $message .= "<p>If you did not initiate this action, please ignore this email. This does not pose a threat to your security.</p>";
     $message .= "<br><p>Thank you,<br>The Index Iuris Team</p>";
 
-    $headers  = "From: cdh@sc.edu \r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-    $headers .= "MIME-Version: 1.0 \r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8";
-
-    if (mail($email, "Username Retrieval", $message, $headers)) {
+    if (mail($email, "Username Retrieval", $message, getHeaders("cdh@sc.edu"))) {
       return "Email has been sent.";
     } else {
       return "There was an error trying to send the email, please try again later.";
@@ -222,13 +211,7 @@ function sendEmailVerification($email) {
   $message .= $verify . "<br><br>";
   $message .= "Thank you,<br>The Index Iuris Team";
 
-  $headers  = "From: cdh@sc.edu \r\n";
-  $headers .= "Reply-To: cdh@sc.edu \r\n";
-  $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-  $headers .= "MIME-Version: 1.0 \r\n";
-  $headers .= "Content-Type: text/html; charset=UTF-8";
-
-  return mail($email, "Email Verification", $message, $headers);
+  return mail($email, "Email Verification", $message, getHeaders("cdh@sc.edu"));
 } // function sendEmailVerification($email)
 
 /**
@@ -317,3 +300,68 @@ function updatePassword($oldPassword, $newPassword) {
 
   return $statement->affected_rows > 0 ? "Password updated successfully." : "Failed to update your password.";
 } // function updatePassword($oldPassword, $newPassword)
+
+/**
+ * Send off a piece of mail.
+ *
+ * @param {String} $name: The contacting user's name.
+ * @param {String} $email: The contacting user's email.
+ * @param {String} $message: The contacting user's message.
+ * @param {String} $captcha: The Google Captcha's client-sided value.
+ * @param {String} $receiver: The word directly after "Contact" inside the .modal-header > h4.modal-title
+ */
+function sendContactMail($name, $email, $message, $captcha, $receiver) {
+  $name    = trim($name);
+  $email   = trim($email);
+  $message = trim($message);
+  $captcha = trim($captcha);
+  $catcher = "";
+
+  if ($receiver == "Colin") {
+    $catcher = "wildercf@mailbox.sc.edu";
+  } else if ($receiver == "Abigail") {
+    $catcher = "afire2@uky.edu";
+  } else {
+    return array("type" => "danger", "text" => "Please do not alter the webpage.");
+  }
+
+  // Validate server-side due to client-side modifications.
+  if ($name === "") {
+    return array("type" => "warning", "text" => "Please enter in a name.");
+  }
+
+  if ($email === "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return array("type" => "warning", "text" => "Please enter in a valid email.");
+  }
+
+  if ($message === "") {
+    return array("type" => "warning", "text" => "Please enter in a message.");
+  }
+
+  $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=" . $captcha));
+  if ($response->success != 1) {
+    if ($response->{"error-codes"}[0] == "missing-input-response") {
+      return array("type" => "warning", "text" => "The CAPTCHA response is missing.");
+    } else if ($response->{"error-codes"}[0] == "invalid-input-response") {
+      return array("type" => "danger", "text" => "The CAPTCHA response is invalid or malformed.");
+    } else {
+      return array("type" => "warning", "text" => "Something went wrong while trying to validate the CAPTCHA. Please try again.");
+    }
+  }
+
+  if (mail($catcher, "Contact from Index Iuris", $message, getHeaders($email))) {
+    return array("type" => "success", "text" => "Thank you " . $name . ", your message has been sent!");
+  } else {
+    return array("type" => "warning", "text" => "There was an error sending your message. Please try again.");
+  }
+} // function sendMail($name, $email, $message, $captcha, $receiver)
+
+/**
+ * Simplified version of getting mail headers.
+ *
+ * @param {String} $email: The email the receiver will reply to.
+ * @return {String}
+ */
+function getHeaders($email) {
+  return "From: " . $email . "\r\nReply-To: " . $email . "\r\nX-Mailer: PHP/" . phpversion() . "\r\n" . "MIME-Version: 1.0\r\nContent-Type: text/html; charset=UTF-8";
+} // function getHeaders($email)

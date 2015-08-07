@@ -61,6 +61,11 @@ a:focus { color: #681422; }
 .comment-text { white-space: pre-line; }
 
 /**
+ * View Submission Page
+ */
+.list-single > li { margin-bottom: 25px; }
+
+/**
  * Edit Submission Page
  */
 .last-updated {
@@ -106,19 +111,14 @@ a:focus { color: #681422; }
   border-radius: 7px;
 }
 
-.reply {
+.reply,
+.delete {
+  color: #82172A;
   font-size: 15px;
-  color: #722F37;
+
   cursor: pointer;
 }
-.reply:hover { text-decoration: underline; }
-
-.delete{
-    font-size: 15px;
-    color: #722F37;
-    cursor: pointer;
-}
-
+.reply:hover,
 .delete:hover { text-decoration: underline; }
 
 .comment-reply {
@@ -131,7 +131,6 @@ a:focus { color: #681422; }
   border: 1px solid #ECECEC;
   border-radius: 7px;
 }
-
 
 /**
  * Bootstrap Modifications

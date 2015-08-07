@@ -256,7 +256,7 @@ $(".viewer").click(function () {
     data: "comments=" + $(this).data("value"),
     success: function (result) {
       if ($.trim(result) === "") {
-        $("#results").html("<h2><em>No data was returned</em></h2>");
+        $("#results").html("<h3><em>No comments have been made, yet...</em></h3>");
       } else {
         $("#results").html(result).find("table.dt").dataTable();
       }
@@ -266,8 +266,6 @@ $(".viewer").click(function () {
     }
   });
 });
-
-
 
 /**
  * Displays a textbox for a user wanting to reply.
@@ -301,22 +299,24 @@ $("#results").on("click", "a.btn-default", function (e) {
   e.target.blur();
 });
 
+/**
+ * Deletes a reply comment.
+ *
+ * {HTML DOM Event} e: The event happening.
+ */
 $("#results").on("click", ".delete", function (e) {
+  var id    = $(this).parent().parent().find("> h4").data("id");
+  var table = $(this).parent().parent().find("> h4").data("tablename");
 
-  var id = $(this).parent().parent().find("> h4").data("id");
-  var tablename = $(this).parent().parent().find("> h4").data("tablename");
-  console.log(id);
-  console.log(tablename);
   $.ajax({
     url: "comments",
     type: "POST",
-    data: "commentID=" + id + "&tablename=" + tablename,
+    data: "commentID=" + id + "&tablename=" + table,
     success: function (result) {
-		$("#results").html(result);
-      // alert("The comment was posted.");
+      $("#results").html(result);
     },
     error: function (result) {
-		alert("it is an error\n" + result.responseText);
+      console.error("There was an error connecting to the server: " + result.responseText);
     }
   });
 

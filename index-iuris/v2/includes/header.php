@@ -3,8 +3,9 @@
  * @file header.php
  * Prints out the HTML structure.
  */
-require_once "config.php";
 require_once "functions.php";
+require_once "dataFunctions.php";
+require_once "userFunctions.php";
 
 $loginRequired = isset($loginRequired) ? $loginRequired : false;
 if ($loginRequired && !$loginRequired) {
@@ -17,7 +18,7 @@ if (isset($_GET["modal"])) {
 }
 
 if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])) {
-  exit(json_encode(sendMail($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])));
+  exit(json_encode(sendContactMail($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])));
 }
 
 /*
@@ -37,7 +38,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
   <?php foreach (array("bootstrap.css", "dataTables.bootstrap.css", "collex.css") as $style): ?>
-  <link rel="stylesheet" href="css/<?php print $style; ?>">
+    <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
 
   <script src='https://www.google.com/recaptcha/api.js'></script>

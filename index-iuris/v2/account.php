@@ -51,7 +51,7 @@ require "includes/header.php";
 
     <?php if (isset($_GET["update"]) && $_GET["update"] == "password"): ?>
       <div class="col-xs-6">
-        <form class="form-horizontal" id="passwordUpdate" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form class="form-horizontal" id="passwordUpdate" action="account" method="POST">
           <fieldset>
             <section class="form-group">
               <label for="old" class="col-xs-4 control-label">Old Password</label>
@@ -84,7 +84,7 @@ require "includes/header.php";
       </div>
     <?php elseif (isset($_GET["update"]) && $_GET["update"] == "email"): ?>
       <div class="col-xs-6">
-        <form class="form-horizontal" action="<?php print htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+        <form class="form-horizontal" action="account" method="POST">
           <fieldset>
             <section class="form-group">
               <label for="old" class="col-xs-4 control-label">Old Email</label>

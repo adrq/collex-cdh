@@ -3,9 +3,12 @@
  * @file comments.php
  * Prints all comments for super users.
  */
+
 if (isset($_GET["comments"])) {
   require_once "includes/functions.php";
+
   $commentName = $_GET["comments"];
+
   if (strpos($commentName, "comments_") !== false) {
     renderComments($commentName);
   } else {
@@ -13,34 +16,41 @@ if (isset($_GET["comments"])) {
   }
   exit();
 }
+
 if (isset($_POST["postComment"])) {
   require_once "includes/functions.php";
   global $mysqli;
-  $reply     = $_POST["postComment"];
+
+  $reply     = $mysqli->real_escape_string(trim($_POST["postComment"]));
   $userID    = $_POST["commentID"];
   $username  = $_SESSION["username"];
   $tablename = "reply_" . $_POST["tablename"];
+
   $statement = $mysqli->prepare("INSERT INTO $tablename (comments_id, reply_comment, replied_by) VALUES (?, ?, ?)");
   $statement->bind_param("sss", $userID, $reply, $username);
   $statement->execute();
   $statement->store_result();
+
   renderComments($_POST["tablename"]);
+
   exit();
 }
 
 if (isset($_POST["commentID"])) {
-    require_once "includes/config.php";
-	require_once "includes/functions.php";
-    global $mysqli;
-	$userID = $_POST["commentID"];
-	$tablename = $_POST["tablename"];
-	$reply_tablename = "reply_".$tablename;
-	$statement = $mysqli->prepare("DELETE FROM $reply_tablename WHERE id = ? ");
-	$statement->bind_param("i",$userID);
-	$statement->execute();
-	$statement->store_result();
-	renderComments($_POST["tablename"]);
-	exit();
+  require_once "includes/functions.php";
+  global $mysqli;
+
+  $commentID = $_POST["commentID"];
+  $tablename = "reply_" . $_POST["tablename"];
+
+  $statement = $mysqli->prepare("DELETE FROM $tablename WHERE id = ?");
+  $statement->bind_param("i", $commentID);
+  $statement->execute();
+  $statement->store_result();
+
+  renderComments($_POST["tablename"]);
+
+  exit();
 }
 
 $title = "Comments and Suggested Items";

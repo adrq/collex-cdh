@@ -143,59 +143,59 @@ CREATE TABLE comments(
 );
 
 CREATE TABLE comments_rdf_about(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_rdf_about text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_rdf_about text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_date(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_date text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_date text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_provenance(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_provenance text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_provenance text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_place_of_composition(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_place_of_composition text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_place_of_composition text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_is_part_of(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_is_part_of text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_is_part_of text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_has_part(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_has_part text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_has_part text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_text_divisions(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_text_divisions text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_text_divisions text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE comments_notes(
-		id int(11) NOT NULL AUTO_INCREMENT,
-		comments_notes text DEFAULT NULL,
-		user_id varchar(255) DEFAULT NULL,
-		PRIMARY KEY (id)
+	id int(11) NOT NULL AUTO_INCREMENT,
+	comments_notes text DEFAULT NULL,
+	user_id varchar(255) DEFAULT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE reply_comments_rdf_about(

@@ -2,21 +2,18 @@
 /**
  * @file register.php
  * Prints out the registration page.
- *
- * 7/28/15 - Lichen has PHP v.5.3.3 installed whereas the local machines have PHP v.5.5.x.
- * Since this is the case, some changes had to be made.
  */
-require "includes/userFunctions.php";
+
 $dialog = "";
 if (isset($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["email"], $_POST["g-recaptcha-response"])) {
-  require_once "includes/functions.php";
+  require_once "includes/userFunctions.php";
 
   $dialog = register($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["email"], $_POST["g-recaptcha-response"]);
 
   if (strcmp($dialog, "Success") === 0) {
     header("Location: account");
   }
-} // if (isset($_POST["username"], $_POST["password1"], $_POST["password2"]))
+}
 
 $title = "Register";
 $loginRequired = false;

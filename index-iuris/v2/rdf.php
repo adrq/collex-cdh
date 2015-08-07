@@ -4,55 +4,54 @@
  * Prints rdf for a given record
  */
 
+if (!isset($_GET["id"])) {
+  header("Location: submissions");
+}
+
 require "includes/rdf-generator.php";
-require_once "includes/config.php";
-require_once "includes/functions.php";
-if (isset($_GET["id"])) :
-  $id = $_GET["id"];
-  if (isset($_GET["download"]) && $_GET["download"]=="true"){ //download the rdf file instead of displaying it
-	header("Content-Description: File Transfer");
-	header("Content-Disposition: attachment; filename=$id.rdf");
-    print generateRDF($_GET["id"]);
-    exit();
-  }
 
+$id = $_GET["id"];
 
+if (isset($_GET["id"], $_GET["download"])) {
+  header("Content-Description: File Transfer");
+  header("Content-Disposition: attachment; filename=" . $id . ".rdf");
+  print generateRDF($id);
+  exit();
+}
 $title = "View RDF";
 $loginRequired = true;
 require "includes/header.php";
+
+global $mysqli;
+$statement = $mysqli->prepare("SELECT title FROM objects WHERE id = ?");
+$statement->bind_param("i", $id);
+$statement->execute();
+$statement->store_result();
+$statement->bind_result($title);
+$statement->fetch();
 ?>
 
-
 <div class="container">
+  <div class="row page-header">
+    <div class="col-xs-12">
+      <h1 class="pull-left"><?php print $title; ?></h1>
+
+      <a href="edit?id=<?php print $id; ?>" class="btn btn-default pull-right" style="margin-top: 20px;">Edit</a>
+      <a href="view?id=<?php print $id; ?>" class="btn btn-default pull-right" style="margin-top: 20px; margin-right: 10px;">View</a>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="pull-left">View RDF</h1>
-      <h3 class="pull-right"><a href="view?id=<?php print $id?>">Return to submission</a></h3>
+      <a href="rdf?id=<?php print $id; ?>&amp;download" class="btn btn-default pull-right">Download RDF</a>
     </div>
+  </div>
+
+  <div class="row" style="margin-top: 15px;">
     <div class="col-xs-12">
-      <a href="rdf?id=<?php print $id?>&download=true" class="btn btn-default">Download RDF</a>
-    </div>
-    
-    <div class="col-xs-12">
-      <pre>
-        <?php print htmlspecialchars(generateRDF($id));?>
-      </pre>      
+      <pre><?php print htmlspecialchars(generateRDF($id)); ?></pre>
     </div>
   </div>
 </div>
-<?php else:?>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1 class="pull-left">View RDF</h1>
-    </div>
-    <div class="col-xs-12">
-      <p>Invalid ID. <a href="submissions">View submissions</a>
-    </div>
-  </div>
-</div>
-<?php endif?>
 
-
-
-<?php require "includes/footer.php";?>
+<?php require "includes/footer.php"; ?>
