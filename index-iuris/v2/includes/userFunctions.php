@@ -221,7 +221,7 @@ function sendEmailVerification($email) {
  * @param {String} $newEmail: The new email address.
  * @return {String}
  */
-function updateEmail($oldEmail, $newEmail) {
+function updateEmail($newEmail) {
   global $mysqli;
 
   // Filter the new email.
@@ -230,7 +230,6 @@ function updateEmail($oldEmail, $newEmail) {
   }
 
   // Assure the emails have been escaped.
-  $oldEmail = $mysqli->real_escape_string(trim($oldEmail));
   $newEmail = $mysqli->real_escape_string(trim($newEmail));
 
   // Assure new email does not exist.
@@ -243,16 +242,6 @@ function updateEmail($oldEmail, $newEmail) {
     return "This email address is already in use.";
   }
 
-  // Assure the old email is correct.
-  $statement = $mysqli->prepare("SELECT 1 FROM users WHERE id = ? AND email = ?");
-  $statement->bind_param("is", $_SESSION["user_id"], $oldEmail);
-  $statement->execute();
-  $statement->store_result();
-
-  if ($statement->num_rows === 0) {
-    return "Incorrect old email address.";
-  }
-
   // Update new email address.
   $statement = $mysqli->prepare("UPDATE users SET email = ?, email_verify = FALSE WHERE id = ? LIMIT 1");
   $statement->bind_param("si", $newEmail, $_SESSION["user_id"]);
@@ -262,7 +251,7 @@ function updateEmail($oldEmail, $newEmail) {
   sendEmailVerification($newEmail);
 
   return $statement->affected_rows > 0 ? "Email address updated successfully. Verification sent." : "Failed to update your email address.";
-} // function updateEmail($oldEmail, $newEmail)
+} // function updateEmail($newEmail)
 
 /**
  * Update a user's password.

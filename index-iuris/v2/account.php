@@ -87,13 +87,6 @@ require "includes/header.php";
         <form class="form-horizontal" action="account" method="POST">
           <fieldset>
             <section class="form-group">
-              <label for="old" class="col-xs-4 control-label">Old Email</label>
-              <div class="col-xs-8">
-                <input type="email" class="form-control" id="old" name="oldEmail" required="">
-              </div>
-            </section>
-
-            <section class="form-group">
               <label for="email1" class="col-xs-4 control-label">Email</label>
               <div class="col-xs-8">
                 <input type="email" class="form-control" id="email1" name="email1" required="">
