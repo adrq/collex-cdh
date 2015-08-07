@@ -13,7 +13,7 @@ $id = isset($_POST["id"]) ? $_POST["id"] : $_GET["id"];
 if (isset($_POST["id"])) {
   require_once "includes/dataFunctions.php";
   saveObjectToDB($_POST, $id);
-  header("Location: edit?id=" . $id);
+  header("Location: edit?id=" . $id . "&success");
 }
 
 $title = "Edit Submission";
@@ -576,6 +576,19 @@ $statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitl
 <?php else: ?>
   <script>alert("This record does not exist."); window.location = "submissions";</script>
 <?php endif; // if ($row) ?>
+
+<?php if (isset($_GET["success"])): ?>
+  <div class="modal edit-success" id="editSuccess">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <h2>Success</h2>
+          <i class="glyphicon glyphicon-ok text-success"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
 
 <?php require "includes/footer.php";
 

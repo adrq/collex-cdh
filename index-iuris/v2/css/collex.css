@@ -73,6 +73,22 @@ a:focus { color: #681422; }
  */
 .list-part { margin-bottom: 10px; }
 
+.edit-success {
+  top: 50%;
+
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.edit-success .glyphicon {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  font-size: 45px;
+}
+
 /**
  * Comments and Suggested Viewers
  */

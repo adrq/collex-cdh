@@ -25,6 +25,16 @@ $(document).ready(function() {
 });
 
 /**
+ * Executed when the window is ready.
+ * Note: This will always execute after the DOM is ready.
+ */
+$(window).ready(function () {
+  if ($("#editSuccess").length) {
+    editSuccess();
+  }
+});
+
+/**
  * For all required <input> and <textarea>, toggle the has-error class if the inside value is empty.
  */
 $("form").on("input", "input, textarea", function () {
@@ -472,4 +482,15 @@ function increaseID(group, search) {
   } else {
     return id + "1";
   }
+}
+
+/**
+ * Display to the user that they were successful on editing an object.
+ */
+function editSuccess() {
+  $("#editSuccess").fadeIn();
+
+  setTimeout(function () {
+    $("#editSuccess").fadeOut();
+  }, 1500);
 }
