@@ -21,7 +21,7 @@ $(document).ready(function() {
   $("[data-toggle='tooltip']").tooltip();
 
   // Initialize all DataTables.
-  $(".dt").dataTable();
+ $(".dt").dataTable();
 });
 
 /**
@@ -510,3 +510,4 @@ function editSuccess() {
     $("#editSuccess").fadeOut();
   }, 1500);
 }
+
