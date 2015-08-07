@@ -124,16 +124,6 @@ a:focus { color: #681422; }
   border-radius: 7px;
 }
 
-.reply,
-.delete {
-  color: #82172A;
-  font-size: 15px;
-
-  cursor: pointer;
-}
-.reply:hover,
-.delete:hover { text-decoration: underline; }
-
 .comment-reply {
   margin-left: 6%;
   margin-bottom: 1%;
@@ -144,6 +134,18 @@ a:focus { color: #681422; }
   border: 1px solid #ECECEC;
   border-radius: 7px;
 }
+
+.comment-tools {
+  float: right;
+  margin-top: 10px;
+}
+.comment-tools > li {
+  color: #82172A;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+.comment-tools > li:hover { text-decoration: underline; }
 
 /**
  * Bootstrap Modifications

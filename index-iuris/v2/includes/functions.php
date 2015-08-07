@@ -186,15 +186,17 @@ function renderComments($value) {
  */
 function renderComment($user, $text, $id, $table, $type) {
   ?>
-  <h4 data-id="<?php print $id; ?>" data-tablename="<?php print $table; ?>">
-    <?php print $user;?>
+  <h4 class="pull-left" data-id="<?php print $id; ?>" data-tablename="<?php print $table; ?>"><?php print $user; ?></h4>
+  <ul class="list-inline comment-tools">
     <?php if ($type == "reply" && isSuper()): ?>
-      <span class="delete pull-right">Delete</span>
+      <li class="delete">Delete</li>
     <?php elseif ($type == "original"): ?>
-      <span class="reply pull-right">Reply</span>
+      <li class="reply">Reply</li>
+      <li class="breakdown">Collapse</li>
     <?php endif; ?>
-  </h4>
-  <p><?php print $text; ?></p>
+  </ul>
+
+  <p style="clear: both;"><?php print $text; ?></p>
   <?php
 } // function renderComment($user, $text, $id, $table, $type)
 

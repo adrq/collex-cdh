@@ -269,6 +269,11 @@ $(".viewer").click(function () {
         $("#results").html("<h3><em>No comments have been made, yet...</em></h3>");
       } else {
         $("#results").html(result).find("table.dt").dataTable();
+        $("#results").find(".breakdown").each(function () {
+          if (!$(this).parentsUntil(".comment").parent().next().is(".comment-reply")) {
+            $(this).remove();
+          }
+        });
       }
     },
     error: function (result) {
@@ -290,8 +295,8 @@ $("#results").on("click", ".reply", function () {
  * Submits a reply comment.
  */
 $("#results").on("click", "a.btn-default", function (e) {
-  var id    = $(this).parent().prev().find("> h3").data("id");
-  var table = $(this).parent().prev().find("> h3").data("tablename");
+  var id    = $(this).parent().prev().find("> h4").data("id");
+  var table = $(this).parent().prev().find("> h4").data("tablename");
   var value = $.trim($(this).prev().val());
 
   $.ajax({
@@ -331,6 +336,17 @@ $("#results").on("click", ".delete", function (e) {
   });
 
   e.target.blur();
+});
+
+/**
+ * Collapses and expands a comment's replies.
+ */
+$("#results").on("click", ".breakdown", function () {
+  if ($(this).text() == "Collapse") {
+    $(this).text("Expand").parentsUntil(".comment").parent().nextUntil(".comment").slideUp();
+  } else if ($(this).text() == "Expand") {
+    $(this).text("Collapse").parentsUntil(".comment").parent().nextUntil(".comment").slideDown();
+  }
 });
 
 /**
