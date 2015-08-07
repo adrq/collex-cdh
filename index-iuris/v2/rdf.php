@@ -33,17 +33,13 @@ $statement->fetch();
 
 <div class="container">
   <div class="row page-header">
-    <div class="col-xs-12">
-      <h1 class="pull-left"><?php print $title; ?></h1>
-
-      <a href="edit?id=<?php print $id; ?>" class="btn btn-default pull-right" style="margin-top: 20px;">Edit</a>
-      <a href="view?id=<?php print $id; ?>" class="btn btn-default pull-right" style="margin-top: 20px; margin-right: 10px;">View</a>
+    <div class="col-xs-9">
+      <h1>RDF of <?php print $title; ?></h1>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <a href="rdf?id=<?php print $id; ?>&amp;download" class="btn btn-default pull-right">Download RDF</a>
+    <div class="col-xs- text-center submission-tools">
+      <a href="rdf?id=<?php print $id; ?>&amp;download" class="btn btn-default">Download</a>
+      <a href="edit?id=<?php print $id; ?>" class="btn btn-default">Edit</a>
+      <a href="view?id=<?php print $id; ?>" class="btn btn-default">View</a>
     </div>
   </div>
 

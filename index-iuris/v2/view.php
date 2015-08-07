@@ -18,16 +18,17 @@ $statement->bind_param("i", $id);
 $statement->execute();
 $statement->store_result();
 $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $language, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
-
-if ($statement->fetch()): ?>
+?>
+<?php if ($statement->fetch()): ?>
   <?php if ($user_id == $_SESSION["user_id"] || isSuper()): ?>
     <div class="container">
       <div class="row page-header">
-        <div class="col-xs-12">
-          <h1 class="pull-left"><?php print $title; ?></h1>
-
-          <a href="edit?id=<?php print $id; ?>" class="btn btn-default pull-right" style="margin-top: 20px;">Edit</a>
-          <a href="rdf?id=<?php print $id; ?>" class="btn btn-default pull-right" style="margin-top: 20px; margin-right: 10px;">RDF</a>
+        <div class="col-xs-10">
+          <h1><?php print $title; ?></h1>
+        </div>
+        <div class="col-xs-2 text-center submission-tools">
+          <a href="edit?id=<?php print $id; ?>" class="btn btn-default">Edit</a>
+          <a href="rdf?id=<?php print $id; ?>" class="btn btn-default">RDF</a>
         </div>
       </div>
 
@@ -39,8 +40,8 @@ if ($statement->fetch()): ?>
         </div>
 
         <div class="col-xs-3 text-right">
-          <p>Created: <time><?php print $date_created; ?></time></p>
-          <p>Updated: <time><?php print $date_updated; ?></time></p>
+          <p>Created: <time><?php print formatDate($date_created); ?></time></p>
+          <p>Updated: <time><?php print formatDate($date_updated); ?></time></p>
         </div>
       </div>
 

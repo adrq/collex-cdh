@@ -55,6 +55,9 @@ a:focus { color: #681422; }
   border-radius: 15px;
 }
 
+.page-header > .submission-tools { margin-top: 20px; }
+.page-header > .submission-tools > .btn:not(:last-child) { margin-right: 10px; }
+
 /**
  * Governance Page
  */
@@ -68,12 +71,6 @@ a:focus { color: #681422; }
 /**
  * Edit Submission Page
  */
-.last-updated {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
 .list-part { margin-bottom: 10px; }
 
 /**

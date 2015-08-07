@@ -84,6 +84,17 @@ function printValue($text, $ignore = false) {
 } // function printValue($text, $ignore = false)
 
 /**
+ * Formats a date from machine to human readability.
+ *
+ * @param {String} $date: MySQL formatted date.
+ * @return {String}
+ */
+function formatDate($date) {
+  $date = new DateTime($date);
+  return $date->format("F jS, Y - g:ia");
+} // function formatDate($date)
+
+/**
  * Unescapes HTML entities
  * - Currently only detects quotation marks.
  * - Unescapes double quotes but leaves other HTML entities intact
@@ -125,9 +136,8 @@ function renderGovernanceComments() {
   $statement->bind_result($comment, $date, $userID);
   ?>
   <?php while ($statement->fetch()): ?>
-    <?php $date = new DateTime($date); ?>
     <div class="col-xs-8">
-      <h4><?php print findUsername($userID); ?><time class="pull-right"><?php print $date->format("F jS, Y - g:ia"); ?></time></h4>
+      <h4><?php print findUsername($userID); ?><time class="pull-right"><?php print formatDate($date); ?></time></h4>
       <p class="comment-text"><?php print $comment; ?></p>
       <hr>
     </div>
