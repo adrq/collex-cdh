@@ -238,7 +238,7 @@ function generateRDF($objectID) {
   $temp->bind_result($type, $machine, $human);
   
   while ($temp->fetch()){
-  	$rdf .= "\t<dc:date>\n\t  <collex:date>\n\t    <rdfs:label>".unescapeHTMLEntities($human)."</rdfs:label>\n\t    </rdf:value>".unescapeHTMLEntities($machine)."</rdf:value>\n\t  </collex:date>\n\t</dc:date>\n";
+  	$rdf .= "\t<dc:date>\n\t  <collex:date>\n\t    <rdfs:label>".unescapeHTMLEntities($human)."</rdfs:label>\n\t    <rdf:value>".unescapeHTMLEntities($machine)."</rdf:value>\n\t  </collex:date>\n\t</dc:date>\n";
   }
 
   // Discipline - All submissions are Law & History
