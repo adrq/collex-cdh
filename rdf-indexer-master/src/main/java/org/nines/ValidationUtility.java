@@ -55,7 +55,7 @@ public class ValidationUtility {
 
     // Parallel to required fields - the actual tag name to be used
     // Any change above must be reflected here
-    private static final String[] RDF_TERM = new String[] { "collex:archive", "dc:title", "dc:date", "dc:type", "collex:genre", "collex:discipline",
+    private static final String[] RDF_TERM = new String[] { "collex:archive", "dc:title", "dc:date", "ii:type", "ii:genre", "collex:discipline",
         "collex:freeculture", "collex:full_text", "collex:is_ocr", "collex:federation", "rdfs:seeAlso"};
     
     public static final String[] REQUIRED_PAGE_FIELDS = new String[] { "text", "page_of", "page_num" };

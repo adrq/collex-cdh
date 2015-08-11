@@ -71,6 +71,8 @@ final class NinesStatementHandler implements RDFHandler {
         String subject = statement.getSubject().stringValue();
         String predicate = statement.getPredicate().stringValue();
         String object = statement.getObject().stringValue();
+        //System.out.println(predicate);
+        //System.out.println(object);
         
         // if the object of the triple is blank, skip it, it is nothing worth indexing
         // EXCEPT for text in page-level RDF. There are valid cases where the collex:text
@@ -191,7 +193,7 @@ final class NinesStatementHandler implements RDFHandler {
     private boolean handleFederation(String predicate, String object) {
         if ("http://www.collex.org/schema#federation".equals(predicate)) {
             if (object.equals("NINES") || object.equals("18thConnect") || object.equals("MESA") || 
-                object.equals("ModNets") || object.equals("SiRO") || object.equals("estc") || object.equals("GLA") ) {
+                object.equals("ModNets") || object.equals("SiRO") || object.equals("estc") || object.equals("GLA") || object.equals("INDEXIURIS")) {
                 addField(doc, "federation", object);
             } else {
                 addError("Unknown federation: " + object);
@@ -363,7 +365,7 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleType(String predicate, String object) {
-        if ("http://purl.org/dc/elements/1.1/type".equals(predicate)) {
+        if ("http://lichen.csd.sc.edu/indexiuris/terms/type".equals(predicate)) {
             addField(doc, "doc_type", object);
             return true;
         }
@@ -395,7 +397,7 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleGenre(String predicate, String object) {
-        if ("http://www.collex.org/schema#genre".equals(predicate)) {
+        if ("http://lichen.csd.sc.edu/indexiuris/terms/genre".equals(predicate)) {
             // ignore deprecated genres for backward compatibility
             if (!"Primary".equals(object) && !"Secondary".equals(object)) {
                 addField(doc, "genre", object);
