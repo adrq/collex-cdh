@@ -33,7 +33,7 @@ public class ValidationUtility {
         "Fiction",  "Historiography",  "Law",  "Life Writing", "Liturgy",  "Music, Other",  "Musical Analysis",
         "Musical Recording",  "Musical Score",  "Nonfiction",  "Paratext",  "Philosophy",  "Photograph",  "Poetry",
         "Religion", "Religion, Other",  "Reference Works",  "Review", "Scripture",
-        "Sermon",  "Translation",  "Travel Writing",  "Unspecified",  "Visual Art", "Commentary" /*adrian - added "Commentary" genre*/
+        "Sermon",  "Translation",  "Travel Writing",  "Unspecified",  "Visual Art", "Commentary","Account" /*adrian - added "Commentary" genre*//*"Commentary" added to the list--akhil*/
     };
 
     // List of all valid disciplines
@@ -46,7 +46,7 @@ public class ValidationUtility {
     // List of all valid types
     public static final String[] TYPE_LIST = new String [] {
         "Codex",  "Collection",  "Drawing",  "Illustration", "Interactive Resource",  "Manuscript",  "Map",  "Moving Image",  "Periodical",
-        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript", "Text" /*adrian - added "Text" type*/
+        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript", "Text","Critical edition" /*adrian - added "Text" type*//*"Critical edition" added to the list--akhil*/
     };
 
     // Fields that are required to be present in RDF
@@ -160,7 +160,6 @@ public class ValidationUtility {
      */
     public static ArrayList<String> validateRequired(HashMap<String, ArrayList<String>> object) {
         ArrayList<String> messages = new ArrayList<String>();
-
         for (int i = 0; i < REQUIRED_FIELDS.length; i++) {
             if (!object.containsKey(REQUIRED_FIELDS[i])) {
                 messages.add("object must contain the " + RDF_TERM[i] + " field");

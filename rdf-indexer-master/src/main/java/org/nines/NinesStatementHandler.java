@@ -188,6 +188,57 @@ final class NinesStatementHandler implements RDFHandler {
             return;
         if (handleIsPartOf(predicate, object))
             return;
+        if (handleOrigin(predicate, object))
+            return;
+        if (handleComposition(predicate, object))
+            return;
+        if (handleShelfmark(predicate, object))
+            return;
+        if (handleDivision(predicate, object))
+            return;
+        if (handleNotes(predicate, object))
+            return;
+
+    }
+    
+    private boolean handleOrigin(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/origin".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
+            addField(doc, "origin", object);
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean handleComposition(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/composition".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
+            addField(doc, "composition", object);
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean handleShelfmark(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/shelfmark".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
+            addField(doc, "shelfmark", object);
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean handleDivision(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/division".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
+            addField(doc, "division", object);
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean handleNotes(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/notes".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
+            addField(doc, "notes", object);
+            return true;
+        }
+        return false;
     }
 
     private boolean handleFederation(String predicate, String object) {
@@ -234,7 +285,7 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleFormat(String predicate, String object) {
-        if ("http://purl.org/dc/elements/1.1/format".equals(predicate)) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/format".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
             addField(doc, "format", object);
             return true;
         }
@@ -357,7 +408,7 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleProvenance(String predicate, String object) {
-        if ("http://purl.org/dc/elements/1.1/provenance".equals(predicate)) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/provenance".equals(predicate)) { // replaced "http://purl.org/dc/elements/1.1/provenance" with "http://lichen.csd.sc.edu/indexiuris/provenance" 
             addField(doc, "provenance", object);
             return true;
         }
@@ -365,7 +416,7 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleType(String predicate, String object) {
-        if ("http://lichen.csd.sc.edu/indexiuris/terms/type".equals(predicate)) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/type".equals(predicate)) { // replaced "http://purl.org/dc/elements/1.1/type" with "http://lichen.csd.sc.edu/indexiuris/type" 
             addField(doc, "doc_type", object);
             return true;
         }
@@ -397,7 +448,7 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleGenre(String predicate, String object) {
-        if ("http://lichen.csd.sc.edu/indexiuris/terms/genre".equals(predicate)) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/genre".equals(predicate)) { // replaced  "http://purl.org/dc/elements/1.1/genre" with "http://lichen.csd.sc.edu/indexiuris/genre" 
             // ignore deprecated genres for backward compatibility
             if (!"Primary".equals(object) && !"Secondary".equals(object)) {
                 addField(doc, "genre", object);
@@ -408,7 +459,8 @@ final class NinesStatementHandler implements RDFHandler {
     }
 
     private boolean handleDate(String subject, String predicate, Value value) {
-        if ("http://purl.org/dc/elements/1.1/date".equals(predicate)) {
+       // if ("http://purl.org/dc/elements/1.1/date".equals(predicate)) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/date".equals(predicate)) {
             String object = value.stringValue().trim();
             if (value instanceof LiteralImpl) {
 
@@ -569,6 +621,10 @@ final class NinesStatementHandler implements RDFHandler {
         }
         return false;
     }
+    
+  
+    
+    
     
     /**
      * find the full path to the full text root baseed on 
