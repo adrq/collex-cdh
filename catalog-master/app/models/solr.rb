@@ -36,7 +36,7 @@ class Solr
          @field_list = [ "uri", "archive", "page_num", "page_of" ]
          @facet_fields = []
       else
-         @field_list = [ "uri", "archive", "date_label", 'year', "genre", "source", "image", "thumbnail", "title", "alternative", "url",
+         @field_list = [ "uri", "archive", "date_label", 'year', "genre", "notes", "divisions", "origin", "shelfmark", "composition","source", "image", "thumbnail", "title", "alternative", "url",
    			"role_ART", "role_AUT", "role_EDT", "role_PBL", "role_TRL", "role_EGR", "role_ETR", "role_CRE", "role_OWN", "freeculture",
    			"is_ocr", "federation", "has_full_text", "source_xml", "provenance", "discipline", 'typewright',
             "role_ARC", "role_BND", "role_BKD", "role_BKP", "role_CLL", "role_CTG", "role_COL", "role_CLR", "role_CWT", "role_COM", "role_CMT",

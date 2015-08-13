@@ -146,7 +146,7 @@
 		<field name="origin" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="composition" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="shelfmark" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
-		<field name="division" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
+		<field name="divisions" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="notes" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="doc_type" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="has_pages" type="boolean" indexed="true" stored="true"/>

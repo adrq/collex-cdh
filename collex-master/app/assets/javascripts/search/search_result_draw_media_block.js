@@ -282,6 +282,11 @@ jQuery(document).ready(function($) {
 		html += createResultContentItem('single_item', 'Site:', site, false);
 		html += createResultContentItem('multiple_item', 'Genre:', obj.genre, true);
 		html += createResultContentItem('multiple_item', 'Discipline:', obj.discipline, true);
+        html += createResultContentItem('single_item', 'Divisions:', obj.divisions, true);
+        html += createResultContentItem('single_item', 'Shelfmark:', obj.shelfmark, true);
+        html += createResultContentItem('single_item', 'Origin:', obj.origin, true);
+        html += createResultContentItem('single_item', 'Composition:', obj.composition, true);
+        html += createResultContentItem('single_item', 'Notes:', obj.notes, true);
 		html += createResultContentItem('multiple_item', 'Subject:', obj.subject, true);
 		html += createResultContentItem('single_item', 'Exhibit&nbsp;type:', obj.exhibit_type, false);
 		html += createResultContentItem('single_item', 'License:', obj.license, false);

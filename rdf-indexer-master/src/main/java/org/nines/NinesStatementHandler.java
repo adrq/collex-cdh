@@ -226,8 +226,8 @@ final class NinesStatementHandler implements RDFHandler {
     }
     
     private boolean handleDivision(String predicate, String object) {
-    	if ("http://lichen.csd.sc.edu/indexiuris/terms/division".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
-            addField(doc, "division", object);
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/divisions".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
+            addField(doc, "divisions", object);
             return true;
         }
         return false;
