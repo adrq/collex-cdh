@@ -460,7 +460,7 @@ final class NinesStatementHandler implements RDFHandler {
 
     private boolean handleDate(String subject, String predicate, Value value) {
        // if ("http://purl.org/dc/elements/1.1/date".equals(predicate)) {
-    	if ("http://lichen.csd.sc.edu/indexiuris/terms/date".equals(predicate)) {
+    	if ("http://purl.org/dc/elements/1.1/date".equals(predicate)) {
             String object = value.stringValue().trim();
             if (value instanceof LiteralImpl) {
 
