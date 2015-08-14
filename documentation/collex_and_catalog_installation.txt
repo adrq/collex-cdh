@@ -59,3 +59,19 @@ Configuration
 
 Catalog:
 - Log in to admin, click on "Manage federations" (bottom of page). Add relevant information and IP addresses. If IP addresses are not set, then Collex will not be able to access Catalog.
+
+
+
+
+
+Indexing documents:
+- All of the indexing is handled by executing rake tasks from the Catalog directory. 
+
+  1) rake archive=archive_name solr_index:debug
+  2) rake solr_index:index archive=archive_name
+  3) rake archive=archive_name solr_index:merge_archive
+
+- First rake command will check the errors in the rdf documents, if any errors, they will be listed in log file.
+- Second rake command will index the rdf documents into solr, but these documents will not be displayed in the collex when we search.
+- Running third rake command will helps us search the records in collex.  
+
