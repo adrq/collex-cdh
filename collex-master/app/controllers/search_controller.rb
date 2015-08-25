@@ -77,6 +77,7 @@ class SearchController < ApplicationController
 				results['facets']['doc_type'] = {} if results['facets']['doc_type'].blank?
 				results['facets']['discipline'] = {} if results['facets']['discipline'].blank?
 				results['facets']['role'] = {} if results['facets']['role'].blank?
+        results['facets']['origin'] = {} if results['facets']['origin'].blank?
 				render :json => results
 			end
 		end
@@ -97,7 +98,7 @@ class SearchController < ApplicationController
 	   constraints = []
 	   return constraints if query.blank?
 
-	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t' ]
+	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t', 'origin' ]
 	   @searchable_roles.each { |role|
 		   legal_constraints.push(role[0])
 	   }

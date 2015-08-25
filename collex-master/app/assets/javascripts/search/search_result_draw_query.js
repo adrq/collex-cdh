@@ -19,7 +19,8 @@ jQuery(document).ready(function($) {
 			lang: 'Language',
 			fuz_q: 'Search Term Fuzziness',
 			fuz_t: 'Title Fuzziness',
-			pages: 'Pages of'
+			pages: 'Pages of',
+			origin: 'Origin'
 		};
 		if (types[key])
 			return types[key];

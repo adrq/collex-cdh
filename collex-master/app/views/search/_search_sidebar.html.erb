@@ -15,13 +15,6 @@
 ---------------------------------------------------------------------------- %>
 
 <div class="right_column ajax-style">
-	<div class="right_column_header" <% if @other_federations.length == 0 %>style="display:none"<% end %> >Currently Searching...</div>
-	<table class="limit_to limit_to_federation" <% if @other_federations.length == 0 %>style="display:none"<% end %> >
-		<%= federation_selector(Setup.default_federation(), 0) %>
-		<% for fed in @other_federations %>
-			<%= federation_selector(fed, 0) %>
-		<% end %>
-	</table>
 
 	<div class="right_column_header">Limit Results to...</div>
     <p>Select a resource below to limit your search results</p>
@@ -49,6 +42,8 @@
           <%=  create_discipline_table([]) %>
       <% when 'genre' %>
           <%=  create_genre_table([]) %>
+	  <% when 'origin' %>
+	  	  <%=  create_origin_table([]) %>
       <% end %>
   <% end %>
 

@@ -153,7 +153,7 @@
              </td>
            </tr>
         <% end %>
-        <% if SKIN.upcase == 'MESA' %>
+        <% if SKIN.upcase == 'INDEXIURIS' %>
             <tr><td>Role:</td><td><%= select_tag( :search_role_type, options_from_collection_for_select([ ['', '(Select a role)'] ] + @searchable_roles, :first, :last), :class => 'search_role_type' ) %>
            <input name="search_role" id="search_role" type="text" class="search_entry_box_short" placeholder="Please select a role."/>
             </td>
@@ -170,7 +170,7 @@
            <tr><td>Editor:</td><td><input name="ed" type="text" class="search_entry_box" <%= "value='#{@ephrs}'" if @ephrs %> /></td></tr>
            <tr><td>Publisher:</td><td><input name="pub" type="text" class="search_entry_box" <%= "value='#{@pphrs}'" if @pphrs %> /></td></tr>
         <% end %>
-        <% if SKIN.upcase == 'MESA' %>
+        <% if SKIN.upcase == 'INDEXIURIS' %>
            <tr>
              <td>Language:</td>
              <td><%= select_tag( :lang, options_from_collection_for_select([IsoLanguage.new(:english_name => "(Select a language)")] + Catalog.factory_create(false).get_languages(), :alpha3, :first_english_name), :class => 'search_language' ) %></td>

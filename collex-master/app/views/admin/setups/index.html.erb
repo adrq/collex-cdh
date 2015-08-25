@@ -116,21 +116,25 @@
 
       <%= setup_table_header("Facet Display Order") %>
       <%= setup_line("Access Facet Order:", "facet_order_access", @setups,
-                     "Use a number [0-3] to determine where Access types will appear in the facet list.
+                     "Use a number [0-4] to determine where Access types will appear in the facet list.
                       Leave blank to hide this facet.",
                      "0") %>
       <%= setup_line("Format Facet Order:", "facet_order_format", @setups,
-                     "Use a number [0-3] to determine where Formats will appear in the facet list.
+                     "Use a number [0-4] to determine where Formats will appear in the facet list.
                       Leave blank to hide this facet.",
                      "1") %>
       <%= setup_line("Discipline Facet Order:", "facet_order_discipline", @setups,
-                     "Use a number [0-3] to determine where Disciplines will appear in the facet list.
+                     "Use a number [0-4] to determine where Disciplines will appear in the facet list.
                       Leave blank to hide this facet.",
                      "2") %>
       <%= setup_line("Genre Facet Order:", "facet_order_genre", @setups,
-                     "Use a number [0-3] to determine where Genres will appear in the facet list.
+                     "Use a number [0-4] to determine where Genres will appear in the facet list.
                       Leave blank to hide this facet.",
                      "3") %>
+      <%= setup_line("Origin Facet Order:", "facet_order_origin", @setups,
+                     "Use a number [0-4] to determine where Origin will appear in the facet list.
+                      Leave blank to hide this facet.",
+                     "4") %>
 
       <%= setup_table_header("Facet Display Labels") %>
       <%= setup_line("Custom label for the Access facet:", "facet_display_name_access", @setups,
@@ -145,6 +149,9 @@
       <%= setup_line("Custom label for the Genre facet:", "facet_display_name_genre", @setups,
                      "Enter a value to display as the label for the Genre facet.",
                      "Genre") %>
+	  <%= setup_line("Custom label for the Origin facet:", "facet_display_name_origin", @setups,
+			         "Enter a value to display as the label for the Origin facet.",
+			         "Origin") %>
 
 	  <%= setup_table_header("Footer Signature") %>
 	  <%= setup_line("HTML for footer signature:", "footer_signature_text", @setups,

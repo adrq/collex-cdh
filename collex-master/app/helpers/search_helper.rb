@@ -509,7 +509,6 @@ module SearchHelper
 	  td_class = options[:td_class].present? ? options[:td_class] : "limit_to_lvl1"
 	  additive_action = options[:action].present? ? options[:action] : 'add'
 	  label = facet_data[:label].present? ? facet_data[:label] :facet_data[:value]
-
     if facet_data[:exists]
       html = "<tr class='limit_to_selected#{tr_class}'><td class='#{td_class}'>#{label}&nbsp;&nbsp;" + create_facet_button('[X]', key, facet_data[:value], 'remove')
     else
@@ -564,6 +563,16 @@ module SearchHelper
     # for discipline in discipline_data
     #   html += facet_selector( discipline, 'discipline' )
     # end
+    html += raw('</table>')
+    return raw(html)
+  end
+  
+  def create_origin_table( origin_data )
+    html = raw('<table class="limit_to facet-origin">')
+    html += raw("<tr><th>#{Setup.display_name_for_facet_origin}</th><th class=\"num_objects\"># of Objects</th></tr>")
+   #for origin in origin_data
+    #   html += facet_selector( origin, 'origin' )
+     #end
     html += raw('</table>')
     return raw(html)
   end

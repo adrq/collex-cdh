@@ -177,6 +177,7 @@ class Setup < ActiveRecord::Base
     facet_order_format = globals()['facet_order_format'] || ''
     facet_order_discipline = globals()['facet_order_discipline'] || ''
     facet_order_genre = globals()['facet_order_genre'] || ''
+    facet_order_origin = globals()['facet_order_origin'] || ''
     dont_dupe = 0 # value to append to a key in case the key already exists
     if facet_order_access.strip() != ''
       if order[facet_order_access]
@@ -210,6 +211,14 @@ class Setup < ActiveRecord::Base
         order[facet_order_genre.strip] = 'genre'
       end
     end
+    if facet_order_origin.strip() != ''
+      if order[facet_order_origin.strip]
+        order[facet_order_origin.strip + dont_dupe.to_s] = 'origin'
+        dont_dupe += 1
+      else
+        order[facet_order_origin.strip] = 'origin'
+      end
+    end
     return order
   end
 
@@ -237,6 +246,15 @@ class Setup < ActiveRecord::Base
       return value
     else
       return 'Discipline'
+    end
+  end
+  
+  def self.display_name_for_facet_origin
+    value = globals()['facet_display_name_origin']
+    if value and value.strip() != ''
+      return value
+    else
+      return 'Origin'
     end
   end
 

@@ -136,6 +136,7 @@ jQuery(document).ready(function($) {
 		createFacetBlock('facet-discipline', obj.facets.discipline, 'discipline', obj.query.discipline);
 		createFacetBlock('facet-format', obj.facets.doc_type, 'doc_type', obj.query.doc_type);
 		createFacetBlock('facet-access', obj.facets.access, 'o', obj.query.o, window.collex.facetNames.access);
+		createFacetBlock('facet-origin', obj.facets.origin, 'origin', obj.query.origin);
 		createResourceBlock(obj.facets.archive, obj.query.a);
 	};
 });
