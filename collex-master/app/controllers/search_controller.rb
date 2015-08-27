@@ -102,7 +102,6 @@ class SearchController < ApplicationController
 	   @searchable_roles.each { |role|
 		   legal_constraints.push(role[0])
 	   }
-
 	   found_federation = false
 	   query.each { |key, val|
 		   found_federation = true if key == 'f'

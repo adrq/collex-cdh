@@ -297,6 +297,10 @@ module SearchHelper
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'discipline'
       ret[:title] ="Discipline"
       ret[:value] = value_display
+      #added for origin field -- akhil
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'origin'
+      ret[:title] ="Origin"
+      ret[:value] = value_display
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx].match(/role_/) && Search.role_field_names[constraint[:fieldx]]
       ret[:title] = Search.role_field_names[constraint[:fieldx]][:display]
       ret[:value] = value_display

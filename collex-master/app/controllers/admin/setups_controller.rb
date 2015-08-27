@@ -154,7 +154,9 @@ class Admin::SetupsController < Admin::BaseController
             value = "Genre"
          when 'facet_display_name_access'
             value = "Access"
-      else
+         when 'facet_display_name_origin'  #added for origin field -- akhil
+            value = "Origin"  #added for origin field -- akhil
+      else 
          value = value
       end
       return value
@@ -172,6 +174,8 @@ class Admin::SetupsController < Admin::BaseController
       order['facet_order_discipline'] = rec.value
       rec = Setup.find_by_key('facet_order_genre')
       order['facet_order_genre'] = rec.value
+      rec = Setup.find_by_key('facet_order_origin')  #added for origin field -- akhil
+      order['facet_order_origin'] = rec.value  #added for origin field -- akhil
 
       # Check for duplicate values
       if order.values.count != order.values.uniq.count
@@ -186,12 +190,15 @@ class Admin::SetupsController < Admin::BaseController
             warnings.push " Access Facet Order: #{order['facet_order_access']}"
          end
          if order.values.count(order['facet_order_format']) > 1
-            warnings.push " Format Facet Order: #{order['facet_order_format']}"
+            warnings.push " Format Facet Order: #{order['facet_order_format']}"  
+         end 
+         if order.values.count(order['facet_order_origin']) > 1    #added for origin field -- akhil
+            warnings.push " Format Facet Order: #{order['facet_order_origin']}" #added for origin field -- akhil
          end
       end
 
       # Check for non-numeric values
-      access_order, genre_order, discipline_order, format_order = nil, nil, nil, nil
+      origin_order,access_order, genre_order, discipline_order, format_order = nil, nil, nil, nil,nil
       begin
          access_order = Integer(order['facet_order_access']) if order['facet_order_access'].length > 0
       rescue
@@ -212,6 +219,13 @@ class Admin::SetupsController < Admin::BaseController
       rescue
          warnings.push( "Non Numeric Display Order detected. \"Format Facet Order: #{order['facet_order_format']}\" Facets may not display correctly.")
       end
+      
+      #added for origin field -- akhil
+      begin
+         origin_order = Integer(order['facet_order_origin']) if order['facet_order_origin'].length > 0
+      rescue
+         warnings.push( "Non Numeric Display Order detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
+      end
 
       if !access_order.nil? and access_order > 4
          warnings.push("Large value detected. \"Access Facet Order: #{order['facet_order_access']}\"  Facets may not display correctly.")
@@ -225,6 +239,12 @@ class Admin::SetupsController < Admin::BaseController
       if !format_order.nil? and format_order > 4
          warnings.push("Large value detected. \"Format Facet Order: #{order['facet_order_format']}\" Facets may not display correctly.")
       end
+      
+      #added for origin field -- akhil
+      
+      if !origin_order.nil? and origin_order > 4
+         warnings.push("Large value detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
+      end
 
       if !access_order.nil? and access_order < 0
          warnings.push("Negative value detected. \"Access Facet Order: #{order['facet_order_access']}\"  Facets may not display correctly.")
@@ -237,6 +257,12 @@ class Admin::SetupsController < Admin::BaseController
       end
       if !format_order.nil? and format_order < 0
          warnings.push("Negative value detected. \"Format Facet Order: #{order['facet_order_format']}\" Facets may not display correctly.")
+      end
+      
+      #added for origin field -- akhil
+      
+      if !origin_order.nil? and origin_order < 0
+         warnings.push("Negative value detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
       end
 
       return warnings

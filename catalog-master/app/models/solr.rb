@@ -45,7 +45,7 @@ class Solr
    	      "role_BRD", "role_CNG", "role_CND", "role_DRT", "role_IVR", "role_IVE", "role_OWN", "role_FMO", "role_PRF", "role_PRO", "role_PRN",
             "has_pages", "hasPart", "isPartOf", "decade", "quarter_century", "half_century", "century", "subject"
          ]
-         @facet_fields = ['genre','archive','freeculture', 'has_full_text', 'federation', 'typewright', 'doc_type', 'discipline', 'role']
+         @facet_fields = ['genre','archive','freeculture', 'has_full_text', 'federation', 'typewright', 'doc_type', 'discipline', 'role','origin'] # 'origin' field added for the facets to be shown in the search field.'--- akhil
       end
    end
 

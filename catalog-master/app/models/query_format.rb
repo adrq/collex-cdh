@@ -37,7 +37,7 @@ class QueryFormat
 		verifications = {
 			:term => { :exp => /^([+\-]("#{w}( #{w})*"|#{w}))+$/u, :friendly => "A list of alphanumeric terms, starting with either + or - and possibly quoted if there is a space." },
 			:frag => { :exp => /^("#{w}( #{w})*"|#{w})$/u, :friendly => "A list of alphanumeric terms, possibly quoted if there is a space." },
-      :year => { :exp => /^([+\-]\d{1,4}(\s+[tT][oO]\s+\d{1,4})?)$/, :friendly => "[+-] A 1 to 4 digit date." },
+      		:year => { :exp => /^([+\-]\d{1,4}(\s+[tT][oO]\s+\d{1,4})?)$/, :friendly => "[+-] A 1 to 4 digit date." },
 			:archive => { :exp => /^([+\-]\w[\w\- ]*)$/, :friendly => "[+-] One of the predefined archive abbreviations." },
 			:genre => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined genres." },
 			:genre2 => { :exp => /^(\w[ \w,]*)+(;(\w[ \w,]*)+)*$/, :friendly => "One or more of the predefined genres separated by semicolons." },
@@ -53,7 +53,8 @@ class QueryFormat
 			:id => { :exp => /^[0-9]+$/, :friendly => "The unique integer ID of the object."},
 			:commit => { :exp => /^(immediate|delayed)$/, :friendly => "Whether to commit the change now, or wait for the background task to commit. (immediate or delayed)"},
 			:exhibit_type => { :exp => /^(partial|whole)$/, :friendly => "Whether the object is the entire work or just a page of it."},
-			:string => { :exp => /^.+$/, :friendly => "Any string."},
+			:string => { :exp => /^.+$/, :friendly => "Any string."}, 
+			:origin => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words(if origin is empty, it takes from provenance field)"}, #added for the origin field --- akhil.
 			:string_optional => { :exp => /^.*$/, :friendly => "Any string."},
 			:boolean => { :exp => /^(true|false)$/, :friendly => "true or false."},
 			:section => { :exp => /^(community|classroom|peer-reviewed)$/, :friendly => "One of community, classroom, or peer-reviewed."},
@@ -65,8 +66,8 @@ class QueryFormat
 			:last_modified => { :exp => /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\dZ$/, :friendly => "A date/time string in the format: yyyy-mm-ddThh:mm:ssZ." },
       :fuz_value => { :exp => /^[+\-]?[012]?$/, :friendly => "Fuzzyness: 0 (exact match), 1 (varied spellings) or 2 (most varied spellings)"},
       :language => { :exp => /^([+\-][^+\-]+)+$/, :friendly => "[+-] Languages separated by ||" },
-      :facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, free_culture, federation)'},
-      :period_pivot => { :exp => /^(doc_type|archive|discipline|genre|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, free_culture, or federation)'}
+      :facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|origin|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, origin, free_culture, federation)'}, #added origin -- akhil
+      :period_pivot => { :exp => /^(doc_type|archive|discipline|genre|origin|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, origin, free_culture, or federation)'}  #added origin -- akhil
 		}
 
 		return verifications[typ]
@@ -99,6 +100,7 @@ class QueryFormat
 				'y' => { :name => 'Year', :param => :year, :default => nil, :transformation => get_proc(:transform_year) },
 				'a' => { :name => 'Archive', :param => :archive, :default => nil, :transformation => get_proc(:transform_archive) },
 				'g' => { :name => 'Genre', :param => :genre, :default => nil, :transformation => get_proc(:transform_genre) },
+				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)},  #added for origin field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
         'facet' => { :name => 'Facet', :param => :facet, :default => nil, :transformation => get_proc(:transform_facet) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
@@ -171,6 +173,7 @@ class QueryFormat
 				'y' => { :name => 'Year', :param => :year, :default => nil, :transformation => get_proc(:transform_year) },
 				'a' => { :name => 'Archive', :param => :archive, :default => nil, :transformation => get_proc(:transform_archive) },
 				'g' => { :name => 'Genre', :param => :genre, :default => nil, :transformation => get_proc(:transform_genre) },
+				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)}, #added for origin field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
@@ -234,6 +237,7 @@ class QueryFormat
 				'y' => { :name => 'Year', :param => :year, :default => nil, :transformation => get_proc(:transform_year) },
 				'a' => { :name => 'Archive', :param => :archive, :default => nil, :transformation => get_proc(:transform_archive) },
 				'g' => { :name => 'Genre', :param => :genre, :default => nil, :transformation => get_proc(:transform_genre) },
+				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)}, #added for origin field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
@@ -347,7 +351,8 @@ class QueryFormat
 			'title' => { :name => 'title', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
 			'title_sort' => { :name => 'title_sort', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
 			'author_sort' => { :name => 'author_sort', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
-			'url' => { :name => 'url', :param => :string, :default => nil, :transformation => get_proc(:transform_field) }
+			'url' => { :name => 'url', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
+			'origin' => { :name => 'origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_field)}, #added for origin field -- akhil
 
 			# boolean fields
 			#'has_full_text' => { :name => 'has_full_text', :param => :boolean, :default => 'false', :transformation => get_proc(:transform_field) },
@@ -608,6 +613,10 @@ class QueryFormat
 
 	def self.transform_genre(key,val)
 		return { 'fq' => self.insert_field_name("genre", val) }
+  end
+  #added this method for origin field -- akhil
+  def self.transform_origin(key,val)
+		return { 'fq' => self.insert_field_name("origin", val) }
   end
 
   def self.transform_discipline(key,val)
