@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 			fuz_q: 'Search Term Fuzziness',
 			fuz_t: 'Title Fuzziness',
 			pages: 'Pages of',
-			origin: 'Origin'
+			origin: 'Origin' // added for origin field -- akhil
 		};
 		if (types[key])
 			return types[key];
