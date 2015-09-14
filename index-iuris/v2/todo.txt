@@ -3,6 +3,7 @@ Index Iuris TODO List:
 Home
 
 Metadata Submission (rdf-form)
+- Make default size of "text divisions" text box bigger
 - Add dropdown for archive/namespace (pending discussion with C&A)
 - Multiple fields need approval from Colin and Abigail
 - Functionality to add subject and discipline to database.

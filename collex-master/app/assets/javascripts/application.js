@@ -22,3 +22,6 @@
 //= require jquery-ui/autocomplete
 //= require_tree ./lib
 //= require_tree .
+
+
+var site_path = "http://localhost/indexiuris/collex";

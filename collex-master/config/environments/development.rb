@@ -49,4 +49,7 @@ Collex::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #site_path
+  config.site_path = "/indexiuris/localhost"
 end

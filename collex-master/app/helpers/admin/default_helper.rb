@@ -51,9 +51,9 @@ module Admin::DefaultHelper
 
   def make_sub_menu_link(name, controller, action, current_page)
     if name == current_page
-      link_to name, { :controller => controller, :action => action}, { :class => 'admin_menu_current' }
+      link_to name, Rails.application.config.site_path + controller + action, { :class => 'admin_menu_current' }
     else
-      link_to name, { :controller => controller, :action => action}
+      link_to name, Rails.application.config.site_path + controller + action
     end
   end
 

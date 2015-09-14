@@ -17,8 +17,8 @@
 <%# menu params: string current_page -%>
 <div id="admin_menu">
 	<ul>
-	  <li><%= make_sub_menu_link("Home", "admin/default", "index", current_page) %></li>
-	  <li><%= make_sub_menu_link("Features", "admin/features", "index", current_page) %></li>
+	  <li><%= make_sub_menu_link("Home", "/admin", "", current_page) %></li>
+	  <li><%= make_sub_menu_link("Features", "/admin/features", "", current_page) %></li>
 	  <% if COLLEX_PLUGINS['typewright'] %>
 			<li><%= make_sub_menu("TypeWright", [
 				{ name: "Main", url: "/typewright/admin" },
@@ -26,13 +26,13 @@
 				{ name: "Users", url: "/typewright/overviews?view=users" },
 			], current_page) %></li>
 	  <% end %>
-	  <li><%= make_sub_menu_link("User Roles", "admin/user_roles", "index", current_page) %></li>
-	  <li><%= make_sub_menu_link("Forum Topics", "admin/discussion_topics", "index", current_page) %></li>
-	  <li><%= make_sub_menu_link("Pending Reports", "admin/default", "forum_pending_reports", current_page) %></li>
-	  <li><%= make_sub_menu_link("Statistics", "admin/default", "stats", current_page) %></li>
-	  <li><%= make_sub_menu_link("Groups", "admin/default", "groups", current_page) %></li>
-	  <li><%= make_sub_menu_link("User Content", "admin/default", "user_content", current_page) %></li>
+	  <li><%= make_sub_menu_link("User Roles", "/admin/user_roles", "", current_page) %></li>
+	  <li><%= make_sub_menu_link("Forum Topics", "/admin/discussion_topics", "", current_page) %></li>
+	  <li><%= make_sub_menu_link("Pending Reports", "/admin/default", "/forum_pending_reports", current_page) %></li>
+	  <li><%= make_sub_menu_link("Statistics", "/admin/default", "/stats", current_page) %></li>
+	  <li><%= make_sub_menu_link("Groups", "/admin/default", "/groups", current_page) %></li>
+	  <li><%= make_sub_menu_link("User Content", "/admin/default", "/user_content", current_page) %></li>
 <!--	  <li><%#= make_sub_menu_link("VIC Conference", "admin/default", "vic_conference", current_page) %></li> -->
-		<li><%= make_sub_menu_link("Setup", "admin/setups", "index", current_page) %></li>
+		<li><%= make_sub_menu_link("Setup", "/admin/setups", "", current_page) %></li>
 	</ul>
 </div>

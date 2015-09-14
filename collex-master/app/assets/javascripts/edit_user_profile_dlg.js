@@ -48,6 +48,7 @@ var EditProfileDialog = Class.create({
 			// Therefore, we we submit the file with a normal html submit, then when that is completed, we do the ajax update.
 			//var thumb = $('image');
 			//var form = thumb.up('form');
+            ok_action = window.site_path + "/my_collex/update_profile"
 			submitForm('layout', ok_action + "_upload");	// we have to submit the form normally to get the uploaded file to get transmitted.
 		};
 

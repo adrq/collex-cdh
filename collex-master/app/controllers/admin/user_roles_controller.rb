@@ -57,7 +57,7 @@ class Admin::UserRolesController < Admin::BaseController
     
     if @user.save
       flash[:notice] = 'User was successfully updated.'
-      redirect_to :action => 'index', :page => params[:page]
+      redirect_to Rails.application.config.site_path + "/admin/user_roles", :page => params[:page]
     else
       render :action => 'index', :page => params[:page]
     end
@@ -65,6 +65,6 @@ class Admin::UserRolesController < Admin::BaseController
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to :action => 'index', :page => params[:page]
+    redirect_to Rails.application.config.site_path + "/admin/user_roles", :page => params[:page]
   end
 end

@@ -67,7 +67,7 @@ var CreateNewExhibitWizard = Class.create({
 					$('exhibit_url').value = resp.responseText;
 					dlg.changePage(view, null);
 				};
-				serverRequest({ url: '/builder/verify_title', params: { title: data.exhibit_title.strip() }, onSuccess: onSuccess});
+				serverRequest({ url: window.site_path + '/builder/verify_title', params: { title: data.exhibit_title.strip() }, onSuccess: onSuccess});
 				return false;
 			}
 
@@ -120,7 +120,7 @@ var CreateNewExhibitWizard = Class.create({
 
 		// privileged methods
 		this.show = function () {
-			var help = '<span class="tooltip"><img src="/assets/help_thumb.sm.gif" alt="help" /><span class="group_help_tooltip">This is the title that will show up in the '+exhibit_label.toLowerCase()+' list once you decide to share it with other users. You can edit this later by selecting Edit '+exhibit_label+' Profile at the top of your '+exhibit_label.toLowerCase()+' editing page.</span></span>';
+			var help = '<span class="tooltip"><img src="'+ window.site_path +'/assets/help_thumb.sm.gif" alt="help" /><span class="group_help_tooltip">This is the title that will show up in the '+exhibit_label.toLowerCase()+' list once you decide to share it with other users. You can edit this later by selecting Edit '+exhibit_label+' Profile at the top of your '+exhibit_label.toLowerCase()+' editing page.</span></span>';
 			var choose_title = {
 					page: 'choose_title',
 					rows: [

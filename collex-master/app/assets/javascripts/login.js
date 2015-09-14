@@ -101,7 +101,7 @@ var SignInDlg = Class.create({
 						[ { input: 'signin_username', klass: 'login_input' } ],
 						[ { text: 'Password:', klass: 'login_label' } ],
 						[ { password: 'signin_password', klass: 'login_input' } ],
-						[ { button: 'Log in', arg0: '/login/verify_login', callback: this.sendWithAjax, isDefault: true }, { button: 'Cancel', callback: GeneralDialog.cancelCallback }],
+						[ { button: 'Log in', arg0: window.site_path + '/login/verify_login', callback: this.sendWithAjax, isDefault: true }, { button: 'Cancel', callback: GeneralDialog.cancelCallback }],
 						[ { text: '', klass: 'login_label' } ],
 						[ { link: 'Create a new account', klass: 'nav_link', arg0: 'create_account', callback: this.changeView } ],
 						[ { link: 'Forgot user name or password?', klass: 'nav_link', arg0: 'account_help', callback: this.changeView } ]
@@ -115,7 +115,7 @@ var SignInDlg = Class.create({
 						[ { text: 'Enter your user name and we will email a new password to your email account on file.', klass: 'login_instructions' } ],
 						[ { text: 'User name:', klass: 'login_label' } ],
 						[ { input: 'help_username', klass: 'login_input' } ],
-						[ { button: 'Submit', arg0: '/login/reset_password', callback: this.sendWithAjax }, { button: 'Cancel', callback: GeneralDialog.cancelCallback } ],
+						[ { button: 'Submit', arg0: window.site_path + '/login/reset_password', callback: this.sendWithAjax }, { button: 'Cancel', callback: GeneralDialog.cancelCallback } ],
 						[ { text: '', klass: 'login_label' } ],
 						[ { text: '', klass: 'login_label' } ],
 						[ { text: 'I forgot my user name.', klass: 'login_title' } ],
@@ -141,7 +141,7 @@ var SignInDlg = Class.create({
 						[ { password: 'create_password', klass: 'login_input' } ],
 						[ { text: 'Re-type password:', klass: 'login_label' } ],
 						[ { password: 'create_password2', klass: 'login_input' } ],
-						[ { button: 'Sign up', arg0: '/login/submit_signup', callback: this.sendWithAjax, isDefault: true }, { button: 'Cancel', callback: GeneralDialog.cancelCallback } ],
+						[ { button: 'Sign up', arg0: window.site_path + '/login/submit_signup', callback: this.sendWithAjax, isDefault: true }, { button: 'Cancel', callback: GeneralDialog.cancelCallback } ],
 						[ { link: 'Log in', klass: 'nav_link', arg0: 'sign_in', callback: this.changeView } ]
 					]
 				};

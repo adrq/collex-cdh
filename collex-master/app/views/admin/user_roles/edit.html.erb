@@ -23,11 +23,11 @@
 	  Email: <%= content_tag "b", @user.email %>
 	</p>
 	
-	<%= form_tag("/admin/user_roles/#{@user.id}", :method => :put) do %>
+	<%= form_tag(Rails.application.config.site_path + "/admin/user_roles/#{@user.id}", :method => :put) do %>
 	  <%= render :partial => 'form' %>
 	  <input type='hidden' name='page' id='page' value='<%=@page%>'/>
 	  <%= submit_tag 'Edit' %>
 	<% end %>
 	
-	<%= link_to 'Return to User List', { :action => 'index',  :page => @page}, { :class => 'nav_link' } %>
+	<%= link_to 'Return to User List', Rails.application.config.site_path + "/admin/user_roles", { :class => 'nav_link' } %>
 </div>

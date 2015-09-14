@@ -52,7 +52,7 @@ class Admin::DiscussionTopicsController < Admin::BaseController
     respond_to do |format|
       if @discussion_topic.save
         flash[:notice] = 'DiscussionTopic was successfully created.'
-        format.html { redirect_to(:action => 'index') }
+        format.html { redirect_to(Rails.application.config.site_path + '/admin/discussion_topics') }
         format.xml  { render :xml => @discussion_topic, :status => :created, :location => @discussion_topic }
       else
         format.html { render :action => "new" }
@@ -73,12 +73,13 @@ class Admin::DiscussionTopicsController < Admin::BaseController
       @discussion_topic.position = @discussion_topic.position - 1
       @discussion_topic.save
     end
-    redirect_to :action => 'index'
+    redirect_to Rails.application.config.site_path + '/admin/discussion_topics'
   end
   
   def move_down
     @discussion_topic = DiscussionTopic.find(params[:id])
     pos = @discussion_topic.position
+    Rails.logger.info "pos<"
     if pos < DiscussionTopic.count
       nex = DiscussionTopic.find_by_position(pos+1)
       if nex
@@ -88,7 +89,7 @@ class Admin::DiscussionTopicsController < Admin::BaseController
       @discussion_topic.position = @discussion_topic.position + 1
       @discussion_topic.save
     end
-    redirect_to :action => 'index'
+    redirect_to Rails.application.config.site_path + '/admin/discussion_topics'
   end
   
   # PUT /discussion_topics/1
@@ -99,7 +100,7 @@ class Admin::DiscussionTopicsController < Admin::BaseController
     respond_to do |format|
       if @discussion_topic.update_attributes(params[:discussion_topic])
         flash[:notice] = 'DiscussionTopic was successfully updated.'
-        format.html { redirect_to(:action => 'index') }
+        format.html { redirect_to(Rails.application.config.site_path + '/admin/discussion_topics') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

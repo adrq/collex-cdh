@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
          existingQuery.f = checkedFeds;
       }
       delete existingQuery.page;
-      var url = "/search?" + window.collex.makeQueryString(existingQuery);
+      var url = "./search?" + window.collex.makeQueryString(existingQuery);
 	   $("#add-search-constraint").attr('action', url).submit();
 	});
 
@@ -129,7 +129,7 @@ jQuery(document).ready(function($) {
          }
          // if we had script vars, we stripped them out of the parameters
          // Now we need to strip them out of the URL as well
-         var url = "/search?" + window.collex.makeQueryString(existingQuery);
+         var url = "./search?" + window.collex.makeQueryString(existingQuery);
          changePage(url, true);
       }
       resp.query = existingQuery;
@@ -151,7 +151,7 @@ jQuery(document).ready(function($) {
 	function doSearch() {
       window.showProgressDialog('Searching...');
 		var existingQuery = window.collex.getUrlVars();
-		$.ajax({ url: "/search.json",
+		$.ajax({ url: "./search.json",
 			data: existingQuery,
 			success: onSuccess,
 			error: onError
@@ -248,7 +248,7 @@ jQuery(document).ready(function($) {
 		if (newQueryKey !== 'page') // always go back to page 1 when the search changes.
 			delete existingQuery.page;
 
-		return "/search?" + window.collex.makeQueryString(existingQuery);
+		return "./search?" + window.collex.makeQueryString(existingQuery);
 	}
 
 	// This detects if we are on an old version of IE: if so, then we refresh the page instead.
@@ -258,7 +258,7 @@ jQuery(document).ready(function($) {
 
 	function changePage(url, replace) {
 		// If the url is the same as the current URL, the history won't actually trigger a page change, so don't do anything.
-		var currentLocation = "/search" +window.location.search;
+		var currentLocation = "./search" +window.location.search;
 		if (url === currentLocation)
 			return;
 //      window.showProgressDialog('Searching...');
@@ -277,7 +277,7 @@ jQuery(document).ready(function($) {
 
 	body.on("click", ".new_search", function () {
 		var existingQuery = getSortAndFederationFromQueryObject();
-		changePage("/search?" + window.collex.makeQueryString(existingQuery));
+		changePage("./search?" + window.collex.makeQueryString(existingQuery));
 	});
 
 	body.on("click", ".ajax-style .select-facet", function () {
@@ -300,7 +300,7 @@ jQuery(document).ready(function($) {
 			if (newQueryValue === 'rel') {
 				$(".sort select[name='dir']").hide();
 				var newQuery = window.collex.removeSortFromQueryObject();
-				url = "/search?" + window.collex.makeQueryString(newQuery);
+				url = "./search?" + window.collex.makeQueryString(newQuery);
 			} else
 				$(".sort select[name='dir']").show();
 		}
@@ -373,7 +373,7 @@ jQuery(document).ready(function($) {
 			newValue = '-' + newValue;
 
 		var query = modifyInQueryObject(key, val, newValue);
-		changePage("/search?" + window.collex.makeQueryString(query));
+		changePage("./search?" + window.collex.makeQueryString(query));
 	});
 
 	body.on("keydown", ".query.search-form .new-search-term input", function(e) {
@@ -403,7 +403,7 @@ jQuery(document).ready(function($) {
 		  var existingQuery = window.collex.getUrlVars();
 		  delete existingQuery.f;
 		  delete existingQuery.page;
-        changePage("/search?" + window.collex.makeQueryString(existingQuery));
+        changePage("./search?" + window.collex.makeQueryString(existingQuery));
         $(".limit_to_federation input").each( function() {
             $(this).prop('checked', false);
         });
@@ -413,7 +413,7 @@ jQuery(document).ready(function($) {
 	window.collex.doPageSearch = function( workUri) {
       var existingQuery = window.collex.getUrlVars();
       existingQuery.pages=workUri;
-      changePage("/search?" + window.collex.makeQueryString(existingQuery));
+      changePage("./search?" + window.collex.makeQueryString(existingQuery));
    };
 
 	body.on("change", ".limit_to_federation input", function() {
@@ -440,7 +440,7 @@ jQuery(document).ready(function($) {
 			existingQuery.f = checkedFeds;
 		}
 		delete existingQuery.page;
-		changePage("/search?" + window.collex.makeQueryString(existingQuery));
+		changePage("./search?" + window.collex.makeQueryString(existingQuery));
 	});
 
 	// This replaces the current search with the one passed to it.
@@ -452,7 +452,7 @@ jQuery(document).ready(function($) {
 		}
 		var existingSort = getSortAndFederationFromQueryObject();
 		jQuery.extend(obj, existingSort);
-		changePage("/search?" + window.collex.makeQueryString(obj));
+		changePage("./search?" + window.collex.makeQueryString(obj));
 	});
 
 	// This modifies the current search.
@@ -461,7 +461,7 @@ jQuery(document).ready(function($) {
          obj.newValue = window.collex.formatYearString(obj.newValue);
       }
 		var query = modifyInQueryObject(obj.key, obj.original, window.collex.sanitizeString(obj.newValue));
-		changePage("/search?" + window.collex.makeQueryString(query));
+		changePage("./search?" + window.collex.makeQueryString(query));
 	});
 
 	function initSortControls() {

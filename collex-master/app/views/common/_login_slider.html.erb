@@ -19,13 +19,13 @@
 	signed in as <%= current_user.username %><%= link_separator %>
     <%#= my_account_link({ :class => 'nav_link' }) %>
     <%#= link_separator %>
-	<%= link_to 'log out', { :controller => '/login', :action => 'logout' }, { :class => 'nav_link' } %>
+	<%= link_to 'log out', Rails.application.config.site_path + '/login/logout', { :class => 'nav_link' } %>
 	<% if is_admin? -%>
 		<%= link_separator %>
 		<% if current_page == 'admin' -%>
 			<span class="admin_active">admin</span>
 		<% else -%>
-			<%= link_to 'admin', { :controller => 'admin/default', :action => 'index' }, { :class => 'nav_link' } %>
+			<%= link_to 'admin', Rails.application.config.site_path + '/admin', { :class => 'nav_link' } %>
 		<% end -%>
 		<%= link_separator %> <%= link_to 'about', "/about/wp-admin/", { :class => 'nav_link' } %>
 		<% if Setup.display_news_tab? %>
