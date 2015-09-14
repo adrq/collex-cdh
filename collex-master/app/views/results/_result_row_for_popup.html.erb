@@ -19,18 +19,18 @@
 <% index = -1
    #has_exhibits = false
    #add_border = false -%>
-<div>
-   <% row_id = "search_result_#{index}" -%>
-    <%# The left side that contains the checkbox, graphic and the collect button -%>
-   <div class="search_result_left_for_popup">
-      <% if extra_button_data[:partial] -%>
-         <div id="search_result_buttons" class="search_result_buttons">
-            <%= render :partial => '/results/result_row_for_popup_buttons', :locals => { :hit => hit, :index => extra_button_data[:index], :partial  => extra_button_data[:partial], :target_el => extra_button_data[:target_el] } %>
-         </div>
-      <% end -%>
-      <div class="search_result_image"><%= thumbnail_image_tag(hit) %></div>
-    </div>
-   <div class="clear_both"><br /></div>
+< div >
+<% row_id = "search_result_#{index}" -%>
+ <%# The left side that contains the checkbox, graphic and the collect button -%>
+<div class="search_result_left_for_popup">
+   <% if extra_button_data[:partial] -%>
+      <div id="search_result_buttons" class="search_result_buttons">
+         <%= render :partial => '/results/result_row_for_popup_buttons', :locals => { :hit => hit, :index => extra_button_data[:index], :partial  => extra_button_data[:partial], :target_el => extra_button_data[:target_el] } %>
+      </div>
+   <% end -%>
+   <div class="search_result_image"><%= thumbnail_image_tag(hit) %></div>
+ </div>
+<div class="clear_both"><br /></div>
 
    <div class="search_result_right">
        <%# The middle with the actual search results -%>

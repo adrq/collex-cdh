@@ -37,17 +37,18 @@
 	<div class="left_column ajax-style">
 		<%= render(:partial => 'add_constraint_form') %>
 		<div class="has-results" style="display:none;">
-			<div class="page_header">
-			      <button class="new_search" value="New Search">New Search</button>
-				Search Query
-				<span id="saved_search_name_span"></span>
-			</div>
-			<% if !user_signed_in? -%>
-				<div class="not-empty">(<%= sign_in_link({:class => 'nav_link'}) %>
-					or <%= sign_up_link({:class => 'nav_link'}) %> to save these results)
-				</div>
-			<% end -%>
-
+				<div class="page_header">
+			     	 <button class="new_search" value="New Search">New Search</button>
+					 Search Query
+					<!-- <span id="saved_search_name_span"></span> commented by akhil, no login feature is required-->
+				 </div>	 
+		<!-- 	 
+				 <% if !user_signed_in? -%>
+					<div class="not-empty">(<%= sign_in_link({:class => 'nav_link'}) %>
+						or <%= sign_up_link({:class => 'nav_link'}) %> to save these results)
+					</div>
+				<% end -%>
+		commented by akhil, no login feature is available, we are disabling this feature -->
 			<div class="page_subheader">Add new search criteria or select limiters to refine your search.</div>
 			<table class="query search-form">
 			</table>

@@ -269,9 +269,9 @@ class Catalog
                iso_lang = nil
                if language['name'] && language['name'].length > 3
                   iso_lang = @@languages.find { |l| l.english_name == language['name']}
-                  if iso_lang.nil?
+                  if  iso_lang.nil?
                      iso_lang = IsoLanguage.find_by_english_name(language['name'])
-                  @@languages.push(iso_lang) if not iso_lang.nil?
+                     @@languages.push(iso_lang) if not iso_lang.nil?
                   end
                elsif language['name'] && language['name'].length == 3
                   iso_lang = @@languages.find { |l| l.alpha3 == language['name']}
@@ -723,7 +723,6 @@ class Catalog
 
    def call_solr(url, verb, params = [])
       params.push("test_index=true") if @use_test_index
-
       args = params.length > 0 ? "#{params.collect { |item| esc_arg(item) }.join('&')}" : ""
       request = "/#{url}.xml"
       url = URI.parse(Setup.solr_url())

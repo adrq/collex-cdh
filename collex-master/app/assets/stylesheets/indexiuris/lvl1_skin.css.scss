@@ -63,35 +63,4 @@ body.federation-indexiuris.pg-lvl1 {
 	background:image-url('indexiuris/index_scroll.gif') top center no-repeat;
 }
 
-#carousel_container {
-	background:image-url('indexiuris/index_flash_background.jpg') top center repeat-x;
-}
-
-.carousel_background {
-	background:transparent image-url('indexiuris/index_flash_background.jpg') repeat-x scroll center top;
-}
-
-.yui-carousel-nav ul li {
-	background:transparent image-url('indexiuris/carousel_dot_unselected.jpg') no-repeat scroll 0 50%;
-}
-
-.yui-carousel-nav ul li.yui-carousel-nav-page-selected {
-	background:transparent image-url('indexiuris/carousel_dot_selected.jpg') no-repeat scroll 0 50%;
-}
-
-#carousel_left {
-	background:transparent image-url('indexiuris/carousel_left_arrow.jpg') no-repeat scroll 0 0;
-}
-#carousel_right {
-	background:transparent image-url('indexiuris/carousel_right_arrow.jpg') no-repeat scroll 0 0;
-}
-
-#carousel_left.yui-carousel-first-button-disabled {
-	background:transparent image-url('indexiuris/carousel_left_off.gif') no-repeat scroll 0 0;
-}
-
-#carousel_right.yui-carousel-button-disabled {
-	background:transparent image-url('indexiuris/carousel_right_off.gif') no-repeat scroll 0 0;
-}
-
 }

@@ -33,7 +33,7 @@ public class ValidationUtility {
         "Fiction",  "Historiography",  "Law",  "Life Writing", "Liturgy",  "Music, Other",  "Musical Analysis",
         "Musical Recording",  "Musical Score",  "Nonfiction",  "Paratext",  "Philosophy",  "Photograph",  "Poetry",
         "Religion", "Religion, Other",  "Reference Works",  "Review", "Scripture",
-        "Sermon",  "Translation",  "Travel Writing",  "Unspecified",  "Visual Art", "Commentary","Account" /*adrian - added "Commentary" genre*//*"Commentary" added to the list--akhil*/
+        "Sermon",  "Translation",  "Travel Writing",  "Unspecified",  "Visual Art", "Commentary","Account","Synod" /*adrian - added "Commentary" genre*//*"Account and Synod" added to the list--akhil*/
     };
 
     // List of all valid disciplines
@@ -46,7 +46,7 @@ public class ValidationUtility {
     // List of all valid types
     public static final String[] TYPE_LIST = new String [] {
         "Codex",  "Collection",  "Drawing",  "Illustration", "Interactive Resource",  "Manuscript",  "Map",  "Moving Image",  "Periodical",
-        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript", "Text","Critical edition" /*adrian - added "Text" type*//*"Critical edition" added to the list--akhil*/
+        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript", "Text","Critical edition","Manuscript Codex" /*adrian - added "Text" type*//*"ManuScript Codex" added to the list--akhil*/
     };
 
     // Fields that are required to be present in RDF

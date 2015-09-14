@@ -16,8 +16,8 @@
     # ---------------------------------------------------------------------------- -%>
 <% info = capture do %>
   <%= number_with_delimiter(session[:num_docs]) %>&nbsp;peer&#8209;reviewed&nbsp;<%= link_to_function("digital objects", "showPartialInLightBox('/help/resources', 'Digital Objects', '#{image_path(PROGRESS_SPINNER_PATH)}');", :class => 'nav_link' ) %>&nbsp;from&nbsp;<%=number_with_delimiter(session[:num_sites])%>&nbsp;federated&nbsp;<%= link_to_function("sites", "showPartialInLightBox('/help/sites', 'Federated Sites', '#{image_path(PROGRESS_SPINNER_PATH)}');", :class => 'nav_link' ) %>.
-<% end %>
-
+<% end %> 
+<!--
 <div id="footer_container">
   <% if Setup.footer_signature_text().length > 0 %>
   <div class="signature"><%= raw(Setup.footer_signature_text()) %>
@@ -28,4 +28,4 @@
      <%= info %>
 	 <br/>Questions? Find a bug? <a class="nav_link nospam" href="<%= Setup.webmaster_email() %>">Contact us</a>.
 	 <br/>(Powered by Collex v<%= Branding.version() %>.)
-</div>
+</div> removed by akhil --> 
