@@ -158,9 +158,9 @@ private
 
     tabs.push({ :name => 'Login', :link => 'http://lichen.csd.sc.edu/indexiuris/login', :use_logo_style => true }) if Setup.display_news_tab?  #Using the display for the time being as Login -- akhil 
     tabs.push({ :name => 'Register', :link => 'http://lichen.csd.sc.edu/indexiuris/register', :use_long => true }) if Setup.display_classroom_tab? #Using the classroom for the time being as Login -- akhil
-    tabs.push({ :name => Setup.community_tab(), :link => '/communities', :use_long => true }) if Setup.display_community_tab?
-    tabs.push({ :name => 'Contact', :link => '/publications', :use_long => true }) if Setup.display_publications_tab? #Using the publications for the time being as Login -- akhil
-    tabs.push({ :name => 'Search', :link => search_path }) if Setup.display_search_tab?
+    #tabs.push({ :name => Setup.community_tab(), :link => '/communities', :use_long => true }) if Setup.display_community_tab?
+    #tabs.push({ :name => 'Contact', :link => '/publications', :use_long => true }) if Setup.display_publications_tab? #Using the publications for the time being as Login -- akhil
+    tabs.push({ :name => 'Search', :link => Rails.application.config.site_path + '/search' }) if Setup.display_search_tab?
 
     #if COLLEX_PLUGINS['typewright']   disabled typewright by akhil
 	#	  search = tabs.pop()
