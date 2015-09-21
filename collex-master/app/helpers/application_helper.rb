@@ -154,13 +154,14 @@ private
   end
 
   def draw_tabs(curr_page)
-    tabs = [{ :name => 'Home', :link => 'http://lichen.csd.sc.edu/indexiuris/', :dont_show_yourself => (SKIN != 'sro' && SKIN != 'gla') }] #http://lichen.csd.sc.edu/indexiuris/ added by akhil ... will directly take to the lichen page instead of the collex home page
+    tabs = [{ :name => 'Home', :link => 'http://lichen.csd.sc.edu/indexiuris/' , :dont_show_yourself => (SKIN != 'sro' && SKIN != 'gla') }] #http://lichen.csd.sc.edu/indexiuris/ added by akhil ... will directly take to the lichen page instead of the collex home page
 
-    tabs.push({ :name => 'Login', :link => 'http://lichen.csd.sc.edu/indexiuris/login', :use_logo_style => true }) if Setup.display_news_tab?  #Using the display for the time being as Login -- akhil 
-    tabs.push({ :name => 'Register', :link => 'http://lichen.csd.sc.edu/indexiuris/register', :use_long => true }) if Setup.display_classroom_tab? #Using the classroom for the time being as Login -- akhil
+    #tabs.push({ :name => 'Login', :link => 'http://lichen.csd.sc.edu/indexiuris/login', :use_logo_style => true }) if Setup.display_news_tab?  #Using the display for the time being as Login -- akhil 
+    #tabs.push({ :name => 'Register', :link => 'http://lichen.csd.sc.edu/indexiuris/register', :use_long => true }) if Setup.display_classroom_tab? #Using the classroom for the time being as Login -- akhil
     #tabs.push({ :name => Setup.community_tab(), :link => '/communities', :use_long => true }) if Setup.display_community_tab?
     #tabs.push({ :name => 'Contact', :link => '/publications', :use_long => true }) if Setup.display_publications_tab? #Using the publications for the time being as Login -- akhil
-    tabs.push({ :name => 'Search', :link => Rails.application.config.site_path + '/search' }) if Setup.display_search_tab?
+    #tabs.push({ :name => 'Search', :link => Rails.application.config.site_path + '/search' }) if Setup.display_search_tab?
+
 
     #if COLLEX_PLUGINS['typewright']   disabled typewright by akhil
 	#	  search = tabs.pop()
@@ -169,8 +170,10 @@ private
     #end
 
     # the my_collex tab is separate, and is rendered first
-    cls = (curr_page == Setup.my_collex()) ? 'my_collex_link_current' : 'my_collex_link'
-    html = "\t" + link_to(Setup.my_collex(), '/' + MY_COLLEX_URL, { :class => cls }) + "\n"
+    #cls = (curr_page == Setup.my_collex()) ? 'my_collex_link_current' : 'my_collex_link'
+    #html = "\t" + link_to(Setup.my_collex(), '/' + MY_COLLEX_URL, { :class => cls }) + "\n"
+    cls = 
+    html = "\t" + "\n"
     html += "\t" + "<div id='nav_container'>\n"
     tabs.each { |tab|
       if tab[:dont_show_yourself] && curr_page == tab[:name]
@@ -179,9 +182,9 @@ private
         if tab[:use_logo_style] && curr_page == 'HOME'
           cls = 'tab_link_logo'
 		  elsif tab[:use_long]
-          cls = (curr_page == tab[:name]) ? 'tab_link_long_current' : 'tab_link_long'
+          cls = (curr_page == tab[:name]) ? 'tab_link' : 'tab_link'
 		  else
-          cls = (curr_page == tab[:name]) ? 'tab_link_current' : 'tab_link'
+          cls = (curr_page == tab[:name]) ? 'tab_link' : 'tab_link'
         end
         if SKIN == 'sro' && tab[:name] == "HOME"
          cls << " home"

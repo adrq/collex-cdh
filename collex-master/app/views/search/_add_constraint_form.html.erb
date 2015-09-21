@@ -17,11 +17,13 @@
 <%# add_constraint_form : no parameters -%>
 <% if SKIN == 'modnets' %>
 	<div class="add_constraint_form" style="display:none;">
-	  <% if @other_federations.length > 0 %>
-   	  <div class="search_federation_checkbox">
-   		<input type="checkbox" class="search_all_federations" />Search all federations
-   	  </div>
-	  <% end %>
+  <% if @other_federations.length > 0 %>
+     	<!--  <div class="search_federation_checkbox">
+     		<input type="checkbox" class="search_all_federations" />Search all federations
+     	  </div>
+     	  search all federation functionality diable -- akhil 
+  	  -->
+  <% end %>
 		<form accept-charset="UTF-8" action="/search" id="add-search-constraint" method="get">
 		  <input id="search_submit" type="submit" value="Search"/>
 			<input name="q" type="text" class="search_entry_box_keyword jq-autocomplete" data-autocomplete-url="/search/auto_complete_for_q" autocomplete="off" placeholder="<%= "Search #{Setup.site_name()}..." if SKIN == 'modnets' %>" />
@@ -104,12 +106,13 @@
 <% else %>
 <center>
 <div class="add_constraint_form" style="display:none;">
-   <% if @other_federations.length > 0 %>
+  <!--  <% if @other_federations.length > 0 %>
       <div class="search_federation_checkbox"><input type="checkbox" class="search_all_federations" />Search all federations</div>
    <% end %>
+	 Search all federations diabled --akhil -->
 	<form accept-charset="UTF-8" action="/search" id="add-search-constraint" method="get">
 		<div class="page_header">Search <%= Setup.site_name() %>:</div>
- 	<table>
+ 	<table class="search_table">
         <tr>
           <td colspan='2'>
 			  <input name="q" type="text" class="search_entry_box_keyword jq-autocomplete" data-autocomplete-url="/search/auto_complete_for_q" autocomplete="off" placeholder="<%= "Search #{Setup.site_name()}..." if SKIN == 'modnets' %>" />

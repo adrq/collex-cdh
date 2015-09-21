@@ -21,7 +21,7 @@ body {
 	margin:0px;
 	padding:0px;
 	
-	font-family:"Times New Roman", Times, serif;
+	font-family:"arial";
 	font-size:16px;
 }
 
@@ -93,7 +93,7 @@ table, table td, table tr {
 }
 
 #main_container {
-	margin:0px 30px 10px 30px;
+	margin:0px 0px 0px 0px;
 	background:#FFFFFF;
 }
 
@@ -131,10 +131,10 @@ table, table td, table tr {
 }
 
 .right_column {
-	width:29%;
+	width:32%;
 	float:right;
+	margin: 110px 0px 0px 20px;
 	background:#F7F4EA;
-	padding:0px 0px 10px 0px;
 }
 
 .right_column p {

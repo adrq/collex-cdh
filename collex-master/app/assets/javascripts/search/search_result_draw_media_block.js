@@ -67,7 +67,8 @@ jQuery(document).ready(function($) {
               pages = window.pss.createHtmlTag("button", { 'class': 'page-search' }, "All Pages");
            }
 		}
-		return window.pss.createHtmlTag("div", { 'class': 'search_result_buttons' }, collect+uncollect+discuss+exhibit+typewright+pages);
+		/*return window.pss.createHtmlTag("div", { 'class': 'search_result_buttons' }, collect+uncollect+discuss+exhibit+typewright+pages); removed collect+uncollect+discuss to remove the collect and discuss in the search results--akhil*/
+		return window.pss.createHtmlTag("div", { 'class': 'search_result_buttons' }, exhibit+typewright+pages); 
 	}
 
 	function createZoteraTitle(obj) {
@@ -273,10 +274,10 @@ jQuery(document).ready(function($) {
 		else
 			html += createBlankResultContentItem('row collected-on');
 
-		if (index !== null) {
+		/*if (index !== null) {
 			var tags = createTagLine(obj.uri, index, obj.my_tags, obj.tags);
 			html += createResultContentItem('single_item', 'Tags:', tags, false, 'tag-list');
-		}
+		}  disabled to remove the tag filed in the */
 
 		var site = window.collex.getSite(obj.archive);
 		html += createResultContentItem('single_item', 'Site:', site, false);

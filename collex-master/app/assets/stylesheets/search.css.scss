@@ -33,8 +33,8 @@ body.pg-search {
       text-align: right;
     }
     .page_header {
-       border-bottom: 2px solid #C7C8CB;
-       padding-bottom: 10px;
+       border-bottom: 0px solid #C7C8CB;
+       padding-bottom: 0px;
     }
     .search_result_full_text_label {
       margin-bottom: 5px;
@@ -61,14 +61,15 @@ body.pg-search {
 		margin-left: 4px;
 	}
 .search_entry_box {
-	width:365px;
+	width:500px;
 }
 .search_entry_box_short {
-    width:236px;
+    width:336px;
 }
 
 .search_entry_box_keyword {
-	width:455px;
+	width:600px;
+	
 }
 
 .search_entry_visible {
@@ -80,7 +81,7 @@ body.pg-search {
 }
 
 .search_role_type {
-    width: 125px;
+    width: 150px;
 }
 
 .search_entry_instructions {
@@ -346,7 +347,7 @@ div.auto_complete ul li .frequency {
 }
 
 .add_constraint_form {
-	width: 520px;
+	width: 820px;
 	text-align: left;
 }
 
@@ -444,4 +445,9 @@ span.advanced_search_field_tooltip {
 	padding: 4px;
 	overflow: auto;
 }
+.search_table{
+	width: 800px;
+	height: 400px;
+}
+
 }

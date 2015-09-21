@@ -17,7 +17,7 @@
 <%#  result_row_for_popup_buttons parameters: hit hit, index, partial, target_el  -%>
 <script type="text/javascript">
    redrawResultRowForPopupButtons = function() {
-      serverAction({ action: { actions: '', els: 'search_result_buttons', params: { uri: '<%=hit['uri']%>', index: <%=index%>, partial: '<%=partial%>', target_el: '<%=target_el%>' } }});
+      serverAction({ action: { actions: '/results/redraw_result_row_for_popup_buttons', els: 'search_result_buttons', params: { uri: '<%=hit['uri']%>', index: <%=index%>, partial: '<%=partial%>', target_el: '<%=target_el%>' } }});
    }
 </script>
 <% is_collected = result_is_collected(hit) -%>

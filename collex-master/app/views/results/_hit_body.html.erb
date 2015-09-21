@@ -30,9 +30,9 @@
 <% result_row_collected(rows, is_collected, item) %>
 <%################### -%>
 <% if no_links -%>
-<%    result_row_tags_no_links(rows, "Tags:", tags) -%>
+	<%    result_row_tags_no_links(rows, "Tags:", tags) -%> 
 <% else # if we want links on the tags -%>
-<%    result_row_tags_links(rows, index, row_id, hit, "Tags:", tags, item, user_signed_in?, is_collected) %>
+<%    result_row_tags_links(rows, index, row_id, hit, "Tags:", tags, item, user_signed_in?, is_collected) %> 
 <% end # if no_links -%>
 <%################### -%>
 <% result_row_site(rows, "Site:", hit, 'archive') %>

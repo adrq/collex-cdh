@@ -31,9 +31,7 @@ body.federation-indexiuris {
 }
 
 #main_container {
-	border-left:10px #750123 solid;
-	border-right:10px #750123 solid;
-	border-bottom:10px #750123 solid;
+	
 }
 
 #footer_container {
@@ -133,8 +131,8 @@ body.federation-indexiuris {
 	border-bottom: 8px solid #5f3119;
 }
 
-.search_result_buttons a, .search_result_buttons button {
-					-moz-box-shadow:inset 0px 34px 0px -15px #820d30;
+/* .search_result_buttons a, .search_result_buttons button {
+	-moz-box-shadow:inset 0px 34px 0px -15px #820d30;
 					-webkit-box-shadow:inset 0px 34px 0px -15px #820d30;
 					box-shadow:inset 0px 34px 0px -15px #820d30;
 					background-color:#750124;
@@ -146,7 +144,7 @@ body.federation-indexiuris {
 					font-size:15px;
 					font-weight:bold;
 					text-decoration:none;
-					text-shadow:0px -1px 0px #750124;
+					text-shadow:0px -1px 0px #750124;				
 }
 
 .search_result_buttons a:hover, .search_result_buttons button:hover {
@@ -155,7 +153,7 @@ body.federation-indexiuris {
 .search_result_buttons a:active, .search_result_buttons button:active {
 	position:relative;
 	top:1px;
-}
+} */
 
 /*********************************/
 /* styles for all javascript-created dialogs */

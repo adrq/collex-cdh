@@ -15,65 +15,24 @@
 // ---------------------------------------------------------------------------- */
 
 #nav_container {
+	width:900px;
+	float:left;
 }
 
 .tab_link {
-	height:29px;
-	width:71px;
-	float:right;
-	font-weight:bold;
+	height:23px;
+	width:12%;
+	float:left;
 	text-decoration:none;
 	padding-top:9px;
+	font-size: 120%; 
+	
 }
 
 .tab_link:hover {
-	text-decoration:underline;
+	background-color: #681422;
 }
 
-.tab_link_current {
-	height:29px;
-	width:71px;
-	float:right;
-	color:black;
-	font-weight:bold;
-	text-decoration:none;
-	padding-top:9px;
-}
-
-.tab_link_current:active, .tab_link_current:visited, .tab_link_current:hover {
-	color:#55220F;
-}
-
-.tab_link_current:hover {
-	text-decoration:underline;
-}
-
-.tab_link_long {
-	height:29px;
-	width:100px;
-	float:right;
-	font-weight:bold;
-	text-decoration:none;
-	padding-top:9px;
-}
-
-.tab_link_long:hover {
-	text-decoration:underline;
-}
-
-.tab_link_long_current {
-	height:29px;
-	width:100px;
-	float:right;
-	color:black;
-	font-weight:bold;
-	text-decoration:none;
-	padding-top:9px;
-}
-
-.tab_link_long_current:hover {
-	text-decoration:underline;
-}
 
 #subnav_container{
 	font-family:Arial, Helvetica, sans-serif;
