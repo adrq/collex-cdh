@@ -154,9 +154,9 @@ private
   end
 
   def draw_tabs(curr_page)
-    tabs = [{ :name => 'Home', :link => 'http://lichen.csd.sc.edu/indexiuris/' , :dont_show_yourself => (SKIN != 'sro' && SKIN != 'gla') }] #http://lichen.csd.sc.edu/indexiuris/ added by akhil ... will directly take to the lichen page instead of the collex home page
+    tabs = [{ :name => 'Home', :link => 'http://lichen.csd.sc.edu/indexiuris' , :dont_show_yourself => (SKIN != 'sro' && SKIN != 'gla') }] #http://lichen.csd.sc.edu/indexiuris/ added by akhil ... will directly take to the lichen page instead of the collex home page
 
-    #tabs.push({ :name => 'Login', :link => 'http://lichen.csd.sc.edu/indexiuris/login', :use_logo_style => true }) if Setup.display_news_tab?  #Using the display for the time being as Login -- akhil 
+    tabs.push({ :name => 'Login', :link => 'http://lichen.csd.sc.edu/indexiuris/login', :use_logo_style => true }) if Setup.display_news_tab?  #Using the display for the time being as Login -- akhil 
     #tabs.push({ :name => 'Register', :link => 'http://lichen.csd.sc.edu/indexiuris/register', :use_long => true }) if Setup.display_classroom_tab? #Using the classroom for the time being as Login -- akhil
     #tabs.push({ :name => Setup.community_tab(), :link => '/communities', :use_long => true }) if Setup.display_community_tab?
     #tabs.push({ :name => 'Contact', :link => '/publications', :use_long => true }) if Setup.display_publications_tab? #Using the publications for the time being as Login -- akhil
@@ -174,7 +174,7 @@ private
     #html = "\t" + link_to(Setup.my_collex(), '/' + MY_COLLEX_URL, { :class => cls }) + "\n"
     cls = 
     html = "\t" + "\n"
-    html += "\t" + "<div id='nav_container'>\n"
+    
     tabs.each { |tab|
       if tab[:dont_show_yourself] && curr_page == tab[:name]
         # There's an exception: We don't want the home tab if we're on the home page
@@ -189,7 +189,7 @@ private
         if SKIN == 'sro' && tab[:name] == "HOME"
          cls << " home"
         end
-        html += "\t\t" + link_to(tab[:name], tab[:link], { :class => cls }) + "\n"
+        html += "\t\t" + link_to(tab[:name], tab[:link]) + "\n"
       end
     }
     html += "\t" + "</div>\n"

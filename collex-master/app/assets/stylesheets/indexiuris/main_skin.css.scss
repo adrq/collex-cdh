@@ -25,7 +25,7 @@ ul li {
 }
 
 body.federation-indexiuris {
-	background:#750123; 
+	
 
 #header_container {
 }
@@ -34,10 +34,10 @@ body.federation-indexiuris {
 	
 }
 
-#footer_container {
+/*#footer_container {
 	background:#750123;
 	color:#FFFFFF;
-}
+} removed the footer container--akhil*/
 
 .exhibit_footer {*				
 	background-color: #371911;
@@ -45,6 +45,7 @@ body.federation-indexiuris {
 
 .tab_link {
 	color:#FFFFFF;
+	
 }
 
 .tab_link_current {
@@ -119,9 +120,9 @@ body.federation-indexiuris {
 	color: #ffe6b7;
 }
 
-#footer_container a, #footer_container a.link, #footer_container a.visited{
+/* #footer_container a, #footer_container a.link, #footer_container a.visited{
 	color:#9D1E16;
-}
+} removed the footer container--akhil */
 
 .login_div {
 	background-image:image-url('indexiuris/login_header.jpg');
@@ -140,7 +141,7 @@ body.federation-indexiuris {
 					display:inline-block;
 					cursor:pointer;
 					color:#ffffff;
-					font-family:Arial;
+					font-family: monospace;;
 					font-size:15px;
 					font-weight:bold;
 					text-decoration:none;

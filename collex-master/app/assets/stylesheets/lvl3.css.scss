@@ -23,13 +23,14 @@ body.pg-lvl3 {
 }
 
 #header_right {
-	float:right;
+	float:left;
 	margin-right:20px;
-	margin-top:10px;
+	margin-top:20px;
 }
 
 #header_right a {
 	color:#b06e41;
+	float:right;
 }
 
 #header_right a:visited {
@@ -40,9 +41,9 @@ body.pg-lvl3 {
 	display: none;
 }
 
-#nav_container {
+/*#nav_container {
 	display:none;
-}
+} removed the nav_continer*/
 
 #login_container {
 	display: none;

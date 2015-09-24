@@ -34,13 +34,7 @@
 
    <div class="search_result_right">
        <%# The middle with the actual search results -%>
-      <div class="search_result_header">
-            <% if hit["url"] %>
-               <a class="nines_link" target="_blank" href="<%= hit["url"] %>"><%= hit["title"] %></a>
-         <% else %>
-               <%= hit["title"] %>
-            <% end %>
-      </div>
+      
       <div class="search_result_data_container">
            <table class="search_result_data">
             <%= render :partial => '/results/hit_body', :locals => { :hit => hit, :row_id => row_id, :index => index, :no_links => true } %>

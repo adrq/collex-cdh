@@ -18,46 +18,18 @@ body.federation-indexiuris.pg-lvl1 {
 
 #header_container {
 	width:100%;
-	height:155px;
+	height:50px;
 	background:#750123;
 }
 
 #header_right {
-	width:426px;
-	height:152px;
-	float:right;
+	width:1000px;
+	height:100%;
+	float:center;
 	text-align:right;
 }
 
-#header_left1 {
-	width:373px;
-	height:152px;
-	float:left;
-}
 
-#header_left2 {
-	width:373px;
-	height:152px;
-	float:left;
-}
-
-#header_left3 {
-	width:373px;
-	height:152px;
-	float:left;
-}
-
-#header_left4 {
-	width:373px;
-	height:152px;
-	float:left;
-}
-
-#header_left5 {
-	width:373px;
-	height:152px;
-	float:left;
-}
 
 #content_container {
 	background:image-url('indexiuris/index_scroll.gif') top center no-repeat;
