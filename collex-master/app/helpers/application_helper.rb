@@ -189,7 +189,7 @@ private
         if SKIN == 'sro' && tab[:name] == "HOME"
          cls << " home"
         end
-        html += "\t\t" + link_to(tab[:name], tab[:link]) + "\n"
+        html += "\t\t" + link_to(tab[:name], tab[:link], id: "header-#{tab[:name]}-link") + "\n"
       end
     }
     html += "\t" + "</div>\n"

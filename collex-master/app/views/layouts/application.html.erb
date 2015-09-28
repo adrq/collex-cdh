@@ -55,7 +55,7 @@
 		    styles = "pg-lvl4 pg-exhibit"
 	end
    %>
-<body class="yui-skin-sam federation-<%=SKIN%> <%= styles %>">
+<body class="yui-skin-sam federation-<%=SKIN%> <%= styles %>" onload="updateHeaderLoginLink()">
 <%= render :partial => '/layouts/header' %>
 			<%= yield %>
 <%= render :partial => '/layouts/footer' %>

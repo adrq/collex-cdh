@@ -8,7 +8,34 @@
 		<% end -%>
 		<!-- <div id="header_right"><%= sign_in_link({ :class => 'nav_link' }) if !user_signed_in? %></div>  removed the login feature from the top right header - akhil-->
       <% if SKIN == 'gla' %><div id="menu-bkg"></div><% end %>
-	  <div id="header_right"> <%= @current_page.blank? ? draw_tabs(@current_page) : draw_tabs(@current_page) %> </div>
+	  <div id="header_right"><!-- diabled draw_tabs for login integration -->
+<a href="http://lichen.csd.sc.edu/indexiuris" id="header-Home-Link">Home</a>
+<a href="http://lichen.csd.sc.edu/indexiuris/login" id="header-Login-link">Login</a>
+<script type="text/javascript">
+//<![CDATA[
+function updateHeaderLoginLink(){
+var loginLink = jQuery("#header-Login-link");
+
+jQuery.ajax({
+    url: "http://lichen.csd.sc.edu/indexiuris/user",
+    type: "GET",
+    jsonpCallback: "callback",
+    dataType: "jsonp", //have to use jsonp to allow cross-domain in development
+    success: function (result) {
+        loginLink.attr("href",result.url);
+        loginLink.html(result.name);
+    },
+    error: function (result) {
+    }
+}
+);
+};
+//]]>
+</script>
+
+<!-- #@current_page.blank? ? draw_tabs(@current_page) : draw_tabs(@current_page) %>  draw tabs function to ease login integration-->
+
+</div>
 	</div>
 	
 
