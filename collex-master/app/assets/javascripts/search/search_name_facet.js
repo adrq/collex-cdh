@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 			var onFailure = function(resp) {
 				new MessageBoxDlg("Error in retrieving names", "There was an error getting the list of names from the server. The problem was: " + resp.responseText);
 			};
-			serverAction({action: { els: 'search_name_facet_max', actions: '/search/list_name_facet_all', params: { query: window.collex.removeSortAndPageFromQueryObject() }, onFailure: onFailure }});
+			serverAction({action: { els: 'search_name_facet_max', actions: window.site_path+'/search/list_name_facet_all', params: { query: window.collex.removeSortAndPageFromQueryObject() }, onFailure: onFailure }});
 		}
 	});
 
