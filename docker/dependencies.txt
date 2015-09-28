@@ -1,0 +1,18 @@
+Run interactive shell
+docker run -i -t centos-image /bin/bash
+
+
+Apache + modules (mod_rewrite, proxy modules, and virtual hosts) and dependencies
+
+PHP 5.5 or greater
+
+mysql
+
+java jre 1.7
+
+RVM (ruby 1.9.3)
+
+Build tools (to build native extensions for some Ruby gems):
+	Compiler stack: gcc, make, etc
+
+Way to monitor/restart processes. Might be difficult inside the docker container.
