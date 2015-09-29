@@ -13,6 +13,8 @@ java jre 1.7
 RVM (ruby 1.9.3)
 
 Build tools (to build native extensions for some Ruby gems):
-	Compiler stack: gcc, make, etc
+	Compiler stack: gcc, make, etc. Easiest way is:
+	yum groupinstall "Development Tools" -y
+	But there might be packages there that we don't need
 
 Way to monitor/restart processes. Might be difficult inside the docker container.
