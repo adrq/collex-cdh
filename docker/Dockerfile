@@ -1,5 +1,5 @@
 FROM tmullen/centos_base
-RUN  yum install httpd; yum clean all; systemctl enable httpd.service; \
+RUN  yum install -y httpd; yum clean all; systemctl enable httpd.service; \
 #This should be the necessary stuff for rbenv and rails.
 yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel; \
 (cd; git clone git://github.com/sstephenson/rbenv.git .rbenv; echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile; echo 'eval "$(rbenv init -)"' >> ~/.bash_profile; exec $SHELL;); \

@@ -3,12 +3,19 @@ docker run -i -t centos-image /bin/bash
 
 
 Apache + modules (mod_rewrite, proxy modules, and virtual hosts) and dependencies
+	yum install -y httpd
 
 PHP 5.5 or greater
 
-mysql
+mysql (centos comes with mariadb instead of mysql)
+To install mysql:
+- Add mysql repo:
+	rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+- Install mysql (92M download, 348M installed)
+	yum install -y mysql-servermysql	
 
-java jre 1.7
+java jre 1.7 - centos installation (44M download, 158M installed):
+	yum install -y java-1.7.0-openjdk
 
 RVM (ruby 1.9.3)
 
@@ -18,3 +25,22 @@ Build tools (to build native extensions for some Ruby gems):
 	But there might be packages there that we don't need
 
 Way to monitor/restart processes. Might be difficult inside the docker container.
+
+services:
+	apachectl start
+	mysqld start
+
+Solr (in Solr directory):
+	java -jar start.jar
+
+Catalog
+Initial setup:
+	bundle install --path vendor/bundle
+Start service:
+	bundle exec passenger start --port 3001
+
+Collex
+Initial setup:
+	bundle install --path vendor/bundle
+Start service:
+	bundle exec passenger start --port 3000
