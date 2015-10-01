@@ -12,7 +12,7 @@ To install mysql:
 - Add mysql repo:
 	rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 - Install mysql (92M download, 348M installed)
-	yum install -y mysql-servermysql	
+	yum install -y mysql-server	
 
 java jre 1.7 - centos installation (44M download, 158M installed):
 	yum install -y java-1.7.0-openjdk
@@ -44,3 +44,22 @@ Initial setup:
 	bundle install --path vendor/bundle
 Start service:
 	bundle exec passenger start --port 3000
+
+
+#################
+Ubuntu packages:
+
+Build tools:
+	apt-get install -y build-essential
+
+JAVA
+	apt-get install -y openjdk-7-jre
+
+MYSQL
+	apt-get install -y mysql-server
+
+RUBY:
+install rvm:
+	apt-get install -y ruby-rvm
+install ruby 1.9.3
+	rvm install ruby-1.9.3-p125
