@@ -156,6 +156,8 @@ class Admin::SetupsController < Admin::BaseController
             value = "Access"
          when 'facet_display_name_origin'  #added for origin field -- akhil
             value = "Origin"  #added for origin field -- akhil
+         when 'facet_display_name_language' #added for language field -- akhil
+            value = "Language"  #added for language field -- akhil
       else 
          value = value
       end
@@ -176,6 +178,8 @@ class Admin::SetupsController < Admin::BaseController
       order['facet_order_genre'] = rec.value
       rec = Setup.find_by_key('facet_order_origin')  #added for origin field -- akhil
       order['facet_order_origin'] = rec.value  #added for origin field -- akhil
+      rec = Setup.find_by_key('facet_order_language') #added for language field -- akhil
+      order['facet_order_language'] = rec.value #added for language field -- akhil
 
       # Check for duplicate values
       if order.values.count != order.values.uniq.count
@@ -193,12 +197,15 @@ class Admin::SetupsController < Admin::BaseController
             warnings.push " Format Facet Order: #{order['facet_order_format']}"  
          end 
          if order.values.count(order['facet_order_origin']) > 1    #added for origin field -- akhil
-            warnings.push " Format Facet Order: #{order['facet_order_origin']}" #added for origin field -- akhil
+            warnings.push " Origin Facet Order: #{order['facet_order_origin']}" #added for origin field -- akhil
+         end
+         if order.values.count(order['facet_order_language']) > 1    #added for language field -- akhil
+            warnings.push " Language Facet Order: #{order['facet_order_language']}" #added for language field -- akhil
          end
       end
 
       # Check for non-numeric values
-      origin_order,access_order, genre_order, discipline_order, format_order = nil, nil, nil, nil,nil
+      origin_order,access_order, genre_order, discipline_order, format_order, language_order = nil, nil, nil, nil,nil,nil
       begin
          access_order = Integer(order['facet_order_access']) if order['facet_order_access'].length > 0
       rescue
@@ -226,6 +233,13 @@ class Admin::SetupsController < Admin::BaseController
       rescue
          warnings.push( "Non Numeric Display Order detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
       end
+      
+      #added for language field -- akhil
+      begin
+         language_order = Integer(order['facet_order_language']) if order['facet_order_language'].length > 0
+      rescue
+         warnings.push( "Non Numeric Display Order detected. \"Language Facet Order: #{order['facet_order_language']}\" Facets may not display correctly.")
+      end
 
       if !access_order.nil? and access_order > 4
          warnings.push("Large value detected. \"Access Facet Order: #{order['facet_order_access']}\"  Facets may not display correctly.")
@@ -244,6 +258,12 @@ class Admin::SetupsController < Admin::BaseController
       
       if !origin_order.nil? and origin_order > 4
          warnings.push("Large value detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
+      end
+      
+      #added for language field -- akhil
+      
+      if !language_order.nil? and language_order > 4
+         warnings.push("Large value detected. \"Language Facet Order: #{order['facet_order_language']}\" Facets may not display correctly.")
       end
 
       if !access_order.nil? and access_order < 0
@@ -264,7 +284,13 @@ class Admin::SetupsController < Admin::BaseController
       if !origin_order.nil? and origin_order < 0
          warnings.push("Negative value detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
       end
-
+      
+      #added for language field -- akhil
+      
+      if !language_order.nil? and language_order < 0
+         warnings.push("Negative value detected. \"Language Facet Order: #{order['facet_order_language']}\" Facets may not display correctly.")
+      end
+      
       return warnings
 
    end

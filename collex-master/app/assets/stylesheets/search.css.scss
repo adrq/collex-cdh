@@ -24,7 +24,7 @@ body.pg-search {
     button.select-facet.nav_link {
       cursor: pointer;
     }
-
+   
     .pages.pagination {
       word-spacing: 0.2em;
       font-size: 16px;
@@ -81,7 +81,7 @@ body.pg-search {
 }
 
 .search_role_type {
-    width: 150px;
+    width: 115px;
 }
 
 .search_entry_instructions {
@@ -90,13 +90,13 @@ body.pg-search {
 	padding-top: 18px;
 }
 
-.search_federation_checkbox2 {
+/* .search_federation_checkbox2 {
 	float: right;
-}
+} 
 
 .search_federation_checkbox2 input {
 	margin-right: 5px;
-}
+} 
 
 .search_federation_checkbox {
 	float: right;
@@ -106,7 +106,7 @@ body.pg-search {
 
 .search_federation_checkbox input {
 	margin-right: 5px;
-}
+}commented by akhil - only indexiuris federation*/
 
 .fuz_control_keyword {
     display:inline-block;
@@ -161,9 +161,9 @@ table.query {
 	margin-top:10px;
 }
 
-#saved-searches table.query {
+/* #saved-searches table.query {
 	width:inherit;
-}
+} */
 
 table.query select {
 	font-size:0.8em;
@@ -216,11 +216,11 @@ td.query_remove {
 	text-align:center;
 }
 
-td.saved_search_link {
+/*td.saved_search_link {
 	padding:3px 5px 3px 5px;
 	width:10px;
 	text-align:center;
-}
+} commneted by akhil - no saved serach feature*/
 
 /*----------------------------*/
 
@@ -230,7 +230,7 @@ td.edit_delete_col {
 }
 
 th.num_objects {
-	text-align:center;
+	text-align:right;
 	width:70px;
 }
 
@@ -244,7 +244,7 @@ td.limit_to_lvl1 {
 }
 
 td.limit_to_lvl2 {
-	padding-left:24px;
+	
 	text-align:left;
 }
 
@@ -275,9 +275,9 @@ tr.limit_to_selected {
 	padding-bottom: 150px;
 }
 
-#savesearch_link {
+/* #savesearch_link {
 	font-size: .7em;
-}
+} commented by akhil -- no saved serch feature */
 
 .limit_to {
 	width:90%;
@@ -347,7 +347,7 @@ div.auto_complete ul li .frequency {
 }
 
 .add_constraint_form {
-	width: 820px;
+	width: 520px;
 	text-align: left;
 }
 
@@ -446,7 +446,7 @@ span.advanced_search_field_tooltip {
 	overflow: auto;
 }
 .search_table{
-	width: 800px;
+	width: 700px;
 	height: 400px;
 }
 

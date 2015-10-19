@@ -40,10 +40,10 @@ jQuery.ajax({
 	
 
 	<div id="subnav_container">
-		<!-- <div id="login_container">
+		 <div id="login_container">
 			<%= render :partial => '/common/login_slider', :locals => { :current_page => @current_page } %> 
 		</div>
-       -->		
+       		
 		   <div class="clear_both"></div>
 		<% if @current_page == "admin" -%>
 			<%= render :partial => '/admin/default/menu', :locals => { :current_page => yield(:current_sub_page) } %>

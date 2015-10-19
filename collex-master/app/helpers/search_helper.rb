@@ -524,7 +524,7 @@ module SearchHelper
 
   def create_genre_table( genre_data )
     html = raw('<table class="limit_to facet-genre">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_genre}</th><th class=\"num_objects\"># of Objects</th></tr>")
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Genre')\">  #{Setup.display_name_for_facet_genre}<i class=\"fa fa-caret-down fa-lg\"> </i></th><th class=\"num_objects\"># of Objects</th></tr>")
     for genre in genre_data
       html += facet_selector( genre, 'g' )
     end
@@ -534,7 +534,7 @@ module SearchHelper
 
   def create_access_table( freeculture_count, fulltext_count, typewright_count )
     html = raw('<table class="limit_to facet-access">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_access}</th><th class=\"num_objects\"># of Objects</th></tr>")
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Access')\">#{Setup.display_name_for_facet_access}<i class=\"fa fa-caret-down fa-lg\"></i></th><th class=\"num_objects\"># of Objects</th></tr>")
 	# data = [
 	# 	{ exists: access_is_in_constraints?('FreeCultureConstraint'), label: "Free Culture Only", value: 'freeculture', count: freeculture_count },
 	# 	{ exists: access_is_in_constraints?('FullTextConstraint'), label: "Full Text Only", value: 'fulltext', count: fulltext_count }
@@ -553,7 +553,7 @@ module SearchHelper
 
   def create_format_table( format_data )
     html = raw('<table class="limit_to facet-format">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_format}</th><th class=\"num_objects\"># of Objects</th></tr>")
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Format')\">#{Setup.display_name_for_facet_format}<i class=\"fa fa-caret-down fa-lg\"></i></i></th><th class=\"num_objects\"># of Objects</th></tr>")
     # for format in format_data
     #   html += facet_selector( format, 'doc_type' )
     # end
@@ -571,16 +571,28 @@ module SearchHelper
     return raw(html)
   end
   
+  #added for origin field-akhil
   def create_origin_table( origin_data )
     html = raw('<table class="limit_to facet-origin">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_origin}</th><th class=\"num_objects\"># of Objects</th></tr>")
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Origin')\">#{Setup.display_name_for_facet_origin}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
    #for origin in origin_data
     #   html += facet_selector( origin, 'origin' )
      #end
     html += raw('</table>')
     return raw(html)
   end
-
+  
+  #added for language field-akhil
+  def create_language_table( language_data )
+    html = raw('<table class="limit_to facet-language">')
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Language')\">#{Setup.display_name_for_facet_language}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
+   #for origin in origin_data
+    #   html += facet_selector( origin, 'origin' )
+     #end
+    html += raw('</table>')
+    return raw(html)
+  end
+  
 	def format_name_facet(name, typ)
 		name[0] = name[0].gsub("\"", "")
 		sanitized_name = name[0].gsub(/[^0-9a-z' ]/i, ' ')

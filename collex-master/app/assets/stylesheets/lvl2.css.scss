@@ -21,7 +21,22 @@ body.pg-lvl2 {
 	height:50px;
 }
 
-#header_right {
+td.limit_to_lvl1 {
+	width:90%;
+}
+td.num_objects {
+	width:10%;
+	
+}
+tr{
+	width:122%;
+}
+
+ .cursor{
+    	cursor: pointer; cursor: hand;
+    }
+#header_right 
+{
 	float:right;
 	margin-right:30%;
 	margin-top:15px;
@@ -62,7 +77,7 @@ body.pg-lvl2 {
 	top:89px;
 }
 
-.my_collex_link {
+/*.my_collex_link {
 	position:absolute;
 	left:40px;
 	top:89px;
@@ -93,7 +108,7 @@ body.pg-lvl2 {
 
 .my_collex_link_current:hover {
 	text-decoration:underline;
-}
+} no login feature -- akhil*/
 
 #content_container {
 	/*height:1200px;*/
@@ -101,7 +116,7 @@ body.pg-lvl2 {
 }
 .page_header {
 	font-size:1.5em;
-	padding:50px 0px 0px 0px;
+	padding:20px 0px 0px 0px;
 	margin:0px;
 	font-weight:bold;
 }

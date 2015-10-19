@@ -38,7 +38,7 @@
 <% result_row_site(rows, "Site:", hit, 'archive') %>
 <%################### -%>
 <% result_row_item(rows, :multiple_item, hit, 'genre', 'Genre', true) %>
-<% result_row_item(rows, :single_item, hit, 'origin', 'Origin', true) %>
+<% result_row_item(rows, :single_item, hit, 'origin', 'Origin', true) %> <!-- added for the orgin metadata - akhil-->
 <% result_row_item(rows, :multiple_item, hit, 'discipline', 'Discipline', true) %>
 <% result_row_item(rows, :multiple_item, hit, 'subject', 'Subject', true) %>
 <% result_row_item(rows, :single_item, hit, 'exhibit_type', 'Exhibit&nbsp;type', true) %>
@@ -49,6 +49,7 @@
 <% result_row_item(rows, :multiple_item, hit, 'role_TRL', 'Translator', true) %>
 <% result_row_item(rows, :multiple_item, hit, 'date_label', 'Date', true) %>
 <% result_row_item(rows, :multiple_item, hit, 'provenance', 'Provenance', true) %>
+<% result_row_item(rows, :multiple_item, hit, 'language', 'Language', true) %> <!-- added for the language metadata - akhil-->
 
 <%# following roles added for sifter item #2827 in NINES project %>
 <% result_row_item(rows, :multiple_item, hit, 'role_ARC', 'Architect', true) %>

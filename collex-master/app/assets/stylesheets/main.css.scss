@@ -21,8 +21,8 @@ body {
 	margin:0px;
 	padding:0px;
 	
-	font-family:"arial";
-	font-size:16px;
+	font-family:"Source Sans Pro",Calibri,Candara,Arial,sans-serif;
+	font-size:16px; 
 }
 
 table, table td, table tr {
@@ -75,10 +75,6 @@ table, table td, table tr {
 	padding-right: 13px;
 } /* should match ext_link:link */
 
-.float_right {
-	float:right;
-	margin:0px 0px 10px 10px;
-}
 
 .clear_both{
 	clear:both;
@@ -97,7 +93,7 @@ table, table td, table tr {
 	background:#FFFFFF;
 }
 
-#footer_container {
+/* #footer_container {
 	font-family:Arial, Helvetica, sans-serif;
 	padding:10px 0px 10px 0px;
 	text-align:left;
@@ -113,7 +109,7 @@ table, table td, table tr {
 	}
 }
 
-/*#footer_container a, #footer_container a.link, #footer_container a.visited{
+#footer_container a, #footer_container a.link, #footer_container a.visited{
 	font-weight:bold;
 } footer continer removed -- akhil*/
 
@@ -122,18 +118,18 @@ table, table td, table tr {
 	font-size:0.9em;
 	height:auto;
 	min-height: 350px;
-	padding:20px 10px 10px 20px;
 }  
 
 .left_column {
-	float:left;
-	width:66%;
+	margin-top:50px;
+	float:right;
+	width:76%;
 }
 
 .right_column {
-	width:32%;
-	float:right;
-	margin: 110px 0px 0px 20px;
+	width:22%;
+	margin-top: 40px;
+	float:left;
 	background:#F7F4EA;
 }
 

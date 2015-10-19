@@ -28,8 +28,10 @@ jQuery(document).ready(function($) {
       var url = "./search?" + window.collex.makeQueryString(existingQuery);
 	   $("#add-search-constraint").attr('action', url).submit();
 	});
-
-
+    
+	
+	
+	
 	window.collex.getUrlVars = function(getAll) {
       // This returns the query string as a hash of values.
       // If a key appears more than once then it is returned as an array, otherwise as a string.

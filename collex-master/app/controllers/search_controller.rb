@@ -77,7 +77,8 @@ class SearchController < ApplicationController
 				results['facets']['doc_type'] = {} if results['facets']['doc_type'].blank?
 				results['facets']['discipline'] = {} if results['facets']['discipline'].blank?
 				results['facets']['role'] = {} if results['facets']['role'].blank?
-        results['facets']['origin'] = {} if results['facets']['origin'].blank?
+        results['facets']['origin'] = {} if results['facets']['origin'].blank? #added for origin meta filed -akhil
+        results['facets']['language'] = {} if results['facets']['language'].blank? #added for language meta filed -akhil
 				render :json => results
 			end
 		end

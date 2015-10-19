@@ -177,7 +177,8 @@ class Setup < ActiveRecord::Base
     facet_order_format = globals()['facet_order_format'] || ''
     facet_order_discipline = globals()['facet_order_discipline'] || ''
     facet_order_genre = globals()['facet_order_genre'] || ''
-    facet_order_origin = globals()['facet_order_origin'] || ''
+    facet_order_origin = globals()['facet_order_origin'] || '' #added for origin field
+    facet_order_language = globals()['facet_order_language'] || '' #added for language field
     dont_dupe = 0 # value to append to a key in case the key already exists
     if facet_order_access.strip() != ''
       if order[facet_order_access]
@@ -211,12 +212,22 @@ class Setup < ActiveRecord::Base
         order[facet_order_genre.strip] = 'genre'
       end
     end
+    #added for origin field -akhil
     if facet_order_origin.strip() != ''
       if order[facet_order_origin.strip]
         order[facet_order_origin.strip + dont_dupe.to_s] = 'origin'
         dont_dupe += 1
       else
         order[facet_order_origin.strip] = 'origin'
+      end
+    end
+    #added for language field -akhil
+    if facet_order_language.strip() != ''
+      if order[facet_order_language.strip]
+        order[facet_order_language.strip + dont_dupe.to_s] = 'language'
+        dont_dupe += 1
+      else
+        order[facet_order_language.strip] = 'language'
       end
     end
     return order
@@ -249,6 +260,7 @@ class Setup < ActiveRecord::Base
     end
   end
   
+  #added for origin filed-akhil
   def self.display_name_for_facet_origin
     value = globals()['facet_display_name_origin']
     if value and value.strip() != ''
@@ -264,6 +276,16 @@ class Setup < ActiveRecord::Base
       return value
     else
       return 'Access'
+    end
+  end
+  
+  #added for language field -akhil
+  def self.display_name_for_facet_language
+    value = globals()['facet_display_name_language']
+    if value and value.strip() != ''
+      return value
+    else
+      return 'Language'
     end
   end
 	def self.footer_signature_text

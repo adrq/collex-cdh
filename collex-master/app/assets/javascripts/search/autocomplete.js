@@ -1,4 +1,14 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function($) { 
+	window.collex.createFacets = function(obj) {
+		createFacetBlock('facet-genre', obj.facets.genre, 'g', obj.query.g,'genre');
+		createFacetBlock('facet-discipline', obj.facets.discipline, 'discipline', obj.query.discipline,'discipline');
+		createFacetBlock('facet-format', obj.facets.doc_type, 'doc_type', obj.query.doc_type,'format');
+		createFacetBlock('facet-access', obj.facets.access, 'o', obj.query.o, window.collex.facetNames.access,'access');
+		createFacetBlock('facet-origin', obj.facets.origin, 'origin', obj.query.origin,'origin');
+		createResourceBlock(obj.facets.archive, obj.query.a);
+
+	};
+	
 	"use strict";
 	var body = $("body");
 

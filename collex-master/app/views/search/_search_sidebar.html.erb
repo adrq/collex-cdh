@@ -15,11 +15,10 @@
 ---------------------------------------------------------------------------- %>
 
 <div class="right_column ajax-style">
-		
 	<% if SKIN.upcase != 'INDEXIURIS' %>
 		<div class="right_column_header">Limit Results to...</div>
     	<p>Select a resource below to limit your search results</p>
-
+		
 		<table class="limit_to facet-archive">
 			<tr>
 				<th>Resource</th>
@@ -28,8 +27,19 @@
 		</table>
   	  <br/>
 	<% end %>
-
-  <div class="right_column_header">Other helpful facets...</div>
+  
+  <div class="right_column_header"><h3>Other helpful Facets...</h3></div>
+  <br><br>
+  
+  <p>
+  <label for="amount">Price range:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#750123; font-weight:bold;">
+</p>
+ 
+  <div id="slider-range" ></div>
+   
+   
+ 
   <p>Select a facet below to limit your search results</p>
 
   <% facet_order = Setup.facet_order() %>
@@ -40,11 +50,11 @@
           <%= create_access_table(0,0,0) %>
       <% when 'format' %>
           <%=  create_format_table([]) %>
-      <% when 'discipline' %>
-          <%=  create_discipline_table([]) %>
+      <% when 'language' %><!--added for language field -akhil -->
+          <%=  create_language_table([]) %>
       <% when 'genre' %>
           <%=  create_genre_table([]) %>
-	  <% when 'origin' %>
+	  <% when 'origin' %> <!--added for origin field -akhil -->
 	  	  <%=  create_origin_table([]) %>
       <% end %>
   <% end %>

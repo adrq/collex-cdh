@@ -44,16 +44,16 @@ body.federation-modnets {
 	.inner_content_container {
 		font-size: inherit;
 	}
-#footer_container {
+/*#footer_container {
 	text-align: left;
 	margin: 0px 30px 10px 30px;
 	background:$background;
 	border-top: 4px solid $border;
-}
+} 
 
 .exhibit_footer {
 	background-color: #CECCBA;
-}
+} removed footer container --akhil*/
 
 .tab_link {
 	color:$tab-color;
@@ -88,14 +88,14 @@ body.federation-modnets {
 		padding-top: 6px !important;
 		font-weight: normal;
 	}
-	.my_collex_link, .my_collex_link_current {
+	/*.my_collex_link, .my_collex_link_current {
 		left: 26px;
 		top: 154px;
 		font-weight: normal;
 		width: inherit;
 		padding-left: 8px;
 		padding-right: 8px;
-	}
+	} no login featue -akhil*/
 
 .tab_link:active, .tab_link_long:active, .tab_link_logo:active, .tab_link:visited, .tab_link_long:visited, .tab_link_logo:visited, .tab_link:hover, .tab_link_long:hover, .tab_link_logo:hover {
 	color:#ffffff;
@@ -128,7 +128,7 @@ body.federation-modnets {
 		background-color: $my-tab;
 	}
 
-a.my_collex_link {
+/*a.my_collex_link {
 	color:$tab-color;
 	background: $tab-background;
 	top: 89px;
@@ -140,7 +140,7 @@ a.my_collex_link {
 
 .my_collex_link:active, .my_collex_link:visited, .my_collex_link:hover {
 	color:$tab-color;
-}
+} no login feature - akhil*/
 
 .tab_link_logo{
 	color:$tab-color;

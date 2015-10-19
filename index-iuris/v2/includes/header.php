@@ -53,7 +53,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="./" class="navbar-brand">Index Iuris</a>
+        <a href="./" class="navbar-brand"> </a>
       </div>
 
       <div class="collapse navbar-collapse" id="menu">
@@ -77,7 +77,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
             <li<?php print $title == "Login" ? ' class="active"' : ""; ?>><a href="login">Login</a></li>
             <li<?php print $title == "Register" ? ' class="active"' : ""; ?>><a href="register">Register</a></li>
           <?php endif; ?>
-
+		  <li<?php print $title == "Search Page" ? ' class="active"' : ""; ?>><a href="http://0.0.0.0:3000/search">Search</a></li>
           <?php if ($title != "Register"): ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>

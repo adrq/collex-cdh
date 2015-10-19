@@ -37,11 +37,11 @@ body.federation-indexiuris {
 /*#footer_container {
 	background:#750123;
 	color:#FFFFFF;
-} removed the footer container--akhil*/
+} 
 
-.exhibit_footer {*				
+.exhibit_footer {				
 	background-color: #371911;
-}
+} removed the footer container--akhil*/
 
 .tab_link {
 	color:#FFFFFF;
@@ -66,13 +66,13 @@ body.federation-indexiuris {
 	color:#FFFFFF;
 }
 
-.my_collex_link {
+/*.my_collex_link {
 	color:#FFFFFF;
 }
 
 .my_collex_link:active, .my_collex_link:visited, .my_collex_link:hover {
 	color:#FFFFFF;
-}
+} login feature is disabled -akhil */
 
 .tab_link_logo{
 	color:#FFFFFF;
@@ -132,7 +132,7 @@ body.federation-indexiuris {
 	border-bottom: 8px solid #5f3119;
 }
 
-/* .search_result_buttons a, .search_result_buttons button {
+ .search_result_buttons a, .search_result_buttons button {
 	-moz-box-shadow:inset 0px 34px 0px -15px #820d30;
 					-webkit-box-shadow:inset 0px 34px 0px -15px #820d30;
 					box-shadow:inset 0px 34px 0px -15px #820d30;
@@ -154,7 +154,38 @@ body.federation-indexiuris {
 .search_result_buttons a:active, .search_result_buttons button:active {
 	position:relative;
 	top:1px;
-} */
+} 
+#search_submit{
+	-moz-box-shadow:inset 0px 34px 0px -15px #820d30;
+					-webkit-box-shadow:inset 0px 34px 0px -15px #820d30;
+					box-shadow:inset 0px 34px 0px -15px #820d30;
+					background-color:#750124;
+					border:1px solid #241d13;
+					display:inline-block;
+					cursor:pointer;
+					color:#ffffff;
+					font-family: arial;
+					font-size:15px;
+					font-weight:bold;
+					text-decoration:none;
+					text-shadow:0px -1px 0px #750124;				
+}
+
+#search_submit2{
+	-moz-box-shadow:inset 0px 34px 0px -15px #820d30;
+					-webkit-box-shadow:inset 0px 34px 0px -15px #820d30;
+					box-shadow:inset 0px 34px 0px -15px #820d30;
+					background-color:#750124;
+					border:1px solid #241d13;
+					display:inline-block;
+					cursor:pointer;
+					color:#ffffff;
+					font-family: arial;
+					font-size:15px;
+					font-weight:bold;
+					text-decoration:none;
+					text-shadow:0px -1px 0px #750124;				
+}
 
 /*********************************/
 /* styles for all javascript-created dialogs */

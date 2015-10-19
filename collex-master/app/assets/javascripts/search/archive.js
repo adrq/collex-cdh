@@ -5,7 +5,6 @@ jQuery(document).ready(function() {
 		function getArchiveOneBranch(branch, handle) {
 			for (var i = 0; i < branch.length; i++) {
 				var archive = branch[i];
-				console.log("archive handle :" + archive.handle);
 				if (archive.handle === handle)
 					return archive;
 				if (archive.children) {

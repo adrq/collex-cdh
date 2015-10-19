@@ -10,19 +10,14 @@ jQuery(document).ready(function($) {
 		// There is definitely a thumbnail associated with the active federation.
 		var thumbnail = hit.thumbnail;
 		var image = thumbnail ? hit.image : undefined; // If we don't have our own thumbnail, we never want to have a lightbox. (That probably doesn't exist in any RDF, anyway.)
-		console.log("hit.archive "+ hit.archive);
 		if (!thumbnail) {
 			var archive = window.collex.getArchive(hit.archive);
-			console.log(archive);
 			if (archive) {
 				thumbnail = archive.thumbnail;
-			}else{
-			console.log("hey looks like there is an image for the archive"); }
+			}
 		}
 		if (!thumbnail)
 			thumbnail = window.collex.images.federationThumbnail;
-		else
-			console.log("it is in the second loop");
 
 		var progressId = "progress_" + progressLinkCounter++;
 		var title = hit.title ? hit.title : "Image";
