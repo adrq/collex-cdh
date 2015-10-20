@@ -3,6 +3,8 @@
  var genre_number=1;
  var origin_number=1;
  var language_number=1;
+ var composition_number=1;
+ var provenance_number=1;
 
 jQuery(document).ready(function($) {
 	"use strict";
@@ -56,13 +58,13 @@ function showResultSections(obj) {
 		$(".has-results").show();
 	if (obj.hits.length === 0) {
 // there was a search, but there were no results.
-		$(".not-empty").hide();
-		$(".no_results_msg").show();
-	} else {
+$(".not-empty").hide();
+$(".no_results_msg").show();
+} else {
 // there was a search, and it returned some results.
-		$(".not-empty").show();
-		$(".no_results_msg").hide();
-	}
+$(".not-empty").show();
+$(".no_results_msg").hide();
+}
 }
 
 var isPageResults = (obj.page_results === true);
@@ -77,12 +79,12 @@ var isPageResults = (obj.page_results === true);
 }
 
 function showMessage(message) {
-	var el = $(".search_error_message");
-	el.text(message);
-	if (message && message.length > 0)
-		el.show();
-	else
-		el.hide();
+var el = $(".search_error_message");
+el.text(message);
+if (message && message.length > 0)
+el.show();
+else
+el.hide();
 }
 
 function fixExpandAllLink() {
@@ -146,9 +148,10 @@ timeoutHandle = null;
  var origin_value;
  var format_value;
  var language_value;
+ var composition_value;
+ var provenance_value;
 
- console.log(obj);
-
+ 
  window.collex.createFacets(obj,1);
  
  window.collex.generalFacets =function(facet){
@@ -157,6 +160,8 @@ timeoutHandle = null;
 		window.collex.genre_value=false;
 		window.collex.format_value=false;
 		window.collex.language_value=false;
+		window.collex.provenance_value=false;
+		window.collex.composition_value=false;
 		window.collex.access_value=true;
 		window.collex.createFacets(obj,access_number);
 		access_number=access_number+1;
@@ -165,34 +170,61 @@ timeoutHandle = null;
 		window.collex.origin_value=false;
 		window.collex.format_value=false;
 		window.collex.language_value=false;
+		window.collex.composition_value=false;
+		window.collex.provenance_value=false;
 		window.collex.genre_value=true;
 		window.collex.createFacets(obj,genre_number);
-		genre_number = genre_number+1;
+		genre_number = genre_number +1;
 	}else if(facet == "Format"){
 		window.collex.access_value=false;
 		window.collex.origin_value=false;
 		window.collex.genre_value=false;
 		window.collex.language_value=false;
+		window.collex.composition_value=false;
+		window.collex.provenance_value=false;
 		window.collex.format_value=true;
 		window.collex.createFacets(obj,format_number);
-		format_number = format_number+1;
+		format_number = format_number +1;
 	}else if(facet == "Origin"){
 		window.collex.access_value=false;
 		window.collex.format_value=false;
 		window.collex.genre_value=false;
 		window.collex.language_value=false;
+		window.collex.provenance_value=false;
+		window.collex.composition_value=false;
 		window.collex.origin_value=true;
 		window.collex.createFacets(obj,origin_number);
-		origin_number = origin_number+1;
+		origin_number = origin_number +1;
+	}else if(facet == "Composition"){
+		window.collex.access_value=false;
+		window.collex.format_value=false;
+		window.collex.genre_value=false;
+		window.collex.language_value=false;
+		window.collex.origin_value=false;
+		window.collex.composition_value=true;
+		window.collex.provenance_value=false;
+		window.collex.createFacets(obj,composition_number);
+		composition_number = composition_number +1;
 	}else if(facet == "Language"){
 		window.collex.access_value=false;
 		window.collex.format_value=false;
 		window.collex.genre_value=false;
 		window.collex.origin_value=false;
+		window.collex.composition_value=false;
 		window.collex.language_value=true;
-		console.log(language_number);
+		window.collex.provenance_value=false;
 		window.collex.createFacets(obj,language_number);
-		language_number = language_number+1;
+		language_number = language_number +1;
+	}else if(facet == "Provenance"){
+		window.collex.access_value=false;
+		window.collex.format_value=false;
+		window.collex.genre_value=false;
+		window.collex.language_value=false;
+		window.collex.origin_value=false;
+		window.collex.composition_value=false;
+		window.collex.provenance_value=true;
+		window.collex.createFacets(obj,provenance_number);
+		provenance_number = provenance_number +1;
 	}else{
 		
 	}

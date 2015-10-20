@@ -179,6 +179,8 @@ class Setup < ActiveRecord::Base
     facet_order_genre = globals()['facet_order_genre'] || ''
     facet_order_origin = globals()['facet_order_origin'] || '' #added for origin field
     facet_order_language = globals()['facet_order_language'] || '' #added for language field
+    facet_order_composition = globals()['facet_order_composition'] || '' #added for composition field
+    facet_order_provenance = globals()['facet_order_provenance'] || '' #added for provenance field
     dont_dupe = 0 # value to append to a key in case the key already exists
     if facet_order_access.strip() != ''
       if order[facet_order_access]
@@ -228,6 +230,24 @@ class Setup < ActiveRecord::Base
         dont_dupe += 1
       else
         order[facet_order_language.strip] = 'language'
+      end
+    end
+    #added for composition field -akhil
+    if facet_order_composition.strip() != ''
+      if order[facet_order_composition.strip]
+        order[facet_order_composition.strip + dont_dupe.to_s] = 'composition'
+        dont_dupe += 1
+      else
+        order[facet_order_composition.strip] = 'composition'
+      end
+    end
+    #added for provenance field -akhil
+    if facet_order_provenance.strip() != ''
+      if order[facet_order_provenance.strip]
+        order[facet_order_provenance.strip + dont_dupe.to_s] = 'provenance'
+        dont_dupe += 1
+      else
+        order[facet_order_provenance.strip] = 'provenance'
       end
     end
     return order
@@ -288,6 +308,27 @@ class Setup < ActiveRecord::Base
       return 'Language'
     end
   end
+  
+  #added for composition field -akhil
+  def self.display_name_for_facet_composition
+    value = globals()['facet_display_name_composition']
+    if value and value.strip() != ''
+      return value
+    else
+      return 'Composition'
+    end
+  end
+  
+  #added for provenance field -akhil
+  def self.display_name_for_facet_provenance
+    value = globals()['facet_display_name_provenance']
+    if value and value.strip() != ''
+      return value
+    else
+      return 'Provenance'
+    end
+  end
+  
 	def self.footer_signature_text
 		value = globals()['footer_signature_text']
 		if value and value.strip() != ''

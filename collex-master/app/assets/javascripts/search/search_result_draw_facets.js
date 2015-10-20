@@ -18,7 +18,6 @@ return parts.join(separator);
 };
 function createFacetRow(name, count, dataKey, isSelected, label,facet_name) {
 if (!label) label = name;
-console.log(isSelected);
 if (isSelected) {
 var remove = window.collex.create_facet_button('[X]', name, "remove", dataKey);
 return window.pss.createHtmlTag("tr", { 'class': facet_name }, 
@@ -50,49 +49,49 @@ function createFacetBlock(facet_class, hash, dataKey, selected, labels,facet_nam
 }
 
 function createResourceNode(id, level, label, total, childClass) {
-	var open = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "open" },
-	window.pss.createHtmlTag("img", { 'alt': 'Arrow Open', src: window.collex.images.arrow_open }));
-	var close = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "close" },
-	window.pss.createHtmlTag("img", { 'alt': 'Arrow Close', src: window.collex.images.arrow_close }));
-	var name = window.pss.createHtmlTag("button", { 'class': 'nav_link limit_to_category', 'data-action': "toggle" }, label);
+var open = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "open" },
+window.pss.createHtmlTag("img", { 'alt': 'Arrow Open', src: window.collex.images.arrow_open }));
+var close = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "close" },
+window.pss.createHtmlTag("img", { 'alt': 'Arrow Close', src: window.collex.images.arrow_close }));
+var name = window.pss.createHtmlTag("button", { 'class': 'nav_link limit_to_category', 'data-action': "toggle" }, label);
 
-	var left = window.pss.createHtmlTag("td", { 'class': 'resource-tree-node limit_to_lvl'+level, 'data-id': id }, open+close+name);
-	var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
-	var trClass = "resource_node " + childClass;
-	return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
+var left = window.pss.createHtmlTag("td", { 'class': 'resource-tree-node limit_to_lvl'+level, 'data-id': id }, open+close+name);
+var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
+var trClass = "resource_node " + childClass;
+return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
 }
 
 function createResourceLeaf(id, level, label, total, handle, childClass, isSelected) {
-	var trClass = childClass;
-	var left;
-	if (isSelected) {
-		trClass += ' limit_to_selected';
-		left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, label + '&nbsp;&nbsp;' + window.collex.create_facet_button('[X]', handle, 'remove', 'a'));
-	} else {
-		left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, window.collex.create_facet_button(label, handle, 'replace', 'a'));
-	}
-	var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
-	return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
+var trClass = childClass;
+var left;
+if (isSelected) {
+trClass += ' limit_to_selected';
+left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, label + '&nbsp;&nbsp;' + window.collex.create_facet_button('[X]', handle, 'remove', 'a'));
+} else {
+left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, window.collex.create_facet_button(label, handle, 'replace', 'a'));
+}
+var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
+return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
 }
 
 function createResourceSection(resources, hash, level, childClass, handleOfSelected) {
-	var html = "";
-	var total = 0;
-	for (var i = 0; i < resources.length; i++) {
-		var archive = resources[i];
-		if (archive.children) {
-			var section = createResourceSection(archive.children, hash, level + 1, 'child_of_'+archive.id, handleOfSelected);
-			total += section.total;
-			if (section.total > 0) {
-				var thisNode = createResourceNode(archive.id, level, archive.name, window.collex.number_with_delimiter(section.total), childClass);
-				html += thisNode + section.html;
-			}
-		} else {
-			if (hash[archive.handle]) { // If there are no results, then we don't show that archive.
-					html += createResourceLeaf(archive.id, level, archive.name, hash[archive.handle], archive.handle, childClass, archive.handle === handleOfSelected);
-				total += parseInt(hash[archive.handle], 10);
-			}
-		}
+var html = "";
+var total = 0;
+for (var i = 0; i < resources.length; i++) {
+var archive = resources[i];
+if (archive.children) {
+var section = createResourceSection(archive.children, hash, level + 1, 'child_of_'+archive.id, handleOfSelected);
+total += section.total;
+if (section.total > 0) {
+var thisNode = createResourceNode(archive.id, level, archive.name, window.collex.number_with_delimiter(section.total), childClass);
+html += thisNode + section.html;
+}
+} else {
+if (hash[archive.handle]) { // If there are no results, then we don't show that archive.
+html += createResourceLeaf(archive.id, level, archive.name, hash[archive.handle], archive.handle, childClass, archive.handle === handleOfSelected);
+total += parseInt(hash[archive.handle], 10);
+}
+}
 }
 return { html: html, total: total };
 }
@@ -139,6 +138,8 @@ var idelement_genre;
 var idelement_format;
 var idelement_origin;
 var idelement_language;
+var idelement_composition;
+var idelement_provenance;
  
  
 window.collex.createFacets = function(obj,number) {
@@ -185,6 +186,28 @@ window.collex.createFacets = function(obj,number) {
 				idelement_origin[i].style.display = 'block';
 			}else{
 				idelement_origin[i].style.display = 'none';
+			}
+		}
+	} else if(window.collex.composition_value == true){
+		createFacetBlock('facet-composition', obj.facets.composition, 'composition', obj.query.composition,'composition','composition');
+		createResourceBlock(obj.facets.archive, obj.query.a);
+		idelement_composition = document.getElementsByClassName('composition');
+		for(var i=0;i<idelement_composition.length;i++){
+			if(number%2 != 0){
+				idelement_composition[i].style.display = 'block';
+			}else{
+				idelement_composition[i].style.display = 'none';
+			}
+		}
+	} else if(window.collex.provenance_value == true){
+		createFacetBlock('facet-provenance', obj.facets.provenance, 'provenance', obj.query.provenance,'provenance','provenance');
+		createResourceBlock(obj.facets.archive, obj.query.a);
+		idelement_provenance = document.getElementsByClassName('provenance');
+		for(var i=0;i<idelement_provenance.length;i++){
+			if(number%2 != 0){
+				idelement_provenance[i].style.display = 'block';
+			}else{
+				idelement_provenance[i].style.display = 'none';
 			}
 		}
 	}else if(window.collex.language_value == true){

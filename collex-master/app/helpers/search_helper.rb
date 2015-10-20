@@ -301,6 +301,14 @@ module SearchHelper
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'origin'
       ret[:title] ="Origin"
       ret[:value] = value_display
+      #added for composition field -- akhil
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'composition'
+      ret[:title] ="Composition"
+      ret[:value] = value_display
+      #added for provenance field -- akhil
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'provenance'
+      ret[:title] ="Provenance"
+      ret[:value] = value_display
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx].match(/role_/) && Search.role_field_names[constraint[:fieldx]]
       ret[:title] = Search.role_field_names[constraint[:fieldx]][:display]
       ret[:value] = value_display
@@ -586,6 +594,28 @@ module SearchHelper
   def create_language_table( language_data )
     html = raw('<table class="limit_to facet-language">')
     html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Language')\">#{Setup.display_name_for_facet_language}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
+   #for origin in origin_data
+    #   html += facet_selector( origin, 'origin' )
+     #end
+    html += raw('</table>')
+    return raw(html)
+  end
+  
+  #added for composition field-akhil
+  def create_composition_table( composition_data )
+    html = raw('<table class="limit_to facet-composition">')
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Composition')\">#{Setup.display_name_for_facet_composition}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
+   #for origin in origin_data
+    #   html += facet_selector( origin, 'origin' )
+     #end
+    html += raw('</table>')
+    return raw(html)
+  end
+  
+  #added for provenance field-akhil
+  def create_provenance_table( composition_data )
+    html = raw('<table class="limit_to facet-provenance">')
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Provenance')\">#{Setup.display_name_for_facet_provenance}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
    #for origin in origin_data
     #   html += facet_selector( origin, 'origin' )
      #end

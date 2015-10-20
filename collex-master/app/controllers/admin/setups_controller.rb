@@ -158,6 +158,10 @@ class Admin::SetupsController < Admin::BaseController
             value = "Origin"  #added for origin field -- akhil
          when 'facet_display_name_language' #added for language field -- akhil
             value = "Language"  #added for language field -- akhil
+          when 'facet_display_name_composition' #added for composition field -- akhil
+             value = "Composition"  #added for composition field -- akhil
+           when 'facet_display_name_provenance' #added for provenance field -- akhil
+              value = "Provenance"  #added for provenance field -- akhil
       else 
          value = value
       end
@@ -180,6 +184,10 @@ class Admin::SetupsController < Admin::BaseController
       order['facet_order_origin'] = rec.value  #added for origin field -- akhil
       rec = Setup.find_by_key('facet_order_language') #added for language field -- akhil
       order['facet_order_language'] = rec.value #added for language field -- akhil
+      rec = Setup.find_by_key('facet_order_composition') #added for composition field -- akhil
+      order['facet_order_composition'] = rec.value #added for composition field -- akhil
+      rec = Setup.find_by_key('facet_order_provenance') #added for provenance field -- akhil
+      order['facet_order_provenance'] = rec.value #added for provenance field -- akhil
 
       # Check for duplicate values
       if order.values.count != order.values.uniq.count
@@ -202,10 +210,16 @@ class Admin::SetupsController < Admin::BaseController
          if order.values.count(order['facet_order_language']) > 1    #added for language field -- akhil
             warnings.push " Language Facet Order: #{order['facet_order_language']}" #added for language field -- akhil
          end
+         if order.values.count(order['facet_order_composition']) > 1    #added for composition field -- akhil
+            warnings.push " Language Facet Order: #{order['facet_order_composition']}" #added for composition field -- akhil
+         end
+         if order.values.count(order['facet_order_provenance']) > 1    #added for provenance field -- akhil
+            warnings.push " Provenance Facet Order: #{order['facet_order_provenance']}" #added for provenance field -- akhil
+         end
       end
 
       # Check for non-numeric values
-      origin_order,access_order, genre_order, discipline_order, format_order, language_order = nil, nil, nil, nil,nil,nil
+      provenance_order,composition_order,origin_order,access_order, genre_order, discipline_order, format_order, language_order = nil, nil, nil, nil,nil,nil,nil,nil #added composition_order,provenance_order and origin_order --akhil
       begin
          access_order = Integer(order['facet_order_access']) if order['facet_order_access'].length > 0
       rescue
@@ -240,32 +254,58 @@ class Admin::SetupsController < Admin::BaseController
       rescue
          warnings.push( "Non Numeric Display Order detected. \"Language Facet Order: #{order['facet_order_language']}\" Facets may not display correctly.")
       end
-
-      if !access_order.nil? and access_order > 4
+      
+      #added for composition field -- akhil
+      begin
+         composition_order = Integer(order['facet_order_composition']) if order['facet_order_composition'].length > 0
+      rescue
+         warnings.push( "Non Numeric Display Order detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
+      end
+      
+      #added for provenance field -- akhil
+      begin
+         provenance_order = Integer(order['facet_order_provenance']) if order['facet_order_provenance'].length > 0
+      rescue
+         warnings.push( "Non Numeric Display Order detected. \"Provenance Facet Order: #{order['facet_order_provenance']}\" Facets may not display correctly.")
+      end
+      
+      if !access_order.nil? and access_order > 10
          warnings.push("Large value detected. \"Access Facet Order: #{order['facet_order_access']}\"  Facets may not display correctly.")
       end
-      if !genre_order.nil? and genre_order > 4
+      if !genre_order.nil? and genre_order > 10
          warnings.push("Large value detected. \"Genre Facet Order: #{order['facet_order_genre']}\" Facets may not display correctly.")
       end
-      if !discipline_order.nil? and discipline_order > 4
+      if !discipline_order.nil? and discipline_order > 10
          warnings.push("Large value detected. \"Discipline Facet Order: #{order['facet_order_discipline']}\" Facets may not display correctly.")
       end
-      if !format_order.nil? and format_order > 4
+      if !format_order.nil? and format_order > 10
          warnings.push("Large value detected. \"Format Facet Order: #{order['facet_order_format']}\" Facets may not display correctly.")
       end
       
       #added for origin field -- akhil
       
-      if !origin_order.nil? and origin_order > 4
+      if !origin_order.nil? and origin_order > 10
          warnings.push("Large value detected. \"Origin Facet Order: #{order['facet_order_origin']}\" Facets may not display correctly.")
       end
       
       #added for language field -- akhil
       
-      if !language_order.nil? and language_order > 4
+      if !language_order.nil? and language_order > 10
          warnings.push("Large value detected. \"Language Facet Order: #{order['facet_order_language']}\" Facets may not display correctly.")
       end
 
+      #added for composition field -- akhil
+      
+      if !composition_order.nil? and composition_order > 10
+         warnings.push("Large value detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
+      end
+      
+      #added for provenance field -- akhil
+      
+      if !provenance_order.nil? and provenance_order > 10
+         warnings.push("Large value detected. \"Provenance Facet Order: #{order['facet_order_provenance']}\" Facets may not display correctly.")
+      end
+      
       if !access_order.nil? and access_order < 0
          warnings.push("Negative value detected. \"Access Facet Order: #{order['facet_order_access']}\"  Facets may not display correctly.")
       end
@@ -289,6 +329,18 @@ class Admin::SetupsController < Admin::BaseController
       
       if !language_order.nil? and language_order < 0
          warnings.push("Negative value detected. \"Language Facet Order: #{order['facet_order_language']}\" Facets may not display correctly.")
+      end
+      
+      #added for composition field -- akhil
+      
+      if !composition_order.nil? and composition_order < 0
+         warnings.push("Negative value detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
+      end
+      
+      #added for provenance field -- akhil
+      
+      if !provenance_order.nil? and provenance_order < 0
+         warnings.push("Negative value detected. \"Provenance Facet Order: #{order['facet_order_provenance']}\" Facets may not display correctly.")
       end
       
       return warnings
