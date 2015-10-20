@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 	window.collex.resetNameFacet = function() {
 		var parent = $("#search_name_facet_max");
 		var html = window.pss.createHtmlTag("div", { 'id': "search_name_never_requested" },
-			window.pss.createHtmlTag("img", { 'alt': "Please wait...", src: window.site_path + "/assets/ajax_loader.gif" }) + "<br><br>Searching for names. Please wait a moment...");
+			window.pss.createHtmlTag("img", { 'alt': "Please wait...", src: window.site_path + "/assets/images/ajax_loader.gif" }) + "<br><br>Searching for names. Please wait a moment...");
 		parent.html(html);
 		var elMin = $('#search_name_facet_min');
 		var elMax = $('#search_name_facet_max');

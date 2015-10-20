@@ -56,13 +56,13 @@ function showResultSections(obj) {
 		$(".has-results").show();
 	if (obj.hits.length === 0) {
 // there was a search, but there were no results.
-$(".not-empty").hide();
-$(".no_results_msg").show();
-} else {
+		$(".not-empty").hide();
+		$(".no_results_msg").show();
+	} else {
 // there was a search, and it returned some results.
-$(".not-empty").show();
-$(".no_results_msg").hide();
-}
+		$(".not-empty").show();
+		$(".no_results_msg").hide();
+	}
 }
 
 var isPageResults = (obj.page_results === true);
@@ -77,12 +77,12 @@ var isPageResults = (obj.page_results === true);
 }
 
 function showMessage(message) {
-var el = $(".search_error_message");
-el.text(message);
-if (message && message.length > 0)
-el.show();
-else
-el.hide();
+	var el = $(".search_error_message");
+	el.text(message);
+	if (message && message.length > 0)
+		el.show();
+	else
+		el.hide();
 }
 
 function fixExpandAllLink() {
@@ -147,7 +147,8 @@ timeoutHandle = null;
  var format_value;
  var language_value;
 
- 
+ console.log(obj);
+
  window.collex.createFacets(obj,1);
  
  window.collex.generalFacets =function(facet){

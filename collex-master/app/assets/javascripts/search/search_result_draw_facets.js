@@ -50,49 +50,49 @@ function createFacetBlock(facet_class, hash, dataKey, selected, labels,facet_nam
 }
 
 function createResourceNode(id, level, label, total, childClass) {
-var open = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "open" },
-window.pss.createHtmlTag("img", { 'alt': 'Arrow Open', src: window.collex.images.arrow_open }));
-var close = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "close" },
-window.pss.createHtmlTag("img", { 'alt': 'Arrow Close', src: window.collex.images.arrow_close }));
-var name = window.pss.createHtmlTag("button", { 'class': 'nav_link limit_to_category', 'data-action': "toggle" }, label);
+	var open = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "open" },
+	window.pss.createHtmlTag("img", { 'alt': 'Arrow Open', src: window.collex.images.arrow_open }));
+	var close = window.pss.createHtmlTag("button", { 'class': 'nav_link  limit_to_arrow', 'data-action': "close" },
+	window.pss.createHtmlTag("img", { 'alt': 'Arrow Close', src: window.collex.images.arrow_close }));
+	var name = window.pss.createHtmlTag("button", { 'class': 'nav_link limit_to_category', 'data-action': "toggle" }, label);
 
-var left = window.pss.createHtmlTag("td", { 'class': 'resource-tree-node limit_to_lvl'+level, 'data-id': id }, open+close+name);
-var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
-var trClass = "resource_node " + childClass;
-return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
+	var left = window.pss.createHtmlTag("td", { 'class': 'resource-tree-node limit_to_lvl'+level, 'data-id': id }, open+close+name);
+	var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
+	var trClass = "resource_node " + childClass;
+	return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
 }
 
 function createResourceLeaf(id, level, label, total, handle, childClass, isSelected) {
-var trClass = childClass;
-var left;
-if (isSelected) {
-trClass += ' limit_to_selected';
-left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, label + '&nbsp;&nbsp;' + window.collex.create_facet_button('[X]', handle, 'remove', 'a'));
-} else {
-left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, window.collex.create_facet_button(label, handle, 'replace', 'a'));
-}
-var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
-return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
+	var trClass = childClass;
+	var left;
+	if (isSelected) {
+		trClass += ' limit_to_selected';
+		left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, label + '&nbsp;&nbsp;' + window.collex.create_facet_button('[X]', handle, 'remove', 'a'));
+	} else {
+		left = window.pss.createHtmlTag("td", { 'class': 'limit_to_lvl'+level }, window.collex.create_facet_button(label, handle, 'replace', 'a'));
+	}
+	var right = window.pss.createHtmlTag("td", { 'class': 'num_objects' }, window.collex.number_with_delimiter(total));
+	return window.pss.createHtmlTag("tr", { id: 'resource_'+id, 'class': trClass }, left+right);
 }
 
 function createResourceSection(resources, hash, level, childClass, handleOfSelected) {
-var html = "";
-var total = 0;
-for (var i = 0; i < resources.length; i++) {
-var archive = resources[i];
-if (archive.children) {
-var section = createResourceSection(archive.children, hash, level + 1, 'child_of_'+archive.id, handleOfSelected);
-total += section.total;
-if (section.total > 0) {
-var thisNode = createResourceNode(archive.id, level, archive.name, window.collex.number_with_delimiter(section.total), childClass);
-html += thisNode + section.html;
-}
-} else {
-if (hash[archive.handle]) { // If there are no results, then we don't show that archive.
-html += createResourceLeaf(archive.id, level, archive.name, hash[archive.handle], archive.handle, childClass, archive.handle === handleOfSelected);
-total += parseInt(hash[archive.handle], 10);
-}
-}
+	var html = "";
+	var total = 0;
+	for (var i = 0; i < resources.length; i++) {
+		var archive = resources[i];
+		if (archive.children) {
+			var section = createResourceSection(archive.children, hash, level + 1, 'child_of_'+archive.id, handleOfSelected);
+			total += section.total;
+			if (section.total > 0) {
+				var thisNode = createResourceNode(archive.id, level, archive.name, window.collex.number_with_delimiter(section.total), childClass);
+				html += thisNode + section.html;
+			}
+		} else {
+			if (hash[archive.handle]) { // If there are no results, then we don't show that archive.
+					html += createResourceLeaf(archive.id, level, archive.name, hash[archive.handle], archive.handle, childClass, archive.handle === handleOfSelected);
+				total += parseInt(hash[archive.handle], 10);
+			}
+		}
 }
 return { html: html, total: total };
 }
@@ -188,8 +188,9 @@ window.collex.createFacets = function(obj,number) {
 			}
 		}
 	}else if(window.collex.language_value == true){
-		console.log("hey into the language display");
-		createFacetBlock('facet-language', obj.facets.language, 'lang', obj.query.language,'language','language');
+		console.log("hey into the language display",obj.query.language);
+
+		createFacetBlock('facet-language', obj.facets.language, 'lang', obj.query.lang,'language','language');
 		createResourceBlock(obj.facets.archive, obj.query.a);
 		idelement_language = document.getElementsByClassName('language');
 		for(var i=0;i<idelement_language.length;i++){
