@@ -17,18 +17,18 @@ parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1" + delimiter);
 return parts.join(separator);
 };
 function createFacetRow(name, count, dataKey, isSelected, label,facet_name) {
-if (!label) label = name;
-if (isSelected) {
-var remove = window.collex.create_facet_button('[X]', name, "remove", dataKey);
-return window.pss.createHtmlTag("tr", { 'class': facet_name }, 
-window.pss.createHtmlTag("td", { 'class': "limit_to_lvl1" },  label + "&nbsp;&nbsp;" + remove) +  
-window.pss.createHtmlTag("td", { 'class': "num_objects" }, window.collex.number_with_delimiter(count)));
-} else {
-var button = window.collex.create_facet_button(label, name, "add", dataKey);
-return window.pss.createHtmlTag("tr", { 'class': facet_name },
-window.pss.createHtmlTag("td", { 'class': "limit_to_lvl1" }, button) +
-window.pss.createHtmlTag("td", { 'class': "num_objects" }, window.collex.number_with_delimiter(count)));
-}
+	if (!label) label = name;
+	if (isSelected) {
+			var remove = window.collex.create_facet_button('[X]', name, "remove", dataKey);
+			return window.pss.createHtmlTag("tr", { 'class': facet_name }, 
+			window.pss.createHtmlTag("td", { 'class': "limit_to_lvl1" },  label + "&nbsp;&nbsp;" + remove) +  
+			window.pss.createHtmlTag("td", { 'class': "num_objects" }, window.collex.number_with_delimiter(count)));
+		} else {
+			var button = window.collex.create_facet_button(label, name, "add", dataKey);
+			return window.pss.createHtmlTag("tr", { 'class': facet_name },
+			window.pss.createHtmlTag("td", { 'class': "limit_to_lvl1" }, button) +
+			window.pss.createHtmlTag("td", { 'class': "num_objects" }, window.collex.number_with_delimiter(count)));
+		}
 }
 
 function createFacetBlock(facet_class, hash, dataKey, selected, labels,facet_name) {
@@ -46,6 +46,7 @@ function createFacetBlock(facet_class, hash, dataKey, selected, labels,facet_nam
 		var block = $("."+facet_class);
 		var header = window.pss.createHtmlTag("tr", {}, block.find("tr:first-of-type").html());
 		block.html(header + html);
+		console.log(html);
 }
 
 function createResourceNode(id, level, label, total, childClass) {
@@ -229,34 +230,6 @@ window.collex.createFacets = function(obj,number) {
 };
 
 
-/*window.collex.createFacets_genre =function(obj){
-createFacetBlock('facet-genre', obj.facets.genre, 'g', obj.query.g,'genre');
-createResourceBlock(obj.facets.archive, obj.query.a);
-}
-window.collex.createFacets_discipline =function(obj){
-createFacetBlock('facet-discipline', obj.facets.discipline, 'discipline', obj.query.discipline,'discipline');
-createResourceBlock(obj.facets.archive, obj.query.a);
-}
-window.collex.createFacets_format =function(obj){
-createFacetBlock('facet-format', obj.facets.doc_type, 'doc_type', obj.query.doc_type,'format');
-createResourceBlock(obj.facets.archive, obj.query.a);
-}
-window.collex.createFacets_access =function(obj){
-//console.log(access_number);
-createFacetBlock('facet-access', obj.facets.access, 'o', obj.query.o, window.collex.facetNames.access,'access');
-createResourceBlock(obj.facets.archive, obj.query.a);
-idelement = document.getElementById('access');
-if(window.collex.access_number%1 != 0){
-idelement.style.display = 'block';
-}else{
-idelement.style.display = 'none';
-}
-//access_number= access_number+1;
-}
-window.collex.createFacets_origin =function(obj){
-createFacetBlock('facet-origin', obj.facets.origin, 'origin', obj.query.origin,'origin');
-createResourceBlock(obj.facets.archive, obj.query.a);
-}*/
 });
 
 

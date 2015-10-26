@@ -30,7 +30,31 @@ jQuery(document).ready(function($) {
 	});
     
 	
+	 var lower_range;
+	  var upper_range;
+
+	$(function() {
+    	
+    	$( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 1000,
+      values: [100,200],
+      slide: function( event, ui ) {
+        $( "#amount" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+		lower_range=ui.values[ 0 ];
+		upper_range=ui.values[ 1 ];
+
+      }
+    });
+    $( "#amount" ).val(  $( "#slider-range" ).slider( "values", 0 ) +
+      " - " + $( "#slider-range" ).slider( "values", 1 ) );
+
+  });
 	
+	window.collex.Range = function(){
+        window.collex.sliderRange(lower_range,upper_range);		
+	}	
 	
 	window.collex.getUrlVars = function(getAll) {
       // This returns the query string as a hash of values.
@@ -38,6 +62,7 @@ jQuery(document).ready(function($) {
       // That is, given "?q=tree&gen=2&gen=5", the return object is: { q: "tree", gen: [ "2", "5" ] }
 		var params = {};
 		var query = ""+window.location.search;
+		console.log("query :",query);
 		if (query === "") // If there are no query params at all.
 			return params;
 		query = query.substr(1);	// get rid of the "?"
@@ -61,6 +86,7 @@ jQuery(document).ready(function($) {
 			} else
 				params[key] = value;// For the first, or only occurrence, return it as a string.
 		}
+		console.log("params : ",params);
 		return params;
 	};
 
@@ -153,6 +179,7 @@ jQuery(document).ready(function($) {
 	function doSearch() {
       window.showProgressDialog('Searching...');
 		var existingQuery = window.collex.getUrlVars();
+		console.log(existingQuery);
 		$.ajax({ url: "./search.json",
 			data: existingQuery,
 			success: onSuccess,
@@ -167,6 +194,8 @@ jQuery(document).ready(function($) {
 
 	function addToQueryObject(newQueryKey, newQueryValue) {
 		var existingQuery = window.collex.getUrlVars();
+		console.log("existingQuery:"+existingQuery);
+		console.log("key check:"+existingQuery[newQueryKey]);
 		if (existingQuery[newQueryKey] === undefined)
 			existingQuery[newQueryKey] = newQueryValue;
 		else if (typeof existingQuery[newQueryKey] === 'string')
@@ -285,7 +314,9 @@ jQuery(document).ready(function($) {
 	body.on("click", ".ajax-style .select-facet", function () {
 		var el = $(this);
 		var newQueryKey = el.attr("data-key");
+		console.log("newQueryKey: "+newQueryKey);
 		var newQueryValue = el.attr("data-value");
+		console.log("newQueryValue: "+newQueryValue);
 		//newQueryValue = encodeURIComponent(newQueryValue);
 		var action = el.attr("data-action");
 		var url = createNewUrl(newQueryKey, newQueryValue, action);
@@ -310,6 +341,8 @@ jQuery(document).ready(function($) {
 			url = createNewUrl(newQueryKey, newQueryValue, "replace");
 		changePage(url);
 	});
+	
+	
 
 	window.collex.sanitizeString = function(str) {
 	   if (typeof str === "undefined") {
@@ -332,7 +365,18 @@ jQuery(document).ready(function($) {
       term = term.trim();
       return term;
    };
+ 
 
+   window.collex.sliderRange = function(x,y){
+   		console.log("lowerRange"+x);
+   	   //url="y=0000%20TO%202000&fuz_q=1&fuz_t=1"
+	   //changePage(url);
+	   var query="y="+x+" TO "+y+"&fuz_q=1&fuz_t=1";
+	   query=window.collex.formatYearString(query);
+	   changePage("./search?" + query);
+	   doSearch();
+   }
+  
 	function query_add(el) {
 		var parent = el.closest('tr');
 		var type = parent.find(".query_type_select").val();
@@ -354,6 +398,8 @@ jQuery(document).ready(function($) {
 	body.on("click", ".query_add", function () {
 		query_add($(this));
 	});
+	
+	
 
 	body.on("click", ".mod-fuzzy input", function () {
 		var el = $(this);
@@ -377,6 +423,7 @@ jQuery(document).ready(function($) {
 		var query = modifyInQueryObject(key, val, newValue);
 		changePage("./search?" + window.collex.makeQueryString(query));
 	});
+	
 
 	body.on("keydown", ".query.search-form .new-search-term input", function(e) {
 		var key = e.which;
@@ -447,6 +494,7 @@ jQuery(document).ready(function($) {
 
 	// This replaces the current search with the one passed to it.
 	body.bind('SetSearch', function(ev, obj) {
+
 		for (var key in obj) {
 			if (obj.hasOwnProperty(key)) {
 				obj[key] = window.collex.sanitizeString(obj[key]);
@@ -454,6 +502,7 @@ jQuery(document).ready(function($) {
 		}
 		var existingSort = getSortAndFederationFromQueryObject();
 		jQuery.extend(obj, existingSort);
+		console.log("makeQueryString : "+ window.collex.makeQueryString(obj));
 		changePage("./search?" + window.collex.makeQueryString(obj));
 	});
 
