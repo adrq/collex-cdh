@@ -88,6 +88,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    passenger (5.0.19)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -168,6 +171,7 @@ DEPENDENCIES
   mysql2
   nokogiri
   paperclip
+  passenger
   rails (= 3.2.19)
   rest-client
   sass-rails (~> 3.2.3)
@@ -178,4 +182,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.3
+   1.10.6

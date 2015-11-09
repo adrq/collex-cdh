@@ -131,6 +131,9 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    passenger (5.0.21)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.3)
@@ -250,6 +253,7 @@ DEPENDENCIES
   net-scp
   nokogiri
   paperclip
+  passenger
   rails (= 4.1.5)
   rest-client
   rsolr
@@ -262,4 +266,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
-   1.10.3
+   1.10.6
