@@ -158,10 +158,10 @@ class Admin::SetupsController < Admin::BaseController
             value = "Origin"  #added for origin field -- akhil
          when 'facet_display_name_language' #added for language field -- akhil
             value = "Language"  #added for language field -- akhil
-          when 'facet_display_name_composition' #added for composition field -- akhil
-             value = "Composition"  #added for composition field -- akhil
-           when 'facet_display_name_provenance' #added for provenance field -- akhil
-              value = "Provenance"  #added for provenance field -- akhil
+         when 'facet_display_name_composition' #added for composition field -- akhil
+            value = "Composition"  #added for composition field -- akhil
+         when 'facet_display_name_provenance' #added for provenance field -- akhil
+            value = "Provenance"  #added for provenance field -- akhil
       else 
          value = value
       end

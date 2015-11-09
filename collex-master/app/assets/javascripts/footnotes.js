@@ -294,7 +294,7 @@ var FootnotesInRte = Class.create({
 //					alert("new footnote value would be: " + value);
 //				};
 //				var populate_nines_obj_url = '/forum/get_nines_obj_list';	// TODO-PER: pass this in
-//				var progress_img = '/images/ajax_loader.gif';	// TODO-PER: pass this in
+//				var progress_img = '/images/indexiuris/ajax_loader.gif';	// TODO-PER: pass this in
 //				new RteInputDlg({ title: 'Edit Footnote', okCallback: setFootnote, value: str, populate_nines_obj_url: populate_nines_obj_url, progress_img: progress_img });
 			}
 			return "";

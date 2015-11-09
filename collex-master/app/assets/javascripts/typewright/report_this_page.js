@@ -9,7 +9,7 @@ jQuery(document).ready(function() {
 	"use strict";
 	function display_lightbox(node) {
 		var url = node.attr('data-url');
-		showPartialInLightBox(url, 'Report an Issue on This Page', '/assets/ajax_loader.gif');
+		showPartialInLightBox(url, 'Report an Issue on This Page', '/assets/indexiuris/ajax_loader.gif');
 
 	}
 

@@ -81,6 +81,7 @@ class SearchController < ApplicationController
         results['facets']['language'] = {} if results['facets']['language'].blank? #added for language meta filed -akhil
         results['facets']['composition'] = {} if results['facets']['composition'].blank? #added for composition meta filed -akhil
         results['facets']['provenance'] = {} if results['facets']['provenance'].blank? #added for provenance meta filed -akhil
+        logger.debug("facets #{results['facets']['provenance']}")
 				render :json => results
 			end
 		end
@@ -101,7 +102,7 @@ class SearchController < ApplicationController
 	   constraints = []
 	   return constraints if query.blank?
 
-	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t', 'origin','composition','provenance' ] #added origin and composition and provenance field --akhil
+	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t', 'origin','composition','provenance','shelfmark' ] #added origin, shelfmark, composition and provenance field --akhil
 	   @searchable_roles.each { |role|
 		   legal_constraints.push(role[0])
 	   }

@@ -40,7 +40,9 @@
 <% result_row_item(rows, :multiple_item, hit, 'genre', 'Genre', true) %>
 <% result_row_item(rows, :single_item, hit, 'origin', 'Origin', true) %> <!-- added for the orgin metadata - akhil-->
 <% result_row_item(rows, :single_item, hit, 'composition', 'Composition', true) %> <!-- added for the composition metadata - akhil-->
-<% result_row_item(rows, :multiple_item, hit, 'discipline', 'Discipline', true) %>
+<% result_row_item(rows, :multiple_item, hit, 'discipline', 'Discipline', true) %> <!-- added for the discipline metadata - akhil-->
+<% result_row_item(rows, :single_item, hit, 'shelfmark', 'Shelfmark', true) %><!-- added for the shelfmark metadata - akhil-->
+<% result_row_item(rows, :single_item, hit, 'format', 'Format', true) %><!-- added for the format metadata - akhil-->
 <% result_row_item(rows, :multiple_item, hit, 'subject', 'Subject', true) %>
 <% result_row_item(rows, :single_item, hit, 'exhibit_type', 'Exhibit&nbsp;type', true) %>
 <% result_row_item(rows, :single_item, hit, 'license', 'License', true) %>
@@ -49,7 +51,7 @@
 <% result_row_item(rows, :multiple_item, hit, 'role_OWN', 'Owner', true) %>
 <% result_row_item(rows, :multiple_item, hit, 'role_TRL', 'Translator', true) %>
 <% result_row_item(rows, :multiple_item, hit, 'date_label', 'Date', true) %>
-<% result_row_item(rows, :multiple_item, hit, 'provenance', 'Provenance', true) %>
+<% result_row_item(rows, :single_item, hit, 'provenance', 'Provenance', true) %>
 <% result_row_item(rows, :multiple_item, hit, 'language', 'Language', true) %> <!-- added for the language metadata - akhil-->
 
 <%# following roles added for sifter item #2827 in NINES project %>

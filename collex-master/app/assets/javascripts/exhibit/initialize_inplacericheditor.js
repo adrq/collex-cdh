@@ -197,7 +197,7 @@ function initializeInplaceRichEditor(element_id, action)
 		var id = idArr[idArr.length-1];
 		var populate_all = '/forum/get_nines_obj_list';	// TODO-PER: pass this in
 		var populate_exhibit_only = '/forum/get_nines_obj_list?element_id=' + id;	// TODO-PER: pass this in
-		var progress_img = '/assets/ajax_loader.gif';	// TODO-PER: pass this in
+		var progress_img = '/assets/indexiuris/ajax_loader.gif';	// TODO-PER: pass this in
 		var fontStyle = This.getStyle('font-family');
 		var fontSize = This.getStyle('font-size');
 		var style = "html body { font-family: " + fontStyle + "; font-size: " + fontSize + "; }";
@@ -249,7 +249,7 @@ function initializeInplaceHeaderEditor(element_id, action)
 		var id = idArr[idArr.length-1];
 		var populate_all = '/forum/get_nines_obj_list';	// TODO-PER: pass this in
 		var populate_exhibit_only = '/forum/get_nines_obj_list?element_id=' + id;	// TODO-PER: pass this in
-		var progress_img = '/assets/ajax_loader.gif';	// TODO-PER: pass this in
+		var progress_img = '/assets/indexiuris/ajax_loader.gif';	// TODO-PER: pass this in
 		var footnoteAbbrev = new FootnoteAbbrev({ startingValue: footnoteStr, field: 'footnote', populate_exhibit_only: populate_exhibit_only, populate_all: populate_all, progress_img: progress_img });
 
 		var dlgLayout = {
@@ -372,7 +372,7 @@ function initializeInplaceIllustrationEditor(element_id, action)
 		var populate_all = '/forum/get_nines_obj_list';	// TODO-PER: pass this in
 		var populate_exhibit_only = '/forum/get_nines_obj_list?illustration_id=' + id;	// TODO-PER: pass this in
 		//var curr_populate = populate_exhibit_only;
-		var progress_img = '/assets/ajax_loader.gif';	// TODO-PER: pass this in
+		var progress_img = '/assets/indexiuris/ajax_loader.gif';	// TODO-PER: pass this in
 
 		var objlist = new CreateListOfObjects(populate_exhibit_only, values.nines_object, 'nines_object', progress_img, setCaption);
 		objlist.useTabs(populate_all, populate_exhibit_only);

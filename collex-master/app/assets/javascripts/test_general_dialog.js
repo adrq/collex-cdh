@@ -580,7 +580,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 		testShowLightboxDefault : function () {
 			action(this,
 				function() {
-					showInLightbox({ title: "Lightbox - default size", img: "/images/nines/join_my_collex.gif", spinner: "/images/ajax_loader.gif" });
+					showInLightbox({ title: "Lightbox - default size", img: "/images/nines/join_my_collex.gif", spinner: "/images/indexiuris/ajax_loader.gif" });
 				},
 				function() {
 					clickX();
@@ -594,7 +594,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 		testShowLightboxSmall : function () {
 			action(this,
 				function() {
-					showInLightbox({ title: "Lightbox - small", img: "/images/nines/join_my_collex.gif", spinner: "/images/ajax_loader.gif", size: 80 });
+					showInLightbox({ title: "Lightbox - small", img: "/images/nines/join_my_collex.gif", spinner: "/images/indexiuris/ajax_loader.gif", size: 80 });
 				},
 				function() {
 					clickX();
@@ -608,7 +608,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 		testShowLightboxLarge : function () {
 			action(this,
 				function() {
-					showInLightbox({ title: "Lightbox - large", img: "/images/nines/join_my_collex.gif", spinner: "/images/ajax_loader.gif", size: 900 });
+					showInLightbox({ title: "Lightbox - large", img: "/images/nines/join_my_collex.gif", spinner: "/images/indexiuris/ajax_loader.gif", size: 900 });
 				},
 				function() {
 					clickX();
@@ -622,7 +622,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 		testShowLightboxMissing : function () {
 			action(this,
 				function() {
-					showInLightbox({ title: "Lightbox - missing", img: "/images/nines/MISSING.gif", spinner: "/images/ajax_loader.gif", size: 900 });
+					showInLightbox({ title: "Lightbox - missing", img: "/images/nines/MISSING.gif", spinner: "/images/indexiuris/ajax_loader.gif", size: 900 });
 				},
 				function() {
 					clickX();
@@ -665,7 +665,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 			var This = this;
 			window.mockAjax = false;
 			var fxnCall = function() {
-				showPartialInLightBox('/help/resources', 'Lightbox - through ajax', '/images/ajax_loader.gif');
+				showPartialInLightBox('/help/resources', 'Lightbox - through ajax', '/images/indexiuris/ajax_loader.gif');
 			};
 			var fxnTest = function() {
 				containsText("#gd_lightbox_contents", "NINES resources");
@@ -677,7 +677,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 			var This = this;
 			window.mockAjax = false;
 			var fxnCall = function() {
-				showPartialInLightBox('/helf', 'Lightbox - bad url', '/images/ajax_loader.gif');
+				showPartialInLightBox('/helf', 'Lightbox - bad url', '/images/indexiuris/ajax_loader.gif');
 			};
 			var fxnTest = function() {
 				containsText("#gd_lightbox_contents", "Sorry! The server didn't understand the request \"/helf\"");
@@ -689,7 +689,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 			var This = this;
 			window.mockAjax = false;
 			var fxnCall = function() {
-				showPartialInLightBox('/test_exception_notifier', 'Lightbox - server crash', '/images/ajax_loader.gif');
+				showPartialInLightBox('/test_exception_notifier', 'Lightbox - server crash', '/images/indexiuris/ajax_loader.gif');
 			};
 			var fxnTest = function() {
 				containsText("#gd_lightbox_contents", "Sorry! You've hit an error. We apologize for this problem");
@@ -701,7 +701,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 			var This = this;
 			window.mockAjax = false;
 			var fxnCall = function() {
-				showPartialInLightBox('/test_error_response', 'Lightbox - server error message', '/images/ajax_loader.gif');
+				showPartialInLightBox('/test_error_response', 'Lightbox - server error message', '/images/indexiuris/ajax_loader.gif');
 			};
 			var fxnTest = function() {
 				containsText("#gd_lightbox_contents", "This is a test message from the server.");
@@ -712,7 +712,7 @@ YUI({ useBrowserConsole: true }).use('test', 'io', 'node-event-simulate', functi
 		testShowLightboxResize : function () {
 			action(this,
 				function() {
-					showInLightbox({ title: "Lightbox - resize", img: "/images/nines/join_my_collex.gif", spinner: "/images/ajax_loader.gif", size: 80 });
+					showInLightbox({ title: "Lightbox - resize", img: "/images/nines/join_my_collex.gif", spinner: "/images/indexiuris/ajax_loader.gif", size: 80 });
 				},
 				function() {
 					resize();

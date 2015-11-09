@@ -38,8 +38,8 @@ jQuery(document).ready(function($) {
     	$( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 1000,
-      values: [100,200],
+      max: 2000,
+      values: [100,800],
       slide: function( event, ui ) {
         $( "#amount" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
 		lower_range=ui.values[ 0 ];
@@ -62,7 +62,6 @@ jQuery(document).ready(function($) {
       // That is, given "?q=tree&gen=2&gen=5", the return object is: { q: "tree", gen: [ "2", "5" ] }
 		var params = {};
 		var query = ""+window.location.search;
-		console.log("query :",query);
 		if (query === "") // If there are no query params at all.
 			return params;
 		query = query.substr(1);	// get rid of the "?"
@@ -179,7 +178,6 @@ jQuery(document).ready(function($) {
 	function doSearch() {
       window.showProgressDialog('Searching...');
 		var existingQuery = window.collex.getUrlVars();
-		console.log(existingQuery);
 		$.ajax({ url: "./search.json",
 			data: existingQuery,
 			success: onSuccess,
@@ -368,7 +366,6 @@ jQuery(document).ready(function($) {
  
 
    window.collex.sliderRange = function(x,y){
-   		console.log("lowerRange"+x);
    	   //url="y=0000%20TO%202000&fuz_q=1&fuz_t=1"
 	   //changePage(url);
 	   var query="y="+x+" TO "+y+"&fuz_q=1&fuz_t=1";

@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
 	function display_lightbox(node) {
 		var url = node.attr('data-url');
 		var title = node.attr('data-title');
-		showPartialInLightBox(url, title, '/assets/ajax_loader.gif');
+		showPartialInLightBox(url, title, '/assets/images/indexiuris/ajax_loader.gif');
 
 	}
 

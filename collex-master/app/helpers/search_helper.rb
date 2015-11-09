@@ -301,6 +301,10 @@ module SearchHelper
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'origin'
       ret[:title] ="Origin"
       ret[:value] = value_display
+    #added for shelfmark field -- akhil
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'shelfmark'
+      ret[:title] ="Shelfmark"
+      ret[:value] = value_display
       #added for composition field -- akhil
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'composition'
       ret[:title] ="Composition"

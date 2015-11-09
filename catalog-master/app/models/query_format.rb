@@ -57,6 +57,8 @@ class QueryFormat
 			:origin => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words(if origin is empty, it takes from provenance field)"}, #added for the origin field --- akhil.
       :composition => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the composition field --- akhil.
       :provenance => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the provenance field --- akhil.
+      :shelfmark => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the shelfmark field --- akhil.
+      :doc_type => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined formats." }, #added for the format field --- akhil.
 			:string_optional => { :exp => /^.*$/, :friendly => "Any string."},
 			:boolean => { :exp => /^(true|false)$/, :friendly => "true or false."},
 			:section => { :exp => /^(community|classroom|peer-reviewed)$/, :friendly => "One of community, classroom, or peer-reviewed."},
@@ -68,8 +70,8 @@ class QueryFormat
 			:last_modified => { :exp => /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\dZ$/, :friendly => "A date/time string in the format: yyyy-mm-ddThh:mm:ssZ." },
       :fuz_value => { :exp => /^[+\-]?[012]?$/, :friendly => "Fuzzyness: 0 (exact match), 1 (varied spellings) or 2 (most varied spellings)"},
       :language => { :exp => /^([+\-][^+\-]+)+$/, :friendly => "[+-] Languages separated by ||" },
-      :facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|origin|composition|provenance|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, origin, free_culture, federation)'}, #added origin,compostion and provenance -- akhil
-      :period_pivot => { :exp => /^(doc_type|archive|discipline|genre|origin|composition|provenance|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, origin, free_culture, or federation)'}  #added origin,composition and provenance-- akhil
+      :facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|origin|composition|provenance|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, origin,composition,provenance, free_culture, federation)'}, #added origin,compostion and provenance -- akhil
+      :period_pivot => { :exp => /^(doc_type|archive|discipline|genre|origin|composition|provenance|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, origin,composition,provenance, free_culture, or federation)'}  #added origin,composition and provenance-- akhil
 		}
 
 		return verifications[typ]
@@ -105,6 +107,7 @@ class QueryFormat
 				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)},  #added for origin field -- akhil
         'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
         'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
+        'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
         'facet' => { :name => 'Facet', :param => :facet, :default => nil, :transformation => get_proc(:transform_facet) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
@@ -180,6 +183,7 @@ class QueryFormat
 				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)}, #added for origin field -- akhil
         'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
         'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
+        'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
@@ -246,6 +250,7 @@ class QueryFormat
 				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)}, #added for origin field -- akhil
         'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
         'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
+        'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
@@ -345,7 +350,7 @@ class QueryFormat
 			#'role_ETR' => { :name => 'Etcher', :param => :string, :default => nil, :transformation => get_proc(:transform_field), :can_be_array => true },
 			#'role_CRE' => { :name => 'Creator', :param => :string, :default => nil, :transformation => get_proc(:transform_field), :can_be_array => true },
 			'year' => { :name => 'year', :param => :string, :default => nil, :transformation => get_proc(:transform_field), :can_be_array => true },
-      'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance), :can_be_array => true},  #added for provenance field -- akhil
+      
 
 			# single valued fields
 			#'image' => { :name => 'image', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
@@ -363,6 +368,8 @@ class QueryFormat
 			'url' => { :name => 'url', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
 			'origin' => { :name => 'origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_field)}, #added for origin field -- akhil
       'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
+      'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
+      'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
 
 			# boolean fields
 			#'has_full_text' => { :name => 'has_full_text', :param => :boolean, :default => 'false', :transformation => get_proc(:transform_field) },
@@ -638,6 +645,12 @@ class QueryFormat
   def self.transform_provenance(key,val)
 		return { 'fq' => self.insert_field_name("provenance", val) }
   end
+  
+  #added this method for shelfmark field -- akhil
+  def self.transform_shelfmark(key,val)
+		return { 'fq' => self.insert_field_name("shelfmark", val) }
+  end
+
 
   def self.transform_discipline(key,val)
     return { 'fq' => self.insert_field_name("discipline", val) }
