@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:role="http://www.loc.gov/loc.terms/relators/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:collex="http://www.collex.org/schema#"
+	xmlns:ii="http://lichen.csd.sc.edu/indexiuris/terms/"
+	xmlns:CarolingianCanonLawProject="http://ccl.rch.uky.edu">
+
+<CarolingianCanonLawProject:transcription rdf:about="http://ccl.rch.uky.edu:8088/cclxtf/view?docId=ccl/transcript-node-10483.xml;chunk.id=0;brand=default;hit.rank=0;">
+	<rdfs:seeAlso rdf:resource="http://ccl.rch.uky.edu:8088/cclxtf/view?docId=ccl/transcript-node-10483.xml;chunk.id=0;brand=default;hit.rank=0;"/>
+	<collex:federation>INDEXIURIS</collex:federation>
+	<collex:archive>CCL</collex:archive>
+	<dc:title>Collectio Hispana Gallica Augustodunensis , Synodus Calcidonensis</dc:title>
+	<ii:type>Manuscript Codex</ii:type>
+	<ii:origin>Corbie, according to Bischoff</ii:origin>
+	<ii:provenance>Autun</ii:provenance>
+	<ii:composition>Chalcedon</ii:composition>
+	<ii:shelfmark>Vaticano, Città del, Biblioteca Apostolica Vaticana, Vat. lat. 1341</ii:shelfmark>
+	<collex:freeculture>true</collex:freeculture>
+	<dc:source>Hispana Gallica Augustodunensis, now called by E. Knibbs "the Interpolated Hispana"</dc:source>
+	<collex:source_xml>http://ccl.rch.uky.edu/aboutBAV1341</collex:source_xml>
+	<collex:source_html>http://ccl.rch.uky.edu/aboutBAV1341</collex:source_html>
+	<ii:divisions>The Council of Chalcedon is divided into a register giving a short listing of the canons, a preface (in more than one version), canons, a "constitutio", and a subscription list.</ii:divisions>
+	<collex:ocr>false</collex:ocr>
+	<ii:notes>This transcription is a copy of the transcription of the Collectio Hispana Gallica Augustodunensis prepared by Annette Grabowsky that is available at http://www.benedictus.mgh.de/quellen/chga, so that it is among the CCL's searchable texts and available for collation, etc. The version at the Benedictus Levita site includes some editorial notes that are not represented in the CCL presentation: we advise scholars with queries about the text to check the Benedictus Levita site for additional information.</ii:notes>
+	<ii:format>xml</ii:format>
+	<dc:language>Latin</dc:language>
+	<role:COM>Anonymous</role:COM>
+	<ii:genre>Synod</ii:genre>
+	<dc:date>
+	  <collex:date>
+	    <rdfs:label>A.D. 451</rdfs:label>
+	    <rdf:value>0451</rdf:value>
+	  </collex:date>
+	</dc:date>
+	<dc:date>
+	  <collex:date>
+	    <rdfs:label>saec. IX</rdfs:label>
+	    <rdf:value>0800-0900</rdf:value>
+	  </collex:date>
+	</dc:date>
+	<collex:discipline>Law</collex:discipline>
+	<collex:discipline>History</collex:discipline>
+	</CarolingianCanonLawProject:transcription>
+</rdf:RDF>

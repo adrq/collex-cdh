@@ -23,25 +23,25 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-cli-1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-codec-1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-httpclient-3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-io-2.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-lang-2.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-logging-1.0.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/fontbox-1.7.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/gson-2.2.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/jchardet-1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/jempbox-1.7.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/junit-4.8.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/juniversalchardet-1.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/log4j-1.2.16.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/pdfbox-1.7.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-model-2.7.0-beta2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-rio-api-2.7.0-beta2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-rio-rdfxml-2.7.0-beta2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-util-2.7.0-beta2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/slf4j-api-1.7.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/Adrian/collex/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/slf4j-log4j12-1.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-cli-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-codec-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-lang-2.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/fontbox-1.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/gson-2.2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/jchardet-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/jempbox-1.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/junit-4.8.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/juniversalchardet-1.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/log4j-1.2.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/pdfbox-1.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-model-2.7.0-beta2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-rio-api-2.7.0-beta2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-rio-rdfxml-2.7.0-beta2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/sesame-util-2.7.0-beta2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/slf4j-api-1.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/adrian/Documents/collex-cdh/catalog-master/lib/tasks/rdf-indexer/target/lib/slf4j-log4j12-1.7.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
