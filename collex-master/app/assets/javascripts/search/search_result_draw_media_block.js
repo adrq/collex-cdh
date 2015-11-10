@@ -298,7 +298,7 @@ jQuery(document).ready(function($) {
 		html += createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true);
 		html += createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true);
 		html += createResultContentItem('multiple_item', 'Date:', obj.date_label, true);
-		html += createResultContentItem('multiple_item', 'Provenance:', obj.provenance, true);
+		html += createResultContentItem('singlele_item', 'Provenance:', obj.provenance, true); //changed from multiple_itmes to single_item --akhil
 		html += createResultContentItem('multiple_item', 'Architect:', obj.role_ARC, true);
 		html += createResultContentItem('multiple_item', 'Binder:', obj.role_BND, true);
 		html += createResultContentItem('multiple_item', 'Book Designer:', obj.role_BKD, true);
