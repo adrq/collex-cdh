@@ -181,7 +181,16 @@
 			 
            </tr>
         <% end %>
-        <tr><td>Year (YYYY):</td><td><input id="search_year" name="y" type="text" class="search_entry_box" <%= "value='#{@yphrs}'" if @yphrs %> /></td></tr>
+        <tr><td>Year (YYYY):</td><td><input id="search_year" name="y" type="text" class="search_entry_box" placeholder="Please enter the date in YYYY or (YYYY TO YYYY) format" <%= "value='#{@yphrs}'" if @yphrs %> /></td>
+            <td>
+              <span class="tooltip advanced_search_field_tooltip">
+                   <%= image_tag("#{SKIN}/help_thumb.gif", { alt: 'help', height: 13, style: "padding-left:5px" }) %>
+                   <span class="search_help_tooltip">
+                     <b>Year Searching</b><br />Please enter the Year in YYYY or (YYYY TO YYYY) format. eg 0800 or 0400 TO 0800
+                   </span>
+                 </span>
+            </td>
+		</tr>
 		<tr><td>Place of Origin:</td><td><input id="search_origin" name="origin" type="text" class="search_entry_box" <%= "value='#{@ophrs}'" if @ophrs %> /></td></tr> <!--Added for the origin - akhil -->
 		<tr><td>Shelfmark :</td><td><input id="search_shelfmark" name="shelfmark" type="text" class="search_entry_box" <%= "value='#{@sphrs}'" if @sphrs %> /></td></tr> <!--Added for the Shelfmark - akhil -->
 		<tr><td>Discipline :</td><td><input id="search_discipline" name="discipline" type="text" class="search_entry_box" <%= "value='#{@dphrs}'" if @dphrs %> /></td></tr> <!--Added for the Discipline - akhil -->
