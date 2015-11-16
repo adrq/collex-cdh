@@ -3,6 +3,7 @@ INDEX IURIS - TODO LIST
 ****
 SOLR
 ****
+Needs to change the schema for Date and Type filed.
 
 
 
@@ -21,7 +22,8 @@ CATALOG
 ******
 COLLEX
 ******
-
+Search form should be redesigned. Should add date and type fileds for searching.
+Help sign should be added next to the date filed.
 
 
 
