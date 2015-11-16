@@ -1,0 +1,44 @@
+INDEX IURIS - TODO LIST
+
+****
+SOLR
+****
+
+
+
+
+
+
+
+*******
+CATALOG
+*******
+
+
+
+
+
+******
+COLLEX
+******
+
+
+
+
+
+
+***********
+RDF-INDEXER
+***********
+
+
+
+
+
+************************
+INFO/SUBMISSIONS WEBSITE
+************************
+
+- update DBs and submission form to support new type fields
+- add validation for ALL fields
+- add delete functionality for individual submisions
