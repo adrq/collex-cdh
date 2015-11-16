@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:role="http://www.loc.gov/loc.terms/relators/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:collex="http://www.collex.org/schema#"
+	xmlns:ii="http://lichen.csd.sc.edu/indexiuris/terms/"
+	xmlns:msdescription="ttp://www.leges.uni-koeln.de">
+
+<msdescription rdf:about="http://www.leges.uni-koeln.de/en/mss/codices/augsburg-ub-i-2-2-4">
+	<rdfs:seeAlso rdf:resource="http://www.leges.uni-koeln.de/en/mss/codices/augsburg-ub-i-2-2-4"/>
+	<collex:federation>INDEXIURIS</collex:federation>
+	<collex:archive>Bibliothecalegum</collex:archive>
+	<dc:title>Leges</dc:title>
+	<ii:type>Manuscript Codex</ii:type>
+	<ii:origin>Gaul</ii:origin>
+	<ii:provenance>Formerly Maihingen near Nördlingen im Ries, then castle Harburg near Donauwörth, Library of Oettingen-Wallerstein</ii:provenance>
+	<ii:composition>-</ii:composition>
+	<ii:shelfmark>Augsburg, Universitätsbibliothek, I. 2. 2°4</ii:shelfmark>
+	<collex:freeculture>true</collex:freeculture>
+	<dc:source>-</dc:source>
+	<collex:source_xml>http://www.leges.uni-koeln.de/wp-content/uploads/mss/augsburg-ub-i-2-2-4.xml</collex:source_xml>
+	<collex:source_html>http://www.leges.uni-koeln.de/wp-content/uploads/mss/augsburg-ub-i-2-2-4.xml</collex:source_html>
+	<collex:ocr>false</collex:ocr>
+	<ii:format>html</ii:format>
+	<dc:language>lat</dc:language>
+	<role:EDT>Karl Ubl</role:EDT>
+	<role:CRE>Dominik Trump</role:CRE>
+	<role:CRE>Daniela Schulz</role:CRE>
+	<ii:genre>Code of laws</ii:genre>
+	<dcterms:alternative>Codex Wallersteinensis</dcterms:alternative>
+	<dc:date>
+	  <collex:date>
+	    <rdfs:label>(-)</rdfs:label>
+	    <rdf:value>(-)</rdf:value>
+	  </collex:date>
+	</dc:date>
+	<dc:date>
+	  <collex:date>
+	    <rdfs:label>10th century (see comment)</rdfs:label>
+	    <rdf:value>0900-1000</rdf:value>
+	  </collex:date>
+	</dc:date>
+	<collex:discipline>Law</collex:discipline>
+	<collex:discipline>History</collex:discipline>
+	</msdescription>
+</rdf:RDF>
