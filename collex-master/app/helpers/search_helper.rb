@@ -29,32 +29,33 @@ module SearchHelper
   end
 
   public
-	def format_tag_for_output(tag)
-		# we want this escaped, so the user can't inject anything, and lower case, and we want invisible breaks so that a long tag won't break the spacing
+def format_tag_for_output(tag)
+# we want this escaped, so the user can't inject anything, and lower case, and we want invisible breaks so that a long tag won't break the spacing
 
-		# any dashes and underscores can be split
-		words = tag.split('_')
-		arr_outer = []
-		words.each {|word|
-			words2 = word.split('-')
-			arr_inner = []
-			words2.each {|word2|
-				# now we have an expanse that contains neither dashes nor underscores. Split this arbitrarily if it is too long,
-				# then put the entire piece back together, with splits after the dashes and underscores.
-				len = word2.length-16
-				while len > 0
-					word2 = word2.insert(len, '&#x200B;')
-					len -= 16
-				end
-				arr_inner.push(word2)
-			}
-			arr_outer.push(arr_inner.join('-&#x200B;'))
-		}
-		tag = arr_outer.join('_&#x200B;')
-		tag = h(tag).downcase()
-		tag = tag.gsub("&amp;#x200b;", "&#x200b;")	# but don't escape the hidden character we inserted.
-		return raw(tag)
-	end
+# any dashes and underscores can be split
+words = tag.split('_')
+arr_outer = []
+words.each {|word|
+words2 = word.split('-')
+arr_inner = []
+words2.each {|word2|
+# now we have an expanse that contains neither dashes nor underscores. Split this arbitrarily if it is too long,
+# then put the entire piece back together, with splits after the dashes and underscores.
+len = word2.length-16
+while len > 0
+word2 = word2.insert(len, '&#x200B;')
+len -= 16
+end
+arr_inner.push(word2)
+}
+arr_outer.push(arr_inner.join('-&#x200B;'))
+}
+tag = arr_outer.join('_&#x200B;')
+tag = h(tag).downcase()
+tag = tag.gsub("&amp;#x200b;", "&#x200b;")
+# but don't escape the hidden character we inserted.
+return raw(tag)
+end
 
   def draw_pagination(curr_page, num_pages, destination_hash)
     html = ""
@@ -145,7 +146,7 @@ module SearchHelper
         first = last - 10
       end
     end
-	spacing = raw("&nbsp;&nbsp;")
+spacing = raw("&nbsp;&nbsp;")
 
     if first > 1
       html += link_to_function("first", "ajax_pagination('#{action}', '#{el}', 1)", :class => 'nav_link') + spacing
@@ -185,7 +186,7 @@ module SearchHelper
   end
 
   def site_object_count(site_count, code)
-	  return 0 if site_count[code] == nil
+ return 0 if site_count[code] == nil
     site_count[code].to_i
   end
 
@@ -352,108 +353,108 @@ module SearchHelper
     end
   end
 
-	def result_row_collected(rows, is_collected, item)
-		return if !is_collected
-		rows.push({:hidden => false, :label => "Collected&nbsp;on:", :value => item.updated_at.strftime("%b %d, %Y")})
-	end
+def result_row_collected(rows, is_collected, item)
+return if !is_collected
+rows.push({:hidden => false, :label => "Collected&nbsp;on:", :value => item.updated_at.strftime("%b %d, %Y")})
+end
 
-	def result_row_tags_no_links(rows, label, tags)
-		return if tags.length == 0
+def result_row_tags_no_links(rows, label, tags)
+return if tags.length == 0
 
-		# tags is an array returned by the call Tag.get_tags_for_uri.
-		# each item in the array is also and array of size 2.
-		# first element sis tag name, second is tag ownership flag
-		tag_names = ""
-		tags.each do | tag |
-		  tag_names += "; " if tag_names.length > 0
-		  tag_names += tag[0]
-		end
-		rows.push({:hidden => false, :label => label, :value => tag_names})
-	end
+# tags is an array returned by the call Tag.get_tags_for_uri.
+# each item in the array is also and array of size 2.
+# first element sis tag name, second is tag ownership flag
+tag_names = ""
+tags.each do | tag |
+ tag_names += "; " if tag_names.length > 0
+ tag_names += tag[0]
+end
+rows.push({:hidden => false, :label => label, :value => tag_names})
+end
 
-	def result_row_tags_links(rows, index, row_id, hit, label, tags, item, signed_in, is_collected)
-		tag_str = ""
-		tags.each { |tag|
-			tag_str += " | " if tag != tags[0]
-			tag_str += link_to format_tag_for_output(tag[0]), {:controller => '/tag', :action => 'results', :tag => tag[0], :view => 'tag'}, {:class => 'tag_link my_tag', :title => "view all objects tagged \"#{tag[0]}\""}
-			if current_user && get_curr_user_id == tag[1][:user]
-				tag_str += ' ' + link_to_function("X", "doRemoveTag('#{hit['uri']}', '#{row_id}', #{tag[1][:tag]});", :class => 'modify_link my_tag remove_tag', :title => "delete tag \"#{tag[0]}\"")
-			end #if this tag was created by the current user
-		} #the tag loop
+def result_row_tags_links(rows, index, row_id, hit, label, tags, item, signed_in, is_collected)
+tag_str = ""
+tags.each { |tag|
+tag_str += " | " if tag != tags[0]
+tag_str += link_to format_tag_for_output(tag[0]), {:controller => '/tag', :action => 'results', :tag => tag[0], :view => 'tag'}, {:class => 'tag_link my_tag', :title => "view all objects tagged \"#{tag[0]}\""}
+if current_user && get_curr_user_id == tag[1][:user]
+tag_str += ' ' + link_to_function("X", "doRemoveTag('#{hit['uri']}', '#{row_id}', #{tag[1][:tag]});", :class => 'modify_link my_tag remove_tag', :title => "delete tag \"#{tag[0]}\"")
+end #if this tag was created by the current user
+} #the tag loop
 
-		if !signed_in
-			tag_str += "<span class='tags_instructions'>#{" [#{sign_in_link({:class => 'nav_link'})} to add tags]"}</span>"
-		else
-			tag_str += ' ' + link_to_function(raw("[add&nbsp;tag]"), "doAddTag('/tag/tag_name_autocomplete', 'add_tag_#{index}', '#{hit['uri']}', #{index}, '#{row_id}', event);", :id => "add_tag_#{index}", :class => 'modify_link')
-		end #if the user is logged in.
-		rows.push({:hidden => false, :label => label, :value => tag_str})
-	end
+if !signed_in
+tag_str += "<span class='tags_instructions'>#{" [#{sign_in_link({:class => 'nav_link'})} to add tags]"}</span>"
+else
+tag_str += ' ' + link_to_function(raw("[add&nbsp;tag]"), "doAddTag('/tag/tag_name_autocomplete', 'add_tag_#{index}', '#{hit['uri']}', #{index}, '#{row_id}', event);", :id => "add_tag_#{index}", :class => 'modify_link')
+end #if the user is logged in.
+rows.push({:hidden => false, :label => label, :value => tag_str})
+end
 
-	def result_row_site(rows, label, hit, key)
-		return if !hit[key]
-		archive = hit[key].kind_of?(Array) ? hit[key][0] : hit[key]
-		this_site = site(archive)
-		if this_site
-			str = "<a class='nines_link' target='_blank' href='#{this_site['site_url']}'>#{this_site['name']}</a>"
-		else
-			str = archive
-		end
-		rows.push({:hidden => false, :label => label, :value => str})
-	end
+def result_row_site(rows, label, hit, key)
+return if !hit[key]
+archive = hit[key].kind_of?(Array) ? hit[key][0] : hit[key]
+this_site = site(archive)
+if this_site
+str = "<a class='nines_link' target='_blank' href='#{this_site['site_url']}'>#{this_site['name']}</a>"
+else
+str = archive
+end
+rows.push({:hidden => false, :label => label, :value => str})
+end
 
-	def result_row_exhibits(rows, hit, curr_user)
-		exhibits = ExhibitObject.where({uri: hit['uri']})
-		is_first = true
-		user_name = curr_user ? curr_user.fullname : ''
-		for exhibit in exhibits
-			# We only want to display the exhibit if it can be viewed, so only if it is owned by the current user, or is public
-			# We only want to have the edit link if it is owned by the current user.
-			real_exhibit = Exhibit.find(exhibit.exhibit.id)
-			owner = User.find(real_exhibit.user_id)
-			if user_name == owner.username || real_exhibit.published?
-				label = is_first ? "Exhibits:" : ""
-				is_first = false
-				value = "#{real_exhibit.title} <a class='nav_link' href='/exhibits/#{real_exhibit.visible_url != nil && real_exhibit.visible_url.length > 0 ? real_exhibit.visible_url : real_exhibit.id}' >[view]</a>"
-				if Exhibit.can_edit(curr_user, real_exhibit.id)
-					value += link_to("[edit]", { :controller => '/builder', :action => 'show', :id => real_exhibit.id }, :class => 'nav_link' )
-				end
-				rows.push({:hidden => true, :id => "in_exhibit_#{exhibit.exhibit.id}_#{hit['uri']}", :label => label, :value => value})
-			end
-		end # each exhibit
-	end
+def result_row_exhibits(rows, hit, curr_user)
+exhibits = ExhibitObject.where({uri: hit['uri']})
+is_first = true
+user_name = curr_user ? curr_user.fullname : ''
+for exhibit in exhibits
+# We only want to display the exhibit if it can be viewed, so only if it is owned by the current user, or is public
+# We only want to have the edit link if it is owned by the current user.
+real_exhibit = Exhibit.find(exhibit.exhibit.id)
+owner = User.find(real_exhibit.user_id)
+if user_name == owner.username || real_exhibit.published?
+label = is_first ? "Exhibits:" : ""
+is_first = false
+value = "#{real_exhibit.title} <a class='nav_link' href='/exhibits/#{real_exhibit.visible_url != nil && real_exhibit.visible_url.length > 0 ? real_exhibit.visible_url : real_exhibit.id}' >[view]</a>"
+if Exhibit.can_edit(curr_user, real_exhibit.id)
+value += link_to("[edit]", { :controller => '/builder', :action => 'show', :id => real_exhibit.id }, :class => 'nav_link' )
+end
+rows.push({:hidden => true, :id => "in_exhibit_#{exhibit.exhibit.id}_#{hit['uri']}", :label => label, :value => value})
+end
+end # each exhibit
+end
 
-	def should_show_more_link(no_links, rows)
-		# show more if we aren't in a special mode and if there are more than 1 hidden items
-		return false if no_links
-		count = 0
-		rows.each {|row| count += 1 if row[:hidden] }
-		return count > 1
-	end
+def should_show_more_link(no_links, rows)
+# show more if we aren't in a special mode and if there are more than 1 hidden items
+return false if no_links
+count = 0
+rows.each {|row| count += 1 if row[:hidden] }
+return count > 1
+end
 
-	def format_result_rows(rows, hide_some)
-		html = ""
-		rows.each { |row|
-			if row[:one_col]
-				html += "<tr #{ 'class="hidden"' if row[:hidden] && hide_some}><td valign='top' colspan='2'>#{row[:value]}</td></tr>\n"
-			else
-				html += "<tr #{ 'class="hidden"' if row[:hidden] && hide_some}><td valign='top' class='search_result_data_label'>#{row[:label]}</td><td valign='top' class='search_result_data_value'>#{row[:value]}</td></tr>\n"
-			end
-		}
-		return raw(html)
-	end
+def format_result_rows(rows, hide_some)
+html = ""
+rows.each { |row|
+if row[:one_col]
+html += "<tr #{ 'class="hidden"' if row[:hidden] && hide_some}><td valign='top' colspan='2'>#{row[:value]}</td></tr>\n"
+else
+html += "<tr #{ 'class="hidden"' if row[:hidden] && hide_some}><td valign='top' class='search_result_data_label'>#{row[:label]}</td><td valign='top' class='search_result_data_value'>#{row[:value]}</td></tr>\n"
+end
+}
+return raw(html)
+end
 
-	def result_row_title(title, url, index)
-		if title.length < 200
-			return content_tag(:a, title, { class: 'nines_link', title: ' ', target: '_blank', href: url })
-		else
-			title1 = title[0..199]
-			title2 = title[200..-1]
-			id = "title_more_#{index}"
-			initial_title = title1 + content_tag(:span, title2, { id: id, class: 'hidden' })
-			return content_tag(:a, raw(initial_title), { class: 'nines_link', title: ' ', target: '_blank', href: url }) +
-				content_tag(:a, '...[show full title]', { href: '#', onclick: 'return false;', class: 'nav_link more_link', 'data-div' => id, 'data-less' => '[show less]' })
-		end
-	end
+def result_row_title(title, url, index)
+if title.length < 200
+return content_tag(:a, title, { class: 'nines_link', title: ' ', target: '_blank', href: url })
+else
+title1 = title[0..199]
+title2 = title[200..-1]
+id = "title_more_#{index}"
+initial_title = title1 + content_tag(:span, title2, { id: id, class: 'hidden' })
+return content_tag(:a, raw(initial_title), { class: 'nines_link', title: ' ', target: '_blank', href: url }) +
+content_tag(:a, '...[show full title]', { href: '#', onclick: 'return false;', class: 'nav_link more_link', 'data-div' => id, 'data-less' => '[show less]' })
+end
+end
 
   def result_row_item(rows, type, hit, key, label, is_hidden)
     return if !hit[key]
@@ -461,20 +462,20 @@ module SearchHelper
     if type == :separate_lines
       # multiple items on separate lines
       hit[key].each_with_index do |item, i|
-		    rows.push({:hidden => is_hidden, :label => (i < 1) ? label+':' : '', :value => h(item)})
+   rows.push({:hidden => is_hidden, :label => (i < 1) ? label+':' : '', :value => h(item)})
       end
 
     elsif type == :single_item
       # single item
-	  rows.push({:hidden => is_hidden, :label => label+':', :value => h(hit[key])})
+ rows.push({:hidden => is_hidden, :label => label+':', :value => h(hit[key])})
 
     elsif type == :multiple_item
       # multiple item, one line
-	  rows.push({:hidden => is_hidden, :label => label+':', :value => h(hit[key].join('; '))})
+ rows.push({:hidden => is_hidden, :label => label+':', :value => h(hit[key].join('; '))})
 
-	  elsif type == :alternative
-		  hit[key].each do |alt|
-			  rows.push({:hidden => is_hidden, :one_col => true, :value => h(alt)})
+ elsif type == :alternative
+ hit[key].each do |alt|
+ rows.push({:hidden => is_hidden, :one_col => true, :value => h(alt)})
       end
 
     elsif type == :special_part_of_field
@@ -496,35 +497,35 @@ module SearchHelper
   # These are called either in edit mode or normal mode
   # For the administrator page or the search page.
 
-	def federation_selector(federation, num_objects)
-		return "" if session.blank? || session[:federations].blank? || session[:federations][federation].blank?
+def federation_selector(federation, num_objects)
+return "" if session.blank? || session[:federations].blank? || session[:federations][federation].blank?
 
-		html = "<tr><td>"
-		thumb = session[:federations][federation]['thumbnail']
-		html += "<input type='checkbox' name='#{federation}' /><img src='#{thumb}' alt='#{federation}' />"
-		html += "</td><td class='num_objects' data-federation='#{federation}'>#{number_with_delimiter(num_objects)}</td></tr>"
-		return raw(html)
+html = "<tr><td>"
+thumb = session[:federations][federation]['thumbnail']
+html += "<input type='checkbox' name='#{federation}' /><img src='#{thumb}' alt='#{federation}' />"
+html += "</td><td class='num_objects' data-federation='#{federation}'>#{number_with_delimiter(num_objects)}</td></tr>"
+return raw(html)
   end
 
 
-	def create_facet_link(label, link, params)
-		# add the dynamic adding of the search phrase to the params first. We have to thwart the json function because we don't want it quoted.
-		params[:phrs] = "$(phrase)"
-		json = params.to_json()
-		json = json.gsub("\"$(phrase)\"", "$('search_phrase') ? $('search_phrase').getRealValue() : null")
-		return link_to_function(label, "serverAction({action: { actions: '#{link}', params: #{json}}, progress: { waitMessage: 'Searching...' }, searching: true})", { :class => 'nav_link' })
-	end
+def create_facet_link(label, link, params)
+# add the dynamic adding of the search phrase to the params first. We have to thwart the json function because we don't want it quoted.
+params[:phrs] = "$(phrase)"
+json = params.to_json()
+json = json.gsub("\"$(phrase)\"", "$('search_phrase') ? $('search_phrase').getRealValue() : null")
+return link_to_function(label, "serverAction({action: { actions: '#{link}', params: #{json}}, progress: { waitMessage: 'Searching...' }, searching: true})", { :class => 'nav_link' })
+end
 
-	def create_facet_button(label, type, value, action)
-		data = { key: type, value: value, action: action }
-		return content_tag(:button, label, { class: 'select-facet nav_link', data: data})
-	end
+def create_facet_button(label, type, value, action)
+data = { key: type, value: value, action: action }
+return content_tag(:button, label, { class: 'select-facet nav_link', data: data})
+end
 
   def facet_selector(facet_data, key, options = {})
-	  tr_class = options[:tr_class].present? ? ' ' + options[:tr_class] : ""
-	  td_class = options[:td_class].present? ? options[:td_class] : "limit_to_lvl1"
-	  additive_action = options[:action].present? ? options[:action] : 'add'
-	  label = facet_data[:label].present? ? facet_data[:label] :facet_data[:value]
+ tr_class = options[:tr_class].present? ? ' ' + options[:tr_class] : ""
+ td_class = options[:td_class].present? ? options[:td_class] : "limit_to_lvl1"
+ additive_action = options[:action].present? ? options[:action] : 'add'
+ label = facet_data[:label].present? ? facet_data[:label] :facet_data[:value]
     if facet_data[:exists]
       html = "<tr class='limit_to_selected#{tr_class}'><td class='#{td_class}'>#{label}&nbsp;&nbsp;" + create_facet_button('[X]', key, facet_data[:value], 'remove')
     else
@@ -547,17 +548,20 @@ module SearchHelper
   def create_access_table( freeculture_count, fulltext_count, typewright_count )
     html = raw('<table class="limit_to facet-access">')
     html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Access')\">#{Setup.display_name_for_facet_access}<i class=\"fa fa-caret-down fa-lg\"></i></th><th class=\"num_objects\"># of Objects</th></tr>")
-	# data = [
-	# 	{ exists: access_is_in_constraints?('FreeCultureConstraint'), label: "Free Culture Only", value: 'freeculture', count: freeculture_count },
-	# 	{ exists: access_is_in_constraints?('FullTextConstraint'), label: "Full Text Only", value: 'fulltext', count: fulltext_count }
-	# ]
-	# # TODO-PER: is there also an "ocr" option?
-	# if COLLEX_PLUGINS['typewright']
+# data = [
+# 
+{ exists: access_is_in_constraints?('FreeCultureConstraint'), label: "Free Culture Only", value: 'freeculture', count: freeculture_count },
+# 
+{ exists: access_is_in_constraints?('FullTextConstraint'), label: "Full Text Only", value: 'fulltext', count: fulltext_count }
+# ]
+# # TODO-PER: is there also an "ocr" option?
+# if COLLEX_PLUGINS['typewright']
      #  data.push({ exists: access_is_in_constraints?('TypeWrightConstraint'), label: "TypeWright Enabled Only", value: 'typewright', count: typewright_count })
-	# end
-	# for acc in data
-	# 	html += facet_selector( acc, 'o' )
-	# end
+# end
+# for acc in data
+# 
+html += facet_selector( acc, 'o' )
+# end
     html += raw('</table>')
     return raw(html)
   end
@@ -627,163 +631,165 @@ module SearchHelper
     return raw(html)
   end
   
-	def format_name_facet(name, typ)
-		name[0] = name[0].gsub("\"", "")
-		sanitized_name = name[0].gsub(/[^0-9a-z' ]/i, ' ')
-		sanitized_name = sanitized_name.gsub(/\s+/, ' ')
-		sanitized_name = sanitized_name.strip
-		return create_facet_button("#{name[0]} (#{name[1]})", typ, "\"#{sanitized_name}\"", "replace")
-		#return create_facet_link("#{name[0]} (#{name[1]})", '/collex/add_constraint', { :search_type => typ,  :search_not => 'AND', :search => { :phrase => name[0]}, :from_name_facet => 'true' })
-	end
+def format_name_facet(name, typ)
+name[0] = name[0].gsub("\"", "")
+sanitized_name = name[0].gsub(/[^0-9a-z' ]/i, ' ')
+sanitized_name = sanitized_name.gsub(/\s+/, ' ')
+sanitized_name = sanitized_name.strip
+return create_facet_button("#{name[0]} (#{name[1]})", typ, "\"#{sanitized_name}\"", "replace")
+#return create_facet_link("#{name[0]} (#{name[1]})", '/collex/add_constraint', { :search_type => typ,  :search_not => 'AND', :search => { :phrase => name[0]}, :from_name_facet => 'true' })
+end
 
-	def format_no_name_message(index, total)
-		if index == 0 && total == 0
-			return raw("<span class='no_names_msg'>No names were contributed for this category.</span>")
-		end
-		return ""
-	end
+def format_no_name_message(index, total)
+if index == 0 && total == 0
+return raw("<span class='no_names_msg'>No names were contributed for this category.</span>")
+end
+return ""
+end
 
-	# TODO-PER: These are generic routines for creating facet tree rows. We can probably refactor a lot of the stuff above to use them.
-	# TODO-PER: The biggest difference is that this sends an ajax call, and the search page does a POST.
-	def facet_tree_node_row(id_base, id, parent_id, indent_level, start_shown, label, num_objects, start_open)
-	   state = "collapsed"
-	   state = "expanded" if start_shown && start_open
-		html = "<tr data-category='#{id_base}' data-id='#{id}' data-parent-id='#{parent_id}' class='category-btn #{state} #{'hidden' if !start_shown}'>"
-		html += "<td class='limit_to_lvl#{indent_level}'>"
-		html += "<span class='exp-arrow #{"hidden" if start_open}'>#{image_tag('arrow.gif')}</span>"
-		html += "<span class='col-arrow #{"hidden" if !start_open}'>#{image_tag('arrow_dn.gif')}</span>"
-		html += "<span class='nav_link' >#{h(label)}</span></td><td class='num_objects'>#{num_objects}</td></tr>\n"
-		return raw(html)
-	end
+# TODO-PER: These are generic routines for creating facet tree rows. We can probably refactor a lot of the stuff above to use them.
+# TODO-PER: The biggest difference is that this sends an ajax call, and the search page does a POST.
+def facet_tree_node_row(id_base, id, parent_id, indent_level, start_shown, label, num_objects, start_open)
+  state = "collapsed"
+  state = "expanded" if start_shown && start_open
+html = "<tr data-category='#{id_base}' data-id='#{id}' data-parent-id='#{parent_id}' class='category-btn #{state} #{'hidden' if !start_shown}'>"
+html += "<td class='limit_to_lvl#{indent_level}'>"
+html += "<span class='exp-arrow #{"hidden" if start_open}'>#{image_tag('arrow.gif')}</span>"
+html += "<span class='col-arrow #{"hidden" if !start_open}'>#{image_tag('arrow_dn.gif')}</span>"
+html += "<span class='nav_link' >#{h(label)}</span></td><td class='num_objects'>#{num_objects}</td></tr>\n"
+return raw(html)
+end
 
-	def facet_tree_selection_row(id_base, id, parent_id, indent_level, start_shown, label, num_objects, url, update_div, selected)
-		html = "<tr data-id='#{id}' data-parent-id='#{parent_id}' class='#{id_base} #{'hidden' if !start_shown}'><td class='limit_to_lvl#{indent_level}'>"
-		# If you want to post, use postLink(this.href) to POST instead of doing an ajax update.
-		if selected
-			html += "#{h(label)}&nbsp;<a href='#{url}' class='nav_link' onclick=\"serverAction({action: { actions: this.href, els: '#{update_div}'}, progress: { waitMessage: 'Removing Facet...' }}); return false;\">[X]</a>"
-		else
-			html += "<a href='#{url}' class='nav_link' onclick=\"serverAction({action: { actions: this.href, els: '#{update_div}'}, progress: { waitMessage: 'Adding Facet...' }}); return false;\">#{h(label)}</a>"
-		end
-		html += "</td><td class='num_objects'>#{num_objects}</td></tr>\n"
-		return raw(html)
-	end
+def facet_tree_selection_row(id_base, id, parent_id, indent_level, start_shown, label, num_objects, url, update_div, selected)
+html = "<tr data-id='#{id}' data-parent-id='#{parent_id}' class='#{id_base} #{'hidden' if !start_shown}'><td class='limit_to_lvl#{indent_level}'>"
+# If you want to post, use postLink(this.href) to POST instead of doing an ajax update.
+if selected
+html += "#{h(label)}&nbsp;<a href='#{url}' class='nav_link' onclick=\"serverAction({action: { actions: this.href, els: '#{update_div}'}, progress: { waitMessage: 'Removing Facet...' }}); return false;\">[X]</a>"
+else
+html += "<a href='#{url}' class='nav_link' onclick=\"serverAction({action: { actions: this.href, els: '#{update_div}'}, progress: { waitMessage: 'Adding Facet...' }}); return false;\">#{h(label)}</a>"
+end
+html += "</td><td class='num_objects'>#{num_objects}</td></tr>\n"
+return raw(html)
+end
 
-	def count_children(arr)
-		total = 0
-		if arr.kind_of?(Array)
-			arr.each{|ch|
-				if ch.kind_of?(Array)
-					total += count_children(ch)
-				else
-					total += ch[:count]
-				end
-			}
-		else
-			total = arr[:count]
-		end
-		return total
-	end
+def count_children(arr)
+total = 0
+if arr.kind_of?(Array)
+arr.each{|ch|
+if ch.kind_of?(Array)
+total += count_children(ch)
+else
+total += ch[:count]
+end
+}
+else
+total = arr[:count]
+end
+return total
+end
 
-	def create_facet_tree(tree, id_base, url_base, update_div)
-		html = ''
-		parent_open = {}
-		tree.each do |node|
-			label = node[:label]
-			children = node[:children]
+def create_facet_tree(tree, id_base, url_base, update_div)
+html = ''
+parent_open = {}
+tree.each do |node|
+label = node[:label]
+children = node[:children]
 
-			# total up all of the sub nodes so that number can be displayed next to the parent name
-			total = 0
-			children.each do |child_label, child_arr|
-				total += count_children(child_arr)
-			end
+# total up all of the sub nodes so that number can be displayed next to the parent name
+total = 0
+children.each do |child_label, child_arr|
+total += count_children(child_arr)
+end
 
-			start_open = (id_base == 'univ') # university is always expanded
-			if session[:resource_toggle]
-			   # open only of base level is open
-				start_open = true if session[:resource_toggle]["#{id_base}-1"] == 'open'
-				start_open = false if session[:resource_toggle]["#{id_base}-1"] == 'close'
-			end
+start_open = (id_base == 'univ') # university is always expanded
+if session[:resource_toggle]
+  # open only of base level is open
+start_open = true if session[:resource_toggle]["#{id_base}-1"] == 'open'
+start_open = false if session[:resource_toggle]["#{id_base}-1"] == 'close'
+end
 
-			# render the base node
-			i = -1
-			parent_open["#{id_base}-1"] = start_open
-			html += facet_tree_node_row("#{id_base}", i, 0, 1, true, label, total, start_open)
-			i -= 1
+# render the base node
+i = -1
+parent_open["#{id_base}-1"] = start_open
+html += facet_tree_node_row("#{id_base}", i, 0, 1, true, label, total, start_open)
+i -= 1
 
          # now all the children
-			children.each do |child_label, child_arr|
-				if child_arr.kind_of?(Array)
-					start_open = false
-					if session[:resource_toggle]
-						start_open = true if session[:resource_toggle]["#{id_base}#{i}"] == 'open'
-						start_open = false if session[:resource_toggle]["#{id_base}#{i}"] == 'close'
-					end
-					parent_open["#{id_base}#{i}"] = parent_open["#{id_base}-1"] ? start_open : false
-					me_open = parent_open["#{id_base}-1"]
-					html += facet_tree_node_row("#{id_base}",i, "#{id_base}-1", 2, me_open, child_label, count_children(child_arr), start_open)
-					child_arr.each do |item|
-						#start_shown = start_open	# we start shown if the parent starts open
-						html += facet_tree_selection_row(id_base, item[:id], "#{id_base}#{i}", 3, parent_open["#{id_base}#{i}"], item[:name], item[:count], "#{url_base}#{item[:id]}", update_div, item[:selected])
-					end
-					i -= 1
-				else
-				   # child node with no children of its own
-					item = child_arr
-					html += facet_tree_selection_row(id_base, item[:id], "#{id_base}#{-1}", 2, parent_open["#{id_base}-1"], item[:name], item[:count], "#{url_base}#{item[:id]}", update_div, item[:selected])
-				end
-			end
-		end
-		return raw(html)
-	end
-
-	def add_non_solr_info_to_results(hits, highlighting)
-		# process all the returned hits to insert all non-solr info
-		all_uris = []
-		hits.each { |hit|
-			# make a list of all uris so that we can find the collected ones and any annotations
-			all_uris.push(hit['uri'])
-
-			# Add the highlighting to the hit object so that a result is completely contained inside the hit object
-			if highlighting && hit['uri'] && highlighting[hit["uri"]]
-				t = highlighting[hit["uri"]].to_s.strip()
-				# We want to escape everything except the bolding so that random control chars can't mess up the display
-				t = h(t.gsub('&', 'AmPeRsAnD'))
-				hit['text'] = t.gsub("&lt;em&gt;", "<em>").gsub("&lt;/em&gt;", "</em>").gsub('AmPeRsAnD', '&')
-			end
-
-			# Add any referencing exhibits
-			exhibits = Exhibit.get_referencing_exhibits(hit["uri"], current_user)
-			hit['exhibits'] = exhibits if exhibits.length > 0
-		}
-
-		if all_uris.length > 0
-			my_tags, tags = Tag.items_in_uri_list(all_uris, get_curr_user_id)
-			my_tags.each { |uri, name|
-				hits.each { |hit|
-					hit['my_tags'] = name if hit['uri'] == uri
-				}
-			}
-			tags.each { |uri, name|
-				hits.each { |hit|
-					hit['tags'] = name if hit['uri'] == uri
-				}
-			}
-		end
-
-		collected = {}
-		if user_signed_in? && all_uris.length > 0
-			collected_items = CollectedItem.items_in_uri_list(get_curr_user_id(), all_uris)
-			collected_items.each { |uri, item|
-				collected[uri] = item[:updated_at]
-				if item[:annotation].present?
-					hits.each { |hit|
-						if hit['uri'] == uri
-							hit['annotation'] = decode_exhibit_links(item[:annotation])
-						end
-					}
-				end
-			}
-		end
-		return collected
-	end
+children.each do |child_label, child_arr|
+if child_arr.kind_of?(Array)
+start_open = false
+if session[:resource_toggle]
+start_open = true if session[:resource_toggle]["#{id_base}#{i}"] == 'open'
+start_open = false if session[:resource_toggle]["#{id_base}#{i}"] == 'close'
 end
+parent_open["#{id_base}#{i}"] = parent_open["#{id_base}-1"] ? start_open : false
+me_open = parent_open["#{id_base}-1"]
+html += facet_tree_node_row("#{id_base}",i, "#{id_base}-1", 2, me_open, child_label, count_children(child_arr), start_open)
+child_arr.each do |item|
+#start_shown = start_open
+# we start shown if the parent starts open
+html += facet_tree_selection_row(id_base, item[:id], "#{id_base}#{i}", 3, parent_open["#{id_base}#{i}"], item[:name], item[:count], "#{url_base}#{item[:id]}", update_div, item[:selected])
+end
+i -= 1
+else
+  # child node with no children of its own
+item = child_arr
+html += facet_tree_selection_row(id_base, item[:id], "#{id_base}#{-1}", 2, parent_open["#{id_base}-1"], item[:name], item[:count], "#{url_base}#{item[:id]}", update_div, item[:selected])
+end
+end
+end
+return raw(html)
+end
+
+def add_non_solr_info_to_results(hits, highlighting)
+# process all the returned hits to insert all non-solr info
+all_uris = []
+hits.each { |hit|
+# make a list of all uris so that we can find the collected ones and any annotations
+all_uris.push(hit['uri'])
+
+# Add the highlighting to the hit object so that a result is completely contained inside the hit object
+if highlighting && hit['uri'] && highlighting[hit["uri"]]
+t = highlighting[hit["uri"]].to_s.strip()
+# We want to escape everything except the bolding so that random control chars can't mess up the display
+t = h(t.gsub('&', 'AmPeRsAnD'))
+hit['text'] = t.gsub("&lt;em&gt;", "<em>").gsub("&lt;/em&gt;", "</em>").gsub('AmPeRsAnD', '&')
+end
+
+# Add any referencing exhibits
+exhibits = Exhibit.get_referencing_exhibits(hit["uri"], current_user)
+hit['exhibits'] = exhibits if exhibits.length > 0
+}
+
+if all_uris.length > 0
+my_tags, tags = Tag.items_in_uri_list(all_uris, get_curr_user_id)
+my_tags.each { |uri, name|
+hits.each { |hit|
+hit['my_tags'] = name if hit['uri'] == uri
+}
+}
+tags.each { |uri, name|
+hits.each { |hit|
+hit['tags'] = name if hit['uri'] == uri
+}
+}
+end
+
+collected = {}
+if user_signed_in? && all_uris.length > 0
+collected_items = CollectedItem.items_in_uri_list(get_curr_user_id(), all_uris)
+collected_items.each { |uri, item|
+collected[uri] = item[:updated_at]
+if item[:annotation].present?
+hits.each { |hit|
+if hit['uri'] == uri
+hit['annotation'] = decode_exhibit_links(item[:annotation])
+end
+}
+end
+}
+end
+return collected
+end
+end
+
