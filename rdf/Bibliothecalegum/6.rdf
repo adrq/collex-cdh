@@ -33,14 +33,8 @@
 	<dcterms:alternative>Codex Wallersteinensis</dcterms:alternative>
 	<dc:date>
 	  <collex:date>
-	    <rdfs:label>(-)</rdfs:label>
-	    <rdf:value>(-)</rdf:value>
-	  </collex:date>
-	</dc:date>
-	<dc:date>
-	  <collex:date>
-	    <rdfs:label>10th century (see comment)</rdfs:label>
-	    <rdf:value>0900-1000</rdf:value>
+	    <rdfs:label>10th century</rdfs:label>
+	    <rdf:value>0900,1000</rdf:value>
 	  </collex:date>
 	</dc:date>
 	<collex:discipline>Law</collex:discipline>

@@ -41,13 +41,13 @@ The section on the letters has lists of mss and draft editions for a few based o
 	<dc:date>
 	  <collex:date>
 	    <rdfs:label>1090-1120</rdfs:label>
-	    <rdf:value>1090-1120</rdf:value>
+	    <rdf:value>1090,1120</rdf:value>
 	  </collex:date>
 	</dc:date>
 	<dc:date>
 	  <collex:date>
 	    <rdfs:label>1100-1900</rdfs:label>
-	    <rdf:value>1100-1900</rdf:value>
+	    <rdf:value>1100,1900</rdf:value>
 	  </collex:date>
 	</dc:date>
 	<collex:discipline>Law</collex:discipline>
