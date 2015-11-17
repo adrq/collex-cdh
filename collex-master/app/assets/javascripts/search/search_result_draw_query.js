@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 	}
 
 	function searchRemove(key, value) {
-		return window.pss.createHtmlTag("button", {'class': "trash select-facet", 'data-key': key, 'data-value': value, 'data-action': 'remove' }, '<img alt="Remove Term" src="'+window.site_path+'/assets/images/lvl2_trash.gif">' );
+		return window.pss.createHtmlTag("button", {'class': "trash select-facet", 'data-key': key, 'data-value': value, 'data-action': 'remove' }, '<img alt="Remove Term" src="'+window.site_path+'/assets/indexiuris/lvl2_trash.gif">' );
 	}
 
 	function getDisplayedKeyFromRole(role) {
