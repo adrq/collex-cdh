@@ -266,97 +266,103 @@ jQuery(document).ready(function($) {
 	function createResultContents(obj, index, collectedDate) {
 		needShowMoreLink = false;
 		var html = "";
-		html += createResultContentItem('one_col', '', obj.alternative, false);
-		html += createResultContentItem('separate_lines', 'Source:', obj.source, false);
-		html += createResultContentItem('multiple_item', 'By:', obj.role_AUT, false);
-		html += createResultContentItem('multiple_item', 'Artist:', obj.role_ART, false);
-		if (collectedDate)
-			html += createResultContentItem('single_item', 'Collected&nbsp;on:', formatDate(collectedDate), false, 'collected-on');
-		else
-			html += createBlankResultContentItem('row collected-on');
 
 		/*if (index !== null) {
 			var tags = createTagLine(obj.uri, index, obj.my_tags, obj.tags);
 			html += createResultContentItem('single_item', 'Tags:', tags, false, 'tag-list');
-		}  disabled to remove the tag filed in the */
+			}  disabled to remove the tag filed in the */
 
-		var site = window.collex.getSite(obj.archive);
-		html += createResultContentItem('single_item', 'Site:', site, false);
-		html += createResultContentItem('multiple_item', 'Genre:', obj.genre, true);
-		html += createResultContentItem('multiple_item', 'Discipline:', obj.discipline, true);
-        html += createResultContentItem('single_item', 'Divisions:', obj.divisions, true);
-        html += createResultContentItem('single_item', 'Shelfmark:', obj.shelfmark, true);
-        html += createResultContentItem('single_item', 'Origin:', obj.origin, true);
-        html += createResultContentItem('single_item', 'Composition:', obj.composition, true);
-        html += createResultContentItem('single_item', 'Notes:', obj.notes, true);
-		html += createResultContentItem('multiple_item', 'Subject:', obj.subject, true);
-		html += createResultContentItem('single_item', 'Exhibit&nbsp;type:', obj.exhibit_type, false);
-		html += createResultContentItem('single_item', 'License:', obj.license, false);
+			var site = window.collex.getSite(obj.archive);
+			
+			//html += createResultContentItem('single_item', 'Language:', obj.lan, true);
+			html += createResultContentItem('single_item', 'Shelfmark:', obj.shelfmark, false); //changed from true to false --akhil
+			html += createResultContentItem('multiple_item', 'Date:', obj.date_label, false); //changed from true to false --akhil
+			html += createResultContentItem('single_item', 'Composition:', obj.composition, false); //changed from true to false --akhil
+			html += createResultContentItem('single_item', 'Provenance:', obj.provenance, false); //changed from multiple_itmes to single_item --akhil
+			html += createResultContentItem('single_item', 'Origin:', obj.origin, false); //changed from true to false --akhil
+			html += createResultContentItem('single_item', 'Site:', site, false); //changed from true to false --akhil
+			html += createResultContentItem('multiple_item', 'Genre:', obj.genre, true);
+			html += createResultContentItem('multiple_item', 'Discipline:', obj.discipline, true);
+	        html += createResultContentItem('single_item', 'Divisions:', obj.divisions, true);
+        
+        
+        
+        
+			html += createResultContentItem('multiple_item', 'Subject:', obj.subject, true);
+			html += createResultContentItem('single_item', 'Exhibit&nbsp;type:', obj.exhibit_type, true);
+			html += createResultContentItem('single_item', 'License:', obj.license, true);
 
-		html += createResultContentItem('multiple_item', 'Editor:', obj.role_EDT, true);
-		html += createResultContentItem('multiple_item', 'Publisher:', obj.role_PBL, true);
-		html += createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true);
-		html += createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true);
-		html += createResultContentItem('multiple_item', 'Date:', obj.date_label, true);
-		html += createResultContentItem('single_item', 'Provenance:', obj.provenance, true); //changed from multiple_itmes to single_item --akhil
-		html += createResultContentItem('multiple_item', 'Architect:', obj.role_ARC, true);
-		html += createResultContentItem('multiple_item', 'Binder:', obj.role_BND, true);
-		html += createResultContentItem('multiple_item', 'Book Designer:', obj.role_BKD, true);
-		html += createResultContentItem('multiple_item', 'Book Producer:', obj.role_BKP, true);
-		html += createResultContentItem('multiple_item', 'Broadcaster:', obj.role_BRD, true);
-		html += createResultContentItem('multiple_item', 'Calligrapher:', obj.role_CLL, true);
-		html += createResultContentItem('multiple_item', 'Cartographer:', obj.role_CTG, true);
-		html += createResultContentItem('multiple_item', 'Collector:', obj.role_COL, true);
-		html += createResultContentItem('multiple_item', 'Colorist:', obj.role_CLR, true);
-		html += createResultContentItem('multiple_item', 'Commentator:', obj.role_CWT, true);
-		html += createResultContentItem('multiple_item', 'Compiler:', obj.role_COM, true);
-		html += createResultContentItem('multiple_item', 'Compositor:', obj.role_CMT, true);
-		html += createResultContentItem('multiple_item', 'Cinematographer:', obj.role_CNG, true);
-		html += createResultContentItem('multiple_item', 'Conductor:', obj.role_CND, true);
-		html += createResultContentItem('multiple_item', 'Creator:', obj.role_CRE, true);
-		html += createResultContentItem('multiple_item', 'Director:', obj.role_DRT, true);
-		html += createResultContentItem('multiple_item', 'Dubious Author:', obj.role_DUB, true);
-		html += createResultContentItem('multiple_item', 'Facsimilist:', obj.role_FAC, true);
-		html += createResultContentItem('multiple_item', 'Former Owner:', obj.role_FMO, true);
-		html += createResultContentItem('multiple_item', 'Illuminator:', obj.role_ILU, true);
-		html += createResultContentItem('multiple_item', 'Illustrator:', obj.role_ILL, true);
-		html += createResultContentItem('multiple_item', 'Interviewer:', obj.role_IVR, true);
-		html += createResultContentItem('multiple_item', 'Interviewee:', obj.role_IVE, true);
-		html += createResultContentItem('multiple_item', 'Lithographer:', obj.role_LTG, true);
-		html += createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true);
-		html += createResultContentItem('multiple_item', 'Performer:', obj.role_PRF, true);
-		html += createResultContentItem('multiple_item', 'Printer:', obj.role_PRT, true);
-		html += createResultContentItem('multiple_item', 'Printer of plates:', obj.role_POP, true);
-		html += createResultContentItem('multiple_item', 'Printmaker:', obj.role_PRM, true);
-		html += createResultContentItem('multiple_item', 'Producer:', obj.role_PRO, true);
-		html += createResultContentItem('multiple_item', 'Production Company:', obj.role_PRN, true);
-		html += createResultContentItem('multiple_item', 'Repository:', obj.role_RPS, true);
-		html += createResultContentItem('multiple_item', 'Rubricator:', obj.role_RBR, true);
-		html += createResultContentItem('multiple_item', 'Scribe:', obj.role_SCR, true);
-		html += createResultContentItem('multiple_item', 'Sculptor:', obj.role_SCL, true);
-		html += createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true);
-		html += createResultContentItem('multiple_item', 'Type Designer:', obj.role_TYD, true);
-		html += createResultContentItem('multiple_item', 'Typographer:', obj.role_TYG, true);
-		html += createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true);
-		html += createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true);
-		html += createResultContentItem('separate_lines', 'Has Part:', createSubMedia(obj.hasPart), true);
-		html += createResultContentItem('separate_lines', 'Is Part Of:', createSubMedia(obj.isPartOf), true);
-		var exhibits;
-		if (obj.exhibits) {
-			exhibits = [];
-			for (var i = 0; i < obj.exhibits.length; i++) {
-				exhibits.push(formatExhibit(obj.exhibits[i]));
-			}
-		}
-		if (exhibits)
-			html += createResultContentItem('multiple_item', 'Exhibits:', exhibits, true, 'exhibits-row');
-		else
-			html += createBlankResultContentItem('row exhibits-row');
+			html += createResultContentItem('multiple_item', 'Editor:', obj.role_EDT, true);
+			html += createResultContentItem('multiple_item', 'Publisher:', obj.role_PBL, true);
+			html += createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true);
+			html += createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true);
+			html += createResultContentItem('multiple_item', 'Architect:', obj.role_ARC, true);
+			html += createResultContentItem('multiple_item', 'Binder:', obj.role_BND, true);
+			html += createResultContentItem('multiple_item', 'Book Designer:', obj.role_BKD, true);
+			html += createResultContentItem('multiple_item', 'Book Producer:', obj.role_BKP, true);
+			html += createResultContentItem('multiple_item', 'Broadcaster:', obj.role_BRD, true);
+			html += createResultContentItem('multiple_item', 'Calligrapher:', obj.role_CLL, true);
+			html += createResultContentItem('multiple_item', 'Cartographer:', obj.role_CTG, true);
+			html += createResultContentItem('multiple_item', 'Collector:', obj.role_COL, true);
+			html += createResultContentItem('multiple_item', 'Colorist:', obj.role_CLR, true);
+			html += createResultContentItem('multiple_item', 'Commentator:', obj.role_CWT, true);
+			html += createResultContentItem('multiple_item', 'Compiler:', obj.role_COM, true);
+			html += createResultContentItem('multiple_item', 'Compositor:', obj.role_CMT, true);
+			html += createResultContentItem('multiple_item', 'Cinematographer:', obj.role_CNG, true);
+			html += createResultContentItem('multiple_item', 'Conductor:', obj.role_CND, true);
+			html += createResultContentItem('multiple_item', 'Creator:', obj.role_CRE, true);
+			html += createResultContentItem('multiple_item', 'Director:', obj.role_DRT, true);
+			html += createResultContentItem('multiple_item', 'Dubious Author:', obj.role_DUB, true);
+			html += createResultContentItem('multiple_item', 'Facsimilist:', obj.role_FAC, true);
+			html += createResultContentItem('multiple_item', 'Former Owner:', obj.role_FMO, true);
+			html += createResultContentItem('multiple_item', 'Illuminator:', obj.role_ILU, true);
+			html += createResultContentItem('multiple_item', 'Illustrator:', obj.role_ILL, true);
+			html += createResultContentItem('multiple_item', 'Interviewer:', obj.role_IVR, true);
+			html += createResultContentItem('multiple_item', 'Interviewee:', obj.role_IVE, true);
+			html += createResultContentItem('multiple_item', 'Lithographer:', obj.role_LTG, true);
+			html += createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true);
+			html += createResultContentItem('multiple_item', 'Performer:', obj.role_PRF, true);
+			html += createResultContentItem('multiple_item', 'Printer:', obj.role_PRT, true);
+			html += createResultContentItem('multiple_item', 'Printer of plates:', obj.role_POP, true);
+			html += createResultContentItem('multiple_item', 'Printmaker:', obj.role_PRM, true);
+			html += createResultContentItem('multiple_item', 'Producer:', obj.role_PRO, true);
+			html += createResultContentItem('multiple_item', 'Production Company:', obj.role_PRN, true);
+			html += createResultContentItem('multiple_item', 'Repository:', obj.role_RPS, true);
+			html += createResultContentItem('multiple_item', 'Rubricator:', obj.role_RBR, true);
+			html += createResultContentItem('multiple_item', 'Scribe:', obj.role_SCR, true);
+			html += createResultContentItem('multiple_item', 'Sculptor:', obj.role_SCL, true);
+			html += createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true);
+			html += createResultContentItem('multiple_item', 'Type Designer:', obj.role_TYD, true);
+			html += createResultContentItem('multiple_item', 'Typographer:', obj.role_TYG, true);
+			html += createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true);
+			html += createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true);
+			html += createResultContentItem('single_item', 'Notes:', obj.notes, true);
+			html += createResultContentItem('one_col', '', obj.alternative, true);
+			html += createResultContentItem('multiple_item', 'By:', obj.role_AUT, false);
+			html += createResultContentItem('multiple_item', 'Artist:', obj.role_ART, true);
+			if (collectedDate)
+				html += createResultContentItem('single_item', 'Collected&nbsp;on:', formatDate(collectedDate), false, 'collected-on');
+			else
+				html += createBlankResultContentItem('row collected-on');
+			html += createResultContentItem('separate_lines', 'Source:', obj.source, true);
+			html += createResultContentItem('separate_lines', 'Has Part:', createSubMedia(obj.hasPart), true);
+			html += createResultContentItem('separate_lines', 'Is Part Of:', createSubMedia(obj.isPartOf), true);
+			var exhibits;
+			if (obj.exhibits) {
+				exhibits = [];
+					for (var i = 0; i < obj.exhibits.length; i++) {
+						exhibits.push(formatExhibit(obj.exhibits[i]));
+					}
+				}
+				if (exhibits)
+					html += createResultContentItem('multiple_item', 'Exhibits:', exhibits, true, 'exhibits-row');
+				else
+					html += createBlankResultContentItem('row exhibits-row');
 
-		if (needShowMoreLink && index !== null) {
-			html += window.pss.createHtmlTag("button", { id: "more-search_result_"+index,  'class': 'nav_link more', onclick: 'removeHidden("more-search_result_' + index + '", "search_result_' + index + '");return false;'}, '[more...]');
-		}
-
+				if (needShowMoreLink && index !== null) {
+					html += window.pss.createHtmlTag("button", { id: "more-search_result_"+index,  'class': 'nav_link more', onclick: 'removeHidden("more-search_result_' + index + '", "search_result_' + index + '");return false;'}, '[more...]');
+				}
+	
 		var annotation = createAnnotationBody(index, obj.uri, obj.annotation);
 		var annotationOptions = { 'class': 'row annotation-row' };
 		if (!collectedDate)
