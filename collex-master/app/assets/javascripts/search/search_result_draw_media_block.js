@@ -279,7 +279,7 @@ jQuery(document).ready(function($) {
 			html += createResultContentItem('multiple_item', 'Date:', obj.date_label, false); //changed from true to false --akhil
 			html += createResultContentItem('single_item', 'Composition:', obj.composition, false); //changed from true to false --akhil
 			html += createResultContentItem('single_item', 'Provenance:', obj.provenance, false); //changed from multiple_itmes to single_item --akhil
-			html += createResultContentItem('single_item', 'Origin:', obj.origin, false); //changed from true to false --akhil
+			html += createResultContentItem('single_item', 'Place of Origin:', obj.origin, false); //changed from true to false --akhil
 			html += createResultContentItem('single_item', 'Site:', site, false); //changed from true to false --akhil
 			html += createResultContentItem('multiple_item', 'Genre:', obj.genre, true);
 			html += createResultContentItem('multiple_item', 'Discipline:', obj.discipline, true);
