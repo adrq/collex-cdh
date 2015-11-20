@@ -41,7 +41,9 @@ jQuery.ajax({
 
 	<div id="subnav_container">
 		 <div id="login_container">
-			<%= render :partial => '/common/login_slider', :locals => { :current_page => @current_page } %> 
+		<% if false %> 
+		<%= render :partial => '/common/login_slider', :locals => { :current_page => @current_page } %> 
+		<% end %>
 		</div>
        		
 		   <div class="clear_both"></div>
