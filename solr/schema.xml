@@ -143,12 +143,12 @@
 		<field name="quarter_century" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="half_century" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="century" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="origin" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
+		<field name="origin" type="text_general" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="composition" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
-		<field name="shelfmark" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
+		<field name="shelfmark" type="text_general" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="divisions" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="notes" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
-		<field name="doc_type" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="doc_type" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="has_pages" type="boolean" indexed="true" stored="true"/>
 		<field name="has_full_text" type="boolean" indexed="true" stored="true"/>
 		<field name="is_ocr" type="boolean" indexed="true" stored="true"/>
@@ -158,8 +158,8 @@
 		<field name="language" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="geospacial" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="typewright" type="boolean" indexed="true" stored="true"/>
-		<field name="provenance" type="text_general" indexed="true" stored="true" multiValued="true"/>
-		<field name="discipline" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="provenance" type="string" indexed="true" stored="true"/>
+		<field name="discipline" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="hasPart" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="isPartOf" type="string" indexed="true" stored="true" multiValued="true"/>
 
@@ -220,6 +220,7 @@
 	<copyField source="provenance" dest="content"/>
 	<copyField source="discipline" dest="content"/>
 	<copyField source="subject" dest="content"/>
+	<copyField source="shelfmark" dest="content"/><!-- Added by akhil --> 
 	<copyField source="origin" dest="content"/> <!-- Added by akhil -->
 	<copyField source="composition" dest="content"/> <!-- Added by akhil -->
 
@@ -233,6 +234,7 @@
 	<copyField source="provenance" dest="content_ascii"/>
 	<copyField source="discipline" dest="content_ascii"/>
 	<copyField source="subject" dest="content_ascii"/>
+	<copyField source="shelfmark" dest="content_ascii"/><!-- Added by akhil --> 
 	<copyField source="origin" dest="content_ascii"/> <!-- Added by akhil -->
 	<copyField source="composition" dest="content_ascii"/> <!-- Added by akhil -->
     
@@ -246,6 +248,7 @@
    <copyField source="provenance" dest="content_auto"/>
    <copyField source="discipline" dest="content_auto"/>
    <copyField source="subject" dest="content_auto"/>
+   <copyField source="shelfmark" dest="content_auto"/><!-- Added by akhil --> 
    <copyField source="origin" dest="content_auto"/> <!-- Added by akhil -->
    <copyField source="composition" dest="content_auto"/> <!-- Added by akhil -->
 
@@ -412,6 +415,7 @@
 	 also applies synonyms. -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
+		  <tokenizer class="solr.PatternTokenizerFactory" pattern="[,.]"/>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
         <!-- in this example, we will only use synonyms at query time
@@ -420,6 +424,7 @@
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="query">
+		  <tokenizer class="solr.PatternTokenizerFactory" pattern="[,.]"/>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
