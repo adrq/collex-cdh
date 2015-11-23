@@ -3,7 +3,7 @@ INDEX IURIS - TODO LIST
 ****
 SOLR
 ****
-Needs to change the schema for Date and Type filed.
+Needs to change the schema for Date and Type fields.
 
 
 
@@ -33,6 +33,7 @@ COLLEX
 ***********
 RDF-INDEXER
 ***********
+- update to reflect date and type fields
 
 
 
@@ -45,3 +46,4 @@ INFO/SUBMISSIONS WEBSITE
 - update DBs and submission form to support new type fields
 - add validation for ALL fields
 - add delete functionality for individual submisions
+- add API for authority files
