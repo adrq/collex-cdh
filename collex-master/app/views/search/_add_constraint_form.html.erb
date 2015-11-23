@@ -175,11 +175,11 @@
            <tr><td>Publisher:</td><td><input name="pub" type="text" class="search_entry_box" <%= "value='#{@pphrs}'" if @pphrs %> /></td></tr>
         <% end %>
         <% if SKIN.upcase == 'INDEXIURIS' %>
-           <tr>
+       <!--    <tr>
              <td>Language:</td>
              <td><%= select_tag( :lang, options_from_collection_for_select([IsoLanguage.new(:english_name => "(Select a language)")] + Catalog.factory_create(false).get_languages(), :alpha3, :first_english_name), :class => 'search_language' ) %></td>
 			 
-           </tr>
+           </tr> -->
         <% end %>
         <tr><td>Year (YYYY):</td><td><input id="search_year" name="y" type="text" class="search_entry_box" placeholder="Please enter the date in YYYY or (YYYY TO YYYY) format" <%= "value='#{@yphrs}'" if @yphrs %> /></td>
             <td>
