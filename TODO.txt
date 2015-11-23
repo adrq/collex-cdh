@@ -22,8 +22,9 @@ CATALOG
 ******
 COLLEX
 ******
-Search form should be redesigned. Should add date and type fileds for searching.
-Help sign should be added next to the date filed.
+- Search form should be redesigned. Should add date and type fileds for searching.
+- Help sign should be added next to the date filed.
+- Date slider should update to correct values when loading a page from url
 
 
 
