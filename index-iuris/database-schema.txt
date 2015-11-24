@@ -94,13 +94,17 @@ CREATE TABLE languages(
   PRIMARY KEY (id)
 );
 
+
+#UPDATED BY adrian on 11/23/2015 to reflect new type fields
 CREATE TABLE objects (
   id int(11) NOT NULL AUTO_INCREMENT,
   custom_namespace varchar(255) DEFAULT NULL,
   rdf_about text DEFAULT NULL,
   archive varchar(255) DEFAULT NULL,
   title text DEFAULT NULL,
-  type varchar(255) DEFAULT NULL,
+  type_of_content varchar(255) DEFAULT NULL,
+  type_of_original_artifact varchar(255) DEFAULT NULL,
+  type_of_digital_artifact varchar(255) DEFAULT NULL,
   url text DEFAULT NULL,
   origin text DEFAULT NULL,
   provenance text DEFAULT NULL,

@@ -51,5 +51,5 @@ Collex::Application.configure do
   config.assets.debug = true
   
   #site_path
-  config.site_path = "/indexiuris/localhost"
+  config.site_path = ""
 end
