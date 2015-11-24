@@ -71,8 +71,8 @@ final class NinesStatementHandler implements RDFHandler {
         String subject = statement.getSubject().stringValue();
         String predicate = statement.getPredicate().stringValue();
         String object = statement.getObject().stringValue();
-        //System.out.println(predicate);
-        //System.out.println(object);
+        //System.out.println("predicate : "+predicate);
+        //System.out.println("object : "+object);
         
         // if the object of the triple is blank, skip it, it is nothing worth indexing
         // EXCEPT for text in page-level RDF. There are valid cases where the collex:text
@@ -182,8 +182,6 @@ final class NinesStatementHandler implements RDFHandler {
             return;
         if (handleSubject(predicate, object))
             return;
-        if (handleType(predicate, object))
-            return;
         if (handleHasPart(predicate, object))
             return;
         if (handleIsPartOf(predicate, object))
@@ -198,9 +196,37 @@ final class NinesStatementHandler implements RDFHandler {
             return;
         if (handleNotes(predicate, object))
             return;
+        if (handleTypeDigitalArtifact(predicate, object)) //changed from Type to TypeDigitalArtifact
+            return;
+        if (handleTypeOriginalArtifact(predicate, object)) //added TypeOriginalArtifact
+            return;
+        if (handleTypeContent(predicate, object)) //added TypeContent
+            return;
 
     }
-    
+    private boolean handleTypeOriginalArtifact(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/type_original_artifact".equals(predicate)) { // replaced "http://purl.org/dc/elements/1.1/type" with "http://lichen.csd.sc.edu/indexiuris/type_original_artifact"    
+            addField(doc, "type_original_artifact", object);
+            System.out.println("into ");
+            return true;
+        }
+        return false;
+    }
+    private boolean handleTypeDigitalArtifact(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/type_digital_artifact".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/type_digital_artifact" -- akhil
+            addField(doc, "type_digital_artifact", object);
+            return true;
+        }
+        return false;
+    }
+    private boolean handleTypeContent(String predicate, String object) {
+    	if ("http://lichen.csd.sc.edu/indexiuris/terms/type_content".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/type_content" -- akhil
+            addField(doc, "type_content", object);
+            return true;
+        }
+        return false;
+    }
+	
     private boolean handleOrigin(String predicate, String object) {
     	if ("http://lichen.csd.sc.edu/indexiuris/terms/origin".equals(predicate)) {// replaced "http://purl.org/dc/elements/1.1/format" with "http://lichen.csd.sc.edu/indexiuris/format" -- akhil
             addField(doc, "origin", object);
@@ -415,13 +441,7 @@ final class NinesStatementHandler implements RDFHandler {
         return false;
     }
 
-    private boolean handleType(String predicate, String object) {
-    	if ("http://lichen.csd.sc.edu/indexiuris/terms/type".equals(predicate)) { // replaced "http://purl.org/dc/elements/1.1/type" with "http://lichen.csd.sc.edu/indexiuris/type" 
-            addField(doc, "doc_type", object);
-            return true;
-        }
-        return false;
-    }
+    
 
     private boolean handleDiscipline(String predicate, String object) {
             if ("http://www.collex.org/schema#discipline".equals(predicate)) {
@@ -951,6 +971,15 @@ final class NinesStatementHandler implements RDFHandler {
             objectArray = object.get("freeculture");
             if (objectArray == null) // If we weren't told differently, then it is freeculture
                 addField(object, "freeculture", "T");
+            objectArray = object.get("type_digital_artifact");
+            if (objectArray == null) // If we weren't told differently, then it is type_digital_artifact
+                addField(object, "type_digital_artifact", "T");
+            objectArray = object.get("type_original_artifact");
+            if (objectArray == null) // If we weren't told differently, then it is type_original_artifact
+                addField(object, "type_original_artifact", "T");
+            objectArray = object.get("type_content");
+            if (objectArray == null) // If we weren't told differently, then it is type_content
+                addField(object, "type_content", "T");
         }
         return documents;
     }

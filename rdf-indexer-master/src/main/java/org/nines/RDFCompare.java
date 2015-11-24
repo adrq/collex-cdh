@@ -49,7 +49,7 @@ public class RDFCompare {
     //      "PQCh-EAF", "amdeveryday", "amdecj", "oldBailey" ));
 
     private static final ArrayList<String> REQUIRED_FIELDS = new ArrayList<String>(Arrays.asList("title_sort", "title",
-        "genre", "archive", "url", "federation", "year_sort", "year_sort_asc", "year_sort_desc", "freeculture", "is_ocr"));
+        "genre", "archive", "url", "federation", "year_sort", "year_sort_asc", "year_sort_desc", "freeculture", "is_ocr","type_digital_artifact","type_original_artifact","type_content")); //added three type fields --akhil
     private static final ArrayList<String> REQUIRED_PAGES_FIELDS = new ArrayList<String>(Arrays.asList("text", "page_num", "page_of"));
 
     /**

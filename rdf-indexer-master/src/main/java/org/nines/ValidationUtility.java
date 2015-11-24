@@ -43,20 +43,31 @@ public class ValidationUtility {
         "Science", "Law", "Literature", "Musicology", "Math", "Religious Studies", "Manuscript Studies"
     };
 
-    // List of all valid types
-    public static final String[] TYPE_LIST = new String [] {
-        "Codex",  "Collection",  "Drawing",  "Illustration", "Interactive Resource",  "Manuscript",  "Map",  "Moving Image",  "Periodical",
-        "Physical Object", "Roll", "Sheet",  "Sound",  "Still Image",  "Typescript", "Text","Critical edition","Manuscript Codex","Digital image" /*adrian - added "Text" type*//*"ManuScript Codex" added to the list--akhil*/
+    // List of all valid TYPE_DIGITAL_ARTIFACT_TYPE types  //MODIFIED DOC_TYPE NEW METADATA FILED type_digital_artifact --AKHIL
+    public static final String[] TYPE_DIGITAL_ARTIFACT_LIST = new String [] { 
+        "Digital transcription of text",  "Digital image" /*adrian - added "Text" type*//*"ManuScript Codex" added to the list--akhil*/
+    };
+	
+    // List of all valid ORIGINAL_ARTIFACT_TYPE types //ADDED FOR NEW METADATA FILED type_original_artifact --AKHIL
+    public static final String[] TYPE_ORIGINAL_ARTIFACT_LIST = new String [] {
+        "Codex",  "Other physical object",  "Roll",  "Manuscript",  "Microfilm", "Incunabula", "Facsimile",  "Typescript", "Book" /*adrian - added "Text" type*//*"ManuScript Codex" added to the list--akhil*/
+    };
+	
+    // List of all valid TYPE_CONTENT types  //ADDED FOR NEW METADATA FILED type_content --AKHIL
+    public static final String[] TYPE_CONTENT_LIST = new String [] {
+        "Text",  "Image" /*adrian - added "Text" type*//*"ManuScript Codex" added to the list--akhil*/
     };
 
     // Fields that are required to be present in RDF
-    public static final String[] REQUIRED_FIELDS = new String[] { "archive", "title", "year", "doc_type", "genre",  "discipline",
+	//added "ii:doc_type_digital_artifact","ii:type_original_artifact","ii:type_content" --akhil
+    public static final String[] REQUIRED_FIELDS = new String[] { "archive", "title", "year", "type_digital_artifact","type_original_artifact","type_content", "genre",  "discipline",
         "freeculture", "has_full_text", "is_ocr", "federation", "url"  };
 
     // Parallel to required fields - the actual tag name to be used
-    // Any change above must be reflected here
-    private static final String[] RDF_TERM = new String[] { "collex:archive", "dc:title", "dc:date", "ii:type", "ii:genre", "collex:discipline",
-        "collex:freeculture", "collex:full_text", "collex:is_ocr", "collex:federation", "rdfs:seeAlso"};
+    // Any change above must be reflected here 
+	//added "ii:doc_type_digital_artifact","ii:type_original_artifact","ii:type_content" --akhil
+    private static final String[] RDF_TERM = new String[] { "collex:archive", "dc:title", "dc:date", "ii:type_digital_artifact","ii:type_original_artifact","ii:type_content", "ii:genre", "collex:discipline",
+        "collex:freeculture", "collex:full_text", "collex:is_ocr", "collex:federation", "rdfs:seeAlso"}; 
     
     public static final String[] REQUIRED_PAGE_FIELDS = new String[] { "text", "page_of", "page_num" };
     private static final String[] RDF_PAGE_TERM = new String[] { "collex:text", "collex:pageof", "collex:pagenum"};
@@ -76,7 +87,9 @@ public class ValidationUtility {
             messages.addAll(ValidationUtility.validateGenre(object));
             messages.addAll(ValidationUtility.validateDiscipline(object));
             messages.addAll(ValidationUtility.validateRole(object));
-            messages.addAll(ValidationUtility.validateType(object));
+            messages.addAll(ValidationUtility.validateTypeDigitalArtifact(object));  //MODIFIED DOC_TYPE NEW METADATA FILED type_digital_artifact --AKHIL
+			messages.addAll(ValidationUtility.validateTypeOriginalArtifact(object)); //ADDED FOR NEW METADATA FILED type_original_artifact --AKHIL
+			messages.addAll(ValidationUtility.validateTypeContent(object));  //ADDED FOR NEW METADATA FILED type_content --AKHIL
             messages.addAll(ValidationUtility.validateUri(object));
         } else {
             messages.addAll(ValidationUtility.validatePagesRequired(object));
@@ -265,17 +278,17 @@ public class ValidationUtility {
     /**
      * The genre must be in a constrained list.
      */
-    public static ArrayList<String> validateType(HashMap<String, ArrayList<String>> object) {
+    public static ArrayList<String> validateTypeDigitalArtifact(HashMap<String, ArrayList<String>> object) {  //MODIFIED DOC_TYPE NEW METADATA FILED type_digital_artifact --AKHIL
         ArrayList<String> messages = new ArrayList<String>();
         for (Map.Entry<String, ArrayList<String>> entry : object.entrySet()) {
 
             String key = entry.getKey();
             ArrayList<String> valueList = entry.getValue();
 
-            if ("doc_type".equals(key)) {
+            if ("type_digital_artifact".equals(key)) {
                 // test 1: each type is valid
                 for (String type : valueList) {
-                    if (!validateTypeInList(type)) {
+                    if (!validateTypeDigitalArtifactInList(type)) {
                         messages.add(type + " type not approved by ARC");
                     }
                 }
@@ -284,8 +297,8 @@ public class ValidationUtility {
         return messages;
     }
 
-    public static boolean validateTypeInList(String type) {
-        for (String aTypeList : TYPE_LIST) {
+    public static boolean validateTypeDigitalArtifactInList(String type) {  //MODIFIED DOCT_TYPE METADATA FILED type_digital_artifact --AKHIL
+        for (String aTypeList : TYPE_DIGITAL_ARTIFACT_LIST) {
             if (aTypeList.equals(type)) {
                 return true;
             }
@@ -294,6 +307,64 @@ public class ValidationUtility {
         return false;
     }
 
+    public static ArrayList<String> validateTypeOriginalArtifact(HashMap<String, ArrayList<String>> object) {  //ADDED FOR NEW METADATA FILED type_original_artifact --AKHIL
+        ArrayList<String> messages = new ArrayList<String>();
+        for (Map.Entry<String, ArrayList<String>> entry : object.entrySet()) {
+
+            String key = entry.getKey();
+            ArrayList<String> valueList = entry.getValue();
+
+            if ("type_original_artifact".equals(key)) {
+                // test 1: each type is valid
+                for (String type : valueList) {
+                    if (!validateTypeOriginalArtifactInList(type)) {
+                        messages.add(type + " type not approved by ARC");
+                    }
+                }
+            }
+        }
+        return messages;
+    }
+	
+    public static boolean validateTypeOriginalArtifactInList(String type) {   //ADDED FOR NEW METADATA FILED type_original_artifact --AKHIL
+        for (String aTypeList : TYPE_ORIGINAL_ARTIFACT_LIST) {
+            if (aTypeList.equals(type)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static ArrayList<String> validateTypeContent(HashMap<String, ArrayList<String>> object) {  //ADDED FOR NEW METADATA FILED type_content --AKHIL
+        ArrayList<String> messages = new ArrayList<String>();
+        for (Map.Entry<String, ArrayList<String>> entry : object.entrySet()) {
+
+            String key = entry.getKey();
+            ArrayList<String> valueList = entry.getValue();
+
+            if ("type_content".equals(key)) {
+                // test 1: each type is valid
+                for (String type : valueList) {
+                    if (!validateTypeContentInList(type)) {
+                        messages.add(type + " type not approved by ARC");
+                    }
+                }
+            }
+        }
+        return messages;
+    }
+	
+    public static boolean validateTypeContentInList(String type) {  //ADDED FOR NEW METADATA FILED type_content --AKHIL
+        for (String aTypeList : TYPE_CONTENT_LIST) {
+            if (aTypeList.equals(type)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+	
     public static ArrayList<String> validateFreecultureElement(HashMap<String, ArrayList<String>> object) {
         ArrayList<String> messages = new ArrayList<String>();
 
