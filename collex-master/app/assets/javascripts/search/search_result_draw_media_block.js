@@ -277,13 +277,16 @@ jQuery(document).ready(function($) {
 			//html += createResultContentItem('single_item', 'Language:', obj.lan, true);
 			html += createResultContentItem('single_item', 'Shelfmark:', obj.shelfmark, false); //changed from true to false --akhil
 			html += createResultContentItem('multiple_item', 'Date:', obj.date_label, false); //changed from true to false --akhil
-			html += createResultContentItem('single_item', 'Composition:', obj.composition, false); //changed from true to false --akhil
+			html += createResultContentItem('single_item', 'Place of Composition:', obj.composition, false); //changed from true to false --akhil
 			html += createResultContentItem('single_item', 'Provenance:', obj.provenance, false); //changed from multiple_itmes to single_item --akhil
 			html += createResultContentItem('single_item', 'Place of Origin:', obj.origin, false); //changed from true to false --akhil
 			html += createResultContentItem('single_item', 'Site:', site, false); //changed from true to false --akhil
 			html += createResultContentItem('multiple_item', 'Genre:', obj.genre, true);
 			html += createResultContentItem('multiple_item', 'Discipline:', obj.discipline, true);
 	        html += createResultContentItem('single_item', 'Divisions:', obj.divisions, true);
+			html += createResultContentItem('single_item', 'Content Type:', obj.type_content, true);
+			html += createResultContentItem('multiple_item', 'Digital Artifact Type:', obj.type_digital_artifact, true); //added for the type_digital_artifact field --akhil
+			html += createResultContentItem('single_item', 'Original Artifact Type:', obj.type_original_artifact, true); //added for the type_original_artifact field --akhil
         
         
         
@@ -337,7 +340,7 @@ jQuery(document).ready(function($) {
 			html += createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true);
 			html += createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true);
 			html += createResultContentItem('single_item', 'Notes:', obj.notes, true);
-			html += createResultContentItem('one_col', '', obj.alternative, true);
+			html += createResultContentItem('single_item', 'Alternative Title', obj.alternative, true);
 			html += createResultContentItem('multiple_item', 'By:', obj.role_AUT, false);
 			html += createResultContentItem('multiple_item', 'Artist:', obj.role_ART, true);
 			if (collectedDate)

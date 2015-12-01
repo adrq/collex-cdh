@@ -60,6 +60,10 @@
 	  	  <%=  create_provenance_table([]) %>
 	  <% when 'composition' %> <!--added for composition field -akhil -->
 	  	  <%=  create_composition_table([]) %>
+      <% when 'type_digital_artifact' %> <!--added for type_digital_artifactfield -akhil -->
+	  	  <%=  create_type_digital_artifact_table([]) %>
+      <% when 'type_original_artifact' %> <!--added for type_original_artifact field -akhil -->
+	  	  <%=  create_type_original_artifact_table([]) %>
       <% end %>
   <% end %>
 

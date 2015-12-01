@@ -123,7 +123,7 @@
 		<field name="date_label" type="string" indexed="false" stored="true" multiValued="true"/>
 		<field name="editor" type="text_general" indexed="true" stored="false" multiValued="true"/>
 		<field name="freeculture" type="boolean" indexed="true" stored="true"/>
-		<field name="genre" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="genre" type="string" indexed="true" stored="true" multiValued="true"/> <!-- Facet -->
 		<field name="subject" type="text_en" indexed="true" stored="true" multiValued="true"/>
 		<field name="image" type="string" indexed="false" stored="true"/>
 		<field name="publisher" type="text_general" indexed="true" stored="false" multiValued="true"/>
@@ -144,21 +144,23 @@
 		<field name="half_century" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="century" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="origin" type="text_general" indexed="true" stored="true" /> <!-- added by akhil/ -->
-		<field name="composition" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
+		<field name="composition" type="string" indexed="true" stored="true" /> <!-- added by akhil/, Facet -->
 		<field name="shelfmark" type="text_general" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="divisions" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
 		<field name="notes" type="string" indexed="true" stored="true" /> <!-- added by akhil/ -->
-		<field name="doc_type" type="text_general" indexed="true" stored="true" multiValued="true"/>
+		<field name="type_digital_artifact" type="string" indexed="true" stored="true" multiValued="true"/><!-- changed doc_type to type_digital_artifact - akhil, Facet  -->
+		<field name="type_original_artifact" type="string" indexed="true" stored="true"/><!-- added type_original_artifact - akhil, Facet-->
+		<field name="type_content" type="text_general" indexed="true" stored="true"/><!-- added type_content - akhil-->
 		<field name="has_pages" type="boolean" indexed="true" stored="true"/>
 		<field name="has_full_text" type="boolean" indexed="true" stored="true"/>
 		<field name="is_ocr" type="boolean" indexed="true" stored="true"/>
 		<field name="federation" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="person" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="format" type="string" indexed="true" stored="true" multiValued="true"/>
-		<field name="language" type="string" indexed="true" stored="true" multiValued="true"/>
+		<field name="language" type="string" indexed="true" stored="true" multiValued="true"/> <!-- Facet -->
 		<field name="geospacial" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="typewright" type="boolean" indexed="true" stored="true"/>
-		<field name="provenance" type="string" indexed="true" stored="true"/>
+		<field name="provenance" type="string" indexed="true" stored="true"/> <!-- Facet -->
 		<field name="discipline" type="text_general" indexed="true" stored="true" multiValued="true"/>
 		<field name="hasPart" type="string" indexed="true" stored="true" multiValued="true"/>
 		<field name="isPartOf" type="string" indexed="true" stored="true" multiValued="true"/>
@@ -220,6 +222,10 @@
 	<copyField source="provenance" dest="content"/>
 	<copyField source="discipline" dest="content"/>
 	<copyField source="subject" dest="content"/>
+	<copyField source="genre" dest="content"/><!-- Added by akhil --> 
+	<copyField source="type_content" dest="content"/><!-- Added by akhil --> 
+	<copyField source="type_digital_artifact" dest="content"/><!-- Added by akhil --> 
+	<copyField source="type_original_artifact" dest="content"/><!-- Added by akhil --> 
 	<copyField source="shelfmark" dest="content"/><!-- Added by akhil --> 
 	<copyField source="origin" dest="content"/> <!-- Added by akhil -->
 	<copyField source="composition" dest="content"/> <!-- Added by akhil -->
@@ -234,6 +240,10 @@
 	<copyField source="provenance" dest="content_ascii"/>
 	<copyField source="discipline" dest="content_ascii"/>
 	<copyField source="subject" dest="content_ascii"/>
+	<copyField source="genre" dest="content_ascii"/><!-- Added by akhil --> 
+	<copyField source="type_digital_artifact" dest="content_ascii"/><!-- Added by akhil --> 
+	<copyField source="type_original_artifact" dest="content_ascii"/><!-- Added by akhil --> 
+	<copyField source="type_content" dest="content_ascii"/><!-- Added by akhil --> 
 	<copyField source="shelfmark" dest="content_ascii"/><!-- Added by akhil --> 
 	<copyField source="origin" dest="content_ascii"/> <!-- Added by akhil -->
 	<copyField source="composition" dest="content_ascii"/> <!-- Added by akhil -->
@@ -248,6 +258,10 @@
    <copyField source="provenance" dest="content_auto"/>
    <copyField source="discipline" dest="content_auto"/>
    <copyField source="subject" dest="content_auto"/>
+   <copyField source="genre" dest="content_auto"/><!-- Added by akhil --> 
+   <copyField source="type_digital_artifact" dest="content_auto"/><!-- Added by akhil -->
+   <copyField source="type_original_artifact" dest="content_auto"/><!-- Added by akhil --> 
+   <copyField source="type_content" dest="content_auto"/><!-- Added by akhil --> 
    <copyField source="shelfmark" dest="content_auto"/><!-- Added by akhil --> 
    <copyField source="origin" dest="content_auto"/> <!-- Added by akhil -->
    <copyField source="composition" dest="content_auto"/> <!-- Added by akhil -->

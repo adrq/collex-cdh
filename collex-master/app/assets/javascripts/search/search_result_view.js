@@ -5,6 +5,9 @@
  var language_number=1;
  var composition_number=1;
  var provenance_number=1;
+ var type_content_number=1;
+ var type_digital_artifact_number=1;
+var type_original_artifact_number=1;
 
 jQuery(document).ready(function($) {
 	"use strict";
@@ -134,6 +137,8 @@ timeoutHandle = null;
  var language_value;
  var composition_value;
  var provenance_value;
+ var type_digital_artifact_value;
+ var type_original_artifact_value;
 
  
  window.collex.createFacets(obj,1);
@@ -146,6 +151,8 @@ timeoutHandle = null;
 		window.collex.language_value=false;
 		window.collex.provenance_value=false;
 		window.collex.composition_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.access_value=true;
 		window.collex.createFacets(obj,access_number);
 		access_number=access_number+1;
@@ -156,6 +163,8 @@ timeoutHandle = null;
 		window.collex.language_value=false;
 		window.collex.composition_value=false;
 		window.collex.provenance_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.genre_value=true;
 		window.collex.createFacets(obj,genre_number);
 		genre_number = genre_number +1;
@@ -166,6 +175,8 @@ timeoutHandle = null;
 		window.collex.language_value=false;
 		window.collex.composition_value=false;
 		window.collex.provenance_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.format_value=true;
 		window.collex.createFacets(obj,format_number);
 		format_number = format_number +1;
@@ -176,6 +187,8 @@ timeoutHandle = null;
 		window.collex.language_value=false;
 		window.collex.provenance_value=false;
 		window.collex.composition_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.origin_value=true;
 		window.collex.createFacets(obj,origin_number);
 		origin_number = origin_number +1;
@@ -187,6 +200,8 @@ timeoutHandle = null;
 		window.collex.origin_value=false;
 		window.collex.composition_value=true;
 		window.collex.provenance_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.createFacets(obj,composition_number);
 		composition_number = composition_number +1;
 	}else if(facet == "Language"){
@@ -197,6 +212,8 @@ timeoutHandle = null;
 		window.collex.composition_value=false;
 		window.collex.language_value=true;
 		window.collex.provenance_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.createFacets(obj,language_number);
 		language_number = language_number +1;
 	}else if(facet == "Provenance"){
@@ -206,9 +223,37 @@ timeoutHandle = null;
 		window.collex.language_value=false;
 		window.collex.origin_value=false;
 		window.collex.composition_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=false;
 		window.collex.provenance_value=true;
 		window.collex.createFacets(obj,provenance_number);
 		provenance_number = provenance_number +1;
+	}else if(facet == "type_digital_artifact"){
+		console.log("type_digital_artifact");
+		window.collex.access_value=false;
+		window.collex.format_value=false;
+		window.collex.genre_value=false;
+		window.collex.language_value=false;
+		window.collex.origin_value=false;
+		window.collex.composition_value=false;
+		window.collex.provenance_value=false;
+		window.collex.type_digital_artifact_value=true;
+		window.collex.type_original_artifact_value=false;
+		window.collex.createFacets(obj,type_digital_artifact_number);
+		type_digital_artifact_number = type_digital_artifact_number +1;
+	}else if(facet == "type_original_artifact"){
+		console.log("type_original_artifact");
+		window.collex.access_value=false;
+		window.collex.format_value=false;
+		window.collex.genre_value=false;
+		window.collex.language_value=false;
+		window.collex.origin_value=false;
+		window.collex.composition_value=false;
+		window.collex.provenance_value=false;
+		window.collex.type_digital_artifact_value=false;
+		window.collex.type_original_artifact_value=true;
+		window.collex.createFacets(obj,type_original_artifact_number);
+		type_original_artifact_number = type_original_artifact_number +1;
 	}else{
 		
 	}

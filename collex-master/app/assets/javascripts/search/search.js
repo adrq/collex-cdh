@@ -40,12 +40,14 @@ $(function() {
       max: 2000,
       values: [100,800],
       slide: function( event, ui ) {
+		  
         $( "#amount" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-lower_range=ui.values[ 0 ];
-upper_range=ui.values[ 1 ];
+		lower_range=ui.values[ 0 ];
+		upper_range=ui.values[ 1 ];
 
       }
     });
+	
     $( "#amount" ).val(  $( "#slider-range" ).slider( "values", 0 ) +
       " - " + $( "#slider-range" ).slider( "values", 1 ) );
 
@@ -83,7 +85,6 @@ params[key].push(value);// If there are multiple occurrences, just keep adding t
 } else
 params[key] = value;// For the first, or only occurrence, return it as a string.
 }
-console.log("params : ",params);
 return params;
 };
 
@@ -191,8 +192,6 @@ doSearch();
 
 function addToQueryObject(newQueryKey, newQueryValue) {
 var existingQuery = window.collex.getUrlVars();
-console.log("existingQuery:"+existingQuery);
-console.log("key check:"+existingQuery[newQueryKey]);
 if (existingQuery[newQueryKey] === undefined)
 existingQuery[newQueryKey] = newQueryValue;
 else if (typeof existingQuery[newQueryKey] === 'string')
@@ -278,9 +277,12 @@ window.collex.generalFacets('Provenance');
 }else if(newQueryKey == "composition"){
 window.collex.generalFacets('Composition');
 window.collex.generalFacets('Composition');
-}else if(newQueryKey == "doc_type"){
-window.collex.generalFacets('Format');
-window.collex.generalFacets('Format');
+}else if(newQueryKey == "type_digital_artifact"){
+window.collex.generalFacets('type_digital_artifact');
+window.collex.generalFacets('type_digital_artifact');
+}else if(newQueryKey == "type_original_artifact"){
+window.collex.generalFacets('type_original_artifact');
+window.collex.generalFacets('type_original_artifact');
 }else if(newQueryKey == "g"){
 window.collex.generalFacets('Genre');
 window.collex.generalFacets('Genre');
@@ -293,7 +295,6 @@ window.collex.generalFacets('Access');
 }
 }else if (action === 'add'){
 existingQuery = addToQueryObject(newQueryKey, newQueryValue);
-console.log("akhli : "+newQueryKey);
 if(newQueryKey == "origin"){
 window.collex.generalFacets('Origin');
 window.collex.generalFacets('Origin');
@@ -303,9 +304,12 @@ window.collex.generalFacets('Provenance');
 }else if(newQueryKey == "composition"){
 window.collex.generalFacets('Composition');
 window.collex.generalFacets('Composition');
-}else if(newQueryKey == "doc_type"){
-window.collex.generalFacets('Format');
-window.collex.generalFacets('Format');
+}else if(newQueryKey == "type_digital_artifact"){
+window.collex.generalFacets('type_digital_artifact');
+window.collex.generalFacets('type_digital_artifact');
+}else if(newQueryKey == "type_original_artifact"){
+window.collex.generalFacets('type_original_artifact');
+window.collex.generalFacets('type_original_artifact');
 }else if(newQueryKey == "g"){
 window.collex.generalFacets('Genre');
 window.collex.generalFacets('Genre');
@@ -357,9 +361,7 @@ changePage("./search?" + window.collex.makeQueryString(existingQuery));
 body.on("click", ".ajax-style .select-facet", function () {
 var el = $(this);
 var newQueryKey = el.attr("data-key");
-console.log("newQueryKey: "+newQueryKey);
 var newQueryValue = el.attr("data-value");
-console.log("newQueryValue: "+newQueryValue);
 //newQueryValue = encodeURIComponent(newQueryValue);
 var action = el.attr("data-action");
 var url = createNewUrl(newQueryKey, newQueryValue, action);
@@ -539,7 +541,6 @@ obj[key] = window.collex.sanitizeString(obj[key]);
 }
 var existingSort = getSortAndFederationFromQueryObject();
 jQuery.extend(obj, existingSort);
-console.log("makeQueryString : "+ window.collex.makeQueryString(obj));
 changePage("./search?" + window.collex.makeQueryString(obj));
 });
 

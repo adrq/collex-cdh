@@ -291,8 +291,9 @@ module SearchHelper
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'fuz_t'
       ret[:title] ="Title Fuzziness"
       ret[:value] = value_display
-    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'doc_type'
-      ret[:title] ="Format"
+      #changed doc_type to type_content
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'type_content'
+      ret[:title] ="type_content"
       ret[:value] = value_display
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'discipline'
       ret[:title] ="Discipline"
@@ -308,6 +309,14 @@ module SearchHelper
       #added for composition field -- akhil
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'composition'
       ret[:title] ="Composition"
+      ret[:value] = value_display
+      #added for type_original_artifact field -- akhil
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'type_original_artifact'
+      ret[:title] ="type_original_artifact"
+      ret[:value] = value_display
+       #added for type_digital_artifact field -- akhil
+    elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'type_digital_artifact'
+      ret[:title] ="type_digital_artifact"
       ret[:value] = value_display
       #added for provenance field -- akhil
     elsif constraint.is_a?(FacetConstraint) && constraint[:fieldx] == 'provenance'
@@ -563,15 +572,7 @@ module SearchHelper
   end
 
 
-  def create_format_table( format_data )
-    html = raw('<table class="limit_to facet-format">')
-    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Format')\">#{Setup.display_name_for_facet_format}<i class=\"fa fa-caret-down fa-lg\"></i></i></th><th class=\"num_objects\"># of Objects</th></tr>")
-    # for format in format_data
-    #   html += facet_selector( format, 'doc_type' )
-    # end
-    html += raw('</table>')
-    return raw(html)
-  end
+ 
 
   def create_discipline_table( discipline_data )
     html = raw('<table class="limit_to facet-discipline">')
@@ -616,8 +617,30 @@ module SearchHelper
     return raw(html)
   end
   
+  #added for type_original_artifact field-akhil
+  def create_type_original_artifact_table( type_original_artifact_data )
+    html = raw('<table class="limit_to facet-type_original_artifact">')
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('type_original_artifact')\">#{Setup.display_name_for_facet_type_original_artifact}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
+   #for origin in origin_data
+    #   html += facet_selector( origin, 'origin' )
+     #end
+    html += raw('</table>')
+    return raw(html)
+  end
+  
+  #added for type_digital_artifact field-akhil
+  def create_type_digital_artifact_table( type_digital_artifact_data )
+    html = raw('<table class="limit_to facet-type_digital_artifact">')
+    html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('type_digital_artifact')\">#{Setup.display_name_for_facet_type_digital_artifact}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
+   #for origin in origin_data
+    #   html += facet_selector( origin, 'origin' )
+     #end
+    html += raw('</table>')
+    return raw(html)
+  end
+  
   #added for provenance field-akhil
-  def create_provenance_table( composition_data )
+  def create_provenance_table( provenance_data )
     html = raw('<table class="limit_to facet-provenance">')
     html += raw("<tr><th class=\"cursor\" onclick=\"window.collex.generalFacets('Provenance')\">#{Setup.display_name_for_facet_provenance}<i class=\"fa fa-caret-down fa-lg\"></th><th class=\"num_objects\"># of Objects</th></tr>")
    #for origin in origin_data

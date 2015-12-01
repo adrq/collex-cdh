@@ -55,10 +55,12 @@ class QueryFormat
 			:exhibit_type => { :exp => /^(partial|whole)$/, :friendly => "Whether the object is the entire work or just a page of it."},
 			:string => { :exp => /^.+$/, :friendly => "Any string."}, 
 			:origin => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words(if origin is empty, it takes from provenance field)"}, #added for the origin field --- akhil.
-      :composition => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the composition field --- akhil.
-      :provenance => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the provenance field --- akhil.
-      :shelfmark => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the shelfmark field --- akhil.
-      :doc_type => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined formats." }, #added for the format field --- akhil.
+      		:composition => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the composition field --- akhil.
+      		:provenance => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the provenance field --- akhil.
+      		:shelfmark => { :exp => /^.+$/, :friendly => "it can be either single word or it can be collection of words"}, #added for the shelfmark field --- akhil.
+      		:type_digital_artifact => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined formats." }, #added for the type_digital_artifact field --- akhil.
+      		:type_original_artifact => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined formats." }, #added for the type_original_artifact field --- akhil.
+      		:type_content => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined formats." }, #added for the type_content field --- akhil.
 			:string_optional => { :exp => /^.*$/, :friendly => "Any string."},
 			:boolean => { :exp => /^(true|false)$/, :friendly => "true or false."},
 			:section => { :exp => /^(community|classroom|peer-reviewed)$/, :friendly => "One of community, classroom, or peer-reviewed."},
@@ -68,10 +70,10 @@ class QueryFormat
 			:decimal_array => { :exp => /^\d+(,\d+)*$/, :friendly => "An integer or array of integers separated by commas."},
 			:local_sort => { :exp => /^(title|last_modified) (asc|desc)$/, :friendly => "One of title or last_modified followed by one of asc or desc." },
 			:last_modified => { :exp => /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\dZ$/, :friendly => "A date/time string in the format: yyyy-mm-ddThh:mm:ssZ." },
-      :fuz_value => { :exp => /^[+\-]?[012]?$/, :friendly => "Fuzzyness: 0 (exact match), 1 (varied spellings) or 2 (most varied spellings)"},
-      :language => { :exp => /^([+\-][^+\-]+)+$/, :friendly => "[+-] Languages separated by ||" },
-      :facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|origin|composition|provenance|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, origin,composition,provenance, free_culture, federation)'}, #added origin,compostion and provenance -- akhil
-      :period_pivot => { :exp => /^(doc_type|archive|discipline|genre|origin|composition|provenance|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, origin,composition,provenance, free_culture, or federation)'}  #added origin,composition and provenance-- akhil
+      		:fuz_value => { :exp => /^[+\-]?[012]?$/, :friendly => "Fuzzyness: 0 (exact match), 1 (varied spellings) or 2 (most varied spellings)"},
+      		:language => { :exp => /^([+\-][^+\-]+)+$/, :friendly => "[+-] Languages separated by ||" },
+      		:facet => { :exp => /^(\b(?:type_digital_artifact|type_original_artifact|archive|discipline|genre|origin|composition|provenance|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (type_digital_artifact,type_original_artifact, archive, discipline, genre, origin,composition,provenance, free_culture, federation)'}, #added origin,compostion and provenance,type_original_artifact,type_digital_artifact and removed doc_type -- akhil
+      		:period_pivot => { :exp => /^(type_digital_artifact|type_original_artifact|archive|discipline|genre|origin|composition|provenance|free_culture|federation)$/, :friendly => 'One of the predefined pivots (type_digital_artifact,type_original_artifact, archive, discipline, genre, origin,composition,provenance, free_culture, or federation)'}  #added origin,composition and provenance type_digital_artifact and removed doc_type-- akhil
 		}
 
 		return verifications[typ]
@@ -105,35 +107,37 @@ class QueryFormat
 				'a' => { :name => 'Archive', :param => :archive, :default => nil, :transformation => get_proc(:transform_archive) },
 				'g' => { :name => 'Genre', :param => :genre, :default => nil, :transformation => get_proc(:transform_genre) },
 				'origin' => {:name => 'Origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_origin)},  #added for origin field -- akhil
-        'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
-        'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
-        'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
+        		'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
+        		'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
+        		'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
+        		'type_digital_artifact' => {:name => 'Type Digital Artifact', :param => :type_digital_artifact, :default => nil, :transformation => get_proc(:transform_type_digital_artifact)},  #added for type_digital_artifact field -- akhil
+        		'type_original_artifact' => {:name => 'Type Original Artifact', :param => :type_original_artifact, :default => nil, :transformation => get_proc(:transform_type_original_artifact)},  #added for type_original_artifact field -- akhil
+        		'type_content' => {:name => 'Type Content', :param => :type_content, :default => nil, :transformation => get_proc(:transform_type_content)},  #added for type_content field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
-        'facet' => { :name => 'Facet', :param => :facet, :default => nil, :transformation => get_proc(:transform_facet) },
+       			'facet' => { :name => 'Facet', :param => :facet, :default => nil, :transformation => get_proc(:transform_facet) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'sort' => { :name => 'Sort', :param => :sort, :default => nil, :transformation => get_proc(:transform_sort) },
 				'start' => { :name => 'Starting Row', :param => :starting_row, :default => '0', :transformation => get_proc(:transform_field) },
 				'max' => { :name => 'Maximum Results', :param => :max, :default => '30', :transformation => get_proc(:transform_max) },
 				'hl' => { :name => 'Highlighting', :param => :highlighting, :default => 'off', :transformation => get_proc(:transform_highlight) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
-        'r_own' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_owner)},
-        'r_art' => { :name => 'Artist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_artist)},
-        'lang' => { :name => 'Language', :param => :language, :default => nil, :transformation => get_proc(:transform_language)},
-        'doc_type' => { :name => 'Format', :param => :string, :default => nil, :transformation => get_proc(:transform_doc_type)},
-        'discipline' => { :name => 'Discipline', :param => :string, :default => nil, :transformation => get_proc(:transform_discipline)},
-        'role_TRL' => { :name => 'Translator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_ARC' => { :name => 'Architect', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_BND' => { :name => 'Binder', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_BKD' => { :name => 'Book Designer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_BKP' => { :name => 'Book Producer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_BRD' => { :name => 'Broadcaster', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CLL' => { :name => 'Calligrapher', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CTG' => { :name => 'Cartographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_COL' => { :name => 'Collector', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CLR' => { :name => 'Colorist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CWT' => { :name => 'Commentator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_COM' => { :name => 'Compiler', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CMT' => { :name => 'Compositor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'r_own' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_owner)},
+        		'r_art' => { :name => 'Artist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_artist)},
+        		'lang' => { :name => 'Language', :param => :language, :default => nil, :transformation => get_proc(:transform_language)},
+        		'discipline' => { :name => 'Discipline', :param => :string, :default => nil, :transformation => get_proc(:transform_discipline)},
+        		'role_TRL' => { :name => 'Translator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_ARC' => { :name => 'Architect', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_BND' => { :name => 'Binder', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_BKD' => { :name => 'Book Designer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_BKP' => { :name => 'Book Producer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		   		'role_BRD' => { :name => 'Broadcaster', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CLL' => { :name => 'Calligrapher', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CTG' => { :name => 'Cartographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_COL' => { :name => 'Collector', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CLR' => { :name => 'Colorist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CWT' => { :name => 'Commentator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_COM' => { :name => 'Compiler', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CMT' => { :name => 'Compositor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
 		    'role_CNG' => { :name => 'Cinematographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
 	    	'role_CND' => { :name => 'Conductor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
 	    	'role_CRE' => { :name => 'Creator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
@@ -184,13 +188,15 @@ class QueryFormat
         'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
         'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
         'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
+        		'type_digital_artifact' => {:name => 'Type Digital Artifact', :param => :type_digital_artifact, :default => nil, :transformation => get_proc(:transform_type_digital_artifact)},  #added for type_digital_artifact field -- akhil
+        		'type_original_artifact' => {:name => 'Type Original Artifact', :param => :type_original_artifact, :default => nil, :transformation => get_proc(:transform_type_original_artifact)},  #added for type_original_artifact field -- akhil
+        		'type_content' => {:name => 'Type Content', :param => :type_content, :default => nil, :transformation => get_proc(:transform_type_content)},  #added for type_content field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
         'r_own' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_owner)},
         'r_art' => { :name => 'Artist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_artist)},
         'lang' => { :name => 'Language', :param => :language, :default => nil, :transformation => get_proc(:transform_language)},
-		'doc_type' => { :name => 'Format', :param => :string, :default => nil, :transformation => get_proc(:transform_doc_type)},
 		'discipline' => { :name => 'Discipline', :param => :string, :default => nil, :transformation => get_proc(:transform_discipline)},
         'role_TRL' => { :name => 'Translator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
         'role_ARC' => { :name => 'Architect', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
@@ -251,13 +257,15 @@ class QueryFormat
         'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
         'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
         'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
+        		'type_digital_artifact' => {:name => 'Type Digital Artifact', :param => :type_digital_artifact, :default => nil, :transformation => get_proc(:transform_type_digital_artifact)},  #added for type_digital_artifact field -- akhil
+        		'type_original_artifact' => {:name => 'Type Original Artifact', :param => :type_original_artifact, :default => nil, :transformation => get_proc(:transform_type_original_artifact)},  #added for type_original_artifact field -- akhil
+        		'type_content' => {:name => 'Type Content', :param => :type_content, :default => nil, :transformation => get_proc(:transform_type_content)},  #added for type_content field -- akhil
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
         'r_own' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_owner)},
         'r_art' => { :name => 'Artist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_artist)},
         'lang' => { :name => 'Language', :param => :language, :default => nil, :transformation => get_proc(:transform_language)},
-        'doc_type' => { :name => 'Format', :param => :string, :default => nil, :transformation => get_proc(:transform_doc_type)},
         'discipline' => { :name => 'Discipline', :param => :string, :default => nil, :transformation => get_proc(:transform_discipline)},
         'role_TRL' => { :name => 'Translator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
         'role_ARC' => { :name => 'Architect', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
@@ -350,6 +358,7 @@ class QueryFormat
 			#'role_ETR' => { :name => 'Etcher', :param => :string, :default => nil, :transformation => get_proc(:transform_field), :can_be_array => true },
 			#'role_CRE' => { :name => 'Creator', :param => :string, :default => nil, :transformation => get_proc(:transform_field), :can_be_array => true },
 			'year' => { :name => 'year', :param => :string, :default => nil, :transformation => get_proc(:transform_field), :can_be_array => true },
+			'type_digital_artifact' => {:name => 'Type Digital Artifact', :param => :type_digital_artifact, :default => nil, :transformation => get_proc(:transform_type_digital_artifact), :can_be_array => true},  #added for type_digital_artifact field -- akhil
       
 
 			# single valued fields
@@ -367,9 +376,11 @@ class QueryFormat
 			'author_sort' => { :name => 'author_sort', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
 			'url' => { :name => 'url', :param => :string, :default => nil, :transformation => get_proc(:transform_field) },
 			'origin' => { :name => 'origin', :param => :origin, :default => nil, :transformation => get_proc(:transform_field)}, #added for origin field -- akhil
-      'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
-      'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
-      'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
+      		'composition' => {:name => 'Composition', :param => :composition, :default => nil, :transformation => get_proc(:transform_composition)},  #added for composition field -- akhil
+      		'provenance' => {:name => 'Provenance', :param => :provenance, :default => nil, :transformation => get_proc(:transform_provenance)},  #added for provenance field -- akhil
+      		'shelfmark' => {:name => 'Shelfmark', :param => :shelfmark, :default => nil, :transformation => get_proc(:transform_shelfmark)},  #added for shelfmark field -- akhil
+        	'type_original_artifact' => {:name => 'Type Original Artifact', :param => :type_original_artifact, :default => nil, :transformation => get_proc(:transform_type_original_artifact)},  #added for type_original_artifact field -- akhil
+        	'type_content' => {:name => 'Type Content', :param => :type_content, :default => nil, :transformation => get_proc(:transform_type_content)},  #added for type_content field -- akhil
 
 			# boolean fields
 			#'has_full_text' => { :name => 'has_full_text', :param => :boolean, :default => 'false', :transformation => get_proc(:transform_field) },
@@ -641,6 +652,21 @@ class QueryFormat
 		return { 'fq' => self.insert_field_name("composition", val) }
   end
   
+  #added this method for type_digital_artifact field -- akhil
+  def self.transform_type_digital_artifact(key,val)
+		return { 'fq' => self.insert_field_name("type_digital_artifact", val) }
+  end
+  
+  #added this method for type_original_artifact field -- akhil
+  def self.transform_type_original_artifact(key,val)
+		return { 'fq' => self.insert_field_name("type_original_artifact", val) }
+  end
+  
+  #added this method for type_content field -- akhil
+  def self.transform_type_content(key,val)
+		return { 'fq' => self.insert_field_name("type_content", val) }
+  end
+  
   #added this method for provenance field -- akhil
   def self.transform_provenance(key,val)
 		return { 'fq' => self.insert_field_name("provenance", val) }
@@ -656,9 +682,6 @@ class QueryFormat
     return { 'fq' => self.insert_field_name("discipline", val) }
   end
 
-  def self.transform_doc_type(key,val)
-    return { 'fq' => self.insert_field_name("doc_type", val) }
-  end
 
 	def self.transform_federation(key,val)
 		# Federation comes in different from others. It has the the "federation:" tag already added. Also, it could have

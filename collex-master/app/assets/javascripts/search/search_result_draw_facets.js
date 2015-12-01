@@ -140,6 +140,8 @@ var idelement_origin;
 var idelement_language;
 var idelement_composition;
 var idelement_provenance;
+var idelement_typedigital;
+var idelement_typeoriginal;
  
  
 window.collex.createFacets = function(obj,number) {
@@ -159,22 +161,10 @@ window.collex.createFacets = function(obj,number) {
 		createResourceBlock(obj.facets.archive, obj.query.a);
 		idelement_genre = document.getElementsByClassName('genre');
 		for(var i=0;i<idelement_genre.length;i++){
-			console.log(idelement_genre[i]);
 			if(number%2 != 0){
 				idelement_genre[i].style.display = 'block';
 			}else{
 				idelement_genre[i].style.display = 'none';
-			}
-		}
-	} else if(window.collex.format_value == true){
-		createFacetBlock('facet-format', obj.facets.doc_type, 'doc_type', obj.query.doc_type,'format','format');
-		createResourceBlock(obj.facets.archive, obj.query.a);
-		idelement_format = document.getElementsByClassName('format');
-		for(var i=0;i<idelement_format.length;i++){
-			if(number%2 != 0){
-				idelement_format[i].style.display = 'block';
-			}else{
-				idelement_format[i].style.display = 'none';
 			}
 		}
 	} else if(window.collex.origin_value == true){
@@ -211,7 +201,6 @@ window.collex.createFacets = function(obj,number) {
 			}
 		}
 	}else if(window.collex.language_value == true){
-		console.log("hey into the language display",obj.query.language);
 
 		createFacetBlock('facet-language', obj.facets.language, 'lang', obj.query.lang,'language','language');
 		createResourceBlock(obj.facets.archive, obj.query.a);
@@ -223,7 +212,32 @@ window.collex.createFacets = function(obj,number) {
 				idelement_language[i].style.display = 'none';
 			}
 		}
-	}else{
+	}else if(window.collex.type_original_artifact_value == true){
+		
+			createFacetBlock('facet-type_original_artifact', obj.facets.type_original_artifact, 'type_original_artifact', obj.query.type_original_artifact,'type_original_artifact','type_original_artifact');
+			createResourceBlock(obj.facets.archive, obj.query.a);
+			idelement_typeoriginal = document.getElementsByClassName('type_original_artifact');
+			for(var i=0;i<idelement_typeoriginal.length;i++){
+				if(number%2 != 0){
+					idelement_typeoriginal[i].style.display = 'block';
+				}else{
+					idelement_typeoriginal[i].style.display = 'none';
+				}
+			}
+	}else if(window.collex.type_digital_artifact_value == true){
+		
+			createFacetBlock('facet-type_digital_artifact', obj.facets.type_digital_artifact, 'type_digital_artifact', obj.query.type_digital_artifact,'type_digital_artifact','type_digital_artifact');
+			createResourceBlock(obj.facets.archive, obj.query.a);
+			idelement_typedigital = document.getElementsByClassName('type_digital_artifact');
+			for(var i=0;i<idelement_typedigital.length;i++){
+				if(number%2 != 0){
+					idelement_typedigital[i].style.display = 'block';
+				}else{
+					idelement_typedigital[i].style.display = 'none';
+				}
+			}
+		}
+		else{
 
 	}
 };

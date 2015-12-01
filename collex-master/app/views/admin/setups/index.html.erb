@@ -150,7 +150,17 @@
      <%= setup_line("provenance Facet Order:", "facet_order_provenance", @setups,
                     "Use a number [0-9] to determine where Cprovenan will appear in the facet list.
                      Leave blank to hide this facet.",
-                    "6") %>
+                    "7") %>
+<!-- added for type_digital_artifact field -akhil-->
+     <%= setup_line("Type Digital Artifact Facet Order:", "facet_order_type_digital_artifact", @setups,
+                    "Use a number [0-9] to determine where Cprovenan will appear in the facet list.
+                     Leave blank to hide this facet.",
+                    "8") %>
+<!-- added for type_original_artifact field -akhil-->
+     <%= setup_line("Type Original Artifact Facet Order:", "facet_order_type_original_artifact", @setups,
+                    "Use a number [0-9] to determine where Cprovenan will appear in the facet list.
+                     Leave blank to hide this facet.",
+                    "9") %>
 
       <%= setup_table_header("Facet Display Labels") %>
       <%= setup_line("Custom label for the Access facet:", "facet_display_name_access", @setups,
@@ -181,6 +191,14 @@
   <%= setup_line("Custom label for the Provenance facet:", "facet_display_name_provenance", @setups,
 		         "Enter a value to display as the label for the Provenance facet.",
 		         "Provenance") %>
+  <!-- added for type_digital_artifact field -akhil-->			 
+  <%= setup_line("Custom label for the type_digital_artifact facet:", "facet_display_name_type_digital_artifact", @setups,
+		         "Enter a value to display as the label for the Provenance facet.",
+		         "type_digital_artifact") %>
+ <!-- added for type_original_artifact field -akhil-->			 
+  <%= setup_line("Custom label for the type_original_artifact facet:", "facet_display_name_type_original_artifact", @setups,
+		         "Enter a value to display as the label for the Provenance facet.",
+		         "type_original_artifact") %>
 	  <%= setup_table_header("Footer Signature") %>
 	  <%= setup_line("HTML for footer signature:", "footer_signature_text", @setups,
 					 "Enter the HTML that you would like to appear in the footer signature. Typically this would be credits or a copyright notice.",

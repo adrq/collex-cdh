@@ -8,7 +8,6 @@ jQuery(document).ready(function($) {
 			discipline: 'Discipline',
 			g: 'Genre',
 			q: 'Search Term',
-			doc_type: 'Format',
 			t: "Title",
 			aut: "Author",
 			ed: 'Editor',
@@ -23,7 +22,10 @@ jQuery(document).ready(function($) {
 			origin: 'Origin', // added for origin field -- akhil
 			composition: 'Composition', // added for origin field -- akhil
 			provenance: 'Provenance', // added for origin field -- akhil
-			shelfmark: 'Shelfmark'
+			shelfmark: 'Shelfmark',
+			type_digital_artifact: 'type_digital_artifact', // added for type_digital_artifact field -- akhil
+			type_original_artifact: 'type_original_artifact', // added for type_original_artifact field -- akhil
+			type_content: 'type_content' // added for type_content field -- akhil
 		};
 		if (types[key])
 			return types[key];

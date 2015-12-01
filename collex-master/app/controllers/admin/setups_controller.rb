@@ -160,6 +160,10 @@ class Admin::SetupsController < Admin::BaseController
             value = "Language"  #added for language field -- akhil
          when 'facet_display_name_composition' #added for composition field -- akhil
             value = "Composition"  #added for composition field -- akhil
+        when 'facet_display_name_type_digital_artifact' #added for type_digital_artifact field -- akhil
+            value = "type_digital_artifact"  #added for type_digital_artifact field -- akhil
+        when 'facet_display_name_type_original_artifact' #added for type_original_artifact field -- akhil
+            value = "type_original_artifact"  #added for type_original_artifact field -- akhil
          when 'facet_display_name_provenance' #added for provenance field -- akhil
             value = "Provenance"  #added for provenance field -- akhil
       else 
@@ -185,7 +189,11 @@ class Admin::SetupsController < Admin::BaseController
       rec = Setup.find_by_key('facet_order_language') #added for language field -- akhil
       order['facet_order_language'] = rec.value #added for language field -- akhil
       rec = Setup.find_by_key('facet_order_composition') #added for composition field -- akhil
-      order['facet_order_composition'] = rec.value #added for composition field -- akhil
+      order['facet_order_composition'] = rec.value #added for language field -- akhil
+      rec = Setup.find_by_key('facet_order_type_original_artifact') #added for type_original_artifact field -- akhil
+      order['facet_order_type_original_artifact'] = rec.value #added for type_original_artifact field -- akhil
+      rec = Setup.find_by_key('facet_order_type_digital_artifact') #added for type_digital_artifact field -- akhil
+      order['facet_order_type_digital_artifact'] = rec.value #added for type_digital_artifact field -- akhil
       rec = Setup.find_by_key('facet_order_provenance') #added for provenance field -- akhil
       order['facet_order_provenance'] = rec.value #added for provenance field -- akhil
 
@@ -213,13 +221,19 @@ class Admin::SetupsController < Admin::BaseController
          if order.values.count(order['facet_order_composition']) > 1    #added for composition field -- akhil
             warnings.push " Language Facet Order: #{order['facet_order_composition']}" #added for composition field -- akhil
          end
+         if order.values.count(order['facet_order_type_digital_artifact']) > 1    #added for type_digital_artifact field -- akhil
+            warnings.push " Language Facet Order: #{order['facet_order_type_digital_artifact']}" #added for type_digital_artifact field -- akhil
+         end
+         if order.values.count(order['facet_order_type_original_artifact']) > 1    #added for type_original_artifact field -- akhil
+            warnings.push " Language Facet Order: #{order['facet_order_type_original_artifact']}" #added for type_original_artifact field -- akhil
+         end
          if order.values.count(order['facet_order_provenance']) > 1    #added for provenance field -- akhil
             warnings.push " Provenance Facet Order: #{order['facet_order_provenance']}" #added for provenance field -- akhil
          end
       end
 
       # Check for non-numeric values
-      provenance_order,composition_order,origin_order,access_order, genre_order, discipline_order, format_order, language_order = nil, nil, nil, nil,nil,nil,nil,nil #added composition_order,provenance_order and origin_order --akhil
+      type_original_artifact_order,type_digital_artifact_order,provenance_order,composition_order,origin_order,access_order, genre_order, discipline_order, format_order, language_order = nil, nil, nil, nil,nil,nil,nil,nil,nil,nil #added composition_order,provenance_order and origin_order --akhil
       begin
          access_order = Integer(order['facet_order_access']) if order['facet_order_access'].length > 0
       rescue
@@ -261,7 +275,18 @@ class Admin::SetupsController < Admin::BaseController
       rescue
          warnings.push( "Non Numeric Display Order detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
       end
-      
+      #added for type_digital_artifact field -- akhil
+      begin
+         type_digital_artifact_order = Integer(order['facet_order_type_digital_artifact']) if order['facet_order_type_digital_artifact'].length > 0
+      rescue
+         warnings.push( "Non Numeric Display Order detected. \"Composition Facet Order: #{order['facet_order_type_digital_artifact']}\" Facets may not display correctly.")
+      end
+      #added for type_original_artifact field -- akhil
+      begin
+         type_original_artifact_order = Integer(order['facet_order_type_original_artifact']) if order['facet_order_type_original_artifact'].length > 0
+      rescue
+         warnings.push( "Non Numeric Display Order detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
+      end
       #added for provenance field -- akhil
       begin
          provenance_order = Integer(order['facet_order_provenance']) if order['facet_order_provenance'].length > 0
@@ -300,6 +325,18 @@ class Admin::SetupsController < Admin::BaseController
          warnings.push("Large value detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
       end
       
+      #added for type_original_artifact field -- akhil
+      
+      if !type_original_artifact_order.nil? and type_original_artifact_order > 10
+         warnings.push("Large value detected. \"type_original_artifact Facet Order: #{order['facet_order_type_original_artifact']}\" Facets may not display correctly.")
+      end
+      
+      #added for type_digital_artifact field -- akhil
+      
+      if !type_digital_artifact_order.nil? and type_digital_artifact_order > 10
+         warnings.push("Large value detected. \"type_digital_artifact Facet Order: #{order['facet_order_type_digital_artifact']}\" Facets may not display correctly.")
+      end
+      
       #added for provenance field -- akhil
       
       if !provenance_order.nil? and provenance_order > 10
@@ -335,6 +372,18 @@ class Admin::SetupsController < Admin::BaseController
       
       if !composition_order.nil? and composition_order < 0
          warnings.push("Negative value detected. \"Composition Facet Order: #{order['facet_order_composition']}\" Facets may not display correctly.")
+      end
+      
+      #added for type_digital_artifact field -- akhil
+      
+      if !type_digital_artifact_order.nil? and type_digital_artifact_order < 0
+         warnings.push("Negative value detected. \"type_digital_artifact Facet Order: #{order['facet_order_type_digital_artifact']}\" Facets may not display correctly.")
+      end
+      
+      #added for type_original_artifact field -- akhil
+      
+      if !type_original_artifact_order.nil? and type_original_artifact_order < 0
+         warnings.push("Negative value detected. \"type_original_artifact Facet Order: #{order['facet_order_type_original_artifact']}\" Facets may not display correctly.")
       end
       
       #added for provenance field -- akhil

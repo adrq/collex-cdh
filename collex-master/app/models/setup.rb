@@ -180,6 +180,8 @@ class Setup < ActiveRecord::Base
     facet_order_origin = globals()['facet_order_origin'] || '' #added for origin field
     facet_order_language = globals()['facet_order_language'] || '' #added for language field
     facet_order_composition = globals()['facet_order_composition'] || '' #added for composition field
+    facet_order_type_original_artifact = globals()['facet_order_type_original_artifact'] || '' #added for type_original_artifact field
+    facet_order_type_digital_artifact = globals()['facet_order_type_digital_artifact'] || '' #added for type_digital_artifact field
     facet_order_provenance = globals()['facet_order_provenance'] || '' #added for provenance field
     dont_dupe = 0 # value to append to a key in case the key already exists
     if facet_order_access.strip() != ''
@@ -241,6 +243,27 @@ class Setup < ActiveRecord::Base
         order[facet_order_composition.strip] = 'composition'
       end
     end
+    
+    #added for type_digital_artifact field -akhil
+    if facet_order_type_digital_artifact.strip() != ''
+      if order[facet_order_type_digital_artifact.strip]
+        order[facet_order_type_digital_artifact.strip + dont_dupe.to_s] = 'type_digital_artifact'
+        dont_dupe += 1
+      else
+        order[facet_order_type_digital_artifact.strip] = 'type_digital_artifact'
+      end
+    end
+    
+    #added for type_original_artifact field -akhil
+    if facet_order_type_original_artifact.strip() != ''
+      if order[facet_order_type_original_artifact.strip]
+        order[facet_order_type_original_artifact.strip + dont_dupe.to_s] = 'type_original_artifact'
+        dont_dupe += 1
+      else
+        order[facet_order_type_original_artifact.strip] = 'type_original_artifact'
+      end
+    end
+    
     #added for provenance field -akhil
     if facet_order_provenance.strip() != ''
       if order[facet_order_provenance.strip]
@@ -316,6 +339,26 @@ class Setup < ActiveRecord::Base
       return value
     else
       return 'Composition'
+    end
+  end
+  
+  #added for type_original_artifact field -akhil
+  def self.display_name_for_facet_type_original_artifact
+    value = globals()['facet_display_name_type_original_artifact']
+    if value and value.strip() != ''
+      return value
+    else
+      return 'type_original_artifact'
+    end
+  end
+  
+  #added for type_digital_artifact field -akhil
+  def self.display_name_for_facet_type_digital_artifact
+    value = globals()['facet_display_name_type_digital_artifact']
+    if value and value.strip() != ''
+      return value
+    else
+      return 'type_digital_artifact'
     end
   end
   
