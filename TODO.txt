@@ -43,7 +43,8 @@ RDF-INDEXER
 INFO/SUBMISSIONS WEBSITE
 ************************
 
-- update DBs and submission form to support new type fields
+- Create dropdown for archive
+- ask about file format
 - add validation for ALL fields
 - add delete functionality for individual submisions
 - add API for authority files

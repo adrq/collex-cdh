@@ -24,7 +24,9 @@ function saveObjectToDB($data, $objectID) {
   $rdfAbout         = htmlspecialchars(trim($data["rdf_about"]));
   $archive          = htmlspecialchars(trim($data["archive"]));
   $title            = htmlspecialchars(trim($data["title"]));
-  $type             = htmlspecialchars(trim($data["type"]));
+  $type_of_original_artifact             = htmlspecialchars(trim($data["type_of_original_artifact"]));
+  $type_of_digital_artifact             = htmlspecialchars(trim($data["type_of_digital_artifact"]));
+  $type_of_content             = htmlspecialchars(trim($data["type_of_content"]));
   $url              = htmlspecialchars(trim($data["url"]));
   $origin           = htmlspecialchars(trim($data["origin"]));
   $provenance       = htmlspecialchars(trim($data["provenance"]));
@@ -52,8 +54,8 @@ function saveObjectToDB($data, $objectID) {
   $notes            = $data["notes"];
   $fileFormat       = $data["file_format"];
 
-  $statement = $mysqli->prepare("UPDATE objects SET custom_namespace = ?, rdf_about = ?, archive = ?, title = ?, type = ?, url = ?, origin = ?, provenance = ?, place_of_composition = ?, shelfmark = ?, freeculture = ?, full_text_url = ?, full_text_plain = ?, is_full_text = ?, image_url = ?, source = ?, metadata_xml_url = ?, metadata_html_url = ?, text_divisions = ?, ocr = ?, thumbnail_url = ?, notes = ?, file_format = ?, date_updated = NOW(), user_id = ? WHERE id = ?");
-  $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $ocr, $thumbnailURL, $notes, $fileFormat, $userID, $objectID);
+  $statement = $mysqli->prepare("UPDATE objects SET custom_namespace = ?, rdf_about = ?, archive = ?, title = ?, type_of_original_artifact = ?, url = ?, origin = ?, provenance = ?, place_of_composition = ?, shelfmark = ?, freeculture = ?, full_text_url = ?, full_text_plain = ?, is_full_text = ?, image_url = ?, source = ?, metadata_xml_url = ?, metadata_html_url = ?, text_divisions = ?, ocr = ?, thumbnail_url = ?, notes = ?, file_format = ?, date_updated = NOW(), user_id = ? WHERE id = ?");
+  $statement->bind_param("sssssssssssssssssssssssss", $customNamespace, $rdfAbout, $archive, $title, $type_of_original_artifact, $url, $origin, $provenance, $compositionPlace, $shelfmark, $freeculture, $fullTextURL, $fullTextPlain, $isFullText, $imageURL, $source, $metadataXMLURL, $metdataHTMLURL, $textDivisions, $ocr, $thumbnailURL, $notes, $fileFormat, $userID, $objectID);
   $statement->execute();
   $statement->store_result();
 
