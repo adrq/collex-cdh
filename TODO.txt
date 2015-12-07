@@ -47,6 +47,7 @@ INFO/SUBMISSIONS WEBSITE
 - add validation for ALL fields
 - add delete functionality for individual submisions
 - add API for authority files
+- refactor RDF-Generator for new type fields: type_content etc.
 - http://lichen.csd.sc.edu/indexiuris/new-rdf-form this link is accessable with-out sign-in as well, needs to add the sing-in protection code for it.
 
 ***********
