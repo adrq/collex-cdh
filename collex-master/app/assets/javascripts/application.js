@@ -24,4 +24,7 @@
 //= require_tree .
 
 
-var site_path = "http://lichen.csd.sc.edu/dev/indexiuris/collex";
+
+//var site_path = "http://localhost/indexiuris/collex";
+var site_path = "http://0.0.0.0:3000"; 
+
