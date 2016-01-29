@@ -52,6 +52,8 @@ Ubuntu packages:
 Build tools:
 	apt-get install -y build-essential
 	apt-get install -y libxml2-dev
+	apt-get install -y unzip
+	apt-get install -y apache2
 
 JAVA
 	apt-get install -y openjdk-7-jre
