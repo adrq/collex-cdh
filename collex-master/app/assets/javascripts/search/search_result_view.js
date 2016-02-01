@@ -7,7 +7,7 @@
  var provenance_number=1;
  var type_content_number=1;
  var type_digital_artifact_number=1;
-var type_original_artifact_number=1;
+ var type_original_artifact_number=1;
 
 jQuery(document).ready(function($) {
 	"use strict";
