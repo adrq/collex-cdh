@@ -16,7 +16,7 @@
 //= require dragdrop
 //= require rails
 //= require jquery
-//= require no_conflict
+//= require no_conflict.min
 //= require jquery.localtime
 //= require jquery.cookie
 //= require jquery-ui/autocomplete
