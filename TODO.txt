@@ -23,7 +23,6 @@ CATALOG
 COLLEX
 ******
 - Search form should be redesigned. Should add date and type fileds for searching.
-- Date slider should update to correct values when loading a page from url
 
 
 
