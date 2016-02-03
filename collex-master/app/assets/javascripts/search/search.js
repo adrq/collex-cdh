@@ -38,7 +38,7 @@ $(function() {
       range: true,
       min: 0,
       max: 2000,
-      values: [100,800],
+      values: [0,0],
       slide: function( event, ui ) {
 		  
         $( "#amount" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
@@ -354,6 +354,22 @@ window.location = url;
 
 body.on("click", ".new_search", function () {
 var existingQuery = getSortAndFederationFromQueryObject();
+$( "#slider-range" ).slider({
+  range: true,
+  min: 0,
+  max: 2000,
+  values: [0,0],
+  slide: function( event, ui ) {
+	  
+    $( "#amount" ).val(  ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+	lower_range=ui.values[ 0 ];
+	upper_range=ui.values[ 1 ];
+
+  }
+});
+
+$( "#amount" ).val(  $( "#slider-range" ).slider( "values", 0 ) +
+  " - " + $( "#slider-range" ).slider( "values", 1 ) );
 changePage("./search?" + window.collex.makeQueryString(existingQuery));
 //location.reload(true);
 });
