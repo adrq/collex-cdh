@@ -58,11 +58,11 @@ function generateRDF($objectID) {
   global $mysqli;
   global $rolesRDFArray;
 
-  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type_of_content, type_of_original_artifact, type_of_digital_artifact, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
   $statement->bind_param("i", $objectID);
   $statement->execute();
   $statement->store_result();
-  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type_of_content, $type_of_original_artifact, $type_of_digital_artifact, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
   if ($statement->num_rows != 1) {
     return "RECORD \"" . $objectID . "\" DOES NOT EXIST";
@@ -96,10 +96,18 @@ function generateRDF($objectID) {
     $rdf .= "\t<dc:title>" . unescapeHTMLEntities($title) . "</dc:title>\n";
   }
 
-  if ($type !== "") {
-    $rdf .= "\t<ii:type>" . unescapeHTMLEntities($type) . "</ii:type>\n";
+  if ($type_of_content !== "") {
+    $rdf .= "\t<ii:type_content>" . unescapeHTMLEntities($type) . "</ii:type_content>\n";
   }
-
+  
+  if ($type_of_original_artifact !== "") {
+    $rdf .= "\t<ii:type_original_artifact>" . unescapeHTMLEntities($type) . "</ii:type_original_artifact>\n";
+  }
+  
+  if ($type_of_digital_artifact !== "") {
+    $rdf .= "\t<ii:type_digital_artifact>" . unescapeHTMLEntities($type) . "</ii:type_digital_artifact>\n";
+  }
+ 
   if ($origin !== "") {
     $rdf .= "\t<ii:origin>" . unescapeHTMLEntities($origin) . "</ii:origin>\n";
   }
