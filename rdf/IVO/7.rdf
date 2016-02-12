@@ -14,7 +14,9 @@
 	<collex:federation>INDEXIURIS</collex:federation>
 	<collex:archive>IVO</collex:archive>
 	<dc:title>Ivonian Collections</dc:title>
-	<ii:type>Critical edition</ii:type>
+	<ii:type_content></ii:type_content>
+	<ii:type_original_artifact>Critical edition</ii:type_original_artifact>
+	<ii:type_digital_artifact></ii:type_digital_artifact>
 	<ii:origin>Northwest France</ii:origin>
 	<ii:shelfmark>Vast number used</ii:shelfmark>
 	<collex:freeculture>true</collex:freeculture>

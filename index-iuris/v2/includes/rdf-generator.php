@@ -97,15 +97,15 @@ function generateRDF($objectID) {
   }
 
   if ($type_of_content !== "") {
-    $rdf .= "\t<ii:type_content>" . unescapeHTMLEntities($type) . "</ii:type_content>\n";
+    $rdf .= "\t<ii:type_content>" . unescapeHTMLEntities($type_of_content) . "</ii:type_content>\n";
   }
   
   if ($type_of_original_artifact !== "") {
-    $rdf .= "\t<ii:type_original_artifact>" . unescapeHTMLEntities($type) . "</ii:type_original_artifact>\n";
+    $rdf .= "\t<ii:type_original_artifact>" . unescapeHTMLEntities($type_of_original_artifact) . "</ii:type_original_artifact>\n";
   }
   
   if ($type_of_digital_artifact !== "") {
-    $rdf .= "\t<ii:type_digital_artifact>" . unescapeHTMLEntities($type) . "</ii:type_digital_artifact>\n";
+    $rdf .= "\t<ii:type_digital_artifact>" . unescapeHTMLEntities($type_of_digital_artifact) . "</ii:type_digital_artifact>\n";
   }
  
   if ($origin !== "") {

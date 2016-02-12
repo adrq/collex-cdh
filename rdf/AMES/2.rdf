@@ -9,12 +9,14 @@
 	xmlns:ii="http://lichen.csd.sc.edu/indexiuris/terms/"
 	xmlns:AmesFoundation="http://amesfoundation.law.harvard.edu/digital/StatsAndRegWrits/">
 
-<AmesFoundation:manuscripts rdf:about="http://amesfoundation.law.harvard.edu/digital/StatsAndRegWrits/StatsAndRegs_display.php?ms=12">
+<AmesFoundation:manuscripts rdf:about="http://amesfoundation.law.harvard.edu/digital/StatsAndRegWrits/">
 	<rdfs:seeAlso rdf:resource="http://amesfoundation.law.harvard.edu/digital/StatsAndRegWrits/StatsAndRegs_display.php?ms=12"/>
 	<collex:federation>INDEXIURIS</collex:federation>
 	<collex:archive>AMES</collex:archive>
 	<dc:title>HLS MS 12</dc:title>
-	<ii:type>Digital image</ii:type>
+	<ii:type_content></ii:type_content>
+	<ii:type_original_artifact></ii:type_original_artifact>
+	<ii:type_digital_artifact>Digital image</ii:type_digital_artifact>
 	<ii:origin>Northern France or Belgium</ii:origin>
 	<ii:provenance>?Edward III and Philippa of Hainault; John Aslakby (15th century); Harvard Law School</ii:provenance>
 	<ii:shelfmark>Cambridge, MA, Harvard Law School, HLS MS 12</ii:shelfmark>

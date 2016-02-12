@@ -14,7 +14,9 @@
 	<collex:federation>INDEXIURIS</collex:federation>
 	<collex:archive>Bibliothecalegum</collex:archive>
 	<dc:title>Leges</dc:title>
-	<ii:type>Manuscript Codex</ii:type>
+	<ii:type_content></ii:type_content>
+	<ii:type_original_artifact>Manuscript Codex</ii:type_original_artifact>
+	<ii:type_digital_artifact></ii:type_digital_artifact>
 	<ii:origin>Gaul</ii:origin>
 	<ii:provenance>Formerly Maihingen near Nördlingen im Ries, then castle Harburg near Donauwörth, Library of Oettingen-Wallerstein</ii:provenance>
 	<ii:composition></ii:composition>

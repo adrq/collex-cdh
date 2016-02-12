@@ -14,7 +14,9 @@
 	<collex:federation>INDEXIURIS</collex:federation>
 	<collex:archive>VirtualCanonLawLibrary</collex:archive>
 	<dc:title>Summa Decretorum</dc:title>
-	<ii:type>Digital image</ii:type>
+	<ii:type_content></ii:type_content>
+	<ii:type_original_artifact></ii:type_original_artifact>
+	<ii:type_digital_artifact>Digital image</ii:type_digital_artifact>
 	<collex:freeculture>true</collex:freeculture>
 	<collex:source_xml>https://colbycanonlaw.wordpress.com/2009/09/24/decretum-decretists/</collex:source_xml>
 	<collex:source_html>https://colbycanonlaw.wordpress.com/2009/09/24/decretum-decretists/</collex:source_html>
